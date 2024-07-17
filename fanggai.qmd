@@ -1,0 +1,23 @@
+---
+title: "Steinmetz(mou he fang gai)"
+format: html
+editor: visual
+---
+There are many ways to solve problems about it and all of them are interesting when they occurs multiple integral.
+
+
+
+## 2 columns
+### surface 
+
+
+
+
+### volume
+
+
+
+### 3 columns
+### surface 
+
+### volume

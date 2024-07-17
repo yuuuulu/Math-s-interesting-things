@@ -1,0 +1,6 @@
+---
+title: "(sequence)sinx/x's 0-infinite's integral"
+format: html
+editor: visual
+---
+
