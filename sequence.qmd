@@ -3,4 +3,6 @@ title: "(sequence)sinx/x's 0-infinite's integral"
 format: html
 editor: visual
 ---
+# integral problems with solution of alternating integral test
+$$sinx/x$$
 
