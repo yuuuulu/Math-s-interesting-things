@@ -3,6 +3,47 @@ title: "(sequence)sinx/x's 0-infinite's integral"
 format: html
 editor: visual
 ---
+
+Dr.Fajin Wei teach me how to do it. He is very good at Calculus and Modeling. He is kind to help our students. Thanks to him very much!
+
 # integral problems with solution of alternating integral test
-$$sinx/x$$
+
+
+
+question: does $$\int_{0}^{\infty}sinx/x\,dx$$ converge?
+
+It is easy to think of these 2 famous but difficultly proved formula:
+$$\int_{-\infty}^{\infty}sinx/x\,dx=\pi
+$$
+$$\int_{-\infty}^{\infty}e^{-x^2}\,dx=\pi
+$$
+However, they are not useful, which is how charasmatic the math is! I love math!
+
+
+$$=\Sigma_{n=1}^{\infty}\int_{2(n-1)\pi}^{2n\pi}sinx/x\,dx
+$$
+Then we let $x-[2(n-1)\pi]=y$(dx=dy)
+
+so $$=\Sigma_{n=1}^{\infty}\int_{0}^{2\pi}siny/(y+[2(n-1)\pi])\,dy$$
+=$$=\Sigma_{n=1}^{\infty}\int_{0}^{\pi}siny/(y+[2(n-1)\pi])\,dy+\Sigma_{n=1}^{\infty}\int_{\pi}^{2\pi}siny/(y+[2(n-1)\pi])\,dy$$
+
+
+Then we let y-$\pi$=z(dy=dz)
+
+
+$$=\Sigma_{n=1}^{\infty}\int_{0}^{\pi}siny/(y+[2(n-1)\pi])\,dy+\Sigma_{n=1}^{\infty}\int_{0}^{\pi}-sinz/(z+[(2n-1)\pi])\,dz$$
+$$=\Sigma_{n=1}^{\infty}\int_{0}^{\pi}sinm/(m+[2(n-1)\pi])\,dm+\Sigma_{n=1}^{\infty}\int_{0}^{\pi}-sinm/(m+[(2n-1)\pi])\,dm$$
+
+
+so if $$a_n=\int_{0}^{\pi}sinm/(m+(n-1)\pi)$$
+$$\int_{0}^{\infty}sinx/x\,dx=a_1-a_2+a_3-a_4+...+a_n$$, which is an alternating series!
+
+Coincidently, it is decresing and $a_n<\int_{0}^{\pi}1/(n-1)\pi\,dm=1/(n-1)$, and $\lim_{{n \to \infty}} \left( \frac{1}{n-1}  \right) = 0$ so $\lim_{{n \to \infty}}a_n=0$
+So it converges(Alternating series test).
+
+
+
+
+
+
 
