@@ -1,0 +1,55 @@
+---
+title: "one application problem about directional derivative and gradient"
+---
+
+The temperature \( T \) in degrees Celsius at \((x, y, z)\) is given by
+
+$T = \frac{10}{{x^2 + y^2 + z^2}}$
+
+where distances are in meters. A bee is flying away from the hot spot at the origin on a spiral path so that its position vector at time \( t \) seconds is
+$\mathbf{r}(t) = t \cos(\pi t) \mathbf{i} + t \sin(\pi t) \mathbf{j} + t \mathbf{k}$
+
+Determine the rate of change of \( T \) in each case:
+
+1. With respect to distance traveled at time \( t=1 \).
+2. With respect to time at \( t = 1 \).
+
+(Think of two ways to do this.)
+
+
+$$
+\frac{dT}{dS} = \nabla f \cdot \mathbf{R}'(S)
+$$
+
+
+$$
+\frac{dT}{dS} = f_x \cdot x'(S) + f_y \cdot y'(S) + f_z \cdot z'(S)
+$$
+
+
+$$
+||\vec{r(t)}||=\int_{0}^{t} \sqrt{x'^2 + y'^2 + z'^2} \, dt = S(t)
+$$
+
+$$
+\mathbf{r}(t(S)) = \mathbf{R}(S)
+$$
+
+$$
+\vec{R(S)}' =\mathbf{r}(t(S)) \mathbf{t}(S)=\mathbf{r}(t(S))\frac{1}{\mathbf{S}(t)}(inverse function)
+=\frac{\mathbf{r}’(t)}{||\mathbf{r}’(t)||}
+$$
+
+
+$$
+\mathbf{R}'(S) = \frac{\mathbf{r}'(t(S)) \cdot t'(S)}{\sqrt{x'^2 + y'^2 + z'^2}}
+$$
+
+
+$$
+\mathbf{R}(t) = \mathbf{r}(t)
+$$
+
+
+
+
