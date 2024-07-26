@@ -42,8 +42,49 @@ Coincidently, it is decresing and $a_n<\int_{0}^{\pi}1/(n-1)\pi\,dm=1/(n-1)$, an
 So it converges(Alternating series test).
 
 
+# similar question 2
+Thanks for Dr.Chi-Kun Lin to teach me this kind of problems! 
+
+$$
+\int_0^\infty \frac{1}{1 + x^p \sin^2 x} \, dx
+$$
 
 
+
+
+
+
+
+
+a. 
+
+$$
+\sum_{n=0}^\infty \int_0^{\frac{\pi}{2}} \frac{1}{1 + \left( n + \frac{1}{2} \right)^2 p \sin^2 t} \, dt = \int_0^{\frac{\pi}{2}} \frac{1}{1 + \left( n + \frac{1}{2} \right)^2 p \sin^2 t} \, dt
+$$
+
+
+$$\Sigma\int_0^{\frac{\pi}{2}} \frac{1}{1 + \left( n\pi/2 + t \right)^ p \sin^2 t} \, dt + \int_0^{\frac{\pi}{2}} \frac{1}{1 + \left(( n + 1 \right)\pi/2-t)^ p sin^2t} \, dt$$
+
+for:
+
+$$
+x_n = \Sigma\int_0^{\frac{\pi}{2}} \frac{1}{1 + \left( n\pi/2 + t \right)^ p \sin^2 t} \, dt + \int_0^{\frac{\pi}{2}} \frac{1}{1 + \left(( n + 1 \right)\pi/2-t)^ p sin^2t} \, dt,
+$$
+
+there has
+
+$$2 \int_0^{\frac{\pi}{2}} \frac{1}{1 + \left( (n + 1) \frac{\pi}{2} \right)^ p t^2} \, dt \leq x_n \leq 2 \int_0^{\frac{\pi}{2}} \frac{1}{1 + \left( (n + 1) \frac{\pi}{2} \right) ^p \frac{4}{\pi^2} t^2} \, dt$$
+
+
+
+
+
+
+c. However, the integrals on both sides of the inequality can be calculated separately. For example:
+
+$$
+\int_0^1 \frac{1}{1 + \left( (n + 1) \frac{\pi}{2} \right)^ p t^2} \, dt = \frac{1}{\sqrt{((n + 1) \frac{\pi}{2} )^p}} \arctan \left( \sqrt{(n + 1) \frac{\pi}{2}}^{2p}\pi/2 \right) \geq \frac{1}{\sqrt{(n + 1) \frac{\pi}{2} }^{2p}  } \frac{\pi}{4}
+$$
 
 
 
