@@ -1,7 +1,7 @@
 ---
 title: "one application problem about directional derivative and gradient"
 ---
-
+Thanks to Boyun Pang to let me know this interesting question and thanks to Dr. Wang to teach me such clever method.
 The temperature \( T \) in degrees Celsius at \((x, y, z)\) is given by
 
 $T = \frac{10}{{x^2 + y^2 + z^2}}$
