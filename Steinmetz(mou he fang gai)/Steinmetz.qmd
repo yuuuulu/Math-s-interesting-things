@@ -44,10 +44,10 @@ z^2 + x^2 \leq 4
 \end{cases} \right\}
 $$
 
-From \( x^2 + y^2 \leq 4 \), \( x^2 + z^2 \leq 4 \)we derive:
-if $|x| \geq \sqrt{2}$
+From $$x^2+ y^2 \leq 4 , x^2 + z^2 \leq 4 $$ we derive:
+if
 $$
-|y| \leq \sqrt{2} \quad \text{then} \quad |z| \leq \sqrt{2}
+|x| \geq \sqrt{2},|y| \leq \sqrt{2} \quad \text{then} \quad |z| \leq \sqrt{2}
 $$
 (and < is the same shape)
 
@@ -58,9 +58,9 @@ $$
 $$
 
 And:
-if $|z| \geq \sqrt{2}$
+if
 $$
-|y| \leq \sqrt{2} \quad \text{then} \quad |x| \leq \sqrt{2}
+|z| \geq \sqrt{2},|y| \leq \sqrt{2} \quad \text{then} \quad |x| \leq \sqrt{2}
 $$
 Therefore:
 $$
@@ -70,7 +70,6 @@ $$
 Where:
 $$
 D_{\leq \sqrt{2}} = \left\{(x, y, z) \in D \mid |x|, |y|, |z| \leq \sqrt{2} \right\}
-
 $$
 $$
 \begin{aligned}
@@ -105,9 +104,6 @@ Thus, combining all components, we get:
 $$
 D = \left( D_{\leq \sqrt{2}} \cup \bar{D}_{|x| > \sqrt{2}} \cup \bar{D}_{|y| > \sqrt{2}} \cup \bar{D}_{|z| > \sqrt{2}} \right)
 $$
-
-
-
 
 #### method 2 
 
