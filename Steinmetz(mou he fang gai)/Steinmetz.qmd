@@ -13,6 +13,7 @@ There are many ways to solve problems, and all of them are interesting when mult
 ## 2 cylinders
 
 ### surface
+
 see the photo attached, which is the easiest way for computation.
 
 ### volume
@@ -41,9 +42,9 @@ From $$x^2+ y^2 \leq 4 , x^2 + z^2 \leq 4 $$ we derive: if $$
 |x| \geq \sqrt{2},|y| \leq \sqrt{2} \quad \text{then} \quad |z| \leq \sqrt{2}
 $$ (and \< is the same shape)
 
-Similarly: if $|y| \geq \sqrt{2}$ $$
-|x| \leq \sqrt{2} \quad \text{then} \quad |z| \leq \sqrt{2}
-$$
+Similarly:
+
+if $$|z| \geq \sqrt{2} ,|x| \leq \sqrt{2} \quad \text{then} \quad |y| \leq \sqrt{2} $$
 
 And: if $$
 |z| \geq \sqrt{2},|y| \leq \sqrt{2} \quad \text{then} \quad |x| \leq \sqrt{2}
@@ -78,26 +79,16 @@ $$
 
 Thus, combining all components, we get: $$
 D = \left( D_{\leq \sqrt{2}} \cup \bar{D}_{|x| > \sqrt{2}} \cup \bar{D}_{|y| > \sqrt{2}} \cup \bar{D}_{|z| > \sqrt{2}} \right)
-$$
-So we could decompose it into a cube in the center and 6 common volume.
-the 6 volume:
-6 $\int_{ \sqrt{2}}^{2}4(r^2-x^2) dx$
+$$ So we could decompose it into a cube in the center and 6 common volume. the 6 volume: 6 $\int_{ \sqrt{2}}^{2}4(4-x^2) dx$
 
-In summary, the whole volume is $(2 \sqrt 2)^3 +\int_{ \sqrt{2}}^{2}4(r^2-x^2) dx$
-
+In summary, the whole volume is $(2 \sqrt 2)^3 +6\int_{ \sqrt{2}}^{2}4(4-x^2) dx$
 
 #### method 2---cross-section method
+
 Thanks to Dr. Haoran Chen for teaching us such method.
 
-We suppose z>x, z>y, then we could continue decompose
-it into (1)z~($\sqrt 2$,2) and (2)z~($0,$\sqrt 2$$)(based on whether the square is out of the circle)
+We suppose z\>x, z\>y, then we could continue decompose it into (1)z\~($\sqrt 2$,2) and (2)z\~($0,$\sqrt 2\$\$)(based on whether the square is out of the circle)
 
+#### method 3
 
-#### method 3 
-see the photo attached 
-
-
-
-
-
-
+see the photo attached
