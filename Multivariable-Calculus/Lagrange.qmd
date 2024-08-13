@@ -1,7 +1,71 @@
 ---
 title: "Extreme Values of Function using not only Lagrange but the same philosophy"
 ---
+# introduction with the relationship between it and lasso
+The Lagrange multiplier method can transform constrained problems into unconstrained problems, which is a great wisdom. It can be used to solve lasso, and lasso is an interesting and wonderful method for dimensionality reduction in statistics, which makes me feel that the journey of learning multivariate calculus is a joy：
+## Lasso Regression
 
+Lasso regression (Least Absolute Shrinkage and Selection Operator) is a regularization technique for linear regression models that introduces an L1 norm penalty. The goal is to minimize the following objective function:
+
+\[
+\text{minimize} \quad \frac{1}{2} \| \mathbf{y} - \mathbf{X}\mathbf{\beta} \|_2^2 + \lambda \|\mathbf{\beta}\|_1
+\]
+
+where:
+- \(\mathbf{y}\) is the vector of target variables.
+- \(\mathbf{X}\) is the feature matrix.
+- \(\mathbf{\beta}\) is the vector of regression coefficients.
+- \(\lambda\) is the regularization parameter controlling the strength of regularization.
+- \(\|\mathbf{\beta}\|_1\) is the L1 norm of \(\mathbf{\beta}\), which is the sum of the absolute values of the coefficients.
+
+## Lagrange Multipliers
+
+The method of Lagrange multipliers is used to solve optimization problems with constraints. It involves introducing Lagrange multipliers to incorporate constraints into the objective function, converting constrained problems into unconstrained problems. Given an objective function \( f(\mathbf{x}) \) with constraints \( g_i(\mathbf{x}) = 0 \), the Lagrange function is:
+
+\[
+\mathcal{L}(\mathbf{x}, \lambda) = f(\mathbf{x}) + \sum_{i} \lambda_i g_i(\mathbf{x})
+\]
+
+where \(\lambda_i\) are the Lagrange multipliers. By setting the derivatives of \(\mathcal{L}\) to zero, we can find the optimal solution.
+
+## Relationship Between Lasso and Lagrange Multipliers
+
+In Lasso regression, the L1 norm regularization term \(\|\mathbf{\beta}\|_1\) can be viewed as a constraint. The Lasso problem can be reformulated as a constrained optimization problem:
+
+\[
+\text{minimize} \quad \frac{1}{2} \| \mathbf{y} - \mathbf{X}\mathbf{\beta} \|_2^2 \quad \text{subject to} \quad \|\mathbf{\beta}\|_1 \leq t
+\]
+
+where \(t\) is a non-negative constant representing the limit on the regularization strength.
+
+### Using Lagrange Multipliers for Lasso
+
+We can use Lagrange multipliers to solve this constrained problem. The Lagrange function is defined as:
+
+\[
+\mathcal{L}(\mathbf{\beta}, \lambda) = \frac{1}{2} \| \mathbf{y} - \mathbf{X}\mathbf{\beta} \|_2^2 + \lambda (\|\mathbf{\beta}\|_1 - t)
+\]
+
+where \(\lambda\) is the Lagrange multiplier. The optimal solution \(\mathbf{\beta}^*\) satisfies:
+
+\[
+\frac{\partial \mathcal{L}}{\partial \mathbf{\beta}} = -\mathbf{X}^\top (\mathbf{y} - \mathbf{X}\mathbf{\beta}) + \lambda \text{sign}(\mathbf{\beta}) = 0
+\]
+
+\[
+\|\mathbf{\beta}\|_1 \leq t
+\]
+
+\[
+\lambda (\|\mathbf{\beta}\|_1 - t) = 0
+\]
+
+## Summary
+
+- **Lasso Regression** uses L1 regularization to achieve feature selection, and its optimization problem can be transformed into a constrained optimization problem.
+- **Lagrange Multipliers** provide a method to handle constraints in optimization problems by converting them into unconstrained problems and introducing multipliers to adjust the regularization strength.
+
+In Lasso regression, the L1 regularization constraint can be handled using Lagrange multipliers, converting the problem into one with multipliers that adjust the strength of regularization.
 ### Problem
 
 Find extreme values of 
