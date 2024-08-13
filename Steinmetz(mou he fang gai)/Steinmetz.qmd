@@ -1,8 +1,6 @@
 ---
-title: "Steinmetz(mou he fang gai)"
-format: 
-  html:
-    self-contained: true
+title: "surface and volume of Steinmetz solid"
+format: html
 editor: visual
 ---
 
@@ -26,7 +24,7 @@ use method of sections directly
 
 ### surface
 
-![](surface-3 cylinder.jpg){width="341"}
+![](surface-3%20cylinder.jpg){width="341"}
 
 see the photo attached, which is the easiest way for computation:
 
@@ -93,7 +91,7 @@ $$ So we could decompose it into a cube in the center and 6 common volume. the 6
 
 In summary, the whole volume is $(2 \sqrt 2)^3 +6\int_{ \sqrt{2}}^{2}4(4-x^2) dx$
 
-![](method1's photo behind.png)
+![](method1's%20photo%20behind.png)
 
 #### method 2---cross-section method
 
@@ -107,4 +105,4 @@ We suppose z\>x, z\>y,（then \*3） then we could continue decompose it into (1
 
 see the photo attached
 
-![](3 cylinders method 2.jpg)
+![](3%20cylinders%20method%202.jpg)

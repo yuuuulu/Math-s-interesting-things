@@ -1,0 +1,23 @@
+project:
+  type: website
+  output-dir: docs
+  
+website: 
+  title: "Steinmetz(mou he fang gai)"
+  navbar:
+    left:
+      - href: index.qmd
+        text: Homepage
+      - href: Steinmetz.qmd
+        text: surface and volume of Steinmetz solid
+      - href: sequence.qmd
+        text: sequence
+      - href: Lagrange.qmd
+        text: lasso and Lagrange method
+      - href: understand directional derivative deeply.qmd
+        text: Directional Derivative
+      
+format: 
+  html: 
+    theme: cosmo
+    toc: true

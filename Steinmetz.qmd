@@ -1,0 +1,108 @@
+---
+title: "surface and volume of Steinmetz solid"
+format: html
+editor: visual
+---
+
+Professor. Wang Duo, a very charismatic and responsible Calculus teacher who has worked for our country in the area of math for at least 50 years (which was his target before and he has realized his dream!), always says "You should try to solve one problem many times with new methods to handle and understand knowledge better"
+
+For math learning, focusing too much on exams is not so meaningful. We should experience its beauty from the bottom of our hearts. I did not reach my target in the Multivariable Calculus and the Linear Algebra models, but Dr. Bohuan Lin said:"Exams (especially written exams) require one to figure out solutions within a very short time period, and moreover, under an intense atmosphere. From my point of view, it is really not a problem if one fails to solve those difficult and nonstandard problems under such a condition. Of course, for math study (so as for the study of other things), we should not be satisfied with merely being able to solve "standard problems", but just try to challenge and improve yourself with deep/difficult questions under a daily condition with a natural mood, since this is the common situation in which you will be working on various tasks in your future career. "
+
+There are many ways to solve problems, and all of them are interesting when multiple integrals occur.
+
+## 2 cylinders
+
+It is easy
+
+### surface
+
+### volume
+
+use method of sections directly
+
+### 3 cylinders
+
+### surface
+
+![](surface-3%20cylinder.jpg){width="341"}
+
+see the photo attached, which is the easiest way for computation:
+
+![](s3.jpg)
+
+### volume
+
+#### method 1---do not draw it(using conditional inferences)
+
+Thanks to Dr.Bohuan Lin to teach me such a clever way which we do not need to draw the picture(only use conditional equations to solve it is interesting and a little difficult to handle it correctly).
+
+The picture behind the method is attached to "Steinmetz(mou he fang gai)\method1's photo behind.png"
+
+We have the set ( D ) defined as: $$
+D \triangleq \left\{(x, y, z) \mid \begin{cases} 
+x^2 + y^2 \leq 4 \\
+y^2 + z^2 \leq 4 \\
+z^2 + x^2 \leq 4 
+\end{cases} \right\}
+$$
+
+From $$x^2+ y^2 \leq 4 , x^2 + z^2 \leq 4 $$ we derive: if $$
+|x| \geq \sqrt{2},|y| \leq \sqrt{2} \quad \text{then} \quad |z| \leq \sqrt{2}
+$$ (and \< is the same shape)
+
+Similarly:
+
+if $$|z| \geq \sqrt{2} ,|x| \leq \sqrt{2} \quad \text{then} \quad |y| \leq \sqrt{2} $$
+
+And: if $$
+|z| \geq \sqrt{2},|y| \leq \sqrt{2} \quad \text{then} \quad |x| \leq \sqrt{2}
+$$ Therefore: $$
+D = D_{\leq \sqrt{2}} \cup \bar{D}
+$$
+
+Where: $$
+D_{\leq \sqrt{2}} = \left\{(x, y, z) \in D \mid |x|, |y|, |z| \leq \sqrt{2} \right\}
+$$ $$
+\begin{aligned}
+&= \left\{ (x, y, z) \in \mathbb{R}^3 \mid |x|, |y|, |z| \leq \sqrt{2} \right\} \\
+&= [-\sqrt{2}, \sqrt{2}] \times [-\sqrt{2}, \sqrt{2}] \times [-\sqrt{2}, \sqrt{2}]
+\end{aligned}
+$$
+
+And: $$
+\bar{D} = \left\{(x, y, z) \in D \mid |x|, |y|, |z| > \sqrt{2} \right\}
+$$
+
+Thus: $$
+\bar{D} = \bar{D}_{|x| > \sqrt{2}} \cup \bar{D}_{|y| > \sqrt{2}} \cup \bar{D}_{|z| > \sqrt{2}}
+$$
+
+(This also implies: $$
+D_{\leq \sqrt{2}} = \left\{(x, y, z) \in D \mid |x|, |y|, |z| \leq \sqrt{2} \right\}
+$$)
+
+We derive: $$
+\bar{D} = \left\{ (x, y, z) \mid |x| > \sqrt{2} \right\} \cup \left\{ (x, y, z) \mid |y| > \sqrt{2} \right\} \cup \left\{ (x, y, z) \mid |z| > \sqrt{2} \right\}
+$$
+
+Thus, combining all components, we get: $$
+D = \left( D_{\leq \sqrt{2}} \cup \bar{D}_{|x| > \sqrt{2}} \cup \bar{D}_{|y| > \sqrt{2}} \cup \bar{D}_{|z| > \sqrt{2}} \right)
+$$ So we could decompose it into a cube in the center and 6 common volume. the 6 volume: 6 $\int_{ \sqrt{2}}^{2}4(4-x^2) dx$
+
+In summary, the whole volume is $(2 \sqrt 2)^3 +6\int_{ \sqrt{2}}^{2}4(4-x^2) dx$
+
+![](method1's%20photo%20behind.png)
+
+#### method 2---cross-section method
+
+Thanks to Dr. Haoran Chen for teaching us such method.
+
+We suppose z\>x, z\>y,（then \*3） then we could continue decompose it into (1)z\~($\sqrt 2$,2) and (2)z\~($0,$\sqrt 2\$\$)(based on whether the square is out of the circle)
+
+![](m3.jpg)
+
+#### method 3
+
+see the photo attached
+
+![](3%20cylinders%20method%202.jpg)
