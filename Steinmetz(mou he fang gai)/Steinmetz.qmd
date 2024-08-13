@@ -1,6 +1,8 @@
 ---
 title: "Steinmetz(mou he fang gai)"
-format: html
+format: 
+  html:
+    self-contained: true
 editor: visual
 ---
 
@@ -12,15 +14,23 @@ There are many ways to solve problems, and all of them are interesting when mult
 
 ## 2 cylinders
 
+It is easy
+
 ### surface
 
-see the photo attached, which is the easiest way for computation.
-
 ### volume
+
+use method of sections directly
 
 ### 3 cylinders
 
 ### surface
+
+![](surface-3 cylinder.jpg){width="341"}
+
+see the photo attached, which is the easiest way for computation:
+
+![](s3.jpg)
 
 ### volume
 
@@ -83,12 +93,18 @@ $$ So we could decompose it into a cube in the center and 6 common volume. the 6
 
 In summary, the whole volume is $(2 \sqrt 2)^3 +6\int_{ \sqrt{2}}^{2}4(4-x^2) dx$
 
+![](method1's photo behind.png)
+
 #### method 2---cross-section method
 
 Thanks to Dr. Haoran Chen for teaching us such method.
 
-We suppose z\>x, z\>y, then we could continue decompose it into (1)z\~($\sqrt 2$,2) and (2)z\~($0,$\sqrt 2\$\$)(based on whether the square is out of the circle)
+We suppose z\>x, z\>y,（then \*3） then we could continue decompose it into (1)z\~($\sqrt 2$,2) and (2)z\~($0,$\sqrt 2\$\$)(based on whether the square is out of the circle)
+
+![](m3.jpg)
 
 #### method 3
 
 see the photo attached
+
+![](3 cylinders method 2.jpg)
