@@ -1,6 +1,141 @@
 ---
 title: "Analysis1"
 ---
+# 1
+
+
+limit 
+
+
+real number
+
+
+# history
+
+Ancient Greece philosophy
+
+Pythagoras, Archimede, Euclide,etc.
+
+
+maths behave a discpline
+
+study maths for its own sake!
+- number theory
+Q: rational number: a/b, a,b $\in$ Z, b no 0
+
+Greek believes: "Atoms"--Q are all numbers
+
+- geometry
+(length of sig $\in Q$)
+
+discovery: $\sqrt 2$ in a square or ... is not rational---kill
+
+
+
+--- no understanding of real number, irrational infinity...
+    no corresponding of number and geometry
+    
+    
+parallel---square using move
+
+but it is not a possible thing to turn a circle into a square---$\pi$ is not a rational number
+                      -----paradox: zhinuo and wugui----convergence of a sum
+                      (they do not understand infinity and real number)
+                      
+                      
+                      
+# calculus
+Newton Leibniz makes phy a idependent discipline
+
+Newton's Law--Kepler Law
+solve ODE:$GMm/r^2=F=ma=mr^{..}$
+
+
+Philosophiae Naturalis Principil Mathematica. every theorem and lemma are detailed proved
+
+
+   --no understanding of real number but a little understanding of limit and infinity
+   
+# analysis 19 century 
+
+
+   Cauchy cantor weierstrass hilbert
+   
+   
+   understand real number infinity limit
+   
+   
+   the foundation of maths
+   
+
+
+# Chaper 1: Logic(grammar) v.s. Maths(literature)
+
+we should solve out logic first to 
+logic important in--programming(some derivations of maths)
+
+## statement
+p
+### ---An assertion that is either true of false but not both
+
+e.g. 
+
+#### Negation of a statement p is a statement which means the opposite of P
+
+~p----read "not p"
+
+
+#### Quantifiers 
+all, every, each,no(none)---universal quantifiers
+
+
+some,there exists, there is at least on, etc.---existential quantifiers
+
+
+
+
+P: *some* a's are b's
+
+
+~P: *all* a's are not b's/ no a's are b's 
+
+
+P: *some* a are not b
+
+
+~p: *all* a are b
+
+
+#### Truth table: give the truth values of related statements in all possible cases
+(relevant to boolean in computer science
+
+```python
+# Example of boolean logic in a program
+is_raining = True
+has_umbrella = False
+
+if is_raining and not has_umbrella:
+    print("You need an umbrella!")
+else:
+    print("You're good to go!")
+
+```
+)
+compound statement: combining several statements via logical operations
+
+Conjunction: p^q. p and q
+
+Disjunction:
+p v q--p or q 
+
+
+one of them is true, p v q is true, so we only need to decide if oe of them is true, if it is, the p v q is true
+
+
+p V (~p) is always true
+
+
+a statement that is always true is called a tautology
 
 # a problem about divisible using greatest common factor to solve(even Bezou's theorem)
 

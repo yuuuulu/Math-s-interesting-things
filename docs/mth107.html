@@ -1,0 +1,998 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.4.555">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Foundation Math Learning - MTH107—NOTEs</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+</head>
+
+<body class="nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="./index.html">
+    <span class="navbar-title">Foundation Math Learning</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="./index.html"> 
+<span class="menu-text">Homepage</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link active" href="./mth107.html" aria-current="page"> 
+<span class="menu-text">Advanced Linear Algebra</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./Mathematical Analysis 1.html"> 
+<span class="menu-text">Analysis 1</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./Steinmetz.html"> 
+<span class="menu-text">surface and volume of Steinmetz solid</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./sequence.html"> 
+<span class="menu-text">sequence</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./Lagrange.html"> 
+<span class="menu-text">lasso and Lagrange method</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./understand directional derivative deeply.html"> 
+<span class="menu-text">Directional Derivative</span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+          <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#chapter-0-motivationreviews" id="toc-chapter-0-motivationreviews" class="nav-link active" data-scroll-target="#chapter-0-motivationreviews">Chapter 0: motivation/reviews</a>
+  <ul class="collapse">
+  <li><a href="#linearty-is-everywherelinearty-is-the-easiest-one" id="toc-linearty-is-everywherelinearty-is-the-easiest-one" class="nav-link" data-scroll-target="#linearty-is-everywherelinearty-is-the-easiest-one">Linearty is everywhere–Linearty is the easiest one</a></li>
+  <li><a href="#comparison" id="toc-comparison" class="nav-link" data-scroll-target="#comparison">comparison</a>
+  <ul class="collapse">
+  <li><a href="#real-r-space" id="toc-real-r-space" class="nav-link" data-scroll-target="#real-r-space">Real R space</a></li>
+  <li><a href="#abstract-vector-space-over-r-or-c" id="toc-abstract-vector-space-over-r-or-c" class="nav-link" data-scroll-target="#abstract-vector-space-over-r-or-c">Abstract vector space over R or C</a></li>
+  </ul></li>
+  <li><a href="#notations" id="toc-notations" class="nav-link" data-scroll-target="#notations">Notations</a></li>
+  <li><a href="#maps" id="toc-maps" class="nav-link" data-scroll-target="#maps">Maps</a>
+  <ul class="collapse">
+  <li><a href="#injectiveone-to-one" id="toc-injectiveone-to-one" class="nav-link" data-scroll-target="#injectiveone-to-one">injective–one to one</a></li>
+  <li><a href="#surjectiveonto" id="toc-surjectiveonto" class="nav-link" data-scroll-target="#surjectiveonto">surjective–onto</a></li>
+  <li><a href="#bijetiveboth-inj-and-suj" id="toc-bijetiveboth-inj-and-suj" class="nav-link" data-scroll-target="#bijetiveboth-inj-and-suj">bijetive–both inj and suj</a></li>
+  </ul></li>
+  <li><a href="#subsetsinclusions-restrictions" id="toc-subsetsinclusions-restrictions" class="nav-link" data-scroll-target="#subsetsinclusions-restrictions">subsets,inclusions, restrictions</a>
+  <ul class="collapse">
+  <li><a href="#subsets" id="toc-subsets" class="nav-link" data-scroll-target="#subsets">subsets</a></li>
+  <li><a href="#empty-set-is-a-subset-of-every-set-b." id="toc-empty-set-is-a-subset-of-every-set-b." class="nav-link" data-scroll-target="#empty-set-is-a-subset-of-every-set-b.">empty set is a subset of every set B.</a></li>
+  <li><a href="#inclusion" id="toc-inclusion" class="nav-link" data-scroll-target="#inclusion">inclusion</a></li>
+  <li><a href="#restriction" id="toc-restriction" class="nav-link" data-scroll-target="#restriction">restriction</a></li>
+  <li><a href="#set-of-all-maps-from-a-to-b" id="toc-set-of-all-maps-from-a-to-b" class="nav-link" data-scroll-target="#set-of-all-maps-from-a-to-b">set of all maps from A to B</a></li>
+  <li><a href="#section" id="toc-section" class="nav-link" data-scroll-target="#section">?</a></li>
+  </ul></li>
+  </ul></li>
+  <li><a href="#chapter-1-vector-spaces" id="toc-chapter-1-vector-spaces" class="nav-link" data-scroll-target="#chapter-1-vector-spaces">Chapter 1: vector spaces</a>
+  <ul class="collapse">
+  <li><a href="#finite-space" id="toc-finite-space" class="nav-link" data-scroll-target="#finite-space">finite space</a></li>
+  <li><a href="#rn-notification" id="toc-rn-notification" class="nav-link" data-scroll-target="#rn-notification">R^n notification</a>
+  <ul class="collapse">
+  <li><a href="#define-2-oprations-on-the-set-rn" id="toc-define-2-oprations-on-the-set-rn" class="nav-link" data-scroll-target="#define-2-oprations-on-the-set-rn">define 2 oprations on the set R^n</a></li>
+  <li><a href="#to-simplify-notations-we-sometimes-use-a-single-letter-for-vectors" id="toc-to-simplify-notations-we-sometimes-use-a-single-letter-for-vectors" class="nav-link" data-scroll-target="#to-simplify-notations-we-sometimes-use-a-single-letter-for-vectors">to simplify notations we sometimes use a single letter for vectors:</a></li>
+  </ul></li>
+  <li><a href="#relation-between-it-and-cdot" id="toc-relation-between-it-and-cdot" class="nav-link" data-scroll-target="#relation-between-it-and-cdot">relation between it and + <span class="math inline">\(\cdot\)</span></a>
+  <ul class="collapse">
+  <li><a href="#section-1" id="toc-section-1" class="nav-link" data-scroll-target="#section-1">?</a></li>
+  </ul></li>
+  <li><a href="#complex-vector-space" id="toc-complex-vector-space" class="nav-link" data-scroll-target="#complex-vector-space">complex Vector Space</a>
+  <ul class="collapse">
+  <li><a href="#operations-on-cn" id="toc-operations-on-cn" class="nav-link" data-scroll-target="#operations-on-cn">Operations on C^n</a></li>
+  <li><a href="#complex-vector-space-1" id="toc-complex-vector-space-1" class="nav-link" data-scroll-target="#complex-vector-space-1">Complex Vector Space</a></li>
+  <li><a href="#generalization-not-on-the-exam" id="toc-generalization-not-on-the-exam" class="nav-link" data-scroll-target="#generalization-not-on-the-exam">Generalization (Not on the Exam):</a></li>
+  <li><a href="#abstract-vector-space" id="toc-abstract-vector-space" class="nav-link" data-scroll-target="#abstract-vector-space">Abstract Vector Space:</a></li>
+  <li><a href="#definitions" id="toc-definitions" class="nav-link" data-scroll-target="#definitions">Definitions:</a></li>
+  <li><a href="#remarks-and-examples" id="toc-remarks-and-examples" class="nav-link" data-scroll-target="#remarks-and-examples">Remarks and Examples:</a></li>
+  </ul></li>
+  <li><a href="#prove" id="toc-prove" class="nav-link" data-scroll-target="#prove">？prove？</a></li>
+  </ul></li>
+  <li><a href="#section-2" id="toc-section-2" class="nav-link" data-scroll-target="#section-2">？</a>
+  <ul class="collapse">
+  <li><a href="#examples" id="toc-examples" class="nav-link" data-scroll-target="#examples">Examples:</a></li>
+  <li><a href="#special-cases" id="toc-special-cases" class="nav-link" data-scroll-target="#special-cases">Special Cases:</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">MTH107—NOTEs</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="chapter-0-motivationreviews" class="level1">
+<h1>Chapter 0: motivation/reviews</h1>
+<section id="linearty-is-everywherelinearty-is-the-easiest-one" class="level2">
+<h2 class="anchored" data-anchor-id="linearty-is-everywherelinearty-is-the-easiest-one">Linearty is everywhere–Linearty is the easiest one</h2>
+<p>matrix-vector multiplication</p>
+<p>differentiation/integration</p>
+<p>ODE(mth106)</p>
+<p>Recurrence Relations and Statistical Models</p>
+</section>
+<section id="comparison" class="level2">
+<h2 class="anchored" data-anchor-id="comparison">comparison</h2>
+<section id="real-r-space" class="level3">
+<h3 class="anchored" data-anchor-id="real-r-space">Real R space</h3>
+<p>A matrix A in this space is a real matrix, which maps vectors in <span class="math inline">\(\mathbb{R^n}\)</span> to another vector in <span class="math inline">\(\mathbb{R^n}\)</span> through multiplication: <span class="math display">\[
+A: \mathbb{R^n} \to \mathbb{R^n}
+\]</span> <span class="math display">\[
+A \cdot v = w \in \mathbb{R^n}
+\]</span></p>
+<p><strong>real matrix</strong></p>
+<p><strong>concrete</strong></p>
+</section>
+<section id="abstract-vector-space-over-r-or-c" class="level3">
+<h3 class="anchored" data-anchor-id="abstract-vector-space-over-r-or-c">Abstract vector space over R or C</h3>
+<p>linear transformation: <span class="math display">\[
+T: V \to W
+\]</span> <strong>abstract and more general vector space over</strong> <span class="math inline">\(\mathbb{R^n}\)</span> or <span class="math inline">\(\mathbb{C^n}\)</span></p>
+</section>
+</section>
+<section id="notations" class="level2">
+<h2 class="anchored" data-anchor-id="notations">Notations</h2>
+<p><span class="math display">\[
+a \in A
+\]</span> eg. <span class="math display">\[
+3 \in \mathbb{Z}
+\]</span></p>
+<p><span class="math inline">\(\emptyset\)</span></p>
+<p>Two sets A and B are equal if and only if they contain the same elements: <span class="math display">\[
+A = B
+\]</span> if and only if <span class="math display">\[
+\forall x \, (x \in A \iff x \in B)
+\]</span> <span class="math display">\[
+A \subseteq B
+\]</span> intersection: <span class="math display">\[
+A \cap B
+\]</span> union: <span class="math display">\[
+A \cup B
+\]</span></p>
+</section>
+<section id="maps" class="level2">
+<h2 class="anchored" data-anchor-id="maps">Maps</h2>
+<p><strong>maps(functions)</strong></p>
+<p><span class="math display">\[
+f: A \to B, \quad a \mapsto f(a)
+\]</span> composition: Given two functions <span class="math inline">\(f: B \to C\)</span> and <span class="math inline">\(g: A \to B\)</span>, the composition of f and g is denoted as: <span class="math display">\[
+(f \circ g)(x) = f(g(x)), \quad \text{for all} \, x \in A
+\]</span></p>
+<p><span class="math display">\[
+a \mapsto c(a \mapsto b \mapsto c)
+\]</span></p>
+<section id="injectiveone-to-one" class="level3">
+<h3 class="anchored" data-anchor-id="injectiveone-to-one">injective–one to one</h3>
+<p>if <span class="math inline">\(a_1 \neq a_2\)</span> then <span class="math inline">\(f(a_1) \neq f(a_2)\)</span></p>
+<p>if <span class="math inline">\(f(a_1) = f(a_2)\)</span>, then <span class="math inline">\(a_1=a_2\)</span></p>
+</section>
+<section id="surjectiveonto" class="level3">
+<h3 class="anchored" data-anchor-id="surjectiveonto">surjective–onto</h3>
+<p>for <span class="math inline">\(f: A \to B\)</span></p>
+<p><span class="math display">\[
+\forall b \in B, \, \exists a \in A \, \text{such that} \, f(a) = b
+\]</span></p>
+</section>
+<section id="bijetiveboth-inj-and-suj" class="level3">
+<h3 class="anchored" data-anchor-id="bijetiveboth-inj-and-suj">bijetive–both inj and suj</h3>
+<p>for <span class="math inline">\(f: A \to B\)</span> <span class="math display">\[
+\forall b \in B, \, \exists! a \in A \, \text{such that} \, f(a) = b
+\]</span> （use <span class="math inline">\(\exists!\)</span>expresses only exist one）</p>
+</section>
+</section>
+<section id="subsetsinclusions-restrictions" class="level2">
+<h2 class="anchored" data-anchor-id="subsetsinclusions-restrictions">subsets,inclusions, restrictions</h2>
+<section id="subsets" class="level3">
+<h3 class="anchored" data-anchor-id="subsets">subsets</h3>
+<p><span class="math inline">\(A \subseteq B\)</span></p>
+</section>
+<section id="empty-set-is-a-subset-of-every-set-b." class="level3">
+<h3 class="anchored" data-anchor-id="empty-set-is-a-subset-of-every-set-b.">empty set is a subset of every set B.</h3>
+<p><span class="math display">\[
+\emptyset \to B
+\]</span></p>
+</section>
+<section id="inclusion" class="level3">
+<h3 class="anchored" data-anchor-id="inclusion">inclusion</h3>
+<p>if A <span class="math inline">\(\subseteq\)</span> B, we have a map: <span class="math display">\[
+\iota: A \to B
+\]</span></p>
+<p><span class="math display">\[
+\iota(a) = a
+\]</span>, called the inclusion of A (into B)</p>
+</section>
+<section id="restriction" class="level3">
+<h3 class="anchored" data-anchor-id="restriction">restriction</h3>
+<p>the reason to define it:</p>
+<p>For example, consider a map <span class="math inline">\(g: B \to C\)</span>, where the function takes each element <span class="math inline">\(x\)</span> and maps it to <span class="math inline">\(x + 2\)</span>. Let the sets be as follows:</p>
+<ul>
+<li><p><span class="math inline">\(A = \mathbb{N} \subseteq B = \mathbb{R}\)</span></p></li>
+<li><p><span class="math inline">\(C = \mathbb{R}\)</span> is the codomain of the function.</p></li>
+</ul>
+<p>The map <span class="math inline">\(g\)</span> is defined as: <span class="math display">\[ g: B \to C, \quad g(x) = x + 2 \quad \text{for all } x \in B \]</span></p>
+<p>Now, consider the restriction of <span class="math inline">\(g\)</span> to <span class="math inline">\(A\)</span>, denoted <span class="math inline">\(g|_A: A \to C\)</span>, where: <span class="math display">\[ g|_A: A \to C, \quad g|_A(x) = x + 2 \quad \text{for all } x \in A \]</span></p>
+<p>Although both <span class="math inline">\(g: \mathbb{R} \to \mathbb{R}\)</span> and <span class="math inline">\(g|_A: \mathbb{N} \to \mathbb{R}\)</span> follow the same rule <span class="math inline">\(x \mapsto x + 2\)</span>, they cannot be considered the same map because their domains differ.</p>
+<p>(here, A <span class="math inline">\(\subseteq\)</span> B)</p>
+<p>That is:</p>
+<p>if A <span class="math inline">\(\subseteq\)</span> B and <span class="math inline">\(f:B \to C\)</span>, we have a map for all a <span class="math inline">\(\in\)</span> A: <span class="math display">\[
+f|_A: A \to C
+\]</span>:</p>
+<p><span class="math display">\[
+f|_A(a) = f(a)
+\]</span> called the restriction of f to A</p>
+<p><span class="math display">\[
+f|_A = f \circ \iota_A
+\]</span> because <span class="math display">\[
+f \circ \iota_A(a)=f(\iota_A(a))=f(a)=f|_A(a)
+\]</span></p>
+</section>
+<section id="set-of-all-maps-from-a-to-b" class="level3">
+<h3 class="anchored" data-anchor-id="set-of-all-maps-from-a-to-b">set of all maps from A to B</h3>
+<p>if a and b are sets we define B^A={f:A—B map} the set of all maps from A to B</p>
+<p><span class="math display">\[
+B^A = \{ f: A \to B \}
+\]</span> <span class="math inline">\(B^\emptyset = \{ \emptyset \to B \}\)</span> has only 1 element even if B=<span class="math inline">\(\emptyset\)</span></p>
+</section>
+<section id="section" class="level3">
+<h3 class="anchored" data-anchor-id="section">?</h3>
+<p>so the last one F could be random / each , not limit to F right? if it is not F, the element is not definaty 0?</p>
+<p>proof: suppose f,g <span class="math inline">\(\in\)</span> <span class="math inline">\(B^\emptyset = \{f: \emptyset \to B \}\)</span>, imagine f != g, we can derive <span class="math inline">\(\exists x \in \emptyset\)</span> s.t. f(x) != g(x), which is absurd, so f=g</p>
+<p>if B is F, suppose the only one element is sth.:</p>
+<p>sth. should follow the quality of the set, which is:</p>
+<p>sth. + sth. = sth.</p>
+<p><span class="math inline">\(\lambda\)</span>sth. =sth.</p>
+<p>so sth. = 0</p>
+<section id="cardinality" class="level4">
+<h4 class="anchored" data-anchor-id="cardinality">cardinality</h4>
+<p>|A|: number of elements in A(set)</p>
+<p>if A and B are finite sets #A=n #B=m, then <span class="math inline">\(|B^A| = m^n\)</span></p>
+</section>
+</section>
+</section>
+</section>
+<section id="chapter-1-vector-spaces" class="level1">
+<h1>Chapter 1: vector spaces</h1>
+<section id="finite-space" class="level2">
+<h2 class="anchored" data-anchor-id="finite-space">finite space</h2>
+<p>For finite spaces ,only R^n and C^n.</p>
+<p><strong>(For infinite spaces, there are many, e.g.&nbsp;a continuous set: [0,1] to …)</strong></p>
+</section>
+<section id="rn-notification" class="level2">
+<h2 class="anchored" data-anchor-id="rn-notification">R^n notification</h2>
+<p><span class="math display">\[
+\mathbb{R}^n = \{ (x_1, x_2, \dots, x_n) \mid x_i \in \mathbb{R} \text{ for } i = 1, 2, \dots, n \}
+\]</span> real numbers</p>
+<section id="define-2-oprations-on-the-set-rn" class="level3">
+<h3 class="anchored" data-anchor-id="define-2-oprations-on-the-set-rn">define 2 oprations on the set R^n</h3>
+<p>addition: <span class="math display">\[
+(x_1, x_2, \dots, x_n) + (y_1, y_2, \dots, y_n) = (x_1 + y_1, x_2 + y_2, \dots, x_n + y_n)
+\]</span></p>
+<ul>
+<li><p><strong>Left-hand side</strong>: <span class="math inline">\((x_1, x_2, \dots, x_n), (y_1, y_2, \dots, y_n) \in \mathbb{R}^n\)</span></p></li>
+<li><p><strong>Right-hand side</strong>: The result of <span class="math inline">\(x_i + y_i\)</span> is in <span class="math inline">\(\mathbb{R}\)</span>.</p></li>
+</ul>
+<p>scalar multiplication: for lambda <span class="math inline">\(\in\)</span> R,</p>
+<p><span class="math display">\[
+\lambda \cdot (x_1, x_2, \dots, x_n) = (\lambda x_1, \lambda x_2, \dots, \lambda x_n)
+\]</span></p>
+<ul>
+<li><p><strong>Left-hand side</strong>: <span class="math inline">\(\lambda \in \mathbb{R}, (x_1, x_2, \dots, x_n) \in \mathbb{R}^n\)</span>.</p></li>
+<li><p><strong>Right-hand side</strong>: The result <span class="math inline">\(\lambda x_i \in \mathbb{R}\)</span>, for each i.</p></li>
+</ul>
+<p>these 2 oprations generalize the standard operations on R2 and R3</p>
+<section id="geometric-realization" class="level4">
+<h4 class="anchored" data-anchor-id="geometric-realization">geometric realization</h4>
+<p>矢量三角形–addition</p>
+<p>直线上–scalar multiplication</p>
+<p>mention: for n greater than or equal to 4 we cannot visualize vectors in the real world but e can still use them to solove real world problems</p>
+<p>if a and b are finite sets</p>
+</section>
+</section>
+<section id="to-simplify-notations-we-sometimes-use-a-single-letter-for-vectors" class="level3">
+<h3 class="anchored" data-anchor-id="to-simplify-notations-we-sometimes-use-a-single-letter-for-vectors">to simplify notations we sometimes use a single letter for vectors:</h3>
+<p>x= <span class="math inline">\(\vec x\)</span> =(x_1,x_2,….)</p>
+<p>R^n as a vector space</p>
+<p>so we have(rn,+, mutiplication notation). the operations satisfies some useful properties that turn rn into a real vector space</p>
+</section>
+</section>
+<section id="relation-between-it-and-cdot" class="level2">
+<h2 class="anchored" data-anchor-id="relation-between-it-and-cdot">relation between it and + <span class="math inline">\(\cdot\)</span></h2>
+<p>it means that + and <span class="math inline">\(\cdot\)</span> satisfy the following axioms:</p>
+<ol type="1">
+<li><p><span class="math inline">\(\forall x,y \in rn\)</span>: x+y=y+x. commutativity</p></li>
+<li><p><span class="math inline">\(\forall x,y,z \in rn\)</span>: (x+y)+z=x+(y+z). associativity</p></li>
+<li><p>x + 0 = 0 + x neutral element for addition</p></li>
+<li><p><span class="math inline">\(x + (-x) = (-x) + x = 0\)</span> inverse for addition -x=y</p></li>
+<li><p><span class="math inline">\(1 \cdot x = x\)</span> Identity Element for Scalar Multiplication</p></li>
+<li><p><span class="math inline">\((\lambda \mu) \cdot x = \lambda \cdot (\mu \cdot x)\)</span> compatibilily of multiplication</p></li>
+<li><p><span class="math inline">\(\lambda \cdot (x + y) = \lambda \cdot x + \lambda \cdot y\)</span> Distributivity of Scalar Multiplication Over Vector Addition</p></li>
+<li><p><span class="math inline">\((\lambda + \mu) \cdot x = \lambda \cdot x + \mu \cdot x\)</span> Distributivity of Scalar Addition</p></li>
+</ol>
+<section id="section-1" class="level3">
+<h3 class="anchored" data-anchor-id="section-1">?</h3>
+<p>want to ensure <strong>if a set satisfies the 2 operations it is not satisfy all 1-8 axioms instead of F^n</strong></p>
+</section>
+</section>
+<section id="complex-vector-space" class="level2">
+<h2 class="anchored" data-anchor-id="complex-vector-space">complex Vector Space</h2>
+<p><span class="math inline">\(i^2 = -1\)</span></p>
+<p>Define <span class="math inline">\(\mathbb {C}^n\)</span> as the set of all ordered n-tuples of complex numbers: <span class="math display">\[
+\mathbb{C}^n = \{ (z_1, z_2, \dots, z_n) \mid z_i \in \mathbb{C}, \, i = 1, 2, \dots, n \}
+\]</span></p>
+<section id="operations-on-cn" class="level3">
+<h3 class="anchored" data-anchor-id="operations-on-cn">Operations on C^n</h3>
+<p>We define <strong>addition</strong> and <strong>scalar multiplication</strong> on <span class="math inline">\(\mathbb{C}^n\)</span> in the same way as we did on <span class="math inline">\(\mathbb{R}^n\)</span>, but using complex numbers:</p>
+<section id="addition" class="level4">
+<h4 class="anchored" data-anchor-id="addition">Addition:</h4>
+<p>For two vectors <span class="math inline">\((z_1, z_2, \dots, z_n)\)</span> and <span class="math inline">\((w_1, w_2, \dots, w_n) \in \mathbb{C}^n\)</span>:</p>
+<p><span class="math display">\[
+(z_1, z_2, \dots, z_n) + (w_1, w_2, \dots, w_n) = (z_1 + w_1, z_2 + w_2, \dots, z_n + w_n)
+\]</span></p>
+</section>
+<section id="scalar-multiplication" class="level4">
+<h4 class="anchored" data-anchor-id="scalar-multiplication">Scalar Multiplication:</h4>
+<p>For a scalar <span class="math inline">\(\lambda \in \mathbb{C}\)</span> and a vector <span class="math inline">\((z_1, z_2, \dots, z_n) \in \mathbb{C}^n\)</span>:</p>
+<p><span class="math display">\[
+\lambda \cdot (z_1, z_2, \dots, z_n) = (\lambda z_1, \lambda z_2, \dots, \lambda z_n)
+\]</span></p>
+</section>
+</section>
+<section id="complex-vector-space-1" class="level3">
+<h3 class="anchored" data-anchor-id="complex-vector-space-1">Complex Vector Space</h3>
+<p>Thus, <span class="math inline">\((\mathbb{C}^n, +, \cdot)\)</span> is a complex vector space because it satisfies the vector space axioms 1-8, where we replaced <span class="math inline">\(\mathbb{R}^n\)</span> with <span class="math inline">\(\mathbb{C}^n\)</span>. Many of the results from MTH107 will hold regardless of whether we are using <span class="math inline">\(\mathbb{R}\)</span> or <span class="math inline">\(\mathbb{C}\)</span>, so we will often use <span class="math inline">\(\mathbb{F}\)</span> to represent either <span class="math inline">\(\mathbb{R}\)</span> or <span class="math inline">\(\mathbb{C}\)</span>.</p>
+<p>For example, <span class="math inline">\(\mathbb{F}^n\)</span> is an <span class="math inline">\(\mathbb{F}\)</span>-vector space, where <span class="math inline">\(\mathbb{F}\)</span> could be either <span class="math inline">\(\mathbb{R}\)</span> or <span class="math inline">\(\mathbb{C}\)</span>.</p>
+</section>
+<section id="generalization-not-on-the-exam" class="level3">
+<h3 class="anchored" data-anchor-id="generalization-not-on-the-exam">Generalization (Not on the Exam):</h3>
+<section id="finite-field-example" class="level4">
+<h4 class="anchored" data-anchor-id="finite-field-example">Finite Field Example:</h4>
+<p><span class="math inline">\(\mathbb{F}_2 = \{0, 1\}\)</span>: the finite field with two elements.</p>
+<p>Many of our results hold in a more general setting, where <span class="math inline">\(\mathbb{F}\)</span> is a <strong>field</strong>—a set in which we can perform addition, multiplication, subtraction, and division (except division by zero).</p>
+<p>Examples of fields include:</p>
+<ul>
+<li><span class="math inline">\(\mathbb{R}\)</span>: the real numbers</li>
+<li><span class="math inline">\(\mathbb{C}\)</span>: the complex numbers</li>
+<li><span class="math inline">\(\mathbb{Q}\)</span>: the rational numbers</li>
+<li><span class="math inline">\(\mathbb{F}_2 = \{0, 1\}\)</span>: the finite field with two elements</li>
+</ul>
+</section>
+</section>
+<section id="abstract-vector-space" class="level3">
+<h3 class="anchored" data-anchor-id="abstract-vector-space">Abstract Vector Space:</h3>
+<p>We can generalize this idea by replacing <span class="math inline">\(\mathbb{F}^n\)</span> with some abstract space <span class="math inline">\(V\)</span>, define addition <span class="math inline">\(+\)</span> and scalar multiplication <span class="math inline">\(\cdot\)</span>, and check if they satisfy the eight vector space axioms.</p>
+</section>
+<section id="definitions" class="level3">
+<h3 class="anchored" data-anchor-id="definitions">Definitions:</h3>
+<p>For a set <span class="math inline">\(V\)</span>, <strong>addition</strong> on <span class="math inline">\(V\)</span> is a map:</p>
+<p><span class="math display">\[
+V \times V \to V
+\]</span></p>
+<p>It maps an element set to their addition. For example, if <span class="math inline">\(V = \mathbb{R}^2\)</span>:</p>
+<p><span class="math display">\[
+(v, w) \mapsto v + w
+\]</span></p>
+<p>Example: <span class="math inline">\((1,2) + (3,4) = (4,6)\)</span>, which is also in <span class="math inline">\(V\)</span>.</p>
+<p>A <strong>scalar multiplication</strong> is a map:</p>
+<p><span class="math display">\[
+F \times V \to V
+\]</span></p>
+<p>For example, <span class="math inline">\((\lambda, v) \mapsto \lambda v\)</span>.</p>
+<p>An <span class="math inline">\(F\)</span>-vector space is a set <span class="math inline">\(V\)</span> with an addition <span class="math inline">\(+\)</span> and scalar multiplication <span class="math inline">\(\cdot\)</span> by elements of <span class="math inline">\(F\)</span>, such that <span class="math inline">\((V, +, \cdot)\)</span> satisfies the vector space axioms 1-8, where <span class="math inline">\(\mathbb{R}\)</span> is replaced by <span class="math inline">\(F\)</span>, and <span class="math inline">\(\mathbb{R}^n\)</span> is replaced by <span class="math inline">\(V\)</span>.</p>
+</section>
+<section id="remarks-and-examples" class="level3">
+<h3 class="anchored" data-anchor-id="remarks-and-examples">Remarks and Examples:</h3>
+<ul>
+<li><strong>Vectors</strong>: Vectors are elements of <span class="math inline">\(V\)</span>, denoted as <span class="math inline">\(v \in V\)</span>.</li>
+<li><strong>Field</strong> <span class="math inline">\(F\)</span>: The choice of <span class="math inline">\(F\)</span> matters! For example, we will see later that <span class="math inline">\(\mathbb{C}^n\)</span> is a complex vector space of dimension <span class="math inline">\(n\)</span>, but is also a real vector space of dimension <span class="math inline">\(2n\)</span>.</li>
+</ul>
+</section>
+</section>
+<section id="prove" class="level2">
+<h2 class="anchored" data-anchor-id="prove">？prove？</h2>
+<p>2n</p>
+</section>
+</section>
+<section id="section-2" class="level1">
+<h1>？</h1>
+<p>ensure: they are not F but the spaces made of by F</p>
+<section id="examples" class="level3">
+<h3 class="anchored" data-anchor-id="examples">Examples:</h3>
+<p>For any field <span class="math inline">\(F\)</span>,</p>
+<ol type="1">
+<li><p><strong>Trivial Vector Space</strong>: the set <span class="math inline">\(V = \{0\}\)</span> is a trivial <span class="math inline">\(F\)</span>-vector space with addition <span class="math inline">\(0 + 0 = 0\)</span> and scalar multiplication <span class="math inline">\(\lambda \cdot 0 = 0\)</span>.</p></li>
+<li><p><strong>Finite-Dimensional Vector Space</strong>: <span class="math inline">\(F^n\)</span> is an <span class="math inline">\(F\)</span>-vector space, and <span class="math inline">\(F^0 = \{0\}\)</span>.</p></li>
+<li><p><strong>Infinite-Dimensional Vector Space</strong>: Let <span class="math inline">\(F^\infty\)</span> be the space of infinite sequences, where:</p></li>
+</ol>
+<p><span class="math display">\[
+F^\infty = \{ (x_1, x_2, \dots) \mid x_i \in F, \, i = 1, 2, \dots \}
+\]</span></p>
+<p>Addition and scalar multiplication are defined <strong>component-wise</strong>:</p>
+<p><span class="math display">\[
+(x_1, x_2, \dots) + (y_1, y_2, \dots) = (x_1 + y_1, x_2 + y_2, \dots)
+\]</span></p>
+<ol start="4" type="1">
+<li><strong>Function Space</strong>: Let <span class="math inline">\(S\)</span> be a set, then:</li>
+</ol>
+<p><span class="math display">\[
+F^S = \{ f: S \to F \, \text{(maps from S to F)} \}
+\]</span></p>
+<p>Addition and scalar multiplication are defined <strong>pointwise</strong>. For functions <span class="math inline">\(f, g \in F^S\)</span> and <span class="math inline">\(\lambda \in F\)</span>:</p>
+<p><span class="math display">\[
+(f + g)(x) = f(x) + g(x) \quad \forall x \in S
+\]</span></p>
+<p><span class="math display">\[
+(\lambda \cdot f)(x) = \lambda \cdot f(x) \quad \forall x \in S
+\]</span></p>
+</section>
+<section id="special-cases" class="level3">
+<h3 class="anchored" data-anchor-id="special-cases">Special Cases:</h3>
+<ol type="1">
+<li><strong>Empty Set</strong>: If <span class="math inline">\(S = \emptyset\)</span>, then:</li>
+</ol>
+<p><span class="math display">\[
+F^{\emptyset} = \{ 0 \}
+\]</span></p>
+<p>The set <span class="math inline">\(F^{\emptyset}\)</span> contains only the zero function.</p>
+<ol start="2" type="1">
+<li><strong>Finite Set</strong>: If <span class="math inline">\(S = \{1, 2, \dots, n\}\)</span>, then:</li>
+</ol>
+<p><span class="math display">\[
+F^{\{1, 2, \dots, n\}} = F^n
+\]</span></p>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

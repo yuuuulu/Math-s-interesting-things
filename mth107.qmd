@@ -1,0 +1,401 @@
+---
+title: "MTH107---NOTEs"
+format: html
+editor: visual
+---
+
+# Chapter 0: motivation/reviews
+
+## Linearty is everywhere--Linearty is the easiest one
+
+matrix-vector multiplication
+
+differentiation/integration
+
+ODE(mth106)
+
+Recurrence Relations and Statistical Models
+
+## comparison
+
+### Real R space
+
+A matrix A in this space is a real matrix, which maps vectors in $\mathbb{R^n}$ to another vector in $\mathbb{R^n}$ through multiplication: $$
+A: \mathbb{R^n} \to \mathbb{R^n}
+$$ $$
+A \cdot v = w \in \mathbb{R^n}
+$$
+
+**real matrix**
+
+**concrete**
+
+### Abstract vector space over R or C
+
+linear transformation: $$
+T: V \to W
+$$ **abstract and more general vector space over** $\mathbb{R^n}$ or $\mathbb{C^n}$
+
+## Notations
+
+$$
+a \in A
+$$ eg. $$
+3 \in \mathbb{Z}
+$$
+
+$\emptyset$
+
+Two sets A and B are equal if and only if they contain the same elements: $$
+A = B
+$$ if and only if $$
+\forall x \, (x \in A \iff x \in B)
+$$ $$
+A \subseteq B
+$$ intersection: $$
+A \cap B
+$$ union: $$
+A \cup B
+$$
+
+## Maps
+
+**maps(functions)**
+
+$$
+f: A \to B, \quad a \mapsto f(a)
+$$ composition: Given two functions $f: B \to C$ and $g: A \to B$, the composition of f and g is denoted as: $$
+(f \circ g)(x) = f(g(x)), \quad \text{for all} \, x \in A
+$$
+
+$$
+a \mapsto c(a \mapsto b \mapsto c)
+$$
+
+### injective--one to one
+
+if $a_1 \neq a_2$ then $f(a_1) \neq f(a_2)$
+
+if $f(a_1) = f(a_2)$, then $a_1=a_2$
+
+### surjective--onto
+
+for $f: A \to B$
+
+$$
+\forall b \in B, \, \exists a \in A \, \text{such that} \, f(a) = b
+$$
+
+### bijetive--both inj and suj
+
+for $f: A \to B$ $$
+\forall b \in B, \, \exists! a \in A \, \text{such that} \, f(a) = b
+$$ （use $\exists!$expresses only exist one）
+
+## subsets,inclusions, restrictions
+
+### subsets
+
+$A \subseteq B$
+
+### empty set is a subset of every set B.
+
+$$
+\emptyset \to B
+$$
+
+### inclusion
+
+if A $\subseteq$ B, we have a map: $$
+\iota: A \to B
+$$
+
+$$
+\iota(a) = a
+$$, called the inclusion of A (into B)
+
+### restriction
+
+the reason to define it:
+
+For example, consider a map $g: B \to C$, where the function takes each element $x$ and maps it to $x + 2$. Let the sets be as follows:
+
+-   $A = \mathbb{N} \subseteq B = \mathbb{R}$
+
+-   $C = \mathbb{R}$ is the codomain of the function.
+
+The map $g$ is defined as: $$ g: B \to C, \quad g(x) = x + 2 \quad \text{for all } x \in B $$
+
+Now, consider the restriction of $g$ to $A$, denoted $g|_A: A \to C$, where: $$ g|_A: A \to C, \quad g|_A(x) = x + 2 \quad \text{for all } x \in A $$
+
+Although both $g: \mathbb{R} \to \mathbb{R}$ and $g|_A: \mathbb{N} \to \mathbb{R}$ follow the same rule $x \mapsto x + 2$, they cannot be considered the same map because their domains differ.
+
+(here, A $\subseteq$ B)
+
+That is:
+
+if A $\subseteq$ B and $f:B \to C$, we have a map for all a $\in$ A: $$
+f|_A: A \to C
+$$:
+
+$$
+f|_A(a) = f(a)
+$$ called the restriction of f to A
+
+$$
+f|_A = f \circ \iota_A
+$$ because $$
+f \circ \iota_A(a)=f(\iota_A(a))=f(a)=f|_A(a)
+$$
+
+### set of all maps from A to B
+
+if a and b are sets we define B\^A={f:A---B map} the set of all maps from A to B
+
+$$
+B^A = \{ f: A \to B \}
+$$ $B^\emptyset = \{ \emptyset \to B \}$ has only 1 element even if B=$\emptyset$
+
+### ?
+
+so the last one F could be random / each , not limit to F right? if it is not F, the element is not definaty 0?
+
+proof: suppose f,g $\in$ $B^\emptyset = \{f: \emptyset \to B \}$, imagine f != g, we can derive $\exists x \in \emptyset$ s.t. f(x) != g(x), which is absurd, so f=g
+
+if B is F, suppose the only one element is sth.:
+
+sth. should follow the quality of the set, which is:
+
+sth. + sth. = sth.
+
+$\lambda$sth. =sth.
+
+so sth. = 0
+
+#### cardinality
+
+\|A\|: number of elements in A(set)
+
+if A and B are finite sets #A=n #B=m, then $|B^A| = m^n$
+
+# Chapter 1: vector spaces
+
+## finite space
+
+For finite spaces ,only R\^n and C\^n.
+
+**(For infinite spaces, there are many, e.g. a continuous set: \[0,1\] to ...)**
+
+## R\^n notification
+
+$$
+\mathbb{R}^n = \{ (x_1, x_2, \dots, x_n) \mid x_i \in \mathbb{R} \text{ for } i = 1, 2, \dots, n \}
+$$ real numbers
+
+### define 2 oprations on the set R\^n
+
+addition: $$
+(x_1, x_2, \dots, x_n) + (y_1, y_2, \dots, y_n) = (x_1 + y_1, x_2 + y_2, \dots, x_n + y_n)
+$$
+
+-   **Left-hand side**: $(x_1, x_2, \dots, x_n), (y_1, y_2, \dots, y_n) \in \mathbb{R}^n$
+
+-   **Right-hand side**: The result of $x_i + y_i$ is in $\mathbb{R}$.
+
+scalar multiplication: for lambda $\in$ R,
+
+$$
+\lambda \cdot (x_1, x_2, \dots, x_n) = (\lambda x_1, \lambda x_2, \dots, \lambda x_n)
+$$
+
+-   **Left-hand side**: $\lambda \in \mathbb{R}, (x_1, x_2, \dots, x_n) \in \mathbb{R}^n$.
+
+-   **Right-hand side**: The result $\lambda x_i \in \mathbb{R}$, for each i.
+
+these 2 oprations generalize the standard operations on R2 and R3
+
+#### geometric realization
+
+矢量三角形--addition
+
+直线上--scalar multiplication
+
+mention: for n greater than or equal to 4 we cannot visualize vectors in the real world but e can still use them to solove real world problems
+
+if a and b are finite sets
+
+### to simplify notations we sometimes use a single letter for vectors:
+
+x= $\vec x$ =(x_1,x_2,....)
+
+R\^n as a vector space
+
+so we have(rn,+, mutiplication notation). the operations satisfies some useful properties that turn rn into a real vector space
+
+## relation between it and + $\cdot$
+
+it means that + and $\cdot$ satisfy the following axioms:
+
+1)  $\forall x,y \in rn$: x+y=y+x. commutativity
+
+2)  $\forall x,y,z \in rn$: (x+y)+z=x+(y+z). associativity
+
+3)  x + 0 = 0 + x neutral element for addition
+
+4)  $x + (-x) = (-x) + x = 0$ inverse for addition -x=y
+
+5)  $1 \cdot x = x$ Identity Element for Scalar Multiplication
+
+6)  $(\lambda \mu) \cdot x = \lambda \cdot (\mu \cdot x)$ compatibilily of multiplication
+
+7)  $\lambda \cdot (x + y) = \lambda \cdot x + \lambda \cdot y$ Distributivity of Scalar Multiplication Over Vector Addition
+
+8)  $(\lambda + \mu) \cdot x = \lambda \cdot x + \mu \cdot x$ Distributivity of Scalar Addition
+
+### ?
+
+want to ensure **if a set satisfies the 2 operations it is not satisfy all 1-8 axioms instead of F\^n**
+
+## complex Vector Space
+
+$i^2 = -1$
+
+Define $\mathbb {C}^n$ as the set of all ordered n-tuples of complex numbers: $$
+\mathbb{C}^n = \{ (z_1, z_2, \dots, z_n) \mid z_i \in \mathbb{C}, \, i = 1, 2, \dots, n \}
+$$
+
+### Operations on C\^n
+
+We define **addition** and **scalar multiplication** on $\mathbb{C}^n$ in the same way as we did on $\mathbb{R}^n$, but using complex numbers:
+
+#### Addition:
+
+For two vectors $(z_1, z_2, \dots, z_n)$ and $(w_1, w_2, \dots, w_n) \in \mathbb{C}^n$:
+
+$$
+(z_1, z_2, \dots, z_n) + (w_1, w_2, \dots, w_n) = (z_1 + w_1, z_2 + w_2, \dots, z_n + w_n)
+$$
+
+#### Scalar Multiplication:
+
+For a scalar $\lambda \in \mathbb{C}$ and a vector $(z_1, z_2, \dots, z_n) \in \mathbb{C}^n$:
+
+$$
+\lambda \cdot (z_1, z_2, \dots, z_n) = (\lambda z_1, \lambda z_2, \dots, \lambda z_n)
+$$
+
+### Complex Vector Space
+
+Thus, $(\mathbb{C}^n, +, \cdot)$ is a complex vector space because it satisfies the vector space axioms 1-8, where we replaced $\mathbb{R}^n$ with $\mathbb{C}^n$. Many of the results from MTH107 will hold regardless of whether we are using $\mathbb{R}$ or $\mathbb{C}$, so we will often use $\mathbb{F}$ to represent either $\mathbb{R}$ or $\mathbb{C}$.
+
+For example, $\mathbb{F}^n$ is an $\mathbb{F}$-vector space, where $\mathbb{F}$ could be either $\mathbb{R}$ or $\mathbb{C}$.
+
+### Generalization (Not on the Exam):
+
+#### Finite Field Example:
+
+$\mathbb{F}_2 = \{0, 1\}$: the finite field with two elements.
+
+Many of our results hold in a more general setting, where $\mathbb{F}$ is a **field**—a set in which we can perform addition, multiplication, subtraction, and division (except division by zero).
+
+Examples of fields include:
+
+-   $\mathbb{R}$: the real numbers
+-   $\mathbb{C}$: the complex numbers
+-   $\mathbb{Q}$: the rational numbers
+-   $\mathbb{F}_2 = \{0, 1\}$: the finite field with two elements
+
+### Abstract Vector Space:
+
+We can generalize this idea by replacing $\mathbb{F}^n$ with some abstract space $V$, define addition $+$ and scalar multiplication $\cdot$, and check if they satisfy the eight vector space axioms.
+
+### Definitions:
+
+For a set $V$, **addition** on $V$ is a map:
+
+$$
+V \times V \to V
+$$
+
+It maps an element set to their addition. For example, if $V = \mathbb{R}^2$:
+
+$$
+(v, w) \mapsto v + w
+$$
+
+Example: $(1,2) + (3,4) = (4,6)$, which is also in $V$.
+
+A **scalar multiplication** is a map:
+
+$$
+F \times V \to V
+$$
+
+For example, $(\lambda, v) \mapsto \lambda v$.
+
+An $F$-vector space is a set $V$ with an addition $+$ and scalar multiplication $\cdot$ by elements of $F$, such that $(V, +, \cdot)$ satisfies the vector space axioms 1-8, where $\mathbb{R}$ is replaced by $F$, and $\mathbb{R}^n$ is replaced by $V$.
+
+### Remarks and Examples:
+
+-   **Vectors**: Vectors are elements of $V$, denoted as $v \in V$.
+-   **Field** $F$: The choice of $F$ matters! For example, we will see later that $\mathbb{C}^n$ is a complex vector space of dimension $n$, but is also a real vector space of dimension $2n$.
+
+## ？prove？
+
+2n
+
+# ？
+
+ensure: they are not F but the spaces made of by F
+
+### Examples:
+
+For any field $F$,
+
+1.  **Trivial Vector Space**: the set $V = \{0\}$ is a trivial $F$-vector space with addition $0 + 0 = 0$ and scalar multiplication $\lambda \cdot 0 = 0$.
+
+2.  **Finite-Dimensional Vector Space**: $F^n$ is an $F$-vector space, and $F^0 = \{0\}$.
+
+3.  **Infinite-Dimensional Vector Space**: Let $F^\infty$ be the space of infinite sequences, where:
+
+$$
+F^\infty = \{ (x_1, x_2, \dots) \mid x_i \in F, \, i = 1, 2, \dots \}
+$$
+
+Addition and scalar multiplication are defined **component-wise**:
+
+$$
+(x_1, x_2, \dots) + (y_1, y_2, \dots) = (x_1 + y_1, x_2 + y_2, \dots)
+$$
+
+4.  **Function Space**: Let $S$ be a set, then:
+
+$$
+F^S = \{ f: S \to F \, \text{(maps from S to F)} \}
+$$
+
+Addition and scalar multiplication are defined **pointwise**. For functions $f, g \in F^S$ and $\lambda \in F$:
+
+$$
+(f + g)(x) = f(x) + g(x) \quad \forall x \in S
+$$
+
+$$
+(\lambda \cdot f)(x) = \lambda \cdot f(x) \quad \forall x \in S
+$$
+
+### Special Cases:
+
+1.  **Empty Set**: If $S = \emptyset$, then:
+
+$$
+F^{\emptyset} = \{ 0 \}
+$$
+
+The set $F^{\emptyset}$ contains only the zero function.
+
+2.  **Finite Set**: If $S = \{1, 2, \dots, n\}$, then:
+
+$$
+F^{\{1, 2, \dots, n\}} = F^n
+$$

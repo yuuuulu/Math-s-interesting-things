@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Steinmetz(mou he fang gai) - Analysis1</title>
+<title>Foundation Math Learning - Analysis1</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -19,6 +19,40 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 </style>
 
@@ -107,7 +141,7 @@ window.Quarto = {
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
     <a class="navbar-brand" href="./index.html">
-    <span class="navbar-title">Steinmetz(mou he fang gai)</span>
+    <span class="navbar-title">Foundation Math Learning</span>
     </a>
   </div>
             <div id="quarto-search" class="" title="Search"></div>
@@ -119,6 +153,14 @@ window.Quarto = {
   <li class="nav-item">
     <a class="nav-link" href="./index.html"> 
 <span class="menu-text">Homepage</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./mth107.html"> 
+<span class="menu-text">Advanced Linear Algebra</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link active" href="./Mathematical Analysis 1.html" aria-current="page"> 
+<span class="menu-text">Analysis 1</span></a>
   </li>  
   <li class="nav-item">
     <a class="nav-link" href="./Steinmetz.html"> 
@@ -134,7 +176,7 @@ window.Quarto = {
   </li>  
   <li class="nav-item">
     <a class="nav-link" href="./understand directional derivative deeply.html"> 
-<span class="menu-text">a example question</span></a>
+<span class="menu-text">Directional Derivative</span></a>
   </li>  
 </ul>
           </div> <!-- /navcollapse -->
@@ -152,7 +194,15 @@ window.Quarto = {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#a-problem-about-divisible-using-greatest-common-factor-to-solveeven-bezous-theorem" id="toc-a-problem-about-divisible-using-greatest-common-factor-to-solveeven-bezous-theorem" class="nav-link active" data-scroll-target="#a-problem-about-divisible-using-greatest-common-factor-to-solveeven-bezous-theorem">a problem about divisible using greatest common factor to solve(even Bezou’s theorem)</a></li>
+  <li><a href="#section" id="toc-section" class="nav-link active" data-scroll-target="#section">1</a></li>
+  <li><a href="#history" id="toc-history" class="nav-link" data-scroll-target="#history">history</a></li>
+  <li><a href="#calculus" id="toc-calculus" class="nav-link" data-scroll-target="#calculus">calculus</a></li>
+  <li><a href="#analysis-19-century" id="toc-analysis-19-century" class="nav-link" data-scroll-target="#analysis-19-century">analysis 19 century</a></li>
+  <li><a href="#chaper-1-logicgrammar-v.s.-mathsliterature" id="toc-chaper-1-logicgrammar-v.s.-mathsliterature" class="nav-link" data-scroll-target="#chaper-1-logicgrammar-v.s.-mathsliterature">Chaper 1: Logic(grammar) v.s. Maths(literature)</a>
+  <ul class="collapse">
+  <li><a href="#statement" id="toc-statement" class="nav-link" data-scroll-target="#statement">statement</a></li>
+  </ul></li>
+  <li><a href="#a-problem-about-divisible-using-greatest-common-factor-to-solveeven-bezous-theorem" id="toc-a-problem-about-divisible-using-greatest-common-factor-to-solveeven-bezous-theorem" class="nav-link" data-scroll-target="#a-problem-about-divisible-using-greatest-common-factor-to-solveeven-bezous-theorem">a problem about divisible using greatest common factor to solve(even Bezou’s theorem)</a></li>
   </ul>
 </nav>
     </div>
@@ -178,6 +228,79 @@ window.Quarto = {
 </header>
 
 
+<section id="section" class="level1">
+<h1>1</h1>
+<p>limit</p>
+<p>real number</p>
+</section>
+<section id="history" class="level1">
+<h1>history</h1>
+<p>Ancient Greece philosophy</p>
+<p>Pythagoras, Archimede, Euclide,etc.</p>
+<p>maths behave a discpline</p>
+<p>study maths for its own sake! - number theory Q: rational number: a/b, a,b <span class="math inline">\(\in\)</span> Z, b no 0</p>
+<p>Greek believes: “Atoms”–Q are all numbers</p>
+<ul>
+<li>geometry (length of sig <span class="math inline">\(\in Q\)</span>)</li>
+</ul>
+<p>discovery: <span class="math inline">\(\sqrt 2\)</span> in a square or … is not rational—kill</p>
+<p>— no understanding of real number, irrational infinity… no corresponding of number and geometry</p>
+<p>parallel—square using move</p>
+<p>but it is not a possible thing to turn a circle into a square—<span class="math inline">\(\pi\)</span> is not a rational number —–paradox: zhinuo and wugui—-convergence of a sum (they do not understand infinity and real number)</p>
+</section>
+<section id="calculus" class="level1">
+<h1>calculus</h1>
+<p>Newton Leibniz makes phy a idependent discipline</p>
+<p>Newton’s Law–Kepler Law solve ODE:<span class="math inline">\(GMm/r^2=F=ma=mr^{..}\)</span></p>
+<p>Philosophiae Naturalis Principil Mathematica. every theorem and lemma are detailed proved</p>
+<p>–no understanding of real number but a little understanding of limit and infinity</p>
+</section>
+<section id="analysis-19-century" class="level1">
+<h1>analysis 19 century</h1>
+<p>Cauchy cantor weierstrass hilbert</p>
+<p>understand real number infinity limit</p>
+<p>the foundation of maths</p>
+</section>
+<section id="chaper-1-logicgrammar-v.s.-mathsliterature" class="level1">
+<h1>Chaper 1: Logic(grammar) v.s. Maths(literature)</h1>
+<p>we should solve out logic first to logic important in–programming(some derivations of maths)</p>
+<section id="statement" class="level2">
+<h2 class="anchored" data-anchor-id="statement">statement</h2>
+<p>p ### —An assertion that is either true of false but not both</p>
+<p>e.g.&nbsp;</p>
+<section id="negation-of-a-statement-p-is-a-statement-which-means-the-opposite-of-p" class="level4">
+<h4 class="anchored" data-anchor-id="negation-of-a-statement-p-is-a-statement-which-means-the-opposite-of-p">Negation of a statement p is a statement which means the opposite of P</h4>
+<p>~p—-read “not p”</p>
+</section>
+<section id="quantifiers" class="level4">
+<h4 class="anchored" data-anchor-id="quantifiers">Quantifiers</h4>
+<p>all, every, each,no(none)—universal quantifiers</p>
+<p>some,there exists, there is at least on, etc.—existential quantifiers</p>
+<p>P: <em>some</em> a’s are b’s</p>
+<p>~P: <em>all</em> a’s are not b’s/ no a’s are b’s</p>
+<p>P: <em>some</em> a are not b</p>
+<p>~p: <em>all</em> a are b</p>
+</section>
+<section id="truth-table-give-the-truth-values-of-related-statements-in-all-possible-cases" class="level4">
+<h4 class="anchored" data-anchor-id="truth-table-give-the-truth-values-of-related-statements-in-all-possible-cases">Truth table: give the truth values of related statements in all possible cases</h4>
+<p>(relevant to boolean in computer science</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Example of boolean logic in a program</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>is_raining <span class="op">=</span> <span class="va">True</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>has_umbrella <span class="op">=</span> <span class="va">False</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> is_raining <span class="kw">and</span> <span class="kw">not</span> has_umbrella:</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"You need an umbrella!"</span>)</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="cf">else</span>:</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"You're good to go!"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>) compound statement: combining several statements via logical operations</p>
+<p>Conjunction: p^q. p and q</p>
+<p>Disjunction: p v q–p or q</p>
+<p>one of them is true, p v q is true, so we only need to decide if oe of them is true, if it is, the p v q is true</p>
+<p>p V (~p) is always true</p>
+<p>a statement that is always true is called a tautology</p>
+</section>
+</section>
+</section>
 <section id="a-problem-about-divisible-using-greatest-common-factor-to-solveeven-bezous-theorem" class="level1">
 <h1>a problem about divisible using greatest common factor to solve(even Bezou’s theorem)</h1>
 <p>Q:“Proof that if a positive integer <span class="math inline">\(p\)</span> is not a perfect square, then <span class="math inline">\(\sqrt{p}\)</span> is irrational.”</p>

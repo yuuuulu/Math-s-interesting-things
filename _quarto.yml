@@ -3,11 +3,15 @@ project:
   output-dir: docs
   
 website: 
-  title: "Steinmetz(mou he fang gai)"
+  title: "Foundation Math Learning"
   navbar:
     left:
       - href: index.qmd
         text: Homepage
+      - href: mth107.qmd
+        text: Advanced Linear Algebra
+      - href: Mathematical Analysis 1.qmd
+        text: Analysis 1
       - href: Steinmetz.qmd
         text: surface and volume of Steinmetz solid
       - href: sequence.qmd
