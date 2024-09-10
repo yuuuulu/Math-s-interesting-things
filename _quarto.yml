@@ -12,6 +12,8 @@ website:
         text: Advanced Linear Algebra
       - href: Mathematical Analysis 1.qmd
         text: Analysis 1
+      - href: eng pde.qmd
+        text: PDE 
       - href: Steinmetz.qmd
         text: surface and volume of Steinmetz solid
       - href: sequence.qmd
