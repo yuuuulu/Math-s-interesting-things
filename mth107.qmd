@@ -399,3 +399,14 @@ The set $F^{\emptyset}$ contains only the zero function.
 $$
 F^{\{1, 2, \dots, n\}} = F^n
 $$
+
+
+
+## ？
+
+二维映射到三维的linear transformation
+
+
+
+
+## a

@@ -1,0 +1,53 @@
+---
+title: "Intro to probability and statistics"
+editor: visual
+---
+# var data and stat
+stat is a large field in math involving the collection, organization, analysis, 
+
+## populations and samples
+
+
+### descriptive stat
+
+
+### inferential stat
+sample
+
+### uni data set
+
+#### categorical
+
+
+#### numerical
+
+
+
+min max sort data add scalar plot
+
+
+frequency 表格
+
+## experiments and obeservational study
+
+## bias
+
+selection bias
+
+
+measurement or response bias 
+
+
+## random sampling 
+
+the same chance to be selected
+
+
+## strata and cluster
+
+cluster reflect general characteristic about
+
+## systematic sampling 
+
+
+

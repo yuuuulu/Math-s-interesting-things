@@ -1,0 +1,322 @@
+---
+title: "A Kun's PDE Lecture"
+editor: visual
+---
+
+# Equations are expressing secrets in the nature!
+
+We should feel them.
+
+# A healthy view of mathematics.
+
+-   We should have a healthy view of mathematics, including retrospect the whole process of math history which help us think a question as giants. The accumulation of many unsung heroes deserves our respect forever. We could not wait for a super giant, we should learn to think similarly as a super ancient giant. We should have the feeling of finding truth.----Dr. Andrew Chi-kun Lin
+
+# History
+
+## Reformation
+
+## Renaissance
+
+## Enlightenment
+
+## Industrial Revolution
+
+No dynasty lasts over 300 years, except Song dynasty which lasted over 300 years, with scholars serving as prime ministers. Su Shi snored.
+
+# Partial Differential Equations (PDE)
+
+Complex functions are continuously differentiable and infinitely differentiable. 复变函数是连续可微，无穷多次可微
+
+Differentiation at a point straight line, parabola (implying second-order differentiability). 在一点微分 直线 抛物线（隐含二次可微）
+
+PDEs are harmonic functions; differentiating twice gives continuous results. pde是调和函数 微分两次是连续
+
+*Bootstrap.*
+
+Infinitely differentiable.
+
+Intrinsic structure within itself.
+
+Related to complex functions.
+
+ODEs have only one variable.
+
+Newton's second law is an ODE (second-order ordinary differential equation), and then comes calculus.
+
+After Newton, no one else appeared in Britain except Taylor—isolated, and Newton had terrible notation.
+
+But Leibniz had the Bernoulli brothers—passion is everything.
+
+"There is no royal road to geometry."
+
+Understand differentiation, grasp its essence, and find a way to integrate it back.
+
+C1, C2: 2 constants are obtained by integrating twice.
+
+$$
+z = u(x,y) \quad \text{2-dimensional}
+$$
+
+$$
+surface:
+z = f(x,y)
+$$
+
+Multivariable calculus focuses on understanding the surface and finding tangent planes, normal vectors, etc.
+
+$$
+au_{xx} + bu_{xy} + cu_{yy} = f(u)
+$$
+
+## Wave Equation
+
+Vibration of a string.
+
+Taylor, d'Alembert, Daniel Bernoulli, Jacob Bernoulli (Euler), Jacob Bernoulli (distribution).
+
+$$
+\frac{d^2x}{dt^2}
+$$
+
+The truths of this world have all been discovered by Newton.
+
+$$
+u(x,t) \text{: amplitude, } [u] = L
+$$
+
+\$\$ \[p\] = M/L
+
+\$\$
+
+$$
+p(x,t) \text{: density (1-dimensional)}
+$$
+
+\[T\] = \[ma\] = \[m\]\[a\] = ML/t\^2
+
+$T=T_1=T_2$ tension
+
+(0-L)
+
+F = Tsin() - Tsin
+
+m = $\rho$ x
+
+2nd law: $\rho$ x
+
+## linear transformation
+
+Keep the parallelogram diagonal 保持平行四边形的对角线 x+y
+
+keep a straight line 保持直线---a
+
+向量空间 vector space
+
+如果是从二维映射到三维怎么办。2dim---3dim？
+
+代数结构
+
+保留加法 keep the addition
+
+homomorphism
+
+morphism--形象
+
+# 1st Partial differential equation in the world
+
+Found by Newton, solved by Dala, which is a spring. wave on a spring.
+
+Based on force analysis, we know:
+
+$$
+\rho \Delta x \frac{\partial^2 u}{\partial t^2} = T \sin(\theta + \theta_0) - T \sin(\theta)
+$$ where $\Delta \theta$ is very small, so $sin\theta$=$tan\theta$
+
+$$
+=T \frac{\partial u}{\partial x}\left( x + \Delta x, t \right) - T \frac{\partial u}{\partial x} (x, t)
+$$
+
+$$
+T \frac{\partial^2 u}{\partial x^2}(x + \lambda \Delta x, t)\Delta x
+$$
+
+$$
+\frac{\partial^2 u}{\partial x^2} = \frac{T}{\rho} \frac{\partial^2 u}{\partial t^2}
+$$
+
+The speed of the wave is:
+
+$$
+C^2 = \frac{T}{\rho}
+$$
+
+Differential Equation: $u_{tt}-c^2u_{xx}=0, x\in[0,L]$
+
+Boundary Condition: $u(0,t)=u(L,t)=0, t\geq 0$
+
+Initial Condition: u(x,0)=f(x), $u_t(x,0)=g(x)$. ---Newton 2nd law decides track
+
+## Da.. Bernulli Separation of Variables
+
+$u(x,\theta)=\phi(x)T(t)$. (Gassian integral formula derivation also use this method)
+
+(A continuous function can be approximated by a polynomial, which is a super polynomial)
+
+(**the defination of "density"**)
+
+(**Seperation variable: God to God, Caesar to Caesar----x to x, t to t**)
+
+分离变数
+
+$$
+\frac{T^{''}(t)}{C^2 T(t)} = -\frac{\phi^{''}(x)}{\phi(x)}
+$$
+
+$$
+\begin{aligned}
+&\text{PDE:} \quad \text{分离变量法,separete variables} \rightarrow \text{ODE} \\
+&\phi'' + \lambda \phi = 0 \\
+&T'' + \lambda c^2 T = 0 \\
+&\text{(B.C.) 边界条件：} \\
+&u(0,t) = \phi(0) T(t) = 0 \quad \Rightarrow \quad \phi(0) = 0 \quad \text{(trivial 非平凡解,boring)} \\
+&u(L,t) = \phi(L) T(t) = 0 \quad \Rightarrow \quad \phi(L) = 0
+\end{aligned}
+$$
+
+$$
+\lambda < 0 \quad , \quad \phi = e^{mx} \quad \text{(不可能，从0到0。0--0， impossible)}
+$$
+
+$$
+\lambda = 0 \quad , \quad \phi = Ax + B \quad \text{直线运动， straight move}
+$$
+
+$$
+\lambda > 0 \quad , \quad \phi = c_1 \cos(\sqrt{\lambda} x) + c_2 \sin(\sqrt{\lambda} x)
+$$ \### 解的推导
+
+考虑方程： $$
+\phi'' + \lambda \phi = 0
+$$ 其中 (\lambda) 是一个常数，解的形式取决于 (\lambda) 的值。
+
+#### 1. 当 (\lambda \< 0)
+
+当 (\lambda \< 0) 时，我们令 (\lambda = -\mu\^2) ，于是方程变为： $$
+\phi'' - \mu^2 \phi = 0
+$$ 其通解为： $$
+\phi(x) = A e^{\mu x} + B e^{-\mu x}
+$$ 这种解形式表示指数发散或衰减，通常是不稳定解。
+
+#### 2. 当 (\lambda = 0)
+
+当 (\lambda = 0) 时，方程变为： $$
+\phi'' = 0
+$$ 这是一个线性方程，其通解为： $$
+\phi(x) = A x + B
+$$ 这表示直线运动。
+
+#### 3. 当 (\lambda \> 0)
+
+当 (\lambda \> 0) 时，我们令 (\lambda = \mu\^2) ，方程变为： $$
+\phi'' + \mu^2 \phi = 0
+$$ 其解为： $$
+\phi(x) = A \cos(\mu x) + B \sin(\mu x) ---wave
+$$ 这种解表示周期性波动。
+
+##### 推导
+
+对于形如 ( $\phi'' + \mu^2 \phi = 0$ ) 的常微分方程，我们可以猜测它的解是指数形式，即：
+
+$$
+\phi(x) = e^{rx}
+$$
+
+这里 ( r ) 是需要确定的参数。
+
+### 代入微分方程：
+
+将 ( \phi(x) = e\^{rx} ) 代入原方程，得到：
+
+$$
+r^2 e^{rx} + \mu^2 e^{rx} = 0 
+$$
+
+由于 ( e\^{rx} \neq 0 )，可以消掉这个项，剩下的是特征方程：
+
+$$
+r^2 + \mu^2 = 0
+$$ 这个特征方程的解为：
+
+$$
+r = \pm i \mu
+$$
+
+这是一个虚数解。
+
+当特征根为纯虚数时，方程的通解可以写成正弦和余弦的组合形式，根据欧拉公式 ( e\^{i\mu x} = \cos(\mu x) + i \sin(\mu x) )，我们得到通解为：
+
+$$
+\phi(x) = A \cos(\mu x) + B \sin(\mu x)
+$$
+
+其中，( A ) 和 ( B ) 是待定常数，它们可以通过边界条件或初始条件来确定。
+
+characteristic
+
+$$
+\phi(x) = C_1 \cos(\sqrt{\lambda}x) + C_2 \sin(\sqrt{\lambda}x)
+$$
+
+边界条件： $$
+\phi(0) = 0 \Rightarrow C_1 = 0
+$$
+
+$$
+\phi(L) = C_2 \sin(\sqrt{\lambda}L) = 0
+$$
+
+因此， $$
+\sqrt{\lambda_n}L = n\pi \quad (n = 1, 2, 3, \dots)
+$$
+
+得到本征值： $$
+\lambda_n = \left( \frac{n\pi}{L} \right)^2, \quad n = 1, 2, 3, \dots
+$$
+
+对应的本征函数为： $$
+\phi_n(x) = \sin \left( \frac{n\pi x}{L} \right)
+$$ **Sturm-Liouville Problem:**
+
+$$
+\lambda_n = \left( \frac{n\pi}{L} \right)^2, \quad n = 1, 2, 3, \dots
+$$
+
+因此，特征函数为： $$
+\phi_n(x) = \sin \left( \frac{n\pi x}{L} \right)
+$$ $$
+T_n(t) = C_1 \cos \left( \frac{n\pi c t}{L} \right) + C_2 \sin \left( \frac{n\pi c t}{L} \right)
+$$
+
+$$
+u_n(x,t) = T_n(t) \phi_n(x)
+$$
+
+代入展开： $$
+u(x,t) = \sum_{n=1}^{\infty} C_n \sin \left( \frac{n\pi x}{L} \right) \left[ C_1 \cos \left( \frac{n\pi c t}{L} \right) + C_2 \sin \left( \frac{n\pi c t}{L} \right) \right]
+$$
+
+# Dimension
+
+from Fourier
+
+Dimensions help us to check the calculation, trigonometric functions have no dimensions, integrals do not change the overall dimension.
+
+# ? 107
+
+**Only real number could be expressed as big or small, which is the only comperate order field 2-dim has norm**
+
+# others
+
+## law of large number
+
+eg. The reason the casino makes money is because even though the people who go there have a little more than a half chance of winning, the casino has more money than you, and if you stay long enough, you will win, so don't go to the casino, because you can't go deeper than the casino
