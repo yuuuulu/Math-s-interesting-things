@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Foundation Math Learning - Homepage</title>
+<title>Foundation Math Learning - A Kun’s PDE Lecture</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -67,6 +67,35 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 </head>
 
@@ -88,7 +117,7 @@ ul.task-list li input[type="checkbox"] {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link active" href="./index.html" aria-current="page"> 
+    <a class="nav-link" href="./index.html"> 
 <span class="menu-text">Homepage</span></a>
   </li>  
   <li class="nav-item">
@@ -100,7 +129,7 @@ ul.task-list li input[type="checkbox"] {
 <span class="menu-text">Analysis 1</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./eng pde.html"> 
+    <a class="nav-link active" href="./eng pde.html" aria-current="page"> 
 <span class="menu-text">PDE</span></a>
   </li>  
   <li class="nav-item">
@@ -135,12 +164,32 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#title" id="toc-title" class="nav-link active" data-scroll-target="#title">Title</a>
+  <li><a href="#equations-are-expressing-secrets-in-the-nature" id="toc-equations-are-expressing-secrets-in-the-nature" class="nav-link active" data-scroll-target="#equations-are-expressing-secrets-in-the-nature">Equations are expressing secrets in the nature!</a></li>
+  <li><a href="#a-healthy-view-of-mathematics." id="toc-a-healthy-view-of-mathematics." class="nav-link" data-scroll-target="#a-healthy-view-of-mathematics.">A healthy view of mathematics.</a></li>
+  <li><a href="#history" id="toc-history" class="nav-link" data-scroll-target="#history">History</a>
   <ul class="collapse">
-  <li><a href="#quarto" id="toc-quarto" class="nav-link" data-scroll-target="#quarto">Quarto</a>
-  <ul class="collapse">
-  <li><a href="#education" id="toc-education" class="nav-link" data-scroll-target="#education">Education</a></li>
+  <li><a href="#reformation" id="toc-reformation" class="nav-link" data-scroll-target="#reformation">Reformation</a></li>
+  <li><a href="#renaissance" id="toc-renaissance" class="nav-link" data-scroll-target="#renaissance">Renaissance</a></li>
+  <li><a href="#enlightenment" id="toc-enlightenment" class="nav-link" data-scroll-target="#enlightenment">Enlightenment</a></li>
+  <li><a href="#industrial-revolution" id="toc-industrial-revolution" class="nav-link" data-scroll-target="#industrial-revolution">Industrial Revolution</a></li>
   </ul></li>
+  <li><a href="#partial-differential-equations-pde" id="toc-partial-differential-equations-pde" class="nav-link" data-scroll-target="#partial-differential-equations-pde">Partial Differential Equations (PDE)</a>
+  <ul class="collapse">
+  <li><a href="#wave-equation" id="toc-wave-equation" class="nav-link" data-scroll-target="#wave-equation">Wave Equation</a></li>
+  <li><a href="#linear-transformation" id="toc-linear-transformation" class="nav-link" data-scroll-target="#linear-transformation">linear transformation</a></li>
+  </ul></li>
+  <li><a href="#st-partial-differential-equation-in-the-world" id="toc-st-partial-differential-equation-in-the-world" class="nav-link" data-scroll-target="#st-partial-differential-equation-in-the-world">1st Partial differential equation in the world</a>
+  <ul class="collapse">
+  <li><a href="#da..-bernulli-separation-of-variables" id="toc-da..-bernulli-separation-of-variables" class="nav-link" data-scroll-target="#da..-bernulli-separation-of-variables">Da.. Bernulli Separation of Variables</a>
+  <ul class="collapse">
+  <li><a href="#代入微分方程" id="toc-代入微分方程" class="nav-link" data-scroll-target="#代入微分方程">代入微分方程：</a></li>
+  </ul></li>
+  </ul></li>
+  <li><a href="#dimension" id="toc-dimension" class="nav-link" data-scroll-target="#dimension">Dimension</a></li>
+  <li><a href="#section" id="toc-section" class="nav-link" data-scroll-target="#section">? 107</a></li>
+  <li><a href="#others" id="toc-others" class="nav-link" data-scroll-target="#others">others</a>
+  <ul class="collapse">
+  <li><a href="#law-of-large-number" id="toc-law-of-large-number" class="nav-link" data-scroll-target="#law-of-large-number">law of large number</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -150,7 +199,7 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Homepage</h1>
+<h1 class="title">A Kun’s PDE Lecture</h1>
 </div>
 
 
@@ -167,18 +216,253 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<section id="title" class="level1">
-<h1>Title</h1>
-<section id="quarto" class="level2">
-<h2 class="anchored" data-anchor-id="quarto">Quarto</h2>
-<section id="education" class="level3">
-<h3 class="anchored" data-anchor-id="education">Education</h3>
-<ul>
-<li>this is first line</li>
-</ul>
-
-
+<section id="equations-are-expressing-secrets-in-the-nature" class="level1">
+<h1>Equations are expressing secrets in the nature!</h1>
+<p>We should feel them.</p>
 </section>
+<section id="a-healthy-view-of-mathematics." class="level1">
+<h1>A healthy view of mathematics.</h1>
+<ul>
+<li>We should have a healthy view of mathematics, including retrospect the whole process of math history which help us think a question as giants. The accumulation of many unsung heroes deserves our respect forever. We could not wait for a super giant, we should learn to think similarly as a super ancient giant. We should have the feeling of finding truth.—-Dr.&nbsp;Andrew Chi-kun Lin</li>
+</ul>
+</section>
+<section id="history" class="level1">
+<h1>History</h1>
+<section id="reformation" class="level2">
+<h2 class="anchored" data-anchor-id="reformation">Reformation</h2>
+</section>
+<section id="renaissance" class="level2">
+<h2 class="anchored" data-anchor-id="renaissance">Renaissance</h2>
+</section>
+<section id="enlightenment" class="level2">
+<h2 class="anchored" data-anchor-id="enlightenment">Enlightenment</h2>
+</section>
+<section id="industrial-revolution" class="level2">
+<h2 class="anchored" data-anchor-id="industrial-revolution">Industrial Revolution</h2>
+<p>No dynasty lasts over 300 years, except Song dynasty which lasted over 300 years, with scholars serving as prime ministers. Su Shi snored.</p>
+</section>
+</section>
+<section id="partial-differential-equations-pde" class="level1">
+<h1>Partial Differential Equations (PDE)</h1>
+<p>Complex functions are continuously differentiable and infinitely differentiable. 复变函数是连续可微，无穷多次可微</p>
+<p>Differentiation at a point straight line, parabola (implying second-order differentiability). 在一点微分 直线 抛物线（隐含二次可微）</p>
+<p>PDEs are harmonic functions; differentiating twice gives continuous results. pde是调和函数 微分两次是连续</p>
+<p><em>Bootstrap.</em></p>
+<p>Infinitely differentiable.</p>
+<p>Intrinsic structure within itself.</p>
+<p>Related to complex functions.</p>
+<p>ODEs have only one variable.</p>
+<p>Newton’s second law is an ODE (second-order ordinary differential equation), and then comes calculus.</p>
+<p>After Newton, no one else appeared in Britain except Taylor—isolated, and Newton had terrible notation.</p>
+<p>But Leibniz had the Bernoulli brothers—passion is everything.</p>
+<p>“There is no royal road to geometry.”</p>
+<p>Understand differentiation, grasp its essence, and find a way to integrate it back.</p>
+<p>C1, C2: 2 constants are obtained by integrating twice.</p>
+<p><span class="math display">\[
+z = u(x,y) \quad \text{2-dimensional}
+\]</span></p>
+<p><span class="math display">\[
+surface:
+z = f(x,y)
+\]</span></p>
+<p>Multivariable calculus focuses on understanding the surface and finding tangent planes, normal vectors, etc.</p>
+<p><span class="math display">\[
+au_{xx} + bu_{xy} + cu_{yy} = f(u)
+\]</span></p>
+<section id="wave-equation" class="level2">
+<h2 class="anchored" data-anchor-id="wave-equation">Wave Equation</h2>
+<p>Vibration of a string.</p>
+<p>Taylor, d’Alembert, Daniel Bernoulli, Jacob Bernoulli (Euler), Jacob Bernoulli (distribution).</p>
+<p><span class="math display">\[
+\frac{d^2x}{dt^2}
+\]</span></p>
+<p>The truths of this world have all been discovered by Newton.</p>
+<p><span class="math display">\[
+u(x,t) \text{: amplitude, } [u] = L
+\]</span></p>
+<p>$$ [p] = M/L</p>
+<p>$$</p>
+<p><span class="math display">\[
+p(x,t) \text{: density (1-dimensional)}
+\]</span></p>
+<p>[T] = [ma] = [m][a] = ML/t^2</p>
+<p><span class="math inline">\(T=T_1=T_2\)</span> tension</p>
+<p>(0-L)</p>
+<p>F = Tsin() - Tsin</p>
+<p>m = <span class="math inline">\(\rho\)</span> x</p>
+<p>2nd law: <span class="math inline">\(\rho\)</span> x</p>
+</section>
+<section id="linear-transformation" class="level2">
+<h2 class="anchored" data-anchor-id="linear-transformation">linear transformation</h2>
+<p>Keep the parallelogram diagonal 保持平行四边形的对角线 x+y</p>
+<p>keep a straight line 保持直线—a</p>
+<p>向量空间 vector space</p>
+<p>如果是从二维映射到三维怎么办。2dim—3dim？</p>
+<p>代数结构</p>
+<p>保留加法 keep the addition</p>
+<p>homomorphism</p>
+<p>morphism–形象</p>
+</section>
+</section>
+<section id="st-partial-differential-equation-in-the-world" class="level1">
+<h1>1st Partial differential equation in the world</h1>
+<p>Found by Newton, solved by Dala, which is a spring. wave on a spring.</p>
+<p>Based on force analysis, we know:</p>
+<p><span class="math display">\[
+\rho \Delta x \frac{\partial^2 u}{\partial t^2} = T \sin(\theta + \Delta \theta) - T \sin(\theta)
+\]</span> where <span class="math inline">\(\Delta \theta\)</span> is very small, so <span class="math inline">\(sin\theta\)</span>=<span class="math inline">\(tan\theta\)</span></p>
+<p><span class="math display">\[
+=T \frac{\partial u}{\partial x}\left( x + \Delta x, t \right) - T \frac{\partial u}{\partial x} (x, t)
+\]</span></p>
+<p>think of diffrential</p>
+<p><span class="math display">\[
+T \frac{\partial^2 u}{\partial x^2}(x + \lambda \Delta x, t)\Delta x
+\]</span> 想到微分– think of differential</p>
+<p><span class="math display">\[
+\frac{\partial^2 u}{\partial x^2} = \frac{T}{\rho} \frac{\partial^2 u}{\partial t^2}
+\]</span></p>
+<p>The speed of the wave is:</p>
+<p><span class="math display">\[
+C^2 = \frac{T}{\rho}
+\]</span></p>
+<p>Differential Equation: <span class="math inline">\(u_{tt}-c^2u_{xx}=0, x\in[0,L]\)</span></p>
+<p>Boundary Condition: <span class="math inline">\(u(0,t)=u(L,t)=0, t\geq 0\)</span></p>
+<p>Initial Condition: u(x,0)=f(x), <span class="math inline">\(u_t(x,0)=g(x)\)</span>. —Newton 2nd law decides track</p>
+<section id="da..-bernulli-separation-of-variables" class="level2">
+<h2 class="anchored" data-anchor-id="da..-bernulli-separation-of-variables">Da.. Bernulli Separation of Variables</h2>
+<p><span class="math inline">\(u(x,\theta)=\phi(x)T(t)\)</span>. (Gassian integral formula derivation also use this method)</p>
+<p>(A continuous function can be approximated by a polynomial, which is a super polynomial)</p>
+<p>(<strong>the defination of “density”</strong>)</p>
+<p>(<strong>Seperation variable: God to God, Caesar to Caesar—-x to x, t to t</strong>)</p>
+<p>分离变数</p>
+<p><span class="math display">\[
+\frac{T^{''}(t)}{C^2 T(t)} = -\frac{\phi^{''}(x)}{\phi(x)}
+\]</span></p>
+<p><span class="math display">\[
+\begin{aligned}
+&amp;\text{PDE:} \quad \text{分离变量法,separete variables} \rightarrow \text{ODE} \\
+&amp;\phi'' + \lambda \phi = 0 \\
+&amp;T'' + \lambda c^2 T = 0 \\
+&amp;\text{(B.C.) 边界条件：} \\
+&amp;u(0,t) = \phi(0) T(t) = 0 \quad \Rightarrow \quad \phi(0) = 0 \quad \text{(trivial 非平凡解,boring)} \\
+&amp;u(L,t) = \phi(L) T(t) = 0 \quad \Rightarrow \quad \phi(L) = 0
+\end{aligned}
+\]</span></p>
+<p><span class="math display">\[
+\lambda &lt; 0 \quad , \quad \phi = e^{mx} \quad \text{(不可能，从0到0。0--0， impossible)}
+\]</span></p>
+<p><span class="math display">\[
+\lambda = 0 \quad , \quad \phi = Ax + B \quad \text{直线运动， straight move}
+\]</span></p>
+<p><span class="math display">\[
+\lambda &gt; 0 \quad , \quad \phi = c_1 \cos(\sqrt{\lambda} x) + c_2 \sin(\sqrt{\lambda} x)
+\]</span> ### 解的推导</p>
+<p>考虑方程： <span class="math display">\[
+\phi'' + \lambda \phi = 0
+\]</span> 其中 () 是一个常数，解的形式取决于 () 的值。</p>
+<section id="当-0" class="level4">
+<h4 class="anchored" data-anchor-id="当-0">1. 当 (&lt; 0)</h4>
+<p>当 (&lt; 0) 时，我们令 (= -^2) ，于是方程变为： <span class="math display">\[
+\phi'' - \mu^2 \phi = 0
+\]</span> 其通解为： <span class="math display">\[
+\phi(x) = A e^{\mu x} + B e^{-\mu x}
+\]</span> 这种解形式表示指数发散或衰减，通常是不稳定解。</p>
+</section>
+<section id="当-0-1" class="level4">
+<h4 class="anchored" data-anchor-id="当-0-1">2. 当 (= 0)</h4>
+<p>当 (= 0) 时，方程变为： <span class="math display">\[
+\phi'' = 0
+\]</span> 这是一个线性方程，其通解为： <span class="math display">\[
+\phi(x) = A x + B
+\]</span> 这表示直线运动。</p>
+</section>
+<section id="当-0-2" class="level4">
+<h4 class="anchored" data-anchor-id="当-0-2">3. 当 (&gt; 0)</h4>
+<p>当 (&gt; 0) 时，我们令 (= ^2) ，方程变为： <span class="math display">\[
+\phi'' + \mu^2 \phi = 0
+\]</span> 其解为： <span class="math display">\[
+\phi(x) = A \cos(\mu x) + B \sin(\mu x) ---wave
+\]</span> 这种解表示周期性波动。</p>
+<section id="推导" class="level5">
+<h5 class="anchored" data-anchor-id="推导">推导</h5>
+<p>对于形如 ( <span class="math inline">\(\phi'' + \mu^2 \phi = 0\)</span> ) 的常微分方程，我们可以猜测它的解是指数形式，即：</p>
+<p><span class="math display">\[
+\phi(x) = e^{rx}
+\]</span></p>
+<p>这里 ( r ) 是需要确定的参数。</p>
+</section>
+</section>
+<section id="代入微分方程" class="level3">
+<h3 class="anchored" data-anchor-id="代入微分方程">代入微分方程：</h3>
+<p>将 ( (x) = e^{rx} ) 代入原方程，得到：</p>
+<p><span class="math display">\[
+r^2 e^{rx} + \mu^2 e^{rx} = 0
+\]</span></p>
+<p>由于 ( e^{rx} )，可以消掉这个项，剩下的是特征方程：</p>
+<p><span class="math display">\[
+r^2 + \mu^2 = 0
+\]</span> 这个特征方程的解为：</p>
+<p><span class="math display">\[
+r = \pm i \mu
+\]</span></p>
+<p>这是一个虚数解。</p>
+<p>当特征根为纯虚数时，方程的通解可以写成正弦和余弦的组合形式，根据欧拉公式 ( e^{ix} = (x) + i (x) )，我们得到通解为：</p>
+<p><span class="math display">\[
+\phi(x) = A \cos(\mu x) + B \sin(\mu x)
+\]</span></p>
+<p>其中，( A ) 和 ( B ) 是待定常数，它们可以通过边界条件或初始条件来确定。</p>
+<p>characteristic</p>
+<p><span class="math display">\[
+\phi(x) = C_1 \cos(\sqrt{\lambda}x) + C_2 \sin(\sqrt{\lambda}x)
+\]</span></p>
+<p>边界条件： <span class="math display">\[
+\phi(0) = 0 \Rightarrow C_1 = 0
+\]</span></p>
+<p><span class="math display">\[
+\phi(L) = C_2 \sin(\sqrt{\lambda}L) = 0
+\]</span></p>
+<p>因此， <span class="math display">\[
+\sqrt{\lambda_n}L = n\pi \quad (n = 1, 2, 3, \dots)
+\]</span></p>
+<p>得到本征值： <span class="math display">\[
+\lambda_n = \left( \frac{n\pi}{L} \right)^2, \quad n = 1, 2, 3, \dots
+\]</span></p>
+<p>对应的本征函数为： <span class="math display">\[
+\phi_n(x) = \sin \left( \frac{n\pi x}{L} \right)
+\]</span> <strong>Sturm-Liouville Problem:</strong></p>
+<p><span class="math display">\[
+\lambda_n = \left( \frac{n\pi}{L} \right)^2, \quad n = 1, 2, 3, \dots
+\]</span></p>
+<p>因此，特征函数为： <span class="math display">\[
+\phi_n(x) = \sin \left( \frac{n\pi x}{L} \right)
+\]</span> <span class="math display">\[
+T_n(t) = C_1 \cos \left( \frac{n\pi c t}{L} \right) + C_2 \sin \left( \frac{n\pi c t}{L} \right)
+\]</span></p>
+<p><span class="math display">\[
+u_n(x,t) = T_n(t) \phi_n(x)
+\]</span></p>
+<p>代入展开： <span class="math display">\[
+u(x,t) = \sum_{n=1}^{\infty} C_n \sin \left( \frac{n\pi x}{L} \right) \left[ C_1 \cos \left( \frac{n\pi c t}{L} \right) + C_2 \sin \left( \frac{n\pi c t}{L} \right) \right]
+\]</span></p>
+</section>
+</section>
+</section>
+<section id="dimension" class="level1">
+<h1>Dimension</h1>
+<p>from Fourier</p>
+<p>Dimensions help us to check the calculation, trigonometric functions have no dimensions, integrals do not change the overall dimension.</p>
+</section>
+<section id="section" class="level1">
+<h1>? 107</h1>
+<p><strong>Only real number could be expressed as big or small, which is the only comperate order field 2-dim has norm</strong></p>
+</section>
+<section id="others" class="level1">
+<h1>others</h1>
+<section id="law-of-large-number" class="level2">
+<h2 class="anchored" data-anchor-id="law-of-large-number">law of large number</h2>
+<p>eg. The reason the casino makes money is because even though the people who go there have a little more than a half chance of winning, the casino has more money than you, and if you stay long enough, you will win, so don’t go to the casino, because you can’t go deeper than the casino</p>
+
+
 </section>
 </section>
 

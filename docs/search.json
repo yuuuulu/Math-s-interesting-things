@@ -1,40 +1,5 @@
 [
   {
-    "objectID": "understand directional derivative deeply.html",
-    "href": "understand directional derivative deeply.html",
-    "title": "one application problem about directional derivative and gradient",
-    "section": "",
-    "text": "Thanks to Boyun Pang to let me know this interesting question and thanks to Dr. Wang to teach me such clever method. The temperature ( T ) in degrees Celsius at ((x, y, z)) is given by\n\\(T = \\frac{10}{{x^2 + y^2 + z^2}}\\)\nwhere distances are in meters. A bee is flying away from the hot spot at the origin on a spiral path so that its position vector at time ( t ) seconds is \\(\\mathbf{r}(t) = t \\cos(\\pi t) \\mathbf{i} + t \\sin(\\pi t) \\mathbf{j} + t \\mathbf{k}\\)\nDetermine the rate of change of ( T ) in each case:\n\nWith respect to distance traveled at time ( t=1 ).\nWith respect to time at ( t = 1 ).\n\n(Think of two ways to do this.)\n\\[\n\\frac{dT}{dS} = \\nabla f \\cdot \\mathbf{R}'(S)\n\\]\n\\[\n\\frac{dT}{dS} = f_x \\cdot x'(S) + f_y \\cdot y'(S) + f_z \\cdot z'(S)\n\\]\n\\[\n||\\vec{r(t)}||=\\int_{0}^{t} \\sqrt{x'^2 + y'^2 + z'^2} \\, dt = S(t)\n\\]\n\\[\n\\mathbf{r}(t(S)) = \\mathbf{R}(S)\n\\]\n\\[\n\\vec{R(S)}' =\\mathbf{r}(t(S)) \\mathbf{t}(S)=\\mathbf{r}(t(S))\\frac{1}{\\mathbf{S}(t)}(inverse function)\n=\\frac{\\mathbf{r}’(t)}{||\\mathbf{r}’(t)||}\n\\]\n\\[\n\\mathbf{R}'(S) = \\frac{\\mathbf{r}'(t(S)) \\cdot t'(S)}{\\sqrt{x'^2 + y'^2 + z'^2}}\n\\]\n\\[\n\\mathbf{R}(t) = \\mathbf{r}(t)\n\\]"
-  },
-  {
-    "objectID": "sequence.html",
-    "href": "sequence.html",
-    "title": "(sequence)sinx/x’s 0-infinite’s integral",
-    "section": "",
-    "text": "Dr.Fajin Wei teach me how to do it. He is very good at Calculus and Modeling. He is kind to help our students. Thanks to him very much!\n\nintegral problems with solution of alternating integral test\nquestion: does \\[\\int_{0}^{\\infty}sinx/x\\,dx\\] converge?\nIt is easy to think of these 2 famous but difficultly proved formula: \\[\\int_{-\\infty}^{\\infty}sinx/x\\,dx=\\pi\n\\] \\[\\int_{-\\infty}^{\\infty}e^{-x^2}\\,dx=\\pi\n\\] However, they are not useful, which is how charasmatic the math is! I love math!\n\\[=\\Sigma_{n=1}^{\\infty}\\int_{2(n-1)\\pi}^{2n\\pi}sinx/x\\,dx\n\\] Then we let \\(x-[2(n-1)\\pi]=y\\)(dx=dy)\nso \\[=\\Sigma_{n=1}^{\\infty}\\int_{0}^{2\\pi}siny/(y+[2(n-1)\\pi])\\,dy\\] =\\[=\\Sigma_{n=1}^{\\infty}\\int_{0}^{\\pi}siny/(y+[2(n-1)\\pi])\\,dy+\\Sigma_{n=1}^{\\infty}\\int_{\\pi}^{2\\pi}siny/(y+[2(n-1)\\pi])\\,dy\\]\nThen we let y-\\(\\pi\\)=z(dy=dz)\n\\[=\\Sigma_{n=1}^{\\infty}\\int_{0}^{\\pi}siny/(y+[2(n-1)\\pi])\\,dy+\\Sigma_{n=1}^{\\infty}\\int_{0}^{\\pi}-sinz/(z+[(2n-1)\\pi])\\,dz\\] \\[=\\Sigma_{n=1}^{\\infty}\\int_{0}^{\\pi}sinm/(m+[2(n-1)\\pi])\\,dm+\\Sigma_{n=1}^{\\infty}\\int_{0}^{\\pi}-sinm/(m+[(2n-1)\\pi])\\,dm\\]\nso if \\[a_n=\\int_{0}^{\\pi}sinm/(m+(n-1)\\pi)\\] \\[\\int_{0}^{\\infty}sinx/x\\,dx=a_1-a_2+a_3-a_4+...+a_n\\], which is an alternating series!\nCoincidently, it is decresing and \\(a_n&lt;\\int_{0}^{\\pi}1/(n-1)\\pi\\,dm=1/(n-1)\\), and \\(\\lim_{{n \\to \\infty}} \\left( \\frac{1}{n-1}  \\right) = 0\\) so \\(\\lim_{{n \\to \\infty}}a_n=0\\) So it converges(Alternating series test).\n\n\nsimilar question 2\nThanks for Dr.Chi-Kun Lin to teach me this kind of problems!\n\\[\n\\int_0^\\infty \\frac{1}{1 + x^p \\sin^2 x} \\, dx\n\\]\n\n\n\n\\[\n\\sum_{n=0}^\\infty \\int_0^{\\frac{\\pi}{2}} \\frac{1}{1 + \\left( n + \\frac{1}{2} \\right)^2 p \\sin^2 t} \\, dt = \\int_0^{\\frac{\\pi}{2}} \\frac{1}{1 + \\left( n + \\frac{1}{2} \\right)^2 p \\sin^2 t} \\, dt\n\\]\n\\[\\Sigma\\int_0^{\\frac{\\pi}{2}} \\frac{1}{1 + \\left( n\\pi/2 + t \\right)^ p \\sin^2 t} \\, dt + \\int_0^{\\frac{\\pi}{2}} \\frac{1}{1 + \\left(( n + 1 \\right)\\pi/2-t)^ p sin^2t} \\, dt\\]\nfor:\n\\[\nx_n = \\Sigma\\int_0^{\\frac{\\pi}{2}} \\frac{1}{1 + \\left( n\\pi/2 + t \\right)^ p \\sin^2 t} \\, dt + \\int_0^{\\frac{\\pi}{2}} \\frac{1}{1 + \\left(( n + 1 \\right)\\pi/2-t)^ p sin^2t} \\, dt,\n\\]\nthere has\n\\[2 \\int_0^{\\frac{\\pi}{2}} \\frac{1}{1 + \\left( (n + 1) \\frac{\\pi}{2} \\right)^ p t^2} \\, dt \\leq x_n \\leq 2 \\int_0^{\\frac{\\pi}{2}} \\frac{1}{1 + \\left( (n + 1) \\frac{\\pi}{2} \\right) ^p \\frac{4}{\\pi^2} t^2} \\, dt\\]\n\nHowever, the integrals on both sides of the inequality can be calculated separately. For example:\n\n\\[\n\\int_0^1 \\frac{1}{1 + \\left( (n + 1) \\frac{\\pi}{2} \\right)^ p t^2} \\, dt = \\frac{1}{\\sqrt{((n + 1) \\frac{\\pi}{2} )^p}} \\arctan \\left( \\sqrt{(n + 1) \\frac{\\pi}{2}}^{2p}\\pi/2 \\right) \\geq \\frac{1}{\\sqrt{(n + 1) \\frac{\\pi}{2} }^{2p}  } \\frac{\\pi}{4}\n\\]"
-  },
-  {
-    "objectID": "Mathematical Analysis 1.html",
-    "href": "Mathematical Analysis 1.html",
-    "title": "Analysis1",
-    "section": "",
-    "text": "limit\nreal number"
-  },
-  {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "Homepage",
-    "section": "",
-    "text": "this is first line"
-  },
-  {
-    "objectID": "index.html#quarto",
-    "href": "index.html#quarto",
-    "title": "Homepage",
-    "section": "",
-    "text": "this is first line"
-  },
-  {
     "objectID": "Lagrange.html",
     "href": "Lagrange.html",
     "title": "Extreme Values of Function using not only Lagrange but the same philosophy",
@@ -63,25 +28,39 @@
     "text": "Lasso Regression uses L1 regularization to achieve feature selection, and its optimization problem can be transformed into a constrained optimization problem.\nLagrange Multipliers provide a method to handle constraints in optimization problems by converting them into unconstrained problems and introducing multipliers to adjust the regularization strength.\n\nIn Lasso regression, the L1 regularization constraint can be handled using Lagrange multipliers, converting the problem into one with multipliers that adjust the strength of regularization. ### Problem\nFind extreme values of\n\\[ f(x, y) = \\cos x + \\cos y + \\cos (x + y). \\]\n\n\nSince cosine is a periodic function, we can consider the region ( 0 x ), ( 0 y ) (bounded and closed region) to find the maximal and minimal values.\nFirstly, we consider the interior of the region to find stationary points:\n\\[ f_x = -\\sin x - \\sin (x + y) = 0 \\] \\[ f_y = -\\sin y - \\sin (x + y) = 0 \\]\nThis implies:\n\\[ \\sin x = \\sin y \\]\nThen, inside the region (not on boundary), we have three cases:\n\n( y = x )\n( y = - x ) for ( 0 &lt; x &lt; )\n( y = 3- x ) for ( &lt; x &lt; 2)\n\n\n\n\\[ \\sin x + \\sin (x + y) = \\sin x + 2 \\sin x \\cos x = 0 \\] \\[ \\sin x (2 \\cos x + 1) = 0 \\]\nThis implies:\n\\[ x = \\pi, y = \\pi \\] or \\[ x = \\frac{2\\pi}{3}, y = \\frac{2\\pi}{3} \\] or \\[ x = \\frac{4\\pi}{3}, y = \\frac{4\\pi}{3} \\]\nEvaluating the function at these points:\n\\[ f(\\pi, \\pi) = -1 \\] \\[ f\\left( \\frac{2\\pi}{3}, \\frac{2\\pi}{3} \\right) = -\\frac{3}{2} \\] \\[ f\\left( \\frac{4\\pi}{3}, \\frac{4\\pi}{3} \\right) = -\\frac{3}{2} \\]\n\n\n\n\\[ \\sin x + \\sin (x + y) = \\sin x + \\sin \\pi = \\sin x = 0 \\]\nThis implies:\n\\[ x = \\pi, y = 0 \\] (on boundary)\n\n\n\n\\[ \\sin x + \\sin (3\\pi - x) = \\sin x = 0 \\]\nThis implies:\n\\[ x = \\pi, y = 2\\pi \\] (also on boundary)\n\n\n\n\nDue to periodic property, we consider:\n\\[ x = 0, 0 \\leq y \\leq 2\\pi \\] and \\[ y = 0, 0 \\leq x \\leq 2\\pi \\]\nEvaluating the function at these boundaries:\n\\[ f(0, y) = 1 + 2 \\cos y, \\min = -1, \\max = 3 \\] \\[ f(x, 0) = 1 + 2 \\cos x, \\min = -1, \\max = 3 \\]\nSo,\n\\[ \\max f(x, y) = 3 \\text{ at } (2n\\pi, 2k\\pi) \\text{ for any } n, k \\in \\mathbb{Z} \\] \\[ \\min f(x, y) = -\\frac{3}{2} \\text{ at } \\left( (2n+1)\\pi \\pm \\frac{\\pi}{3}, (2k+1)\\pi \\pm \\frac{\\pi}{3} \\right) \\]"
   },
   {
-    "objectID": "Mathematical-Analysis/Mathematical Analysis 1.html",
-    "href": "Mathematical-Analysis/Mathematical Analysis 1.html",
+    "objectID": "understand directional derivative deeply.html",
+    "href": "understand directional derivative deeply.html",
+    "title": "one application problem about directional derivative and gradient",
+    "section": "",
+    "text": "Thanks to Boyun Pang to let me know this interesting question and thanks to Dr. Wang to teach me such clever method. The temperature ( T ) in degrees Celsius at ((x, y, z)) is given by\n\\(T = \\frac{10}{{x^2 + y^2 + z^2}}\\)\nwhere distances are in meters. A bee is flying away from the hot spot at the origin on a spiral path so that its position vector at time ( t ) seconds is \\(\\mathbf{r}(t) = t \\cos(\\pi t) \\mathbf{i} + t \\sin(\\pi t) \\mathbf{j} + t \\mathbf{k}\\)\nDetermine the rate of change of ( T ) in each case:\n\nWith respect to distance traveled at time ( t=1 ).\nWith respect to time at ( t = 1 ).\n\n(Think of two ways to do this.)\n\\[\n\\frac{dT}{dS} = \\nabla f \\cdot \\mathbf{R}'(S)\n\\]\n\\[\n\\frac{dT}{dS} = f_x \\cdot x'(S) + f_y \\cdot y'(S) + f_z \\cdot z'(S)\n\\]\n\\[\n||\\vec{r(t)}||=\\int_{0}^{t} \\sqrt{x'^2 + y'^2 + z'^2} \\, dt = S(t)\n\\]\n\\[\n\\mathbf{r}(t(S)) = \\mathbf{R}(S)\n\\]\n\\[\n\\vec{R(S)}' =\\mathbf{r}(t(S)) \\mathbf{t}(S)=\\mathbf{r}(t(S))\\frac{1}{\\mathbf{S}(t)}(inverse function)\n=\\frac{\\mathbf{r}’(t)}{||\\mathbf{r}’(t)||}\n\\]\n\\[\n\\mathbf{R}'(S) = \\frac{\\mathbf{r}'(t(S)) \\cdot t'(S)}{\\sqrt{x'^2 + y'^2 + z'^2}}\n\\]\n\\[\n\\mathbf{R}(t) = \\mathbf{r}(t)\n\\]"
+  },
+  {
+    "objectID": "Mathematical Analysis 1.html",
+    "href": "Mathematical Analysis 1.html",
     "title": "Analysis1",
     "section": "",
-    "text": "a problem about divisible using greatest common factor to solve(even Bezou’s theorem)\nQ:“Proof that if a positive integer \\(p\\) is not a perfect square, then \\(\\sqrt{p}\\) is irrational.”\nSol: Proof by Contradiction:\nAssume \\(\\sqrt{p}\\) is rational.\nSince \\(p\\) is not a perfect square, there exist two coprime positive integers \\(m\\) and \\(n\\) with \\(n &gt; 1\\) such that \\[\n\\sqrt{p} = \\frac{m}{n}\n\\]\nThen \\[\np = \\frac{m^2}{n^2}\n\\]\nwhich implies \\[\nm^2 = n^2 p\n\\] i.e. \\(n^2 \\mid m^2\\). Then We want to show that \\(n \\mid m\\):\nSuppose \\(m^2 = k n^2\\), where \\(k \\in \\mathbb{Z}\\).\nSince \\(m\\) and \\(n\\) are both integers, based on prime factorization, we have:\n\\[\nm = p_1^{a_1} p_2^{a_2} \\cdots p_k^{a_k}\n\\]\n\\[\nn = p_1^{b_1} p_2^{b_2} \\cdots p_k^{b_k}\n\\]\nwhere \\(p_i\\) are prime numbers, and \\(a_i, b_i\\) are non-negative integers.\nSo,\n\\[\nm^2 = p_1^{2a_1} p_2^{2a_2} \\cdots p_k^{2a_k}\n\\]\nand\n\\[\nn^2 = p_1^{2b_1} p_2^{2b_2} \\cdots p_k^{2b_k}\n\\]\nSince \\(m^2 = k n^2\\), we have:\n\\[\np_1^{2a_1} p_2^{2a_2} \\cdots p_k^{2a_k} = k \\cdot p_1^{2b_1} p_2^{2b_2} \\cdots p_k^{2b_k}\n\\]\nThis implies:\n\\[\n2a_i \\geq 2b_i \\quad \\text{for all } i\n\\]\nSo,\n\\[\na_i \\geq b_i \\quad \\text{for all } i\n\\]\nThus, \\(m\\) is divisible by \\(n\\). Therefore, \\(n \\mid m\\), which is opposite to m and n are coprime. So, \\(\\sqrt{p}\\) is irrational.\nmethod 2: Proof by Contradiction:\nAssume \\(\\sqrt{p}\\) is rational.\nSince \\(p\\) is not a perfect square, there exist two coprime positive integers \\(m\\) and \\(n\\) with \\(n &gt; 1\\) such that \\[\n\\sqrt{p} = \\frac{m}{n}\n\\]\nThen \\[\np = \\frac{m^2}{n^2}\n\\]\nwhich implies \\[\nm^2 = n^2 p\n\\] i.e. \\(n^2 \\mid m^2\\). So \\(n \\mid m^2\\)\nSince \\(n &gt; 1\\), it follows that there exists a prime number \\(r\\) such that \\(r \\mid n\\). (proof using Fundamental Theorem of Arithmetic:\nEvery integer greater than 1 is either a prime or can be uniquely factored into prime numbers.\nIf \\(n\\) is a prime number, then \\(r = n\\) and clearly \\(r \\mid n\\);\nIf \\(n\\) is not a prime number, it must be decomposable into a product of prime factors. Therefore, we can write: \\[\nn = p_1^{e_1} p_2^{e_2} \\cdots p_k^{e_k}\n\\]\nwhere \\(p_i\\) are prime numbers and \\(e_i\\) are positive integers.\nSince \\(n\\) is a product of prime factors, at least one of these prime factors \\(p_i\\) must divide \\(n\\).\nLet \\(r = p_i\\), which is one of the prime factors. Then \\(r \\mid n\\).\nThus, in both cases, whether \\(n\\) is a prime or not, there exists at least one prime number \\(r\\) such that \\(r \\mid n\\).)\nThus \\[\nr \\mid m^2 \\quad \\text{and} \\quad r \\mid m\n\\] (proof of \\[\nr \\mid m^2 \\quad \\text{and} \\quad r \\mid m\n\\]: proof1 using prime factorization as method 1’s:\n\\(r \\mid m^2\\) and r is a prime so \\(r=p_i\\) corresponding to the exponential of \\(2a_i\\)\nsince \\(a_i \\geq 0\\), so \\(a_i\\) is at least 1 . proof2 using if r is a prime and r|ab, then r|a or r|b:\nSuppose \\(r \\nmid a\\) and \\(r \\nmid b\\) (contradiction assumption).\nLet \\(\\gcd(a \\cdot b, r) = d\\) (where \\(d\\) is the greatest common divisor of \\(a \\cdot b\\) and \\(r\\)).\nSince \\(d \\mid r\\), \\(d\\) is a divisor of \\(r\\) (since \\(r\\) is a prime number).\nTherefore, \\(d\\) is either \\(r\\) or \\(1\\) (since \\(r\\) is prime).\nif \\(d = r\\), we have \\(\\gcd(a \\cdot b, r) = r\\). This implies \\(r \\mid a \\cdot b\\).\nSince we assumed \\(r \\nmid a\\) and \\(r \\nmid b\\), it contradicts our initial statement based on Properties of greatest common divisor with its proof using Bezou’s theorem;\nIf \\(d = 1\\), we have \\(\\gcd(a \\cdot b, r) = 1\\). This implies \\(r \\nmid a \\cdot b\\), which contradicts our assumption that \\(r \\mid a \\cdot b\\).\nThus, the contradiction shows that our assumption \\(r \\nmid a\\) and \\(r \\nmid b\\) must be false. Therefore, \\(r\\) must divide at least one of \\(a\\) or \\(b\\).\n)\nSince \\(m\\) and \\(n\\) are coprime, this leads to a contradiction.\nTherefore, \\(\\sqrt{p}\\) must be an irrational number."
+    "text": "limit\nreal number"
   },
   {
-    "objectID": "Steinmetz.html",
-    "href": "Steinmetz.html",
-    "title": "surface and volume of Steinmetz solid",
+    "objectID": "Mathematical Analysis 1.html#statement",
+    "href": "Mathematical Analysis 1.html#statement",
+    "title": "Analysis1",
+    "section": "statement",
+    "text": "statement\np ### —An assertion that is either true of false but not both\ne.g. \n\nNegation of a statement p is a statement which means the opposite of P\n~p—-read “not p”\n\n\nQuantifiers\nall, every, each,no(none)—universal quantifiers\nsome,there exists, there is at least on, etc.—existential quantifiers\nP: some a’s are b’s\n~P: all a’s are not b’s/ no a’s are b’s\nP: some a are not b\n~p: all a are b\n\n\nTruth table: give the truth values of related statements in all possible cases\n(relevant to boolean in computer science\n# Example of boolean logic in a program\nis_raining = True\nhas_umbrella = False\n\nif is_raining and not has_umbrella:\n    print(\"You need an umbrella!\")\nelse:\n    print(\"You're good to go!\")\n) compound statement: combining several statements via logical operations\nConjunction: p^q. p and q\nDisjunction: p v q–p or q\none of them is true, p v q is true, so we only need to decide if oe of them is true, if it is, the p v q is true\np V (~p) is always true\na statement that is always true is called a tautology"
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Homepage",
     "section": "",
-    "text": "Professor. Wang Duo, a very charismatic and responsible Calculus teacher who has worked for our country in the area of math for at least 50 years (which was his target before and he has realized his dream!), always says “You should try to solve one problem many times with new methods to handle and understand knowledge better”\nFor math learning, focusing too much on exams is not so meaningful. We should experience its beauty from the bottom of our hearts. I did not reach my target in the Multivariable Calculus and the Linear Algebra models, but Dr. Bohuan Lin said:“Exams (especially written exams) require one to figure out solutions within a very short time period, and moreover, under an intense atmosphere. From my point of view, it is really not a problem if one fails to solve those difficult and nonstandard problems under such a condition. Of course, for math study (so as for the study of other things), we should not be satisfied with merely being able to solve”standard problems”, but just try to challenge and improve yourself with deep/difficult questions under a daily condition with a natural mood, since this is the common situation in which you will be working on various tasks in your future career. ”\nThere are many ways to solve problems, and all of them are interesting when multiple integrals occur."
+    "text": "this is first line"
   },
   {
-    "objectID": "Steinmetz.html#cylinders",
-    "href": "Steinmetz.html#cylinders",
-    "title": "surface and volume of Steinmetz solid",
-    "section": "2 cylinders",
-    "text": "2 cylinders\nIt is easy\n\nsurface\n\n\nvolume\nuse method of sections directly\n\n\n3 cylinders\n\n\nsurface\n\nsee the photo attached, which is the easiest way for computation:\n\n\n\nvolume\n\nmethod 1—do not draw it(using conditional inferences)\nThanks to Dr.Bohuan Lin to teach me such a clever way which we do not need to draw the picture(only use conditional equations to solve it is interesting and a little difficult to handle it correctly).\nThe picture behind the method is attached to “Steinmetz(mou he fang gai)’s photo behind.png”\nWe have the set ( D ) defined as: \\[\nD \\triangleq \\left\\{(x, y, z) \\mid \\begin{cases}\nx^2 + y^2 \\leq 4 \\\\\ny^2 + z^2 \\leq 4 \\\\\nz^2 + x^2 \\leq 4\n\\end{cases} \\right\\}\n\\]\nFrom \\[x^2+ y^2 \\leq 4 , x^2 + z^2 \\leq 4 \\] we derive: if \\[\n|x| \\geq \\sqrt{2},|y| \\leq \\sqrt{2} \\quad \\text{then} \\quad |z| \\leq \\sqrt{2}\n\\] (and &lt; is the same shape)\nSimilarly:\nif \\[|z| \\geq \\sqrt{2} ,|x| \\leq \\sqrt{2} \\quad \\text{then} \\quad |y| \\leq \\sqrt{2} \\]\nAnd: if \\[\n|z| \\geq \\sqrt{2},|y| \\leq \\sqrt{2} \\quad \\text{then} \\quad |x| \\leq \\sqrt{2}\n\\] Therefore: \\[\nD = D_{\\leq \\sqrt{2}} \\cup \\bar{D}\n\\]\nWhere: \\[\nD_{\\leq \\sqrt{2}} = \\left\\{(x, y, z) \\in D \\mid |x|, |y|, |z| \\leq \\sqrt{2} \\right\\}\n\\] \\[\n\\begin{aligned}\n&= \\left\\{ (x, y, z) \\in \\mathbb{R}^3 \\mid |x|, |y|, |z| \\leq \\sqrt{2} \\right\\} \\\\\n&= [-\\sqrt{2}, \\sqrt{2}] \\times [-\\sqrt{2}, \\sqrt{2}] \\times [-\\sqrt{2}, \\sqrt{2}]\n\\end{aligned}\n\\]\nAnd: \\[\n\\bar{D} = \\left\\{(x, y, z) \\in D \\mid |x|, |y|, |z| &gt; \\sqrt{2} \\right\\}\n\\]\nThus: \\[\n\\bar{D} = \\bar{D}_{|x| &gt; \\sqrt{2}} \\cup \\bar{D}_{|y| &gt; \\sqrt{2}} \\cup \\bar{D}_{|z| &gt; \\sqrt{2}}\n\\]\n(This also implies: \\[\nD_{\\leq \\sqrt{2}} = \\left\\{(x, y, z) \\in D \\mid |x|, |y|, |z| \\leq \\sqrt{2} \\right\\}\n\\])\nWe derive: \\[\n\\bar{D} = \\left\\{ (x, y, z) \\mid |x| &gt; \\sqrt{2} \\right\\} \\cup \\left\\{ (x, y, z) \\mid |y| &gt; \\sqrt{2} \\right\\} \\cup \\left\\{ (x, y, z) \\mid |z| &gt; \\sqrt{2} \\right\\}\n\\]\nThus, combining all components, we get: \\[\nD = \\left( D_{\\leq \\sqrt{2}} \\cup \\bar{D}_{|x| &gt; \\sqrt{2}} \\cup \\bar{D}_{|y| &gt; \\sqrt{2}} \\cup \\bar{D}_{|z| &gt; \\sqrt{2}} \\right)\n\\] So we could decompose it into a cube in the center and 6 common volume. the 6 volume: 6 \\(\\int_{ \\sqrt{2}}^{2}4(4-x^2) dx\\)\nIn summary, the whole volume is \\((2 \\sqrt 2)^3 +6\\int_{ \\sqrt{2}}^{2}4(4-x^2) dx\\)\n\n\n\nmethod 2—cross-section method\nThanks to Dr. Haoran Chen for teaching us such method.\nWe suppose z&gt;x, z&gt;y,（then *3） then we could continue decompose it into (1)z~(\\(\\sqrt 2\\),2) and (2)z~(\\(0,\\)$$)(based on whether the square is out of the circle)\n\n\n\nmethod 3\nsee the photo attached"
+    "objectID": "index.html#quarto",
+    "href": "index.html#quarto",
+    "title": "Homepage",
+    "section": "",
+    "text": "this is first line"
   },
   {
     "objectID": "mth107.html",
@@ -161,10 +140,143 @@
     "text": "？prove？\n2n"
   },
   {
-    "objectID": "Mathematical Analysis 1.html#statement",
-    "href": "Mathematical Analysis 1.html#statement",
+    "objectID": "mth107.html#section-3",
+    "href": "mth107.html#section-3",
+    "title": "MTH107—NOTEs",
+    "section": "？",
+    "text": "？\n二维映射到三维的linear transformation"
+  },
+  {
+    "objectID": "mth107.html#a",
+    "href": "mth107.html#a",
+    "title": "MTH107—NOTEs",
+    "section": "a",
+    "text": "a"
+  },
+  {
+    "objectID": "sequence.html",
+    "href": "sequence.html",
+    "title": "(sequence)sinx/x’s 0-infinite’s integral",
+    "section": "",
+    "text": "Dr.Fajin Wei teach me how to do it. He is very good at Calculus and Modeling. He is kind to help our students. Thanks to him very much!\n\nintegral problems with solution of alternating integral test\nquestion: does \\[\\int_{0}^{\\infty}sinx/x\\,dx\\] converge?\nIt is easy to think of these 2 famous but difficultly proved formula: \\[\\int_{-\\infty}^{\\infty}sinx/x\\,dx=\\pi\n\\] \\[\\int_{-\\infty}^{\\infty}e^{-x^2}\\,dx=\\pi\n\\] However, they are not useful, which is how charasmatic the math is! I love math!\n\\[=\\Sigma_{n=1}^{\\infty}\\int_{2(n-1)\\pi}^{2n\\pi}sinx/x\\,dx\n\\] Then we let \\(x-[2(n-1)\\pi]=y\\)(dx=dy)\nso \\[=\\Sigma_{n=1}^{\\infty}\\int_{0}^{2\\pi}siny/(y+[2(n-1)\\pi])\\,dy\\] =\\[=\\Sigma_{n=1}^{\\infty}\\int_{0}^{\\pi}siny/(y+[2(n-1)\\pi])\\,dy+\\Sigma_{n=1}^{\\infty}\\int_{\\pi}^{2\\pi}siny/(y+[2(n-1)\\pi])\\,dy\\]\nThen we let y-\\(\\pi\\)=z(dy=dz)\n\\[=\\Sigma_{n=1}^{\\infty}\\int_{0}^{\\pi}siny/(y+[2(n-1)\\pi])\\,dy+\\Sigma_{n=1}^{\\infty}\\int_{0}^{\\pi}-sinz/(z+[(2n-1)\\pi])\\,dz\\] \\[=\\Sigma_{n=1}^{\\infty}\\int_{0}^{\\pi}sinm/(m+[2(n-1)\\pi])\\,dm+\\Sigma_{n=1}^{\\infty}\\int_{0}^{\\pi}-sinm/(m+[(2n-1)\\pi])\\,dm\\]\nso if \\[a_n=\\int_{0}^{\\pi}sinm/(m+(n-1)\\pi)\\] \\[\\int_{0}^{\\infty}sinx/x\\,dx=a_1-a_2+a_3-a_4+...+a_n\\], which is an alternating series!\nCoincidently, it is decresing and \\(a_n&lt;\\int_{0}^{\\pi}1/(n-1)\\pi\\,dm=1/(n-1)\\), and \\(\\lim_{{n \\to \\infty}} \\left( \\frac{1}{n-1}  \\right) = 0\\) so \\(\\lim_{{n \\to \\infty}}a_n=0\\) So it converges(Alternating series test).\n\n\nsimilar question 2\nThanks for Dr.Chi-Kun Lin to teach me this kind of problems!\n\\[\n\\int_0^\\infty \\frac{1}{1 + x^p \\sin^2 x} \\, dx\n\\]\n\n\n\n\\[\n\\sum_{n=0}^\\infty \\int_0^{\\frac{\\pi}{2}} \\frac{1}{1 + \\left( n + \\frac{1}{2} \\right)^2 p \\sin^2 t} \\, dt = \\int_0^{\\frac{\\pi}{2}} \\frac{1}{1 + \\left( n + \\frac{1}{2} \\right)^2 p \\sin^2 t} \\, dt\n\\]\n\\[\\Sigma\\int_0^{\\frac{\\pi}{2}} \\frac{1}{1 + \\left( n\\pi/2 + t \\right)^ p \\sin^2 t} \\, dt + \\int_0^{\\frac{\\pi}{2}} \\frac{1}{1 + \\left(( n + 1 \\right)\\pi/2-t)^ p sin^2t} \\, dt\\]\nfor:\n\\[\nx_n = \\Sigma\\int_0^{\\frac{\\pi}{2}} \\frac{1}{1 + \\left( n\\pi/2 + t \\right)^ p \\sin^2 t} \\, dt + \\int_0^{\\frac{\\pi}{2}} \\frac{1}{1 + \\left(( n + 1 \\right)\\pi/2-t)^ p sin^2t} \\, dt,\n\\]\nthere has\n\\[2 \\int_0^{\\frac{\\pi}{2}} \\frac{1}{1 + \\left( (n + 1) \\frac{\\pi}{2} \\right)^ p t^2} \\, dt \\leq x_n \\leq 2 \\int_0^{\\frac{\\pi}{2}} \\frac{1}{1 + \\left( (n + 1) \\frac{\\pi}{2} \\right) ^p \\frac{4}{\\pi^2} t^2} \\, dt\\]\n\nHowever, the integrals on both sides of the inequality can be calculated separately. For example:\n\n\\[\n\\int_0^1 \\frac{1}{1 + \\left( (n + 1) \\frac{\\pi}{2} \\right)^ p t^2} \\, dt = \\frac{1}{\\sqrt{((n + 1) \\frac{\\pi}{2} )^p}} \\arctan \\left( \\sqrt{(n + 1) \\frac{\\pi}{2}}^{2p}\\pi/2 \\right) \\geq \\frac{1}{\\sqrt{(n + 1) \\frac{\\pi}{2} }^{2p}  } \\frac{\\pi}{4}\n\\]"
+  },
+  {
+    "objectID": "mth1113.html",
+    "href": "mth1113.html",
+    "title": "Intro to probability and statistics",
+    "section": "",
+    "text": "stat is a large field in math involving the collection, organization, analysis,\n\n\n\n\n\n\n\nsample\n\n\n\n\n\n\n\n\nmin max sort data add scalar plot\nfrequency 表格\n\n\n\n\n\n\n\n\nselection bias\nmeasurement or response bias\n\n\n\nthe same chance to be selected\n\n\n\ncluster reflect general characteristic about"
+  },
+  {
+    "objectID": "mth1113.html#populations-and-samples",
+    "href": "mth1113.html#populations-and-samples",
+    "title": "Intro to probability and statistics",
+    "section": "",
+    "text": "sample\n\n\n\n\n\n\n\n\nmin max sort data add scalar plot\nfrequency 表格"
+  },
+  {
+    "objectID": "mth1113.html#bias",
+    "href": "mth1113.html#bias",
+    "title": "Intro to probability and statistics",
+    "section": "",
+    "text": "selection bias\nmeasurement or response bias"
+  },
+  {
+    "objectID": "mth1113.html#random-sampling",
+    "href": "mth1113.html#random-sampling",
+    "title": "Intro to probability and statistics",
+    "section": "",
+    "text": "the same chance to be selected"
+  },
+  {
+    "objectID": "mth1113.html#strata-and-cluster",
+    "href": "mth1113.html#strata-and-cluster",
+    "title": "Intro to probability and statistics",
+    "section": "",
+    "text": "cluster reflect general characteristic about"
+  },
+  {
+    "objectID": "Steinmetz.html",
+    "href": "Steinmetz.html",
+    "title": "surface and volume of Steinmetz solid",
+    "section": "",
+    "text": "Professor. Wang Duo, a very charismatic and responsible Calculus teacher who has worked for our country in the area of math for at least 50 years (which was his target before and he has realized his dream!), always says “You should try to solve one problem many times with new methods to handle and understand knowledge better”\nFor math learning, focusing too much on exams is not so meaningful. We should experience its beauty from the bottom of our hearts. I did not reach my target in the Multivariable Calculus and the Linear Algebra models, but Dr. Bohuan Lin said:“Exams (especially written exams) require one to figure out solutions within a very short time period, and moreover, under an intense atmosphere. From my point of view, it is really not a problem if one fails to solve those difficult and nonstandard problems under such a condition. Of course, for math study (so as for the study of other things), we should not be satisfied with merely being able to solve”standard problems”, but just try to challenge and improve yourself with deep/difficult questions under a daily condition with a natural mood, since this is the common situation in which you will be working on various tasks in your future career. ”\nThere are many ways to solve problems, and all of them are interesting when multiple integrals occur."
+  },
+  {
+    "objectID": "Steinmetz.html#cylinders",
+    "href": "Steinmetz.html#cylinders",
+    "title": "surface and volume of Steinmetz solid",
+    "section": "2 cylinders",
+    "text": "2 cylinders\nIt is easy\n\nsurface\n\n\nvolume\nuse method of sections directly\n\n\n3 cylinders\n\n\nsurface\n\nsee the photo attached, which is the easiest way for computation:\n\n\n\nvolume\n\nmethod 1—do not draw it(using conditional inferences)\nThanks to Dr.Bohuan Lin to teach me such a clever way which we do not need to draw the picture(only use conditional equations to solve it is interesting and a little difficult to handle it correctly).\nThe picture behind the method is attached to “Steinmetz(mou he fang gai)’s photo behind.png”\nWe have the set ( D ) defined as: \\[\nD \\triangleq \\left\\{(x, y, z) \\mid \\begin{cases}\nx^2 + y^2 \\leq 4 \\\\\ny^2 + z^2 \\leq 4 \\\\\nz^2 + x^2 \\leq 4\n\\end{cases} \\right\\}\n\\]\nFrom \\[x^2+ y^2 \\leq 4 , x^2 + z^2 \\leq 4 \\] we derive: if \\[\n|x| \\geq \\sqrt{2},|y| \\leq \\sqrt{2} \\quad \\text{then} \\quad |z| \\leq \\sqrt{2}\n\\] (and &lt; is the same shape)\nSimilarly:\nif \\[|z| \\geq \\sqrt{2} ,|x| \\leq \\sqrt{2} \\quad \\text{then} \\quad |y| \\leq \\sqrt{2} \\]\nAnd: if \\[\n|z| \\geq \\sqrt{2},|y| \\leq \\sqrt{2} \\quad \\text{then} \\quad |x| \\leq \\sqrt{2}\n\\] Therefore: \\[\nD = D_{\\leq \\sqrt{2}} \\cup \\bar{D}\n\\]\nWhere: \\[\nD_{\\leq \\sqrt{2}} = \\left\\{(x, y, z) \\in D \\mid |x|, |y|, |z| \\leq \\sqrt{2} \\right\\}\n\\] \\[\n\\begin{aligned}\n&= \\left\\{ (x, y, z) \\in \\mathbb{R}^3 \\mid |x|, |y|, |z| \\leq \\sqrt{2} \\right\\} \\\\\n&= [-\\sqrt{2}, \\sqrt{2}] \\times [-\\sqrt{2}, \\sqrt{2}] \\times [-\\sqrt{2}, \\sqrt{2}]\n\\end{aligned}\n\\]\nAnd: \\[\n\\bar{D} = \\left\\{(x, y, z) \\in D \\mid |x|, |y|, |z| &gt; \\sqrt{2} \\right\\}\n\\]\nThus: \\[\n\\bar{D} = \\bar{D}_{|x| &gt; \\sqrt{2}} \\cup \\bar{D}_{|y| &gt; \\sqrt{2}} \\cup \\bar{D}_{|z| &gt; \\sqrt{2}}\n\\]\n(This also implies: \\[\nD_{\\leq \\sqrt{2}} = \\left\\{(x, y, z) \\in D \\mid |x|, |y|, |z| \\leq \\sqrt{2} \\right\\}\n\\])\nWe derive: \\[\n\\bar{D} = \\left\\{ (x, y, z) \\mid |x| &gt; \\sqrt{2} \\right\\} \\cup \\left\\{ (x, y, z) \\mid |y| &gt; \\sqrt{2} \\right\\} \\cup \\left\\{ (x, y, z) \\mid |z| &gt; \\sqrt{2} \\right\\}\n\\]\nThus, combining all components, we get: \\[\nD = \\left( D_{\\leq \\sqrt{2}} \\cup \\bar{D}_{|x| &gt; \\sqrt{2}} \\cup \\bar{D}_{|y| &gt; \\sqrt{2}} \\cup \\bar{D}_{|z| &gt; \\sqrt{2}} \\right)\n\\] So we could decompose it into a cube in the center and 6 common volume. the 6 volume: 6 \\(\\int_{ \\sqrt{2}}^{2}4(4-x^2) dx\\)\nIn summary, the whole volume is \\((2 \\sqrt 2)^3 +6\\int_{ \\sqrt{2}}^{2}4(4-x^2) dx\\)\n\n\n\nmethod 2—cross-section method\nThanks to Dr. Haoran Chen for teaching us such method.\nWe suppose z&gt;x, z&gt;y,（then *3） then we could continue decompose it into (1)z~(\\(\\sqrt 2\\),2) and (2)z~(\\(0,\\)$$)(based on whether the square is out of the circle)\n\n\n\nmethod 3\nsee the photo attached"
+  },
+  {
+    "objectID": "eng pde.html",
+    "href": "eng pde.html",
+    "title": "A Kun’s PDE Lecture",
+    "section": "",
+    "text": "We should feel them."
+  },
+  {
+    "objectID": "eng pde.html#reformation",
+    "href": "eng pde.html#reformation",
+    "title": "A Kun’s PDE Lecture",
+    "section": "Reformation",
+    "text": "Reformation"
+  },
+  {
+    "objectID": "eng pde.html#renaissance",
+    "href": "eng pde.html#renaissance",
+    "title": "A Kun’s PDE Lecture",
+    "section": "Renaissance",
+    "text": "Renaissance"
+  },
+  {
+    "objectID": "eng pde.html#enlightenment",
+    "href": "eng pde.html#enlightenment",
+    "title": "A Kun’s PDE Lecture",
+    "section": "Enlightenment",
+    "text": "Enlightenment"
+  },
+  {
+    "objectID": "eng pde.html#industrial-revolution",
+    "href": "eng pde.html#industrial-revolution",
+    "title": "A Kun’s PDE Lecture",
+    "section": "Industrial Revolution",
+    "text": "Industrial Revolution\nNo dynasty lasts over 300 years, except Song dynasty which lasted over 300 years, with scholars serving as prime ministers. Su Shi snored."
+  },
+  {
+    "objectID": "eng pde.html#wave-equation",
+    "href": "eng pde.html#wave-equation",
+    "title": "A Kun’s PDE Lecture",
+    "section": "Wave Equation",
+    "text": "Wave Equation\nVibration of a string.\nTaylor, d’Alembert, Daniel Bernoulli, Jacob Bernoulli (Euler), Jacob Bernoulli (distribution).\n\\[\n\\frac{d^2x}{dt^2}\n\\]\nThe truths of this world have all been discovered by Newton.\n\\[\nu(x,t) \\text{: amplitude, } [u] = L\n\\]\n$$ [p] = M/L\n$$\n\\[\np(x,t) \\text{: density (1-dimensional)}\n\\]\n[T] = [ma] = [m][a] = ML/t^2\n\\(T=T_1=T_2\\) tension\n(0-L)\nF = Tsin() - Tsin\nm = \\(\\rho\\) x\n2nd law: \\(\\rho\\) x"
+  },
+  {
+    "objectID": "eng pde.html#linear-transformation",
+    "href": "eng pde.html#linear-transformation",
+    "title": "A Kun’s PDE Lecture",
+    "section": "linear transformation",
+    "text": "linear transformation\nKeep the parallelogram diagonal 保持平行四边形的对角线 x+y\nkeep a straight line 保持直线—a\n向量空间 vector space\n如果是从二维映射到三维怎么办。2dim—3dim？\n代数结构\n保留加法 keep the addition\nhomomorphism\nmorphism–形象"
+  },
+  {
+    "objectID": "eng pde.html#da..-bernulli-separation-of-variables",
+    "href": "eng pde.html#da..-bernulli-separation-of-variables",
+    "title": "A Kun’s PDE Lecture",
+    "section": "Da.. Bernulli Separation of Variables",
+    "text": "Da.. Bernulli Separation of Variables\n\\(u(x,\\theta)=\\phi(x)T(t)\\). (Gassian integral formula derivation also use this method)\n(A continuous function can be approximated by a polynomial, which is a super polynomial)\n(the defination of “density”)\n(Seperation variable: God to God, Caesar to Caesar—-x to x, t to t)\n分离变数\n\\[\n\\frac{T^{''}(t)}{C^2 T(t)} = -\\frac{\\phi^{''}(x)}{\\phi(x)}\n\\]\n\\[\n\\begin{aligned}\n&\\text{PDE:} \\quad \\text{分离变量法,separete variables} \\rightarrow \\text{ODE} \\\\\n&\\phi'' + \\lambda \\phi = 0 \\\\\n&T'' + \\lambda c^2 T = 0 \\\\\n&\\text{(B.C.) 边界条件：} \\\\\n&u(0,t) = \\phi(0) T(t) = 0 \\quad \\Rightarrow \\quad \\phi(0) = 0 \\quad \\text{(trivial 非平凡解,boring)} \\\\\n&u(L,t) = \\phi(L) T(t) = 0 \\quad \\Rightarrow \\quad \\phi(L) = 0\n\\end{aligned}\n\\]\n\\[\n\\lambda &lt; 0 \\quad , \\quad \\phi = e^{mx} \\quad \\text{(不可能，从0到0。0--0， impossible)}\n\\]\n\\[\n\\lambda = 0 \\quad , \\quad \\phi = Ax + B \\quad \\text{直线运动， straight move}\n\\]\n\\[\n\\lambda &gt; 0 \\quad , \\quad \\phi = c_1 \\cos(\\sqrt{\\lambda} x) + c_2 \\sin(\\sqrt{\\lambda} x)\n\\] ### 解的推导\n考虑方程： \\[\n\\phi'' + \\lambda \\phi = 0\n\\] 其中 () 是一个常数，解的形式取决于 () 的值。\n\n1. 当 (&lt; 0)\n当 (&lt; 0) 时，我们令 (= -^2) ，于是方程变为： \\[\n\\phi'' - \\mu^2 \\phi = 0\n\\] 其通解为： \\[\n\\phi(x) = A e^{\\mu x} + B e^{-\\mu x}\n\\] 这种解形式表示指数发散或衰减，通常是不稳定解。\n\n\n2. 当 (= 0)\n当 (= 0) 时，方程变为： \\[\n\\phi'' = 0\n\\] 这是一个线性方程，其通解为： \\[\n\\phi(x) = A x + B\n\\] 这表示直线运动。\n\n\n3. 当 (&gt; 0)\n当 (&gt; 0) 时，我们令 (= ^2) ，方程变为： \\[\n\\phi'' + \\mu^2 \\phi = 0\n\\] 其解为： \\[\n\\phi(x) = A \\cos(\\mu x) + B \\sin(\\mu x) ---wave\n\\] 这种解表示周期性波动。\n\n推导\n对于形如 ( \\(\\phi'' + \\mu^2 \\phi = 0\\) ) 的常微分方程，我们可以猜测它的解是指数形式，即：\n\\[\n\\phi(x) = e^{rx}\n\\]\n这里 ( r ) 是需要确定的参数。\n\n\n\n代入微分方程：\n将 ( (x) = e^{rx} ) 代入原方程，得到：\n\\[\nr^2 e^{rx} + \\mu^2 e^{rx} = 0\n\\]\n由于 ( e^{rx} )，可以消掉这个项，剩下的是特征方程：\n\\[\nr^2 + \\mu^2 = 0\n\\] 这个特征方程的解为：\n\\[\nr = \\pm i \\mu\n\\]\n这是一个虚数解。\n当特征根为纯虚数时，方程的通解可以写成正弦和余弦的组合形式，根据欧拉公式 ( e^{ix} = (x) + i (x) )，我们得到通解为：\n\\[\n\\phi(x) = A \\cos(\\mu x) + B \\sin(\\mu x)\n\\]\n其中，( A ) 和 ( B ) 是待定常数，它们可以通过边界条件或初始条件来确定。\ncharacteristic\n\\[\n\\phi(x) = C_1 \\cos(\\sqrt{\\lambda}x) + C_2 \\sin(\\sqrt{\\lambda}x)\n\\]\n边界条件： \\[\n\\phi(0) = 0 \\Rightarrow C_1 = 0\n\\]\n\\[\n\\phi(L) = C_2 \\sin(\\sqrt{\\lambda}L) = 0\n\\]\n因此， \\[\n\\sqrt{\\lambda_n}L = n\\pi \\quad (n = 1, 2, 3, \\dots)\n\\]\n得到本征值： \\[\n\\lambda_n = \\left( \\frac{n\\pi}{L} \\right)^2, \\quad n = 1, 2, 3, \\dots\n\\]\n对应的本征函数为： \\[\n\\phi_n(x) = \\sin \\left( \\frac{n\\pi x}{L} \\right)\n\\] Sturm-Liouville Problem:\n\\[\n\\lambda_n = \\left( \\frac{n\\pi}{L} \\right)^2, \\quad n = 1, 2, 3, \\dots\n\\]\n因此，特征函数为： \\[\n\\phi_n(x) = \\sin \\left( \\frac{n\\pi x}{L} \\right)\n\\] \\[\nT_n(t) = C_1 \\cos \\left( \\frac{n\\pi c t}{L} \\right) + C_2 \\sin \\left( \\frac{n\\pi c t}{L} \\right)\n\\]\n\\[\nu_n(x,t) = T_n(t) \\phi_n(x)\n\\]\n代入展开： \\[\nu(x,t) = \\sum_{n=1}^{\\infty} C_n \\sin \\left( \\frac{n\\pi x}{L} \\right) \\left[ C_1 \\cos \\left( \\frac{n\\pi c t}{L} \\right) + C_2 \\sin \\left( \\frac{n\\pi c t}{L} \\right) \\right]\n\\]"
+  },
+  {
+    "objectID": "eng pde.html#law-of-large-number",
+    "href": "eng pde.html#law-of-large-number",
+    "title": "A Kun’s PDE Lecture",
+    "section": "law of large number",
+    "text": "law of large number\neg. The reason the casino makes money is because even though the people who go there have a little more than a half chance of winning, the casino has more money than you, and if you stay long enough, you will win, so don’t go to the casino, because you can’t go deeper than the casino"
+  },
+  {
+    "objectID": "Mathematical-Analysis/Mathematical Analysis 1.html",
+    "href": "Mathematical-Analysis/Mathematical Analysis 1.html",
     "title": "Analysis1",
-    "section": "statement",
-    "text": "statement\np ### —An assertion that is either true of false but not both\ne.g. \n\nNegation of a statement p is a statement which means the opposite of P\n~p—-read “not p”\n\n\nQuantifiers\nall, every, each,no(none)—universal quantifiers\nsome,there exists, there is at least on, etc.—existential quantifiers\nP: some a’s are b’s\n~P: all a’s are not b’s/ no a’s are b’s\nP: some a are not b\n~p: all a are b\n\n\nTruth table: give the truth values of related statements in all possible cases\n(relevant to boolean in computer science\n# Example of boolean logic in a program\nis_raining = True\nhas_umbrella = False\n\nif is_raining and not has_umbrella:\n    print(\"You need an umbrella!\")\nelse:\n    print(\"You're good to go!\")\n) compound statement: combining several statements via logical operations\nConjunction: p^q. p and q\nDisjunction: p v q–p or q\none of them is true, p v q is true, so we only need to decide if oe of them is true, if it is, the p v q is true\np V (~p) is always true\na statement that is always true is called a tautology"
+    "section": "",
+    "text": "a problem about divisible using greatest common factor to solve(even Bezou’s theorem)\nQ:“Proof that if a positive integer \\(p\\) is not a perfect square, then \\(\\sqrt{p}\\) is irrational.”\nSol: Proof by Contradiction:\nAssume \\(\\sqrt{p}\\) is rational.\nSince \\(p\\) is not a perfect square, there exist two coprime positive integers \\(m\\) and \\(n\\) with \\(n &gt; 1\\) such that \\[\n\\sqrt{p} = \\frac{m}{n}\n\\]\nThen \\[\np = \\frac{m^2}{n^2}\n\\]\nwhich implies \\[\nm^2 = n^2 p\n\\] i.e. \\(n^2 \\mid m^2\\). Then We want to show that \\(n \\mid m\\):\nSuppose \\(m^2 = k n^2\\), where \\(k \\in \\mathbb{Z}\\).\nSince \\(m\\) and \\(n\\) are both integers, based on prime factorization, we have:\n\\[\nm = p_1^{a_1} p_2^{a_2} \\cdots p_k^{a_k}\n\\]\n\\[\nn = p_1^{b_1} p_2^{b_2} \\cdots p_k^{b_k}\n\\]\nwhere \\(p_i\\) are prime numbers, and \\(a_i, b_i\\) are non-negative integers.\nSo,\n\\[\nm^2 = p_1^{2a_1} p_2^{2a_2} \\cdots p_k^{2a_k}\n\\]\nand\n\\[\nn^2 = p_1^{2b_1} p_2^{2b_2} \\cdots p_k^{2b_k}\n\\]\nSince \\(m^2 = k n^2\\), we have:\n\\[\np_1^{2a_1} p_2^{2a_2} \\cdots p_k^{2a_k} = k \\cdot p_1^{2b_1} p_2^{2b_2} \\cdots p_k^{2b_k}\n\\]\nThis implies:\n\\[\n2a_i \\geq 2b_i \\quad \\text{for all } i\n\\]\nSo,\n\\[\na_i \\geq b_i \\quad \\text{for all } i\n\\]\nThus, \\(m\\) is divisible by \\(n\\). Therefore, \\(n \\mid m\\), which is opposite to m and n are coprime. So, \\(\\sqrt{p}\\) is irrational.\nmethod 2: Proof by Contradiction:\nAssume \\(\\sqrt{p}\\) is rational.\nSince \\(p\\) is not a perfect square, there exist two coprime positive integers \\(m\\) and \\(n\\) with \\(n &gt; 1\\) such that \\[\n\\sqrt{p} = \\frac{m}{n}\n\\]\nThen \\[\np = \\frac{m^2}{n^2}\n\\]\nwhich implies \\[\nm^2 = n^2 p\n\\] i.e. \\(n^2 \\mid m^2\\). So \\(n \\mid m^2\\)\nSince \\(n &gt; 1\\), it follows that there exists a prime number \\(r\\) such that \\(r \\mid n\\). (proof using Fundamental Theorem of Arithmetic:\nEvery integer greater than 1 is either a prime or can be uniquely factored into prime numbers.\nIf \\(n\\) is a prime number, then \\(r = n\\) and clearly \\(r \\mid n\\);\nIf \\(n\\) is not a prime number, it must be decomposable into a product of prime factors. Therefore, we can write: \\[\nn = p_1^{e_1} p_2^{e_2} \\cdots p_k^{e_k}\n\\]\nwhere \\(p_i\\) are prime numbers and \\(e_i\\) are positive integers.\nSince \\(n\\) is a product of prime factors, at least one of these prime factors \\(p_i\\) must divide \\(n\\).\nLet \\(r = p_i\\), which is one of the prime factors. Then \\(r \\mid n\\).\nThus, in both cases, whether \\(n\\) is a prime or not, there exists at least one prime number \\(r\\) such that \\(r \\mid n\\).)\nThus \\[\nr \\mid m^2 \\quad \\text{and} \\quad r \\mid m\n\\] (proof of \\[\nr \\mid m^2 \\quad \\text{and} \\quad r \\mid m\n\\]: proof1 using prime factorization as method 1’s:\n\\(r \\mid m^2\\) and r is a prime so \\(r=p_i\\) corresponding to the exponential of \\(2a_i\\)\nsince \\(a_i \\geq 0\\), so \\(a_i\\) is at least 1 . proof2 using if r is a prime and r|ab, then r|a or r|b:\nSuppose \\(r \\nmid a\\) and \\(r \\nmid b\\) (contradiction assumption).\nLet \\(\\gcd(a \\cdot b, r) = d\\) (where \\(d\\) is the greatest common divisor of \\(a \\cdot b\\) and \\(r\\)).\nSince \\(d \\mid r\\), \\(d\\) is a divisor of \\(r\\) (since \\(r\\) is a prime number).\nTherefore, \\(d\\) is either \\(r\\) or \\(1\\) (since \\(r\\) is prime).\nif \\(d = r\\), we have \\(\\gcd(a \\cdot b, r) = r\\). This implies \\(r \\mid a \\cdot b\\).\nSince we assumed \\(r \\nmid a\\) and \\(r \\nmid b\\), it contradicts our initial statement based on Properties of greatest common divisor with its proof using Bezou’s theorem;\nIf \\(d = 1\\), we have \\(\\gcd(a \\cdot b, r) = 1\\). This implies \\(r \\nmid a \\cdot b\\), which contradicts our assumption that \\(r \\mid a \\cdot b\\).\nThus, the contradiction shows that our assumption \\(r \\nmid a\\) and \\(r \\nmid b\\) must be false. Therefore, \\(r\\) must divide at least one of \\(a\\) or \\(b\\).\n)\nSince \\(m\\) and \\(n\\) are coprime, this leads to a contradiction.\nTherefore, \\(\\sqrt{p}\\) must be an irrational number."
   }
 ]

@@ -129,16 +129,18 @@ Found by Newton, solved by Dala, which is a spring. wave on a spring.
 Based on force analysis, we know:
 
 $$
-\rho \Delta x \frac{\partial^2 u}{\partial t^2} = T \sin(\theta + \theta_0) - T \sin(\theta)
+\rho \Delta x \frac{\partial^2 u}{\partial t^2} = T \sin(\theta + \Delta \theta) - T \sin(\theta)
 $$ where $\Delta \theta$ is very small, so $sin\theta$=$tan\theta$
 
 $$
 =T \frac{\partial u}{\partial x}\left( x + \Delta x, t \right) - T \frac{\partial u}{\partial x} (x, t)
 $$
 
+think of diffrential
+
 $$
 T \frac{\partial^2 u}{\partial x^2}(x + \lambda \Delta x, t)\Delta x
-$$
+$$ 想到微分-- think of differential
 
 $$
 \frac{\partial^2 u}{\partial x^2} = \frac{T}{\rho} \frac{\partial^2 u}{\partial t^2}
