@@ -2,7 +2,7 @@
 title: "Analysis1"
 ---
 # 1
-
+everything must be a reason during the process of proof. Patience is necessary!
 
 limit 
 
@@ -107,7 +107,7 @@ P: *some* a are not b
 
 
 #### Truth table: give the truth values of related statements in all possible cases
-(relevant to boolean in computer science
+(relevant to boolean in computer science)
 
 ```python
 # Example of boolean logic in a program
@@ -120,7 +120,7 @@ else:
     print("You're good to go!")
 
 ```
-)
+
 compound statement: combining several statements via logical operations
 
 Conjunction: p^q. p and q
@@ -136,6 +136,214 @@ p V (~p) is always true
 
 
 a statement that is always true is called a tautology
+
+
+
+
+## P10,1.4
+Equivalence of statements: Two statements are **logically equivalent**, if they have the same truth values in all possible situations.
+
+$A\equiv B$
+
+'abstract non-sense'
+
+
+
+**Them(De Morgan's laws)**
+
+A,B
+
+
+$\sim (A \land B) \equiv (\sim A) \lor (\sim B)$
+
+
+
+$\sim (A \lor B) \equiv (\sim A) \land (\sim B)$
+
+
+
+draw truth table to look at values
+
+
+交的话（and），都T才T；并的话（or），1T则T
+
+
+**Conditional:**
+
+If p(hypothesis/assumption/condition), then q(conclusion/consequence/result).
+
+
+read: p implies q/assume p, then q.
+
+key point: the implication is False when the rule is broken
+
+$$
+\begin{array}{|c|c|c|}
+\hline
+A & B & A \rightarrow B \\
+\hline
+T & T & T \\
+T & F & F \\
+F & T & T \\
+F & F & T \\
+\hline
+\end{array}
+$$
+**Def:** p, q,p-->q
+
+1)Converce: q--->p,i.e. if q, then p
+
+2)Contrapositive: (~q)-->(~p), i.e. if not q, then not p
+
+**Prop:** (p-->q)$\equiv$ ((~q)-->(~p))
+$$
+\begin{array}{|c|c|c|c|c|c|c|}
+\hline
+p & q & \sim p & \sim q & p \rightarrow q & \sim q \rightarrow \sim p & (p \rightarrow q) \equiv (\sim q \rightarrow \sim p) \\
+\hline
+T & T & F & F & T & T & T \\
+T & F & F & T & F & F & T \\
+F & T & T & F & T & T & T \\
+F & F & T & T & T & T & T \\
+\hline
+\end{array}
+$$
+
+**Proof by contradiction**: we want to prove p--->q, we prove (~q)---->(~p) instead
+
+proof: Assume ~q,
+       if , then
+       if , then
+       ...
+       --> ~p, which is contradict to the original assumption p
+       
+       Hence the assumption ~q is false, i.e. q is true.#
+       
+
+e.g.: n is a natural number. Prove that if n^2 is divisible by 2(p), then n is divisible by 2(q).
+
+
+Proof: Assume that n is not divisible by 2(~q),---> n is odd(defination), i.e. n =2k+1,k$\in Z$
+
+
+---> n^2 =(2k+1)^2(multiplicaiton)=2()+1, which is odd
+
+
+---> n^2 is not divisible by 2(~p),
+
+Thus the aassumption that n is not divisible by 2 is false so n is divisible by 2.#
+
+
+**biconditional:** p,q,
+
+(p-->q)$\land$(q--->p)
+
+statement      converse
+$$
+\begin{array}{|c|c|c|c|c|}
+\hline
+p & q & p \rightarrow q & q \rightarrow p & p \leftrightarrow q \\
+\hline
+T & T & T & T & T \\
+T & F & F & T & F \\
+F & T & T & F & F \\
+F & F & T & T & T \\
+\hline
+\end{array}
+$$
+
+
+Them: the only case p<-->q is true is then both p and q ture or false
+
+
+
+
+
+
+
+
+# ？
+
+
+对于这个，我们的逻辑是根据内容判断谁implies谁，然后把它带入truth table，对吗？eg
+
+### an eg question-Logical Puzzle on Truth of Statements relavent to truth table
+
+Consider the following 99 statements:
+
+- $S_1$: "Among these 99 statements, there is at most one true statement."
+- $S_2$: "Among these 99 statements, there are at most two true statements."
+- ...
+- $S_{99}$: "Among these 99 statements, there are at most 99 true statements."
+
+The goal is to determine which statements among these 99 are true.
+
+(hint:Consider the chain of implications from statement $S_n$ to $S_{n+1}$. Which statement implies which?
+)
+
+sol:
+If $S_n$ is true, it logically implies that $S_{n+1}$ must also be true because if there are at most $n$ true statements, then it is also true that there are at most $n+1$ true statements.
+(we also could use truth table to explain it:
+$$
+\begin{array}{|c|c|c|}
+\hline
+S_{n+1} & S_n & S_{n+1} \Rightarrow S_n \\
+\hline
+T & T & T \\
+T & F & F \\
+F & T & T \\
+F & F & T \\
+\hline
+\end{array}
+$$
+
+so we fail the hypothesis of $S_{n+1}\Rightarrow S_n$
+
+$$
+\begin{array}{|c|c|c|}
+\hline
+S_n & S_{n+1} & S_n \Rightarrow S_{n+1} \\
+\hline
+T & T & T \\
+T & F & F \\
+F & T & T \\
+F & F & T \\
+\hline
+\end{array}
+$$
+
+In this case:
+- The second row $(T \Rightarrow F)$ does not exist in our situation.
+- The final row $(F \Rightarrow F)$ does not satisfy our assumption about the statements.
+
+Thus, we conclude that the truth of $S_n$ implies the truth of all subsequent statements $S_{n+1}$, which leads us to believe that a chain of implications holds as described earlier in the analysis.
+
+
+)
+
+$$
+S_n \Rightarrow S_{n+1}
+$$
+so there exists an $S_n$, after which are true while before which are false.
+
+
+so:There are $100 - n$ true statements.
+
+
+$$
+100 - n \leq n \implies n \geq 50
+$$
+
+
+There are $n - 1$ false statements.
+   
+$$
+n - 1+1\leq 100 - n \implies n \leq 50
+$$
+so The 50th statement $S_{50}$ is true. Statements $S_1$ to $S_{49}$ are false, and statements $S_{50}$ to $S_{99}$ are true.
+
+
+
 
 # a problem about divisible using greatest common factor to solve(even Bezou's theorem)
 
@@ -295,6 +503,8 @@ Thus, the contradiction shows that our assumption $r \nmid a$ and $r \nmid b$ mu
 Since $m$ and $n$ are coprime, this leads to a contradiction.
 
 Therefore, $\sqrt{p}$ must be an irrational number.
+
+
 
 
 

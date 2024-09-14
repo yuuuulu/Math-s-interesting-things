@@ -205,6 +205,11 @@ window.Quarto = {
   <li><a href="#chaper-1-logicgrammar-v.s.-mathsliterature" id="toc-chaper-1-logicgrammar-v.s.-mathsliterature" class="nav-link" data-scroll-target="#chaper-1-logicgrammar-v.s.-mathsliterature">Chaper 1: Logic(grammar) v.s. Maths(literature)</a>
   <ul class="collapse">
   <li><a href="#statement" id="toc-statement" class="nav-link" data-scroll-target="#statement">statement</a></li>
+  <li><a href="#p101.4" id="toc-p101.4" class="nav-link" data-scroll-target="#p101.4">P10,1.4</a></li>
+  </ul></li>
+  <li><a href="#section-1" id="toc-section-1" class="nav-link" data-scroll-target="#section-1">？</a>
+  <ul class="collapse">
+  <li><a href="#an-eg-question-logical-puzzle-on-truth-of-statements-relavent-to-truth-table" id="toc-an-eg-question-logical-puzzle-on-truth-of-statements-relavent-to-truth-table" class="nav-link" data-scroll-target="#an-eg-question-logical-puzzle-on-truth-of-statements-relavent-to-truth-table">an eg question-Logical Puzzle on Truth of Statements relavent to truth table</a></li>
   </ul></li>
   <li><a href="#a-problem-about-divisible-using-greatest-common-factor-to-solveeven-bezous-theorem" id="toc-a-problem-about-divisible-using-greatest-common-factor-to-solveeven-bezous-theorem" class="nav-link" data-scroll-target="#a-problem-about-divisible-using-greatest-common-factor-to-solveeven-bezous-theorem">a problem about divisible using greatest common factor to solve(even Bezou’s theorem)</a></li>
   </ul>
@@ -234,6 +239,7 @@ window.Quarto = {
 
 <section id="section" class="level1">
 <h1>1</h1>
+<p>everything must be a reason during the process of proof. Patience is necessary!</p>
 <p>limit</p>
 <p>real number</p>
 </section>
@@ -287,7 +293,7 @@ window.Quarto = {
 </section>
 <section id="truth-table-give-the-truth-values-of-related-statements-in-all-possible-cases" class="level4">
 <h4 class="anchored" data-anchor-id="truth-table-give-the-truth-values-of-related-statements-in-all-possible-cases">Truth table: give the truth values of related statements in all possible cases</h4>
-<p>(relevant to boolean in computer science</p>
+<p>(relevant to boolean in computer science)</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Example of boolean logic in a program</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>is_raining <span class="op">=</span> <span class="va">True</span></span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>has_umbrella <span class="op">=</span> <span class="va">False</span></span>
@@ -296,13 +302,134 @@ window.Quarto = {
 <span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"You need an umbrella!"</span>)</span>
 <span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="cf">else</span>:</span>
 <span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"You're good to go!"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>) compound statement: combining several statements via logical operations</p>
+<p>compound statement: combining several statements via logical operations</p>
 <p>Conjunction: p^q. p and q</p>
 <p>Disjunction: p v q–p or q</p>
 <p>one of them is true, p v q is true, so we only need to decide if oe of them is true, if it is, the p v q is true</p>
 <p>p V (~p) is always true</p>
 <p>a statement that is always true is called a tautology</p>
 </section>
+</section>
+<section id="p101.4" class="level2">
+<h2 class="anchored" data-anchor-id="p101.4">P10,1.4</h2>
+<p>Equivalence of statements: Two statements are <strong>logically equivalent</strong>, if they have the same truth values in all possible situations.</p>
+<p><span class="math inline">\(A\equiv B\)</span></p>
+<p>‘abstract non-sense’</p>
+<p><strong>Them(De Morgan’s laws)</strong></p>
+<p>A,B</p>
+<p><span class="math inline">\(\sim (A \land B) \equiv (\sim A) \lor (\sim B)\)</span></p>
+<p><span class="math inline">\(\sim (A \lor B) \equiv (\sim A) \land (\sim B)\)</span></p>
+<p>draw truth table to look at values</p>
+<p>交的话（and），都T才T；并的话（or），1T则T</p>
+<p><strong>Conditional:</strong></p>
+<p>If p(hypothesis/assumption/condition), then q(conclusion/consequence/result).</p>
+<p>read: p implies q/assume p, then q.</p>
+<p>key point: the implication is False when the rule is broken</p>
+<p><span class="math display">\[
+\begin{array}{|c|c|c|}
+\hline
+A &amp; B &amp; A \rightarrow B \\
+\hline
+T &amp; T &amp; T \\
+T &amp; F &amp; F \\
+F &amp; T &amp; T \\
+F &amp; F &amp; T \\
+\hline
+\end{array}
+\]</span> <strong>Def:</strong> p, q,p–&gt;q</p>
+<p>1)Converce: q—&gt;p,i.e.&nbsp;if q, then p</p>
+<p>2)Contrapositive: (<sub>q)–&gt;(</sub>p), i.e.&nbsp;if not q, then not p</p>
+<p><strong>Prop:</strong> (p–&gt;q)<span class="math inline">\(\equiv\)</span> ((<sub>q)–&gt;(</sub>p)) <span class="math display">\[
+\begin{array}{|c|c|c|c|c|c|c|}
+\hline
+p &amp; q &amp; \sim p &amp; \sim q &amp; p \rightarrow q &amp; \sim q \rightarrow \sim p &amp; (p \rightarrow q) \equiv (\sim q \rightarrow \sim p) \\
+\hline
+T &amp; T &amp; F &amp; F &amp; T &amp; T &amp; T \\
+T &amp; F &amp; F &amp; T &amp; F &amp; F &amp; T \\
+F &amp; T &amp; T &amp; F &amp; T &amp; T &amp; T \\
+F &amp; F &amp; T &amp; T &amp; T &amp; T &amp; T \\
+\hline
+\end{array}
+\]</span></p>
+<p><strong>Proof by contradiction</strong>: we want to prove p—&gt;q, we prove (<sub>q)—-&gt;(</sub>p) instead</p>
+<p>proof: Assume ~q, if , then if , then … –&gt; ~p, which is contradict to the original assumption p</p>
+<pre><code>   Hence the assumption ~q is false, i.e. q is true.#
+   </code></pre>
+<p>e.g.: n is a natural number. Prove that if n^2 is divisible by 2(p), then n is divisible by 2(q).</p>
+<p>Proof: Assume that n is not divisible by 2(~q),—&gt; n is odd(defination), i.e.&nbsp;n =2k+1,k<span class="math inline">\(\in Z\)</span></p>
+<p>—&gt; n^2 =(2k+1)^2(multiplicaiton)=2()+1, which is odd</p>
+<p>—&gt; n^2 is not divisible by 2(~p),</p>
+<p>Thus the aassumption that n is not divisible by 2 is false so n is divisible by 2.#</p>
+<p><strong>biconditional:</strong> p,q,</p>
+<p>(p–&gt;q)<span class="math inline">\(\land\)</span>(q—&gt;p)</p>
+<p>statement converse <span class="math display">\[
+\begin{array}{|c|c|c|c|c|}
+\hline
+p &amp; q &amp; p \rightarrow q &amp; q \rightarrow p &amp; p \leftrightarrow q \\
+\hline
+T &amp; T &amp; T &amp; T &amp; T \\
+T &amp; F &amp; F &amp; T &amp; F \\
+F &amp; T &amp; T &amp; F &amp; F \\
+F &amp; F &amp; T &amp; T &amp; T \\
+\hline
+\end{array}
+\]</span></p>
+<p>Them: the only case p&lt;–&gt;q is true is then both p and q ture or false</p>
+</section>
+</section>
+<section id="section-1" class="level1">
+<h1>？</h1>
+<p>对于这个，我们的逻辑是根据内容判断谁implies谁，然后把它带入truth table，对吗？eg</p>
+<section id="an-eg-question-logical-puzzle-on-truth-of-statements-relavent-to-truth-table" class="level3">
+<h3 class="anchored" data-anchor-id="an-eg-question-logical-puzzle-on-truth-of-statements-relavent-to-truth-table">an eg question-Logical Puzzle on Truth of Statements relavent to truth table</h3>
+<p>Consider the following 99 statements:</p>
+<ul>
+<li><span class="math inline">\(S_1\)</span>: “Among these 99 statements, there is at most one true statement.”</li>
+<li><span class="math inline">\(S_2\)</span>: “Among these 99 statements, there are at most two true statements.”</li>
+<li>…</li>
+<li><span class="math inline">\(S_{99}\)</span>: “Among these 99 statements, there are at most 99 true statements.”</li>
+</ul>
+<p>The goal is to determine which statements among these 99 are true.</p>
+<p>(hint:Consider the chain of implications from statement <span class="math inline">\(S_n\)</span> to <span class="math inline">\(S_{n+1}\)</span>. Which statement implies which? )</p>
+<p>sol: If <span class="math inline">\(S_n\)</span> is true, it logically implies that <span class="math inline">\(S_{n+1}\)</span> must also be true because if there are at most <span class="math inline">\(n\)</span> true statements, then it is also true that there are at most <span class="math inline">\(n+1\)</span> true statements. (we also could use truth table to explain it: <span class="math display">\[
+\begin{array}{|c|c|c|}
+\hline
+S_{n+1} &amp; S_n &amp; S_{n+1} \Rightarrow S_n \\
+\hline
+T &amp; T &amp; T \\
+T &amp; F &amp; F \\
+F &amp; T &amp; T \\
+F &amp; F &amp; T \\
+\hline
+\end{array}
+\]</span></p>
+<p>so we fail the hypothesis of <span class="math inline">\(S_{n+1}\Rightarrow S_n\)</span></p>
+<p><span class="math display">\[
+\begin{array}{|c|c|c|}
+\hline
+S_n &amp; S_{n+1} &amp; S_n \Rightarrow S_{n+1} \\
+\hline
+T &amp; T &amp; T \\
+T &amp; F &amp; F \\
+F &amp; T &amp; T \\
+F &amp; F &amp; T \\
+\hline
+\end{array}
+\]</span></p>
+<p>In this case: - The second row <span class="math inline">\((T \Rightarrow F)\)</span> does not exist in our situation. - The final row <span class="math inline">\((F \Rightarrow F)\)</span> does not satisfy our assumption about the statements.</p>
+<p>Thus, we conclude that the truth of <span class="math inline">\(S_n\)</span> implies the truth of all subsequent statements <span class="math inline">\(S_{n+1}\)</span>, which leads us to believe that a chain of implications holds as described earlier in the analysis.</p>
+<p>)</p>
+<p><span class="math display">\[
+S_n \Rightarrow S_{n+1}
+\]</span> so there exists an <span class="math inline">\(S_n\)</span>, after which are true while before which are false.</p>
+<p>so:There are <span class="math inline">\(100 - n\)</span> true statements.</p>
+<p><span class="math display">\[
+100 - n \leq n \implies n \geq 50
+\]</span></p>
+<p>There are <span class="math inline">\(n - 1\)</span> false statements.</p>
+<p><span class="math display">\[
+n - 1+1\leq 100 - n \implies n \leq 50
+\]</span> so The 50th statement <span class="math inline">\(S_{50}\)</span> is true. Statements <span class="math inline">\(S_1\)</span> to <span class="math inline">\(S_{49}\)</span> are false, and statements <span class="math inline">\(S_{50}\)</span> to <span class="math inline">\(S_{99}\)</span> are true.</p>
 </section>
 </section>
 <section id="a-problem-about-divisible-using-greatest-common-factor-to-solveeven-bezous-theorem" class="level1">

@@ -2,6 +2,44 @@
 title: "Intro to probability and statistics"
 editor: visual
 ---
+
+# tutorial
+
+药厂研发药 ---实验可以解释因果
+
+dotplot没有纵轴in r(vs scallar plot)
+
+
+price of a textbook is discrete
+
+zip code is categorical
+
+
+dotplot and scallar plot
+
+
+do not manipulate data---experimental
+
+
+table 2.1
+
+11
+
+
+cluster/stratified 
+
+stratified: according to certain carecteristic
+
+cluster: randomly groups
+
+
+huge data for 顺序的 shuffle is ok
+
+but ..
+
+the likelihood is totally different
+
+
 # var data and stat
 stat is a large field in math involving the collection, organization, analysis, 
 

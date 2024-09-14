@@ -38,25 +38,23 @@ $$ **abstract and more general vector space over** $\mathbb{R^n}$ or $\mathbb{C^
 
 ## Notations
 
-$$
-a \in A
-$$ eg. $$
-3 \in \mathbb{Z}
-$$
+-   $$
+    a \in A
+    $$ eg. $$
+    3 \in \mathbb{Z}
+    $$
 
-$\emptyset$
+-   $\emptyset$
 
-Two sets A and B are equal if and only if they contain the same elements: $$
-A = B
-$$ if and only if $$
-\forall x \, (x \in A \iff x \in B)
-$$ $$
-A \subseteq B
-$$ intersection: $$
-A \cap B
-$$ union: $$
-A \cup B
-$$
+-   Two sets A and B are equal if and only if they contain the same elements: $$
+    A = B
+    $$ if and only if $$
+    \forall x \, (x \in A \iff x \in B)
+    $$ \$\$ A \subseteq B
+
+-   $$ intersection: $$ A \cap B
+
+-   $$ union: $$ A \cup B \$\$
 
 ## Maps
 
@@ -116,22 +114,6 @@ $$, called the inclusion of A (into B)
 
 ### restriction
 
-the reason to define it:
-
-For example, consider a map $g: B \to C$, where the function takes each element $x$ and maps it to $x + 2$. Let the sets be as follows:
-
--   $A = \mathbb{N} \subseteq B = \mathbb{R}$
-
--   $C = \mathbb{R}$ is the codomain of the function.
-
-The map $g$ is defined as: $$ g: B \to C, \quad g(x) = x + 2 \quad \text{for all } x \in B $$
-
-Now, consider the restriction of $g$ to $A$, denoted $g|_A: A \to C$, where: $$ g|_A: A \to C, \quad g|_A(x) = x + 2 \quad \text{for all } x \in A $$
-
-Although both $g: \mathbb{R} \to \mathbb{R}$ and $g|_A: \mathbb{N} \to \mathbb{R}$ follow the same rule $x \mapsto x + 2$, they cannot be considered the same map because their domains differ.
-
-(here, A $\subseteq$ B)
-
 That is:
 
 if A $\subseteq$ B and $f:B \to C$, we have a map for all a $\in$ A: $$
@@ -148,21 +130,37 @@ $$ because $$
 f \circ \iota_A(a)=f(\iota_A(a))=f(a)=f|_A(a)
 $$
 
-### set of all maps from A to B
+the reason to define it:
 
-if a and b are sets we define B\^A={f:A---B map} the set of all maps from A to B
+-   domains differ
+
+For example, consider a map $g|_B: B \to C$, where the function takes each element $x$ and maps it to $x + 2$. Let the sets be as follows:
+
+-   $A = \mathbb{N} \subseteq B = \mathbb{R}$
+
+-   $C = \mathbb{R}$ is the codomain of the function.
+
+The map $g$ is defined as: $$ g: B \to C, \quad g(x) = x + 2 \quad \text{for all } x \in B $$
+
+Now, consider the restriction of $g$ to $A$, denoted $g|_A: A \to C$, where: $$ g|_A: A \to C, \quad g|_A(x) = x + 2 \quad \text{for all } x \in A $$
+
+Although both $g: \mathbb{R} \to \mathbb{R}$ and $g|_A: \mathbb{N} \to \mathbb{R}$ follow the same rule $x \mapsto x + 2$, they cannot be considered the same map because their domains differ.
+
+(here, A $\subseteq$ B)
+
+-   focus on the specific area within the whole area
+
+### set of all maps from A to B(f)
+
+if a and b are sets we define $B^A={f:A--->B (map)}$ the set of all maps from A to B
 
 $$
 B^A = \{ f: A \to B \}
 $$ $B^\emptyset = \{ \emptyset \to B \}$ has only 1 element even if B=$\emptyset$
 
-### ?
+-   The set $B^{\emptyset}$ contains only the zero function. proof: suppose f,g $\in$ $B^\emptyset = \{f: \emptyset \to B \}$, imagine f != g, we can derive $\exists x \in \emptyset$ s.t. f(x) != g(x), which is absurd, so f=g
 
-so the last one F could be random / each , not limit to F right? if it is not F, the element is not definaty 0?
-
-proof: suppose f,g $\in$ $B^\emptyset = \{f: \emptyset \to B \}$, imagine f != g, we can derive $\exists x \in \emptyset$ s.t. f(x) != g(x), which is absurd, so f=g
-
-if B is F, suppose the only one element is sth.:
+suppose the only one element is sth.:
 
 sth. should follow the quality of the set, which is:
 
@@ -173,6 +171,8 @@ $\lambda$sth. =sth.
 so sth. = 0
 
 #### cardinality
+
+\|\| \#
 
 \|A\|: number of elements in A(set)
 
@@ -214,7 +214,7 @@ $$
 
 these 2 oprations generalize the standard operations on R2 and R3
 
-#### geometric realization
+### geometric realization
 
 矢量三角形--addition
 
@@ -232,7 +232,9 @@ R\^n as a vector space
 
 so we have(rn,+, mutiplication notation). the operations satisfies some useful properties that turn rn into a real vector space
 
-## relation between it and + $\cdot$
+## relation between rn and + .
+
+$(R^n,+,\cdot)$
 
 it means that + and $\cdot$ satisfy the following axioms:
 
@@ -242,7 +244,9 @@ it means that + and $\cdot$ satisfy the following axioms:
 
 3)  x + 0 = 0 + x neutral element for addition
 
-4)  $x + (-x) = (-x) + x = 0$ inverse for addition -x=y
+4)  $x + (-x) = (-x) + x = 0$
+
+------inverse for addition -x=y
 
 5)  $1 \cdot x = x$ Identity Element for Scalar Multiplication
 
@@ -254,9 +258,9 @@ it means that + and $\cdot$ satisfy the following axioms:
 
 ### ?
 
-want to ensure **if a set satisfies the 2 operations it is not satisfy all 1-8 axioms instead of F\^n**
+ask again, sorry: since negetive number set satisfies 2 oprations but not 8 axioms I want to ensure **if a finite set satisfies the 2 operations it is not satisfy all 1-8 axioms instead of F\^n**
 
-## complex Vector Space
+is that because of the defination of F-vector space?(abstract vector space-defination) \## Cn complex Vector Space
 
 $i^2 = -1$
 
@@ -284,8 +288,6 @@ $$
 \lambda \cdot (z_1, z_2, \dots, z_n) = (\lambda z_1, \lambda z_2, \dots, \lambda z_n)
 $$
 
-### Complex Vector Space
-
 Thus, $(\mathbb{C}^n, +, \cdot)$ is a complex vector space because it satisfies the vector space axioms 1-8, where we replaced $\mathbb{R}^n$ with $\mathbb{C}^n$. Many of the results from MTH107 will hold regardless of whether we are using $\mathbb{R}$ or $\mathbb{C}$, so we will often use $\mathbb{F}$ to represent either $\mathbb{R}$ or $\mathbb{C}$.
 
 For example, $\mathbb{F}^n$ is an $\mathbb{F}$-vector space, where $\mathbb{F}$ could be either $\mathbb{R}$ or $\mathbb{C}$.
@@ -305,11 +307,13 @@ Examples of fields include:
 -   $\mathbb{Q}$: the rational numbers
 -   $\mathbb{F}_2 = \{0, 1\}$: the finite field with two elements
 
-### Abstract Vector Space:
+## Abstract Vector Space:
 
 We can generalize this idea by replacing $\mathbb{F}^n$ with some abstract space $V$, define addition $+$ and scalar multiplication $\cdot$, and check if they satisfy the eight vector space axioms.
 
 ### Definitions:
+
+if V and W are sets, V$\times$ W = {(v,w)\|v$\in$ V, w$\in$ W}
 
 For a set $V$, **addition** on $V$ is a map:
 
@@ -333,7 +337,7 @@ $$
 
 For example, $(\lambda, v) \mapsto \lambda v$.
 
-An $F$-vector space is a set $V$ with an addition $+$ and scalar multiplication $\cdot$ by elements of $F$, such that $(V, +, \cdot)$ satisfies the vector space axioms 1-8, where $\mathbb{R}$ is replaced by $F$, and $\mathbb{R}^n$ is replaced by $V$.
+**An** $F$-vector space is a set $V$ with an addition $+$ and scalar multiplication $\cdot$ by elements of $F$, such that $(V, +, \cdot)$ satisfies the vector space axioms 1-8, where $\mathbb{R}$ is replaced by $F$, and $\mathbb{R}^n$ is replaced by $V$.
 
 ### Remarks and Examples:
 
@@ -342,11 +346,11 @@ An $F$-vector space is a set $V$ with an addition $+$ and scalar multiplication 
 
 ## ？prove？
 
-2n
+above field F
 
-# ？
+107's learning need of C
 
-ensure: they are not F but the spaces made of by F
+2n proof???
 
 ### Examples:
 
@@ -384,15 +388,69 @@ $$
 (\lambda \cdot f)(x) = \lambda \cdot f(x) \quad \forall x \in S
 $$
 
-### Special Cases:
+$F^S$ is an F-vector space
+
+## ?
+
+is there any quick way to think this kind of question instead of proving 8 axioms one by one?
+
+#### proof of FS
+
+$F^S$ is a vector space
+
+Proof: we need to check the 8 axioms from the defination
+
+(core: use the element here to x and then see the equality of the 2 function on the each side of the equality using the quality of $\mathbb F^n$)
+
+1)  f + g = g+f?
+
+these 2 functions ((f+g)(x) and (g+f)(x)) are equal if and only if they have values agrees on every $s \in S$
+
+$$
+(f+g)(x)=f(x)+g(x)
+$$ which is $\in F$ so it is equal to g(x)+f(x)(addition axiom)=(g+f)(x)
+
+2)(f+g)+h = f+(g+h)
+
+\[(f+g)+h\](x)=(f+g)(x)+h(x)=\[f(x)+g(x)\]+h(x), which are $\in F$, so
+
+=f(x)+\[g(x)+h(x)\](axiom 3)=f(x)+(g+h)(x)=\[f+(g+h)\](x)
+
+3)  $\exists 0: 0+f=f$ for any $f \in F^S$
+
+yes, define the zero function $0_F:$ to be the constant function $0_F$, i.e. $0_F(x)=0_F$
+
+4)  for $f\in F^S$, can we find an inverse?
+
+-f is defined by (-f)(x)=-f(x)
+
+check: (f+(-f))(x)=f(x)+(-f(x))=$0_F$
+
+so f+(-f)=$0_{F^S}$
+
+5)  1f=f $（1\cdot f)(x)=1\cdot f(x)(\in F)=f(x)$
+
+6)  (ab)f=a(bf)
+
+pass
+
+7)a(f+g)=af+ag
+
+a(f+g)(x)=a(f(x)+g(x))=af(x)+ag(x)=(af+ag)(x)
+
+8)(a+b)f=af+bf
+
+(a+b)f(x)=af(x)+bf(x)
+
+(af+bf)(x)=(af)(x)+(bf)(x)=af(x)+bf(x)
+
+#### Special Cases:
 
 1.  **Empty Set**: If $S = \emptyset$, then:
 
 $$
 F^{\emptyset} = \{ 0 \}
-$$
-
-The set $F^{\emptyset}$ contains only the zero function.
+$$ the proof has been proved above on "set of all maps from A to B(f)"
 
 2.  **Finite Set**: If $S = \{1, 2, \dots, n\}$, then:
 
@@ -400,13 +458,222 @@ $$
 F^{\{1, 2, \dots, n\}} = F^n
 $$
 
+##### proof of special 2:
 
+Let $F^n$ represent the n-dimensional vector space over a field $F$, and $F^{\{1, \dots, n\}}$ represent the set of functions from the set $\{1, \dots, n\}$ to $F$, i.e., it assigns a scalar from $F$ to each index in $\{1, \dots, n\}$.
+
+We will prove that there exists a linear map $T: F^n \to F^{\{1, \dots, n\}}$ such that:
+
+1.  $T$ is a bijection (i.e., both injective and surjective).
+2.  $T$ preserves addition: $$ 
+    T(f + g) = T(f) + T(g) 
+    $$ for all $f, g \in F^n$.
+3.  $T$ preserves scalar multiplication: $$ 
+    T(a f) = a T(f) 
+    $$ for all $f \in F^n$ and $a \in F$.
+
+A map that satisfies these two conditions is called a linear map, and we will learn about it later in class. A linear map that is a bijection is called an isomorphism.
+
+**Define the Map** $T$
+
+Define the map $T: F^n \to F^{\{1, \dots, n\}}$ as follows:
+
+For each vector $(a_1, a_2, \dots, a_n) \in F^n$, define the corresponding function $T((a_1, a_2, \dots, a_n)) = f \in F^{\{1, \dots, n\}}$ by: $$
+f(i) = a_i \quad \text{for each} \, i = 1, 2, \dots, n.
+$$ Thus, $T((a_1, a_2, \dots, a_n)) = (f(1), f(2), \dots, f(n)) = (a_1, a_2, \dots, a_n)$.
+
+-   **Injectivity**: Suppose $T((a_1, a_2, \dots, a_n)) = T((b_1, b_2, \dots, b_n))$. This implies that for each $i$, $a_i = b_i$. Therefore, $(a_1, a_2, \dots, a_n) = (b_1, b_2, \dots, b_n)$, so $T$ is injective.
+
+-   **Surjectivity**: Given any function $f \in F^{\{1, \dots, n\}}$, we can find a vector $(a_1, a_2, \dots, a_n) \in F^n$ such that $f(i) = a_i$ for each $i = 1, 2, \dots, n$. Therefore, $T$ is surjective.
+
+Since $T$ is both injective and surjective, it is a bijection.
+
+**Prove that** $T$ Preserves Addition
+
+Let $(a_1, a_2, \dots, a_n), (b_1, b_2, \dots, b_n) \in F^n$. Then:
+
+$$
+T((a_1, a_2, \dots, a_n) + (b_1, b_2, \dots, b_n)) = T((a_1 + b_1, a_2 + b_2, \dots, a_n + b_n)).
+$$
+
+$$
+f(i) = a_i + b_i, \quad i = 1, 2, \dots, n.
+$$ (the definition of $T$) the other hand site: $$
+T((a_1, a_2, \dots, a_n)) + T((b_1, b_2, \dots, b_n)) = (a_1, a_2, \dots, a_n) + (b_1, b_2, \dots, b_n),
+$$ which results f, also.
+
+**Prove that** $T$ Preserves Scalar Multiplication
+
+Let $(a_1, a_2, \dots, a_n) \in F^n$ and $c \in F$. Then: $$
+T(c \cdot (a_1, a_2, \dots, a_n)) = T((c a_1, c a_2, \dots, c a_n)).
+$$
+
+$$
+f(i) = c a_i, \quad i = 1, 2, \dots, n.
+$$ (the definition of $T$)
+
+the other hand site: $$
+c \cdot T((a_1, a_2, \dots, a_n)) = c \cdot (a_1, a_2, \dots, a_n),
+$$ which also results in $f$
+
+Since T is an isomorphism (bijection + linear), then $T^{-1}$ is automatically linear. That is we automatically have $T^{-1}(x+y)= T^{-1}(x)+ T^{-1}(y)$, and the same for scalar multiplication. So they are the same in vector space, too.
+
+We have shown that $T$ is a bijection and preserves both addition and scalar multiplication. Therefore, $T$ is a linear isomorphism, and $F^n$ and $F^{\{1, \dots, n\}}$ are isomorphic as vector spaces.
+
+(**Last remark**: If $T$ is an isomorphism (i.e., bijective and linear), then $T^{-1}$ is automatically linear. That is, we automatically have $T^{-1}(x + y) = T^{-1}(x) + T^{-1}(y)$, and the same holds for scalar multiplication. Therefore, there is no need to check these properties for $T^{-1}$.)
+
+(a more detailed one proving bijetive: $F^{\{1, 2, 3, \dots, n\}}$ is Equivalent to $F^n$
+
+To prove that $F^{\{1, 2, 3, \dots, n\}}$ is equivalent to $F^n$, we show there is a bijection between the two sets, meaning each element in $F^{\{1, 2, 3, \dots, n\}}$ corresponds to a unique element in $F^n$, and vice versa.
+
+By definition, $F^{\{1, 2, 3, \dots, n\}}$ is the set of all functions from $\{1, 2, 3, \dots, n\}$ to $F$. Each function $f$ can be written as:
+
+$$
+f = (f(1), f(2), \dots, f(n)).
+$$
+
+$F^n$ is the set of ordered $n$-tuples $(a_1, a_2, \dots, a_n)$, where each $a_i \in F$.
+
+Mapping from $F^{\{1, 2, 3, \dots, n\}}$ to $F^n$---
+
+For any function $f \in F^{\{1, 2, 3, \dots, n\}}$, we define the corresponding tuple in $F^n$ as:
+
+$$
+T(f) = (f(1), f(2), \dots, f(n)).
+$$
+
+Mapping from $F^n$ to $F^{\{1, 2, 3, \dots, n\}}$----
+
+For any tuple $(a_1, a_2, \dots, a_n) \in F^n$, define the corresponding function in $F^{\{1, 2, 3, \dots, n\}}$ as:
+
+$$
+T^{-1}(a_1, a_2, \dots, a_n)(i) = a_i, \quad \text{for each } i \in \{1, 2, \dots, n\}.
+$$
+
+Let $f \in F^{\{1, 2, 3, \dots, n\}}$--
+
+$$
+T(f) = (f(1), f(2), \dots, f(n)).
+$$
+
+then, define
+
+$$
+T^{-1}(f(1), f(2), \dots, f(n))(i) = f(i), \quad \text{for each } i \in \{1, 2, \dots, n\}.
+$$
+
+Thus,
+
+$$
+T^{-1}(T(f)) = f.
+$$
+
+Let $(a_1, a_2, \dots, a_n) \in F^n$. Applying $T^{-1}$, we get the function $f$ such that $f(i) = a_i$ for each $i$. And then,
+
+$$
+T(T^{-1}(a_1, a_2, \dots, a_n)) = (a_1, a_2, \dots, a_n).
+$$
+
+Thus,
+
+$$
+T \circ T^{-1} = \text{id}_{F^n}.
+$$ This equation means that for any element $(a_1, a_2, \dots, a_n) \in F^n$, applying $T^{-1}$ to obtain a function $f$, and then applying $T$ to $f$, returns the original tuple:
+
+$$
+T^{-1} \circ T = \text{id}_{F^{\{1,2,3,...n\}}}.
+$$
+
+This equation means that for any function $f \in F^{\{1, 2, 3, \dots, n\}}$, applying $T$ to obtain a tuple $(f(1), f(2), \dots, f(n))$, and then applying $T^{-1}$ to that tuple, returns the original function:
+
+Since $T$ and $T^{-1}$ are inverses of each other, we have established a bijection between $F^{\{1, 2, 3, \dots, n\}}$ and $F^n$. Therefore, $F^{\{1, 2, 3, \dots, n\}}$ and $F^n$ are equivalent as sets and vector spaces.)
 
 ## ？
 
-二维映射到三维的linear transformation
+二维映射到三维的linear transformation's geometric meaning
 
+## General properties of vector space
 
+Let V be a vector space over F
 
+We will prove some properties of V using only the defination (axioms 1-8)
 
-## a
+### Proposition
+
+1)  The zero(additive identity) is unique. That is: $\exists ! 0\in V s.t. 0+V=V, \forall v\in V$
+
+proof: Suppose we have 2 zero elements: 0 and 0'
+
+0=0'+0=0+0'=0'
+
+2)  $\forall v\in V$ there exists a unique additive inverse
+
+Supppose w and w' are 2 inverses for v, w=0+w=(v+w')+w=v+(w'+w)=v+(w+w')=(v+w)+w'=0+w'=w'
+
+3)  $\forall v\in V$, $O_F\cdot V=O_V$
+
+### ?
+
+why $0_F\cdot V=0_V+w$ F---\>V????
+
+why we could think of let w be the inverse of $0_F\cdot V$? I always just could recite I mean remember the process instead of write it down smoothly
+
+(see 0_f as 0 is also okay)
+
+proof: $0_F$$\cdot$V= $(0_F+0_F)$$\cdot$V=$0_Fv+0_Fv$
+
+let w be the inverse of $0_F\cdot v$(use proposition 2)
+
+then $0_V$=$0_F\cdot v+w$=$(0_Fv+0_Fv)+w=0_Fv+(0_Fv+w)=0_Fv$
+
+4)  $\forall x\in F: x\cdot O_V=O_F$
+
+proof: $x\cdot 0_V=x\cdot (0_V+0_V)=x\cdot 0_V+x\cdot 0_V$
+
+so $0_V=x\cdot 0_V$
+
+#### ?
+
+difference between o_Fv=0_v and xo_v=0_f(3 and 4 proposition)
+
+### Property
+
+$\forall v\in V,(-1)\cdot V=-V$
+
+proof: V+(-1)V=(1+(-1))$\cdot$V=0$\cdot$V=0
+
+so (-1)V is an addictive inverse of V
+
+so we finish proof(by the addictive inverse)
+
+#### reminder of computing inverse of a matrix
+
+method1:
+
+det(A)
+
+每一个位置的det构成的矩阵：B
+
+cofactor matrix:$(-1)^{n+m}$
+
+C=B$\times$ cofactor matrix
+
+$A^{-1}=1/det(A)$ times $C^T$
+
+method2: work for the tansformation of a matrix
+
+# Tutorial
+
+## problems
+
+-   summarize1: give opposite example and draw pictures are okay.
+
+eg.![a problem](images/clipboard-3068495766.png)
+
+eg.
+
+![](images/clipboard-1407097711.png)
+
+## understand again
+
+![understand vector space](images/clipboard-1253681054.png)
