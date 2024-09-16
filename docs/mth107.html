@@ -129,6 +129,10 @@ window.Quarto = {
 <span class="menu-text">Analysis 1</span></a>
   </li>  
   <li class="nav-item">
+    <a class="nav-link" href="./mth1113.html"> 
+<span class="menu-text">intro to prob, and stat.</span></a>
+  </li>  
+  <li class="nav-item">
     <a class="nav-link" href="./eng pde.html"> 
 <span class="menu-text">PDE</span></a>
   </li>  
@@ -187,6 +191,21 @@ window.Quarto = {
   <li><a href="#restriction" id="toc-restriction" class="nav-link" data-scroll-target="#restriction">restriction</a></li>
   <li><a href="#set-of-all-maps-from-a-to-bf" id="toc-set-of-all-maps-from-a-to-bf" class="nav-link" data-scroll-target="#set-of-all-maps-from-a-to-bf">set of all maps from A to B(f)</a></li>
   </ul></li>
+  <li><a href="#relevant-to-dear-regression-analysis" id="toc-relevant-to-dear-regression-analysis" class="nav-link" data-scroll-target="#relevant-to-dear-regression-analysis">relevant to dear regression analysis</a>
+  <ul class="collapse">
+  <li><a href="#vector-and-matrix-multiplication-in-regression" id="toc-vector-and-matrix-multiplication-in-regression" class="nav-link" data-scroll-target="#vector-and-matrix-multiplication-in-regression">3.1 Vector and Matrix Multiplication in Regression</a></li>
+  <li><a href="#orthogonality-of-vectors" id="toc-orthogonality-of-vectors" class="nav-link" data-scroll-target="#orthogonality-of-vectors">3.2 Orthogonality of Vectors</a></li>
+  <li><a href="#properties-of-matrix-xt-x" id="toc-properties-of-matrix-xt-x" class="nav-link" data-scroll-target="#properties-of-matrix-xt-x">3.3 Properties of Matrix <span class="math inline">\(X^T X\)</span></a></li>
+  <li><a href="#projection-matrix-in-ols" id="toc-projection-matrix-in-ols" class="nav-link" data-scroll-target="#projection-matrix-in-ols">3.4 Projection Matrix in OLS</a></li>
+  <li><a href="#residual-sum-of-squares-rss" id="toc-residual-sum-of-squares-rss" class="nav-link" data-scroll-target="#residual-sum-of-squares-rss">3.5 Residual Sum of Squares (RSS)</a></li>
+  <li><a href="#variance-covariance-matrix-of-hatbeta" id="toc-variance-covariance-matrix-of-hatbeta" class="nav-link" data-scroll-target="#variance-covariance-matrix-of-hatbeta">3.6 Variance-Covariance Matrix of <span class="math inline">\(\hat{\beta}\)</span></a></li>
+  <li><a href="#properties-of-orthogonal-projections" id="toc-properties-of-orthogonal-projections" class="nav-link" data-scroll-target="#properties-of-orthogonal-projections">4. Properties of Orthogonal Projections</a></li>
+  <li><a href="#vector-and-matrix-definitions" id="toc-vector-and-matrix-definitions" class="nav-link" data-scroll-target="#vector-and-matrix-definitions">Vector and Matrix Definitions</a></li>
+  <li><a href="#properties-of-orthogonality" id="toc-properties-of-orthogonality" class="nav-link" data-scroll-target="#properties-of-orthogonality">Properties of Orthogonality</a></li>
+  <li><a href="#full-column-rank-and-invertibility" id="toc-full-column-rank-and-invertibility" class="nav-link" data-scroll-target="#full-column-rank-and-invertibility">Full Column Rank and Invertibility</a></li>
+  <li><a href="#symmetric-and-invertible-properties" id="toc-symmetric-and-invertible-properties" class="nav-link" data-scroll-target="#symmetric-and-invertible-properties">Symmetric and Invertible Properties</a></li>
+  <li><a href="#总结" id="toc-总结" class="nav-link" data-scroll-target="#总结">总结：</a></li>
+  </ul></li>
   </ul></li>
   <li><a href="#chapter-1-vector-spaces" id="toc-chapter-1-vector-spaces" class="nav-link" data-scroll-target="#chapter-1-vector-spaces">Chapter 1: vector spaces</a>
   <ul class="collapse">
@@ -212,12 +231,12 @@ window.Quarto = {
   <ul class="collapse">
   <li><a href="#examples" id="toc-examples" class="nav-link" data-scroll-target="#examples">Examples:</a></li>
   </ul></li>
-  <li><a href="#section-1" id="toc-section-1" class="nav-link" data-scroll-target="#section-1">?</a></li>
-  <li><a href="#section-2" id="toc-section-2" class="nav-link" data-scroll-target="#section-2">？</a></li>
+  <li><a href="#section-2" id="toc-section-2" class="nav-link" data-scroll-target="#section-2">?</a></li>
+  <li><a href="#section-3" id="toc-section-3" class="nav-link" data-scroll-target="#section-3">？</a></li>
   <li><a href="#general-properties-of-vector-space" id="toc-general-properties-of-vector-space" class="nav-link" data-scroll-target="#general-properties-of-vector-space">General properties of vector space</a>
   <ul class="collapse">
   <li><a href="#proposition" id="toc-proposition" class="nav-link" data-scroll-target="#proposition">Proposition</a></li>
-  <li><a href="#section-3" id="toc-section-3" class="nav-link" data-scroll-target="#section-3">?</a></li>
+  <li><a href="#section-4" id="toc-section-4" class="nav-link" data-scroll-target="#section-4">?</a></li>
   <li><a href="#property" id="toc-property" class="nav-link" data-scroll-target="#property">Property</a></li>
   </ul></li>
   </ul></li>
@@ -401,6 +420,139 @@ B^A = \{ f: A \to B \}
 </section>
 </section>
 </section>
+<section id="relevant-to-dear-regression-analysis" class="level2">
+<h2 class="anchored" data-anchor-id="relevant-to-dear-regression-analysis">relevant to dear regression analysis</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/clipboard-3617718739.png" class="img-fluid figure-img"></p>
+<figcaption>MLR</figcaption>
+</figure>
+</div>
+<p><strong>matrix</strong></p>
+<section id="vector-and-matrix-multiplication-in-regression" class="level3">
+<h3 class="anchored" data-anchor-id="vector-and-matrix-multiplication-in-regression">3.1 Vector and Matrix Multiplication in Regression</h3>
+<p>In linear regression, we often work with matrix and vector representations. Given a matrix <span class="math inline">\(X\)</span> (which represents the design matrix with each row corresponding to one observation and each column to a predictor), and a vector <span class="math inline">\(Y\)</span> (representing the observed responses), the regression model can be written as:</p>
+<p><span class="math display">\[
+Y = X \beta + \epsilon
+\]</span></p>
+<p>Where: - <span class="math inline">\(Y\)</span>: The <span class="math inline">\(n \times 1\)</span> response vector, - <span class="math inline">\(X\)</span>: The <span class="math inline">\(n \times p\)</span> design matrix, - <span class="math inline">\(\beta\)</span>: The <span class="math inline">\(p \times 1\)</span> vector of unknown coefficients, - <span class="math inline">\(\epsilon\)</span>: The <span class="math inline">\(n \times 1\)</span> vector of errors or residuals.</p>
+<p>The ordinary least squares (OLS) estimator for <span class="math inline">\(\beta\)</span>, denoted <span class="math inline">\(\hat{\beta}\)</span>, is obtained by minimizing the residual sum of squares:</p>
+<p><span class="math display">\[
+\hat{\beta} = (X^T X)^{-1} X^T Y
+\]</span></p>
+</section>
+<section id="orthogonality-of-vectors" class="level3">
+<h3 class="anchored" data-anchor-id="orthogonality-of-vectors">3.2 Orthogonality of Vectors</h3>
+<p>Consider two vectors <span class="math inline">\(X_1\)</span> and <span class="math inline">\(X_2\)</span>. If <span class="math inline">\(X_1^T X_2 = 0\)</span>, we say the vectors are orthogonal, meaning they are uncorrelated in terms of inner product space. In regression, orthogonality implies no collinearity between predictors.</p>
+<p>Orthogonality plays an important role in simplifying matrix operations in regression. For example, if <span class="math inline">\(X_1\)</span> is orthogonal to <span class="math inline">\(X_2\)</span>, the matrix <span class="math inline">\(X^T X\)</span> will have off-diagonal elements equal to zero, simplifying the computation of the inverse.</p>
+</section>
+<section id="properties-of-matrix-xt-x" class="level3">
+<h3 class="anchored" data-anchor-id="properties-of-matrix-xt-x">3.3 Properties of Matrix <span class="math inline">\(X^T X\)</span></h3>
+<p>If the matrix <span class="math inline">\(X^T X\)</span> is invertible, the OLS estimator exists and is unique. One important property of the matrix <span class="math inline">\(X^T X\)</span> is that it is symmetric and positive semi-definite. If <span class="math inline">\(X\)</span> has full column rank (meaning that the columns of <span class="math inline">\(X\)</span> are linearly independent), then <span class="math inline">\(X^T X\)</span> is positive definite, and its inverse exists.</p>
+<section id="inverse-of-xt-x" class="level4">
+<h4 class="anchored" data-anchor-id="inverse-of-xt-x">Inverse of <span class="math inline">\(X^T X\)</span>:</h4>
+<p>If <span class="math inline">\(X^T X\)</span> is invertible, then:</p>
+<p><span class="math display">\[
+(X^T X)^{-1} X^T X = I_p
+\]</span></p>
+<p>Where <span class="math inline">\(I_p\)</span> is the identity matrix of size <span class="math inline">\(p \times p\)</span>.</p>
+</section>
+</section>
+<section id="projection-matrix-in-ols" class="level3">
+<h3 class="anchored" data-anchor-id="projection-matrix-in-ols">3.4 Projection Matrix in OLS</h3>
+<p>The projection matrix (or hat matrix) <span class="math inline">\(P\)</span> is defined as:</p>
+<p><span class="math display">\[
+P = X (X^T X)^{-1} X^T
+\]</span></p>
+<p>This matrix <span class="math inline">\(P\)</span> projects the observed data vector <span class="math inline">\(Y\)</span> onto the column space of <span class="math inline">\(X\)</span>, giving the fitted values <span class="math inline">\(\hat{Y}\)</span>:</p>
+<p><span class="math display">\[
+\hat{Y} = P Y
+\]</span></p>
+<p>The residuals <span class="math inline">\(\hat{\epsilon}\)</span>, which are the differences between the observed and fitted values, are given by:</p>
+<p><span class="math display">\[
+\hat{\epsilon} = Y - \hat{Y} = (I_n - P) Y
+\]</span></p>
+<p>Where <span class="math inline">\(I_n\)</span> is the <span class="math inline">\(n \times n\)</span> identity matrix. The projection matrix <span class="math inline">\(P\)</span> has several key properties: - <span class="math inline">\(P^2 = P\)</span> (idempotent), - <span class="math inline">\(P^T = P\)</span> (symmetric).</p>
+</section>
+<section id="residual-sum-of-squares-rss" class="level3">
+<h3 class="anchored" data-anchor-id="residual-sum-of-squares-rss">3.5 Residual Sum of Squares (RSS)</h3>
+<p>The residual sum of squares (RSS) is given by:</p>
+<p><span class="math display">\[
+\text{RSS} = \sum_{i=1}^{n} \hat{\epsilon}_i^2 = \hat{\epsilon}^T \hat{\epsilon} = (Y - X \hat{\beta})^T (Y - X \hat{\beta})
+\]</span></p>
+<p>Substituting <span class="math inline">\(\hat{\beta} = (X^T X)^{-1} X^T Y\)</span>, we get:</p>
+<p><span class="math display">\[
+\text{RSS} = Y^T (I_n - P) Y
+\]</span></p>
+</section>
+<section id="variance-covariance-matrix-of-hatbeta" class="level3">
+<h3 class="anchored" data-anchor-id="variance-covariance-matrix-of-hatbeta">3.6 Variance-Covariance Matrix of <span class="math inline">\(\hat{\beta}\)</span></h3>
+<p>The variance-covariance matrix of the OLS estimator <span class="math inline">\(\hat{\beta}\)</span> is:</p>
+<p><span class="math display">\[
+\text{Var}(\hat{\beta}) = \sigma^2 (X^T X)^{-1}
+\]</span></p>
+<p>Where <span class="math inline">\(\sigma^2\)</span> is the variance of the error terms. This matrix provides information about the precision of the estimated coefficients.</p>
+<hr>
+</section>
+<section id="properties-of-orthogonal-projections" class="level3">
+<h3 class="anchored" data-anchor-id="properties-of-orthogonal-projections">4. Properties of Orthogonal Projections</h3>
+<p>Consider a vector <span class="math inline">\(y\)</span> in the vector space spanned by the columns of <span class="math inline">\(X\)</span>. The projection of <span class="math inline">\(y\)</span> onto this space can be written as:</p>
+<p><span class="math display">\[
+\hat{y} = P y
+\]</span></p>
+<p>If <span class="math inline">\(P\)</span> is the projection matrix, then the following properties hold: - <span class="math inline">\(P^T = P\)</span> (symmetric), - <span class="math inline">\(P^2 = P\)</span> (idempotent), - <span class="math inline">\((I - P)\)</span> is also a projection matrix (projecting onto the orthogonal complement).</p>
+<p>Thus, we can decompose any vector <span class="math inline">\(Y\)</span> as:</p>
+<p><span class="math display">\[
+Y = \hat{Y} + (Y - \hat{Y}) = P Y + (I - P) Y
+\]</span></p>
+<p>Where <span class="math inline">\(\hat{Y}\)</span> is the projection onto the space spanned by <span class="math inline">\(X\)</span>, and <span class="math inline">\((Y - \hat{Y})\)</span> is the projection onto the orthogonal complement.</p>
+</section>
+<section id="vector-and-matrix-definitions" class="level3">
+<h3 class="anchored" data-anchor-id="vector-and-matrix-definitions">Vector and Matrix Definitions</h3>
+<ul>
+<li>A vector <span class="math inline">\(\perp\)</span> to a matrix <span class="math inline">\(X\)</span> (i.e., orthogonal to the column space of the matrix <span class="math inline">\(X\)</span>) implies that:</li>
+</ul>
+<p><span class="math display">\[
+X^T v = 0
+\]</span></p>
+<p>This condition means that the vector <span class="math inline">\(v\)</span> is orthogonal to every column of the matrix <span class="math inline">\(X\)</span>. In regression, this condition often arises when discussing residuals, which are orthogonal to the fitted values (i.e., the column space of <span class="math inline">\(X\)</span>).</p>
+</section>
+<section id="properties-of-orthogonality" class="level3">
+<h3 class="anchored" data-anchor-id="properties-of-orthogonality">Properties of Orthogonality</h3>
+<ol type="1">
+<li>If <span class="math inline">\(X^T v = 0\)</span>, then <span class="math inline">\(v \perp X\)</span> (i.e., <span class="math inline">\(v\)</span> is orthogonal to the column space of <span class="math inline">\(X\)</span>).</li>
+<li>If <span class="math inline">\(X\)</span> has linearly independent columns, then <span class="math inline">\(X^T X\)</span> is invertible.</li>
+<li>If <span class="math inline">\(X\)</span> does not have full column rank, then <span class="math inline">\(X^T X\)</span> is not invertible. In this case, we cannot directly compute <span class="math inline">\((X^T X)^{-1}\)</span>.</li>
+</ol>
+</section>
+<section id="full-column-rank-and-invertibility" class="level3">
+<h3 class="anchored" data-anchor-id="full-column-rank-and-invertibility">Full Column Rank and Invertibility</h3>
+<p>For <span class="math inline">\(X\)</span> to have full column rank, the number of columns <span class="math inline">\(p\)</span> must be less than or equal to the number of observations <span class="math inline">\(n\)</span>:</p>
+<p>列空间的正交补空间只有零向量 he orthogonal complement of a column space has only zero vectors</p>
+<p>If <span class="math inline">\(X\)</span> has full column rank, then <span class="math inline">\(X^T X\)</span> is invertible. This property is crucial for solving the normal equations in ordinary least squares (OLS) regression.</p>
+</section>
+<section id="symmetric-and-invertible-properties" class="level3">
+<h3 class="anchored" data-anchor-id="symmetric-and-invertible-properties">Symmetric and Invertible Properties</h3>
+<p>Given that <span class="math inline">\(X^T X\)</span> is symmetric, the following property holds:</p>
+<p><span class="math display">\[
+((X^T X)^{-1})^T = (X^T X)^{-1}
+\]</span></p>
+<p>This is a key result in linear regression, allowing us to solve for the OLS estimator of <span class="math inline">\(\beta\)</span>:</p>
+<p><span class="math display">\[
+\hat{\beta} = (X^T X)^{-1} X^T Y
+\]</span></p>
+<p>This property ensures that the normal equations have a unique solution when <span class="math inline">\(X^T X\)</span> is invertible.</p>
+<hr>
+</section>
+<section id="总结" class="level3">
+<h3 class="anchored" data-anchor-id="总结">总结：</h3>
+<ol type="1">
+<li><strong>正交性</strong>：矢量与矩阵的正交性在回归中经常用于描述残差与拟合值之间的关系。</li>
+<li><strong>矩阵的性质</strong>：矩阵 <span class="math inline">\(X^T X\)</span> 的可逆性取决于 <span class="math inline">\(X\)</span> 的列满秩（线性无关性）。当 <span class="math inline">\(X\)</span> 的列满秩时，<span class="math inline">\(X^T X\)</span> 是可逆的，从而确保了线性回归模型的唯一解。</li>
+<li><strong>矩阵运算</strong>：通过矩阵运算 <span class="math inline">\((X^T X)^{-1}\)</span>，可以得到 OLS 回归系数的估计值 <span class="math inline">\(\hat{\beta}\)</span>。</li>
+</ol>
+</section>
+</section>
 </section>
 <section id="chapter-1-vector-spaces" class="level1">
 <h1>Chapter 1: vector spaces</h1>
@@ -516,6 +668,9 @@ B^A = \{ f: A \to B \}
 <h3 class="anchored" data-anchor-id="definitions">Definitions:</h3>
 <p>if V and W are sets, V<span class="math inline">\(\times\)</span> W = {(v,w)|v<span class="math inline">\(\in\)</span> V, w<span class="math inline">\(\in\)</span> W}</p>
 <p>For a set <span class="math inline">\(V\)</span>, <strong>addition</strong> on <span class="math inline">\(V\)</span> is a map:</p>
+<section id="section-1" class="level4">
+<h4 class="anchored" data-anchor-id="section-1">？</h4>
+<p>difference？ 4-d based on definition</p>
 <p><span class="math display">\[
 V \times V \to V
 \]</span></p>
@@ -530,6 +685,7 @@ F \times V \to V
 \]</span></p>
 <p>For example, <span class="math inline">\((\lambda, v) \mapsto \lambda v\)</span>.</p>
 <p><strong>An</strong> <span class="math inline">\(F\)</span>-vector space is a set <span class="math inline">\(V\)</span> with an addition <span class="math inline">\(+\)</span> and scalar multiplication <span class="math inline">\(\cdot\)</span> by elements of <span class="math inline">\(F\)</span>, such that <span class="math inline">\((V, +, \cdot)\)</span> satisfies the vector space axioms 1-8, where <span class="math inline">\(\mathbb{R}\)</span> is replaced by <span class="math inline">\(F\)</span>, and <span class="math inline">\(\mathbb{R}^n\)</span> is replaced by <span class="math inline">\(V\)</span>.</p>
+</section>
 </section>
 <section id="remarks-and-examples" class="level3">
 <h3 class="anchored" data-anchor-id="remarks-and-examples">Remarks and Examples:</h3>
@@ -575,8 +731,8 @@ F^S = \{ f: S \to F \, \text{(maps from S to F)} \}
 <p><span class="math inline">\(F^S\)</span> is an F-vector space</p>
 </section>
 </section>
-<section id="section-1" class="level2">
-<h2 class="anchored" data-anchor-id="section-1">?</h2>
+<section id="section-2" class="level2">
+<h2 class="anchored" data-anchor-id="section-2">?</h2>
 <p>is there any quick way to think this kind of question instead of proving 8 axioms one by one?</p>
 <section id="proof-of-fs" class="level4">
 <h4 class="anchored" data-anchor-id="proof-of-fs">proof of FS</h4>
@@ -720,8 +876,8 @@ T^{-1} \circ T = \text{id}_{F^{\{1,2,3,...n\}}}.
 </section>
 </section>
 </section>
-<section id="section-2" class="level2">
-<h2 class="anchored" data-anchor-id="section-2">？</h2>
+<section id="section-3" class="level2">
+<h2 class="anchored" data-anchor-id="section-3">？</h2>
 <p>二维映射到三维的linear transformation’s geometric meaning</p>
 </section>
 <section id="general-properties-of-vector-space" class="level2">
@@ -743,8 +899,8 @@ T^{-1} \circ T = \text{id}_{F^{\{1,2,3,...n\}}}.
 <li><span class="math inline">\(\forall v\in V\)</span>, <span class="math inline">\(O_F\cdot V=O_V\)</span></li>
 </ol>
 </section>
-<section id="section-3" class="level3">
-<h3 class="anchored" data-anchor-id="section-3">?</h3>
+<section id="section-4" class="level3">
+<h3 class="anchored" data-anchor-id="section-4">?</h3>
 <p>why <span class="math inline">\(0_F\cdot V=0_V+w\)</span> F—&gt;V????</p>
 <p>why we could think of let w be the inverse of <span class="math inline">\(0_F\cdot V\)</span>? I always just could recite I mean remember the process instead of write it down smoothly</p>
 <p>(see 0_f as 0 is also okay)</p>
@@ -756,8 +912,8 @@ T^{-1} \circ T = \text{id}_{F^{\{1,2,3,...n\}}}.
 </ol>
 <p>proof: <span class="math inline">\(x\cdot 0_V=x\cdot (0_V+0_V)=x\cdot 0_V+x\cdot 0_V\)</span></p>
 <p>so <span class="math inline">\(0_V=x\cdot 0_V\)</span></p>
-<section id="section-4" class="level4">
-<h4 class="anchored" data-anchor-id="section-4">?</h4>
+<section id="section-5" class="level4">
+<h4 class="anchored" data-anchor-id="section-5">?</h4>
 <p>difference between o_Fv=0_v and xo_v=0_f(3 and 4 proposition)</p>
 </section>
 </section>
