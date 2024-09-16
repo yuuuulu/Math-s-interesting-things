@@ -1,11 +1,14 @@
 project:
   type: website
   output-dir: docs
-  
+
 website: 
   title: "Foundation Math Learning"
   navbar:
     left:
+      - text: "yuuuulu"
+        href: https://yuuuulu.github.io/
+    right:
       - href: index.qmd
         text: Homepage
       - href: mth107.qmd
@@ -24,7 +27,7 @@ website:
         text: lasso and Lagrange method
       - href: understand directional derivative deeply.qmd
         text: Directional Derivative
-      
+
 format: 
   html: 
     theme: cosmo
