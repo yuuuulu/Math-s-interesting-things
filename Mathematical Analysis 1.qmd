@@ -75,8 +75,10 @@ we should solve out logic first to
 logic important in--programming(some derivations of maths)
 
 ## statement
+
 p
-### ---An assertion that is either true of false but not both
+
+### ---An assertion that is either true or false but not both
 
 e.g. 
 
@@ -114,7 +116,7 @@ P: *some* a are not b
 is_raining = True
 has_umbrella = False
 
-if is_raining and not has_umbrella:
+if is_raining and not has_umbrella: # which is the only situation that implication fails
     print("You need an umbrella!")
 else:
     print("You're good to go!")
@@ -209,6 +211,8 @@ F & F & T & T & T & T & T \\
 \end{array}
 $$
 
+(always remember: implication fails only when the rule brokens instead of......(others))
+
 **Proof by contradiction**: we want to prove p--->q, we prove (~q)---->(~p) instead
 
 proof: Assume ~q,
@@ -282,22 +286,7 @@ The goal is to determine which statements among these 99 are true.
 )
 
 sol:
-If $S_n$ is true, it logically implies that $S_{n+1}$ must also be true because if there are at most $n$ true statements, then it is also true that there are at most $n+1$ true statements.
-(we also could use truth table to explain it:
-$$
-\begin{array}{|c|c|c|}
-\hline
-S_{n+1} & S_n & S_{n+1} \Rightarrow S_n \\
-\hline
-T & T & T \\
-T & F & F \\
-F & T & T \\
-F & F & T \\
-\hline
-\end{array}
-$$
-
-so we fail the hypothesis of $S_{n+1}\Rightarrow S_n$
+we fail the hypothesis of $S_{n+1}\Rightarrow S_n$，but because
 
 $$
 \begin{array}{|c|c|c|}
@@ -312,11 +301,7 @@ F & F & T \\
 \end{array}
 $$
 
-In this case:
-- The second row $(T \Rightarrow F)$ does not exist in our situation.
-- The final row $(F \Rightarrow F)$ does not satisfy our assumption about the statements.
-
-Thus, we conclude that the truth of $S_n$ implies the truth of all subsequent statements $S_{n+1}$, which leads us to believe that a chain of implications holds as described earlier in the analysis.
+Thus, we conclude that the truth of $S_n$ implies the truth of all subsequent statements $S_{n+1}$.
 
 
 )
