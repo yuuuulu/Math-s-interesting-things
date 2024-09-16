@@ -214,7 +214,7 @@ window.Quarto = {
   <ul class="collapse">
   <li><a href="#statement" id="toc-statement" class="nav-link" data-scroll-target="#statement">statement</a>
   <ul class="collapse">
-  <li><a href="#an-assertion-that-is-either-true-of-false-but-not-both" id="toc-an-assertion-that-is-either-true-of-false-but-not-both" class="nav-link" data-scroll-target="#an-assertion-that-is-either-true-of-false-but-not-both">—An assertion that is either true of false but not both</a></li>
+  <li><a href="#an-assertion-that-is-either-true-or-false-but-not-both" id="toc-an-assertion-that-is-either-true-or-false-but-not-both" class="nav-link" data-scroll-target="#an-assertion-that-is-either-true-or-false-but-not-both">—An assertion that is either true or false but not both</a></li>
   </ul></li>
   <li><a href="#p101.4" id="toc-p101.4" class="nav-link" data-scroll-target="#p101.4">P10,1.4</a></li>
   </ul></li>
@@ -288,8 +288,8 @@ window.Quarto = {
 <section id="statement" class="level2">
 <h2 class="anchored" data-anchor-id="statement">statement</h2>
 <p>p</p>
-<section id="an-assertion-that-is-either-true-of-false-but-not-both" class="level3">
-<h3 class="anchored" data-anchor-id="an-assertion-that-is-either-true-of-false-but-not-both">—An assertion that is either true of false but not both</h3>
+<section id="an-assertion-that-is-either-true-or-false-but-not-both" class="level3">
+<h3 class="anchored" data-anchor-id="an-assertion-that-is-either-true-or-false-but-not-both">—An assertion that is either true or false but not both</h3>
 <p>e.g.&nbsp;</p>
 <section id="negation-of-a-statement-p-is-a-statement-which-means-the-opposite-of-p" class="level4">
 <h4 class="anchored" data-anchor-id="negation-of-a-statement-p-is-a-statement-which-means-the-opposite-of-p">Negation of a statement p is a statement which means the opposite of P</h4>
@@ -311,7 +311,7 @@ window.Quarto = {
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>is_raining <span class="op">=</span> <span class="va">True</span></span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>has_umbrella <span class="op">=</span> <span class="va">False</span></span>
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> is_raining <span class="kw">and</span> <span class="kw">not</span> has_umbrella:</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> is_raining <span class="kw">and</span> <span class="kw">not</span> has_umbrella: <span class="co"># which is the only situation that implication fails</span></span>
 <span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"You need an umbrella!"</span>)</span>
 <span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="cf">else</span>:</span>
 <span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"You're good to go!"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -365,6 +365,7 @@ F &amp; F &amp; T &amp; T &amp; T &amp; T &amp; T \\
 \hline
 \end{array}
 \]</span></p>
+<p>(always remember: implication fails only when the rule brokens instead of……(others))</p>
 <p><strong>Proof by contradiction</strong>: we want to prove p—&gt;q, we prove (<sub>q)—-&gt;(</sub>p) instead</p>
 <p>proof: Assume ~q, if , then if , then … –&gt; ~p, which is contradict to the original assumption p</p>
 <pre><code>   Hence the assumption ~q is false, i.e. q is true.#
@@ -405,19 +406,7 @@ F &amp; F &amp; T &amp; T &amp; T \\
 </ul>
 <p>The goal is to determine which statements among these 99 are true.</p>
 <p>(hint:Consider the chain of implications from statement <span class="math inline">\(S_n\)</span> to <span class="math inline">\(S_{n+1}\)</span>. Which statement implies which? )</p>
-<p>sol: If <span class="math inline">\(S_n\)</span> is true, it logically implies that <span class="math inline">\(S_{n+1}\)</span> must also be true because if there are at most <span class="math inline">\(n\)</span> true statements, then it is also true that there are at most <span class="math inline">\(n+1\)</span> true statements. (we also could use truth table to explain it: <span class="math display">\[
-\begin{array}{|c|c|c|}
-\hline
-S_{n+1} &amp; S_n &amp; S_{n+1} \Rightarrow S_n \\
-\hline
-T &amp; T &amp; T \\
-T &amp; F &amp; F \\
-F &amp; T &amp; T \\
-F &amp; F &amp; T \\
-\hline
-\end{array}
-\]</span></p>
-<p>so we fail the hypothesis of <span class="math inline">\(S_{n+1}\Rightarrow S_n\)</span></p>
+<p>sol: we fail the hypothesis of <span class="math inline">\(S_{n+1}\Rightarrow S_n\)</span>，but because</p>
 <p><span class="math display">\[
 \begin{array}{|c|c|c|}
 \hline
@@ -430,8 +419,7 @@ F &amp; F &amp; T \\
 \hline
 \end{array}
 \]</span></p>
-<p>In this case: - The second row <span class="math inline">\((T \Rightarrow F)\)</span> does not exist in our situation. - The final row <span class="math inline">\((F \Rightarrow F)\)</span> does not satisfy our assumption about the statements.</p>
-<p>Thus, we conclude that the truth of <span class="math inline">\(S_n\)</span> implies the truth of all subsequent statements <span class="math inline">\(S_{n+1}\)</span>, which leads us to believe that a chain of implications holds as described earlier in the analysis.</p>
+<p>Thus, we conclude that the truth of <span class="math inline">\(S_n\)</span> implies the truth of all subsequent statements <span class="math inline">\(S_{n+1}\)</span>.</p>
 <p>)</p>
 <p><span class="math display">\[
 S_n \Rightarrow S_{n+1}
