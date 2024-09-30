@@ -3,6 +3,10 @@ title: "Intro to probability and statistics"
 editor: visual
 ---
 
+# skew
+
+mean is much sensitive than the median so the outlier drags the mean to the skew......
+
 # tutorial
 
 dotplot没有纵轴in r(vs scallar plot)
@@ -184,7 +188,6 @@ ggplot() +
 
 ## collect data sensibly
 
-
 ### experiments and obeservational study
 
 ### bias
@@ -202,3 +205,7 @@ the same chance to be selected
 cluster reflect general characteristic about
 
 ### systematic sampling
+
+![](images/clipboard-2849357671.png)
+
+![](images/clipboard-1886404181.png)

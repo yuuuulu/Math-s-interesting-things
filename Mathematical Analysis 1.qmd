@@ -1,14 +1,26 @@
 ---
 title: "Analysis1"
+editor: 
+  markdown: 
+    wrap: 72
 ---
+
+狂刷题 国庆
+
+![](images/clipboard-4288558846.png)
+
+should we prove that？
+
+![](images/clipboard-3097473254.png)
+
 # 1
-everything must be a reason during the process of proof. Patience is necessary!
 
-limit 
+everything must be a reason during the process of proof. Patience is
+necessary!
 
+limit
 
 real number
-
 
 # history
 
@@ -16,63 +28,50 @@ Ancient Greece philosophy
 
 Pythagoras, Archimede, Euclide,etc.
 
-
 maths behave a discpline
 
-study maths for its own sake!
-- number theory
-Q: rational number: a/b, a,b $\in$ Z, b no 0
+study maths for its own sake! - number theory Q: rational number: a/b,
+a,b $\in$ Z, b no 0
 
 Greek believes: "Atoms"--Q are all numbers
 
-- geometry
-(length of sig $\in Q$)
+-   geometry (length of sig $\in Q$)
 
 discovery: $\sqrt 2$ in a square or ... is not rational---kill
 
+--- no understanding of real number, irrational infinity... no
+corresponding of number and geometry
 
-
---- no understanding of real number, irrational infinity...
-    no corresponding of number and geometry
-    
-    
 parallel---square using move
 
-but it is not a possible thing to turn a circle into a square---$\pi$ is not a rational number
-                      -----paradox: zhinuo and wugui----convergence of a sum
-                      (they do not understand infinity and real number)
-                      
-                      
-                      
+but it is not a possible thing to turn a circle into a square---$\pi$ is
+not a rational number -----paradox: zhinuo and wugui----convergence of a
+sum (they do not understand infinity and real number)
+
 # calculus
+
 Newton Leibniz makes phy a idependent discipline
 
-Newton's Law--Kepler Law
-solve ODE:$GMm/r^2=F=ma=mr^{..}$
+Newton's Law--Kepler Law solve ODE:$GMm/r^2=F=ma=mr^{..}$
 
+Philosophiae Naturalis Principil Mathematica. every theorem and lemma
+are detailed proved
 
-Philosophiae Naturalis Principil Mathematica. every theorem and lemma are detailed proved
+--no understanding of real number but a little understanding of limit
+and infinity
 
+# analysis 19 century
 
-   --no understanding of real number but a little understanding of limit and infinity
-   
-# analysis 19 century 
+Cauchy cantor weierstrass hilbert
 
+understand real number infinity limit
 
-   Cauchy cantor weierstrass hilbert
-   
-   
-   understand real number infinity limit
-   
-   
-   the foundation of maths
-   
-
+the foundation of maths
 
 # Chaper 1: Logic(grammar) v.s. Maths(literature)
 
-we should solve out logic first to 
-logic important in--programming(some derivations of maths)
+we should solve out logic first to logic important in--programming(some
+derivations of maths)
 
 ## statement
 
@@ -80,38 +79,31 @@ p
 
 ### ---An assertion that is either true or false but not both
 
-e.g. 
+e.g.
 
 #### Negation of a statement p is a statement which means the opposite of P
 
-~p----read "not p"
+\~p----read "not p"
 
+#### Quantifiers
 
-#### Quantifiers 
 all, every, each,no(none)---universal quantifiers
-
 
 some,there exists, there is at least on, etc.---existential quantifiers
 
-
-
-
 P: *some* a's are b's
 
-
-~P: *all* a's are not b's/ no a's are b's 
-
+\~P: *all* a's are not b's/ no a's are b's
 
 P: *some* a are not b
 
-
-~p: *all* a are b
-
+\~p: *all* a are b
 
 #### Truth table: give the truth values of related statements in all possible cases
+
 (relevant to boolean in computer science)
 
-```python
+``` python
 # Example of boolean logic in a program
 is_raining = True
 has_umbrella = False
@@ -120,60 +112,46 @@ if is_raining and not has_umbrella: # which is the only situation that implicati
     print("You need an umbrella!")
 else:
     print("You're good to go!")
-
 ```
 
 compound statement: combining several statements via logical operations
 
-Conjunction: p^q. p and q
+Conjunction: p\^q. p and q
 
-Disjunction:
-p v q--p or q 
+Disjunction: p v q--p or q
 
+one of them is true, p v q is true, so we only need to decide if oe of
+them is true, if it is, the p v q is true
 
-one of them is true, p v q is true, so we only need to decide if oe of them is true, if it is, the p v q is true
-
-
-p V (~p) is always true
-
+p V (\~p) is always true
 
 a statement that is always true is called a tautology
 
-
-
-
 ## P10,1.4
-Equivalence of statements: Two statements are **logically equivalent**, if they have the same truth values in all possible situations.
+
+Equivalence of statements: Two statements are **logically equivalent**,
+if they have the same truth values in all possible situations.
 
 $A\equiv B$
 
 'abstract non-sense'
 
-
-
 **Them(De Morgan's laws)**
 
 A,B
 
-
 $\sim (A \land B) \equiv (\sim A) \lor (\sim B)$
-
-
 
 $\sim (A \lor B) \equiv (\sim A) \land (\sim B)$
 
-
-
 draw truth table to look at values
-
 
 交的话（and），都T才T；并的话（or），1T则T
 
-
 **Conditional:**
 
-If p(hypothesis/assumption/condition), then q(conclusion/consequence/result).
-
+If p(hypothesis/assumption/condition), then
+q(conclusion/consequence/result).
 
 read: p implies q/assume p, then q.
 
@@ -190,15 +168,14 @@ F & T & T \\
 F & F & T \\
 \hline
 \end{array}
-$$
-**Def:** p, q,p-->q
+$$ **Def:** p, q,p--\>q
 
-1)Converce: q--->p,i.e. if q, then p
+1)Converse: q---\>p,i.e. if q, then p
 
-2)Contrapositive: (~q)-->(~p), i.e. if not q, then not p
+2)Contrapositive: (~q)--\>(~p), i.e. if not q, then not p
 
-**Prop:** (p-->q)$\equiv$ ((~q)-->(~p))
-$$
+**Prop:** (p--\>q)$\equiv$ ((~q)--\>(~p))(a statement and its
+contrapositive are logically equivalent) $$
 \begin{array}{|c|c|c|c|c|c|c|}
 \hline
 p & q & \sim p & \sim q & p \rightarrow q & \sim q \rightarrow \sim p & (p \rightarrow q) \equiv (\sim q \rightarrow \sim p) \\
@@ -211,38 +188,39 @@ F & F & T & T & T & T & T \\
 \end{array}
 $$
 
-(always remember: implication fails only when the rule brokens instead of......(others))
+(always remember: implication fails only when the rule brokens instead
+of......(others))
 
-**Proof by contradiction**: we want to prove p--->q, we prove (~q)---->(~p) instead
+**Proof by contradiction**: we want to prove p---\>q, we prove
+(~q)----\>(~p) instead
 
-proof: Assume ~q,
-       if , then
-       if , then
-       ...
-       --> ~p, which is contradict to the original assumption p
-       
-       Hence the assumption ~q is false, i.e. q is true.#
-       
+proof: Assume \~q, if , then if , then ... --\> \~p, which is contradict
+to the original assumption p
 
-e.g.: n is a natural number. Prove that if n^2 is divisible by 2(p), then n is divisible by 2(q).
+```         
+   Hence the assumption ~q is false, i.e. q is true.#
+   
+```
 
+e.g.: n is a natural number. Prove that if n\^2 is divisible by 2(p),
+then n is divisible by 2(q).
 
-Proof: Assume that n is not divisible by 2(~q),---> n is odd(defination), i.e. n =2k+1,k$\in Z$
+Proof: Assume that n is not divisible by 2(\~q),---\> n is
+odd(defination), i.e. n =2k+1,k$\in Z$
 
+---\> n\^2 =(2k+1)\^2(multiplicaiton)=2()+1, which is odd
 
----> n^2 =(2k+1)^2(multiplicaiton)=2()+1, which is odd
+---\> n\^2 is not divisible by 2(\~p),
 
-
----> n^2 is not divisible by 2(~p),
-
-Thus the aassumption that n is not divisible by 2 is false so n is divisible by 2.#
-
+Thus the aassumption that n is not divisible by 2 is false so n is
+divisible by 2.#
 
 **biconditional:** p,q,
 
-(p-->q)$\land$(q--->p)
+(p--\>q)$\land$(q---\>p)---p \<--\> q----reads‘p if and only if q’.
 
-statement      converse
+statement converse
+
 $$
 \begin{array}{|c|c|c|c|c|}
 \hline
@@ -256,37 +234,154 @@ F & F & T & T & T \\
 \end{array}
 $$
 
+Them.: the only case p\<--\>q is true is then both p and q ture or false
 
-Them: the only case p<-->q is true is then both p and q ture or false
+# Set Theory p13
 
+## proposition
 
+\$\forall x,y\in \mathbb Q \$, x is less than y, $\exists z\in Q$ s.t.
+x\<z\<y.
 
+proof:
+$x,y\in Q, x<y$,x=m/n,x=p/q,z=x+y/2$\in$(x+x/2,y+y/2),i.e.x\<z\<y,z=pn+mq/2qn$\in \mathbb Q$
+by defination.
 
+## Russel paradox
 
+let R be the set of all sets that are not a member of themself.
+i.e.R={S\|S$\notin$S}
 
+so if $R\in R$,R$\notin$ R
 
+if $R\notin R$, R$\in R$
 
-# ？
+if $x\in A$,then $x\in B$ is the subset defination of A $\subseteq$ B.
 
+if $A\subset B$, A is a proper subset of B. i.e. $A\subset B$ if
+$A\subseteq B$ and $\exists x\in B$, s.t. $x\notin$ A
 
-对于这个，我们的逻辑是根据内容判断谁implies谁，然后把它带入truth table，对吗？eg
+$N\subset Z \subset Q \subset R$
+
+## Proposition
+
+the empty set is a subset of any set
+
+proof:
+
+method1: (truth table)
+
+method2:
+
+## Def
+
+the complement of A is denoted by $A^c$
+
+the intersection $A \cap B$
+
+the union $A \cup B$
+
+## Countability and Bijections
+
+Countable Set: A set is said to be countable if it is either finite or
+has the same size (cardinality) as the set of natural numbers
+$\mathbb{N}$. A set is countably infinite if there exists a bijection (a
+one-to-one correspondence) between that set and $\mathbb{N}$.
+
+Uncountable Set: A set is uncountable if no such bijection exists,
+meaning its cardinality is strictly greater than that of $\mathbb{N}$.
+
+Bijection: A bijection between two sets $A$ and $B$ is a function
+$f: A \to B$ that is both injective (one-to-one) and surjective (onto).
+
+### The Problem: Showing that $\mathcal{P}(\mathbb{N})$ is Uncountable
+
+The question asks you to prove that the power set of natural numbers
+$\mathcal{P}(\mathbb{N})$, i.e., the set of all subsets of $\mathbb{N}$,
+is uncountable. To prove this, you are guided to assume a contradiction:
+that there is a bijection $f: \mathbb{N} \to \mathcal{P}(\mathbb{N})$.
+
+Hint: Suppose there is a bijection f : N → P(N). Consider the set {n ∈
+N\| n ∈/ f(n)} to deduce a contradiction.
+
+method 1: Consider the set
+$A = \{ n \in \mathbb{N} \mid n \notin f(n) \}$, f : N → P(N).
+
+we should prove it is not a bijection. so we could prove it is not
+surjective(P(N) is much bigger than N).
+
+now we ask if f is surjective:
+
+If yes, there exists $n_0\in N$ s.t. f(n_0)=A
+
+now we ask: Doer $n_o\in f(n_0)$
+
+1)  if yes, $n_0\notin A=f(n_0)$
+
+2)  if no, $n_0\in A=f(n_0)$
+
+so f is not surjective, which means f could not be bijective. so p(N) is
+uncountable.
+
+-   eg of a bijection between 2 sets(namely 2 sets with the same size)
+
+N-\>Z
+
+n\|-\>n/2 if n even
+
+n\|-\> n+1/2 if n odd
+
+method 2:
+
+The hint in the problem suggests using a classical argument known as
+Cantor's diagonal argument:
+
+Assume there is a bijection $f: \mathbb{N} \to \mathcal{P}(\mathbb{N})$:
+This means each natural number $n \in \mathbb{N}$ is paired with a
+unique subset of $\mathbb{N}$, i.e., $f(n) \in \mathcal{P}(\mathbb{N})$.
+Consider the set $S = { n \in \mathbb{N} \mid n \notin f(n) }$: This set
+$S$ contains all natural numbers that are not elements of their
+corresponding subset given by the function $f$. Deriving a
+Contradiction: $S$ is a subset of $\mathbb{N}$, so by the assumption of
+a bijection, there must be some $m \in \mathbb{N}$ such that $f(m) = S$.
+Now, ask whether $m \in S$ or $m \notin S$:
+
+If $m \in S$, then by the definition of $S$, we must have
+$m \notin f(m)$, which contradicts the fact that $f(m) = S$.
+
+If $m \notin S$, then $m$ must be an element of $f(m)$, which again
+contradicts the definition of $S$.
+
+Since this contradiction arises, we conclude that no such bijection
+$f: \mathbb{N} \to \mathcal{P}(\mathbb{N})$ can exist, and therefore
+$\mathcal{P}(\mathbb{N})$ is uncountable.
+
+The power set $\mathcal{P}(\mathbb{N})$ is uncountable, meaning its
+cardinality is greater than that of the set of natural numbers
+$\mathbb{N}$, even though both sets are infinite. This conclusion is a
+key result in set theory, demonstrating that not all infinite sets have
+the same "size" or cardinality.
+
+![](images/clipboard-819524834.png)
 
 ### an eg question-Logical Puzzle on Truth of Statements relavent to truth table
 
 Consider the following 99 statements:
 
-- $S_1$: "Among these 99 statements, there is at most one true statement."
-- $S_2$: "Among these 99 statements, there are at most two true statements."
-- ...
-- $S_{99}$: "Among these 99 statements, there are at most 99 true statements."
+-   $S_1$: "Among these 99 statements, there is at most one true
+    statement."
+-   $S_2$: "Among these 99 statements, there are at most two true
+    statements."
+-   ...
+-   $S_{99}$: "Among these 99 statements, there are at most 99 true
+    statements."
 
 The goal is to determine which statements among these 99 are true.
 
-(hint:Consider the chain of implications from statement $S_n$ to $S_{n+1}$. Which statement implies which?
-)
+(hint:Consider the chain of implications from statement $S_n$ to
+$S_{n+1}$. Which statement implies which? )
 
-sol:
-we fail the hypothesis of $S_{n+1}\Rightarrow S_n$，but because
+sol: we fail the hypothesis of $S_{n+1}\Rightarrow S_n$，but because
 
 $$
 \begin{array}{|c|c|c|}
@@ -301,62 +396,146 @@ F & F & T \\
 \end{array}
 $$
 
-Thus, we conclude that the truth of $S_n$ implies the truth of all subsequent statements $S_{n+1}$.
-
+Thus, we conclude that the truth of $S_n$ implies the truth of all
+subsequent statements $S_{n+1}$.
 
 )
 
 $$
 S_n \Rightarrow S_{n+1}
-$$
-so there exists an $S_n$, after which are true while before which are false.
-
+$$ so there exists an $S_n$, after which are true while before which are
+false.
 
 so:There are $100 - n$ true statements.
-
 
 $$
 100 - n \leq n \implies n \geq 50
 $$
 
-
 There are $n - 1$ false statements.
-   
+
 $$
 n - 1+1\leq 100 - n \implies n \leq 50
-$$
-so The 50th statement $S_{50}$ is true. Statements $S_1$ to $S_{49}$ are false, and statements $S_{50}$ to $S_{99}$ are true.
+$$ so The 50th statement $S_{50}$ is true. Statements $S_1$ to $S_{49}$
+are false, and statements $S_{50}$ to $S_{99}$ are true.
+
+
+## Cardinality
+- numebr of elements in a finite set: Def: let A be a set, if A contains finitely many elements, then the number of elements of A is called the cardinality of A, denoted by |A|(|A|$\in Z_{\geq0}$
+
+
+- A, B have infinitely many elements. If $\exists f:A->B$ is a bijective map, then we regard the A, B have the same "cardinality", i.e.|A|=|B|
+
+## A x B--Cartesian product
+
+### eg
+
+|A|=3, |B|=2, |A x B|=6
+
+
+## map
+
+Question from the Cardinality:
+
+What happens if A has infinitely many elements?
+
+
+Def: LEt A and B be 2 sets, A map(function)f: A-->B assigns each element in A
+
+there has 3 kinds of maps(see 107)
+
+### eg
+
+the graph of f(x) in A x B is f: A--> B(x $\in A$,y$\in B$)
+
+## inverse defination
+
+
+if f is a bijective map, so as $f^{-1}$.
+
+## countable
+
+- A set A is called countable if A iseither a finite set of there exists a bijective map f: A to N.(Otherwise is uncountable)
+
+
+
+### eg
+
+- $B=[x|x=2n,n\in N$ is countable 
+
+
+proof: for x|-->x/2 of B-->N
+       i) injective , $\forall x_1 $  not = $x_2$, f(x_1)=x/2, \= f(x_2)
+
+       ii) surjective, $\forall y\in N $, $\exists x\in B$ s.t. ,f(2y)=x, $2y\in B$
+       
+       so bijective
+       
+
+
+- Z is countable (负无穷到正无穷范围内的整数)
+
+f:N-->Z(n|-->n/2 if even,  1-n/2 if odd)
+
+
+n|-->n/2 if even makes the positive integer possible
+
+1-n/2 if odd makes negative integer possible
+
+and both of them are bijections
+
+
+so Z is countable
+
+   
+    
+       
+
+
+# the real number
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
 
 # a problem about divisible using greatest common factor to solve(even Bezou's theorem)
 
-Q:"Proof that if a positive integer $p$ is not a perfect square, then $\sqrt{p}$ is irrational."
+Q:"Proof that if a positive integer $p$ is not a perfect square, then
+$\sqrt{p}$ is irrational."
 
 Sol: Proof by Contradiction:
 
-Assume $\sqrt{p}$ is rational. 
+Assume $\sqrt{p}$ is rational.
 
-Since $p$ is not a perfect square, there exist two coprime positive integers $m$ and $n$ with $n > 1$ such that
-$$
+Since $p$ is not a perfect square, there exist two coprime positive
+integers $m$ and $n$ with $n > 1$ such that $$
 \sqrt{p} = \frac{m}{n}
 $$
 
-Then
-$$
+Then $$
 p = \frac{m^2}{n^2}
 $$
 
-which implies
-$$
+which implies $$
 m^2 = n^2 p
-$$
-i.e. $n^2 \mid m^2$. Then We want to show that $n \mid m$:
+$$ i.e. $n^2 \mid m^2$. Then We want to show that $n \mid m$:
 
 Suppose $m^2 = k n^2$, where $k \in \mathbb{Z}$.
 
-Since $m$ and $n$ are both integers, based on prime factorization, we have:
+Since $m$ and $n$ are both integers, based on prime factorization, we
+have:
 
 $$
 m = p_1^{a_1} p_2^{a_2} \cdots p_k^{a_k}
@@ -398,98 +577,87 @@ $$
 a_i \geq b_i \quad \text{for all } i
 $$
 
-Thus, $m$ is divisible by $n$. Therefore, $n \mid m$, which is opposite to m and n are coprime. So, $\sqrt{p}$ is irrational.
+Thus, $m$ is divisible by $n$. Therefore, $n \mid m$, which is opposite
+to m and n are coprime. So, $\sqrt{p}$ is irrational.
 
+method 2: Proof by Contradiction:
 
-method 2:
-Proof by Contradiction:
+Assume $\sqrt{p}$ is rational.
 
-Assume $\sqrt{p}$ is rational. 
-
-Since $p$ is not a perfect square, there exist two coprime positive integers $m$ and $n$ with $n > 1$ such that
-$$
+Since $p$ is not a perfect square, there exist two coprime positive
+integers $m$ and $n$ with $n > 1$ such that $$
 \sqrt{p} = \frac{m}{n}
 $$
 
-Then
-$$
+Then $$
 p = \frac{m^2}{n^2}
 $$
 
-which implies
-$$
+which implies $$
 m^2 = n^2 p
-$$
-i.e. $n^2 \mid m^2$. So  $n \mid m^2$
+$$ i.e. $n^2 \mid m^2$. So $n \mid m^2$
 
+Since $n > 1$, it follows that there exists a prime number $r$ such that
+$r \mid n$. (proof using Fundamental Theorem of Arithmetic:
 
-Since $n > 1$, it follows that there exists a prime number $r$ such that $r \mid n$.
-(proof using Fundamental Theorem of Arithmetic:
-
-Every integer greater than 1 is either a prime or can be uniquely factored into prime numbers.
-
-
+Every integer greater than 1 is either a prime or can be uniquely
+factored into prime numbers.
 
 If $n$ is a prime number, then $r = n$ and clearly $r \mid n$;
 
-
-If $n$ is not a prime number, it must be decomposable into a product of prime factors. Therefore, we can write:
-$$
+If $n$ is not a prime number, it must be decomposable into a product of
+prime factors. Therefore, we can write: $$
 n = p_1^{e_1} p_2^{e_2} \cdots p_k^{e_k}
 $$
 
 where $p_i$ are prime numbers and $e_i$ are positive integers.
 
-Since $n$ is a product of prime factors, at least one of these prime factors $p_i$ must divide $n$.
+Since $n$ is a product of prime factors, at least one of these prime
+factors $p_i$ must divide $n$.
 
 Let $r = p_i$, which is one of the prime factors. Then $r \mid n$.
 
-Thus, in both cases, whether $n$ is a prime or not, there exists at least one prime number $r$ such that $r \mid n$.)
+Thus, in both cases, whether $n$ is a prime or not, there exists at
+least one prime number $r$ such that $r \mid n$.)
 
-Thus
-$$
+Thus $$
 r \mid m^2 \quad \text{and} \quad r \mid m
-$$
-(proof of $$
+$$ (proof of $$
 r \mid m^2 \quad \text{and} \quad r \mid m
-$$:
-proof1 using prime factorization as method 1's:
+$$: proof1 using prime factorization as method 1's:
 
+$r \mid m^2$ and r is a prime so $r=p_i$ corresponding to the
+exponential of $2a_i$
 
-$r \mid m^2$ and r is a prime so $r=p_i$ corresponding to the exponential of $2a_i$
-
-
-
-since $a_i \geq 0$, so $a_i$ is at least 1 .
-proof2 using if r is a prime and r|ab, then r|a or r|b:
+since $a_i \geq 0$, so $a_i$ is at least 1 . proof2 using if r is a
+prime and r\|ab, then r\|a or r\|b:
 
 Suppose $r \nmid a$ and $r \nmid b$ (contradiction assumption).
 
-Let $\gcd(a \cdot b, r) = d$ (where $d$ is the greatest common divisor of $a \cdot b$ and $r$).
+Let $\gcd(a \cdot b, r) = d$ (where $d$ is the greatest common divisor
+of $a \cdot b$ and $r$).
 
 Since $d \mid r$, $d$ is a divisor of $r$ (since $r$ is a prime number).
 
 Therefore, $d$ is either $r$ or $1$ (since $r$ is prime).
 
+if $d = r$, we have $\gcd(a \cdot b, r) = r$. This implies
+$r \mid a \cdot b$.
 
+Since we assumed $r \nmid a$ and $r \nmid b$, it contradicts our initial
+statement based on Properties of greatest common divisor with its proof
+using Bezou's theorem;
 
+If $d = 1$, we have $\gcd(a \cdot b, r) = 1$. This implies
+$r \nmid a \cdot b$, which contradicts our assumption that
+$r \mid a \cdot b$.
 
-if $d = r$, we have $\gcd(a \cdot b, r) = r$. This implies $r \mid a \cdot b$. 
-
-Since we assumed $r \nmid a$ and $r \nmid b$, it contradicts our initial statement based on Properties of greatest common divisor with its proof using Bezou's theorem;
-
-
-If $d = 1$, we have $\gcd(a \cdot b, r) = 1$. This implies $r \nmid a \cdot b$, which contradicts our assumption that $r \mid a \cdot b$.
-
-Thus, the contradiction shows that our assumption $r \nmid a$ and $r \nmid b$ must be false. Therefore, $r$ must divide at least one of $a$ or $b$.
+Thus, the contradiction shows that our assumption $r \nmid a$ and
+$r \nmid b$ must be false. Therefore, $r$ must divide at least one of
+$a$ or $b$.
 
 )
 
 Since $m$ and $n$ are coprime, this leads to a contradiction.
 
 Therefore, $\sqrt{p}$ must be an irrational number.
-
-
-
-
-

@@ -50,11 +50,11 @@ $$ **abstract and more general vector space over** $\mathbb{R^n}$ or $\mathbb{C^
     A = B
     $$ if and only if $$
     \forall x \, (x \in A \iff x \in B)
-    $$ \$\$ A \subseteq B
+    $$ $$ A \subseteq B$$
 
--   $$ intersection: $$ A \cap B
+-   intersection: $$ A \cap B$$
 
--   $$ union: $$ A \cup B \$\$
+-   union: $$ A\cup B $$
 
 ## Maps
 
@@ -89,6 +89,8 @@ $$
 for $f: A \to B$ $$
 \forall b \in B, \, \exists! a \in A \, \text{such that} \, f(a) = b
 $$ （use $\exists!$expresses only exist one）
+
+f: x--\>y is a bijection if and only if $\exists$g:y---\>x, s.t. f(g(y))=$id_y$ and g(f(x))=$id_x$
 
 ## subsets,inclusions, restrictions
 
@@ -170,19 +172,21 @@ $\lambda$sth. =sth.
 
 so sth. = 0
 
-#### cardinality
+#### relevant to cardinality:
+
+(Def: let A be a.set, if A containsfinitely many elements, then the number of elements of A is called the cardinality of A, denoted by \|A\|(\|A\|$\in Z_{\geq0}$)
 
 \|\| \#
 
-\|A\|: number of elements in A(set)
+\|A\|: number of elements in A(set))
 
-if A and B are finite sets #A=n #B=m, then $|B^A| = m^n$
+if A and B are finite sets #A=n #B=m, then $|B^A| = m^n$ (ok)
 
 ## relevant to dear regression analysis
 
 ![MLR](images/clipboard-3617718739.png)
 
-**matrix** 
+**matrix**
 
 ### 3.1 Vector and Matrix Multiplication in Regression
 
@@ -414,9 +418,13 @@ it means that + and $\cdot$ satisfy the following axioms:
 
 ### ?
 
-ask again, sorry: since negetive number set satisfies 2 oprations but not 8 axioms I want to ensure **if a finite set satisfies the 2 operations it is not satisfy all 1-8 axioms instead of F\^n**
+also fn---f{1,..,n}
 
-is that because of the defination of F-vector space?(abstract vector space-defination) \## Cn complex Vector Space
+5st ahead and the other 3（prove？eg tutorial1）. should we prove again or directly use them? tutorial 1 vs. 2 ' s proof. ask again, sorry: since negative number set satisfies 2 oprations but not 8 axioms I want to ensure **if a finite set satisfies the 2 operations it is not satisfy all 1-8 axioms instead of F\^n** so if the problem is a vector space V, we could directly suppose $\exists u\in F$ and then do the scalar multiplication in it?
+
+is that because of the defination of F-vector space?(abstract vector space-defination) 
+
+## Cn complex Vector Space
 
 $i^2 = -1$
 
@@ -469,13 +477,7 @@ We can generalize this idea by replacing $\mathbb{F}^n$ with some abstract space
 
 ### Definitions:
 
-if V and W are sets, V$\times$ W = {(v,w)\|v$\in$ V, w$\in$ W}
-
 For a set $V$, **addition** on $V$ is a map:
-
-#### ？
-
-difference？ 4-d based on definition
 
 $$
 V \times V \to V
@@ -496,6 +498,8 @@ F \times V \to V
 $$
 
 For example, $(\lambda, v) \mapsto \lambda v$.
+
+(remark:if V and W are sets, V$\times$ W = {(v,w)\|v$\in$ V, w$\in$ W})
 
 **An** $F$-vector space is a set $V$ with an addition $+$ and scalar multiplication $\cdot$ by elements of $F$, such that $(V, +, \cdot)$ satisfies the vector space axioms 1-8, where $\mathbb{R}$ is replaced by $F$, and $\mathbb{R}^n$ is replaced by $V$.
 
@@ -552,7 +556,9 @@ $F^S$ is an F-vector space
 
 ## ?
 
-is there any quick way to think this kind of question instead of proving 8 axioms one by one?
+does this thing have more explaination except for f：s to F
+
+is there any quick way to think this kind of question instead of proving 8 axioms one by one? such as geometry meaning like keep straight line and parallelogram in linear transformation
 
 #### proof of FS
 
@@ -642,9 +648,11 @@ For each vector $(a_1, a_2, \dots, a_n) \in F^n$, define the corresponding funct
 f(i) = a_i \quad \text{for each} \, i = 1, 2, \dots, n.
 $$ Thus, $T((a_1, a_2, \dots, a_n)) = (f(1), f(2), \dots, f(n)) = (a_1, a_2, \dots, a_n)$.
 
--   **Injectivity**: Suppose $T((a_1, a_2, \dots, a_n)) = T((b_1, b_2, \dots, b_n))$. This implies that for each $i$, $a_i = b_i$. Therefore, $(a_1, a_2, \dots, a_n) = (b_1, b_2, \dots, b_n)$, so $T$ is injective.
+-   **Injectivity**: $T((a_1, a_2, \dots, a_n)) = T((b_1, b_2, \dots, b_n))$. This implies that for each $i$, $a_i = b_i$. Therefore, $(a_1, a_2, \dots, a_n) = (b_1, b_2, \dots, b_n)$, so $T$ is injective. i.e. if $T(a_1,...a_n)=T(b_1,...,b_n)$, then $\forall i,$ T(**a**)(i)=ai=T(**b**)(i)=bi,so$\forall i,a_i=b_i$,we need **a**=**b**
 
 -   **Surjectivity**: Given any function $f \in F^{\{1, \dots, n\}}$, we can find a vector $(a_1, a_2, \dots, a_n) \in F^n$ such that $f(i) = a_i$ for each $i = 1, 2, \dots, n$. Therefore, $T$ is surjective.
+
+i.e., given $f\in \mathbb F^{\{1,..n\}}$, then T(f(1),...f(n))=f with (f(1),...f(n))$\in F^n$(T is {1,..n}--\>F) with (f(1),...f(n))$\in F^n$
 
 Since $T$ is both injective and surjective, it is a bijection.
 
@@ -748,9 +756,9 @@ This equation means that for any function $f \in F^{\{1, 2, 3, \dots, n\}}$, app
 
 Since $T$ and $T^{-1}$ are inverses of each other, we have established a bijection between $F^{\{1, 2, 3, \dots, n\}}$ and $F^n$. Therefore, $F^{\{1, 2, 3, \dots, n\}}$ and $F^n$ are equivalent as sets and vector spaces.)
 
-## ？
+## linear transformation makes us know everything
 
-二维映射到三维的linear transformation's geometric meaning
+二维映射到三维的linear transformation's geometric meaning： if you know a transformation， then you know everything
 
 ## General properties of vector space
 
@@ -774,7 +782,7 @@ Supppose w and w' are 2 inverses for v, w=0+w=(v+w')+w=v+(w'+w)=v+(w+w')=(v+w)+w
 
 ### ?
 
-why $0_F\cdot V=0_V+w$ F---\>V????
+怎么想到的 why $0_F\cdot V=0_V+w$ F---\>V????
 
 why we could think of let w be the inverse of $0_F\cdot V$? I always just could recite I mean remember the process instead of write it down smoothly
 
@@ -822,6 +830,406 @@ $A^{-1}=1/det(A)$ times $C^T$
 
 method2: work for the tansformation of a matrix
 
+# Chapter 2 Subspaces of Vector spaces
+
+## motivation
+
+-   if sets have subsets, vector spaces have subspaces.
+
+(Mathematicians study subobjects to understand the big objects better)
+
+## Def
+
+Let $V(V,+_V,\cdot_V)$(what is the link with restrictions here?: we have $U\subseteq V$, i.e. U$\times$U={($x_1,x_2|x_1,x_2\in U$)}$\subseteq V\times V$, now we have $+_V|_{U\times U}$:U$\times U$--\>V, and scalar multiplication is similar to it. ) be a vector space, a **subset U** of V is a subspace if and only if $U(U,+_V,\cdot_V)$ is a vector space(for the link with restrictions: Here, for the condition of U being a vector space, we need
+
+$+_V|_{U\times U}$:U$\times U$--\>U i.e. for $u_1,u_2\in U, u_1+_vu_2 \in U, \lambda \cdot_vu_1\in U)$
+
+$\cdot_v|_{F\times U}$: $F\times U$--\>U
+
+$0_V\in U$
+
+, which could replace 2 operations and 8 axioms and we will prove later)
+
+ex: R=U$\subseteq$V=C (a C-vector space) is not a subspace because scalar multiplication is not internal(i$\cdot \pi$is not in R----not satisfying $\cdot_v|_{F\times U}$: $F\times U$--\>U)
+
+----so we should explicit $\mathbb F$ when saying vector spaces
+
+## ?
+
+C r vector space though i including???
+
+(ex: $\mathbb C$is a R-vector space and $\mathbb R \subseteq \mathbb C$ is a R subspace)
+
+## Propsition
+
+$U\subseteq V$is a subspace if and only if :
+
+a 0
+
+b +
+
+c $\cdot$
+
+### proof
+
+for 1-8 axioms we only need to prove 4) because others are either included by the proposition or share the qualities of them because the elements in U are the elements in V.
+
+4): there exists only one inverse in U
+
+i.e. V's inverse is in U
+
+let $u\in U$, then $u\in V$ so $\exists v=(-u)\in V$, we need to check is -u in U s.t. -u+u=$0_v$:
+
+-u=(-1)u $\in U$(scalar multiplication)
+
+## eg
+
+-   $\lambda \in \mathbb F$, U:={$x_1,x_2,x_3,x_4|x_3=5x_4+\lambda$} is a subset if and only if $\lambda =0$
+
+proof:
+
+side one: 0=(0,0,0,0) is in U... and others satisfy the proposition also.
+
+side two: if $\lambda =0$, let **x** and **y** $\in U$, so $x_3=5x_4$,$y_3=5y_4$, so $x_3+y_3=5(x_4+y_4)$, so the addition is satisfied.
+
+for c, also
+
+-   $R_\{geq0}$ is not a vector space--(-1,2)---\> (-1)2=-2$\notin R_{\geq0}$
+
+-   $C^0$(\[0,1\]):={f:\[0,1\]--\>R, continuous} is a subspace $\mathbb R^{[0,1]}$
+
+## proof of all kinds of subspaces of R2
+
+## sum of subspaces
+
+-   for sets, if $A \subseteq C$ and $B\subseteq C$ are 2 subsets then A U B$\subseteq$C is still a subset of C and it is the smallest subset of C containing both A and B.
+
+Q: what about subspaces of vector spaces?
+
+in general if U W are Z subspaces of V then U U W is not a subspace
+
+ex:
+
+-   in fact U u W is a subspace if and only if $U \subseteq W$ or $W \subseteq U$
+
+Q: How to produce the smallest subspace of V containing both U and W?
+
+-   Def: ley U_1,...U_n be subspaces of V then their SUM is $U_1+...+U_n=\{ u_1+...+u_n|u_i\in U_i ,\forall i\}$. This is a subset of V containing all possible sums of elements of the U
+
+ex
+
+-   Thm: let U_1,...U_b be subspace of V then U_1+...+U_nis the smallest subspace of V containing each of the $U_i$
+
+    -   Proof: we need to prove the following 3 things:
+
+        -   U:=$U_1+...+U_n$ is a subspace
+
+            -   0=0+..0(U_i are subspaces)$\in U$
+            -   if U=sum Ui and V=sum Vi $\in U$ then U+V=(sum ui)+(sum vi )=(u1+v1)+...$\in U$
+            -   if $\lambda \in F, U\in U$(U is the sum of Ui(these subspaces))
+
+            then lambda(u sum)=(lambda u_1)+...$\in U$
+
+        -   $\forall i: U_i\subseteq U$
+
+            -   let v$\in U_i$ hten v=0+0+0(U\_{i-1})+v(U_i)+0+0+0$\in U$, which means $U_i\in U$
+
+        -   if W is another subpace of V containing all the $U_i$ then $U\subseteq W$
+
+            -   for any $u\in U$, U(sum)$\in W$($U_i$ $\in W$)(sum of elements of W), which means U$\subseteq W$
+
+        Remark:
+
+        -   $U\subseteq W$ if and only if U+W=W
+
+        -   proof:
+
+            ![](images/clipboard-2928221853.png)
+
+        -   we can do U+W only if U and W are subspaces of the same space
+
+-   Comparison of subsets(A B)/subspaces(U W):
+
+$A\cap B$ is the biggest subset contained in both A and B
+
+$A \cup B$ is the smallest subspace containing both U and W
+
+A $\sqcup$ (disjoint union) B: whenever $A\cap B=\emptyset$,then \|A\|+\|B\|=\|$A\cup B$\|
+
+but as the disjoint union for subspaces:
+
+maybe ask that $U \cap W$ is as small as possible, that is L $U\cap W=\{0\}$
+
+-   Def Let U1-Un be the subspaces of V we say that U1+Un is a DIRECT SUM if (shuangjiantou) $\forall U\in U sum$ there exists a unique way to write U=Usum
+
+    ex:![](images/clipboard-654847461.png)
+
+in this case we write U_1 $\oplus$... $\oplus$ U_n
+
+   (if $u\in  U_1 +$... $+$ $U_n$, then there always exists $U_i\in U_1 +$... $+$ U_n$\in U_n$, such that U=U_1 $+$... $+$ $U_n$, **the defination is about uniqueness of such elements.**)
+
+ex 1).U:={(x,x,y,y)|x,y$\in F$}$\subseteq F^4$
+
+W:={(x,x,x,y)|x,y$\in F$}$\subseteq F^4$
+
+then U+W={(x,x,y,z)|x,y,z$\in F$}=:A
+
+
+
+proof:
+
+side1:**u**+**v**$\in U+W$ easy ---xxyz
+
+
+side2: let (x,x,y,z)$\in A$
+we want to find v=(a,a,b,b), w=(c,c,c,d),s.t. u+w=(x,x,y,z)
+
+so we need to solve a+c=x, b+c=y,b+d=z,
+
+
+b is free, d=z-b,c=y-b,a=x-c=x-y+b
+
+for ex for b=0:
+
+  u=
+  
+  w=
+  
+  so u+w=
+  
+  so $A\subseteq U+W$
+  
+  
+
+
+
+ex 3) : $U_i=${(0,0,...x(i th coordinate),0,0,0(n th coordinate))\|$x\in F$}$\subseteq F^n$
+
+then $U_1\oplus ...\oplus U_n=F^n$
+
+ex 4) : $U_1=${(x,y,z)\|$x,y\in F$} 
+
+$U_2$={(0,0,z)|$z\in F$}
+
+$U_3$={(0,y,y)|$y\in F$}
+    
+then $U_1+U_2+U_3=F^3$, but not direct sum
+    
+eg: 
+       
+       
+
+
+    
+but $U_1\odot U_2=F^3$
+           
+$U_1\odot U_3=F^3$
+           
+$U_2\odot U_3=\{(0,y,z)|y,z\in F^3\}$
+          
+    
+```
+
+-   Thm let U1,....Un be subspaces of V then \[U1+...+Un is a direct sum\] if and only if \[if 0=u1+...+un, then u1=...=0\]
+
+    -   proof: one side is obvious: $0\in U_1+...+U_n$
+
+        ```         
+           the other side: let v $\in U_1+...+U_n$ with v= u+ =v+ be 2 decompsition 
+
+
+           so o=u-v=(u1+)-(V1+)=(u1-v1)+(u2-v2)
+
+
+           SO 0 = U1-V1-U2-V2=... by assumption
+
+
+           so we can derive: u1=v1...
+
+
+           so the deconposition of v is unique
+        ```
+
+-   intersection of subspaces:
+
+lemma: if U W are subspaces aof V then $U\cap W$ is the biggest subspace contained in both U and W
+
+-   proof :
+
+ -   subspace:
+
+     -   0
+     -   
+         -   
+    -   lambda
+
+    -   already know $\subseteq$
+
+    -   biggest: let $Z\subseteq V$ be a subspace, contained both in U and W, because $U\cap W$ is the biggest subset contained both in U and W then $Z\subseteq U\cap W$(as subset)
+
+-   Def if V=U$\oplus$W we say that W is COMPLEMENTARY SUBSPACE of U(inside V)
+
+    give a conunter example to:
+
+    for U1 U2, W subspaces of V, then
+
+    1)  if U1+w=U2+w, then U1=U2:
+
+    2)  if $U_1\oplus W=U_2\oplus W$ hten U_1=U_2
+
+# Linear Combinations and Span
+
+-   Def: A LINEAR COMBINATION of a list of vectors $v_1,...,v_n\in V$, is any element of the form $\lambda v_1+...$ with $\lambda_i\in F$
+
+    eg. sin(x+$\pi/2$)$\in R^R$ is a linear comb of sin(x) and cos(x):
+
+    indeed: sin(x+$\pi/2$)=$\sqrt 2/2 sin(x)+.. cos(x)$
+
+-   Def let $v_1,...,v_n\in V$, we define span($v_1,...,v_n$) to be the set of all linear combinations: span($v_1,...,v_n$)={$\lambda_1v_1+...$\|$\lambda_i\in F$,i=1,...,n}$\subseteq V$(span()={0})
+
+    -   NOT in the exam:
+
+        -   if we have an infinite colection of vectors , then span(\$V\_\alpha\|)
+
+-   Thm let $v_1,...,v_n\in V$, then span($v_1,...,v_n$) is the smallest subspace of V containing all the $v_i$
+
+    -   proof:
+
+        -   subspace:
+
+        -   0, yes
+
+        -   
+
+        -   
+
+        -   subset: v:=o v1+.+v_i..+0vn \$\in \$span(v1...vn)
+
+        -   smallest:
+
+if w is a subspace containing all the v1: then for every lambda i: lambda v1+...+\in W
+
+  so span(v1,...vn)$\subseteq$ W
+
+-   ex: supposr s is a finite set $\forall b \in S$ define $\chi_b:$S---\>F by
+ 
+$\chi_b(x):=1$ if x=b, 0, otherwise
+
+then $F^S$ is spanned by the $\chi_b$
+
+-   ex ;$\forall V:V=V\oplus${0}
+
+
+
+
+## linear independence
+
+finite????
+
+a list of vectors v,...vi$\in V$ is 
+
+- linearly independent: if and only if the vector equation $\lambda v_1+..=o$ admits a unique solution: (0,0,)
+
+
+
+linearly dependence: non-trivial solution. 
+
+
+det=0
+
+v,v,...,0,...
+
+
+                  
+                  
+
+
+
+remark
+
+
+
+infinite
+
+
+- v1,...vn is linearly independent if and only if span(v1)+span(v2)..+span(vn) is a direct sum.
+
+
+  - ex: a list of 1 vector $v\in V$ is lin independent if and only if V!=0
+  
+  - ex: $u,v\in V$ is linearly independent if and only if [$u\notin span(V)$ and $v\notin span(U)$]
+     - ex: (0,0), (1,0) but v$\notin span(u)=${0}
+     
+     - if both u. and v !=0 then it is enough to check only one of a or b
+     
+     
+  - ex: v1,... linearly dependent iff $\exists i$ s.t. $v_i\in $span(v1,....)
+  
+     - one side: $\exists \lambda$
+     
+     
+     - the other side:
+     
+       smalest span list: 
+     
+       - one include
+       
+       
+       - the other include:
+       
+       
+       this lemmma tells us the if a family is lin dependent then we can remove "redundan" vectors without changing the span
+       
+       
+   - THM: suppose V=span(v1,..vm)=span(w1,..wn). If v1,..vm is linearly independent then $m\leq n$
+   
+     - proof:let us consider v1,w2,....,wn
+     
+       - this is a spannign family for v, $v=span(w1,..wn)\subseteq span(v1,w1,...wn)\subseteq v$
+       
+       -it is linearly dependent(because v1$\in span(w1,...wn)....$)
+       
+       - v1 !=0 because v1,...vm is lin independent
+       
+    Now we apply the lemma to the family
+
+ which implies that $\exists j$ s.t. wj can be replaced by v1
+ 
+ 
+ 
+  indeed 0!= $\notin span()$={0}
+  
+  
+  see photo
+  in particular, $m \leq n$. ok
+  
+  
+- **among finite spanning lists, linearly independent are the smallest one**
+
+
+- corollary:  if v=span(v1,...vm)=span(w1,..wn) and (v1,..) and (w1,..) are both lin indep then m=n
+- ex: $\mathbb F^n$, any list of $m\geq n+1$ vectors is lin dependent because (1,0,..),(0,1,...),...(0,...,1) (n elements here) and any of $\leq n-1$ vecters cannot span $\mathbb {F^n}$ 
+
+ 
+
+
+
+
+
+
+
+  
+
+
+
+       
+    
+  
+  
+
+
+
+
 # Tutorial
 
 ## problems
@@ -830,10 +1238,20 @@ method2: work for the tansformation of a matrix
 
 eg.![a problem](images/clipboard-3068495766.png)
 
-eg.
+eg. of Tutorial 4:
 
-![](images/clipboard-1407097711.png)
+f: $\mathbb{R}_{\geq0}$---\>$\mathbb{R}$
+
+x--\>$\sqrt {x}$
+
+g: $\mathbb R$---\>$\mathbb{R}_{\geq0}$
+
+x--\>$x^2$
+
+g(f(x))=$x^2$=$id_{\mathbb R\geq0}$ f(g(x))=\|$x$\|is not equal to $id_{\mathbb R}$ because f(g(x)) is not equal to x.
+
+eg. ![](images/clipboard-1407097711.png)
 
 ## understand again
 
-![understand vector space](images/clipboard-1253681054.png)
+![understand vector space](images/clipboard-1253681054.png) see abstract vector space for a review
