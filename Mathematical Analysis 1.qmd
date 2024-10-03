@@ -4,7 +4,16 @@ editor:
   markdown: 
     wrap: 72
 ---
-## 总结了有上界（下界）必定有唯一上（下）确界的两种证明方法，闭区间套定理的证明，以及有限覆盖定理的证明（待internalized）
+# Thanks
+
+- Thanks to Professor Zhang for teaching us MTH117.
+
+- Thanks to Professor A Kun for giving our XJTLU students chances to learn from him, especially his sophisticated personal understanding of Mathematics(and his useful and effective exercise of Analysis). 
+
+
+# 总结了有上界（下界）必定有唯一上（下）确界的两种证明方法，闭区间套定理的证明，以及有限覆盖定理的证明（待internalized）
+
+## if a not empty set has upper bound, then it must have the unique sup.
 
 **Prove: if a not empty set has upper bound, then it must have the
 unique sup.**
@@ -68,6 +77,70 @@ $$
 \Rightarrow-\sup (-E)=\operatorname{inf} E \text {. }
 $$
 
+### if c is negative then inf(cA)=csupA
+
+**Method 3:more generalized than Method 2's conclusion**
+
+
+In fact, If $c<0$, then
+$\sup (cA)=\operatorname{cinf} A, \inf (c A)=\operatorname{csup} A$. (and **in particular. sup $(-B)=-$ inf $B$ **)
+
+Since if M=supA, $\forall x\in A,x\leq M,cx\geq cM$, which indicates that cM is the lower bound of cX.
+
+So, $cA$ has lower bound ( $s$ )if and only if $A$ has upper bound(s).(inverse, also true) 
+$cA$ is not empty if and only if A is not empty.
+
+So, cA has $\inf (cA)$ if and only if $A$ has supA
+$$
+\begin{aligned}
+& \forall c x \in C A, c x \geqslant c M \\
+& \text { if } \exists c M, \forall c x \in c A, c x \geqslant c M^{\prime}, c M^{\prime}>c M, \\
+& X \leq M^{\prime}, M^{\prime}<M(\forall x \in A)
+\end{aligned}
+$$
+
+Contradicting to the condition that $M=\sup A$
+
+So $\nexists C M^{\prime}$
+So cM is the largest lower bound
+$$
+\begin{aligned}
+& \text { so } c M=\inf (c A) \\
+& \text { so } c\sup A=\inf (c A)
+\end{aligned}
+$$
+
+## an exercise from Professor Andrew Lin(A Kun)
+13. Consider the set
+$$
+A=\left\{\left.(-1)^n\left(1-\frac{1}{n}\right) \right\rvert\, n \in \mathbb{Z}^{+}\right\} .
+$$
+-  Show that 1 is an upper bound for $A$.
+-  Show that if $d$ is an upper bound for $A$, then $d \geq 1$.
+-  Use (a) and (b) to show that $\sup A=1$.
+[Solution]:
+-  We will show that for any $x \in A, x \leq 1$. Since $x \in A$, then $x=(-1)^n(1-$ $1 / n$ ) for some $n \in \mathbb{Z}^{+}$. Since $\frac{1}{n}>0$, then $1-\frac{1}{n}<1$. We argue our desired inequality in two cases. If $n$ is even, then $x=(-1)^n(1-1 / n)=1-1 / n<1$. If $n$ is odd, then $x=(-1)^n(1-1 / n)=-1+1 / n<0<1$. In either case, $x \leq 1$ (in fact, $x<1$ ) and 1 is an upper bound for $A$.
+-  Let $d$ be an upper bound for $A$. Thus, $(-1)^n(1-1 / n) \leq d$ for all $n \in \mathbb{Z}^{+}$. Assume, to the contrary that $d<1$. Thus, $1-d>0$. By the Archimedean Property, there exists an $n \in \mathbb{Z}^{+}$such that $1<(1-d) n$. Since $n>0$, we can rewrite this as $\frac{1}{n}<1-d$, which is equivalent to $d<1-\frac{1}{n}$. If $n$ is even, then $(-1)^n=1$ and we have that
+$$
+d<(-1)^n\left(1-\frac{1}{n}\right) \in A
+$$
+contradicting the fact that $d$ is an upper bound. If $n$ is odd, then consider instead $n+1$, which is even. Then, $(-1)^{n+1}=1$ and
+$$
+d<1-\frac{1}{n}<(-1)^{n+1}\left(1-\frac{1}{n+1}\right) \in A
+$$
+
+This again contradicts that $d$ is an upper bound for $A$. Either way, we reach a contradiction and therefore conclude that $d \geq 1$.
+
+- obviously
+
+lower bound + inequaility ---smallest upper bound---sup
+
+
+
+
+
+
+## Prove Cantor Nested Interval Property
 
 **Prove:**
 
@@ -127,6 +200,8 @@ $|I_n|\geqslant c_2-c_1 \geqslant \frac{c_2-c_1}{2}$
 So if $\exists I_n s. t .\left|I_n\right|<\varepsilon$, $c!$
 
 
+## prove finite covering lemma
+
 
 **Prove：Finite Covering Lemma**
 $$
@@ -177,7 +252,6 @@ $$
 
 
 
-## others
 ![](images/clipboard-4085119236.png)
 
 which indicates that at least this $I_n$ is covered by U, contradicting
@@ -186,18 +260,67 @@ to the suppose.
 so the finite covering lemma is true.
 
 
+## exercise: supC=sup(A+B)=supA+supB
 
 
+$$
+\begin{array}{rl}
+\text { if } A\subset R,  B\subset R, \text { define: } \\
+C  :=A+B=\{z \in R: z=x+y, x \in A, y \in B\} \\
+D  :=A-B=\{z \in R: z=x-y, x \in A, y \in B\}
+\end{array}
+$$
+show that
+$$
+\begin{aligned}
+& \text { (1) } \sup C=\sup (A+B)=\sup A+\sup B \\
+& \text { (2) } \sup D=\sup (A-B)=\sup A-\inf B
+\end{aligned}
+$$
+(1) Proof:: Obviously,$C$ has upper bounds if and only if $A$ and $B$ have upper bounds, and $C$ is not empty.
+So $C$ has sup C if and only if and only if $A$ has sup $A$ and $B$ has sup $B$.  (Completeness axiom).
+
+- prove: $\sup C \leqslant \sin A+\sup B$.
+$$
+\because x+y \leqslant \sup A+\sup  B
+$$
+$\therefore(\operatorname{sip} A+\sup B)$ is an upper bound of $C$
+$$
+\therefore \sin C \leqslant \sin A+\sup B
+$$
+- Prove : $\sup C \geqslant \operatorname{supA}+$ sup B
+$$
+\begin{aligned}
+& \because \forall \varepsilon>0, \exists x \in A, y \in B \text {, s.t. } \\
+& \operatorname{sup} A-\varepsilon<x, \operatorname{sup} B-\varepsilon<y . \\
+& \Rightarrow \sup A+\sup B-2 \varepsilon<x+y \\
+& \text { i.e. }(\operatorname{sup} A+\sup B-2 \varepsilon)_{\text {max }}<(x+y)_{\text {max }}
+\end{aligned}
+$$
+
+Since $x+y \leq$ sup c
+We have $\sup A+\sup B-2 \varepsilon<\sup c, \forall \varepsilon>0$
+$$
+\begin{aligned}
+& \text { i.e. } \operatorname{(sup} A+\sup B-2 \varepsilon)_{\text {max }}<\sup C \\
+\end{aligned}
+$$
+
+We. As $\varepsilon \rightarrow 0$,
+We have $\operatorname{sup} A+\sup B \leqslant \operatorname{} \operatorname{sup} C$
+So, we have $\operatorname{Sup} C=\operatorname{Sup} A+\operatorname{Sup} B$.
+Then, we have $\sup D=\sup (A-B)$
+$$
+\begin{aligned}
+& =\sup (A+(-B)) \\
+& =\sup A+\sup (-B) \\
+& =\sup A-\inf B
+\end{aligned}
+$$
+(We have proved $\sup (-B)=-\inf B$ before)
 
 
-
-
-
-
-
-![](images/clipboard-4288558846.png)
-
-should we prove that？
+# lecture notes
 
 ![](images/clipboard-3097473254.png)
 
