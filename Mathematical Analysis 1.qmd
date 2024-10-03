@@ -13,6 +13,13 @@ editor:
 
 # 总结了有上界（下界）必定有唯一上（下）确界的两种证明方法，闭区间套定理的证明，以及有限覆盖定理的证明（待internalized）
 
+## 纠正之前错误的理解
+
+
+
+- Epsilon在sup定理中的意思是构造存在性的x时候可以取任意的epsilon 不是说要对所有epsilon成立
+
+
 ## if a not empty set has upper bound, then it must have the unique sup.
 
 **Prove: if a not empty set has upper bound, then it must have the
@@ -110,7 +117,8 @@ $$
 \end{aligned}
 $$
 
-## an exercise from Professor Andrew Lin(A Kun)
+## an exercise about think good Archimedean number from Professor Andrew Lin(A Kun)
+
 13. Consider the set
 $$
 A=\left\{\left.(-1)^n\left(1-\frac{1}{n}\right) \right\rvert\, n \in \mathbb{Z}^{+}\right\} .
@@ -135,7 +143,33 @@ This again contradicts that $d$ is an upper bound for $A$. Either way, we reach 
 
 lower bound + inequaility ---smallest upper bound---sup
 
+## another exercise about another episilon from Professor A Kun
 
+
+14. Find the least upper bound for the following set and
+$$
+A=\left\{\frac{1}{2}, \frac{2}{3}, \frac{3}{4}, \cdots, \frac{n}{n+1}, \cdots\right\}
+$$
+[Solution]: We note that every element of $A$ is less than 1 since
+$$
+\frac{n}{n+1}<1, \quad n=1,2,3, \cdots
+$$
+
+We claim that the least upper bound is $1, \sup A=1$. Assume that 1 is not the least upper bound. Then there is an $\epsilon>0$ such that $1-\epsilon$ is also an upper bound. However, we claim that there is a natural number $n$ such that
+$$
+1-\epsilon<\frac{n}{n+1}
+$$
+
+This inequality is equivalent to the following sequence of inequalities
+$$
+1-\frac{n}{n+1}<\epsilon \quad \Longleftrightarrow \quad \frac{1}{\epsilon}-1<n
+$$
+
+Reversing the above sequence of inequalities shows that if $n>\frac{1}{\epsilon}-1$, then $1-\epsilon<\frac{n}{n+1}$ showing that $1-\epsilon$ is not an upper bound for $A$.
+
+(if n > 1/ $\epsilon$-1, $\nexists \epsilon$ s.t. 1-$\epsilon$ is an upper bound, contradicting to our suppose) 
+
+This verifies our answer.
 
 
 
