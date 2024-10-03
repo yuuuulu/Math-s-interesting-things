@@ -4,8 +4,196 @@ editor:
   markdown: 
     wrap: 72
 ---
+## 总结了有上界（下界）必定有唯一上（下）确界的两种证明方法，闭区间套定理的证明，以及有限覆盖定理的证明（待internalized）
 
-狂刷题 国庆
+**Prove: if a not empty set has upper bound, then it must have the
+unique sup.**
+
+Method 1: (Completeness axiom) $$
+\begin{gathered}
+X \neq \phi, \quad Y=\{y \in \mathbb{R} \mid \forall x \in X(x \leq y)\} \neq \phi \\
+\\
+\forall x \in X, \forall y \in Y, x \leq y \\
+\\
+\Rightarrow \exists c \in \mathbb R, \forall x \in X, \forall y \in Y, \\
+\\
+x \leqslant c \leqslant y(\text { Completeness axiom) } \\
+\\
+\Rightarrow(c \in Y) \wedge(\{\forall y \in Y \mid y \geqslant c\}) \\
+\\
+\Rightarrow c=\min Y
+\end{gathered}
+$$
+
+So $c$ is the only sup. (uniqueness of minimum element of a set).
+
+Method 2: Cantor Nested Interval Property(limit思想).
+
+We choose a random upper bound $\gamma, x \in E($ the set) $$
+[x, r]=\left[a_1 b_1\right] \supset\left[a_2, b_2\right] \supset \cdots \left[a_n, b_n\right]
+$$ (each time we use the method of bisection to choose one side
+Including the point in $E$ ) \$\$
+
+```{=tex}
+\begin{aligned}
+& \text { Since }\left[a_1, b_1\right] \supset\left[a_2, b_2\right] \cdots, b_n-a_n=\frac{\gamma-x}{2^{n-1}} \rightarrow 0, \\
+& \beta \in\left[a_n, b_n\right],(n=1,2, \cdots), \lim _{n \rightarrow \infty} a_n=\lim _{n \rightarrow \infty} b_n=\beta \text {(limit thinking of the Cantor Nested Interval) } \\
+& \Rightarrow \forall c \in E, c \leqslant b_n \Rightarrow c \leqslant \beta \text { (E }  \text {is never on the right of} [a_n,b_n]) \\
+& \Rightarrow \forall \varepsilon>0, \exists d \in E, d>\beta-\varepsilon\text { (each} [a_n,b_n] \text { has points in E.(or see the attached picture to see more picisely))}
+\end{aligned}
+```
+![](images/clipboard-1103791551.png)
+
+
+
+ **Prove: if a not empty set has lower bound, then it must have the
+unique inf.**
+
+Method 1: same as before.
+
+Method 2: Based on before.
+
+Suppose We choose $m$ as a lower bound of $E$. $$
+\begin{aligned}
+& \Rightarrow \forall x \in E, x \geqslant m,-x \leqslant-m \text {. } \\
+& \text { Let } F=\{-x \mid x \in E\} \text {. } \\
+& \Rightarrow \beta=\sup F \\
+& \Rightarrow-x \leqslant \beta, x \geqslant-\beta \text {. } \\
+& \forall \varepsilon>0, \exists-d \in E,-d>\beta-\varepsilon, \\
+& \Rightarrow d<-\beta+\varepsilon \\
+& \Rightarrow-\beta=\inf E
+\end{aligned}
+$$ 
+$$
+\Rightarrow-\sup (-E)=\operatorname{inf} E \text {. }
+$$
+
+
+**Prove:**
+
+- $\exists c \in$ all closed internals
+
+  - i.e. if the non-empty closed intervals
+$I_1 \supset I_2 \supset I_3 \cdots, \exists c \in R$, s.t.
+$c\in I_i, \forall i \in \mathbb{N}$, $c \in$
+$\bigcap_{i=1}^{\infty} I_i$
+
+- If the limit of the lengths of these intervals are 0 then the point is unique
+
+  - i.e. if$\left|I_n\right| \rightarrow 0$, c is unique
+
+$$
+\forall \varepsilon>0, \exists I_n(|I_n| < \varepsilon) \Rightarrow c \text { ! }
+$$
+
+**Proof**:
+
+- proof of 1
+
+$I_1=[a_1, b_1]$
+
+claim $\forall I_n=[a_n, b_n], I_m=[a_m, b_m]$ i.e. $a_n \leq b_m$
+
+(if $a_n>b_m$, then $a_m \leq b_m<a_n<b_n$, which means they are
+separate internals without any intersection.) $$
+\begin{aligned}
+&\text { Let } X=\left\{a_n\right\} (\text { left endpoint set) } \\
+&\text { Let } Y=\left\{b_m\right\}(\text { right endpoint set) } \\
+& \forall a_n \in X, \forall b_m \in Y, a_n \leq c\leq b_m
+\end{aligned}
+$$ $\Rightarrow \exists c \in \mathbb{R}$, s.t., $\forall a_n \in X$
+$\forall b_m \in Y,a_n\leqslant b_m$.(completeness axiom) We then let
+$m=n \Rightarrow c \in I_n$
+
+- proof of 2
+
+**Based on “Any implication is equivalent to its contrapositive” **
+  
+
+$$
+\begin{aligned}
+& \text { if } \exists c_1<c_2, \text { s.t. } c_1, c_2 \in I_n, \\
+& \forall n \in \mathbb{R}, a_n \leqslant c_1<c_2 \leqslant b_n, \\
+& \Rightarrow\left|I_n\right|=b_n-a_n \geqslant c_2-c_1
+\end{aligned}
+$$
+
+We then choose $\varepsilon=\frac{c_2-c_1}{2}>0$
+
+then there exists no $I_n$ s.t. $\left|I_n\right|<\varepsilon$, since
+
+$|I_n|\geqslant c_2-c_1 \geqslant \frac{c_2-c_1}{2}$
+
+So if $\exists I_n s. t .\left|I_n\right|<\varepsilon$, $c!$
+
+
+
+**Prove：Finite Covering Lemma**
+$$
+\begin{gathered}
+\text { Def: } S:=\{X\}, \text { ( } x \text { is a set) } \\
+Y \subset \bigcup_{X \in S} X
+\end{gathered}
+$$
+
+We say. $S$ is a cover of $Y$. $$
+\text { i.e. } \forall y \in Y, \exists X \in S,(y \in X)
+$$
+
+Finite Covering Lemma:
+
+If $I:[a, b]$, $$
+I \subset \bigcup_{n \in I} U_n, U_n=\left(\alpha_n, \beta_n\right)
+$$ $\exists U_1, \cdots U_k$, s.t., $I\subset \bigcup_{i=1}^k U_i$
+
+**（Summray of Finite Covering Lemma: A closed internal can be covered by
+finite number of open internals）**
+
+**proof: **
+
+suppose $I=[a, b]$ could not be coverd by finite number open
+intervals:
+
+Then we use the method of bisection to separate I,s.t.
+
+$$
+\begin{aligned}
+& I=I_1 \supset I_2 \supset I_3 \cdots I_n \supset \cdots \text { ( all In can not be covered } \\
+& \left|I_n\right|=\frac{b-a}{2^n} \rightarrow 0 \\
+& \text { Gover) } \\
+& \Rightarrow \exists: C \in \bigcap_{i=1}^{\infty} I_i \text { (Cantor Nested Interral Property) } \\
+& c_i\in[a_i,b_i]\\
+& \Rightarrow C\in I\subset \bigcup U_i\text {(based on the given condition of the proof problem)}\\
+& \Rightarrow \exists U=[\alpha,\beta],s.t.c\in U，let ：\varepsilon =min[c-\alpha,\beta-c]\\
+& \Rightarrow I_n\subset U
+\end{aligned}
+$$
+
+
+
+
+
+
+
+
+
+## others
+![](images/clipboard-4085119236.png)
+
+which indicates that at least this $I_n$ is covered by U, contradicting
+to the suppose.
+
+so the finite covering lemma is true.
+
+
+
+
+
+
+
+
+
+
 
 ![](images/clipboard-4288558846.png)
 
@@ -419,19 +607,21 @@ n - 1+1\leq 100 - n \implies n \leq 50
 $$ so The 50th statement $S_{50}$ is true. Statements $S_1$ to $S_{49}$
 are false, and statements $S_{50}$ to $S_{99}$ are true.
 
-
 ## Cardinality
-- numebr of elements in a finite set: Def: let A be a set, if A contains finitely many elements, then the number of elements of A is called the cardinality of A, denoted by |A|(|A|$\in Z_{\geq0}$
 
+-   numebr of elements in a finite set: Def: let A be a set, if A
+    contains finitely many elements, then the number of elements of A is
+    called the cardinality of A, denoted by \|A\|(\|A\|$\in Z_{\geq0}$
 
-- A, B have infinitely many elements. If $\exists f:A->B$ is a bijective map, then we regard the A, B have the same "cardinality", i.e.|A|=|B|
+-   A, B have infinitely many elements. If $\exists f:A->B$ is a
+    bijective map, then we regard the A, B have the same "cardinality",
+    i.e.\|A\|=\|B\|
 
 ## A x B--Cartesian product
 
 ### eg
 
-|A|=3, |B|=2, |A x B|=6
-
+\|A\|=3, \|B\|=2, \|A x B\|=6
 
 ## map
 
@@ -439,74 +629,51 @@ Question from the Cardinality:
 
 What happens if A has infinitely many elements?
 
-
-Def: LEt A and B be 2 sets, A map(function)f: A-->B assigns each element in A
+Def: LEt A and B be 2 sets, A map(function)f: A--\>B assigns each
+element in A
 
 there has 3 kinds of maps(see 107)
 
 ### eg
 
-the graph of f(x) in A x B is f: A--> B(x $\in A$,y$\in B$)
+the graph of f(x) in A x B is f: A--\> B(x $\in A$,y$\in B$)
 
 ## inverse defination
-
 
 if f is a bijective map, so as $f^{-1}$.
 
 ## countable
 
-- A set A is called countable if A iseither a finite set of there exists a bijective map f: A to N.(Otherwise is uncountable)
-
-
+-   A set A is called countable if A iseither a finite set of there
+    exists a bijective map f: A to N.(Otherwise is uncountable)
 
 ### eg
 
-- $B=[x|x=2n,n\in N$ is countable 
+-   $B=[x|x=2n,n\in N$ is countable
 
+proof: for x\|--\>x/2 of B--\>N i) injective , \$\forall x_1 \$ not =
+$x_2$, f(x_1)=x/2, = f(x_2)
 
-proof: for x|-->x/2 of B-->N
-       i) injective , $\forall x_1 $  not = $x_2$, f(x_1)=x/2, \= f(x_2)
+```         
+   ii) surjective, $\forall y\in N $, $\exists x\in B$ s.t. ,f(2y)=x, $2y\in B$
+   
+   so bijective
+   
+```
 
-       ii) surjective, $\forall y\in N $, $\exists x\in B$ s.t. ,f(2y)=x, $2y\in B$
-       
-       so bijective
-       
+-   Z is countable (负无穷到正无穷范围内的整数)
 
+f:N--\>Z(n\|--\>n/2 if even, 1-n/2 if odd)
 
-- Z is countable (负无穷到正无穷范围内的整数)
-
-f:N-->Z(n|-->n/2 if even,  1-n/2 if odd)
-
-
-n|-->n/2 if even makes the positive integer possible
+n\|--\>n/2 if even makes the positive integer possible
 
 1-n/2 if odd makes negative integer possible
 
 and both of them are bijections
 
-
 so Z is countable
 
-   
-    
-       
-
-
 # the real number
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
