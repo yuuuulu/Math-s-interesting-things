@@ -39,7 +39,7 @@ $$
 
 So $c$ is the only sup. (uniqueness of minimum element of a set---2 inequalities lead to the equality leading to the only one result).
 
-Method 2: Cantor Nested Interval Property(limit思想).
+Method 2: Cantor Nested Interval Property(limit思想).asdfaskfkasdjklsad
 
 We choose a random upper bound $\gamma, x \in E($ the set) $$
 [x, r]=\left[a_1 b_1\right] \supset\left[a_2, b_2\right] \supset \cdots \left[a_n, b_n\right]
