@@ -13,8 +13,9 @@ editor:
     learn from him, especially his sophisticated personal understanding
     of Mathematics(and his useful and effective exercise of Analysis).
 
-# 总结了有上界（下界）必定有唯一上（下）确界的两种证明方法，闭区间套定理的证明，以及有限覆盖定理的证明（待internalized）
+    ![](images/clipboard-672460591.png)
 
+# 总结了有上界（下界）必定有唯一上（下）确界的两种证明方法，闭区间套定理的证明，以及有限覆盖定理的证明（待internalized）
 
 ## if a not empty set has upper bound, then it must have the unique sup.
 
@@ -37,7 +38,8 @@ x \leqslant c \leqslant y(\text { Completeness axiom) } \\
 \end{gathered}
 $$
 
-So $c$ is the only sup. (uniqueness of minimum element of a set---2 inequalities lead to the equality leading to the only one result).
+So $c$ is the only sup. (uniqueness of minimum element of a set---2
+inequalities lead to the equality leading to the only one result).
 
 Method 2: Cantor Nested Interval Property(limit思想).asdfaskfkasdjklsad
 
@@ -107,34 +109,30 @@ So $\nexists C M^{\prime}$ So cM is the largest lower bound $$
 & \text { so } c M=\inf (c A) \\
 & \text { so } c\sup A=\inf (c A)
 \end{aligned}
-$$
-## exercise: (1,2]'s sup--
-
-
+$$ \## exercise: (1,2\]'s sup--
 
 ### Method 1
 
-- 2 is an upper bound of [1,2) (obviously)
-- if $\exists \varepsilon>0$, s.t $1-\varepsilon$ is also an upper bound of $[1,2)$
-$$
-\begin{aligned}
-& \because 1 \in[1,2) \\
-& \therefore1-\varepsilon \geqslant 1
-\end{aligned}
-$$
-choose $1-\frac{\varepsilon}{2} \in(1-\varepsilon, 2)$
-Then $1-\frac{\varepsilon}{2} \in[1,2)$
-So $\exists\left(1-\frac{\varepsilon}{2}\right) \in[1,2)$ while $\left(1-\frac{\varepsilon}{2}\right)>(1-\varepsilon)$
-So $1-\varepsilon$ is not an upper bound, contradicting to the suppose.
-So we have proved that 2 is the smallest upper bound,
-i.e. $\sup [1,2)=2$.
+-   2 is an upper bound of \[1,2) (obviously)
+-   if $\exists \varepsilon>0$, s.t $2-\varepsilon$ is also an upper
+    bound of $[1,2)$ $$
+    \begin{aligned}
+    & \because 1 \in[1,2) \\
+    & \therefore2-\varepsilon \geqslant 1
+    \end{aligned}
+    $$ choose $2-\frac{\varepsilon}{2} \in(2-\varepsilon, 2)$ Then
+    $2-\frac{\varepsilon}{2} \in[1,2)$ So
+    $\exists\left(2-\frac{\varepsilon}{2}\right) \in[1,2)$ while
+    $\left(2-\frac{\varepsilon}{2}\right)>(2-\varepsilon)$ So
+    $2-\varepsilon$ is not an upper bound, contradicting to the suppose.
+    So we have proved that 2 is the smallest upper bound, i.e.
+    $\sup [1,2)=2$.
 
 ### Method 2
-- 2 is an upper bound of [1,2) (obviously)
-- $\forall \varepsilon>0, \exists b \in[1,2)$ with $b>2-\varepsilon$. We can take $b=\max \left\{2-\frac{\varepsilon}{2}, 1\right\}$.
 
-
-
+-   2 is an upper bound of \[1,2) (obviously)
+-   $\forall \varepsilon>0, \exists b \in[1,2)$ with $b>2-\varepsilon$.
+    We can take $b=\max \left\{2-\frac{\varepsilon}{2}, 1\right\}$.
 
 ## exercise: supC=sup(A+B)=supA+supB from Professor A Kun
 
@@ -188,29 +186,33 @@ we have $\sup D=\sup (A-B)$ $$
 $$ (We have proved $\sup (-B)=-\inf B$ before)
 
 ### another example
-     Let M ∈ R and A, B be two bounded, negative subsets of R,0 < x, y < M, ∀x ∈ A, y ∈ B
-    when we are proving sup C = sup(AB) = sup A · sup B
-    On the other hand, from the definition of $a^*$ and $b^*, \forall \epsilon>0$ there exist $a \in A$ and $b \in B$ such that
+
+```         
+ Let M ∈ R and A, B be two bounded, negative subsets of R,0 < x, y < M, ∀x ∈ A, y ∈ B
+when we are proving sup C = sup(AB) = sup A · sup B
+On the other hand, from the definition of $a^*$ and $b^*, \forall \epsilon>0$ there exist $a \in A$ and $b \in B$ such that
+```
+
 $$
 a^*-\epsilon<a<a^* \quad \text { and } \quad b^*-\epsilon<b<b^*
 $$
 
-Then
-$$
+Then $$
 \left(a^*-\epsilon\right)\left(b^*-\epsilon\right)<a b \leqslant a^* b^*
-$$
-or ignoring $\epsilon^2$ term (If ε > 0, then ε, 3ε, ε², ε⁵, they all represent "any number greater than zero", and ε' also represents any number greater than zero, so they are equivalent, that is, we can say that they are equal to ε'.)
-$$
+$$ or ignoring $\epsilon^2$ term (If ε \> 0, then ε, 3ε, ε², ε⁵, they
+all represent "any number greater than zero", and ε' also represents any
+number greater than zero, so they are equivalent, that is, we can say
+that they are equal to ε'.) $$
 a^* b^*-(a+b) \epsilon=a^* b^*-\epsilon^{\prime}<a b \leq c^*
 $$
 
-This is true for all $\epsilon^{\prime}>0$, so
-$$
+This is true for all $\epsilon^{\prime}>0$, so $$
 \sup A \sup B=a^* b^* \leq c^*=\sup C
 $$
 
-Combining the above two inequalities, we can conclude that $\sup A \sup B=$ $\sup C$.
-## an exercise about think good Archimedean number from Professor Andrew Lin(A Kun)
+Combining the above two inequalities, we can conclude that
+$\sup A \sup B=$ $\sup C$. \## an exercise about think good Archimedean
+number from Professor Andrew Lin(A Kun)
 
 13. Consider the set $$
     A=\left\{\left.(-1)^n\left(1-\frac{1}{n}\right) \right\rvert\, n \in \mathbb{Z}^{+}\right\} .
@@ -383,7 +385,6 @@ which indicates that at least this $I_n$ is covered by U, contradicting
 to the suppose.
 
 so the finite covering lemma is true.
-
 
 # lecture notes
 
