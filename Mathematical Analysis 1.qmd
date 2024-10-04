@@ -37,7 +37,7 @@ x \leqslant c \leqslant y(\text { Completeness axiom) } \\
 \end{gathered}
 $$
 
-So $c$ is the only sup. (uniqueness of minimum element of a set).
+So $c$ is the only sup. (uniqueness of minimum element of a set---2 inequalities lead to the equality leading to the only one result).
 
 Method 2: Cantor Nested Interval Property(limit思想).
 
