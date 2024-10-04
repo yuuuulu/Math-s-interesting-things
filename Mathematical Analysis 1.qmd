@@ -4,20 +4,16 @@ editor:
   markdown: 
     wrap: 72
 ---
+
 # Thanks
 
-- Thanks to Professor Zhang for teaching us MTH117.
+-   Thanks to Professor Zhang for teaching us MTH117.
 
-- Thanks to Professor A Kun for giving our XJTLU students chances to learn from him, especially his sophisticated personal understanding of Mathematics(and his useful and effective exercise of Analysis). 
-
+-   Thanks to Professor A Kun for giving our XJTLU students chances to
+    learn from him, especially his sophisticated personal understanding
+    of Mathematics(and his useful and effective exercise of Analysis).
 
 # 总结了有上界（下界）必定有唯一上（下）确界的两种证明方法，闭区间套定理的证明，以及有限覆盖定理的证明（待internalized）
-
-## 纠正之前错误的理解
-
-
-
-- Epsilon在sup定理中的意思是构造存在性的x时候可以取任意的epsilon 不是说要对所有epsilon成立
 
 
 ## if a not empty set has upper bound, then it must have the unique sup.
@@ -60,9 +56,7 @@ Including the point in $E$ ) \$\$
 ```
 ![](images/clipboard-1103791551.png)
 
-
-
- **Prove: if a not empty set has lower bound, then it must have the
+**Prove: if a not empty set has lower bound, then it must have the
 unique inf.**
 
 Method 1: same as before.
@@ -79,8 +73,7 @@ Suppose We choose $m$ as a lower bound of $E$. $$
 & \Rightarrow d<-\beta+\varepsilon \\
 & \Rightarrow-\beta=\inf E
 \end{aligned}
-$$ 
-$$
+$$ $$
 \Rightarrow-\sup (-E)=\operatorname{inf} E \text {. }
 $$
 
@@ -88,17 +81,18 @@ $$
 
 **Method 3:more generalized than Method 2's conclusion**
 
-
 In fact, If $c<0$, then
-$\sup (cA)=\operatorname{cinf} A, \inf (c A)=\operatorname{csup} A$. (and **in particular. sup $(-B)=-$ inf $B$ **)
+$\sup (cA)=\operatorname{cinf} A, \inf (c A)=\operatorname{csup} A$.
+(and **in particular. sup** $(-B)=-$ inf $B$ )
 
-Since if M=supA, $\forall x\in A,x\leq M,cx\geq cM$, which indicates that cM is the lower bound of cX.
+Since if M=supA, $\forall x\in A,x\leq M,cx\geq cM$, which indicates
+that cM is the lower bound of cX.
 
-So, $cA$ has lower bound ( $s$ )if and only if $A$ has upper bound(s).(inverse, also true) 
-$cA$ is not empty if and only if A is not empty.
+So, $cA$ has lower bound ( $s$ )if and only if $A$ has upper
+bound(s).(inverse, also true) $cA$ is not empty if and only if A is not
+empty.
 
-So, cA has $\inf (cA)$ if and only if $A$ has supA
-$$
+So, cA has $\inf (cA)$ if and only if $A$ has supA $$
 \begin{aligned}
 & \forall c x \in C A, c x \geqslant c M \\
 & \text { if } \exists c M, \forall c x \in c A, c x \geqslant c M^{\prime}, c M^{\prime}>c M, \\
@@ -108,55 +102,164 @@ $$
 
 Contradicting to the condition that $M=\sup A$
 
-So $\nexists C M^{\prime}$
-So cM is the largest lower bound
-$$
+So $\nexists C M^{\prime}$ So cM is the largest lower bound $$
 \begin{aligned}
 & \text { so } c M=\inf (c A) \\
 & \text { so } c\sup A=\inf (c A)
 \end{aligned}
 $$
+## exercise: (1,2]'s sup--
 
+
+
+### Method 1
+
+- 2 is an upper bound of [1,2) (obviously)
+- if $\exists \varepsilon>0$, s.t $1-\varepsilon$ is also an upper bound of $[1,2)$
+$$
+\begin{aligned}
+& \because 1 \in[1,2) \\
+& \therefore1-\varepsilon \geqslant 1
+\end{aligned}
+$$
+choose $1-\frac{\varepsilon}{2} \in(1-\varepsilon, 2)$
+Then $1-\frac{\varepsilon}{2} \in[1,2)$
+So $\exists\left(1-\frac{\varepsilon}{2}\right) \in[1,2)$ while $\left(1-\frac{\varepsilon}{2}\right)>(1-\varepsilon)$
+So $1-\varepsilon$ is not an upper bound, contradicting to the suppose.
+So we have proved that 2 is the smallest upper bound,
+i.e. $\sup [1,2)=2$.
+
+### Method 2
+- 2 is an upper bound of [1,2) (obviously)
+- $\forall \varepsilon>0, \exists b \in[1,2)$ with $b>2-\varepsilon$. We can take $b=\max \left\{2-\frac{\varepsilon}{2}, 1\right\}$.
+
+
+
+
+## exercise: supC=sup(A+B)=supA+supB from Professor A Kun
+
+$$
+\begin{array}{rl}
+\text { if } A\subset R,  B\subset R, \text { define: } \\
+C  :=A+B=\{z \in R: z=x+y, x \in A, y \in B\} \\
+D  :=A-B=\{z \in R: z=x-y, x \in A, y \in B\}
+\end{array}
+$$ show that $$
+\begin{aligned}
+& \text { (1) } \sup C=\sup (A+B)=\sup A+\sup B \\
+& \text { (2) } \sup D=\sup (A-B)=\sup A-\inf B
+\end{aligned}
+$$ (1) Proof:: Obviously,$C$ has upper bounds if and only if $A$ and $B$
+have upper bounds, and $C$ is not empty. So $C$ has sup C if and only if
+and only if $A$ has sup $A$ and $B$ has sup $B$. (Completeness axiom).
+
+-   prove: $\sup C \leqslant \sin A+\sup B$. $$
+    \because x+y \leqslant \sup A+\sup  B
+    $$ $\therefore(\operatorname{sip} A+\sup B)$ is an upper bound of
+    $C$ $$
+    \therefore \sin C \leqslant \sin A+\sup B
+    $$
+-   Prove : $\sup C \geqslant \operatorname{supA}+$ sup B $$
+    \begin{aligned}
+    & \because \forall \varepsilon>0, \exists x \in A, y \in B \text {, s.t. } \\
+    & \operatorname{sup} A-\varepsilon<x, \operatorname{sup} B-\varepsilon<y . \\
+    & \Rightarrow \sup A+\sup B-2 \varepsilon<x+y \\
+    & \text { i.e. }(\operatorname{sup} A+\sup B-2 \varepsilon)_{\text {max }}<(x+y)_{\text {max }}
+    \end{aligned}
+    $$
+
+Since $x+y \leq$ sup c We have
+$\sup A+\sup B-2 \varepsilon<\sup c, \forall \varepsilon>0$ $$
+\begin{aligned}
+& \text { i.e. } \operatorname{(sup} A+\sup B-2 \varepsilon)_{\text {max }}<\sup C \\
+\end{aligned}
+$$
+
+We. As $\varepsilon \rightarrow 0$, We have
+$\operatorname{sup} A+\sup B \leqslant \operatorname{} \operatorname{sup} C$
+So, we have
+$\operatorname{Sup} C=\operatorname{Sup} A+\operatorname{Sup} B$. Then,
+we have $\sup D=\sup (A-B)$ $$
+\begin{aligned}
+& =\sup (A+(-B)) \\
+& =\sup A+\sup (-B) \\
+& =\sup A-\inf B
+\end{aligned}
+$$ (We have proved $\sup (-B)=-\inf B$ before)
+
+### another example
+     Let M ∈ R and A, B be two bounded, negative subsets of R,0 < x, y < M, ∀x ∈ A, y ∈ B
+    when we are proving sup C = sup(AB) = sup A · sup B
+    On the other hand, from the definition of $a^*$ and $b^*, \forall \epsilon>0$ there exist $a \in A$ and $b \in B$ such that
+$$
+a^*-\epsilon<a<a^* \quad \text { and } \quad b^*-\epsilon<b<b^*
+$$
+
+Then
+$$
+\left(a^*-\epsilon\right)\left(b^*-\epsilon\right)<a b \leqslant a^* b^*
+$$
+or ignoring $\epsilon^2$ term (If ε > 0, then ε, 3ε, ε², ε⁵, they all represent "any number greater than zero", and ε' also represents any number greater than zero, so they are equivalent, that is, we can say that they are equal to ε'.)
+$$
+a^* b^*-(a+b) \epsilon=a^* b^*-\epsilon^{\prime}<a b \leq c^*
+$$
+
+This is true for all $\epsilon^{\prime}>0$, so
+$$
+\sup A \sup B=a^* b^* \leq c^*=\sup C
+$$
+
+Combining the above two inequalities, we can conclude that $\sup A \sup B=$ $\sup C$.
 ## an exercise about think good Archimedean number from Professor Andrew Lin(A Kun)
 
-13. Consider the set
-$$
-A=\left\{\left.(-1)^n\left(1-\frac{1}{n}\right) \right\rvert\, n \in \mathbb{Z}^{+}\right\} .
-$$
--  Show that 1 is an upper bound for $A$.
--  Show that if $d$ is an upper bound for $A$, then $d \geq 1$.
--  Use (a) and (b) to show that $\sup A=1$.
-[Solution]:
--  We will show that for any $x \in A, x \leq 1$. Since $x \in A$, then $x=(-1)^n(1-$ $1 / n$ ) for some $n \in \mathbb{Z}^{+}$. Since $\frac{1}{n}>0$, then $1-\frac{1}{n}<1$. We argue our desired inequality in two cases. If $n$ is even, then $x=(-1)^n(1-1 / n)=1-1 / n<1$. If $n$ is odd, then $x=(-1)^n(1-1 / n)=-1+1 / n<0<1$. In either case, $x \leq 1$ (in fact, $x<1$ ) and 1 is an upper bound for $A$.
--  Let $d$ be an upper bound for $A$. Thus, $(-1)^n(1-1 / n) \leq d$ for all $n \in \mathbb{Z}^{+}$. Assume, to the contrary that $d<1$. Thus, $1-d>0$. By the Archimedean Property, there exists an $n \in \mathbb{Z}^{+}$such that $1<(1-d) n$. Since $n>0$, we can rewrite this as $\frac{1}{n}<1-d$, which is equivalent to $d<1-\frac{1}{n}$. If $n$ is even, then $(-1)^n=1$ and we have that
-$$
-d<(-1)^n\left(1-\frac{1}{n}\right) \in A
-$$
-contradicting the fact that $d$ is an upper bound. If $n$ is odd, then consider instead $n+1$, which is even. Then, $(-1)^{n+1}=1$ and
-$$
-d<1-\frac{1}{n}<(-1)^{n+1}\left(1-\frac{1}{n+1}\right) \in A
-$$
+13. Consider the set $$
+    A=\left\{\left.(-1)^n\left(1-\frac{1}{n}\right) \right\rvert\, n \in \mathbb{Z}^{+}\right\} .
+    $$
 
-This again contradicts that $d$ is an upper bound for $A$. Either way, we reach a contradiction and therefore conclude that $d \geq 1$.
+-   Show that 1 is an upper bound for $A$.
+-   Show that if $d$ is an upper bound for $A$, then $d \geq 1$.
+-   Use (a) and (b) to show that $\sup A=1$. \[Solution\]:
+-   We will show that for any $x \in A, x \leq 1$. Since $x \in A$, then
+    $x=(-1)^n(1-$ $1 / n$ ) for some $n \in \mathbb{Z}^{+}$. Since
+    $\frac{1}{n}>0$, then $1-\frac{1}{n}<1$. We argue our desired
+    inequality in two cases. If $n$ is even, then
+    $x=(-1)^n(1-1 / n)=1-1 / n<1$. If $n$ is odd, then
+    $x=(-1)^n(1-1 / n)=-1+1 / n<0<1$. In either case, $x \leq 1$ (in
+    fact, $x<1$ ) and 1 is an upper bound for $A$.
+-   Let $d$ be an upper bound for $A$. Thus, $(-1)^n(1-1 / n) \leq d$
+    for all $n \in \mathbb{Z}^{+}$. Assume, to the contrary that $d<1$.
+    Thus, $1-d>0$. By the Archimedean Property, there exists an
+    $n \in \mathbb{Z}^{+}$such that $1<(1-d) n$. Since $n>0$, we can
+    rewrite this as $\frac{1}{n}<1-d$, which is equivalent to
+    $d<1-\frac{1}{n}$. If $n$ is even, then $(-1)^n=1$ and we have that
+    $$
+    d<(-1)^n\left(1-\frac{1}{n}\right) \in A
+    $$ contradicting the fact that $d$ is an upper bound. If $n$ is odd,
+    then consider instead $n+1$, which is even. Then, $(-1)^{n+1}=1$ and
+    $$
+    d<1-\frac{1}{n}<(-1)^{n+1}\left(1-\frac{1}{n+1}\right) \in A
+    $$
 
-- obviously
+This again contradicts that $d$ is an upper bound for $A$. Either way,
+we reach a contradiction and therefore conclude that $d \geq 1$.
+
+-   obviously
 
 lower bound + inequaility ---smallest upper bound---sup
 
 ## another exercise about another episilon from Professor A Kun
 
+14. Find the least upper bound for the following set and $$
+    A=\left\{\frac{1}{2}, \frac{2}{3}, \frac{3}{4}, \cdots, \frac{n}{n+1}, \cdots\right\}
+    $$ \[Solution\]: We note that every element of $A$ is less than 1
+    since $$
+    \frac{n}{n+1}<1, \quad n=1,2,3, \cdots
+    $$
 
-14. Find the least upper bound for the following set and
-$$
-A=\left\{\frac{1}{2}, \frac{2}{3}, \frac{3}{4}, \cdots, \frac{n}{n+1}, \cdots\right\}
-$$
-[Solution]: We note that every element of $A$ is less than 1 since
-$$
-\frac{n}{n+1}<1, \quad n=1,2,3, \cdots
-$$
-
-We claim that the least upper bound is $1, \sup A=1$. Assume that 1 is not the least upper bound. Then there is an $\epsilon>0$ such that $1-\epsilon$ is also an upper bound. However, we claim that there is a natural number $n$ such that
-$$
+We claim that the least upper bound is $1, \sup A=1$. Assume that 1 is
+not the least upper bound. Then there is an $\epsilon>0$ such that
+$1-\epsilon$ is also an upper bound. However, we claim that there is a
+natural number $n$ such that $$
 1-\epsilon<\frac{n}{n+1}
 $$
 
@@ -165,29 +268,30 @@ $$
 1-\frac{n}{n+1}<\epsilon \quad \Longleftrightarrow \quad \frac{1}{\epsilon}-1<n
 $$
 
-Reversing the above sequence of inequalities shows that if $n>\frac{1}{\epsilon}-1$, then $1-\epsilon<\frac{n}{n+1}$ showing that $1-\epsilon$ is not an upper bound for $A$.
+Reversing the above sequence of inequalities shows that if
+$n>\frac{1}{\epsilon}-1$, then $1-\epsilon<\frac{n}{n+1}$ showing that
+$1-\epsilon$ is not an upper bound for $A$.
 
-(if n > 1/ $\epsilon$-1, $\nexists \epsilon$ s.t. 1-$\epsilon$ is an upper bound, contradicting to our suppose) 
+(if n \> 1/ $\epsilon$-1, $\nexists \epsilon$ s.t. 1-$\epsilon$ is an
+upper bound, contradicting to our suppose)
 
 This verifies our answer.
-
-
-
 
 ## Prove Cantor Nested Interval Property
 
 **Prove:**
 
-- $\exists c \in$ all closed internals
+-   $\exists c \in$ all closed internals
 
-  - i.e. if the non-empty closed intervals
-$I_1 \supset I_2 \supset I_3 \cdots, \exists c \in R$, s.t.
-$c\in I_i, \forall i \in \mathbb{N}$, $c \in$
-$\bigcap_{i=1}^{\infty} I_i$
+    -   i.e. if the non-empty closed intervals
+        $I_1 \supset I_2 \supset I_3 \cdots, \exists c \in R$, s.t.
+        $c\in I_i, \forall i \in \mathbb{N}$, $c \in$
+        $\bigcap_{i=1}^{\infty} I_i$
 
-- If the limit of the lengths of these intervals are 0 then the point is unique
+-   If the limit of the lengths of these intervals are 0 then the point
+    is unique
 
-  - i.e. if$\left|I_n\right| \rightarrow 0$, c is unique
+    -   i.e. if$\left|I_n\right| \rightarrow 0$, c is unique
 
 $$
 \forall \varepsilon>0, \exists I_n(|I_n| < \varepsilon) \Rightarrow c \text { ! }
@@ -195,7 +299,7 @@ $$
 
 **Proof**:
 
-- proof of 1
+-   proof of 1
 
 $I_1=[a_1, b_1]$
 
@@ -212,10 +316,9 @@ $$ $\Rightarrow \exists c \in \mathbb{R}$, s.t., $\forall a_n \in X$
 $\forall b_m \in Y,a_n\leqslant b_m$.(completeness axiom) We then let
 $m=n \Rightarrow c \in I_n$
 
-- proof of 2
+-   proof of 2
 
-**Based on “Any implication is equivalent to its contrapositive” **
-  
+**Based on “Any implication is equivalent to its contrapositive”**
 
 $$
 \begin{aligned}
@@ -233,12 +336,9 @@ $|I_n|\geqslant c_2-c_1 \geqslant \frac{c_2-c_1}{2}$
 
 So if $\exists I_n s. t .\left|I_n\right|<\varepsilon$, $c!$
 
-
 ## prove finite covering lemma
 
-
-**Prove：Finite Covering Lemma**
-$$
+**Prove：Finite Covering Lemma** $$
 \begin{gathered}
 \text { Def: } S:=\{X\}, \text { ( } x \text { is a set) } \\
 Y \subset \bigcup_{X \in S} X
@@ -255,13 +355,12 @@ If $I:[a, b]$, $$
 I \subset \bigcup_{n \in I} U_n, U_n=\left(\alpha_n, \beta_n\right)
 $$ $\exists U_1, \cdots U_k$, s.t., $I\subset \bigcup_{i=1}^k U_i$
 
-**（Summray of Finite Covering Lemma: A closed internal can be covered by
-finite number of open internals）**
+**（Summray of Finite Covering Lemma: A closed internal can be covered
+by finite number of open internals）**
 
-**proof: **
+**proof:**
 
-suppose $I=[a, b]$ could not be coverd by finite number open
-intervals:
+suppose $I=[a, b]$ could not be coverd by finite number open intervals:
 
 Then we use the method of bisection to separate I,s.t.
 
@@ -278,80 +377,12 @@ $$
 \end{aligned}
 $$
 
-
-
-
-
-
-
-
-
 ![](images/clipboard-4085119236.png)
 
 which indicates that at least this $I_n$ is covered by U, contradicting
 to the suppose.
 
 so the finite covering lemma is true.
-
-
-## exercise: supC=sup(A+B)=supA+supB
-
-
-$$
-\begin{array}{rl}
-\text { if } A\subset R,  B\subset R, \text { define: } \\
-C  :=A+B=\{z \in R: z=x+y, x \in A, y \in B\} \\
-D  :=A-B=\{z \in R: z=x-y, x \in A, y \in B\}
-\end{array}
-$$
-show that
-$$
-\begin{aligned}
-& \text { (1) } \sup C=\sup (A+B)=\sup A+\sup B \\
-& \text { (2) } \sup D=\sup (A-B)=\sup A-\inf B
-\end{aligned}
-$$
-(1) Proof:: Obviously,$C$ has upper bounds if and only if $A$ and $B$ have upper bounds, and $C$ is not empty.
-So $C$ has sup C if and only if and only if $A$ has sup $A$ and $B$ has sup $B$.  (Completeness axiom).
-
-- prove: $\sup C \leqslant \sin A+\sup B$.
-$$
-\because x+y \leqslant \sup A+\sup  B
-$$
-$\therefore(\operatorname{sip} A+\sup B)$ is an upper bound of $C$
-$$
-\therefore \sin C \leqslant \sin A+\sup B
-$$
-- Prove : $\sup C \geqslant \operatorname{supA}+$ sup B
-$$
-\begin{aligned}
-& \because \forall \varepsilon>0, \exists x \in A, y \in B \text {, s.t. } \\
-& \operatorname{sup} A-\varepsilon<x, \operatorname{sup} B-\varepsilon<y . \\
-& \Rightarrow \sup A+\sup B-2 \varepsilon<x+y \\
-& \text { i.e. }(\operatorname{sup} A+\sup B-2 \varepsilon)_{\text {max }}<(x+y)_{\text {max }}
-\end{aligned}
-$$
-
-Since $x+y \leq$ sup c
-We have $\sup A+\sup B-2 \varepsilon<\sup c, \forall \varepsilon>0$
-$$
-\begin{aligned}
-& \text { i.e. } \operatorname{(sup} A+\sup B-2 \varepsilon)_{\text {max }}<\sup C \\
-\end{aligned}
-$$
-
-We. As $\varepsilon \rightarrow 0$,
-We have $\operatorname{sup} A+\sup B \leqslant \operatorname{} \operatorname{sup} C$
-So, we have $\operatorname{Sup} C=\operatorname{Sup} A+\operatorname{Sup} B$.
-Then, we have $\sup D=\sup (A-B)$
-$$
-\begin{aligned}
-& =\sup (A+(-B)) \\
-& =\sup A+\sup (-B) \\
-& =\sup A-\inf B
-\end{aligned}
-$$
-(We have proved $\sup (-B)=-\inf B$ before)
 
 
 # lecture notes
@@ -831,8 +862,6 @@ and both of them are bijections
 so Z is countable
 
 # the real number
-
-
 
 # a problem about divisible using greatest common factor to solve(even Bezou's theorem)
 

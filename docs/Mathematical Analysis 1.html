@@ -193,16 +193,19 @@ window.Quarto = {
   <li><a href="#thanks" id="toc-thanks" class="nav-link active" data-scroll-target="#thanks">Thanks</a></li>
   <li><a href="#总结了有上界下界必定有唯一上下确界的两种证明方法闭区间套定理的证明以及有限覆盖定理的证明待internalized" id="toc-总结了有上界下界必定有唯一上下确界的两种证明方法闭区间套定理的证明以及有限覆盖定理的证明待internalized" class="nav-link" data-scroll-target="#总结了有上界下界必定有唯一上下确界的两种证明方法闭区间套定理的证明以及有限覆盖定理的证明待internalized">总结了有上界（下界）必定有唯一上（下）确界的两种证明方法，闭区间套定理的证明，以及有限覆盖定理的证明（待internalized）</a>
   <ul class="collapse">
-  <li><a href="#纠正之前错误的理解" id="toc-纠正之前错误的理解" class="nav-link" data-scroll-target="#纠正之前错误的理解">纠正之前错误的理解</a></li>
   <li><a href="#if-a-not-empty-set-has-upper-bound-then-it-must-have-the-unique-sup." id="toc-if-a-not-empty-set-has-upper-bound-then-it-must-have-the-unique-sup." class="nav-link" data-scroll-target="#if-a-not-empty-set-has-upper-bound-then-it-must-have-the-unique-sup.">if a not empty set has upper bound, then it must have the unique sup.</a>
   <ul class="collapse">
   <li><a href="#if-c-is-negative-then-infcacsupa" id="toc-if-c-is-negative-then-infcacsupa" class="nav-link" data-scroll-target="#if-c-is-negative-then-infcacsupa">if c is negative then inf(cA)=csupA</a></li>
+  <li><a href="#method-1" id="toc-method-1" class="nav-link" data-scroll-target="#method-1">Method 1</a></li>
+  <li><a href="#method-2" id="toc-method-2" class="nav-link" data-scroll-target="#method-2">Method 2</a></li>
   </ul></li>
-  <li><a href="#an-exercise-about-think-good-archimedean-number-from-professor-andrew-lina-kun" id="toc-an-exercise-about-think-good-archimedean-number-from-professor-andrew-lina-kun" class="nav-link" data-scroll-target="#an-exercise-about-think-good-archimedean-number-from-professor-andrew-lina-kun">an exercise about think good Archimedean number from Professor Andrew Lin(A Kun)</a></li>
+  <li><a href="#exercise-supcsupabsupasupb-from-professor-a-kun" id="toc-exercise-supcsupabsupasupb-from-professor-a-kun" class="nav-link" data-scroll-target="#exercise-supcsupabsupasupb-from-professor-a-kun">exercise: supC=sup(A+B)=supA+supB from Professor A Kun</a>
+  <ul class="collapse">
+  <li><a href="#another-example" id="toc-another-example" class="nav-link" data-scroll-target="#another-example">another example</a></li>
+  </ul></li>
   <li><a href="#another-exercise-about-another-episilon-from-professor-a-kun" id="toc-another-exercise-about-another-episilon-from-professor-a-kun" class="nav-link" data-scroll-target="#another-exercise-about-another-episilon-from-professor-a-kun">another exercise about another episilon from Professor A Kun</a></li>
   <li><a href="#prove-cantor-nested-interval-property" id="toc-prove-cantor-nested-interval-property" class="nav-link" data-scroll-target="#prove-cantor-nested-interval-property">Prove Cantor Nested Interval Property</a></li>
   <li><a href="#prove-finite-covering-lemma" id="toc-prove-finite-covering-lemma" class="nav-link" data-scroll-target="#prove-finite-covering-lemma">prove finite covering lemma</a></li>
-  <li><a href="#exercise-supcsupabsupasupb" id="toc-exercise-supcsupabsupasupb" class="nav-link" data-scroll-target="#exercise-supcsupabsupasupb">exercise: supC=sup(A+B)=supA+supB</a></li>
   </ul></li>
   <li><a href="#lecture-notes" id="toc-lecture-notes" class="nav-link" data-scroll-target="#lecture-notes">lecture notes</a></li>
   <li><a href="#section" id="toc-section" class="nav-link" data-scroll-target="#section">1</a></li>
@@ -279,12 +282,6 @@ window.Quarto = {
 </section>
 <section id="总结了有上界下界必定有唯一上下确界的两种证明方法闭区间套定理的证明以及有限覆盖定理的证明待internalized" class="level1">
 <h1>总结了有上界（下界）必定有唯一上（下）确界的两种证明方法，闭区间套定理的证明，以及有限覆盖定理的证明（待internalized）</h1>
-<section id="纠正之前错误的理解" class="level2">
-<h2 class="anchored" data-anchor-id="纠正之前错误的理解">纠正之前错误的理解</h2>
-<ul>
-<li>Epsilon在sup定理中的意思是构造存在性的x时候可以取任意的epsilon 不是说要对所有epsilon成立</li>
-</ul>
-</section>
 <section id="if-a-not-empty-set-has-upper-bound-then-it-must-have-the-unique-sup." class="level2">
 <h2 class="anchored" data-anchor-id="if-a-not-empty-set-has-upper-bound-then-it-must-have-the-unique-sup.">if a not empty set has upper bound, then it must have the unique sup.</h2>
 <p><strong>Prove: if a not empty set has upper bound, then it must have the unique sup.</strong></p>
@@ -334,7 +331,7 @@ x \leqslant c \leqslant y(\text { Completeness axiom) } \\
 <section id="if-c-is-negative-then-infcacsupa" class="level3">
 <h3 class="anchored" data-anchor-id="if-c-is-negative-then-infcacsupa">if c is negative then inf(cA)=csupA</h3>
 <p><strong>Method 3:more generalized than Method 2’s conclusion</strong></p>
-<p>In fact, If <span class="math inline">\(c&lt;0\)</span>, then <span class="math inline">\(\sup (cA)=\operatorname{cinf} A, \inf (c A)=\operatorname{csup} A\)</span>. (and <strong>in particular. sup <span class="math inline">\((-B)=-\)</span> inf <span class="math inline">\(B\)</span> </strong>)</p>
+<p>In fact, If <span class="math inline">\(c&lt;0\)</span>, then <span class="math inline">\(\sup (cA)=\operatorname{cinf} A, \inf (c A)=\operatorname{csup} A\)</span>. (and <strong>in particular. sup</strong> <span class="math inline">\((-B)=-\)</span> inf <span class="math inline">\(B\)</span> )</p>
 <p>Since if M=supA, <span class="math inline">\(\forall x\in A,x\leq M,cx\geq cM\)</span>, which indicates that cM is the lower bound of cX.</p>
 <p>So, <span class="math inline">\(cA\)</span> has lower bound ( <span class="math inline">\(s\)</span> )if and only if <span class="math inline">\(A\)</span> has upper bound(s).(inverse, also true) <span class="math inline">\(cA\)</span> is not empty if and only if A is not empty.</p>
 <p>So, cA has <span class="math inline">\(\inf (cA)\)</span> if and only if <span class="math inline">\(A\)</span> has supA <span class="math display">\[
@@ -350,11 +347,86 @@ x \leqslant c \leqslant y(\text { Completeness axiom) } \\
 &amp; \text { so } c M=\inf (c A) \\
 &amp; \text { so } c\sup A=\inf (c A)
 \end{aligned}
+\]</span> ## exercise: (1,2]’s sup–</p>
+</section>
+<section id="method-1" class="level3">
+<h3 class="anchored" data-anchor-id="method-1">Method 1</h3>
+<ul>
+<li>2 is an upper bound of [1,2) (obviously)</li>
+<li>if <span class="math inline">\(\exists \varepsilon&gt;0\)</span>, s.t <span class="math inline">\(1-\varepsilon\)</span> is also an upper bound of <span class="math inline">\([1,2)\)</span> <span class="math display">\[
+\begin{aligned}
+&amp; \because 1 \in[1,2) \\
+&amp; \therefore1-\varepsilon \geqslant 1
+\end{aligned}
+\]</span> choose <span class="math inline">\(1-\frac{\varepsilon}{2} \in(1-\varepsilon, 2)\)</span> Then <span class="math inline">\(1-\frac{\varepsilon}{2} \in[1,2)\)</span> So <span class="math inline">\(\exists\left(1-\frac{\varepsilon}{2}\right) \in[1,2)\)</span> while <span class="math inline">\(\left(1-\frac{\varepsilon}{2}\right)&gt;(1-\varepsilon)\)</span> So <span class="math inline">\(1-\varepsilon\)</span> is not an upper bound, contradicting to the suppose. So we have proved that 2 is the smallest upper bound, i.e.&nbsp;<span class="math inline">\(\sup [1,2)=2\)</span>.</li>
+</ul>
+</section>
+<section id="method-2" class="level3">
+<h3 class="anchored" data-anchor-id="method-2">Method 2</h3>
+<ul>
+<li>2 is an upper bound of [1,2) (obviously)</li>
+<li><span class="math inline">\(\forall \varepsilon&gt;0, \exists b \in[1,2)\)</span> with <span class="math inline">\(b&gt;2-\varepsilon\)</span>. We can take <span class="math inline">\(b=\max \left\{2-\frac{\varepsilon}{2}, 1\right\}\)</span>.</li>
+</ul>
+</section>
+</section>
+<section id="exercise-supcsupabsupasupb-from-professor-a-kun" class="level2">
+<h2 class="anchored" data-anchor-id="exercise-supcsupabsupasupb-from-professor-a-kun">exercise: supC=sup(A+B)=supA+supB from Professor A Kun</h2>
+<p><span class="math display">\[
+\begin{array}{rl}
+\text { if } A\subset R,  B\subset R, \text { define: } \\
+C  :=A+B=\{z \in R: z=x+y, x \in A, y \in B\} \\
+D  :=A-B=\{z \in R: z=x-y, x \in A, y \in B\}
+\end{array}
+\]</span> show that <span class="math display">\[
+\begin{aligned}
+&amp; \text { (1) } \sup C=\sup (A+B)=\sup A+\sup B \\
+&amp; \text { (2) } \sup D=\sup (A-B)=\sup A-\inf B
+\end{aligned}
+\]</span> (1) Proof:: Obviously,<span class="math inline">\(C\)</span> has upper bounds if and only if <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> have upper bounds, and <span class="math inline">\(C\)</span> is not empty. So <span class="math inline">\(C\)</span> has sup C if and only if and only if <span class="math inline">\(A\)</span> has sup <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> has sup <span class="math inline">\(B\)</span>. (Completeness axiom).</p>
+<ul>
+<li>prove: <span class="math inline">\(\sup C \leqslant \sin A+\sup B\)</span>. <span class="math display">\[
+\because x+y \leqslant \sup A+\sup  B
+\]</span> <span class="math inline">\(\therefore(\operatorname{sip} A+\sup B)\)</span> is an upper bound of <span class="math inline">\(C\)</span> <span class="math display">\[
+\therefore \sin C \leqslant \sin A+\sup B
+\]</span></li>
+<li>Prove : <span class="math inline">\(\sup C \geqslant \operatorname{supA}+\)</span> sup B <span class="math display">\[
+\begin{aligned}
+&amp; \because \forall \varepsilon&gt;0, \exists x \in A, y \in B \text {, s.t. } \\
+&amp; \operatorname{sup} A-\varepsilon&lt;x, \operatorname{sup} B-\varepsilon&lt;y . \\
+&amp; \Rightarrow \sup A+\sup B-2 \varepsilon&lt;x+y \\
+&amp; \text { i.e. }(\operatorname{sup} A+\sup B-2 \varepsilon)_{\text {max }}&lt;(x+y)_{\text {max }}
+\end{aligned}
+\]</span></li>
+</ul>
+<p>Since <span class="math inline">\(x+y \leq\)</span> sup c We have <span class="math inline">\(\sup A+\sup B-2 \varepsilon&lt;\sup c, \forall \varepsilon&gt;0\)</span> <span class="math display">\[
+\begin{aligned}
+&amp; \text { i.e. } \operatorname{(sup} A+\sup B-2 \varepsilon)_{\text {max }}&lt;\sup C \\
+\end{aligned}
 \]</span></p>
-</section>
-</section>
-<section id="an-exercise-about-think-good-archimedean-number-from-professor-andrew-lina-kun" class="level2">
-<h2 class="anchored" data-anchor-id="an-exercise-about-think-good-archimedean-number-from-professor-andrew-lina-kun">an exercise about think good Archimedean number from Professor Andrew Lin(A Kun)</h2>
+<p>We. As <span class="math inline">\(\varepsilon \rightarrow 0\)</span>, We have <span class="math inline">\(\operatorname{sup} A+\sup B \leqslant \operatorname{} \operatorname{sup} C\)</span> So, we have <span class="math inline">\(\operatorname{Sup} C=\operatorname{Sup} A+\operatorname{Sup} B\)</span>. Then, we have <span class="math inline">\(\sup D=\sup (A-B)\)</span> <span class="math display">\[
+\begin{aligned}
+&amp; =\sup (A+(-B)) \\
+&amp; =\sup A+\sup (-B) \\
+&amp; =\sup A-\inf B
+\end{aligned}
+\]</span> (We have proved <span class="math inline">\(\sup (-B)=-\inf B\)</span> before)</p>
+<section id="another-example" class="level3">
+<h3 class="anchored" data-anchor-id="another-example">another example</h3>
+<pre><code> Let M ∈ R and A, B be two bounded, negative subsets of R,0 &lt; x, y &lt; M, ∀x ∈ A, y ∈ B
+when we are proving sup C = sup(AB) = sup A · sup B
+On the other hand, from the definition of $a^*$ and $b^*, \forall \epsilon&gt;0$ there exist $a \in A$ and $b \in B$ such that</code></pre>
+<p><span class="math display">\[
+a^*-\epsilon&lt;a&lt;a^* \quad \text { and } \quad b^*-\epsilon&lt;b&lt;b^*
+\]</span></p>
+<p>Then <span class="math display">\[
+\left(a^*-\epsilon\right)\left(b^*-\epsilon\right)&lt;a b \leqslant a^* b^*
+\]</span> or ignoring <span class="math inline">\(\epsilon^2\)</span> term (If ε &gt; 0, then ε, 3ε, ε², ε⁵, they all represent “any number greater than zero”, and ε’ also represents any number greater than zero, so they are equivalent, that is, we can say that they are equal to ε’.) <span class="math display">\[
+a^* b^*-(a+b) \epsilon=a^* b^*-\epsilon^{\prime}&lt;a b \leq c^*
+\]</span></p>
+<p>This is true for all <span class="math inline">\(\epsilon^{\prime}&gt;0\)</span>, so <span class="math display">\[
+\sup A \sup B=a^* b^* \leq c^*=\sup C
+\]</span></p>
+<p>Combining the above two inequalities, we can conclude that <span class="math inline">\(\sup A \sup B=\)</span> <span class="math inline">\(\sup C\)</span>. ## an exercise about think good Archimedean number from Professor Andrew Lin(A Kun)</p>
 <ol start="13" type="1">
 <li>Consider the set <span class="math display">\[
 A=\left\{\left.(-1)^n\left(1-\frac{1}{n}\right) \right\rvert\, n \in \mathbb{Z}^{+}\right\} .
@@ -376,6 +448,7 @@ d&lt;1-\frac{1}{n}&lt;(-1)^{n+1}\left(1-\frac{1}{n+1}\right) \in A
 <li>obviously</li>
 </ul>
 <p>lower bound + inequaility —smallest upper bound—sup</p>
+</section>
 </section>
 <section id="another-exercise-about-another-episilon-from-professor-a-kun" class="level2">
 <h2 class="anchored" data-anchor-id="another-exercise-about-another-episilon-from-professor-a-kun">another exercise about another episilon from Professor A Kun</h2>
@@ -428,7 +501,7 @@ A=\left\{\frac{1}{2}, \frac{2}{3}, \frac{3}{4}, \cdots, \frac{n}{n+1}, \cdots\ri
 <ul>
 <li>proof of 2</li>
 </ul>
-<p><strong>Based on “Any implication is equivalent to its contrapositive” </strong></p>
+<p><strong>Based on “Any implication is equivalent to its contrapositive”</strong></p>
 <p><span class="math display">\[
 \begin{aligned}
 &amp; \text { if } \exists c_1&lt;c_2, \text { s.t. } c_1, c_2 \in I_n, \\
@@ -457,7 +530,7 @@ Y \subset \bigcup_{X \in S} X
 I \subset \bigcup_{n \in I} U_n, U_n=\left(\alpha_n, \beta_n\right)
 \]</span> <span class="math inline">\(\exists U_1, \cdots U_k\)</span>, s.t., <span class="math inline">\(I\subset \bigcup_{i=1}^k U_i\)</span></p>
 <p><strong>（Summray of Finite Covering Lemma: A closed internal can be covered by finite number of open internals）</strong></p>
-<p><strong>proof: </strong></p>
+<p><strong>proof:</strong></p>
 <p>suppose <span class="math inline">\(I=[a, b]\)</span> could not be coverd by finite number open intervals:</p>
 <p>Then we use the method of bisection to separate I,s.t.</p>
 <p><span class="math display">\[
@@ -475,48 +548,6 @@ I \subset \bigcup_{n \in I} U_n, U_n=\left(\alpha_n, \beta_n\right)
 <p><img src="images/clipboard-4085119236.png" class="img-fluid"></p>
 <p>which indicates that at least this <span class="math inline">\(I_n\)</span> is covered by U, contradicting to the suppose.</p>
 <p>so the finite covering lemma is true.</p>
-</section>
-<section id="exercise-supcsupabsupasupb" class="level2">
-<h2 class="anchored" data-anchor-id="exercise-supcsupabsupasupb">exercise: supC=sup(A+B)=supA+supB</h2>
-<p><span class="math display">\[
-\begin{array}{rl}
-\text { if } A\subset R,  B\subset R, \text { define: } \\
-C  :=A+B=\{z \in R: z=x+y, x \in A, y \in B\} \\
-D  :=A-B=\{z \in R: z=x-y, x \in A, y \in B\}
-\end{array}
-\]</span> show that <span class="math display">\[
-\begin{aligned}
-&amp; \text { (1) } \sup C=\sup (A+B)=\sup A+\sup B \\
-&amp; \text { (2) } \sup D=\sup (A-B)=\sup A-\inf B
-\end{aligned}
-\]</span> (1) Proof:: Obviously,<span class="math inline">\(C\)</span> has upper bounds if and only if <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> have upper bounds, and <span class="math inline">\(C\)</span> is not empty. So <span class="math inline">\(C\)</span> has sup C if and only if and only if <span class="math inline">\(A\)</span> has sup <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> has sup <span class="math inline">\(B\)</span>. (Completeness axiom).</p>
-<ul>
-<li>prove: <span class="math inline">\(\sup C \leqslant \sin A+\sup B\)</span>. <span class="math display">\[
-\because x+y \leqslant \sup A+\sup  B
-\]</span> <span class="math inline">\(\therefore(\operatorname{sip} A+\sup B)\)</span> is an upper bound of <span class="math inline">\(C\)</span> <span class="math display">\[
-\therefore \sin C \leqslant \sin A+\sup B
-\]</span></li>
-<li>Prove : <span class="math inline">\(\sup C \geqslant \operatorname{supA}+\)</span> sup B <span class="math display">\[
-\begin{aligned}
-&amp; \because \forall \varepsilon&gt;0, \exists x \in A, y \in B \text {, s.t. } \\
-&amp; \operatorname{sup} A-\varepsilon&lt;x, \operatorname{sup} B-\varepsilon&lt;y . \\
-&amp; \Rightarrow \sup A+\sup B-2 \varepsilon&lt;x+y \\
-&amp; \text { i.e. }(\operatorname{sup} A+\sup B-2 \varepsilon)_{\text {max }}&lt;(x+y)_{\text {max }}
-\end{aligned}
-\]</span></li>
-</ul>
-<p>Since <span class="math inline">\(x+y \leq\)</span> sup c We have <span class="math inline">\(\sup A+\sup B-2 \varepsilon&lt;\sup c, \forall \varepsilon&gt;0\)</span> <span class="math display">\[
-\begin{aligned}
-&amp; \text { i.e. } \operatorname{(sup} A+\sup B-2 \varepsilon)_{\text {max }}&lt;\sup C \\
-\end{aligned}
-\]</span></p>
-<p>We. As <span class="math inline">\(\varepsilon \rightarrow 0\)</span>, We have <span class="math inline">\(\operatorname{sup} A+\sup B \leqslant \operatorname{} \operatorname{sup} C\)</span> So, we have <span class="math inline">\(\operatorname{Sup} C=\operatorname{Sup} A+\operatorname{Sup} B\)</span>. Then, we have <span class="math inline">\(\sup D=\sup (A-B)\)</span> <span class="math display">\[
-\begin{aligned}
-&amp; =\sup (A+(-B)) \\
-&amp; =\sup A+\sup (-B) \\
-&amp; =\sup A-\inf B
-\end{aligned}
-\]</span> (We have proved <span class="math inline">\(\sup (-B)=-\inf B\)</span> before)</p>
 </section>
 </section>
 <section id="lecture-notes" class="level1">
@@ -582,14 +613,14 @@ D  :=A-B=\{z \in R: z=x-y, x \in A, y \in B\}
 <section id="truth-table-give-the-truth-values-of-related-statements-in-all-possible-cases" class="level4">
 <h4 class="anchored" data-anchor-id="truth-table-give-the-truth-values-of-related-statements-in-all-possible-cases">Truth table: give the truth values of related statements in all possible cases</h4>
 <p>(relevant to boolean in computer science)</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Example of boolean logic in a program</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>is_raining <span class="op">=</span> <span class="va">True</span></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>has_umbrella <span class="op">=</span> <span class="va">False</span></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> is_raining <span class="kw">and</span> <span class="kw">not</span> has_umbrella: <span class="co"># which is the only situation that implication fails</span></span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"You need an umbrella!"</span>)</span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="cf">else</span>:</span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"You're good to go!"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Example of boolean logic in a program</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>is_raining <span class="op">=</span> <span class="va">True</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>has_umbrella <span class="op">=</span> <span class="va">False</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> is_raining <span class="kw">and</span> <span class="kw">not</span> has_umbrella: <span class="co"># which is the only situation that implication fails</span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"You need an umbrella!"</span>)</span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="cf">else</span>:</span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"You're good to go!"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>compound statement: combining several statements via logical operations</p>
 <p>Conjunction: p^q. p and q</p>
 <p>Disjunction: p v q–p or q</p>
