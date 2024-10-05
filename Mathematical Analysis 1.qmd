@@ -13,7 +13,6 @@ editor:
     learn from him, especially his sophisticated personal understanding
     of Mathematics(and his useful and effective exercise of Analysis).
 
-    ![](images/clipboard-672460591.png)
 
 # 总结了有上界（下界）必定有唯一上（下）确界的两种证明方法，闭区间套定理的证明，以及有限覆盖定理的证明（待internalized）
 
