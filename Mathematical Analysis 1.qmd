@@ -12,16 +12,50 @@ editor:
 -   Thanks to Professor A Kun for giving our XJTLU students chances to
     learn from him, especially his sophisticated personal understanding
     of Mathematics(and his useful and effective exercise of Analysis).
+    \# sup之前的好题
+
+## If A is an infinite subset of N, then \|A\| = \|N\|,i.e. A is countably infinite.
+
+![](images/clipboard-4061595181.png)
+
+### in fact， N could be any countable set
+
+# 整理证明所有可以证明sup的方法
+
+-   定理，对于所有epsilon，epsilon，一般是取个几分之一夹在两者间
+
+-   为了证明所有upper bound都大于等于某个值（sup），我们假设所有upper
+    bound都小于等于这个值，然后推出矛盾（一般运用Archimedean
+    property，。。。）
+
+-   假设存在epsilon大于0，使sup- epsilon是upper
+    bound，然后根据题目条件，推出sup-epsilon不是upper
+    bound的矛盾，（特别是某些集合中的特殊的值），得出sup是最小的upper
+    bound
+    
+-  claim s=supS，然后把s的所有范围讨论（ 通过得到某些n使得sups不等于s的矛盾来排除<,>得到等号）
 
 
 # 总结了有上界（下界）必定有唯一上（下）确界的两种证明方法，闭区间套定理的证明，以及有限覆盖定理的证明（待internalized）
+keep going！
+## 用sup的唯一性证明根号只有唯一正解
+将=改为小于放进set里，通过sup的唯一性证明，sup（是set范围内用小于通过limit思想过渡到等于来求解这个极限值）
+
+然后用method4:claim s=supS，然后把s的所有范围讨论（通过得到某些n使得sups不等于s的矛盾来排除<,>得到等号）
+
+![](images/clipboard-743581739.png)
+
+![](images/clipboard-899547799.png)
+
+![](images/clipboard-3519769833.png)
 
 ## if a not empty set has upper bound, then it must have the unique sup.
 
 **Prove: if a not empty set has upper bound, then it must have the
 unique sup.**
 
-Method 1: (Completeness axiom) $$
+### Method 1: (Completeness axiom) 
+$$
 \begin{gathered}
 X \neq \phi, \quad Y=\{y \in \mathbb{R} \mid \forall x \in X(x \leq y)\} \neq \phi \\
 \\
@@ -40,7 +74,7 @@ $$
 So $c$ is the only sup. (uniqueness of minimum element of a set---2
 inequalities lead to the equality leading to the only one result).
 
-Method 2: Cantor Nested Interval Property(limit思想).asdfaskfkasdjklsad
+### Method 2: Cantor Nested Interval Property(limit思想).asdfaskfkasdjklsad
 
 We choose a random upper bound $\gamma, x \in E($ the set) $$
 [x, r]=\left[a_1 b_1\right] \supset\left[a_2, b_2\right] \supset \cdots \left[a_n, b_n\right]
@@ -57,12 +91,11 @@ Including the point in $E$ ) \$\$
 ```
 ![](images/clipboard-1103791551.png)
 
-**Prove: if a not empty set has lower bound, then it must have the
-unique inf.**
+## If a not empty set has lower bound, then it must have the unique inf.
 
-Method 1: same as before.
+### Method 1: same as before.
 
-Method 2: Based on before.
+### Method 2: Based on before.
 
 Suppose We choose $m$ as a lower bound of $E$. $$
 \begin{aligned}
@@ -78,9 +111,9 @@ $$ $$
 \Rightarrow-\sup (-E)=\operatorname{inf} E \text {. }
 $$
 
-### if c is negative then inf(cA)=csupA
+### Method 3 more generalized than Method 2's conclusion (if c is negative then inf(cA)=csupA)
 
-**Method 3:more generalized than Method 2's conclusion**
+
 
 In fact, If $c<0$, then
 $\sup (cA)=\operatorname{cinf} A, \inf (c A)=\operatorname{csup} A$.
@@ -96,7 +129,7 @@ empty.
 So, cA has $\inf (cA)$ if and only if $A$ has supA $$
 \begin{aligned}
 & \forall c x \in C A, c x \geqslant c M \\
-& \text { if } \exists c M, \forall c x \in c A, c x \geqslant c M^{\prime}, c M^{\prime}>c M, \\
+& \text { if } \exists c M', \forall c x \in c A, c x \geqslant c M^{\prime}, c M^{\prime}>c M, \\
 & X \leq M^{\prime}, M^{\prime}<M(\forall x \in A)
 \end{aligned}
 $$
@@ -108,7 +141,9 @@ So $\nexists C M^{\prime}$ So cM is the largest lower bound $$
 & \text { so } c M=\inf (c A) \\
 & \text { so } c\sup A=\inf (c A)
 \end{aligned}
-$$ \## exercise: (1,2\]'s sup--
+$$
+
+## exercise: (1,2\]'s sup--
 
 ### Method 1
 
@@ -132,6 +167,8 @@ $$ \## exercise: (1,2\]'s sup--
 -   2 is an upper bound of \[1,2) (obviously)
 -   $\forall \varepsilon>0, \exists b \in[1,2)$ with $b>2-\varepsilon$.
     We can take $b=\max \left\{2-\frac{\varepsilon}{2}, 1\right\}$.
+
+
 
 ## exercise: supC=sup(A+B)=supA+supB from Professor A Kun
 

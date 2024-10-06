@@ -190,12 +190,29 @@ window.Quarto = {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#thanks" id="toc-thanks" class="nav-link active" data-scroll-target="#thanks">Thanks</a></li>
+  <li><a href="#thanks" id="toc-thanks" class="nav-link active" data-scroll-target="#thanks">Thanks</a>
+  <ul class="collapse">
+  <li><a href="#if-a-is-an-infinite-subset-of-n-then-a-ni.e.-a-is-countably-infinite." id="toc-if-a-is-an-infinite-subset-of-n-then-a-ni.e.-a-is-countably-infinite." class="nav-link" data-scroll-target="#if-a-is-an-infinite-subset-of-n-then-a-ni.e.-a-is-countably-infinite.">If A is an infinite subset of N, then |A| = |N|,i.e.&nbsp;A is countably infinite.</a>
+  <ul class="collapse">
+  <li><a href="#in-fact-n-could-be-any-countable-set" id="toc-in-fact-n-could-be-any-countable-set" class="nav-link" data-scroll-target="#in-fact-n-could-be-any-countable-set">in fact， N could be any countable set</a></li>
+  </ul></li>
+  </ul></li>
+  <li><a href="#整理证明所有可以证明sup的方法" id="toc-整理证明所有可以证明sup的方法" class="nav-link" data-scroll-target="#整理证明所有可以证明sup的方法">整理证明所有可以证明sup的方法</a></li>
   <li><a href="#总结了有上界下界必定有唯一上下确界的两种证明方法闭区间套定理的证明以及有限覆盖定理的证明待internalized" id="toc-总结了有上界下界必定有唯一上下确界的两种证明方法闭区间套定理的证明以及有限覆盖定理的证明待internalized" class="nav-link" data-scroll-target="#总结了有上界下界必定有唯一上下确界的两种证明方法闭区间套定理的证明以及有限覆盖定理的证明待internalized">总结了有上界（下界）必定有唯一上（下）确界的两种证明方法，闭区间套定理的证明，以及有限覆盖定理的证明（待internalized）</a>
   <ul class="collapse">
   <li><a href="#if-a-not-empty-set-has-upper-bound-then-it-must-have-the-unique-sup." id="toc-if-a-not-empty-set-has-upper-bound-then-it-must-have-the-unique-sup." class="nav-link" data-scroll-target="#if-a-not-empty-set-has-upper-bound-then-it-must-have-the-unique-sup.">if a not empty set has upper bound, then it must have the unique sup.</a>
   <ul class="collapse">
-  <li><a href="#if-c-is-negative-then-infcacsupa" id="toc-if-c-is-negative-then-infcacsupa" class="nav-link" data-scroll-target="#if-c-is-negative-then-infcacsupa">if c is negative then inf(cA)=csupA</a></li>
+  <li><a href="#method-1-completeness-axiom" id="toc-method-1-completeness-axiom" class="nav-link" data-scroll-target="#method-1-completeness-axiom">Method 1: (Completeness axiom)</a></li>
+  <li><a href="#method-2-cantor-nested-interval-propertylimit思想.asdfaskfkasdjklsad" id="toc-method-2-cantor-nested-interval-propertylimit思想.asdfaskfkasdjklsad" class="nav-link" data-scroll-target="#method-2-cantor-nested-interval-propertylimit思想.asdfaskfkasdjklsad">Method 2: Cantor Nested Interval Property(limit思想).asdfaskfkasdjklsad</a></li>
+  </ul></li>
+  <li><a href="#if-a-not-empty-set-has-lower-bound-then-it-must-have-the-unique-inf." id="toc-if-a-not-empty-set-has-lower-bound-then-it-must-have-the-unique-inf." class="nav-link" data-scroll-target="#if-a-not-empty-set-has-lower-bound-then-it-must-have-the-unique-inf.">If a not empty set has lower bound, then it must have the unique inf.</a>
+  <ul class="collapse">
+  <li><a href="#method-1-same-as-before." id="toc-method-1-same-as-before." class="nav-link" data-scroll-target="#method-1-same-as-before.">Method 1: same as before.</a></li>
+  <li><a href="#method-2-based-on-before." id="toc-method-2-based-on-before." class="nav-link" data-scroll-target="#method-2-based-on-before.">Method 2: Based on before.</a></li>
+  <li><a href="#method-3-more-generalized-than-method-2s-conclusion-if-c-is-negative-then-infcacsupa" id="toc-method-3-more-generalized-than-method-2s-conclusion-if-c-is-negative-then-infcacsupa" class="nav-link" data-scroll-target="#method-3-more-generalized-than-method-2s-conclusion-if-c-is-negative-then-infcacsupa">Method 3 more generalized than Method 2’s conclusion (if c is negative then inf(cA)=csupA)</a></li>
+  </ul></li>
+  <li><a href="#exercise-12s-sup" id="toc-exercise-12s-sup" class="nav-link" data-scroll-target="#exercise-12s-sup">exercise: (1,2]’s sup–</a>
+  <ul class="collapse">
   <li><a href="#method-1" id="toc-method-1" class="nav-link" data-scroll-target="#method-1">Method 1</a></li>
   <li><a href="#method-2" id="toc-method-2" class="nav-link" data-scroll-target="#method-2">Method 2</a></li>
   </ul></li>
@@ -277,15 +294,38 @@ window.Quarto = {
 <h1>Thanks</h1>
 <ul>
 <li><p>Thanks to Professor Zhang for teaching us MTH117.</p></li>
-<li><p>Thanks to Professor A Kun for giving our XJTLU students chances to learn from him, especially his sophisticated personal understanding of Mathematics(and his useful and effective exercise of Analysis).</p></li>
+<li><p>Thanks to Professor A Kun for giving our XJTLU students chances to learn from him, especially his sophisticated personal understanding of Mathematics(and his useful and effective exercise of Analysis). # sup之前的好题</p></li>
+</ul>
+<section id="if-a-is-an-infinite-subset-of-n-then-a-ni.e.-a-is-countably-infinite." class="level2">
+<h2 class="anchored" data-anchor-id="if-a-is-an-infinite-subset-of-n-then-a-ni.e.-a-is-countably-infinite.">If A is an infinite subset of N, then |A| = |N|,i.e.&nbsp;A is countably infinite.</h2>
+<p><img src="images/clipboard-4061595181.png" class="img-fluid"></p>
+<section id="in-fact-n-could-be-any-countable-set" class="level3">
+<h3 class="anchored" data-anchor-id="in-fact-n-could-be-any-countable-set">in fact， N could be any countable set</h3>
+</section>
+</section>
+</section>
+<section id="整理证明所有可以证明sup的方法" class="level1">
+<h1>整理证明所有可以证明sup的方法</h1>
+<ul>
+<li><p>定理，对于所有epsilon，epsilon，一般是取个几分之一夹在两者间</p></li>
+<li><p>为了证明所有upper bound都大于等于某个值（sup），我们假设所有upper bound都小于等于这个值，然后推出矛盾（一般运用Archimedean property，。。。）</p></li>
+<li><p>假设存在epsilon大于0，使sup- epsilon是upper bound，然后根据题目条件，推出sup-epsilon不是upper bound的矛盾，（特别是某些集合中的特殊的值），得出sup是最小的upper bound</p></li>
+<li><p>claim s=supS，然后把s的所有范围讨论（ 通过得到某些n使得sups不等于s的矛盾来排除&lt;,&gt;得到等号）</p></li>
 </ul>
 </section>
 <section id="总结了有上界下界必定有唯一上下确界的两种证明方法闭区间套定理的证明以及有限覆盖定理的证明待internalized" class="level1">
 <h1>总结了有上界（下界）必定有唯一上（下）确界的两种证明方法，闭区间套定理的证明，以及有限覆盖定理的证明（待internalized）</h1>
+<p>keep going！ ## 用sup的唯一性证明根号只有唯一正解 将=改为小于放进set里，通过sup的唯一性证明，sup（是set范围内用小于通过limit思想过渡到等于来求解这个极限值）</p>
+<p>然后用method4:claim s=supS，然后把s的所有范围讨论（通过得到某些n使得sups不等于s的矛盾来排除&lt;,&gt;得到等号）</p>
+<p><img src="images/clipboard-743581739.png" class="img-fluid"></p>
+<p><img src="images/clipboard-899547799.png" class="img-fluid"></p>
+<p><img src="images/clipboard-3519769833.png" class="img-fluid"></p>
 <section id="if-a-not-empty-set-has-upper-bound-then-it-must-have-the-unique-sup." class="level2">
 <h2 class="anchored" data-anchor-id="if-a-not-empty-set-has-upper-bound-then-it-must-have-the-unique-sup.">if a not empty set has upper bound, then it must have the unique sup.</h2>
 <p><strong>Prove: if a not empty set has upper bound, then it must have the unique sup.</strong></p>
-<p>Method 1: (Completeness axiom) <span class="math display">\[
+<section id="method-1-completeness-axiom" class="level3">
+<h3 class="anchored" data-anchor-id="method-1-completeness-axiom">Method 1: (Completeness axiom)</h3>
+<p><span class="math display">\[
 \begin{gathered}
 X \neq \phi, \quad Y=\{y \in \mathbb{R} \mid \forall x \in X(x \leq y)\} \neq \phi \\
 \\
@@ -301,7 +341,9 @@ x \leqslant c \leqslant y(\text { Completeness axiom) } \\
 \end{gathered}
 \]</span></p>
 <p>So <span class="math inline">\(c\)</span> is the only sup. (uniqueness of minimum element of a set—2 inequalities lead to the equality leading to the only one result).</p>
-<p>Method 2: Cantor Nested Interval Property(limit思想).asdfaskfkasdjklsad</p>
+</section>
+<section id="method-2-cantor-nested-interval-propertylimit思想.asdfaskfkasdjklsad" class="level3">
+<h3 class="anchored" data-anchor-id="method-2-cantor-nested-interval-propertylimit思想.asdfaskfkasdjklsad">Method 2: Cantor Nested Interval Property(limit思想).asdfaskfkasdjklsad</h3>
 <p>We choose a random upper bound <span class="math inline">\(\gamma, x \in E(\)</span> the set) <span class="math display">\[
 [x, r]=\left[a_1 b_1\right] \supset\left[a_2, b_2\right] \supset \cdots \left[a_n, b_n\right]
 \]</span> (each time we use the method of bisection to choose one side Including the point in <span class="math inline">\(E\)</span> ) $$</p>
@@ -312,9 +354,15 @@ x \leqslant c \leqslant y(\text { Completeness axiom) } \\
 &amp; \Rightarrow \forall \varepsilon&gt;0, \exists d \in E, d&gt;\beta-\varepsilon\text { (each} [a_n,b_n] \text { has points in E.(or see the attached picture to see more picisely))}
 \end{aligned}\]</span>
 <p><img src="images/clipboard-1103791551.png" class="img-fluid"></p>
-<p><strong>Prove: if a not empty set has lower bound, then it must have the unique inf.</strong></p>
-<p>Method 1: same as before.</p>
-<p>Method 2: Based on before.</p>
+</section>
+</section>
+<section id="if-a-not-empty-set-has-lower-bound-then-it-must-have-the-unique-inf." class="level2">
+<h2 class="anchored" data-anchor-id="if-a-not-empty-set-has-lower-bound-then-it-must-have-the-unique-inf.">If a not empty set has lower bound, then it must have the unique inf.</h2>
+<section id="method-1-same-as-before." class="level3">
+<h3 class="anchored" data-anchor-id="method-1-same-as-before.">Method 1: same as before.</h3>
+</section>
+<section id="method-2-based-on-before." class="level3">
+<h3 class="anchored" data-anchor-id="method-2-based-on-before.">Method 2: Based on before.</h3>
 <p>Suppose We choose <span class="math inline">\(m\)</span> as a lower bound of <span class="math inline">\(E\)</span>. <span class="math display">\[
 \begin{aligned}
 &amp; \Rightarrow \forall x \in E, x \geqslant m,-x \leqslant-m \text {. } \\
@@ -328,16 +376,16 @@ x \leqslant c \leqslant y(\text { Completeness axiom) } \\
 \]</span> <span class="math display">\[
 \Rightarrow-\sup (-E)=\operatorname{inf} E \text {. }
 \]</span></p>
-<section id="if-c-is-negative-then-infcacsupa" class="level3">
-<h3 class="anchored" data-anchor-id="if-c-is-negative-then-infcacsupa">if c is negative then inf(cA)=csupA</h3>
-<p><strong>Method 3:more generalized than Method 2’s conclusion</strong></p>
+</section>
+<section id="method-3-more-generalized-than-method-2s-conclusion-if-c-is-negative-then-infcacsupa" class="level3">
+<h3 class="anchored" data-anchor-id="method-3-more-generalized-than-method-2s-conclusion-if-c-is-negative-then-infcacsupa">Method 3 more generalized than Method 2’s conclusion (if c is negative then inf(cA)=csupA)</h3>
 <p>In fact, If <span class="math inline">\(c&lt;0\)</span>, then <span class="math inline">\(\sup (cA)=\operatorname{cinf} A, \inf (c A)=\operatorname{csup} A\)</span>. (and <strong>in particular. sup</strong> <span class="math inline">\((-B)=-\)</span> inf <span class="math inline">\(B\)</span> )</p>
 <p>Since if M=supA, <span class="math inline">\(\forall x\in A,x\leq M,cx\geq cM\)</span>, which indicates that cM is the lower bound of cX.</p>
 <p>So, <span class="math inline">\(cA\)</span> has lower bound ( <span class="math inline">\(s\)</span> )if and only if <span class="math inline">\(A\)</span> has upper bound(s).(inverse, also true) <span class="math inline">\(cA\)</span> is not empty if and only if A is not empty.</p>
 <p>So, cA has <span class="math inline">\(\inf (cA)\)</span> if and only if <span class="math inline">\(A\)</span> has supA <span class="math display">\[
 \begin{aligned}
 &amp; \forall c x \in C A, c x \geqslant c M \\
-&amp; \text { if } \exists c M, \forall c x \in c A, c x \geqslant c M^{\prime}, c M^{\prime}&gt;c M, \\
+&amp; \text { if } \exists c M', \forall c x \in c A, c x \geqslant c M^{\prime}, c M^{\prime}&gt;c M, \\
 &amp; X \leq M^{\prime}, M^{\prime}&lt;M(\forall x \in A)
 \end{aligned}
 \]</span></p>
@@ -347,8 +395,11 @@ x \leqslant c \leqslant y(\text { Completeness axiom) } \\
 &amp; \text { so } c M=\inf (c A) \\
 &amp; \text { so } c\sup A=\inf (c A)
 \end{aligned}
-\]</span> ## exercise: (1,2]’s sup–</p>
+\]</span></p>
 </section>
+</section>
+<section id="exercise-12s-sup" class="level2">
+<h2 class="anchored" data-anchor-id="exercise-12s-sup">exercise: (1,2]’s sup–</h2>
 <section id="method-1" class="level3">
 <h3 class="anchored" data-anchor-id="method-1">Method 1</h3>
 <ul>
