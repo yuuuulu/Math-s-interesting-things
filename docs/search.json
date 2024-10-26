@@ -354,7 +354,7 @@
     "href": "mth1113.html",
     "title": "Intro to probability and statistics",
     "section": "",
-    "text": "mean is much sensitive than the median so the outlier drags the mean to the skew……"
+    "text": "across the whole range, it could not be showing a certain trend or a specific shape.\npositive and negative points sperate averagely ."
   },
   {
     "objectID": "mth1113.html#intro",
@@ -389,7 +389,7 @@
     "href": "Mathematical Analysis 1.html",
     "title": "Analysis1",
     "section": "",
-    "text": "Thanks to Professor Zhang for teaching us MTH117.\nThanks to Professor A Kun for giving our XJTLU students chances to learn from him, especially his sophisticated personal understanding of Mathematics(and his useful and effective exercise of Analysis). # sup之前的好题"
+    "text": "和闭区间套定理极限思想的联系和区别？？？"
   },
   {
     "objectID": "Mathematical Analysis 1.html#if-a-not-empty-set-has-upper-bound-then-it-must-have-the-unique-sup.",
@@ -537,5 +537,26 @@
     "title": "Analysis1",
     "section": "If a not empty set has lower bound, then it must have the unique inf.",
     "text": "If a not empty set has lower bound, then it must have the unique inf.\n\nMethod 1: same as before.\n\n\nMethod 2: Based on before.\nSuppose We choose \\(m\\) as a lower bound of \\(E\\). \\[\n\\begin{aligned}\n& \\Rightarrow \\forall x \\in E, x \\geqslant m,-x \\leqslant-m \\text {. } \\\\\n& \\text { Let } F=\\{-x \\mid x \\in E\\} \\text {. } \\\\\n& \\Rightarrow \\beta=\\sup F \\\\\n& \\Rightarrow-x \\leqslant \\beta, x \\geqslant-\\beta \\text {. } \\\\\n& \\forall \\varepsilon&gt;0, \\exists-d \\in E,-d&gt;\\beta-\\varepsilon, \\\\\n& \\Rightarrow d&lt;-\\beta+\\varepsilon \\\\\n& \\Rightarrow-\\beta=\\inf E\n\\end{aligned}\n\\] \\[\n\\Rightarrow-\\sup (-E)=\\operatorname{inf} E \\text {. }\n\\]\n\n\nMethod 3 more generalized than Method 2’s conclusion (if c is negative then inf(cA)=csupA)\nIn fact, If \\(c&lt;0\\), then \\(\\sup (cA)=\\operatorname{cinf} A, \\inf (c A)=\\operatorname{csup} A\\). (and in particular. sup \\((-B)=-\\) inf \\(B\\) )\nSince if M=supA, \\(\\forall x\\in A,x\\leq M,cx\\geq cM\\), which indicates that cM is the lower bound of cX.\nSo, \\(cA\\) has lower bound ( \\(s\\) )if and only if \\(A\\) has upper bound(s).(inverse, also true) \\(cA\\) is not empty if and only if A is not empty.\nSo, cA has \\(\\inf (cA)\\) if and only if \\(A\\) has supA \\[\n\\begin{aligned}\n& \\forall c x \\in C A, c x \\geqslant c M \\\\\n& \\text { if } \\exists c M', \\forall c x \\in c A, c x \\geqslant c M^{\\prime}, c M^{\\prime}&gt;c M, \\\\\n& X \\leq M^{\\prime}, M^{\\prime}&lt;M(\\forall x \\in A)\n\\end{aligned}\n\\]\nContradicting to the condition that \\(M=\\sup A\\)\nSo \\(\\nexists C M^{\\prime}\\) So cM is the largest lower bound \\[\n\\begin{aligned}\n& \\text { so } c M=\\inf (c A) \\\\\n& \\text { so } c\\sup A=\\inf (c A)\n\\end{aligned}\n\\]"
+  },
+  {
+    "objectID": "Mathematical Analysis 1.html#if-a-is-an-infinite-subset-of-n-then-a-ni.e.-a-is-countably-infinite.",
+    "href": "Mathematical Analysis 1.html#if-a-is-an-infinite-subset-of-n-then-a-ni.e.-a-is-countably-infinite.",
+    "title": "Analysis1",
+    "section": "If A is an infinite subset of N, then |A| = |N|,i.e. A is countably infinite.",
+    "text": "If A is an infinite subset of N, then |A| = |N|,i.e. A is countably infinite.\n\n\nin fact， N could be any countable set"
+  },
+  {
+    "objectID": "mth107.html#begin",
+    "href": "mth107.html#begin",
+    "title": "MTH107—NOTEs",
+    "section": "Begin",
+    "text": "Begin\n\nDef Let V and W be 2 vector spaces over the same filed F. A maoo T V–&gt;W is a linear map(linear transformation) if and only if \\(\\forall v \\in V\\) T(u+v)=T(u)+T(v), \\(\\forall v \\in V, \\lambda\\in F\\) T(\\(\\lambda \\cdot v\\))= \\(\\lambda\\cdot T(v)\\)\nLemma Let T"
+  },
+  {
+    "objectID": "mth1113.html#residual-plost-should-have-no-pattern",
+    "href": "mth1113.html#residual-plost-should-have-no-pattern",
+    "title": "Intro to probability and statistics",
+    "section": "",
+    "text": "across the whole range, it could not be showing a certain trend or a specific shape.\npositive and negative points sperate averagely ."
   }
 ]

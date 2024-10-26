@@ -1,0 +1,49 @@
+---
+title: "MTH107 Advanced Linear Algebra"
+format: pdf
+editor: visual
+---
+
+# Chapter 0 (Recall MTH017/MTH007)
+
+![](images/clipboard-234977982.png)
+
+![](images/clipboard-3439252282.png)
+
+![](images/clipboard-3517829496.png)
+
+![](images/clipboard-3853483469.png)
+
+![](images/clipboard-4235209289.png)
+
+![![](images/clipboard-756549924.png)](images/clipboard-2715158085.png)
+
+![](images/clipboard-2370803555.png)
+
+![](images/clipboard-1948677834.png)
+
+![](images/clipboard-2441680778.png)
+
+![](images/clipboard-14487353.png)
+
+![](images/clipboard-3324640071.png)
+
+![](images/clipboard-2074746389.png)
+
+![](images/clipboard-2010845928.png)
+
+![](images/clipboard-223062955.png)
+
+![](images/clipboard-15617827.png)
+
+# Chapter 3 Linear Maps (Linear Transformation)
+
+![](images/clipboard-2257314373.png)
+
+![](images/clipboard-2430482215.png)
+
+![](images/clipboard-1691420058.png)
+
+![](images/clipboard-2552824825.png)
+
+![](images/clipboard-182860018.png)

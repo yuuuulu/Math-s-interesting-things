@@ -2,6 +2,16 @@
 title: "Intro to probability and statistics"
 editor: visual
 ---
+# linear regression
+
+## it is not stable to predict the data outside our data sample'
+
+## Residual plost should have no pattern
+
+across the whole range, it could not be showing a certain trend or a specific shape.
+
+positive and negative points sperate averagely .
+
 
 # skew
 

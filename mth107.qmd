@@ -422,7 +422,7 @@ also fn---f{1,..,n}
 
 5st ahead and the other 3（prove？eg tutorial1）. should we prove again or directly use them? tutorial 1 vs. 2 ' s proof. ask again, sorry: since negative number set satisfies 2 oprations but not 8 axioms I want to ensure **if a finite set satisfies the 2 operations it is not satisfy all 1-8 axioms instead of F\^n** so if the problem is a vector space V, we could directly suppose $\exists u\in F$ and then do the scalar multiplication in it?
 
-is that because of the defination of F-vector space?(abstract vector space-defination) 
+is that because of the defination of F-vector space?(abstract vector space-defination)
 
 ## Cn complex Vector Space
 
@@ -966,69 +966,55 @@ maybe ask that $U \cap W$ is as small as possible, that is L $U\cap W=\{0\}$
 
 in this case we write U_1 $\oplus$... $\oplus$ U_n
 
-   (if $u\in  U_1 +$... $+$ $U_n$, then there always exists $U_i\in U_1 +$... $+$ U_n$\in U_n$, such that U=U_1 $+$... $+$ $U_n$, **the defination is about uniqueness of such elements.**)
+(if $u\in  U_1 +$... $+$ $U_n$, then there always exists $U_i\in U_1 +$... $+$ U_n$\in U_n$, such that U=U_1 $+$... $+$ $U_n$, **the defination is about uniqueness of such elements.**)
 
-ex 1).U:={(x,x,y,y)|x,y$\in F$}$\subseteq F^4$
+ex 1).U:={(x,x,y,y)\|x,y$\in F$}$\subseteq F^4$
 
-W:={(x,x,x,y)|x,y$\in F$}$\subseteq F^4$
+W:={(x,x,x,y)\|x,y$\in F$}$\subseteq F^4$
 
-then U+W={(x,x,y,z)|x,y,z$\in F$}=:A
-
-
+then U+W={(x,x,y,z)\|x,y,z$\in F$}=:A
 
 proof:
 
 side1:**u**+**v**$\in U+W$ easy ---xxyz
 
-
-side2: let (x,x,y,z)$\in A$
-we want to find v=(a,a,b,b), w=(c,c,c,d),s.t. u+w=(x,x,y,z)
+side2: let (x,x,y,z)$\in A$ we want to find v=(a,a,b,b), w=(c,c,c,d),s.t. u+w=(x,x,y,z)
 
 so we need to solve a+c=x, b+c=y,b+d=z,
-
 
 b is free, d=z-b,c=y-b,a=x-c=x-y+b
 
 for ex for b=0:
 
-  u=
-  
-  w=
-  
-  so u+w=
-  
-  so $A\subseteq U+W$
-  
-  
+u=
 
+w=
 
+so u+w=
+
+so $A\subseteq U+W$
 
 ex 3) : $U_i=${(0,0,...x(i th coordinate),0,0,0(n th coordinate))\|$x\in F$}$\subseteq F^n$
 
 then $U_1\oplus ...\oplus U_n=F^n$
 
-ex 4) : $U_1=${(x,y,z)\|$x,y\in F$} 
+ex 4) : $U_1=${(x,y,z)\|$x,y\in F$}
 
-$U_2$={(0,0,z)|$z\in F$}
+$U_2$={(0,0,z)\|$z\in F$}
 
-$U_3$={(0,y,y)|$y\in F$}
-    
+$U_3$={(0,y,y)\|$y\in F$}
+
 then $U_1+U_2+U_3=F^3$, but not direct sum
-    
-eg: 
-       
-       
 
+eg:
 
-    
 but $U_1\odot U_2=F^3$
-           
+
 $U_1\odot U_3=F^3$
-           
+
 $U_2\odot U_3=\{(0,y,z)|y,z\in F^3\}$
-          
-    
-```
+
+\`\`\`
 
 -   Thm let U1,....Un be subspaces of V then \[U1+...+Un is a direct sum\] if and only if \[if 0=u1+...+un, then u1=...=0\]
 
@@ -1056,16 +1042,19 @@ lemma: if U W are subspaces aof V then $U\cap W$ is the biggest subspace contain
 
 -   proof :
 
- -   subspace:
+-   subspace:
 
-     -   0
-     -   
-         -   
-    -   lambda
+    -   0
+    -   
+        -   
 
-    -   already know $\subseteq$
+        -   lambda
 
-    -   biggest: let $Z\subseteq V$ be a subspace, contained both in U and W, because $U\cap W$ is the biggest subset contained both in U and W then $Z\subseteq U\cap W$(as subset)
+```         
+-   already know $\subseteq$
+
+-   biggest: let $Z\subseteq V$ be a subspace, contained both in U and W, because $U\cap W$ is the biggest subset contained both in U and W then $Z\subseteq U\cap W$(as subset)
+```
 
 -   Def if V=U$\oplus$W we say that W is COMPLEMENTARY SUBSPACE of U(inside V)
 
@@ -1109,126 +1098,103 @@ lemma: if U W are subspaces aof V then $U\cap W$ is the biggest subspace contain
 
 if w is a subspace containing all the v1: then for every lambda i: lambda v1+...+\in W
 
-  so span(v1,...vn)$\subseteq$ W
+so span(v1,...vn)$\subseteq$ W
 
 -   ex: supposr s is a finite set $\forall b \in S$ define $\chi_b:$S---\>F by
- 
+
 $\chi_b(x):=1$ if x=b, 0, otherwise
 
 then $F^S$ is spanned by the $\chi_b$
 
 -   ex ;$\forall V:V=V\oplus${0}
 
-
-
-
 ## linear independence
 
 finite????
 
-a list of vectors v,...vi$\in V$ is 
+a list of vectors v,...vi$\in V$ is
 
-- linearly independent: if and only if the vector equation $\lambda v_1+..=o$ admits a unique solution: (0,0,)
+-   linearly independent: if and only if the vector equation $\lambda v_1+..=o$ admits a unique solution: (0,0,)
 
-
-
-linearly dependence: non-trivial solution. 
-
+linearly dependence: non-trivial solution.
 
 det=0
 
 v,v,...,0,...
 
-
-                  
-                  
-
-
-
 remark
-
-
 
 infinite
 
+-   v1,...vn is linearly independent if and only if span(v1)+span(v2)..+span(vn) is a direct sum.
 
-- v1,...vn is linearly independent if and only if span(v1)+span(v2)..+span(vn) is a direct sum.
+    -   ex: a list of 1 vector $v\in V$ is lin independent if and only if V!=0
 
+    -   ex: $u,v\in V$ is linearly independent if and only if \[$u\notin span(V)$ and $v\notin span(U)$\]
 
-  - ex: a list of 1 vector $v\in V$ is lin independent if and only if V!=0
-  
-  - ex: $u,v\in V$ is linearly independent if and only if [$u\notin span(V)$ and $v\notin span(U)$]
-     - ex: (0,0), (1,0) but v$\notin span(u)=${0}
-     
-     - if both u. and v !=0 then it is enough to check only one of a or b
-     
-     
-  - ex: v1,... linearly dependent iff $\exists i$ s.t. $v_i\in $span(v1,....)
-  
-     - one side: $\exists \lambda$
-     
-     
-     - the other side:
-     
-       smalest span list: 
-     
-       - one include
-       
-       
-       - the other include:
-       
-       
-       this lemmma tells us the if a family is lin dependent then we can remove "redundan" vectors without changing the span
-       
-       
-   - THM: suppose V=span(v1,..vm)=span(w1,..wn). If v1,..vm is linearly independent then $m\leq n$
-   
-     - proof:let us consider v1,w2,....,wn
-     
-       - this is a spannign family for v, $v=span(w1,..wn)\subseteq span(v1,w1,...wn)\subseteq v$
-       
-       -it is linearly dependent(because v1$\in span(w1,...wn)....$)
-       
-       - v1 !=0 because v1,...vm is lin independent
-       
+        -   ex: (0,0), (1,0) but v$\notin span(u)=${0}
+
+        -   if both u. and v !=0 then it is enough to check only one of a or b
+
+    -   ex: v1,... linearly dependent iff $\exists i$ s.t. \$v_i\in \$span(v1,....)
+
+        -   one side: $\exists \lambda$
+
+        -   the other side:
+
+            smalest span list:
+
+            -   one include
+
+            -   the other include:
+
+            this lemmma tells us the if a family is lin dependent then we can remove "redundan" vectors without changing the span
+
+    -   THM: suppose V=span(v1,..vm)=span(w1,..wn). If v1,..vm is linearly independent then $m\leq n$
+
+        -   proof:let us consider v1,w2,....,wn
+
+            -   this is a spannign family for v, $v=span(w1,..wn)\subseteq span(v1,w1,...wn)\subseteq v$
+
+            -it is linearly dependent(because v1$\in span(w1,...wn)....$)
+
+            -   v1 !=0 because v1,...vm is lin independent
+
     Now we apply the lemma to the family
 
- which implies that $\exists j$ s.t. wj can be replaced by v1
- 
- 
- 
-  indeed 0!= $\notin span()$={0}
-  
-  
-  see photo
-  in particular, $m \leq n$. ok
-  
-  
-- **among finite spanning lists, linearly independent are the smallest one**
+which implies that $\exists j$ s.t. wj can be replaced by v1
 
+indeed 0!= $\notin span()$={0}
 
-- corollary:  if v=span(v1,...vm)=span(w1,..wn) and (v1,..) and (w1,..) are both lin indep then m=n
-- ex: $\mathbb F^n$, any list of $m\geq n+1$ vectors is lin dependent because (1,0,..),(0,1,...),...(0,...,1) (n elements here) and any of $\leq n-1$ vecters cannot span $\mathbb {F^n}$ 
+see photo in particular, $m \leq n$. ok
 
- 
+-   **among finite spanning lists, linearly independent are the smallest one**
 
+-   corollary: if v=span(v1,...vm)=span(w1,..wn) and (v1,..) and (w1,..) are both lin indep then m=n
 
+-   ex: $\mathbb F^n$, any list of $m\geq n+1$ vectors is lin dependent because (1,0,..),(0,1,...),...(0,...,1) (n elements here) and any of $\leq n-1$ vecters cannot span $\mathbb {F^n}$
 
+# CH3 Linear maps
 
+-   Vector spaces are not isolated, but connected by linear maps
 
+-   Reminder
 
+-   Set
 
-  
+    -   no structure
+    -   maps f: A--\>B, with no requirement
+    -   bijection A--\>\~ B means that A and B are the same as sets(=same number of elements)
+    -   eg
+    -   here is a bijection:$R$ and $R^2$, R and $R^{\infty}$, which are same as sets, but not the same as vector spaces.
 
+-   In vector spaces we have more structure so we will only look at maps that "respect" addition, and scalar multiplication
 
+## Begin
 
-       
-    
-  
-  
+-   Def Let V and W be 2 vector spaces over the same filed F. A maoo T V--\>W is a linear map(linear transformation) if and only if $\forall v \in V$ T(u+v)=T(u)+T(v), $\forall v \in V, \lambda\in F$ T($\lambda \cdot v$)= $\lambda\cdot T(v)$
 
-
-
+-   Lemma Let T
 
 # Tutorial
 

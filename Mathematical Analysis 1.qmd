@@ -5,6 +5,10 @@ editor:
     wrap: 72
 ---
 
+![](images/clipboard-317793846.png)
+
+和闭区间套定理极限思想的联系和区别？？？
+
 # Thanks
 
 -   Thanks to Professor Zhang for teaching us MTH117.
@@ -32,16 +36,17 @@ editor:
     bound，然后根据题目条件，推出sup-epsilon不是upper
     bound的矛盾，（特别是某些集合中的特殊的值），得出sup是最小的upper
     bound
-    
--  claim s=supS，然后把s的所有范围讨论（ 通过得到某些n使得sups不等于s的矛盾来排除<,>得到等号）
 
+-   claim s=supS，然后把s的所有范围讨论（
+    通过得到某些n使得sups不等于s的矛盾来排除\<,\>得到等号）
 
 # 总结了有上界（下界）必定有唯一上（下）确界的两种证明方法，闭区间套定理的证明，以及有限覆盖定理的证明（待internalized）
-keep going！
-## 用sup的唯一性证明根号只有唯一正解
+
+keep going！ \## 用sup的唯一性证明根号只有唯一正解
 将=改为小于放进set里，通过sup的唯一性证明，sup（是set范围内用小于通过limit思想过渡到等于来求解这个极限值）
 
-然后用method4:claim s=supS，然后把s的所有范围讨论（通过得到某些n使得sups不等于s的矛盾来排除<,>得到等号）
+然后用method4:claim
+s=supS，然后把s的所有范围讨论（通过得到某些n使得sups不等于s的矛盾来排除\<,\>得到等号）
 
 ![](images/clipboard-743581739.png)
 
@@ -54,7 +59,8 @@ keep going！
 **Prove: if a not empty set has upper bound, then it must have the
 unique sup.**
 
-### Method 1: (Completeness axiom) 
+### Method 1: (Completeness axiom)
+
 $$
 \begin{gathered}
 X \neq \phi, \quad Y=\{y \in \mathbb{R} \mid \forall x \in X(x \leq y)\} \neq \phi \\
@@ -113,8 +119,6 @@ $$
 
 ### Method 3 more generalized than Method 2's conclusion (if c is negative then inf(cA)=csupA)
 
-
-
 In fact, If $c<0$, then
 $\sup (cA)=\operatorname{cinf} A, \inf (c A)=\operatorname{csup} A$.
 (and **in particular. sup** $(-B)=-$ inf $B$ )
@@ -167,8 +171,6 @@ $$
 -   2 is an upper bound of \[1,2) (obviously)
 -   $\forall \varepsilon>0, \exists b \in[1,2)$ with $b>2-\varepsilon$.
     We can take $b=\max \left\{2-\frac{\varepsilon}{2}, 1\right\}$.
-
-
 
 ## exercise: supC=sup(A+B)=supA+supB from Professor A Kun
 
