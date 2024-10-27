@@ -12,22 +12,18 @@ Many many and many...math is always expressing the secret in our magic nature...
 
 The math teachers I have learned from are teaching math in an interesting and sophisticated way with different charismatic philosophy of themselves.
 
-
-
 ### Intro to this webpage
 
 I want to log the profound and inspiring things that I learned from my math teachers, including notes, philosophy and the like.
 
--  Advanced Linear Algebra and Linear Algebra
+-   Advanced Linear Algebra and Linear Algebra
 
--  Analysis
+-   Analysis
 
--  PDE intro
+-   PDE intro
 
--  multi-variable calculus(geometric guys, sequence, ...)
+-   multi-variable calculus(geometric guys, sequence, ...)
 
--  modeling knowledge
+-   modeling knowledge
 
--  interesting problems
-
-
+-   interesting problems

@@ -14,8 +14,8 @@ website:
         text: Advanced Linear Algebra
       - href: Mathematical Analysis 1.qmd
         text: Analysis 1
-      #- href: mth1113.qmd
-       # text: intro to prob, and stat.
+      - href: mth1113.qmd
+        text: intro to prob, and stat.
       - href: eng pde.qmd
         text: PDE 
       - href: Calculus.qmd

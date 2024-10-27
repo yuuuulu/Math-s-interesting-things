@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Foundation Math Learning - Intro to probability and statistics</title>
+<title>Foundation Math Learning - MTH113 Intro to probability and statistics+APH003–exploring world through data</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -138,6 +138,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span class="menu-text">Analysis 1</span></a>
   </li>  
   <li class="nav-item">
+    <a class="nav-link active" href="./mth1113.html" aria-current="page"> 
+<span class="menu-text">intro to prob, and stat.</span></a>
+  </li>  
+  <li class="nav-item">
     <a class="nav-link" href="./eng pde.html"> 
 <span class="menu-text">PDE</span></a>
   </li>  
@@ -161,12 +165,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#linear-regression" id="toc-linear-regression" class="nav-link active" data-scroll-target="#linear-regression">linear regression</a>
+  <li><a href="#bivariate-data" id="toc-bivariate-data" class="nav-link active" data-scroll-target="#bivariate-data">bivariate data</a></li>
+  <li><a href="#linear-regression" id="toc-linear-regression" class="nav-link" data-scroll-target="#linear-regression">linear regression</a>
   <ul class="collapse">
   <li><a href="#it-is-not-stable-to-predict-the-data-outside-our-data-sample" id="toc-it-is-not-stable-to-predict-the-data-outside-our-data-sample" class="nav-link" data-scroll-target="#it-is-not-stable-to-predict-the-data-outside-our-data-sample">it is not stable to predict the data outside our data sample’</a></li>
   <li><a href="#residual-plost-should-have-no-pattern" id="toc-residual-plost-should-have-no-pattern" class="nav-link" data-scroll-target="#residual-plost-should-have-no-pattern">Residual plost should have no pattern</a></li>
   </ul></li>
   <li><a href="#skew" id="toc-skew" class="nav-link" data-scroll-target="#skew">skew</a></li>
+  <li><a href="#outlier-eg-of-normal-distribution" id="toc-outlier-eg-of-normal-distribution" class="nav-link" data-scroll-target="#outlier-eg-of-normal-distribution">outlier (eg of normal distribution)</a></li>
+  <li><a href="#modified-boxplot" id="toc-modified-boxplot" class="nav-link" data-scroll-target="#modified-boxplot">modified boxplot</a></li>
   <li><a href="#tutorial" id="toc-tutorial" class="nav-link" data-scroll-target="#tutorial">tutorial</a></li>
   <li><a href="#the-role-of-statistics-and-the-data-analysis-process" id="toc-the-role-of-statistics-and-the-data-analysis-process" class="nav-link" data-scroll-target="#the-role-of-statistics-and-the-data-analysis-process">The role of statistics and the Data Analysis Process</a>
   <ul class="collapse">
@@ -181,12 +188,25 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#uni-data-set-and-bivariate-and-multivariate" id="toc-uni-data-set-and-bivariate-and-multivariate" class="nav-link" data-scroll-target="#uni-data-set-and-bivariate-and-multivariate">uni data set and bivariate and multivariate</a></li>
   <li><a href="#categorical-and-numericaldiscrete-and-continuous-with-plot-using-excel-data-analysis-or-rstudio-plot-ggplot2" id="toc-categorical-and-numericaldiscrete-and-continuous-with-plot-using-excel-data-analysis-or-rstudio-plot-ggplot2" class="nav-link" data-scroll-target="#categorical-and-numericaldiscrete-and-continuous-with-plot-using-excel-data-analysis-or-rstudio-plot-ggplot2">categorical and numerical(discrete and continuous) with plot using excel (data analysis) or rstudio plot (ggplot2)</a></li>
   </ul></li>
-  <li><a href="#collect-data-sensibly" id="toc-collect-data-sensibly" class="nav-link" data-scroll-target="#collect-data-sensibly">collect data sensibly</a>
+  <li><a href="#collect-data-sensibly" id="toc-collect-data-sensibly" class="nav-link" data-scroll-target="#collect-data-sensibly">collect data sensibly</a></li>
+  </ul></li>
+  <li><a href="#chapter-2" id="toc-chapter-2" class="nav-link" data-scroll-target="#chapter-2">chapter 2</a>
   <ul class="collapse">
+  <li><a href="#two-types-of-studies-observational-studies-and-experiments." id="toc-two-types-of-studies-observational-studies-and-experiments." class="nav-link" data-scroll-target="#two-types-of-studies-observational-studies-and-experiments.">Two types of studies: Observational studies and Experiments.</a>
+  <ul class="collapse">
+  <li><a href="#observational" id="toc-observational" class="nav-link" data-scroll-target="#observational">Observational</a></li>
+  <li><a href="#experiments" id="toc-experiments" class="nav-link" data-scroll-target="#experiments">Experiments</a></li>
+  <li><a href="#comparison" id="toc-comparison" class="nav-link" data-scroll-target="#comparison">comparison</a></li>
+  <li><a href="#confounding-vars" id="toc-confounding-vars" class="nav-link" data-scroll-target="#confounding-vars">confounding vars</a></li>
+  </ul></li>
+  <li><a href="#variable" id="toc-variable" class="nav-link" data-scroll-target="#variable">variable</a>
+  <ul class="collapse">
+  <li><a href="#response-variabley" id="toc-response-variabley" class="nav-link" data-scroll-target="#response-variabley">response variable–y</a></li>
+  <li><a href="#explanotory-variablex" id="toc-explanotory-variablex" class="nav-link" data-scroll-target="#explanotory-variablex">explanotory variable–x</a></li>
   <li><a href="#experiments-and-obeservational-study" id="toc-experiments-and-obeservational-study" class="nav-link" data-scroll-target="#experiments-and-obeservational-study">experiments and obeservational study</a></li>
   <li><a href="#bias" id="toc-bias" class="nav-link" data-scroll-target="#bias">bias</a></li>
   <li><a href="#random-sampling" id="toc-random-sampling" class="nav-link" data-scroll-target="#random-sampling">random sampling</a></li>
-  <li><a href="#strata-and-cluster" id="toc-strata-and-cluster" class="nav-link" data-scroll-target="#strata-and-cluster">strata and cluster</a></li>
+  <li><a href="#stratified-and-cluster" id="toc-stratified-and-cluster" class="nav-link" data-scroll-target="#stratified-and-cluster">stratified and cluster</a></li>
   <li><a href="#systematic-sampling" id="toc-systematic-sampling" class="nav-link" data-scroll-target="#systematic-sampling">systematic sampling</a></li>
   </ul></li>
   </ul></li>
@@ -198,7 +218,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Intro to probability and statistics</h1>
+<h1 class="title">MTH113 Intro to probability and statistics+APH003–exploring world through data</h1>
 </div>
 
 
@@ -215,6 +235,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
+<section id="bivariate-data" class="level1">
+<h1>bivariate data</h1>
+</section>
 <section id="linear-regression" class="level1">
 <h1>linear regression</h1>
 <section id="it-is-not-stable-to-predict-the-data-outside-our-data-sample" class="level2">
@@ -228,7 +251,146 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="skew" class="level1">
 <h1>skew</h1>
-<p>mean is much sensitive than the median so the outlier drags the mean to the skew……</p>
+<p>mean is much sensitive than the median so the outlier drags the mean to the skew…… <img src="images/clipboard-2849357671.png" class="img-fluid"></p>
+<p><img src="images/clipboard-2111278063.png" class="img-fluid"></p>
+<p><img src="images/clipboard-2144359450.png" class="img-fluid"></p>
+<p><img src="images/clipboard-1854557292.png" class="img-fluid"></p>
+<p>As long as we know the mean and standard deviation of the data, we can determine how far a certain proportion of the data falls, without knowing the specific distribution shape of the data.</p>
+</section>
+<section id="outlier-eg-of-normal-distribution" class="level1">
+<h1>outlier (eg of normal distribution)</h1>
+<p>a mild outlier if it lies more than 1.5(iqr) away from the nearest quartile (the nearest end of the box);</p>
+<p>an extreme outlier if it lies more than 3(iqr) away from the nearest quartile.</p>
+<p>(These definitions and distances are based on the hypothetical Normal distribution (bell shaped, symmetric, normal tails). When there is a reason to suspect that the distribution is skewed, the bounds should be changed.)</p>
+</section>
+<section id="modified-boxplot" class="level1">
+<h1>modified boxplot</h1>
+<p>A modified boxplot is a box plot where the whiskers only extend to the largest (or smallest) observation that is not an outlier and the outliers are plotted using a full circle (mild) or empty circle (extreme).</p>
+<p>If there are no outliers, then the the whiskers end at the maximum (or minimum)</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 数据</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>ratios <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">0.553</span>, <span class="fl">0.570</span>, <span class="fl">0.576</span>, <span class="fl">0.601</span>, <span class="fl">0.606</span>, <span class="fl">0.606</span>, <span class="fl">0.609</span>, <span class="fl">0.611</span>, </span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>            <span class="fl">0.615</span>, <span class="fl">0.628</span>, <span class="fl">0.654</span>, <span class="fl">0.662</span>, <span class="fl">0.668</span>, <span class="fl">0.670</span>, <span class="fl">0.672</span>, <span class="fl">0.690</span>, </span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>            <span class="fl">0.693</span>, <span class="fl">0.749</span>, <span class="fl">0.844</span>, <span class="fl">0.933</span>)</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="co"># 计算四分位数、IQR、温和和极端异常值的界限</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>Q1 <span class="ot">&lt;-</span> <span class="fu">quantile</span>(ratios, <span class="fl">0.25</span>)</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>Q3 <span class="ot">&lt;-</span> <span class="fu">quantile</span>(ratios, <span class="fl">0.75</span>)</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>median_val <span class="ot">&lt;-</span> <span class="fu">median</span>(ratios)</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>iqr <span class="ot">&lt;-</span> Q3 <span class="sc">-</span> Q1</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>mild_outlier_limit <span class="ot">&lt;-</span> <span class="fl">1.5</span> <span class="sc">*</span> iqr</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>extreme_outlier_limit <span class="ot">&lt;-</span> <span class="dv">3</span> <span class="sc">*</span> iqr</span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>lower_mild <span class="ot">&lt;-</span> Q1 <span class="sc">-</span> mild_outlier_limit</span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>lower_extreme <span class="ot">&lt;-</span> Q1 <span class="sc">-</span> extreme_outlier_limit</span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>upper_mild <span class="ot">&lt;-</span> Q3 <span class="sc">+</span> mild_outlier_limit</span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>upper_extreme <span class="ot">&lt;-</span> Q3 <span class="sc">+</span> extreme_outlier_limit</span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a><span class="co"># 标记温和和极端异常值</span></span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>mild_outliers <span class="ot">&lt;-</span> ratios[ratios <span class="sc">&gt;</span> upper_mild <span class="sc">&amp;</span> ratios <span class="sc">&lt;=</span> upper_extreme <span class="sc">|</span> ratios <span class="sc">&lt;</span> lower_mild <span class="sc">&amp;</span> ratios <span class="sc">&gt;=</span> lower_extreme]</span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>extreme_outliers <span class="ot">&lt;-</span> ratios[ratios <span class="sc">&gt;</span> upper_extreme <span class="sc">|</span> ratios <span class="sc">&lt;</span> lower_extreme]</span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a><span class="co"># 绘制箱线图，并标记温和和极端异常值</span></span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(ratios, <span class="at">main =</span> <span class="st">"Modified Boxplot of Width-to-Length Ratios"</span>, <span class="at">ylim =</span> <span class="fu">c</span>(<span class="fl">0.3</span>, <span class="dv">1</span>))</span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a><span class="fu">points</span>(<span class="fu">which</span>(ratios <span class="sc">%in%</span> mild_outliers), mild_outliers, <span class="at">pch =</span> <span class="dv">16</span>, <span class="at">col =</span> <span class="st">"blue"</span>)    <span class="co"># 实心圆表示温和异常值</span></span>
+<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a><span class="fu">points</span>(<span class="fu">which</span>(ratios <span class="sc">%in%</span> extreme_outliers), extreme_outliers, <span class="at">pch =</span> <span class="dv">1</span>, <span class="at">col =</span> <span class="st">"red"</span>) <span class="co"># 空心圆表示极端异常值</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="mth1113_files/figure-html/unnamed-chunk-1-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 输出四分位数、中位数和IQR结果</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="co">#确定第一四分位数（Q1）：这是数据从小到大排列后，位于下四分之一位置的值，表示前25%的数据范围的最大值。</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="co">#确定第三四分位数（Q3）：这是数据从小到大排列后，位于上四分之一位置的值，表示后75%的数据范围的最小值。</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"Q1:"</span>, Q1, <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Q1: 0.606 </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"Median:"</span>, median_val, <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Median: 0.641 </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"Q3:"</span>, Q3, <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Q3: 0.6765 </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"IQR:"</span>, iqr, <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>IQR: 0.0705 </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"Lower mild outlier limit:"</span>, lower_mild, <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Lower mild outlier limit: 0.50025 </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"Lower extreme outlier limit:"</span>, lower_extreme, <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Lower extreme outlier limit: 0.3945 </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"Upper mild outlier limit:"</span>, upper_mild, <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Upper mild outlier limit: 0.78225 </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"Upper extreme outlier limit:"</span>, upper_extreme, <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Upper extreme outlier limit: 0.888 </code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 加载ggplot2包</span></span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="sc">!</span><span class="fu">require</span>(ggplot2)) <span class="fu">install.packages</span>(<span class="st">"ggplot2"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Loading required package: ggplot2</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a><span class="co"># 数据</span></span>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a>ratios <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">0.553</span>, <span class="fl">0.570</span>, <span class="fl">0.576</span>, <span class="fl">0.601</span>, <span class="fl">0.606</span>, <span class="fl">0.606</span>, <span class="fl">0.609</span>, <span class="fl">0.611</span>, </span>
+<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a>            <span class="fl">0.615</span>, <span class="fl">0.628</span>, <span class="fl">0.654</span>, <span class="fl">0.662</span>, <span class="fl">0.668</span>, <span class="fl">0.670</span>, <span class="fl">0.672</span>, <span class="fl">0.690</span>, </span>
+<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a>            <span class="fl">0.693</span>, <span class="fl">0.749</span>, <span class="fl">0.844</span>, <span class="fl">0.933</span>)</span>
+<span id="cb20-7"><a href="#cb20-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-8"><a href="#cb20-8" aria-hidden="true" tabindex="-1"></a><span class="co"># 计算四分位数、IQR、温和和极端异常值的界限</span></span>
+<span id="cb20-9"><a href="#cb20-9" aria-hidden="true" tabindex="-1"></a>Q1 <span class="ot">&lt;-</span> <span class="fu">quantile</span>(ratios, <span class="fl">0.25</span>)</span>
+<span id="cb20-10"><a href="#cb20-10" aria-hidden="true" tabindex="-1"></a>Q3 <span class="ot">&lt;-</span> <span class="fu">quantile</span>(ratios, <span class="fl">0.75</span>)</span>
+<span id="cb20-11"><a href="#cb20-11" aria-hidden="true" tabindex="-1"></a>median_val <span class="ot">&lt;-</span> <span class="fu">median</span>(ratios)</span>
+<span id="cb20-12"><a href="#cb20-12" aria-hidden="true" tabindex="-1"></a>iqr <span class="ot">&lt;-</span> Q3 <span class="sc">-</span> Q1</span>
+<span id="cb20-13"><a href="#cb20-13" aria-hidden="true" tabindex="-1"></a>mild_outlier_limit <span class="ot">&lt;-</span> <span class="fl">1.5</span> <span class="sc">*</span> iqr</span>
+<span id="cb20-14"><a href="#cb20-14" aria-hidden="true" tabindex="-1"></a>extreme_outlier_limit <span class="ot">&lt;-</span> <span class="dv">3</span> <span class="sc">*</span> iqr</span>
+<span id="cb20-15"><a href="#cb20-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-16"><a href="#cb20-16" aria-hidden="true" tabindex="-1"></a>lower_mild <span class="ot">&lt;-</span> Q1 <span class="sc">-</span> mild_outlier_limit</span>
+<span id="cb20-17"><a href="#cb20-17" aria-hidden="true" tabindex="-1"></a>lower_extreme <span class="ot">&lt;-</span> Q1 <span class="sc">-</span> extreme_outlier_limit</span>
+<span id="cb20-18"><a href="#cb20-18" aria-hidden="true" tabindex="-1"></a>upper_mild <span class="ot">&lt;-</span> Q3 <span class="sc">+</span> mild_outlier_limit</span>
+<span id="cb20-19"><a href="#cb20-19" aria-hidden="true" tabindex="-1"></a>upper_extreme <span class="ot">&lt;-</span> Q3 <span class="sc">+</span> extreme_outlier_limit</span>
+<span id="cb20-20"><a href="#cb20-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-21"><a href="#cb20-21" aria-hidden="true" tabindex="-1"></a><span class="co"># 标记温和和极端异常值</span></span>
+<span id="cb20-22"><a href="#cb20-22" aria-hidden="true" tabindex="-1"></a>mild_outliers <span class="ot">&lt;-</span> ratios[ratios <span class="sc">&gt;</span> upper_mild <span class="sc">&amp;</span> ratios <span class="sc">&lt;=</span> upper_extreme <span class="sc">|</span> ratios <span class="sc">&lt;</span> lower_mild <span class="sc">&amp;</span> ratios <span class="sc">&gt;=</span> lower_extreme]</span>
+<span id="cb20-23"><a href="#cb20-23" aria-hidden="true" tabindex="-1"></a>extreme_outliers <span class="ot">&lt;-</span> ratios[ratios <span class="sc">&gt;</span> upper_extreme <span class="sc">|</span> ratios <span class="sc">&lt;</span> lower_extreme]</span>
+<span id="cb20-24"><a href="#cb20-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-25"><a href="#cb20-25" aria-hidden="true" tabindex="-1"></a><span class="co"># 创建数据框</span></span>
+<span id="cb20-26"><a href="#cb20-26" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">ratios =</span> ratios)</span>
+<span id="cb20-27"><a href="#cb20-27" aria-hidden="true" tabindex="-1"></a>data<span class="sc">$</span>outlier_type <span class="ot">&lt;-</span> <span class="fu">ifelse</span>(data<span class="sc">$</span>ratios <span class="sc">%in%</span> mild_outliers, <span class="st">"Mild Outlier"</span>,</span>
+<span id="cb20-28"><a href="#cb20-28" aria-hidden="true" tabindex="-1"></a>                            <span class="fu">ifelse</span>(data<span class="sc">$</span>ratios <span class="sc">%in%</span> extreme_outliers, <span class="st">"Extreme Outlier"</span>, <span class="st">"Normal"</span>))</span>
+<span id="cb20-29"><a href="#cb20-29" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-30"><a href="#cb20-30" aria-hidden="true" tabindex="-1"></a><span class="co"># 使用ggplot2绘制</span></span>
+<span id="cb20-31"><a href="#cb20-31" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(data, <span class="fu">aes</span>(<span class="at">x =</span> <span class="st">""</span>, <span class="at">y =</span> ratios)) <span class="sc">+</span></span>
+<span id="cb20-32"><a href="#cb20-32" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>(<span class="at">outlier.shape =</span> <span class="cn">NA</span>, <span class="at">fill =</span> <span class="st">"lightblue"</span>) <span class="sc">+</span>  <span class="co"># 不显示默认的异常值</span></span>
+<span id="cb20-33"><a href="#cb20-33" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">data =</span> <span class="fu">subset</span>(data, outlier_type <span class="sc">==</span> <span class="st">"Mild Outlier"</span>), <span class="fu">aes</span>(<span class="at">y =</span> ratios), <span class="at">color =</span> <span class="st">"blue"</span>, <span class="at">size =</span> <span class="dv">3</span>, <span class="at">shape =</span> <span class="dv">16</span>) <span class="sc">+</span> <span class="co"># 温和异常值，实心圆</span></span>
+<span id="cb20-34"><a href="#cb20-34" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">data =</span> <span class="fu">subset</span>(data, outlier_type <span class="sc">==</span> <span class="st">"Extreme Outlier"</span>), <span class="fu">aes</span>(<span class="at">y =</span> ratios), <span class="at">color =</span> <span class="st">"red"</span>, <span class="at">size =</span> <span class="dv">3</span>, <span class="at">shape =</span> <span class="dv">1</span>) <span class="sc">+</span> <span class="co"># 极端异常值，空心圆</span></span>
+<span id="cb20-35"><a href="#cb20-35" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Modified Boxplot of Width-to-Length Ratios"</span>, <span class="at">y =</span> <span class="st">"Width-to-Length Ratios"</span>) <span class="sc">+</span></span>
+<span id="cb20-36"><a href="#cb20-36" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
+<span id="cb20-37"><a href="#cb20-37" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">axis.title.x =</span> <span class="fu">element_blank</span>()) <span class="sc">+</span> <span class="co"># 移除x轴标签</span></span>
+<span id="cb20-38"><a href="#cb20-38" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_cartesian</span>(<span class="at">ylim =</span> <span class="fu">c</span>(<span class="fl">0.3</span>, <span class="dv">1</span>))      <span class="co"># 设置y轴范围</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="mth1113_files/figure-html/unnamed-chunk-2-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
 </section>
 <section id="tutorial" class="level1">
 <h1>tutorial</h1>
@@ -239,9 +401,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>do not manipulate data—experimental</p>
 <p>table 2.1</p>
 <p>11</p>
-<p>cluster/stratified</p>
-<p>stratified: according to certain carecteristic</p>
-<p>cluster: randomly groups</p>
 <p>huge data for 顺序的 shuffle is ok</p>
 <p>but ..</p>
 <p>the likelihood is totally different</p>
@@ -291,75 +450,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>discrete</li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="co"># creat data：Wechat number</span></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>discrete_data <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">value =</span> <span class="fu">c</span>(<span class="dv">30</span>, <span class="dv">15</span>, <span class="dv">20</span>,<span class="dv">30</span>,<span class="dv">60</span>))</span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="co"># plot</span></span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(discrete_data, <span class="fu">aes</span>(<span class="at">x =</span> value)) <span class="sc">+</span></span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_dotplot</span>(<span class="at">binwidth =</span> <span class="dv">1</span>, <span class="at">dotsize =</span> <span class="dv">1</span>) <span class="sc">+</span></span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">"Dot Plot of Discrete Data (Number of Wechats)"</span>) <span class="sc">+</span></span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="mth1113_files/figure-html/unnamed-chunk-1-1.png" class="img-fluid figure-img" width="672"></p>
-</figure>
-</div>
-</div>
-</div>
-<ul>
-<li>continuous</li>
-</ul>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 手动输入毕业率数据</span></span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>all_athletes <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">79</span>, <span class="dv">79</span>, <span class="dv">86</span>, <span class="dv">85</span>, <span class="dv">95</span>, <span class="dv">78</span>, <span class="dv">89</span>, <span class="dv">84</span>, <span class="dv">81</span>, <span class="dv">85</span>, <span class="dv">89</span>, <span class="dv">89</span>, <span class="dv">85</span>, <span class="dv">85</span>, <span class="dv">81</span>, <span class="dv">80</span>, <span class="dv">98</span>, <span class="dv">84</span>, </span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>                  <span class="dv">80</span>, <span class="dv">82</span>, <span class="dv">81</span>, <span class="dv">70</span>, <span class="dv">85</span>, <span class="dv">87</span>, <span class="dv">83</span>, <span class="dv">86</span>, <span class="dv">92</span>, <span class="dv">85</span>, <span class="dv">93</span>, <span class="dv">94</span>, <span class="dv">76</span>, <span class="dv">69</span>, <span class="dv">82</span>, <span class="dv">80</span>, <span class="dv">94</span>, <span class="dv">98</span>)</span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>basketball <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">55</span>, <span class="dv">36</span>, <span class="dv">83</span>, <span class="dv">20</span>, <span class="dv">100</span>, <span class="dv">62</span>, <span class="dv">100</span>, <span class="dv">100</span>, <span class="dv">90</span>, <span class="dv">91</span>, <span class="dv">93</span>, <span class="dv">89</span>, <span class="dv">90</span>, <span class="dv">80</span>, <span class="dv">46</span>, <span class="dv">75</span>, <span class="dv">100</span>, <span class="dv">71</span>, </span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>                <span class="dv">50</span>, <span class="dv">62</span>, <span class="dv">82</span>, <span class="dv">50</span>, <span class="dv">100</span>, <span class="dv">83</span>, <span class="dv">90</span>, <span class="dv">64</span>, <span class="dv">91</span>, <span class="dv">67</span>, <span class="dv">83</span>, <span class="dv">100</span>, <span class="dv">83</span>, <span class="dv">100</span>, <span class="dv">83</span>, <span class="dv">63</span>, <span class="dv">91</span>, <span class="dv">95</span>)</span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="co"># 设置画布的高度，以便将两个图绘制在同一页面上</span></span>
-<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="fu">plot.new</span>()</span>
-<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a><span class="fu">plot.window</span>(<span class="at">xlim =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">100</span>), <span class="at">ylim =</span> <span class="fu">c</span>(<span class="fl">0.5</span>, <span class="fl">2.5</span>))</span>
-<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a><span class="co"># 绘制 Basketball 数据的 dotplot</span></span>
-<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a><span class="fu">stripchart</span>(basketball, <span class="at">method =</span> <span class="st">"stack"</span>, <span class="at">at =</span> <span class="dv">2</span>, <span class="at">pch =</span> <span class="dv">16</span>, <span class="at">col =</span> <span class="st">"orange"</span>, </span>
-<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>           <span class="at">add =</span> <span class="cn">TRUE</span>, <span class="at">offset =</span> <span class="fl">0.5</span>, <span class="at">cex =</span> <span class="fl">1.2</span>)</span>
-<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a><span class="co"># 绘制 All Athletes 数据的 dotplot</span></span>
-<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a><span class="fu">stripchart</span>(all_athletes, <span class="at">method =</span> <span class="st">"stack"</span>, <span class="at">at =</span> <span class="dv">1</span>, <span class="at">pch =</span> <span class="dv">16</span>, <span class="at">col =</span> <span class="st">"orange"</span>, </span>
-<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a>           <span class="at">add =</span> <span class="cn">TRUE</span>, <span class="at">offset =</span> <span class="fl">0.5</span>, <span class="at">cex =</span> <span class="fl">1.2</span>)</span>
-<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a><span class="co"># 添加 X 轴</span></span>
-<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a><span class="fu">axis</span>(<span class="dv">1</span>, <span class="at">at =</span> <span class="fu">seq</span>(<span class="dv">10</span>, <span class="dv">100</span>, <span class="at">by =</span> <span class="dv">10</span>), <span class="at">labels =</span> <span class="fu">seq</span>(<span class="dv">10</span>, <span class="dv">100</span>, <span class="at">by =</span> <span class="dv">10</span>))</span>
-<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-22"><a href="#cb2-22" aria-hidden="true" tabindex="-1"></a><span class="co"># 添加标签</span></span>
-<span id="cb2-23"><a href="#cb2-23" aria-hidden="true" tabindex="-1"></a><span class="fu">text</span>(<span class="sc">-</span><span class="dv">5</span>, <span class="dv">2</span>, <span class="st">"Basketball"</span>, <span class="at">xpd =</span> <span class="cn">TRUE</span>, <span class="at">adj =</span> <span class="dv">1</span>)</span>
-<span id="cb2-24"><a href="#cb2-24" aria-hidden="true" tabindex="-1"></a><span class="fu">text</span>(<span class="sc">-</span><span class="dv">5</span>, <span class="dv">1</span>, <span class="st">"All Athletes"</span>, <span class="at">xpd =</span> <span class="cn">TRUE</span>, <span class="at">adj =</span> <span class="dv">1</span>)</span>
-<span id="cb2-25"><a href="#cb2-25" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-26"><a href="#cb2-26" aria-hidden="true" tabindex="-1"></a><span class="co"># 添加横线</span></span>
-<span id="cb2-27"><a href="#cb2-27" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">h =</span> <span class="fl">1.5</span>, <span class="at">col =</span> <span class="st">"black"</span>, <span class="at">lwd =</span> <span class="dv">2</span>)</span>
-<span id="cb2-28"><a href="#cb2-28" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-29"><a href="#cb2-29" aria-hidden="true" tabindex="-1"></a><span class="co"># 添加 X 轴标签</span></span>
-<span id="cb2-30"><a href="#cb2-30" aria-hidden="true" tabindex="-1"></a><span class="fu">title</span>(<span class="at">xlab =</span> <span class="st">"Graduation rates (%)"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="mth1113_files/figure-html/unnamed-chunk-2-1.png" class="img-fluid figure-img" width="672"></p>
-</figure>
-</div>
-</div>
-</div>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># creat data--time spent in minutes</span></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>continuous_data <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">value =</span> <span class="fu">c</span>(<span class="dv">6</span>, <span class="fl">5.25</span>, <span class="fl">3.62</span>,<span class="dv">1</span>,<span class="dv">2</span>,<span class="fl">3.1</span>,<span class="fl">3.2</span>,<span class="dv">4</span>,<span class="dv">5</span>,<span class="dv">6</span>,<span class="dv">7</span>,<span class="dv">4</span>,<span class="dv">10</span>))</span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="co"># dotplot</span></span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(continuous_data, <span class="fu">aes</span>(<span class="at">x =</span> value)) <span class="sc">+</span></span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_dotplot</span>(<span class="at">binwidth =</span> <span class="fl">0.1</span>, <span class="at">dotsize =</span> <span class="dv">1</span>) <span class="sc">+</span></span>
-<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">"Dot Plot of Continuous Data (Time Spent in Minutes)"</span>) <span class="sc">+</span></span>
-<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a><span class="co"># creat data：Wechat number</span></span>
+<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a>discrete_data <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">value =</span> <span class="fu">c</span>(<span class="dv">30</span>, <span class="dv">15</span>, <span class="dv">20</span>,<span class="dv">30</span>,<span class="dv">60</span>))</span>
+<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-6"><a href="#cb21-6" aria-hidden="true" tabindex="-1"></a><span class="co"># plot</span></span>
+<span id="cb21-7"><a href="#cb21-7" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(discrete_data, <span class="fu">aes</span>(<span class="at">x =</span> value)) <span class="sc">+</span></span>
+<span id="cb21-8"><a href="#cb21-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_dotplot</span>(<span class="at">binwidth =</span> <span class="dv">1</span>, <span class="at">dotsize =</span> <span class="dv">1</span>) <span class="sc">+</span></span>
+<span id="cb21-9"><a href="#cb21-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">"Dot Plot of Discrete Data (Number of Wechats)"</span>) <span class="sc">+</span></span>
+<span id="cb21-10"><a href="#cb21-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -368,27 +468,85 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
+<ul>
+<li>continuous</li>
+</ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="co"># 毕业率数据</span></span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>school <span class="ot">&lt;-</span> <span class="dv">33</span><span class="sc">:</span><span class="dv">68</span></span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>all_athletes <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">79</span>, <span class="dv">79</span>, <span class="dv">86</span>, <span class="dv">85</span>, <span class="dv">95</span>, <span class="dv">78</span>, <span class="dv">89</span>, <span class="dv">84</span>, <span class="dv">81</span>, <span class="dv">85</span>, <span class="dv">89</span>, <span class="dv">89</span>, <span class="dv">85</span>, <span class="dv">85</span>, <span class="dv">81</span>, <span class="dv">80</span>, <span class="dv">98</span>, <span class="dv">84</span>, </span>
-<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>                  <span class="dv">80</span>, <span class="dv">82</span>, <span class="dv">81</span>, <span class="dv">70</span>, <span class="dv">85</span>, <span class="dv">87</span>, <span class="dv">83</span>, <span class="dv">86</span>, <span class="dv">92</span>, <span class="dv">85</span>, <span class="dv">93</span>, <span class="dv">94</span>, <span class="dv">76</span>, <span class="dv">69</span>, <span class="dv">82</span>, <span class="dv">80</span>, <span class="dv">94</span>, <span class="dv">98</span>)</span>
-<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>basketball <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">55</span>, <span class="dv">36</span>, <span class="dv">83</span>, <span class="dv">20</span>, <span class="dv">100</span>, <span class="dv">62</span>, <span class="dv">100</span>, <span class="dv">100</span>, <span class="dv">90</span>, <span class="dv">91</span>, <span class="dv">93</span>, <span class="dv">89</span>, <span class="dv">90</span>, <span class="dv">80</span>, <span class="dv">46</span>, <span class="dv">75</span>, <span class="dv">100</span>, <span class="dv">71</span>, </span>
-<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>                <span class="dv">50</span>, <span class="dv">62</span>, <span class="dv">82</span>, <span class="dv">50</span>, <span class="dv">100</span>, <span class="dv">83</span>, <span class="dv">90</span>, <span class="dv">64</span>, <span class="dv">91</span>, <span class="dv">67</span>, <span class="dv">83</span>, <span class="dv">100</span>, <span class="dv">83</span>, <span class="dv">100</span>, <span class="dv">83</span>, <span class="dv">63</span>, <span class="dv">91</span>, <span class="dv">95</span>)</span>
-<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a><span class="co"># 创建数据框</span></span>
-<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(school, all_athletes, basketball)</span>
-<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a><span class="co"># 画图</span></span>
-<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>() <span class="sc">+</span></span>
-<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_dotplot</span>(<span class="at">data =</span> data, <span class="fu">aes</span>(<span class="at">x =</span> all_athletes, <span class="at">y =</span> <span class="st">"All Athletes"</span>), <span class="at">binaxis =</span> <span class="st">'x'</span>, <span class="at">stackdir =</span> <span class="st">'up'</span>, <span class="at">dotsize =</span> <span class="fl">0.5</span>) <span class="sc">+</span></span>
-<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_dotplot</span>(<span class="at">data =</span> data, <span class="fu">aes</span>(<span class="at">x =</span> basketball, <span class="at">y =</span> <span class="st">"Basketball"</span>), <span class="at">binaxis =</span> <span class="st">'x'</span>, <span class="at">stackdir =</span> <span class="st">'up'</span>, <span class="at">dotsize =</span> <span class="fl">0.5</span>, <span class="at">color =</span> <span class="st">"red"</span>) <span class="sc">+</span></span>
-<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="st">"Graduation rates (%)"</span>) <span class="sc">+</span></span>
-<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="st">""</span>) <span class="sc">+</span></span>
-<span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
-<span id="cb4-20"><a href="#cb4-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">"Dotplot of Graduation Rates for All Athletes and Basketball Players"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>all_athletes <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">79</span>, <span class="dv">79</span>, <span class="dv">86</span>, <span class="dv">85</span>, <span class="dv">95</span>, <span class="dv">78</span>, <span class="dv">89</span>, <span class="dv">84</span>, <span class="dv">81</span>, <span class="dv">85</span>, <span class="dv">89</span>, <span class="dv">89</span>, <span class="dv">85</span>, <span class="dv">85</span>, <span class="dv">81</span>, <span class="dv">80</span>, <span class="dv">98</span>, <span class="dv">84</span>, </span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>                  <span class="dv">80</span>, <span class="dv">82</span>, <span class="dv">81</span>, <span class="dv">70</span>, <span class="dv">85</span>, <span class="dv">87</span>, <span class="dv">83</span>, <span class="dv">86</span>, <span class="dv">92</span>, <span class="dv">85</span>, <span class="dv">93</span>, <span class="dv">94</span>, <span class="dv">76</span>, <span class="dv">69</span>, <span class="dv">82</span>, <span class="dv">80</span>, <span class="dv">94</span>, <span class="dv">98</span>)</span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>basketball <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">55</span>, <span class="dv">36</span>, <span class="dv">83</span>, <span class="dv">20</span>, <span class="dv">100</span>, <span class="dv">62</span>, <span class="dv">100</span>, <span class="dv">100</span>, <span class="dv">90</span>, <span class="dv">91</span>, <span class="dv">93</span>, <span class="dv">89</span>, <span class="dv">90</span>, <span class="dv">80</span>, <span class="dv">46</span>, <span class="dv">75</span>, <span class="dv">100</span>, <span class="dv">71</span>, </span>
+<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a>                <span class="dv">50</span>, <span class="dv">62</span>, <span class="dv">82</span>, <span class="dv">50</span>, <span class="dv">100</span>, <span class="dv">83</span>, <span class="dv">90</span>, <span class="dv">64</span>, <span class="dv">91</span>, <span class="dv">67</span>, <span class="dv">83</span>, <span class="dv">100</span>, <span class="dv">83</span>, <span class="dv">100</span>, <span class="dv">83</span>, <span class="dv">63</span>, <span class="dv">91</span>, <span class="dv">95</span>)</span>
+<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-6"><a href="#cb22-6" aria-hidden="true" tabindex="-1"></a><span class="co"># 设置画布的高度，以便将两个图绘制在同一页面上</span></span>
+<span id="cb22-7"><a href="#cb22-7" aria-hidden="true" tabindex="-1"></a><span class="fu">plot.new</span>()</span>
+<span id="cb22-8"><a href="#cb22-8" aria-hidden="true" tabindex="-1"></a><span class="fu">plot.window</span>(<span class="at">xlim =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">100</span>), <span class="at">ylim =</span> <span class="fu">c</span>(<span class="fl">0.5</span>, <span class="fl">2.5</span>))</span>
+<span id="cb22-9"><a href="#cb22-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-10"><a href="#cb22-10" aria-hidden="true" tabindex="-1"></a><span class="co"># 绘制 Basketball 数据的 dotplot</span></span>
+<span id="cb22-11"><a href="#cb22-11" aria-hidden="true" tabindex="-1"></a><span class="fu">stripchart</span>(basketball, <span class="at">method =</span> <span class="st">"stack"</span>, <span class="at">at =</span> <span class="dv">2</span>, <span class="at">pch =</span> <span class="dv">16</span>, <span class="at">col =</span> <span class="st">"orange"</span>, </span>
+<span id="cb22-12"><a href="#cb22-12" aria-hidden="true" tabindex="-1"></a>           <span class="at">add =</span> <span class="cn">TRUE</span>, <span class="at">offset =</span> <span class="fl">0.5</span>, <span class="at">cex =</span> <span class="fl">1.2</span>)</span>
+<span id="cb22-13"><a href="#cb22-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-14"><a href="#cb22-14" aria-hidden="true" tabindex="-1"></a><span class="co"># 绘制 All Athletes 数据的 dotplot</span></span>
+<span id="cb22-15"><a href="#cb22-15" aria-hidden="true" tabindex="-1"></a><span class="fu">stripchart</span>(all_athletes, <span class="at">method =</span> <span class="st">"stack"</span>, <span class="at">at =</span> <span class="dv">1</span>, <span class="at">pch =</span> <span class="dv">16</span>, <span class="at">col =</span> <span class="st">"orange"</span>, </span>
+<span id="cb22-16"><a href="#cb22-16" aria-hidden="true" tabindex="-1"></a>           <span class="at">add =</span> <span class="cn">TRUE</span>, <span class="at">offset =</span> <span class="fl">0.5</span>, <span class="at">cex =</span> <span class="fl">1.2</span>)</span>
+<span id="cb22-17"><a href="#cb22-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-18"><a href="#cb22-18" aria-hidden="true" tabindex="-1"></a><span class="co"># 添加 X 轴</span></span>
+<span id="cb22-19"><a href="#cb22-19" aria-hidden="true" tabindex="-1"></a><span class="fu">axis</span>(<span class="dv">1</span>, <span class="at">at =</span> <span class="fu">seq</span>(<span class="dv">10</span>, <span class="dv">100</span>, <span class="at">by =</span> <span class="dv">10</span>), <span class="at">labels =</span> <span class="fu">seq</span>(<span class="dv">10</span>, <span class="dv">100</span>, <span class="at">by =</span> <span class="dv">10</span>))</span>
+<span id="cb22-20"><a href="#cb22-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-21"><a href="#cb22-21" aria-hidden="true" tabindex="-1"></a><span class="co"># 添加标签</span></span>
+<span id="cb22-22"><a href="#cb22-22" aria-hidden="true" tabindex="-1"></a><span class="fu">text</span>(<span class="sc">-</span><span class="dv">5</span>, <span class="dv">2</span>, <span class="st">"Basketball"</span>, <span class="at">xpd =</span> <span class="cn">TRUE</span>, <span class="at">adj =</span> <span class="dv">1</span>)</span>
+<span id="cb22-23"><a href="#cb22-23" aria-hidden="true" tabindex="-1"></a><span class="fu">text</span>(<span class="sc">-</span><span class="dv">5</span>, <span class="dv">1</span>, <span class="st">"All Athletes"</span>, <span class="at">xpd =</span> <span class="cn">TRUE</span>, <span class="at">adj =</span> <span class="dv">1</span>)</span>
+<span id="cb22-24"><a href="#cb22-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-25"><a href="#cb22-25" aria-hidden="true" tabindex="-1"></a><span class="co"># 添加横线</span></span>
+<span id="cb22-26"><a href="#cb22-26" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">h =</span> <span class="fl">1.5</span>, <span class="at">col =</span> <span class="st">"black"</span>, <span class="at">lwd =</span> <span class="dv">2</span>)</span>
+<span id="cb22-27"><a href="#cb22-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-28"><a href="#cb22-28" aria-hidden="true" tabindex="-1"></a><span class="co"># 添加 X 轴标签</span></span>
+<span id="cb22-29"><a href="#cb22-29" aria-hidden="true" tabindex="-1"></a><span class="fu">title</span>(<span class="at">xlab =</span> <span class="st">"Graduation rates (%)"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="mth1113_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="co"># creat data--time spent in minutes</span></span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>continuous_data <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">value =</span> <span class="fu">c</span>(<span class="dv">6</span>, <span class="fl">5.25</span>, <span class="fl">3.62</span>,<span class="dv">1</span>,<span class="dv">2</span>,<span class="fl">3.1</span>,<span class="fl">3.2</span>,<span class="dv">4</span>,<span class="dv">5</span>,<span class="dv">6</span>,<span class="dv">7</span>,<span class="dv">4</span>,<span class="dv">10</span>))</span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a><span class="co"># dotplot</span></span>
+<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(continuous_data, <span class="fu">aes</span>(<span class="at">x =</span> value)) <span class="sc">+</span></span>
+<span id="cb23-6"><a href="#cb23-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_dotplot</span>(<span class="at">binwidth =</span> <span class="fl">0.1</span>, <span class="at">dotsize =</span> <span class="dv">1</span>) <span class="sc">+</span></span>
+<span id="cb23-7"><a href="#cb23-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">"Dot Plot of Continuous Data (Time Spent in Minutes)"</span>) <span class="sc">+</span></span>
+<span id="cb23-8"><a href="#cb23-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="mth1113_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a><span class="co"># 毕业率数据</span></span>
+<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a>school <span class="ot">&lt;-</span> <span class="dv">33</span><span class="sc">:</span><span class="dv">68</span></span>
+<span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a>all_athletes <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">79</span>, <span class="dv">79</span>, <span class="dv">86</span>, <span class="dv">85</span>, <span class="dv">95</span>, <span class="dv">78</span>, <span class="dv">89</span>, <span class="dv">84</span>, <span class="dv">81</span>, <span class="dv">85</span>, <span class="dv">89</span>, <span class="dv">89</span>, <span class="dv">85</span>, <span class="dv">85</span>, <span class="dv">81</span>, <span class="dv">80</span>, <span class="dv">98</span>, <span class="dv">84</span>, </span>
+<span id="cb24-6"><a href="#cb24-6" aria-hidden="true" tabindex="-1"></a>                  <span class="dv">80</span>, <span class="dv">82</span>, <span class="dv">81</span>, <span class="dv">70</span>, <span class="dv">85</span>, <span class="dv">87</span>, <span class="dv">83</span>, <span class="dv">86</span>, <span class="dv">92</span>, <span class="dv">85</span>, <span class="dv">93</span>, <span class="dv">94</span>, <span class="dv">76</span>, <span class="dv">69</span>, <span class="dv">82</span>, <span class="dv">80</span>, <span class="dv">94</span>, <span class="dv">98</span>)</span>
+<span id="cb24-7"><a href="#cb24-7" aria-hidden="true" tabindex="-1"></a>basketball <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">55</span>, <span class="dv">36</span>, <span class="dv">83</span>, <span class="dv">20</span>, <span class="dv">100</span>, <span class="dv">62</span>, <span class="dv">100</span>, <span class="dv">100</span>, <span class="dv">90</span>, <span class="dv">91</span>, <span class="dv">93</span>, <span class="dv">89</span>, <span class="dv">90</span>, <span class="dv">80</span>, <span class="dv">46</span>, <span class="dv">75</span>, <span class="dv">100</span>, <span class="dv">71</span>, </span>
+<span id="cb24-8"><a href="#cb24-8" aria-hidden="true" tabindex="-1"></a>                <span class="dv">50</span>, <span class="dv">62</span>, <span class="dv">82</span>, <span class="dv">50</span>, <span class="dv">100</span>, <span class="dv">83</span>, <span class="dv">90</span>, <span class="dv">64</span>, <span class="dv">91</span>, <span class="dv">67</span>, <span class="dv">83</span>, <span class="dv">100</span>, <span class="dv">83</span>, <span class="dv">100</span>, <span class="dv">83</span>, <span class="dv">63</span>, <span class="dv">91</span>, <span class="dv">95</span>)</span>
+<span id="cb24-9"><a href="#cb24-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-10"><a href="#cb24-10" aria-hidden="true" tabindex="-1"></a><span class="co"># 创建数据框</span></span>
+<span id="cb24-11"><a href="#cb24-11" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(school, all_athletes, basketball)</span>
+<span id="cb24-12"><a href="#cb24-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-13"><a href="#cb24-13" aria-hidden="true" tabindex="-1"></a><span class="co"># 画图</span></span>
+<span id="cb24-14"><a href="#cb24-14" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>() <span class="sc">+</span></span>
+<span id="cb24-15"><a href="#cb24-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_dotplot</span>(<span class="at">data =</span> data, <span class="fu">aes</span>(<span class="at">x =</span> all_athletes, <span class="at">y =</span> <span class="st">"All Athletes"</span>), <span class="at">binaxis =</span> <span class="st">'x'</span>, <span class="at">stackdir =</span> <span class="st">'up'</span>, <span class="at">dotsize =</span> <span class="fl">0.5</span>) <span class="sc">+</span></span>
+<span id="cb24-16"><a href="#cb24-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_dotplot</span>(<span class="at">data =</span> data, <span class="fu">aes</span>(<span class="at">x =</span> basketball, <span class="at">y =</span> <span class="st">"Basketball"</span>), <span class="at">binaxis =</span> <span class="st">'x'</span>, <span class="at">stackdir =</span> <span class="st">'up'</span>, <span class="at">dotsize =</span> <span class="fl">0.5</span>, <span class="at">color =</span> <span class="st">"red"</span>) <span class="sc">+</span></span>
+<span id="cb24-17"><a href="#cb24-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="st">"Graduation rates (%)"</span>) <span class="sc">+</span></span>
+<span id="cb24-18"><a href="#cb24-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="st">""</span>) <span class="sc">+</span></span>
+<span id="cb24-19"><a href="#cb24-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
+<span id="cb24-20"><a href="#cb24-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">"Dotplot of Graduation Rates for All Athletes and Basketball Players"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>Bin width defaults to 1/30 of the range of the data. Pick better value with
 `binwidth`.
@@ -398,7 +556,7 @@ Bin width defaults to 1/30 of the range of the data. Pick better value with
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="mth1113_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="mth1113_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
@@ -413,26 +571,92 @@ Bin width defaults to 1/30 of the range of the data. Pick better value with
 </section>
 <section id="collect-data-sensibly" class="level2">
 <h2 class="anchored" data-anchor-id="collect-data-sensibly">collect data sensibly</h2>
+</section>
+</section>
+<section id="chapter-2" class="level1">
+<h1>chapter 2</h1>
+<section id="two-types-of-studies-observational-studies-and-experiments." class="level2">
+<h2 class="anchored" data-anchor-id="two-types-of-studies-observational-studies-and-experiments.">Two types of studies: Observational studies and Experiments.</h2>
+<section id="observational" class="level3">
+<h3 class="anchored" data-anchor-id="observational">Observational</h3>
+<p>A study in which the investigator observes characteristics of a sample selected from one or more existing populations. The goal is to draw conclusions about the corresponding population or about differences between two or more populations.</p>
+<p>In an observational study, it is impossible to draw clear cause-and-effect conclusions</p>
+</section>
+<section id="experiments" class="level3">
+<h3 class="anchored" data-anchor-id="experiments">Experiments</h3>
+<p>A study in which the investigator observes how a response variable behaves when one or more explanatory variables, also called factors, are manipulated.</p>
+<p>A well-designed experiment can result in data that provide evidence for a cause-and-effect relationship.</p>
+<p><img src="images/clipboard-858121668.png" class="img-fluid"></p>
+<ul>
+<li>Experimental conditions: Any particular combination of values for the explanatory variables, which are also called treatments.</li>
+</ul>
+</section>
+<section id="comparison" class="level3">
+<h3 class="anchored" data-anchor-id="comparison">comparison</h3>
+<ul>
+<li><p>Both observational studies and experiments can be used to compare groups, but in an experiment the researcher controls who is in which group, whereas this is not the case in an observational study.</p></li>
+<li><p>In an observational study, it is impossible to draw clear cause-andeffect conclusions</p></li>
+</ul>
+</section>
+<section id="confounding-vars" class="level3">
+<h3 class="anchored" data-anchor-id="confounding-vars">confounding vars</h3>
+<p>A variable that is related to both how the experimental groups were formed and the response variable of interest.</p>
+<ul>
+<li><p>Two methods for data collection: Sampling and Experimentation.</p></li>
+<li><p>distinguish between selection bias, measurement or response bias, and non-response bias.</p></li>
+<li><p>select a simple random sample from a given population.</p></li>
+<li><p>distinguish between simple random sampling, stratified random sampling, cluster sampling, systematic sampling, and convenience sampling</p></li>
+</ul>
+</section>
+</section>
+<section id="variable" class="level2">
+<h2 class="anchored" data-anchor-id="variable">variable</h2>
+<section id="response-variabley" class="level3">
+<h3 class="anchored" data-anchor-id="response-variabley">response variable–y</h3>
+<p>The response variable is the focus of a question in a study or experiment.</p>
+</section>
+<section id="explanotory-variablex" class="level3">
+<h3 class="anchored" data-anchor-id="explanotory-variablex">explanotory variable–x</h3>
+<p>An explanatory variable is one that explains for changes in the response variable.</p>
+</section>
 <section id="experiments-and-obeservational-study" class="level3">
 <h3 class="anchored" data-anchor-id="experiments-and-obeservational-study">experiments and obeservational study</h3>
 </section>
 <section id="bias" class="level3">
 <h3 class="anchored" data-anchor-id="bias">bias</h3>
-<p>selection bias</p>
+<p>selection bias：When the way the sample is selected systematically excludes some part of the population of interest.</p>
 <p>measurement or response bias</p>
+<p>eg: survey question/scale(The scale or a machine used for measurements is not calibrated properly)</p>
+<p>Non-response Bias:When responses are not obtained from all individuals selected for inclusion in the sample.</p>
+<p>non-response bias can distort results if those who respond differ in important ways from those who do not respond (e.g.&nbsp;laziness a confounding variable).</p>
 </section>
 <section id="random-sampling" class="level3">
 <h3 class="anchored" data-anchor-id="random-sampling">random sampling</h3>
+<p>def: A sample that is selected from a population in a way that ensures that every different possible sample of size n has the same chance of being selected.</p>
 <p>the same chance to be selected</p>
+<p>counter eg:</p>
+<p>Consider 100 students in a classroom, 60 females and 40 males. If we randomly sample 6 females, and 4 males, then each female has a 6/60 = 0.1 chance of being selected. Same for males, 4/40=0.1. However, not every group of 10 students is equally likely to be selected. This is not simple random sampling</p>
+<p>The random selection process allows us to be confident that the sample adequately reflects the population, even when the sample consists of only a small fraction of the population.</p>
+<p>eg.Voting Sample Size in a country</p>
 </section>
-<section id="strata-and-cluster" class="level3">
-<h3 class="anchored" data-anchor-id="strata-and-cluster">strata and cluster</h3>
-<p>cluster reflect general characteristic about</p>
+<section id="stratified-and-cluster" class="level3">
+<h3 class="anchored" data-anchor-id="stratified-and-cluster">stratified and cluster</h3>
+<ul>
+<li>stratified random sampling:In stratified random sampling, separate simple random samples are independently selected from each subgroup. Each subgroup is called a strata.</li>
+</ul>
+<p>In general, it is much easier to produce relatively accurate estimates of characteristics of a homogeneous group than of a heterogeneous group.</p>
+<p>stratified: according to certain characteristic</p>
+<p>eg.Even with a small sample, it is possible to obtain an accurate estimate of the average grade point average (GPA) of students graduating with high honours from a university (Similar high grades, homogenous, thus only sample a few students). On the other hand, producing a reasonably accurate estimate of the average GPA of all seniors at the university, a much more diverse group of GPAs, is a more difficult task. <strong>Not only does this ensure that students at each GPA level are represented, it also allows for a more accurate estimate of the overall average GPA.</strong></p>
+<ul>
+<li>cluster reflect general characteristic about the whole entire population</li>
+</ul>
+<p>cluster: randomly groups</p>
+<p>Cluster sampling involves dividing the population of interest into non-overlapping subgroups, called clusters. Clusters are then selected at random, and then all individuals in the selected clusters are included in the sample.</p>
 </section>
 <section id="systematic-sampling" class="level3">
 <h3 class="anchored" data-anchor-id="systematic-sampling">systematic sampling</h3>
-<p><img src="images/clipboard-2849357671.png" class="img-fluid"></p>
-<p><img src="images/clipboard-1886404181.png" class="img-fluid"></p>
+<p>A value k is specified (e.g.&nbsp;k = 50 or k = 200). Then one of the first k individuals is selected at random, after which every k-th individual in the sequence is included in the sample. A sample selected in this way is called a 1 in k systematic sample.</p>
+<p>In the case of large samples, it can ensure that the sample is evenly distributed in the population.</p>
 
 
 </section>
