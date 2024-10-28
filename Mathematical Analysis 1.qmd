@@ -40,6 +40,14 @@ editor:
 -   claim s=supS，然后把s的所有范围讨论（
     通过得到某些n使得sups不等于s的矛盾来排除\<,\>得到等号）
 
+-   ![](images/clipboard-4280451848.png)
+
+(Though using $\epsilon$ is the most quickly way but I do not like it at
+all because it does not show the essence or nature of the supremum or
+infmum, which also has the part of luck because maybe I understand it
+totally but because of my poor calculation skill about construction I
+will not solve it, leading to unhappiness to myself.)
+
 # 总结了有上界（下界）必定有唯一上（下）确界的两种证明方法，闭区间套定理的证明，以及有限覆盖定理的证明（待internalized）
 
 keep going！ \## 用sup的唯一性证明根号只有唯一正解
@@ -711,25 +719,19 @@ $f: A \to B$ that is both injective (one-to-one) and surjective (onto).
 
 ### The Problem: Showing that $\mathcal{P}(\mathbb{N})$ is Uncountable
 
-The question asks you to prove that the power set of natural numbers
-$\mathcal{P}(\mathbb{N})$, i.e., the set of all subsets of $\mathbb{N}$,
-is uncountable. To prove this, you are guided to assume a contradiction:
-that there is a bijection $f: \mathbb{N} \to \mathcal{P}(\mathbb{N})$.
-
-Hint: Suppose there is a bijection f : N → P(N). Consider the set {n ∈
-N\| n ∈/ f(n)} to deduce a contradiction.
+![](images/clipboard-3258860968.png)
 
 method 1: Consider the set
 $A = \{ n \in \mathbb{N} \mid n \notin f(n) \}$, f : N → P(N).
 
 we should prove it is not a bijection. so we could prove it is not
-surjective(P(N) is much bigger than N).
+surjective (P(N) is much bigger than N).
 
 now we ask if f is surjective:
 
-If yes, there exists $n_0\in N$ s.t. f(n_0)=A
+If yes, there exists $n_0\in N$ s.t. f$(n_0)=$A
 
-now we ask: Doer $n_o\in f(n_0)$
+now we ask: Does $n_o\in f(n_0)$
 
 1)  if yes, $n_0\notin A=f(n_0)$
 
@@ -776,6 +778,10 @@ cardinality is greater than that of the set of natural numbers
 $\mathbb{N}$, even though both sets are infinite. This conclusion is a
 key result in set theory, demonstrating that not all infinite sets have
 the same "size" or cardinality.
+
+However, for the situation of including finite subsets only,
+
+![](images/clipboard-1883408292.png)
 
 ![](images/clipboard-819524834.png)
 
@@ -901,6 +907,8 @@ and both of them are bijections
 so Z is countable
 
 # the real number
+
+![](images/clipboard-2031452374.png)
 
 # a problem about divisible using greatest common factor to solve(even Bezou's theorem)
 

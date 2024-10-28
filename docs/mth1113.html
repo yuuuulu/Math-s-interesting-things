@@ -101,6 +101,35 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   }
 }</script>
 
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 </head>
 
@@ -210,6 +239,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#systematic-sampling" id="toc-systematic-sampling" class="nav-link" data-scroll-target="#systematic-sampling">systematic sampling</a></li>
   </ul></li>
   </ul></li>
+  <li><a href="#random-variable" id="toc-random-variable" class="nav-link" data-scroll-target="#random-variable">Random Variable</a>
+  <ul class="collapse">
+  <li><a href="#definition-random-variable-r.v." id="toc-definition-random-variable-r.v." class="nav-link" data-scroll-target="#definition-random-variable-r.v.">Definition: Random Variable (R.V.)</a>
+  <ul class="collapse">
+  <li><a href="#eg" id="toc-eg" class="nav-link" data-scroll-target="#eg">eg</a></li>
+  <li><a href="#explaination" id="toc-explaination" class="nav-link" data-scroll-target="#explaination">explaination</a></li>
+  </ul></li>
+  <li><a href="#probability-mass-function-and-cumulative-distribution-function-for-discrete-random-variables" id="toc-probability-mass-function-and-cumulative-distribution-function-for-discrete-random-variables" class="nav-link" data-scroll-target="#probability-mass-function-and-cumulative-distribution-function-for-discrete-random-variables">Probability Mass Function and Cumulative Distribution Function for Discrete Random Variables</a></li>
+  <li><a href="#expectation-and-variance-for-discrete-random-variables" id="toc-expectation-and-variance-for-discrete-random-variables" class="nav-link" data-scroll-target="#expectation-and-variance-for-discrete-random-variables">Expectation and Variance for Discrete Random Variables</a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
@@ -247,6 +286,114 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h2 class="anchored" data-anchor-id="residual-plost-should-have-no-pattern">Residual plost should have no pattern</h2>
 <p>across the whole range, it could not be showing a certain trend or a specific shape.</p>
 <p>positive and negative points sperate averagely .</p>
+<p><img src="images/clipboard-2419630434.png" class="img-fluid"></p>
+<p><img src="images/clipboard-3592387892.png" class="img-fluid"></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 数据</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">50</span>, <span class="dv">55</span>, <span class="dv">50</span>, <span class="dv">79</span>, <span class="dv">44</span>, <span class="dv">37</span>, <span class="dv">70</span>, <span class="dv">45</span>, <span class="dv">49</span>)  <span class="co"># Rock surface area</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">152</span>, <span class="dv">48</span>, <span class="dv">22</span>, <span class="dv">35</span>, <span class="dv">38</span>, <span class="dv">171</span>, <span class="dv">13</span>, <span class="dv">185</span>, <span class="dv">25</span>)  <span class="co"># Algae colony density</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="co"># (a) 计算最小二乘回归方程</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>model <span class="ot">&lt;-</span> <span class="fu">lm</span>(y <span class="sc">~</span> x)</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(model)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Call:
+lm(formula = y ~ x)
+
+Residuals:
+   Min     1Q Median     3Q    Max 
+-65.53 -63.91 -14.47  46.99  84.39 
+
+Coefficients:
+            Estimate Std. Error t value Pr(&gt;|t|)  
+(Intercept)  232.258     92.390   2.514   0.0402 *
+x             -2.926      1.690  -1.731   0.1271  
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Residual standard error: 63.32 on 7 degrees of freedom
+Multiple R-squared:  0.2998,    Adjusted R-squared:  0.1997 
+F-statistic: 2.997 on 1 and 7 DF,  p-value: 0.1271</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 获取回归系数</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>intercept <span class="ot">&lt;-</span> <span class="fu">coef</span>(model)[<span class="dv">1</span>]</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>slope <span class="ot">&lt;-</span> <span class="fu">coef</span>(model)[<span class="dv">2</span>]</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"最小二乘回归方程: y ="</span>, intercept, <span class="st">"+"</span>, slope, <span class="st">"* x</span><span class="sc">\n</span><span class="st">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>最小二乘回归方程: y = 232.2575 + -2.925507 * x</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># (b) 计算 R^2 值并解释</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>r_squared <span class="ot">&lt;-</span> <span class="fu">summary</span>(model)<span class="sc">$</span>r.squared</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"R^2 值:"</span>, r_squared, <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>R^2 值: 0.2997552 </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"解释: R^2 表示了"</span>, <span class="fu">round</span>(r_squared <span class="sc">*</span> <span class="dv">100</span>, <span class="dv">2</span>), <span class="st">"% 的 y 的变异可以通过 x 来解释。</span><span class="sc">\n</span><span class="st">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>解释: R^2 表示了 29.98 % 的 y 的变异可以通过 x 来解释。</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># (c) 计算残差标准误差 s_e</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>se <span class="ot">&lt;-</span> <span class="fu">summary</span>(model)<span class="sc">$</span>sigma</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"残差标准误差 s_e:"</span>, se, <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>残差标准误差 s_e: 63.31527 </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"解释: s_e 表示了回归模型的平均预测误差，越小表明预测的精确度越高。</span><span class="sc">\n</span><span class="st">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>解释: s_e 表示了回归模型的平均预测误差，越小表明预测的精确度越高。</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># (d) 判断线性关系的方向和强度</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>correlation <span class="ot">&lt;-</span> <span class="fu">cor</span>(x, y)</span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"相关系数 r:"</span>, correlation, <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>相关系数 r: -0.547499 </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (correlation <span class="sc">&gt;</span> <span class="dv">0</span>) {</span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>  direction <span class="ot">&lt;-</span> <span class="st">"正相关"</span></span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>} <span class="cf">else</span> {</span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>  direction <span class="ot">&lt;-</span> <span class="st">"负相关"</span></span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="fu">abs</span>(correlation) <span class="sc">&gt;</span> <span class="fl">0.7</span>) {</span>
+<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a>  strength <span class="ot">&lt;-</span> <span class="st">"强相关"</span></span>
+<span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a>} <span class="cf">else</span> <span class="cf">if</span> (<span class="fu">abs</span>(correlation) <span class="sc">&gt;</span> <span class="fl">0.3</span>) {</span>
+<span id="cb15-10"><a href="#cb15-10" aria-hidden="true" tabindex="-1"></a>  strength <span class="ot">&lt;-</span> <span class="st">"中等相关"</span></span>
+<span id="cb15-11"><a href="#cb15-11" aria-hidden="true" tabindex="-1"></a>} <span class="cf">else</span> {</span>
+<span id="cb15-12"><a href="#cb15-12" aria-hidden="true" tabindex="-1"></a>  strength <span class="ot">&lt;-</span> <span class="st">"弱相关"</span></span>
+<span id="cb15-13"><a href="#cb15-13" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb15-14"><a href="#cb15-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-15"><a href="#cb15-15" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"线性关系:"</span>, direction, <span class="st">"且为"</span>, strength, <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>线性关系: 负相关 且为 中等相关 </code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 数据</span></span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>quality_rating <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">111</span>, <span class="dv">113</span>, <span class="dv">93</span>, <span class="dv">130</span>, <span class="dv">170</span>, <span class="dv">87</span>, <span class="dv">83</span>, <span class="dv">117</span>, <span class="dv">135</span>, <span class="dv">109</span>)</span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>satisfaction_rating <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">832</span>, <span class="dv">845</span>, <span class="dv">794</span>, <span class="dv">854</span>, <span class="dv">836</span>, <span class="dv">842</span>, <span class="dv">877</span>, <span class="dv">745</span>, <span class="dv">797</span>, <span class="dv">795</span>)</span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a><span class="co"># 计算相关系数</span></span>
+<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a>correlation_coefficient <span class="ot">&lt;-</span> <span class="fu">cor</span>(quality_rating, satisfaction_rating)</span>
+<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(<span class="fu">paste</span>(<span class="st">"相关系数 r:"</span>, correlation_coefficient))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "相关系数 r: -0.115403519735578"</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 绘制散点图</span></span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(quality_rating, satisfaction_rating,</span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>     <span class="at">main =</span> <span class="st">"Scatterplot of Quality Rating vs. Satisfaction Rating"</span>,</span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">"Quality Rating"</span>,</span>
+<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylab =</span> <span class="st">"Satisfaction Rating"</span>,</span>
+<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a>     <span class="at">pch =</span> <span class="dv">19</span>, <span class="at">col =</span> <span class="st">"blue"</span>)</span>
+<span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="fu">lm</span>(satisfaction_rating <span class="sc">~</span> quality_rating), <span class="at">col =</span> <span class="st">"red"</span>)  <span class="co"># 添加回归线</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="mth1113_files/figure-html/unnamed-chunk-2-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
 </section>
 </section>
 <section id="skew" class="level1">
@@ -268,125 +415,125 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>A modified boxplot is a box plot where the whiskers only extend to the largest (or smallest) observation that is not an outlier and the outliers are plotted using a full circle (mild) or empty circle (extreme).</p>
 <p>If there are no outliers, then the the whiskers end at the maximum (or minimum)</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 数据</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>ratios <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">0.553</span>, <span class="fl">0.570</span>, <span class="fl">0.576</span>, <span class="fl">0.601</span>, <span class="fl">0.606</span>, <span class="fl">0.606</span>, <span class="fl">0.609</span>, <span class="fl">0.611</span>, </span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>            <span class="fl">0.615</span>, <span class="fl">0.628</span>, <span class="fl">0.654</span>, <span class="fl">0.662</span>, <span class="fl">0.668</span>, <span class="fl">0.670</span>, <span class="fl">0.672</span>, <span class="fl">0.690</span>, </span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>            <span class="fl">0.693</span>, <span class="fl">0.749</span>, <span class="fl">0.844</span>, <span class="fl">0.933</span>)</span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="co"># 计算四分位数、IQR、温和和极端异常值的界限</span></span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>Q1 <span class="ot">&lt;-</span> <span class="fu">quantile</span>(ratios, <span class="fl">0.25</span>)</span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>Q3 <span class="ot">&lt;-</span> <span class="fu">quantile</span>(ratios, <span class="fl">0.75</span>)</span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>median_val <span class="ot">&lt;-</span> <span class="fu">median</span>(ratios)</span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>iqr <span class="ot">&lt;-</span> Q3 <span class="sc">-</span> Q1</span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>mild_outlier_limit <span class="ot">&lt;-</span> <span class="fl">1.5</span> <span class="sc">*</span> iqr</span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>extreme_outlier_limit <span class="ot">&lt;-</span> <span class="dv">3</span> <span class="sc">*</span> iqr</span>
-<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>lower_mild <span class="ot">&lt;-</span> Q1 <span class="sc">-</span> mild_outlier_limit</span>
-<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>lower_extreme <span class="ot">&lt;-</span> Q1 <span class="sc">-</span> extreme_outlier_limit</span>
-<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>upper_mild <span class="ot">&lt;-</span> Q3 <span class="sc">+</span> mild_outlier_limit</span>
-<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>upper_extreme <span class="ot">&lt;-</span> Q3 <span class="sc">+</span> extreme_outlier_limit</span>
-<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a><span class="co"># 标记温和和极端异常值</span></span>
-<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>mild_outliers <span class="ot">&lt;-</span> ratios[ratios <span class="sc">&gt;</span> upper_mild <span class="sc">&amp;</span> ratios <span class="sc">&lt;=</span> upper_extreme <span class="sc">|</span> ratios <span class="sc">&lt;</span> lower_mild <span class="sc">&amp;</span> ratios <span class="sc">&gt;=</span> lower_extreme]</span>
-<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>extreme_outliers <span class="ot">&lt;-</span> ratios[ratios <span class="sc">&gt;</span> upper_extreme <span class="sc">|</span> ratios <span class="sc">&lt;</span> lower_extreme]</span>
-<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a><span class="co"># 绘制箱线图，并标记温和和极端异常值</span></span>
-<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(ratios, <span class="at">main =</span> <span class="st">"Modified Boxplot of Width-to-Length Ratios"</span>, <span class="at">ylim =</span> <span class="fu">c</span>(<span class="fl">0.3</span>, <span class="dv">1</span>))</span>
-<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a><span class="fu">points</span>(<span class="fu">which</span>(ratios <span class="sc">%in%</span> mild_outliers), mild_outliers, <span class="at">pch =</span> <span class="dv">16</span>, <span class="at">col =</span> <span class="st">"blue"</span>)    <span class="co"># 实心圆表示温和异常值</span></span>
-<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a><span class="fu">points</span>(<span class="fu">which</span>(ratios <span class="sc">%in%</span> extreme_outliers), extreme_outliers, <span class="at">pch =</span> <span class="dv">1</span>, <span class="at">col =</span> <span class="st">"red"</span>) <span class="co"># 空心圆表示极端异常值</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 数据</span></span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>ratios <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">0.553</span>, <span class="fl">0.570</span>, <span class="fl">0.576</span>, <span class="fl">0.601</span>, <span class="fl">0.606</span>, <span class="fl">0.606</span>, <span class="fl">0.609</span>, <span class="fl">0.611</span>, </span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>            <span class="fl">0.615</span>, <span class="fl">0.628</span>, <span class="fl">0.654</span>, <span class="fl">0.662</span>, <span class="fl">0.668</span>, <span class="fl">0.670</span>, <span class="fl">0.672</span>, <span class="fl">0.690</span>, </span>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a>            <span class="fl">0.693</span>, <span class="fl">0.749</span>, <span class="fl">0.844</span>, <span class="fl">0.933</span>)</span>
+<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a><span class="co"># 计算四分位数、IQR、温和和极端异常值的界限</span></span>
+<span id="cb20-7"><a href="#cb20-7" aria-hidden="true" tabindex="-1"></a>Q1 <span class="ot">&lt;-</span> <span class="fu">quantile</span>(ratios, <span class="fl">0.25</span>)</span>
+<span id="cb20-8"><a href="#cb20-8" aria-hidden="true" tabindex="-1"></a>Q3 <span class="ot">&lt;-</span> <span class="fu">quantile</span>(ratios, <span class="fl">0.75</span>)</span>
+<span id="cb20-9"><a href="#cb20-9" aria-hidden="true" tabindex="-1"></a>median_val <span class="ot">&lt;-</span> <span class="fu">median</span>(ratios)</span>
+<span id="cb20-10"><a href="#cb20-10" aria-hidden="true" tabindex="-1"></a>iqr <span class="ot">&lt;-</span> Q3 <span class="sc">-</span> Q1</span>
+<span id="cb20-11"><a href="#cb20-11" aria-hidden="true" tabindex="-1"></a>mild_outlier_limit <span class="ot">&lt;-</span> <span class="fl">1.5</span> <span class="sc">*</span> iqr</span>
+<span id="cb20-12"><a href="#cb20-12" aria-hidden="true" tabindex="-1"></a>extreme_outlier_limit <span class="ot">&lt;-</span> <span class="dv">3</span> <span class="sc">*</span> iqr</span>
+<span id="cb20-13"><a href="#cb20-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-14"><a href="#cb20-14" aria-hidden="true" tabindex="-1"></a>lower_mild <span class="ot">&lt;-</span> Q1 <span class="sc">-</span> mild_outlier_limit</span>
+<span id="cb20-15"><a href="#cb20-15" aria-hidden="true" tabindex="-1"></a>lower_extreme <span class="ot">&lt;-</span> Q1 <span class="sc">-</span> extreme_outlier_limit</span>
+<span id="cb20-16"><a href="#cb20-16" aria-hidden="true" tabindex="-1"></a>upper_mild <span class="ot">&lt;-</span> Q3 <span class="sc">+</span> mild_outlier_limit</span>
+<span id="cb20-17"><a href="#cb20-17" aria-hidden="true" tabindex="-1"></a>upper_extreme <span class="ot">&lt;-</span> Q3 <span class="sc">+</span> extreme_outlier_limit</span>
+<span id="cb20-18"><a href="#cb20-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-19"><a href="#cb20-19" aria-hidden="true" tabindex="-1"></a><span class="co"># 标记温和和极端异常值</span></span>
+<span id="cb20-20"><a href="#cb20-20" aria-hidden="true" tabindex="-1"></a>mild_outliers <span class="ot">&lt;-</span> ratios[ratios <span class="sc">&gt;</span> upper_mild <span class="sc">&amp;</span> ratios <span class="sc">&lt;=</span> upper_extreme <span class="sc">|</span> ratios <span class="sc">&lt;</span> lower_mild <span class="sc">&amp;</span> ratios <span class="sc">&gt;=</span> lower_extreme]</span>
+<span id="cb20-21"><a href="#cb20-21" aria-hidden="true" tabindex="-1"></a>extreme_outliers <span class="ot">&lt;-</span> ratios[ratios <span class="sc">&gt;</span> upper_extreme <span class="sc">|</span> ratios <span class="sc">&lt;</span> lower_extreme]</span>
+<span id="cb20-22"><a href="#cb20-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-23"><a href="#cb20-23" aria-hidden="true" tabindex="-1"></a><span class="co"># 绘制箱线图，并标记温和和极端异常值</span></span>
+<span id="cb20-24"><a href="#cb20-24" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(ratios, <span class="at">main =</span> <span class="st">"Modified Boxplot of Width-to-Length Ratios"</span>, <span class="at">ylim =</span> <span class="fu">c</span>(<span class="fl">0.3</span>, <span class="dv">1</span>))</span>
+<span id="cb20-25"><a href="#cb20-25" aria-hidden="true" tabindex="-1"></a><span class="fu">points</span>(<span class="fu">which</span>(ratios <span class="sc">%in%</span> mild_outliers), mild_outliers, <span class="at">pch =</span> <span class="dv">16</span>, <span class="at">col =</span> <span class="st">"blue"</span>)    <span class="co"># 实心圆表示温和异常值</span></span>
+<span id="cb20-26"><a href="#cb20-26" aria-hidden="true" tabindex="-1"></a><span class="fu">points</span>(<span class="fu">which</span>(ratios <span class="sc">%in%</span> extreme_outliers), extreme_outliers, <span class="at">pch =</span> <span class="dv">1</span>, <span class="at">col =</span> <span class="st">"red"</span>) <span class="co"># 空心圆表示极端异常值</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="mth1113_files/figure-html/unnamed-chunk-1-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="mth1113_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 输出四分位数、中位数和IQR结果</span></span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="co">#确定第一四分位数（Q1）：这是数据从小到大排列后，位于下四分之一位置的值，表示前25%的数据范围的最大值。</span></span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="co">#确定第三四分位数（Q3）：这是数据从小到大排列后，位于上四分之一位置的值，表示后75%的数据范围的最小值。</span></span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"Q1:"</span>, Q1, <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 输出四分位数、中位数和IQR结果</span></span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a><span class="co">#确定第一四分位数（Q1）：这是数据从小到大排列后，位于下四分之一位置的值，表示前25%的数据范围的最大值。</span></span>
+<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a><span class="co">#确定第三四分位数（Q3）：这是数据从小到大排列后，位于上四分之一位置的值，表示后75%的数据范围的最小值。</span></span>
+<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-6"><a href="#cb21-6" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"Q1:"</span>, Q1, <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Q1: 0.606 </code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"Median:"</span>, median_val, <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"Median:"</span>, median_val, <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Median: 0.641 </code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"Q3:"</span>, Q3, <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"Q3:"</span>, Q3, <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Q3: 0.6765 </code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"IQR:"</span>, iqr, <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"IQR:"</span>, iqr, <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>IQR: 0.0705 </code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"Lower mild outlier limit:"</span>, lower_mild, <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"Lower mild outlier limit:"</span>, lower_mild, <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Lower mild outlier limit: 0.50025 </code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"Lower extreme outlier limit:"</span>, lower_extreme, <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"Lower extreme outlier limit:"</span>, lower_extreme, <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Lower extreme outlier limit: 0.3945 </code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"Upper mild outlier limit:"</span>, upper_mild, <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"Upper mild outlier limit:"</span>, upper_mild, <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Upper mild outlier limit: 0.78225 </code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"Upper extreme outlier limit:"</span>, upper_extreme, <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"Upper extreme outlier limit:"</span>, upper_extreme, <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Upper extreme outlier limit: 0.888 </code></pre>
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 加载ggplot2包</span></span>
-<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="sc">!</span><span class="fu">require</span>(ggplot2)) <span class="fu">install.packages</span>(<span class="st">"ggplot2"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 加载ggplot2包</span></span>
+<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="sc">!</span><span class="fu">require</span>(ggplot2)) <span class="fu">install.packages</span>(<span class="st">"ggplot2"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>Loading required package: ggplot2</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
-<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a><span class="co"># 数据</span></span>
-<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a>ratios <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">0.553</span>, <span class="fl">0.570</span>, <span class="fl">0.576</span>, <span class="fl">0.601</span>, <span class="fl">0.606</span>, <span class="fl">0.606</span>, <span class="fl">0.609</span>, <span class="fl">0.611</span>, </span>
-<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a>            <span class="fl">0.615</span>, <span class="fl">0.628</span>, <span class="fl">0.654</span>, <span class="fl">0.662</span>, <span class="fl">0.668</span>, <span class="fl">0.670</span>, <span class="fl">0.672</span>, <span class="fl">0.690</span>, </span>
-<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a>            <span class="fl">0.693</span>, <span class="fl">0.749</span>, <span class="fl">0.844</span>, <span class="fl">0.933</span>)</span>
-<span id="cb20-7"><a href="#cb20-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-8"><a href="#cb20-8" aria-hidden="true" tabindex="-1"></a><span class="co"># 计算四分位数、IQR、温和和极端异常值的界限</span></span>
-<span id="cb20-9"><a href="#cb20-9" aria-hidden="true" tabindex="-1"></a>Q1 <span class="ot">&lt;-</span> <span class="fu">quantile</span>(ratios, <span class="fl">0.25</span>)</span>
-<span id="cb20-10"><a href="#cb20-10" aria-hidden="true" tabindex="-1"></a>Q3 <span class="ot">&lt;-</span> <span class="fu">quantile</span>(ratios, <span class="fl">0.75</span>)</span>
-<span id="cb20-11"><a href="#cb20-11" aria-hidden="true" tabindex="-1"></a>median_val <span class="ot">&lt;-</span> <span class="fu">median</span>(ratios)</span>
-<span id="cb20-12"><a href="#cb20-12" aria-hidden="true" tabindex="-1"></a>iqr <span class="ot">&lt;-</span> Q3 <span class="sc">-</span> Q1</span>
-<span id="cb20-13"><a href="#cb20-13" aria-hidden="true" tabindex="-1"></a>mild_outlier_limit <span class="ot">&lt;-</span> <span class="fl">1.5</span> <span class="sc">*</span> iqr</span>
-<span id="cb20-14"><a href="#cb20-14" aria-hidden="true" tabindex="-1"></a>extreme_outlier_limit <span class="ot">&lt;-</span> <span class="dv">3</span> <span class="sc">*</span> iqr</span>
-<span id="cb20-15"><a href="#cb20-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-16"><a href="#cb20-16" aria-hidden="true" tabindex="-1"></a>lower_mild <span class="ot">&lt;-</span> Q1 <span class="sc">-</span> mild_outlier_limit</span>
-<span id="cb20-17"><a href="#cb20-17" aria-hidden="true" tabindex="-1"></a>lower_extreme <span class="ot">&lt;-</span> Q1 <span class="sc">-</span> extreme_outlier_limit</span>
-<span id="cb20-18"><a href="#cb20-18" aria-hidden="true" tabindex="-1"></a>upper_mild <span class="ot">&lt;-</span> Q3 <span class="sc">+</span> mild_outlier_limit</span>
-<span id="cb20-19"><a href="#cb20-19" aria-hidden="true" tabindex="-1"></a>upper_extreme <span class="ot">&lt;-</span> Q3 <span class="sc">+</span> extreme_outlier_limit</span>
-<span id="cb20-20"><a href="#cb20-20" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-21"><a href="#cb20-21" aria-hidden="true" tabindex="-1"></a><span class="co"># 标记温和和极端异常值</span></span>
-<span id="cb20-22"><a href="#cb20-22" aria-hidden="true" tabindex="-1"></a>mild_outliers <span class="ot">&lt;-</span> ratios[ratios <span class="sc">&gt;</span> upper_mild <span class="sc">&amp;</span> ratios <span class="sc">&lt;=</span> upper_extreme <span class="sc">|</span> ratios <span class="sc">&lt;</span> lower_mild <span class="sc">&amp;</span> ratios <span class="sc">&gt;=</span> lower_extreme]</span>
-<span id="cb20-23"><a href="#cb20-23" aria-hidden="true" tabindex="-1"></a>extreme_outliers <span class="ot">&lt;-</span> ratios[ratios <span class="sc">&gt;</span> upper_extreme <span class="sc">|</span> ratios <span class="sc">&lt;</span> lower_extreme]</span>
-<span id="cb20-24"><a href="#cb20-24" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-25"><a href="#cb20-25" aria-hidden="true" tabindex="-1"></a><span class="co"># 创建数据框</span></span>
-<span id="cb20-26"><a href="#cb20-26" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">ratios =</span> ratios)</span>
-<span id="cb20-27"><a href="#cb20-27" aria-hidden="true" tabindex="-1"></a>data<span class="sc">$</span>outlier_type <span class="ot">&lt;-</span> <span class="fu">ifelse</span>(data<span class="sc">$</span>ratios <span class="sc">%in%</span> mild_outliers, <span class="st">"Mild Outlier"</span>,</span>
-<span id="cb20-28"><a href="#cb20-28" aria-hidden="true" tabindex="-1"></a>                            <span class="fu">ifelse</span>(data<span class="sc">$</span>ratios <span class="sc">%in%</span> extreme_outliers, <span class="st">"Extreme Outlier"</span>, <span class="st">"Normal"</span>))</span>
-<span id="cb20-29"><a href="#cb20-29" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-30"><a href="#cb20-30" aria-hidden="true" tabindex="-1"></a><span class="co"># 使用ggplot2绘制</span></span>
-<span id="cb20-31"><a href="#cb20-31" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(data, <span class="fu">aes</span>(<span class="at">x =</span> <span class="st">""</span>, <span class="at">y =</span> ratios)) <span class="sc">+</span></span>
-<span id="cb20-32"><a href="#cb20-32" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>(<span class="at">outlier.shape =</span> <span class="cn">NA</span>, <span class="at">fill =</span> <span class="st">"lightblue"</span>) <span class="sc">+</span>  <span class="co"># 不显示默认的异常值</span></span>
-<span id="cb20-33"><a href="#cb20-33" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">data =</span> <span class="fu">subset</span>(data, outlier_type <span class="sc">==</span> <span class="st">"Mild Outlier"</span>), <span class="fu">aes</span>(<span class="at">y =</span> ratios), <span class="at">color =</span> <span class="st">"blue"</span>, <span class="at">size =</span> <span class="dv">3</span>, <span class="at">shape =</span> <span class="dv">16</span>) <span class="sc">+</span> <span class="co"># 温和异常值，实心圆</span></span>
-<span id="cb20-34"><a href="#cb20-34" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">data =</span> <span class="fu">subset</span>(data, outlier_type <span class="sc">==</span> <span class="st">"Extreme Outlier"</span>), <span class="fu">aes</span>(<span class="at">y =</span> ratios), <span class="at">color =</span> <span class="st">"red"</span>, <span class="at">size =</span> <span class="dv">3</span>, <span class="at">shape =</span> <span class="dv">1</span>) <span class="sc">+</span> <span class="co"># 极端异常值，空心圆</span></span>
-<span id="cb20-35"><a href="#cb20-35" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Modified Boxplot of Width-to-Length Ratios"</span>, <span class="at">y =</span> <span class="st">"Width-to-Length Ratios"</span>) <span class="sc">+</span></span>
-<span id="cb20-36"><a href="#cb20-36" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
-<span id="cb20-37"><a href="#cb20-37" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">axis.title.x =</span> <span class="fu">element_blank</span>()) <span class="sc">+</span> <span class="co"># 移除x轴标签</span></span>
-<span id="cb20-38"><a href="#cb20-38" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_cartesian</span>(<span class="at">ylim =</span> <span class="fu">c</span>(<span class="fl">0.3</span>, <span class="dv">1</span>))      <span class="co"># 设置y轴范围</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb39-3"><a href="#cb39-3" aria-hidden="true" tabindex="-1"></a><span class="co"># 数据</span></span>
+<span id="cb39-4"><a href="#cb39-4" aria-hidden="true" tabindex="-1"></a>ratios <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">0.553</span>, <span class="fl">0.570</span>, <span class="fl">0.576</span>, <span class="fl">0.601</span>, <span class="fl">0.606</span>, <span class="fl">0.606</span>, <span class="fl">0.609</span>, <span class="fl">0.611</span>, </span>
+<span id="cb39-5"><a href="#cb39-5" aria-hidden="true" tabindex="-1"></a>            <span class="fl">0.615</span>, <span class="fl">0.628</span>, <span class="fl">0.654</span>, <span class="fl">0.662</span>, <span class="fl">0.668</span>, <span class="fl">0.670</span>, <span class="fl">0.672</span>, <span class="fl">0.690</span>, </span>
+<span id="cb39-6"><a href="#cb39-6" aria-hidden="true" tabindex="-1"></a>            <span class="fl">0.693</span>, <span class="fl">0.749</span>, <span class="fl">0.844</span>, <span class="fl">0.933</span>)</span>
+<span id="cb39-7"><a href="#cb39-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb39-8"><a href="#cb39-8" aria-hidden="true" tabindex="-1"></a><span class="co"># 计算四分位数、IQR、温和和极端异常值的界限</span></span>
+<span id="cb39-9"><a href="#cb39-9" aria-hidden="true" tabindex="-1"></a>Q1 <span class="ot">&lt;-</span> <span class="fu">quantile</span>(ratios, <span class="fl">0.25</span>)</span>
+<span id="cb39-10"><a href="#cb39-10" aria-hidden="true" tabindex="-1"></a>Q3 <span class="ot">&lt;-</span> <span class="fu">quantile</span>(ratios, <span class="fl">0.75</span>)</span>
+<span id="cb39-11"><a href="#cb39-11" aria-hidden="true" tabindex="-1"></a>median_val <span class="ot">&lt;-</span> <span class="fu">median</span>(ratios)</span>
+<span id="cb39-12"><a href="#cb39-12" aria-hidden="true" tabindex="-1"></a>iqr <span class="ot">&lt;-</span> Q3 <span class="sc">-</span> Q1</span>
+<span id="cb39-13"><a href="#cb39-13" aria-hidden="true" tabindex="-1"></a>mild_outlier_limit <span class="ot">&lt;-</span> <span class="fl">1.5</span> <span class="sc">*</span> iqr</span>
+<span id="cb39-14"><a href="#cb39-14" aria-hidden="true" tabindex="-1"></a>extreme_outlier_limit <span class="ot">&lt;-</span> <span class="dv">3</span> <span class="sc">*</span> iqr</span>
+<span id="cb39-15"><a href="#cb39-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb39-16"><a href="#cb39-16" aria-hidden="true" tabindex="-1"></a>lower_mild <span class="ot">&lt;-</span> Q1 <span class="sc">-</span> mild_outlier_limit</span>
+<span id="cb39-17"><a href="#cb39-17" aria-hidden="true" tabindex="-1"></a>lower_extreme <span class="ot">&lt;-</span> Q1 <span class="sc">-</span> extreme_outlier_limit</span>
+<span id="cb39-18"><a href="#cb39-18" aria-hidden="true" tabindex="-1"></a>upper_mild <span class="ot">&lt;-</span> Q3 <span class="sc">+</span> mild_outlier_limit</span>
+<span id="cb39-19"><a href="#cb39-19" aria-hidden="true" tabindex="-1"></a>upper_extreme <span class="ot">&lt;-</span> Q3 <span class="sc">+</span> extreme_outlier_limit</span>
+<span id="cb39-20"><a href="#cb39-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb39-21"><a href="#cb39-21" aria-hidden="true" tabindex="-1"></a><span class="co"># 标记温和和极端异常值</span></span>
+<span id="cb39-22"><a href="#cb39-22" aria-hidden="true" tabindex="-1"></a>mild_outliers <span class="ot">&lt;-</span> ratios[ratios <span class="sc">&gt;</span> upper_mild <span class="sc">&amp;</span> ratios <span class="sc">&lt;=</span> upper_extreme <span class="sc">|</span> ratios <span class="sc">&lt;</span> lower_mild <span class="sc">&amp;</span> ratios <span class="sc">&gt;=</span> lower_extreme]</span>
+<span id="cb39-23"><a href="#cb39-23" aria-hidden="true" tabindex="-1"></a>extreme_outliers <span class="ot">&lt;-</span> ratios[ratios <span class="sc">&gt;</span> upper_extreme <span class="sc">|</span> ratios <span class="sc">&lt;</span> lower_extreme]</span>
+<span id="cb39-24"><a href="#cb39-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb39-25"><a href="#cb39-25" aria-hidden="true" tabindex="-1"></a><span class="co"># 创建数据框</span></span>
+<span id="cb39-26"><a href="#cb39-26" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">ratios =</span> ratios)</span>
+<span id="cb39-27"><a href="#cb39-27" aria-hidden="true" tabindex="-1"></a>data<span class="sc">$</span>outlier_type <span class="ot">&lt;-</span> <span class="fu">ifelse</span>(data<span class="sc">$</span>ratios <span class="sc">%in%</span> mild_outliers, <span class="st">"Mild Outlier"</span>,</span>
+<span id="cb39-28"><a href="#cb39-28" aria-hidden="true" tabindex="-1"></a>                            <span class="fu">ifelse</span>(data<span class="sc">$</span>ratios <span class="sc">%in%</span> extreme_outliers, <span class="st">"Extreme Outlier"</span>, <span class="st">"Normal"</span>))</span>
+<span id="cb39-29"><a href="#cb39-29" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb39-30"><a href="#cb39-30" aria-hidden="true" tabindex="-1"></a><span class="co"># 使用ggplot2绘制</span></span>
+<span id="cb39-31"><a href="#cb39-31" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(data, <span class="fu">aes</span>(<span class="at">x =</span> <span class="st">""</span>, <span class="at">y =</span> ratios)) <span class="sc">+</span></span>
+<span id="cb39-32"><a href="#cb39-32" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>(<span class="at">outlier.shape =</span> <span class="cn">NA</span>, <span class="at">fill =</span> <span class="st">"lightblue"</span>) <span class="sc">+</span>  <span class="co"># 不显示默认的异常值</span></span>
+<span id="cb39-33"><a href="#cb39-33" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">data =</span> <span class="fu">subset</span>(data, outlier_type <span class="sc">==</span> <span class="st">"Mild Outlier"</span>), <span class="fu">aes</span>(<span class="at">y =</span> ratios), <span class="at">color =</span> <span class="st">"blue"</span>, <span class="at">size =</span> <span class="dv">3</span>, <span class="at">shape =</span> <span class="dv">16</span>) <span class="sc">+</span> <span class="co"># 温和异常值，实心圆</span></span>
+<span id="cb39-34"><a href="#cb39-34" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">data =</span> <span class="fu">subset</span>(data, outlier_type <span class="sc">==</span> <span class="st">"Extreme Outlier"</span>), <span class="fu">aes</span>(<span class="at">y =</span> ratios), <span class="at">color =</span> <span class="st">"red"</span>, <span class="at">size =</span> <span class="dv">3</span>, <span class="at">shape =</span> <span class="dv">1</span>) <span class="sc">+</span> <span class="co"># 极端异常值，空心圆</span></span>
+<span id="cb39-35"><a href="#cb39-35" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Modified Boxplot of Width-to-Length Ratios"</span>, <span class="at">y =</span> <span class="st">"Width-to-Length Ratios"</span>) <span class="sc">+</span></span>
+<span id="cb39-36"><a href="#cb39-36" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
+<span id="cb39-37"><a href="#cb39-37" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">axis.title.x =</span> <span class="fu">element_blank</span>()) <span class="sc">+</span> <span class="co"># 移除x轴标签</span></span>
+<span id="cb39-38"><a href="#cb39-38" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_cartesian</span>(<span class="at">ylim =</span> <span class="fu">c</span>(<span class="fl">0.3</span>, <span class="dv">1</span>))      <span class="co"># 设置y轴范围</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="mth1113_files/figure-html/unnamed-chunk-2-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="mth1113_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
@@ -450,74 +597,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>discrete</li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
-<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a><span class="co"># creat data：Wechat number</span></span>
-<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a>discrete_data <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">value =</span> <span class="fu">c</span>(<span class="dv">30</span>, <span class="dv">15</span>, <span class="dv">20</span>,<span class="dv">30</span>,<span class="dv">60</span>))</span>
-<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-6"><a href="#cb21-6" aria-hidden="true" tabindex="-1"></a><span class="co"># plot</span></span>
-<span id="cb21-7"><a href="#cb21-7" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(discrete_data, <span class="fu">aes</span>(<span class="at">x =</span> value)) <span class="sc">+</span></span>
-<span id="cb21-8"><a href="#cb21-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_dotplot</span>(<span class="at">binwidth =</span> <span class="dv">1</span>, <span class="at">dotsize =</span> <span class="dv">1</span>) <span class="sc">+</span></span>
-<span id="cb21-9"><a href="#cb21-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">"Dot Plot of Discrete Data (Number of Wechats)"</span>) <span class="sc">+</span></span>
-<span id="cb21-10"><a href="#cb21-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="mth1113_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid figure-img" width="672"></p>
-</figure>
-</div>
-</div>
-</div>
-<ul>
-<li>continuous</li>
-</ul>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>all_athletes <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">79</span>, <span class="dv">79</span>, <span class="dv">86</span>, <span class="dv">85</span>, <span class="dv">95</span>, <span class="dv">78</span>, <span class="dv">89</span>, <span class="dv">84</span>, <span class="dv">81</span>, <span class="dv">85</span>, <span class="dv">89</span>, <span class="dv">89</span>, <span class="dv">85</span>, <span class="dv">85</span>, <span class="dv">81</span>, <span class="dv">80</span>, <span class="dv">98</span>, <span class="dv">84</span>, </span>
-<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>                  <span class="dv">80</span>, <span class="dv">82</span>, <span class="dv">81</span>, <span class="dv">70</span>, <span class="dv">85</span>, <span class="dv">87</span>, <span class="dv">83</span>, <span class="dv">86</span>, <span class="dv">92</span>, <span class="dv">85</span>, <span class="dv">93</span>, <span class="dv">94</span>, <span class="dv">76</span>, <span class="dv">69</span>, <span class="dv">82</span>, <span class="dv">80</span>, <span class="dv">94</span>, <span class="dv">98</span>)</span>
-<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>basketball <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">55</span>, <span class="dv">36</span>, <span class="dv">83</span>, <span class="dv">20</span>, <span class="dv">100</span>, <span class="dv">62</span>, <span class="dv">100</span>, <span class="dv">100</span>, <span class="dv">90</span>, <span class="dv">91</span>, <span class="dv">93</span>, <span class="dv">89</span>, <span class="dv">90</span>, <span class="dv">80</span>, <span class="dv">46</span>, <span class="dv">75</span>, <span class="dv">100</span>, <span class="dv">71</span>, </span>
-<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a>                <span class="dv">50</span>, <span class="dv">62</span>, <span class="dv">82</span>, <span class="dv">50</span>, <span class="dv">100</span>, <span class="dv">83</span>, <span class="dv">90</span>, <span class="dv">64</span>, <span class="dv">91</span>, <span class="dv">67</span>, <span class="dv">83</span>, <span class="dv">100</span>, <span class="dv">83</span>, <span class="dv">100</span>, <span class="dv">83</span>, <span class="dv">63</span>, <span class="dv">91</span>, <span class="dv">95</span>)</span>
-<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb22-6"><a href="#cb22-6" aria-hidden="true" tabindex="-1"></a><span class="co"># 设置画布的高度，以便将两个图绘制在同一页面上</span></span>
-<span id="cb22-7"><a href="#cb22-7" aria-hidden="true" tabindex="-1"></a><span class="fu">plot.new</span>()</span>
-<span id="cb22-8"><a href="#cb22-8" aria-hidden="true" tabindex="-1"></a><span class="fu">plot.window</span>(<span class="at">xlim =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">100</span>), <span class="at">ylim =</span> <span class="fu">c</span>(<span class="fl">0.5</span>, <span class="fl">2.5</span>))</span>
-<span id="cb22-9"><a href="#cb22-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb22-10"><a href="#cb22-10" aria-hidden="true" tabindex="-1"></a><span class="co"># 绘制 Basketball 数据的 dotplot</span></span>
-<span id="cb22-11"><a href="#cb22-11" aria-hidden="true" tabindex="-1"></a><span class="fu">stripchart</span>(basketball, <span class="at">method =</span> <span class="st">"stack"</span>, <span class="at">at =</span> <span class="dv">2</span>, <span class="at">pch =</span> <span class="dv">16</span>, <span class="at">col =</span> <span class="st">"orange"</span>, </span>
-<span id="cb22-12"><a href="#cb22-12" aria-hidden="true" tabindex="-1"></a>           <span class="at">add =</span> <span class="cn">TRUE</span>, <span class="at">offset =</span> <span class="fl">0.5</span>, <span class="at">cex =</span> <span class="fl">1.2</span>)</span>
-<span id="cb22-13"><a href="#cb22-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb22-14"><a href="#cb22-14" aria-hidden="true" tabindex="-1"></a><span class="co"># 绘制 All Athletes 数据的 dotplot</span></span>
-<span id="cb22-15"><a href="#cb22-15" aria-hidden="true" tabindex="-1"></a><span class="fu">stripchart</span>(all_athletes, <span class="at">method =</span> <span class="st">"stack"</span>, <span class="at">at =</span> <span class="dv">1</span>, <span class="at">pch =</span> <span class="dv">16</span>, <span class="at">col =</span> <span class="st">"orange"</span>, </span>
-<span id="cb22-16"><a href="#cb22-16" aria-hidden="true" tabindex="-1"></a>           <span class="at">add =</span> <span class="cn">TRUE</span>, <span class="at">offset =</span> <span class="fl">0.5</span>, <span class="at">cex =</span> <span class="fl">1.2</span>)</span>
-<span id="cb22-17"><a href="#cb22-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb22-18"><a href="#cb22-18" aria-hidden="true" tabindex="-1"></a><span class="co"># 添加 X 轴</span></span>
-<span id="cb22-19"><a href="#cb22-19" aria-hidden="true" tabindex="-1"></a><span class="fu">axis</span>(<span class="dv">1</span>, <span class="at">at =</span> <span class="fu">seq</span>(<span class="dv">10</span>, <span class="dv">100</span>, <span class="at">by =</span> <span class="dv">10</span>), <span class="at">labels =</span> <span class="fu">seq</span>(<span class="dv">10</span>, <span class="dv">100</span>, <span class="at">by =</span> <span class="dv">10</span>))</span>
-<span id="cb22-20"><a href="#cb22-20" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb22-21"><a href="#cb22-21" aria-hidden="true" tabindex="-1"></a><span class="co"># 添加标签</span></span>
-<span id="cb22-22"><a href="#cb22-22" aria-hidden="true" tabindex="-1"></a><span class="fu">text</span>(<span class="sc">-</span><span class="dv">5</span>, <span class="dv">2</span>, <span class="st">"Basketball"</span>, <span class="at">xpd =</span> <span class="cn">TRUE</span>, <span class="at">adj =</span> <span class="dv">1</span>)</span>
-<span id="cb22-23"><a href="#cb22-23" aria-hidden="true" tabindex="-1"></a><span class="fu">text</span>(<span class="sc">-</span><span class="dv">5</span>, <span class="dv">1</span>, <span class="st">"All Athletes"</span>, <span class="at">xpd =</span> <span class="cn">TRUE</span>, <span class="at">adj =</span> <span class="dv">1</span>)</span>
-<span id="cb22-24"><a href="#cb22-24" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb22-25"><a href="#cb22-25" aria-hidden="true" tabindex="-1"></a><span class="co"># 添加横线</span></span>
-<span id="cb22-26"><a href="#cb22-26" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">h =</span> <span class="fl">1.5</span>, <span class="at">col =</span> <span class="st">"black"</span>, <span class="at">lwd =</span> <span class="dv">2</span>)</span>
-<span id="cb22-27"><a href="#cb22-27" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb22-28"><a href="#cb22-28" aria-hidden="true" tabindex="-1"></a><span class="co"># 添加 X 轴标签</span></span>
-<span id="cb22-29"><a href="#cb22-29" aria-hidden="true" tabindex="-1"></a><span class="fu">title</span>(<span class="at">xlab =</span> <span class="st">"Graduation rates (%)"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="mth1113_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid figure-img" width="672"></p>
-</figure>
-</div>
-</div>
-</div>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="co"># creat data--time spent in minutes</span></span>
-<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>continuous_data <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">value =</span> <span class="fu">c</span>(<span class="dv">6</span>, <span class="fl">5.25</span>, <span class="fl">3.62</span>,<span class="dv">1</span>,<span class="dv">2</span>,<span class="fl">3.1</span>,<span class="fl">3.2</span>,<span class="dv">4</span>,<span class="dv">5</span>,<span class="dv">6</span>,<span class="dv">7</span>,<span class="dv">4</span>,<span class="dv">10</span>))</span>
-<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a><span class="co"># dotplot</span></span>
-<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(continuous_data, <span class="fu">aes</span>(<span class="at">x =</span> value)) <span class="sc">+</span></span>
-<span id="cb23-6"><a href="#cb23-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_dotplot</span>(<span class="at">binwidth =</span> <span class="fl">0.1</span>, <span class="at">dotsize =</span> <span class="dv">1</span>) <span class="sc">+</span></span>
-<span id="cb23-7"><a href="#cb23-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">"Dot Plot of Continuous Data (Time Spent in Minutes)"</span>) <span class="sc">+</span></span>
-<span id="cb23-8"><a href="#cb23-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-3"><a href="#cb40-3" aria-hidden="true" tabindex="-1"></a><span class="co"># creat data：Wechat number</span></span>
+<span id="cb40-4"><a href="#cb40-4" aria-hidden="true" tabindex="-1"></a>discrete_data <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">value =</span> <span class="fu">c</span>(<span class="dv">30</span>, <span class="dv">15</span>, <span class="dv">20</span>,<span class="dv">30</span>,<span class="dv">60</span>))</span>
+<span id="cb40-5"><a href="#cb40-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-6"><a href="#cb40-6" aria-hidden="true" tabindex="-1"></a><span class="co"># plot</span></span>
+<span id="cb40-7"><a href="#cb40-7" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(discrete_data, <span class="fu">aes</span>(<span class="at">x =</span> value)) <span class="sc">+</span></span>
+<span id="cb40-8"><a href="#cb40-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_dotplot</span>(<span class="at">binwidth =</span> <span class="dv">1</span>, <span class="at">dotsize =</span> <span class="dv">1</span>) <span class="sc">+</span></span>
+<span id="cb40-9"><a href="#cb40-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">"Dot Plot of Discrete Data (Number of Wechats)"</span>) <span class="sc">+</span></span>
+<span id="cb40-10"><a href="#cb40-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -526,27 +615,85 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
+<ul>
+<li>continuous</li>
+</ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
-<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a><span class="co"># 毕业率数据</span></span>
-<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a>school <span class="ot">&lt;-</span> <span class="dv">33</span><span class="sc">:</span><span class="dv">68</span></span>
-<span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a>all_athletes <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">79</span>, <span class="dv">79</span>, <span class="dv">86</span>, <span class="dv">85</span>, <span class="dv">95</span>, <span class="dv">78</span>, <span class="dv">89</span>, <span class="dv">84</span>, <span class="dv">81</span>, <span class="dv">85</span>, <span class="dv">89</span>, <span class="dv">89</span>, <span class="dv">85</span>, <span class="dv">85</span>, <span class="dv">81</span>, <span class="dv">80</span>, <span class="dv">98</span>, <span class="dv">84</span>, </span>
-<span id="cb24-6"><a href="#cb24-6" aria-hidden="true" tabindex="-1"></a>                  <span class="dv">80</span>, <span class="dv">82</span>, <span class="dv">81</span>, <span class="dv">70</span>, <span class="dv">85</span>, <span class="dv">87</span>, <span class="dv">83</span>, <span class="dv">86</span>, <span class="dv">92</span>, <span class="dv">85</span>, <span class="dv">93</span>, <span class="dv">94</span>, <span class="dv">76</span>, <span class="dv">69</span>, <span class="dv">82</span>, <span class="dv">80</span>, <span class="dv">94</span>, <span class="dv">98</span>)</span>
-<span id="cb24-7"><a href="#cb24-7" aria-hidden="true" tabindex="-1"></a>basketball <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">55</span>, <span class="dv">36</span>, <span class="dv">83</span>, <span class="dv">20</span>, <span class="dv">100</span>, <span class="dv">62</span>, <span class="dv">100</span>, <span class="dv">100</span>, <span class="dv">90</span>, <span class="dv">91</span>, <span class="dv">93</span>, <span class="dv">89</span>, <span class="dv">90</span>, <span class="dv">80</span>, <span class="dv">46</span>, <span class="dv">75</span>, <span class="dv">100</span>, <span class="dv">71</span>, </span>
-<span id="cb24-8"><a href="#cb24-8" aria-hidden="true" tabindex="-1"></a>                <span class="dv">50</span>, <span class="dv">62</span>, <span class="dv">82</span>, <span class="dv">50</span>, <span class="dv">100</span>, <span class="dv">83</span>, <span class="dv">90</span>, <span class="dv">64</span>, <span class="dv">91</span>, <span class="dv">67</span>, <span class="dv">83</span>, <span class="dv">100</span>, <span class="dv">83</span>, <span class="dv">100</span>, <span class="dv">83</span>, <span class="dv">63</span>, <span class="dv">91</span>, <span class="dv">95</span>)</span>
-<span id="cb24-9"><a href="#cb24-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb24-10"><a href="#cb24-10" aria-hidden="true" tabindex="-1"></a><span class="co"># 创建数据框</span></span>
-<span id="cb24-11"><a href="#cb24-11" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(school, all_athletes, basketball)</span>
-<span id="cb24-12"><a href="#cb24-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb24-13"><a href="#cb24-13" aria-hidden="true" tabindex="-1"></a><span class="co"># 画图</span></span>
-<span id="cb24-14"><a href="#cb24-14" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>() <span class="sc">+</span></span>
-<span id="cb24-15"><a href="#cb24-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_dotplot</span>(<span class="at">data =</span> data, <span class="fu">aes</span>(<span class="at">x =</span> all_athletes, <span class="at">y =</span> <span class="st">"All Athletes"</span>), <span class="at">binaxis =</span> <span class="st">'x'</span>, <span class="at">stackdir =</span> <span class="st">'up'</span>, <span class="at">dotsize =</span> <span class="fl">0.5</span>) <span class="sc">+</span></span>
-<span id="cb24-16"><a href="#cb24-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_dotplot</span>(<span class="at">data =</span> data, <span class="fu">aes</span>(<span class="at">x =</span> basketball, <span class="at">y =</span> <span class="st">"Basketball"</span>), <span class="at">binaxis =</span> <span class="st">'x'</span>, <span class="at">stackdir =</span> <span class="st">'up'</span>, <span class="at">dotsize =</span> <span class="fl">0.5</span>, <span class="at">color =</span> <span class="st">"red"</span>) <span class="sc">+</span></span>
-<span id="cb24-17"><a href="#cb24-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="st">"Graduation rates (%)"</span>) <span class="sc">+</span></span>
-<span id="cb24-18"><a href="#cb24-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="st">""</span>) <span class="sc">+</span></span>
-<span id="cb24-19"><a href="#cb24-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
-<span id="cb24-20"><a href="#cb24-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">"Dotplot of Graduation Rates for All Athletes and Basketball Players"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a>all_athletes <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">79</span>, <span class="dv">79</span>, <span class="dv">86</span>, <span class="dv">85</span>, <span class="dv">95</span>, <span class="dv">78</span>, <span class="dv">89</span>, <span class="dv">84</span>, <span class="dv">81</span>, <span class="dv">85</span>, <span class="dv">89</span>, <span class="dv">89</span>, <span class="dv">85</span>, <span class="dv">85</span>, <span class="dv">81</span>, <span class="dv">80</span>, <span class="dv">98</span>, <span class="dv">84</span>, </span>
+<span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a>                  <span class="dv">80</span>, <span class="dv">82</span>, <span class="dv">81</span>, <span class="dv">70</span>, <span class="dv">85</span>, <span class="dv">87</span>, <span class="dv">83</span>, <span class="dv">86</span>, <span class="dv">92</span>, <span class="dv">85</span>, <span class="dv">93</span>, <span class="dv">94</span>, <span class="dv">76</span>, <span class="dv">69</span>, <span class="dv">82</span>, <span class="dv">80</span>, <span class="dv">94</span>, <span class="dv">98</span>)</span>
+<span id="cb41-3"><a href="#cb41-3" aria-hidden="true" tabindex="-1"></a>basketball <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">55</span>, <span class="dv">36</span>, <span class="dv">83</span>, <span class="dv">20</span>, <span class="dv">100</span>, <span class="dv">62</span>, <span class="dv">100</span>, <span class="dv">100</span>, <span class="dv">90</span>, <span class="dv">91</span>, <span class="dv">93</span>, <span class="dv">89</span>, <span class="dv">90</span>, <span class="dv">80</span>, <span class="dv">46</span>, <span class="dv">75</span>, <span class="dv">100</span>, <span class="dv">71</span>, </span>
+<span id="cb41-4"><a href="#cb41-4" aria-hidden="true" tabindex="-1"></a>                <span class="dv">50</span>, <span class="dv">62</span>, <span class="dv">82</span>, <span class="dv">50</span>, <span class="dv">100</span>, <span class="dv">83</span>, <span class="dv">90</span>, <span class="dv">64</span>, <span class="dv">91</span>, <span class="dv">67</span>, <span class="dv">83</span>, <span class="dv">100</span>, <span class="dv">83</span>, <span class="dv">100</span>, <span class="dv">83</span>, <span class="dv">63</span>, <span class="dv">91</span>, <span class="dv">95</span>)</span>
+<span id="cb41-5"><a href="#cb41-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb41-6"><a href="#cb41-6" aria-hidden="true" tabindex="-1"></a><span class="co"># 设置画布的高度，以便将两个图绘制在同一页面上</span></span>
+<span id="cb41-7"><a href="#cb41-7" aria-hidden="true" tabindex="-1"></a><span class="fu">plot.new</span>()</span>
+<span id="cb41-8"><a href="#cb41-8" aria-hidden="true" tabindex="-1"></a><span class="fu">plot.window</span>(<span class="at">xlim =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">100</span>), <span class="at">ylim =</span> <span class="fu">c</span>(<span class="fl">0.5</span>, <span class="fl">2.5</span>))</span>
+<span id="cb41-9"><a href="#cb41-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb41-10"><a href="#cb41-10" aria-hidden="true" tabindex="-1"></a><span class="co"># 绘制 Basketball 数据的 dotplot</span></span>
+<span id="cb41-11"><a href="#cb41-11" aria-hidden="true" tabindex="-1"></a><span class="fu">stripchart</span>(basketball, <span class="at">method =</span> <span class="st">"stack"</span>, <span class="at">at =</span> <span class="dv">2</span>, <span class="at">pch =</span> <span class="dv">16</span>, <span class="at">col =</span> <span class="st">"orange"</span>, </span>
+<span id="cb41-12"><a href="#cb41-12" aria-hidden="true" tabindex="-1"></a>           <span class="at">add =</span> <span class="cn">TRUE</span>, <span class="at">offset =</span> <span class="fl">0.5</span>, <span class="at">cex =</span> <span class="fl">1.2</span>)</span>
+<span id="cb41-13"><a href="#cb41-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb41-14"><a href="#cb41-14" aria-hidden="true" tabindex="-1"></a><span class="co"># 绘制 All Athletes 数据的 dotplot</span></span>
+<span id="cb41-15"><a href="#cb41-15" aria-hidden="true" tabindex="-1"></a><span class="fu">stripchart</span>(all_athletes, <span class="at">method =</span> <span class="st">"stack"</span>, <span class="at">at =</span> <span class="dv">1</span>, <span class="at">pch =</span> <span class="dv">16</span>, <span class="at">col =</span> <span class="st">"orange"</span>, </span>
+<span id="cb41-16"><a href="#cb41-16" aria-hidden="true" tabindex="-1"></a>           <span class="at">add =</span> <span class="cn">TRUE</span>, <span class="at">offset =</span> <span class="fl">0.5</span>, <span class="at">cex =</span> <span class="fl">1.2</span>)</span>
+<span id="cb41-17"><a href="#cb41-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb41-18"><a href="#cb41-18" aria-hidden="true" tabindex="-1"></a><span class="co"># 添加 X 轴</span></span>
+<span id="cb41-19"><a href="#cb41-19" aria-hidden="true" tabindex="-1"></a><span class="fu">axis</span>(<span class="dv">1</span>, <span class="at">at =</span> <span class="fu">seq</span>(<span class="dv">10</span>, <span class="dv">100</span>, <span class="at">by =</span> <span class="dv">10</span>), <span class="at">labels =</span> <span class="fu">seq</span>(<span class="dv">10</span>, <span class="dv">100</span>, <span class="at">by =</span> <span class="dv">10</span>))</span>
+<span id="cb41-20"><a href="#cb41-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb41-21"><a href="#cb41-21" aria-hidden="true" tabindex="-1"></a><span class="co"># 添加标签</span></span>
+<span id="cb41-22"><a href="#cb41-22" aria-hidden="true" tabindex="-1"></a><span class="fu">text</span>(<span class="sc">-</span><span class="dv">5</span>, <span class="dv">2</span>, <span class="st">"Basketball"</span>, <span class="at">xpd =</span> <span class="cn">TRUE</span>, <span class="at">adj =</span> <span class="dv">1</span>)</span>
+<span id="cb41-23"><a href="#cb41-23" aria-hidden="true" tabindex="-1"></a><span class="fu">text</span>(<span class="sc">-</span><span class="dv">5</span>, <span class="dv">1</span>, <span class="st">"All Athletes"</span>, <span class="at">xpd =</span> <span class="cn">TRUE</span>, <span class="at">adj =</span> <span class="dv">1</span>)</span>
+<span id="cb41-24"><a href="#cb41-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb41-25"><a href="#cb41-25" aria-hidden="true" tabindex="-1"></a><span class="co"># 添加横线</span></span>
+<span id="cb41-26"><a href="#cb41-26" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">h =</span> <span class="fl">1.5</span>, <span class="at">col =</span> <span class="st">"black"</span>, <span class="at">lwd =</span> <span class="dv">2</span>)</span>
+<span id="cb41-27"><a href="#cb41-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb41-28"><a href="#cb41-28" aria-hidden="true" tabindex="-1"></a><span class="co"># 添加 X 轴标签</span></span>
+<span id="cb41-29"><a href="#cb41-29" aria-hidden="true" tabindex="-1"></a><span class="fu">title</span>(<span class="at">xlab =</span> <span class="st">"Graduation rates (%)"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="mth1113_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="co"># creat data--time spent in minutes</span></span>
+<span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a>continuous_data <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">value =</span> <span class="fu">c</span>(<span class="dv">6</span>, <span class="fl">5.25</span>, <span class="fl">3.62</span>,<span class="dv">1</span>,<span class="dv">2</span>,<span class="fl">3.1</span>,<span class="fl">3.2</span>,<span class="dv">4</span>,<span class="dv">5</span>,<span class="dv">6</span>,<span class="dv">7</span>,<span class="dv">4</span>,<span class="dv">10</span>))</span>
+<span id="cb42-3"><a href="#cb42-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb42-4"><a href="#cb42-4" aria-hidden="true" tabindex="-1"></a><span class="co"># dotplot</span></span>
+<span id="cb42-5"><a href="#cb42-5" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(continuous_data, <span class="fu">aes</span>(<span class="at">x =</span> value)) <span class="sc">+</span></span>
+<span id="cb42-6"><a href="#cb42-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_dotplot</span>(<span class="at">binwidth =</span> <span class="fl">0.1</span>, <span class="at">dotsize =</span> <span class="dv">1</span>) <span class="sc">+</span></span>
+<span id="cb42-7"><a href="#cb42-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">"Dot Plot of Continuous Data (Time Spent in Minutes)"</span>) <span class="sc">+</span></span>
+<span id="cb42-8"><a href="#cb42-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="mth1113_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb43-3"><a href="#cb43-3" aria-hidden="true" tabindex="-1"></a><span class="co"># 毕业率数据</span></span>
+<span id="cb43-4"><a href="#cb43-4" aria-hidden="true" tabindex="-1"></a>school <span class="ot">&lt;-</span> <span class="dv">33</span><span class="sc">:</span><span class="dv">68</span></span>
+<span id="cb43-5"><a href="#cb43-5" aria-hidden="true" tabindex="-1"></a>all_athletes <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">79</span>, <span class="dv">79</span>, <span class="dv">86</span>, <span class="dv">85</span>, <span class="dv">95</span>, <span class="dv">78</span>, <span class="dv">89</span>, <span class="dv">84</span>, <span class="dv">81</span>, <span class="dv">85</span>, <span class="dv">89</span>, <span class="dv">89</span>, <span class="dv">85</span>, <span class="dv">85</span>, <span class="dv">81</span>, <span class="dv">80</span>, <span class="dv">98</span>, <span class="dv">84</span>, </span>
+<span id="cb43-6"><a href="#cb43-6" aria-hidden="true" tabindex="-1"></a>                  <span class="dv">80</span>, <span class="dv">82</span>, <span class="dv">81</span>, <span class="dv">70</span>, <span class="dv">85</span>, <span class="dv">87</span>, <span class="dv">83</span>, <span class="dv">86</span>, <span class="dv">92</span>, <span class="dv">85</span>, <span class="dv">93</span>, <span class="dv">94</span>, <span class="dv">76</span>, <span class="dv">69</span>, <span class="dv">82</span>, <span class="dv">80</span>, <span class="dv">94</span>, <span class="dv">98</span>)</span>
+<span id="cb43-7"><a href="#cb43-7" aria-hidden="true" tabindex="-1"></a>basketball <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">55</span>, <span class="dv">36</span>, <span class="dv">83</span>, <span class="dv">20</span>, <span class="dv">100</span>, <span class="dv">62</span>, <span class="dv">100</span>, <span class="dv">100</span>, <span class="dv">90</span>, <span class="dv">91</span>, <span class="dv">93</span>, <span class="dv">89</span>, <span class="dv">90</span>, <span class="dv">80</span>, <span class="dv">46</span>, <span class="dv">75</span>, <span class="dv">100</span>, <span class="dv">71</span>, </span>
+<span id="cb43-8"><a href="#cb43-8" aria-hidden="true" tabindex="-1"></a>                <span class="dv">50</span>, <span class="dv">62</span>, <span class="dv">82</span>, <span class="dv">50</span>, <span class="dv">100</span>, <span class="dv">83</span>, <span class="dv">90</span>, <span class="dv">64</span>, <span class="dv">91</span>, <span class="dv">67</span>, <span class="dv">83</span>, <span class="dv">100</span>, <span class="dv">83</span>, <span class="dv">100</span>, <span class="dv">83</span>, <span class="dv">63</span>, <span class="dv">91</span>, <span class="dv">95</span>)</span>
+<span id="cb43-9"><a href="#cb43-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb43-10"><a href="#cb43-10" aria-hidden="true" tabindex="-1"></a><span class="co"># 创建数据框</span></span>
+<span id="cb43-11"><a href="#cb43-11" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(school, all_athletes, basketball)</span>
+<span id="cb43-12"><a href="#cb43-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb43-13"><a href="#cb43-13" aria-hidden="true" tabindex="-1"></a><span class="co"># 画图</span></span>
+<span id="cb43-14"><a href="#cb43-14" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>() <span class="sc">+</span></span>
+<span id="cb43-15"><a href="#cb43-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_dotplot</span>(<span class="at">data =</span> data, <span class="fu">aes</span>(<span class="at">x =</span> all_athletes, <span class="at">y =</span> <span class="st">"All Athletes"</span>), <span class="at">binaxis =</span> <span class="st">'x'</span>, <span class="at">stackdir =</span> <span class="st">'up'</span>, <span class="at">dotsize =</span> <span class="fl">0.5</span>) <span class="sc">+</span></span>
+<span id="cb43-16"><a href="#cb43-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_dotplot</span>(<span class="at">data =</span> data, <span class="fu">aes</span>(<span class="at">x =</span> basketball, <span class="at">y =</span> <span class="st">"Basketball"</span>), <span class="at">binaxis =</span> <span class="st">'x'</span>, <span class="at">stackdir =</span> <span class="st">'up'</span>, <span class="at">dotsize =</span> <span class="fl">0.5</span>, <span class="at">color =</span> <span class="st">"red"</span>) <span class="sc">+</span></span>
+<span id="cb43-17"><a href="#cb43-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="st">"Graduation rates (%)"</span>) <span class="sc">+</span></span>
+<span id="cb43-18"><a href="#cb43-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="st">""</span>) <span class="sc">+</span></span>
+<span id="cb43-19"><a href="#cb43-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
+<span id="cb43-20"><a href="#cb43-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">"Dotplot of Graduation Rates for All Athletes and Basketball Players"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>Bin width defaults to 1/30 of the range of the data. Pick better value with
 `binwidth`.
@@ -556,7 +703,7 @@ Bin width defaults to 1/30 of the range of the data. Pick better value with
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="mth1113_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="mth1113_files/figure-html/unnamed-chunk-8-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
@@ -657,9 +804,167 @@ Bin width defaults to 1/30 of the range of the data. Pick better value with
 <h3 class="anchored" data-anchor-id="systematic-sampling">systematic sampling</h3>
 <p>A value k is specified (e.g.&nbsp;k = 50 or k = 200). Then one of the first k individuals is selected at random, after which every k-th individual in the sequence is included in the sample. A sample selected in this way is called a 1 in k systematic sample.</p>
 <p>In the case of large samples, it can ensure that the sample is evenly distributed in the population.</p>
-
-
 </section>
+</section>
+</section>
+<section id="random-variable" class="level1">
+<h1>Random Variable</h1>
+<section id="definition-random-variable-r.v." class="level2">
+<h2 class="anchored" data-anchor-id="definition-random-variable-r.v.">Definition: Random Variable (R.V.)</h2>
+<p>A numerical variable whose value depends on the outcome of a chance experiment. A random variable associates a numerical value with each outcome of a chance experiment.(Think of it as a rule that translates each result of a chance event into a number.)</p>
+<p>A real-valued random variable X is a function</p>
+<p>X : S → <span class="math inline">\(\mathbb R\)</span>, where S is the sample space of a chance experiment.</p>
+<p>Discrete random variable: A random variable is discrete if its set of possible value is a collection of isolated points along the number line.(counting)</p>
+<p>Continuous random variable: A random variable is continuous if its set of possible values includes an entire interval on the number line.(measurement)</p>
+<section id="eg" class="level3">
+<h3 class="anchored" data-anchor-id="eg">eg</h3>
+<p>Examples: Coin Tossing (Discrete Random Variable) If we flip a coin 5 times, let X be the number of heads we get. Possible values of X {0,1,2,3,4,5} (where 0 means no heads, and 5 means all heads). Here, X turns each outcome of multiple coin tosses into a count of heads. Departure Time (Continuous Random Variable) Imagine tracking when people leave a subway station between 10 PM and 11 PM. Let Y represent the time (in hours) someone leaves, so Y can be any number from 10 to 11. Here, Y assigns each departure time to a point in the range [10,11].</p>
+</section>
+<section id="explaination" class="level3">
+<h3 class="anchored" data-anchor-id="explaination">explaination</h3>
+<p>In short:</p>
+<p>Random variables convert random events into numbers. Discrete random variables take specific values (like counting heads). Continuous random variables take any value in a range (like time).</p>
+<ul>
+<li>Multiple variables</li>
+</ul>
+</section>
+</section>
+<section id="probability-mass-function-and-cumulative-distribution-function-for-discrete-random-variables" class="level2">
+<h2 class="anchored" data-anchor-id="probability-mass-function-and-cumulative-distribution-function-for-discrete-random-variables">Probability Mass Function and Cumulative Distribution Function for Discrete Random Variables</h2>
+<p>Probability Mass Function (PMF): <span class="math inline">\(p_x (x) := P(X = x) ,\forall x\)</span></p>
+<p>Cumulative Distribution Function (CDF): <span class="math inline">\(F_x (x) := P(X \leq x) ,\forall x\)</span></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb45"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 定义每个事件的概率和对应的 X 值</span></span>
+<span id="cb45-2"><a href="#cb45-2" aria-hidden="true" tabindex="-1"></a>outcomes <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"GGGG"</span>, <span class="st">"EGGG"</span>, <span class="st">"GEGG"</span>, <span class="st">"GGEG"</span>, <span class="st">"GGGE"</span>, </span>
+<span id="cb45-3"><a href="#cb45-3" aria-hidden="true" tabindex="-1"></a>              <span class="st">"EEGG"</span>, <span class="st">"EGEG"</span>, <span class="st">"EGGE"</span>, <span class="st">"GEEG"</span>, <span class="st">"GEGE"</span>, </span>
+<span id="cb45-4"><a href="#cb45-4" aria-hidden="true" tabindex="-1"></a>              <span class="st">"GGEE"</span>, <span class="st">"GEEE"</span>, <span class="st">"EEEG"</span>, <span class="st">"EEGE"</span>, <span class="st">"EEEE"</span>)</span>
+<span id="cb45-5"><a href="#cb45-5" aria-hidden="true" tabindex="-1"></a>probabilities <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">0.1296</span>, <span class="fl">0.0864</span>, <span class="fl">0.0864</span>, <span class="fl">0.0864</span>, <span class="fl">0.0864</span>, </span>
+<span id="cb45-6"><a href="#cb45-6" aria-hidden="true" tabindex="-1"></a>                   <span class="fl">0.0576</span>, <span class="fl">0.0576</span>, <span class="fl">0.0576</span>, <span class="fl">0.0576</span>, <span class="fl">0.0576</span>, </span>
+<span id="cb45-7"><a href="#cb45-7" aria-hidden="true" tabindex="-1"></a>                   <span class="fl">0.0384</span>, <span class="fl">0.0384</span>, <span class="fl">0.0384</span>, <span class="fl">0.0384</span>, <span class="fl">0.0256</span>)</span>
+<span id="cb45-8"><a href="#cb45-8" aria-hidden="true" tabindex="-1"></a>X_values <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, </span>
+<span id="cb45-9"><a href="#cb45-9" aria-hidden="true" tabindex="-1"></a>              <span class="dv">2</span>, <span class="dv">2</span>, <span class="dv">2</span>, <span class="dv">2</span>, <span class="dv">2</span>,</span>
+<span id="cb45-10"><a href="#cb45-10" aria-hidden="true" tabindex="-1"></a>              <span class="dv">3</span>, <span class="dv">3</span>, <span class="dv">3</span>, <span class="dv">3</span>, <span class="dv">4</span>)</span>
+<span id="cb45-11"><a href="#cb45-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-12"><a href="#cb45-12" aria-hidden="true" tabindex="-1"></a><span class="co"># 计算每个 X 值的 PMF 通过分组和求和</span></span>
+<span id="cb45-13"><a href="#cb45-13" aria-hidden="true" tabindex="-1"></a>pmf <span class="ot">&lt;-</span> <span class="fu">tapply</span>(probabilities, X_values, sum)</span>
+<span id="cb45-14"><a href="#cb45-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-15"><a href="#cb45-15" aria-hidden="true" tabindex="-1"></a><span class="co"># 定义可能的 X 值</span></span>
+<span id="cb45-16"><a href="#cb45-16" aria-hidden="true" tabindex="-1"></a>X_values_unique <span class="ot">&lt;-</span> <span class="fu">sort</span>(<span class="fu">unique</span>(X_values))</span>
+<span id="cb45-17"><a href="#cb45-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-18"><a href="#cb45-18" aria-hidden="true" tabindex="-1"></a><span class="co"># 计算 CDF</span></span>
+<span id="cb45-19"><a href="#cb45-19" aria-hidden="true" tabindex="-1"></a>cdf <span class="ot">&lt;-</span> <span class="fu">cumsum</span>(pmf)</span>
+<span id="cb45-20"><a href="#cb45-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-21"><a href="#cb45-21" aria-hidden="true" tabindex="-1"></a><span class="co"># 确保 CDF 在 x &gt; 4 时为 1</span></span>
+<span id="cb45-22"><a href="#cb45-22" aria-hidden="true" tabindex="-1"></a>cdf <span class="ot">&lt;-</span> <span class="fu">c</span>(cdf, <span class="dv">1</span>)</span>
+<span id="cb45-23"><a href="#cb45-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-24"><a href="#cb45-24" aria-hidden="true" tabindex="-1"></a><span class="co"># 更新 X 值以包括 x &gt; 4 的情况</span></span>
+<span id="cb45-25"><a href="#cb45-25" aria-hidden="true" tabindex="-1"></a>X_values_unique <span class="ot">&lt;-</span> <span class="fu">c</span>(X_values_unique, <span class="st">"&gt;4"</span>)</span>
+<span id="cb45-26"><a href="#cb45-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-27"><a href="#cb45-27" aria-hidden="true" tabindex="-1"></a><span class="co"># 创建数据框显示 PMF 和 CDF</span></span>
+<span id="cb45-28"><a href="#cb45-28" aria-hidden="true" tabindex="-1"></a>table <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb45-29"><a href="#cb45-29" aria-hidden="true" tabindex="-1"></a>  <span class="at">X =</span> X_values_unique,</span>
+<span id="cb45-30"><a href="#cb45-30" aria-hidden="true" tabindex="-1"></a>  <span class="st">`</span><span class="at">PMF P(X=x)</span><span class="st">`</span> <span class="ot">=</span> <span class="fu">c</span>(pmf, <span class="dv">1</span><span class="fl">-0.1296-0.3456-0.2880-0.1536-0.0256</span>),  <span class="co"># PMF 没有对应的 x &gt; 4 值，填 NA</span></span>
+<span id="cb45-31"><a href="#cb45-31" aria-hidden="true" tabindex="-1"></a>  <span class="st">`</span><span class="at">CDF F(X&lt;=x)</span><span class="st">`</span> <span class="ot">=</span> cdf</span>
+<span id="cb45-32"><a href="#cb45-32" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb45-33"><a href="#cb45-33" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-34"><a href="#cb45-34" aria-hidden="true" tabindex="-1"></a><span class="co"># 打印表格</span></span>
+<span id="cb45-35"><a href="#cb45-35" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(table)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>   X PMF.P.X.x. CDF.F.X..x.
+0  0     0.1296      0.1296
+1  1     0.3456      0.4752
+2  2     0.2880      0.7632
+3  3     0.1536      0.9168
+4  4     0.0256      0.9424
+  &gt;4     0.0576      1.0000</code></pre>
+</div>
+</div>
+<ul>
+<li>Note that the domain of a cdf is (−∞, ∞)</li>
+</ul>
+<p><span class="math inline">\(\mathrm{pmf} \Longrightarrow \mathrm{cdf}\)</span> <span class="math display">\[
+F_x(x)=\sum_{y \leq x} p_x(y)
+\]</span> cdf <span class="math inline">\(\Longrightarrow\)</span> pmf Suppose <span class="math inline">\(X\)</span> takes ordered values <span class="math inline">\(x_1, x_2, x_3, \cdots\)</span>, then <span class="math display">\[
+\begin{aligned}
+p_X\left(x_i\right) &amp; =P\left(X=x_i\right)=P\left(x_{i-1}&lt;X \leq x_i\right) \\
+&amp; =P\left(X \leq x_i\right)-P\left(X \leq x_{i-1}\right) \\
+&amp; =F\left(x_i\right)-F\left(x_{i-1}\right)
+\end{aligned}
+\]</span></p>
+<ul>
+<li>remark: The probability of a discrete distribution varies depending on the inclusion and exclusion of the boundary values.</li>
+</ul>
+</section>
+<section id="expectation-and-variance-for-discrete-random-variables" class="level2">
+<h2 class="anchored" data-anchor-id="expectation-and-variance-for-discrete-random-variables">Expectation and Variance for Discrete Random Variables</h2>
+<p><span class="math display">\[
+\frac{0 \cdot f_0+1 \cdot f_1+2 \cdot f_2+\cdots+n \cdot f_n}{N}=\frac{1}{N} \sum_{i=0}^n i \cdot f_i
+\]</span></p>
+<p>Note that in <span class="math inline">\(\frac{1}{N} \sum_{i=0}^n i \cdot f_i\)</span>, <span class="math display">\[
+\lim _{N \rightarrow \infty} \frac{f_i}{N}=P(X=i)
+\]</span></p>
+<p>So the average number will be <span class="math display">\[
+\sum_{i=0}^n i \cdot P(X=i)
+\]</span></p>
+<ul>
+<li><p>Definition: Expectation Given a discrete random variable <span class="math inline">\(X\)</span>, the expectation of <span class="math inline">\(X\)</span> is <span class="math display">\[
+E[X]=\sum_x x \cdot p_X(x)
+\]</span></p></li>
+<li><p>Properties of Expectation</p></li>
+<li><p>If <span class="math inline">\(c\)</span> is a constant, then <span class="math inline">\(E[c]=c\)</span>.</p></li>
+<li><p>If <span class="math inline">\(X \geq 0\)</span> then <span class="math inline">\(E[X] \geq 0\)</span>.</p></li>
+<li><p>If <span class="math inline">\(a \leq X \leq b\)</span> then <span class="math inline">\(a \leq E[X] \leq b\)</span>.</p></li>
+<li><p>Proof of 3: First show <span class="math inline">\(E[X] \geq a\)</span>, then show <span class="math inline">\(E[X] \leq b\)</span>, <span class="math display">\[
+\begin{aligned}
+E[X] &amp; =\sum_x x p_X(x) \geq \sum_x a p_X(x), \\
+&amp; =a \sum_x p_x(x)=a .
+\end{aligned}
+\]</span></p></li>
+</ul>
+<p>Similarly, <span class="math inline">\(E[X] \leq b\)</span>.</p>
+<ul>
+<li><p>Suppose <span class="math inline">\(X\)</span> is a discrete random variable and <span class="math inline">\(Y=g(X)\)</span>, then <span class="math display">\[
+\begin{aligned}
+E[Y] &amp; =\sum_y y p_Y(y)=\sum_y y P(Y=y) \\
+&amp; =\sum_y y \sum_{\{x: g(x)=y\}} P(X=x) \\
+&amp; =\sum_y \sum_{\{x: g(x)=y\}} y P(X=x) \\
+&amp; =\sum_y \sum_{\{x: g(x)=y\}} g(x) P(X=x) \\
+&amp; =\sum_x g(x) P(X=x)
+\end{aligned}
+\]</span></p></li>
+<li><p>First moment of <span class="math inline">\(X\)</span> (mean): <span class="math display">\[
+E[X]=\sum_x x p_X(x) .
+\]</span></p></li>
+<li><p>Second moment of <span class="math inline">\(X\)</span> : <span class="math display">\[
+E\left[X^2\right]=\sum_x x^2 p_x(x) .
+\]</span></p></li>
+<li><p>In general, <span class="math inline">\(E[g(X)] \neq g(E[X])\)</span>. For example, let <span class="math inline">\(g(x)=x^2\)</span>, and consider <span class="math inline">\(X\)</span> such that <span class="math display">\[
+p_X(x)= \begin{cases}0.5, &amp; \text { for } x=-1 \\ 0.5, &amp; \text { for } x=1\end{cases}
+\]</span></p></li>
+</ul>
+<p>Then clearly <span class="math inline">\(E\left[X^2\right]=1 \neq 0=(E[X])^2\)</span>.</p>
+<ul>
+<li><p>There are exceptions (e.g.&nbsp;when g is linear)!</p></li>
+<li><p>Linearity of Expectation</p></li>
+</ul>
+<p>E[aX + b] = aE[X] + b</p>
+<p>proof:</p>
+<p>Suppose <span class="math inline">\(g(x)=a x+b\)</span>. Then <span class="math display">\[
+\begin{aligned}
+E[g(X)] &amp; =\sum_x g(x) p_X(x), \\
+&amp; =\sum_x(a x+b) p_x(x), \\
+&amp; =\sum_x a x p_x(x)+\sum_x b p_x(x), \\
+&amp; =a \sum_x x p_x(x)+b \sum_x p_x(x), \\
+&amp; =a E[X]+b=g(E[X]),
+\end{aligned}
+\]</span> this implies <span class="math display">\[
+E[a X+b]=a E[X]+b
+\]</span></p>
+<ul>
+<li>Remark: Apart from this case, always assume <span class="math inline">\(E[g(X)] \neq g(E[X])\)</span>.</li>
+</ul>
+
+
 </section>
 </section>
 

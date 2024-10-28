@@ -2,6 +2,7 @@
 title: "MTH113 Intro to probability and statistics+APH003--exploring world through data"
 editor: visual
 ---
+
 # bivariate data
 
 # linear regression
@@ -13,6 +14,79 @@ editor: visual
 across the whole range, it could not be showing a certain trend or a specific shape.
 
 positive and negative points sperate averagely .
+
+![](images/clipboard-2419630434.png)
+
+![](images/clipboard-3592387892.png)
+
+
+
+
+
+```{r}
+# 数据
+x <- c(50, 55, 50, 79, 44, 37, 70, 45, 49)  # Rock surface area
+y <- c(152, 48, 22, 35, 38, 171, 13, 185, 25)  # Algae colony density
+
+# (a) 计算最小二乘回归方程
+model <- lm(y ~ x)
+summary(model)
+
+# 获取回归系数
+intercept <- coef(model)[1]
+slope <- coef(model)[2]
+cat("最小二乘回归方程: y =", intercept, "+", slope, "* x\n")
+
+# (b) 计算 R^2 值并解释
+r_squared <- summary(model)$r.squared
+cat("R^2 值:", r_squared, "\n")
+cat("解释: R^2 表示了", round(r_squared * 100, 2), "% 的 y 的变异可以通过 x 来解释。\n")
+
+# (c) 计算残差标准误差 s_e
+se <- summary(model)$sigma
+cat("残差标准误差 s_e:", se, "\n")
+cat("解释: s_e 表示了回归模型的平均预测误差，越小表明预测的精确度越高。\n")
+
+# (d) 判断线性关系的方向和强度
+correlation <- cor(x, y)
+cat("相关系数 r:", correlation, "\n")
+
+if (correlation > 0) {
+  direction <- "正相关"
+} else {
+  direction <- "负相关"
+}
+
+if (abs(correlation) > 0.7) {
+  strength <- "强相关"
+} else if (abs(correlation) > 0.3) {
+  strength <- "中等相关"
+} else {
+  strength <- "弱相关"
+}
+
+cat("线性关系:", direction, "且为", strength, "\n")
+
+```
+
+```{r}
+# 数据
+quality_rating <- c(111, 113, 93, 130, 170, 87, 83, 117, 135, 109)
+satisfaction_rating <- c(832, 845, 794, 854, 836, 842, 877, 745, 797, 795)
+
+# 计算相关系数
+correlation_coefficient <- cor(quality_rating, satisfaction_rating)
+print(paste("相关系数 r:", correlation_coefficient))
+
+# 绘制散点图
+plot(quality_rating, satisfaction_rating,
+     main = "Scatterplot of Quality Rating vs. Satisfaction Rating",
+     xlab = "Quality Rating",
+     ylab = "Satisfaction Rating",
+     pch = 19, col = "blue")
+abline(lm(satisfaction_rating ~ quality_rating), col = "red")  # 添加回归线
+
+```
 
 # skew
 
@@ -400,3 +474,221 @@ Cluster sampling involves dividing the population of interest into non-overlappi
 A value k is specified (e.g. k = 50 or k = 200). Then one of the first k individuals is selected at random, after which every k-th individual in the sequence is included in the sample. A sample selected in this way is called a 1 in k systematic sample.
 
 In the case of large samples, it can ensure that the sample is evenly distributed in the population.
+
+
+
+# Random Variable
+
+## Definition: Random Variable (R.V.)
+
+A numerical variable whose value depends on the
+outcome of a chance experiment. A random variable
+associates a numerical value with each outcome of a
+chance experiment.(Think of it as a rule that translates each result of a chance event into a number.)
+
+A real-valued random variable X is a function
+
+X : S → $\mathbb R$, where S is the sample space of a chance experiment.
+
+
+Discrete random variable: A random variable is discrete
+if its set of possible value is a collection of isolated points
+along the number line.(counting)
+
+Continuous random variable: A random variable is
+continuous if its set of possible values includes an entire
+interval on the number line.(measurement)
+
+### eg
+Examples:
+Coin Tossing (Discrete Random Variable)
+If we flip a coin 5 times, let 
+X be the number of heads we get.
+Possible values of 
+X
+{0,1,2,3,4,5} (where 0 means no heads, and 5 means all heads).
+Here, 
+X turns each outcome of multiple coin tosses into a count of heads.
+Departure Time (Continuous Random Variable)
+Imagine tracking when people leave a subway station between 10 PM and 11 PM.
+Let 
+Y represent the time (in hours) someone leaves, so 
+Y can be any number from 10 to 11.
+Here, 
+Y assigns each departure time to a point in the range 
+[10,11].
+
+### explaination
+In short:
+
+Random variables convert random events into numbers.
+Discrete random variables take specific values (like counting heads).
+Continuous random variables take any value in a range (like time).
+
+- Multiple variables
+
+
+## Probability Mass Function and Cumulative Distribution Function for Discrete Random Variables
+
+
+Probability Mass Function (PMF): $p_x (x) := P(X = x) ,\forall x$
+
+Cumulative Distribution Function (CDF): $F_x (x) := P(X \leq x) ,\forall x$
+
+
+```{r}
+# 定义每个事件的概率和对应的 X 值
+outcomes <- c("GGGG", "EGGG", "GEGG", "GGEG", "GGGE", 
+              "EEGG", "EGEG", "EGGE", "GEEG", "GEGE", 
+              "GGEE", "GEEE", "EEEG", "EEGE", "EEEE")
+probabilities <- c(0.1296, 0.0864, 0.0864, 0.0864, 0.0864, 
+                   0.0576, 0.0576, 0.0576, 0.0576, 0.0576, 
+                   0.0384, 0.0384, 0.0384, 0.0384, 0.0256)
+X_values <- c(0, 1, 1, 1, 1, 
+              2, 2, 2, 2, 2,
+              3, 3, 3, 3, 4)
+
+# 计算每个 X 值的 PMF 通过分组和求和
+pmf <- tapply(probabilities, X_values, sum)
+
+# 定义可能的 X 值
+X_values_unique <- sort(unique(X_values))
+
+# 计算 CDF
+cdf <- cumsum(pmf)
+
+# 确保 CDF 在 x > 4 时为 1
+cdf <- c(cdf, 1)
+
+# 更新 X 值以包括 x > 4 的情况
+X_values_unique <- c(X_values_unique, ">4")
+
+# 创建数据框显示 PMF 和 CDF
+table <- data.frame(
+  X = X_values_unique,
+  `PMF P(X=x)` = c(pmf, 1-0.1296-0.3456-0.2880-0.1536-0.0256),  # PMF 没有对应的 x > 4 值，填 NA
+  `CDF F(X<=x)` = cdf
+)
+
+# 打印表格
+print(table)
+
+```
+
+- Note that the domain of a cdf is (−∞, ∞)
+
+
+
+$\mathrm{pmf} \Longrightarrow \mathrm{cdf}$
+$$
+F_x(x)=\sum_{y \leq x} p_x(y)
+$$
+cdf $\Longrightarrow$ pmf
+Suppose $X$ takes ordered values $x_1, x_2, x_3, \cdots$, then
+$$
+\begin{aligned}
+p_X\left(x_i\right) & =P\left(X=x_i\right)=P\left(x_{i-1}<X \leq x_i\right) \\
+& =P\left(X \leq x_i\right)-P\left(X \leq x_{i-1}\right) \\
+& =F\left(x_i\right)-F\left(x_{i-1}\right)
+\end{aligned}
+$$
+
+
+- remark: The probability of a discrete distribution varies depending
+on the inclusion and exclusion of the boundary values.
+
+
+## Expectation and Variance for Discrete Random Variables
+
+
+$$
+\frac{0 \cdot f_0+1 \cdot f_1+2 \cdot f_2+\cdots+n \cdot f_n}{N}=\frac{1}{N} \sum_{i=0}^n i \cdot f_i
+$$
+
+
+Note that in $\frac{1}{N} \sum_{i=0}^n i \cdot f_i$,
+$$
+\lim _{N \rightarrow \infty} \frac{f_i}{N}=P(X=i)
+$$
+
+So the average number will be
+$$
+\sum_{i=0}^n i \cdot P(X=i)
+$$
+
+- Definition: Expectation
+Given a discrete random variable $X$, the expectation of $X$ is
+$$
+E[X]=\sum_x x \cdot p_X(x)
+$$
+
+- Properties of Expectation
+
+ - If $c$ is a constant, then $E[c]=c$.
+ - If $X \geq 0$ then $E[X] \geq 0$.
+
+ - If $a \leq X \leq b$ then $a \leq E[X] \leq b$.
+  - Proof of 3: First show $E[X] \geq a$, then show $E[X] \leq b$,
+$$
+\begin{aligned}
+E[X] & =\sum_x x p_X(x) \geq \sum_x a p_X(x), \\
+& =a \sum_x p_x(x)=a .
+\end{aligned}
+$$
+
+Similarly, $E[X] \leq b$.
+
+
+
+
+- Suppose $X$ is a discrete random variable and $Y=g(X)$, then
+$$
+\begin{aligned}
+E[Y] & =\sum_y y p_Y(y)=\sum_y y P(Y=y) \\
+& =\sum_y y \sum_{\{x: g(x)=y\}} P(X=x) \\
+& =\sum_y \sum_{\{x: g(x)=y\}} y P(X=x) \\
+& =\sum_y \sum_{\{x: g(x)=y\}} g(x) P(X=x) \\
+& =\sum_x g(x) P(X=x)
+\end{aligned}
+$$
+- First moment of $X$ (mean):
+$$
+E[X]=\sum_x x p_X(x) .
+$$
+
+- Second moment of $X$ :
+$$
+E\left[X^2\right]=\sum_x x^2 p_x(x) .
+$$
+
+- In general, $E[g(X)] \neq g(E[X])$. For example, let $g(x)=x^2$, and consider $X$ such that
+$$
+p_X(x)= \begin{cases}0.5, & \text { for } x=-1 \\ 0.5, & \text { for } x=1\end{cases}
+$$
+
+Then clearly $E\left[X^2\right]=1 \neq 0=(E[X])^2$.
+
+- There are exceptions (e.g. when g is linear)!
+
+- Linearity of Expectation
+
+E[aX + b] = aE[X] + b
+
+proof:
+
+Suppose $g(x)=a x+b$. Then
+$$
+\begin{aligned}
+E[g(X)] & =\sum_x g(x) p_X(x), \\
+& =\sum_x(a x+b) p_x(x), \\
+& =\sum_x a x p_x(x)+\sum_x b p_x(x), \\
+& =a \sum_x x p_x(x)+b \sum_x p_x(x), \\
+& =a E[X]+b=g(E[X]),
+\end{aligned}
+$$
+this implies
+$$
+E[a X+b]=a E[X]+b
+$$
+
+- Remark: Apart from this case, always assume $E[g(X)] \neq g(E[X])$.

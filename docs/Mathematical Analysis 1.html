@@ -317,7 +317,9 @@ window.Quarto = {
 <li><p>为了证明所有upper bound都大于等于某个值（sup），我们假设所有upper bound都小于等于这个值，然后推出矛盾（一般运用Archimedean property，。。。）</p></li>
 <li><p>假设存在epsilon大于0，使sup- epsilon是upper bound，然后根据题目条件，推出sup-epsilon不是upper bound的矛盾，（特别是某些集合中的特殊的值），得出sup是最小的upper bound</p></li>
 <li><p>claim s=supS，然后把s的所有范围讨论（ 通过得到某些n使得sups不等于s的矛盾来排除&lt;,&gt;得到等号）</p></li>
+<li><p><img src="images/clipboard-4280451848.png" class="img-fluid"></p></li>
 </ul>
+<p>(Though using <span class="math inline">\(\epsilon\)</span> is the most quickly way but I do not like it at all because it does not show the essence or nature of the supremum or infmum, which also has the part of luck because maybe I understand it totally but because of my poor calculation skill about construction I will not solve it, leading to unhappiness to myself.)</p>
 </section>
 <section id="总结了有上界下界必定有唯一上下确界的两种证明方法闭区间套定理的证明以及有限覆盖定理的证明待internalized" class="level1">
 <h1>总结了有上界（下界）必定有唯一上（下）确界的两种证明方法，闭区间套定理的证明，以及有限覆盖定理的证明（待internalized）</h1>
@@ -792,13 +794,12 @@ F &amp; F &amp; T &amp; T &amp; T \\
 <p>Bijection: A bijection between two sets <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> is a function <span class="math inline">\(f: A \to B\)</span> that is both injective (one-to-one) and surjective (onto).</p>
 <section id="the-problem-showing-that-mathcalpmathbbn-is-uncountable" class="level3">
 <h3 class="anchored" data-anchor-id="the-problem-showing-that-mathcalpmathbbn-is-uncountable">The Problem: Showing that <span class="math inline">\(\mathcal{P}(\mathbb{N})\)</span> is Uncountable</h3>
-<p>The question asks you to prove that the power set of natural numbers <span class="math inline">\(\mathcal{P}(\mathbb{N})\)</span>, i.e., the set of all subsets of <span class="math inline">\(\mathbb{N}\)</span>, is uncountable. To prove this, you are guided to assume a contradiction: that there is a bijection <span class="math inline">\(f: \mathbb{N} \to \mathcal{P}(\mathbb{N})\)</span>.</p>
-<p>Hint: Suppose there is a bijection f : N → P(N). Consider the set {n ∈ N| n ∈/ f(n)} to deduce a contradiction.</p>
+<p><img src="images/clipboard-3258860968.png" class="img-fluid"></p>
 <p>method 1: Consider the set <span class="math inline">\(A = \{ n \in \mathbb{N} \mid n \notin f(n) \}\)</span>, f : N → P(N).</p>
-<p>we should prove it is not a bijection. so we could prove it is not surjective(P(N) is much bigger than N).</p>
+<p>we should prove it is not a bijection. so we could prove it is not surjective (P(N) is much bigger than N).</p>
 <p>now we ask if f is surjective:</p>
-<p>If yes, there exists <span class="math inline">\(n_0\in N\)</span> s.t. f(n_0)=A</p>
-<p>now we ask: Doer <span class="math inline">\(n_o\in f(n_0)\)</span></p>
+<p>If yes, there exists <span class="math inline">\(n_0\in N\)</span> s.t. f<span class="math inline">\((n_0)=\)</span>A</p>
+<p>now we ask: Does <span class="math inline">\(n_o\in f(n_0)\)</span></p>
 <ol type="1">
 <li><p>if yes, <span class="math inline">\(n_0\notin A=f(n_0)\)</span></p></li>
 <li><p>if no, <span class="math inline">\(n_0\in A=f(n_0)\)</span></p></li>
@@ -817,6 +818,8 @@ F &amp; F &amp; T &amp; T &amp; T \\
 <p>If <span class="math inline">\(m \notin S\)</span>, then <span class="math inline">\(m\)</span> must be an element of <span class="math inline">\(f(m)\)</span>, which again contradicts the definition of <span class="math inline">\(S\)</span>.</p>
 <p>Since this contradiction arises, we conclude that no such bijection <span class="math inline">\(f: \mathbb{N} \to \mathcal{P}(\mathbb{N})\)</span> can exist, and therefore <span class="math inline">\(\mathcal{P}(\mathbb{N})\)</span> is uncountable.</p>
 <p>The power set <span class="math inline">\(\mathcal{P}(\mathbb{N})\)</span> is uncountable, meaning its cardinality is greater than that of the set of natural numbers <span class="math inline">\(\mathbb{N}\)</span>, even though both sets are infinite. This conclusion is a key result in set theory, demonstrating that not all infinite sets have the same “size” or cardinality.</p>
+<p>However, for the situation of including finite subsets only,</p>
+<p><img src="images/clipboard-1883408292.png" class="img-fluid"></p>
 <p><img src="images/clipboard-819524834.png" class="img-fluid"></p>
 </section>
 <section id="an-eg-question-logical-puzzle-on-truth-of-statements-relavent-to-truth-table" class="level3">
@@ -915,6 +918,7 @@ n - 1+1\leq 100 - n \implies n \leq 50
 </section>
 <section id="the-real-number" class="level1">
 <h1>the real number</h1>
+<p><img src="images/clipboard-2031452374.png" class="img-fluid"></p>
 </section>
 <section id="a-problem-about-divisible-using-greatest-common-factor-to-solveeven-bezous-theorem" class="level1">
 <h1>a problem about divisible using greatest common factor to solve(even Bezou’s theorem)</h1>
