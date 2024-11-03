@@ -2,6 +2,7 @@
 title: "A Kun's PDE Lecture"
 editor: visual
 ---
+
 # Fritz Jhon's textbook
 
 # fibonacci sequence
@@ -572,3 +573,10 @@ create a thery of math
 and six/x = 1/x(x-x^3/3!+...)=1-x^3/6
 
 so we know
+
+
+# Reference
+
+林琦焜 (2001)，從 Cantor 集到碎形。數學傳播，25(1)，-。
+
+

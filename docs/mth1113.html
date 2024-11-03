@@ -198,6 +198,7 @@ window.Quarto = {
   <li><a href="#bivariate-data" id="toc-bivariate-data" class="nav-link" data-scroll-target="#bivariate-data">bivariate data</a></li>
   <li><a href="#linear-regression" id="toc-linear-regression" class="nav-link" data-scroll-target="#linear-regression">linear regression</a>
   <ul class="collapse">
+  <li><a href="#background" id="toc-background" class="nav-link" data-scroll-target="#background">background</a></li>
   <li><a href="#it-is-not-stable-to-predict-the-data-outside-our-data-sample" id="toc-it-is-not-stable-to-predict-the-data-outside-our-data-sample" class="nav-link" data-scroll-target="#it-is-not-stable-to-predict-the-data-outside-our-data-sample">it is not stable to predict the data outside our data sample’</a></li>
   <li><a href="#residual-plost-should-have-no-pattern" id="toc-residual-plost-should-have-no-pattern" class="nav-link" data-scroll-target="#residual-plost-should-have-no-pattern">Residual plost should have no pattern</a></li>
   </ul></li>
@@ -242,13 +243,31 @@ window.Quarto = {
   </ul></li>
   <li><a href="#random-variable" id="toc-random-variable" class="nav-link" data-scroll-target="#random-variable">Random Variable</a>
   <ul class="collapse">
-  <li><a href="#definition-random-variable-r.v." id="toc-definition-random-variable-r.v." class="nav-link" data-scroll-target="#definition-random-variable-r.v.">Definition: Random Variable (R.V.)</a>
+  <li><a href="#definition-random-variable-r.v." id="toc-definition-random-variable-r.v." class="nav-link" data-scroll-target="#definition-random-variable-r.v.">Definition: Random Variable (R.V.)</a></li>
+  </ul></li>
+  <li><a href="#sample-space-of-1-variable" id="toc-sample-space-of-1-variable" class="nav-link" data-scroll-target="#sample-space-of-1-variable">sample space of 1 variable</a>
   <ul class="collapse">
   <li><a href="#eg" id="toc-eg" class="nav-link" data-scroll-target="#eg">eg</a></li>
   <li><a href="#explaination" id="toc-explaination" class="nav-link" data-scroll-target="#explaination">explaination</a></li>
-  </ul></li>
   <li><a href="#probability-mass-function-and-cumulative-distribution-function-for-discrete-random-variables" id="toc-probability-mass-function-and-cumulative-distribution-function-for-discrete-random-variables" class="nav-link" data-scroll-target="#probability-mass-function-and-cumulative-distribution-function-for-discrete-random-variables">Probability Mass Function and Cumulative Distribution Function for Discrete Random Variables</a></li>
   <li><a href="#expectation-and-variance-for-discrete-random-variables" id="toc-expectation-and-variance-for-discrete-random-variables" class="nav-link" data-scroll-target="#expectation-and-variance-for-discrete-random-variables">Expectation and Variance for Discrete Random Variables</a></li>
+  </ul></li>
+  <li><a href="#sample-space-of-multivariables" id="toc-sample-space-of-multivariables" class="nav-link" data-scroll-target="#sample-space-of-multivariables">sample space of multivariables</a></li>
+  <li><a href="#joint-distribution-of-x-and-y" id="toc-joint-distribution-of-x-and-y" class="nav-link" data-scroll-target="#joint-distribution-of-x-and-y">joint distribution of X and Y</a></li>
+  <li><a href="#marginal-probability-mass-function" id="toc-marginal-probability-mass-function" class="nav-link" data-scroll-target="#marginal-probability-mass-function">Marginal Probability Mass Function</a></li>
+  <li><a href="#functions-of-multiple-random-variables" id="toc-functions-of-multiple-random-variables" class="nav-link" data-scroll-target="#functions-of-multiple-random-variables">Functions of multiple random variables</a></li>
+  <li><a href="#independence" id="toc-independence" class="nav-link" data-scroll-target="#independence">independence</a>
+  <ul class="collapse">
+  <li><a href="#independence-expectationsmean-and-variance" id="toc-independence-expectationsmean-and-variance" class="nav-link" data-scroll-target="#independence-expectationsmean-and-variance">independence, expectations(mean) and variance</a></li>
+  </ul></li>
+  <li><a href="#continuous-random-variables" id="toc-continuous-random-variables" class="nav-link" data-scroll-target="#continuous-random-variables">Continuous Random Variables</a>
+  <ul class="collapse">
+  <li><a href="#definition.-probability-density-function-pdf" id="toc-definition.-probability-density-function-pdf" class="nav-link" data-scroll-target="#definition.-probability-density-function-pdf">Definition. Probability Density Function (pdf)</a></li>
+  <li><a href="#discrete-and-continuous" id="toc-discrete-and-continuous" class="nav-link" data-scroll-target="#discrete-and-continuous">discrete and continuous</a></li>
+  </ul></li>
+  <li><a href="#covariance" id="toc-covariance" class="nav-link" data-scroll-target="#covariance">Covariance</a>
+  <ul class="collapse">
+  <li><a href="#wait-for-reviewing.." id="toc-wait-for-reviewing.." class="nav-link" data-scroll-target="#wait-for-reviewing..">wait for reviewing…..</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -275,6 +294,11 @@ window.Quarto = {
 </header>
 
 
+<ul>
+<li>Motivation</li>
+</ul>
+<p>The history of the development of statistics has helped me gain a deeper understanding of this fascinating and practical field of knowledge. Each advancement represents a leap from specific facts to broader, generalized conclusions. What truly captivates me is the remarkable alignment between natural phenomena and statistical principles; there always seems to be a coincidence where reality and theory intersect.</p>
+<p>Initially, I only grasped the surface of this knowledge. Then, as I delved deeper, I began to understand the underlying principles through observable phenomena. Eventually, almost miraculously, I realized how incredibly useful these theories are and how they coincide with natural occurrences. This process of moving closer and closer to generalization has profoundly illustrated to me the truth in the saying: “Mathematics is the art of giving the same name to different things.”</p>
 <section id="十堂极简概率课-中信出版-diaconis" class="level1">
 <h1>十堂极简概率课 中信出版 diaconis</h1>
 </section>
@@ -283,6 +307,15 @@ window.Quarto = {
 </section>
 <section id="linear-regression" class="level1">
 <h1>linear regression</h1>
+<p><img src="images/clipboard-1774849890.png" class="img-fluid"></p>
+<section id="background" class="level2">
+<h2 class="anchored" data-anchor-id="background">background</h2>
+<ul>
+<li>Regression to the mean (Galton’s thinking)</li>
+</ul>
+<p><img src="images/clipboard-3333660003.png" class="img-fluid"></p>
+<p><img src="images/clipboard-1881050695.png" class="img-fluid"></p>
+</section>
 <section id="it-is-not-stable-to-predict-the-data-outside-our-data-sample" class="level2">
 <h2 class="anchored" data-anchor-id="it-is-not-stable-to-predict-the-data-outside-our-data-sample">it is not stable to predict the data outside our data sample’</h2>
 </section>
@@ -817,6 +850,11 @@ Bin width defaults to 1/30 of the range of the data. Pick better value with
 <h2 class="anchored" data-anchor-id="definition-random-variable-r.v.">Definition: Random Variable (R.V.)</h2>
 <p>A numerical variable whose value depends on the outcome of a chance experiment. A random variable associates a numerical value with each outcome of a chance experiment.(Think of it as a rule that translates each result of a chance event into a number.)</p>
 <p>A real-valued random variable X is a function</p>
+<p>Continuous random variable X: S–&gt; R is continuous if its set of possible values includes an entire interval on the number line.</p>
+</section>
+</section>
+<section id="sample-space-of-1-variable" class="level1">
+<h1>sample space of 1 variable</h1>
 <p>X : S → <span class="math inline">\(\mathbb R\)</span>, where S is the sample space of a chance experiment.</p>
 <p>Discrete random variable: A random variable is discrete if its set of possible value is a collection of isolated points along the number line.(counting)</p>
 <p>Continuous random variable: A random variable is continuous if its set of possible values includes an entire interval on the number line.(measurement), which could not be count.</p>
@@ -831,7 +869,6 @@ Bin width defaults to 1/30 of the range of the data. Pick better value with
 <ul>
 <li>Multiple variables</li>
 </ul>
-</section>
 </section>
 <section id="probability-mass-function-and-cumulative-distribution-function-for-discrete-random-variables" class="level2">
 <h2 class="anchored" data-anchor-id="probability-mass-function-and-cumulative-distribution-function-for-discrete-random-variables">Probability Mass Function and Cumulative Distribution Function for Discrete Random Variables</h2>
@@ -967,6 +1004,135 @@ E[a X+b]=a E[X]+b
 <ul>
 <li>Remark: Apart from this case, always assume <span class="math inline">\(E[g(X)] \neq g(E[X])\)</span>.</li>
 </ul>
+</section>
+</section>
+<section id="sample-space-of-multivariables" class="level1">
+<h1>sample space of multivariables</h1>
+<p>G:gender; F: year—corresponding to a certain student:S</p>
+<p>(G, H) : S → <span class="math inline">\(\mathbb R^2\)</span>, S={1,2,3,4}</p>
+</section>
+<section id="joint-distribution-of-x-and-y" class="level1">
+<h1>joint distribution of X and Y</h1>
+<p>The joint probability mass function (i.e., joint pmf) of X and Y for discrete random variables is defined as <span class="math inline">\(p_{X,Y} (x, y) := P(X = x \text{ and } Y = y)\)</span></p>
+<p>P[(X,Y) ∈ A] =<span class="math inline">\(\sum_{(x,y)\in A}p_{X,Y}(x,y)\)</span>,where A belongs to a subset of the <span class="math inline">\(\mathbb R^2\)</span> where X and Y taking values.</p>
+</section>
+<section id="marginal-probability-mass-function" class="level1">
+<h1>Marginal Probability Mass Function</h1>
+<p>Let <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> have the joint probability mass function <span class="math inline">\(p_{X, Y}(x, y)\)</span> with space <span class="math inline">\(\mathcal{S}\)</span>. The probability mass function of <span class="math inline">\(X\)</span> (or <span class="math inline">\(Y\)</span> ) alone, is called the marginal probability mass function of <span class="math inline">\(X\)</span> (or <span class="math inline">\(Y\)</span> ) and defined by: <span class="math display">\[
+\begin{aligned}
+&amp; p_X(x)=P(X=x)=\sum_y p_{X, Y}(x, y) \\
+&amp; p_Y(y)=P(Y=y)=\sum_x p_{X, Y}(x, y)
+\end{aligned}
+\]</span></p>
+<p>For the marginal of X, we sum over all values of y.</p>
+<p>For the marginal of Y, we sum over all values of x.</p>
+<p>eg.–helping understand both sample space, event and Marginal probability mass function</p>
+<p><img src="images/clipboard-206208503.png" class="img-fluid"></p>
+</section>
+<section id="functions-of-multiple-random-variables" class="level1">
+<h1>Functions of multiple random variables</h1>
+<p>it has the same philosophy as one random variable things, such as expectation:</p>
+<p><span class="math display">\[E[g(X,Y)]=\sum_x \sum_y g(x,y)p_{X,Y}(x,y)\]</span>, also the linearity of expectation</p>
+<p>eg. Z = X + 2Y.</p>
+<p><img src="images/clipboard-369824916.png" class="img-fluid"></p>
+</section>
+<section id="independence" class="level1">
+<h1>independence</h1>
+<ul>
+<li><p>P(<span class="math inline">\(A\cap B\)</span>)=P(A)P(B) or P(A|B)=P(A)</p></li>
+<li><p>Two discrete random variables X and Y are independent if P(X = x and Y = y) = P(X = x)P(Y = y):</p></li>
+</ul>
+<p><span class="math inline">\(p_{X,Y}(x,y)=p_X(x)p_Y(y), \forall x,y\)</span></p>
+<p><span class="math inline">\(p_{X|Y}(x|y)=p_X(x), \forall x,y\)</span></p>
+<p>it is easy to detect the dependent as long as we find one example, eg: <span class="math inline">\(P_{X|Y}(1|1)\)</span> is not equal to <span class="math inline">\(P(X=1)\)</span></p>
+<section id="independence-expectationsmean-and-variance" class="level2">
+<h2 class="anchored" data-anchor-id="independence-expectationsmean-and-variance">independence, expectations(mean) and variance</h2>
+<p>Independence and Expectations If <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> are independent, then <span class="math display">\[
+E[X Y]=E[X] E[Y] .
+\]</span></p>
+<p>Proof: We use <span class="math inline">\(E[g(X, Y)]\)</span> where <span class="math inline">\(g(x, y)=x y\)</span>. <span class="math display">\[
+\begin{aligned}
+E[X Y] &amp; =\sum_x \sum_y x y p_{X, Y}(x, y) \\
+&amp; =\sum_x \sum_y x y p_X(x) p_Y(y), \quad(\text { by inde } \\
+&amp; =\left(\sum_x x p_X(x)\right)\left(\sum_y y p_Y(y)\right)=E[X] E[Y] .
+\end{aligned}
+\]</span> (by independence)</p>
+<p>Similarly, if <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> are independent, then <span class="math display">\[
+E[g(X) h(Y)]=E[g(X)] E[h(Y)]
+\]</span></p>
+<ul>
+<li>Independence and Variances</li>
+</ul>
+<p>It is always true that <span class="math display">\[
+\operatorname{Var}(a X)=a^2 \operatorname{Var}(X), \quad \text { and } \quad \operatorname{Var}(X+a)=\operatorname{Var}(X)
+\]</span></p>
+<p>In general, when we have a sum of random variables <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> <span class="math display">\[
+\operatorname{Var}(X+Y) \neq \operatorname{Var}(X)+\operatorname{Var}(Y) .
+\]</span></p>
+<p>It is only true if <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> are independent</p>
+<ul>
+<li><p>Sum of Variance for independent R.V. If two random variables <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> are independent then <span class="math display">\[
+\operatorname{Var}(X+Y)=\operatorname{Var}(X)+\operatorname{Var}(Y)
+\]</span></p></li>
+<li><p>Sum of Variance for independent R.V.</p></li>
+</ul>
+<p>If two random variables <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> are independent then <span class="math display">\[
+\operatorname{Var}(X+Y)=\operatorname{Var}(X)+\operatorname{Var}(Y) .
+\]</span></p>
+<p>Proof: Independence implies <span class="math inline">\(E[X Y]=E[X] E[Y]\)</span>. Thus <span class="math display">\[
+\begin{aligned}
+&amp; \operatorname{Var}(X+Y)=E\left[(X+Y-(E[X]+E[Y]))^2\right], \\
+&amp; =E\left[(X-E[X])^2+2(X-E[X])(Y-E[Y])+(Y-E[Y])^2\right], \\
+&amp; =\operatorname{Var}(X)+\operatorname{Var}(Y)+2 E[(X-E[X])(Y-E[Y])]
+\end{aligned}
+\]</span></p>
+<p>As <span class="math inline">\(X\)</span> is indep to <span class="math inline">\(Y\)</span>, then <span class="math inline">\(X-\mu_X\)</span> is indep to <span class="math inline">\(Y-\mu_Y\)</span> so <span class="math display">\[
+E[(X-E[X])(Y-E[Y])]=E[X-E[X]] E[Y-E[Y]]=0
+\]</span></p>
+<p>Example: Assume independence, <span class="math inline">\(\operatorname{Var}(3 X-5 Y)=\)</span> <span class="math display">\[
+\operatorname{Var}(3 X)+\operatorname{Var}(-5 Y)=9 \operatorname{Var}(X)+25 \operatorname{Var}(Y)
+\]</span></p>
+<ul>
+<li>Example. Independence, mean and variance</li>
+</ul>
+<p>Let <span class="math inline">\(Y\)</span> be the random variable denoting the total number of heads by tossing a coin <span class="math inline">\(n\)</span> times. Find the mean and variance of <span class="math inline">\(Y\)</span>.</p>
+<p>Let <span class="math display">\[
+Y_i= \begin{cases}1, &amp; \text { if the } i^{\text {th }} \text { toss gets a head } \\ 0, &amp; \text { otherwise. }\end{cases}
+\]</span></p>
+<p>Then <span class="math inline">\(Y=Y_1+Y_2+\cdots+Y_n\)</span> where <span class="math inline">\(Y_1, Y_2, \cdots, Y_n\)</span> are independent. For any <span class="math inline">\(i=1,2, \cdots, n\)</span>, we have <span class="math display">\[
+\begin{array}{ccc}
+y &amp; 0 &amp; 1 \\
+P_{Y_i}(y) &amp; 1 / 2 &amp; 1 / 2
+\end{array}
+\]</span></p>
+<p>As <span class="math inline">\(E\left[Y_i\right]=\frac{1}{2}\)</span> and <span class="math inline">\(\operatorname{Var}\left(Y_i\right)=\frac{1}{4}\)</span> for <span class="math inline">\(i=1,2, \cdots, n\)</span> <span class="math display">\[
+\begin{gathered}
+E[Y]=E\left[Y_1\right]+E\left[Y_2\right]+\cdots+E\left[Y_n\right]=\frac{n}{2} \\
+\operatorname{Var}(Y)=\operatorname{Var}\left(Y_1\right)+\operatorname{Var}\left(Y_2\right)+\cdots+\operatorname{Var}\left(Y_n\right)=\frac{n}{4}
+\end{gathered}
+\]</span> (for not independent cases we have the same result as E but not Var because Var is not linear)</p>
+</section>
+</section>
+<section id="continuous-random-variables" class="level1">
+<h1>Continuous Random Variables</h1>
+<p>We have to consider intervals instead of one when referring to continuous random variables or the probability will equals to 0, which has no meaning.</p>
+<p>eg. <span class="math inline">\(P(a\leq Y\leq b)=P(a&lt;Y&lt;b)\)</span> if Y is a continuous variable.</p>
+<section id="definition.-probability-density-function-pdf" class="level2">
+<h2 class="anchored" data-anchor-id="definition.-probability-density-function-pdf">Definition. Probability Density Function (pdf)</h2>
+<p>For a continuous random variable X, the Probability Density Function (PDF) of X is f(x) where P(X = x) = 0 for all x and for any a ≤ b</p>
+</section>
+<section id="discrete-and-continuous" class="level2">
+<h2 class="anchored" data-anchor-id="discrete-and-continuous">discrete and continuous</h2>
+<p><img src="images/clipboard-1910128728.png" class="img-fluid"></p>
+<p>Density function’s value could be greater than 1 because the integral of it in a very tiny interval could be very small, which represents the probability.</p>
+</section>
+</section>
+<section id="covariance" class="level1">
+<h1>Covariance</h1>
+<p><img src="images/clipboard-4061434485.png" class="img-fluid"></p>
+<section id="wait-for-reviewing.." class="level2">
+<h2 class="anchored" data-anchor-id="wait-for-reviewing..">wait for reviewing…..</h2>
+<p><img src="images/clipboard-2808960987.png" class="img-fluid"></p>
 
 
 </section>

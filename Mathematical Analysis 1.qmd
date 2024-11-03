@@ -21,6 +21,99 @@ sequence is the most 直观来写分析
 
 open set is countable union of open intervals---
 
+
+欧拉 拉格朗日比较有创意，数学的趣味，但后面，cauchy weiastrass 给的连续定理，严格化
+
+# 记得写出存在，（ps：存在主义是生命价值驱动的好心情源泉）
+
+# max and min need to be found
+
+eg. Finite open sets' intersection is also open because we can choose the minimum $\epsilon$
+
+
+
+# open set is like interval
+
+## Theorem
+
+Let $O\subset R$ be an open set then $O=\cup_{n=1}^\infty I_n$ where $I_n$ is an open interval in R
+
+
+
+## Def
+
+A collection of open sets covers a set A if $A\subset \cup O_\alpha$. The collection {$O_\alpha$} is called an open cover of A.
+
+## Theorem
+
+
+Let C={$O_\alpha$} be a collection of open sets of real numbers then there is a countable subcollection {$O_i$} of C such that $\cup_{O\in C}O=\cup_{n=1}^\infty O_i$
+
+Any open cover of a set of real numbers contains a countable subcover.
+
+## i have proved that:
+
+the closure of $Q$ = R <--> $R\approx Q$ <--> $\forall x\in R, \exists x_n\in Q$ such that$x_n-->x$. Q is a countable, dense subset of R, R is separable.
+
+
+# accumulation point is different to limit point
+
+eg. $a_n=(-1)^n (n+1)/n$, 1 and -1 are accumulation points but not limit points because the sequence is not convergent
+
+
+# the usage of proof by contradiction in the proof of limit
+
+
+eg.
+
+
+
+## albel: guass is a fox, 走过的地方狐狸尾巴扫掉了
+
+
+## algebra of continuity
+
+
+$\exists \delta = min${$\delta_1,\delta_2$}
+
+# 阿贝尔26过世
+
+
+
+
+# Continuity
+
+## history
+
+cauchy 1821(decrease indefinitely with those of $\alpha$)--weierstrass 1874 ($\epsilon-\delta$)-----
+
+
+## understanding in a long process
+
+- $\delta$ decides how good the continuity of the function is.
+
+
+
+
+
+
+
+
+# Preface before 
+
+## Cauchy 1822
+
+What is a limit?--number 
+
+Until 1870, the answer to "What is the number" had been known.
+
+(这样来看，学习数分的一年痛苦就不算什么)
+
+
+
+
+
+
 # 实数是什么
 
 实数是一个唯一的一个complete ordered field 如果有别的 它一定和实数是等价的
@@ -1264,6 +1357,54 @@ together imply that:
 $$
 \lim _{x \rightarrow c} f(x)=l
 $$
+
+# Cantor Set
+
+## decimal scale
+
+$x=0.a_1a_2a_3...$
+
+[0,1]={$\sum_{n=1}^\infty a_n/10^n,n\in{0,1,...9}$}
+
+\# [0,1]=$10^{\infty}$---(uncountable)
+
+
+|{$x_1$}|$\subseteq (x_1-\epsilon,x_1+\epsilon), \forall \epsilon >0$ i.e.|{$x_1$}|=0
+
+
+
+
+
+
+
+
+
+
+# What is compactness?
+
+Fresch <--> H.Lebesgal
+
+## Defination
+
+# Topology
+
+|$x_n-x$|-->0
+
+||$x_n-x$|| "norm"
+
+norm--the generalization of the absolute value: ||$\cdot$||: V(a vector space)-->[0,$\infty$)
+
+(1) ||$\vec x$$\geq$0||, $\forall \vec x\in V$ 
+
+
+\quad\quad ||$\vec x=0$|| iff$\vec x=0\in V$
+
+(2) ||$\alpha \vec x=|\alpha||\vec x|$|| $\alpha \in \mathbb R$
+
+\quad\quad triangle inequality
+
+
+
 
 
 

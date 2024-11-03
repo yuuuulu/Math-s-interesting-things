@@ -3,6 +3,12 @@ title: "MTH113 Intro to probability and statistics+APH003--exploring world throu
 editor: visual
 ---
 
+-   Motivation
+
+The history of the development of statistics has helped me gain a deeper understanding of this fascinating and practical field of knowledge. Each advancement represents a leap from specific facts to broader, generalized conclusions. What truly captivates me is the remarkable alignment between natural phenomena and statistical principles; there always seems to be a coincidence where reality and theory intersect.
+
+Initially, I only grasped the surface of this knowledge. Then, as I delved deeper, I began to understand the underlying principles through observable phenomena. Eventually, almost miraculously, I realized how incredibly useful these theories are and how they coincide with natural occurrences. This process of moving closer and closer to generalization has profoundly illustrated to me the truth in the saying: "Mathematics is the art of giving the same name to different things."
+
 # 十堂极简概率课 中信出版 diaconis
 
 # bivariate data
@@ -13,9 +19,11 @@ editor: visual
 
 ## background
 
-- Regression to the mean (Galton's thinking)
+-   Regression to the mean (Galton's thinking)
 
 ![](images/clipboard-3333660003.png)
+
+![](images/clipboard-1881050695.png)
 
 ## it is not stable to predict the data outside our data sample'
 
@@ -489,6 +497,10 @@ A numerical variable whose value depends on the outcome of a chance experiment. 
 
 A real-valued random variable X is a function
 
+Continuous random variable X: S--\> R is continuous if its set of possible values includes an entire interval on the number line.
+
+# sample space of 1 variable
+
 X : S → $\mathbb R$, where S is the sample space of a chance experiment.
 
 Discrete random variable: A random variable is discrete if its set of possible value is a collection of isolated points along the number line.(counting)
@@ -646,3 +658,156 @@ E[a X+b]=a E[X]+b
 $$
 
 -   Remark: Apart from this case, always assume $E[g(X)] \neq g(E[X])$.
+
+# sample space of multivariables
+
+G:gender; F: year---corresponding to a certain student:S
+
+(G, H) : S → $\mathbb R^2$, S={1,2,3,4}
+
+# joint distribution of X and Y
+
+The joint probability mass function (i.e., joint pmf) of X and Y for discrete random variables is defined as $p_{X,Y} (x, y) := P(X = x \text{ and } Y = y)$
+
+P\[(X,Y) ∈ A\] =$\sum_{(x,y)\in A}p_{X,Y}(x,y)$,where A belongs to a subset of the $\mathbb R^2$ where X and Y taking values.
+
+# Marginal Probability Mass Function
+
+Let $X$ and $Y$ have the joint probability mass function $p_{X, Y}(x, y)$ with space $\mathcal{S}$. The probability mass function of $X$ (or $Y$ ) alone, is called the marginal probability mass function of $X$ (or $Y$ ) and defined by: $$
+\begin{aligned}
+& p_X(x)=P(X=x)=\sum_y p_{X, Y}(x, y) \\
+& p_Y(y)=P(Y=y)=\sum_x p_{X, Y}(x, y)
+\end{aligned}
+$$
+
+For the marginal of X, we sum over all values of y.
+
+For the marginal of Y, we sum over all values of x.
+
+eg.--helping understand both sample space, event and Marginal probability mass function
+
+![](images/clipboard-206208503.png)
+
+# Functions of multiple random variables
+
+it has the same philosophy as one random variable things, such as expectation:
+
+$$E[g(X,Y)]=\sum_x \sum_y g(x,y)p_{X,Y}(x,y)$$, also the linearity of expectation
+
+eg. Z = X + 2Y.
+
+![](images/clipboard-369824916.png)
+
+# independence
+
+-   P($A\cap B$)=P(A)P(B) or P(A\|B)=P(A)
+
+-   Two discrete random variables X and Y are independent if P(X = x and Y = y) = P(X = x)P(Y = y):
+
+$p_{X,Y}(x,y)=p_X(x)p_Y(y), \forall x,y$
+
+$p_{X|Y}(x|y)=p_X(x), \forall x,y$
+
+it is easy to detect the dependent as long as we find one example, eg: $P_{X|Y}(1|1)$ is not equal to $P(X=1)$
+
+## independence, expectations(mean) and variance
+
+Independence and Expectations If $X$ and $Y$ are independent, then $$
+E[X Y]=E[X] E[Y] .
+$$
+
+Proof: We use $E[g(X, Y)]$ where $g(x, y)=x y$. $$
+\begin{aligned}
+E[X Y] & =\sum_x \sum_y x y p_{X, Y}(x, y) \\
+& =\sum_x \sum_y x y p_X(x) p_Y(y), \quad(\text { by inde } \\
+& =\left(\sum_x x p_X(x)\right)\left(\sum_y y p_Y(y)\right)=E[X] E[Y] .
+\end{aligned}
+$$ (by independence)
+
+Similarly, if $X$ and $Y$ are independent, then $$
+E[g(X) h(Y)]=E[g(X)] E[h(Y)]
+$$
+
+-   Independence and Variances
+
+It is always true that $$
+\operatorname{Var}(a X)=a^2 \operatorname{Var}(X), \quad \text { and } \quad \operatorname{Var}(X+a)=\operatorname{Var}(X)
+$$
+
+In general, when we have a sum of random variables $X$ and $Y$ $$
+\operatorname{Var}(X+Y) \neq \operatorname{Var}(X)+\operatorname{Var}(Y) .
+$$
+
+It is only true if $X$ and $Y$ are independent
+
+-   Sum of Variance for independent R.V. If two random variables $X$ and $Y$ are independent then $$
+    \operatorname{Var}(X+Y)=\operatorname{Var}(X)+\operatorname{Var}(Y)
+    $$
+
+-   Sum of Variance for independent R.V.
+
+If two random variables $X$ and $Y$ are independent then $$
+\operatorname{Var}(X+Y)=\operatorname{Var}(X)+\operatorname{Var}(Y) .
+$$
+
+Proof: Independence implies $E[X Y]=E[X] E[Y]$. Thus $$
+\begin{aligned}
+& \operatorname{Var}(X+Y)=E\left[(X+Y-(E[X]+E[Y]))^2\right], \\
+& =E\left[(X-E[X])^2+2(X-E[X])(Y-E[Y])+(Y-E[Y])^2\right], \\
+& =\operatorname{Var}(X)+\operatorname{Var}(Y)+2 E[(X-E[X])(Y-E[Y])]
+\end{aligned}
+$$
+
+As $X$ is indep to $Y$, then $X-\mu_X$ is indep to $Y-\mu_Y$ so $$
+E[(X-E[X])(Y-E[Y])]=E[X-E[X]] E[Y-E[Y]]=0
+$$
+
+Example: Assume independence, $\operatorname{Var}(3 X-5 Y)=$ $$
+\operatorname{Var}(3 X)+\operatorname{Var}(-5 Y)=9 \operatorname{Var}(X)+25 \operatorname{Var}(Y)
+$$
+
+-   Example. Independence, mean and variance
+
+Let $Y$ be the random variable denoting the total number of heads by tossing a coin $n$ times. Find the mean and variance of $Y$.
+
+Let $$
+Y_i= \begin{cases}1, & \text { if the } i^{\text {th }} \text { toss gets a head } \\ 0, & \text { otherwise. }\end{cases}
+$$
+
+Then $Y=Y_1+Y_2+\cdots+Y_n$ where $Y_1, Y_2, \cdots, Y_n$ are independent. For any $i=1,2, \cdots, n$, we have $$
+\begin{array}{ccc}
+y & 0 & 1 \\
+P_{Y_i}(y) & 1 / 2 & 1 / 2
+\end{array}
+$$
+
+As $E\left[Y_i\right]=\frac{1}{2}$ and $\operatorname{Var}\left(Y_i\right)=\frac{1}{4}$ for $i=1,2, \cdots, n$ $$
+\begin{gathered}
+E[Y]=E\left[Y_1\right]+E\left[Y_2\right]+\cdots+E\left[Y_n\right]=\frac{n}{2} \\
+\operatorname{Var}(Y)=\operatorname{Var}\left(Y_1\right)+\operatorname{Var}\left(Y_2\right)+\cdots+\operatorname{Var}\left(Y_n\right)=\frac{n}{4}
+\end{gathered}
+$$ (for not independent cases we have the same result as E but not Var because Var is not linear)
+
+# Continuous Random Variables
+
+We have to consider intervals instead of one when referring to continuous random variables or the probability will equals to 0, which has no meaning.
+
+eg. $P(a\leq Y\leq b)=P(a<Y<b)$ if Y is a continuous variable.
+
+## Definition. Probability Density Function (pdf)
+
+For a continuous random variable X, the Probability Density Function (PDF) of X is f(x) where P(X = x) = 0 for all x and for any a ≤ b
+
+## discrete and continuous
+
+![](images/clipboard-1910128728.png)
+
+Density function's value could be greater than 1 because the integral of it in a very tiny interval could be very small, which represents the probability.
+
+# Covariance
+
+![](images/clipboard-4061434485.png)
+
+## wait for reviewing.....
+
+![](images/clipboard-2808960987.png)

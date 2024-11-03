@@ -4,8 +4,15 @@ format: html
 editor: visual
 ---
 
-# Chapter 0: motivation/reviews
+# Thanks
 
+I feel so lucky to learn from Professor. Paul-Henry Leemann. He teaches Linear Algebra very well. He is also a kind, responsible and humorous teacher.
+
+# study motivation
+
+-   Good explanation ->-> symbolic proof(just like I do not like $\epsilon-\delta$ language in Analysis)
+
+# Chapter 0: motivation/reviews
 
 ## Linearty is everywhere--Linearty is the easiest one
 
@@ -1196,6 +1203,12 @@ see photo in particular, $m \leq n$. ok
 -   Def Let V and W be 2 vector spaces over the same filed F. A maoo T V--\>W is a linear map(linear transformation) if and only if $\forall v \in V$ T(u+v)=T(u)+T(v), $\forall v \in V, \lambda\in F$ T($\lambda \cdot v$)= $\lambda\cdot T(v)$
 
 -   Lemma Let T
+
+![](images/clipboard-868461290.png)
+
+![](images/clipboard-4280216890.png)
+
+![](images/clipboard-3941908751.png)
 
 # Tutorial
 
