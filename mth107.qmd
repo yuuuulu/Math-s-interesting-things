@@ -6,6 +6,7 @@ editor: visual
 
 # Chapter 0: motivation/reviews
 
+
 ## Linearty is everywhere--Linearty is the easiest one
 
 matrix-vector multiplication

@@ -2,27 +2,25 @@
 title: "A Kun's PDE Lecture"
 editor: visual
 ---
+# Fritz Jhon's textbook
+
 # fibonacci sequence
 
 菠萝和叶子
 
-
-
-
 # 西方的智慧
- Russel
- 
+
+Russel
+
 # 分析的算术化
+
 $f'(x)=lim_{x->x_0}f(x)-f(x_0)/x-x_0$
- 
+
 # 西方哲学史
 
- 
 # 球的表面积
 
 微积分解决球的表面积
-
-
 
 # 看课本
 
@@ -30,16 +28,17 @@ $f'(x)=lim_{x->x_0}f(x)-f(x_0)/x-x_0$
 
 # 分析
 
-- function
+-   function
 
-- continulity
-- differentiability
-- integralbility
+-   continulity
 
+-   differentiability
+
+-   integralbility
 
 ## what is a number
 
-- Q, rational number q/p (ratio)
+-   Q, rational number q/p (ratio)
 
 有理数用直尺画，根号用圆规--算术平均大于几何平均
 
@@ -49,7 +48,6 @@ $f'(x)=lim_{x->x_0}f(x)-f(x_0)/x-x_0$
 
 古希腊人（大自然是可理解的）带给现代人最珍贵的礼物就是理性
 
-
 爱因斯坦：大自然最不可理解的地方是大自然竟然是可理解的
 
 古希腊的传人
@@ -58,41 +56,35 @@ $f'(x)=lim_{x->x_0}f(x)-f(x_0)/x-x_0$
 
 科技（建筑）和科学（要有主张和实验）
 
-
 $\mathbb R$
 
 E.Steim
 
 分离变数法--傅立叶级数---分析
 
-
 微积分
 
-- 傅立叶 analysis
+-   傅立叶 analysis
 
-- complex analysis
+-   complex analysis
 
-- real analysis
+-   real analysis
 
-- functional analysis
-
+-   functional analysis
 
 # convergence
 
-
-- 有上界
-- 有下界
-- 柯西sequence
+-   有上界
+-   有下界
+-   柯西sequence
 
 # 用多项式看函数
 
-- Weierstrass Approximation Theorem（density）
+-   Weierstrass Approximation Theorem（density）
 
 所有函数在有界的闭区间都可以用多项式逼近
 
-
 函数（function）（）
-
 
 # math
 

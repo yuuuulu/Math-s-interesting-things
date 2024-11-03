@@ -5,6 +5,249 @@ editor:
     wrap: 72
 ---
 
+# My main Analysis learning instructions(philosophy): Theorems come, theorems go, only examples lie forever.
+
+Maybe I could not remember all process of each profound theorems proof, but I could also understand Analysis in depth by handling how to use theorems to solve problems.(But I need to try to know how the proof using each condition in the theorems and internalize it by continurousely thinking) In this case, examples help me a lot.
+
+
+数学素养和人文素养的结合
+一个好的证明是natural的
+好的数学是具有普遍性(universal)的（大数学家先看二维再推广到n维）
+sequence is the most 直观来写分析
+北极是无穷大 上帝是无穷 唯一的上帝 正无穷和负无穷最后归到一点
+两个无穷大 傅立叶级数 周期函数--周期概念 傅立叶 transform 
+
+偏导数存在不一定连续 只有在一元才是对的
+
+open set is countable union of open intervals---
+
+# 实数是什么
+
+实数是一个唯一的一个complete ordered field 如果有别的 它一定和实数是等价的
+
+- dedekind思想推广到n维空间有一定难度（limit inf； limit sup这种大小只有1维空间才有）
+所以我们有了cantor的思想 是更高一级的 可以推广到更general空间(norm space;metric space所有metric space的证明思想和构造时候一模一样 方法固定如此)
+
+## order--cardinality
+
+1，2，3，n
+2，4，6，2n
+
+f(n)=2n
+
+- explaination：无穷大加一个数还是等于无穷大
+
+
+$f:N->N\cup${$a_1,a_2,a_3$}
+
+f(1)=$a_1$ f(2)=$a_2$,..f(4)=1, f(n+3)=n, this function is one-to-one -- bijection
+
+--无穷大加上任意一个实属x还是无穷大
+
+N x N is countable
+
+$S \subset N$ S is countable 
+
+f(m,n)-->$2^m3^n$（只要取互质的两个数就ok）
+
+N x N--> N
+
+f: 1-1
+
+$2^{m_1}3^{n_1}$=$2^{m_2}3^{n_2}$---$m_1=m_2,n_1=n_2$
+
+f(N x N)$\subset$ N
+
+只要映射到N的subset就可以了
+
+2维3维n维
+
+(0,1) is uncountable
+反证法
+
+
+
+Cantor's diagonal process
+
+欧几里得是第一个反证法---有无穷多个质数
+
+
+
+{p1 p2 p3...}
+
+p=p1+p2+pn+...+1
+
+p1|p...pn|p---p is a prime---contradiction to countable 
+
+
+(0,1)={x1,...x} countable
+
+
+x1=01a11a12a13. a1n$\in${0,1,2,...9}
+x2=01a21a22a23. a2n$\in${0,1,2,...9}
+
+
+construct a real number 
+
+y=0.b1b2b3...
+
+b1 budengyu a11 y budengyu x1
+
+b2 budengyu a22 y budengyu x2
+
+b3 budengyu ann y budengyu xn
+
+bn in {a1,...a}--> y$\in$(0,1) but y$\notin${$x_1,...x_n$}
+
+
+
+Ex: [0,1) 约等于 (0,1)
+
+proof: Let{p1,p2,....}=(0,1)$\cap Q$
+分成有理数和无理数
+
+f(0)=p1 f(p1)=p2 f(pn+1)=pn f(x)=x $x\in (0,1)-${p1,..pn}
+
+概率 特征函数
+
+
+Cantor set
+
+
+进位的概念
+
+
+
+
+
+
+
+
+
+
+
+
+## 
+
+
+导数 积分 无穷级数 --都是极限 极限是什么--数数是什么
+-- Augustin Cauchy(1789-1846)
+
+
+- 人文素养
+
+cantor 1872年是不平凡的一年， 有（Weierstrass, Dedekind, Meray, Heine, Cantor）同时提出了实属系统建构的理解 出版著作解决困惑人们2500多年的问题
+
+
+Weierstrass 法律 数学 喝酒 干架 退学 在中学里边仍然没有与学术脱节 复变函数 椭圆函数（研究在复数平面上的解析函数， C=$R^2$ a+ib-->(a,b) is an isomorphism）
+$C \cup {\infty}$ 相似于球面 $S^2$ 约等于  $R^2\cup \infty$ 变成closed and bounded
+one-point- compactfication 为什么实数不bounded因为无穷 无穷大这点不是实数（不满足实数性质---无穷大加无穷大还是无穷大；无穷大减无穷大是any number）因为
+
+
+
+任何单调有界的实属序列都有极限存在---dedekind的假设
+
+
+dedekind cut
+
+if rational number
+
+毕达哥拉斯的年代的万物皆数是有理数
+
+古希腊哲学 古希腊数学
+
+
+Thales
+
+
+做测量工作创出非欧几何这门学问
+真正的天才是能够创出一门学问的
+
+牛顿是科学第一人 当人们迷迷糊糊的时候 他打开理性的光
+
+这一切是黑暗的 上帝说让牛顿去吧 于是就有了光
+
+改编圣经的话--文采
+
+毕达哥拉斯定理的证明都是非常有创意的东西
+
+毕达哥拉斯定理十个证明
+
+读慢一点
+
+心浮气躁
+
+数学是需要耐心的
+
+一个城市的发展不应该是盖房子 应该是好的博物馆音乐厅公园 提高人民素养
+
+
+
+volume 2 多变数 stolze定理 divergent定理
+
+
+limit sup   limit inf --这个东西就是我的实数
+
+
+Cantor-==柯西序列。距离概念
+
+$|a_m-a_n|-->0$. d($a_m,a_n$-->0) metric
+
+
+
+
+equivalent equation
+equivalent class
+实数
+实数是一个集合
+
+cantor--集合论
+
+
+定义是最难的
+
+有共通之处--作为定义
+
+会用定理很重要 不是高斯
+
+
+用多了就知道是怎么一回事
+
+
+定理给了条件  哪里用到什么条件 怎么用的
+
+
+碰到好老师的重要性 姜立夫
+量纲自然
+
+
+
+complete的完备不是完美 不是
+门掉了一个螺丝 找一个螺丝完完全全放上去发挥作用
+
+认识自己 我是螺丝 完完全全发挥我的作用 把长处 恩赐发挥出来 就是complete
+
+有理数在实数中有很多孔隙 把空隙。把accumulation point收紧来
+
+closure of A = B
+
+$\forall b\in B, \exists${$a_n$} $\subset A$ such that $a_n-->b$
+
+$A\cap B $ not equals to $\emptyset \forall \epsilon > 0 $
+
+
+ 实数是唯一一个complete ordered field
+ 
+ 代数结构---分配律
+ 
+ 
+ eg.complex number没有order所以我们定义norm
+
+
+
+
+
+
 ![](images/clipboard-317793846.png)
 
 和闭区间套定理极限思想的联系和区别？？？
@@ -909,6 +1152,120 @@ so Z is countable
 # the real number
 
 ![](images/clipboard-2031452374.png)
+
+
+
+
+
+# Limit(Topology version)
+
+
+## understanding deeply(explain by myself...)
+
+## proof of some theroem
+
+
+### boring things(just practivce epsilon-delta language...)
+
+- $\lim _{x \rightarrow a} f(x)=\ell$ if and only if $\lim _{x \rightarrow a^{+}} f(x)=\lim _{x \rightarrow a^{-}} f(x)=\ell$.
+
+Necessary Condition
+Let $f(x) \rightarrow l$ as $x \rightarrow c$.
+
+Then from the definition of the limit of a function:
+$$
+\forall \epsilon>0: \exists \delta>0: 0<|x-c|<\delta \Longrightarrow|f(x)-l|<\epsilon
+$$
+
+So for any given $\epsilon$, there exists a $\delta$ such that:
+$$
+0<|x-c|<\delta
+$$
+implies that:
+$$
+l-\epsilon<f(x)<l+\epsilon
+$$
+
+Now:
+$$
+\begin{array}{ll} 
+& 0<|x-c|<\delta \\
+\leadsto \quad & -\delta<-(x-c)<0 \\
+& \vee \quad 0<(x-c)<\delta \\
+\leadsto \quad & c-\delta<x<c \\
+& \vee \quad c<x<c+\delta
+\end{array}
+$$
+
+That is: $\forall \epsilon>0: \exists \delta>0$ :
+
+(1): $\quad c-\delta<x<c \Longrightarrow\|f(x)-l\|<\epsilon$
+
+(2) : $\quad c<x<c+\delta \Longrightarrow\|f(x)-l\|<\epsilon$
+
+So given that particular value of $\epsilon$, we can find a value of $\delta$ such that the conditions for both:
+
+(1): $\quad f$ tending to the limit $l$ as $x$ tends to $c$ from the left
+
+and :
+
+(2) : $\quad f$ tending to the limit $l$ as $x$ tends to $c$ from the right.
+
+Thus:
+$$
+\lim _{x \rightarrow c} f(x)=l
+$$
+implies that:
+$$
+\lim _{x \rightarrow c^{-}} f(x)=l
+$$
+and:
+$$
+\lim _{x \rightarrow c^{+}} f(x)=l
+$$
+
+
+
+Sufficient Condition
+
+Let $f(x) \rightarrow l$ as $x \rightarrow c^{-}$and $f(x) \rightarrow l$ as $x \rightarrow c^{+}$.
+
+This means that:
+
+(1): $\forall \epsilon>0: \exists \delta>0: c-\delta<x<c \Longrightarrow|f(x)-l|<\epsilon$
+
+and :
+
+(2): $\forall \epsilon>0: \exists \delta>0: c<x<c+\delta \Longrightarrow|f(x)-l|<\epsilon$
+
+In the same manner as above, the conditions on $\delta$ give us that:
+$$
+\begin{array}{ll} 
+& c-\delta<x<c \\
+\wedge \quad & c<x<c+\delta \\
+& 0<|x-c|<\delta
+\end{array}
+$$
+
+So:
+$$
+\forall \epsilon>0: \exists \delta>0: 0<|x-c|<\delta \Longrightarrow|f(x)-l|<\epsilon
+$$
+
+Thus:
+$$
+\lim _{x \rightarrow c^{-}} f(x)=l
+$$
+and:
+$$
+\lim _{x \rightarrow c^{+}} f(x)=l
+$$
+together imply that:
+$$
+\lim _{x \rightarrow c} f(x)=l
+$$
+
+
 
 # a problem about divisible using greatest common factor to solve(even Bezou's theorem)
 
