@@ -269,6 +269,12 @@ window.Quarto = {
   <ul class="collapse">
   <li><a href="#wait-for-reviewing.." id="toc-wait-for-reviewing.." class="nav-link" data-scroll-target="#wait-for-reviewing..">wait for reviewing…..</a></li>
   </ul></li>
+  <li><a href="#descrete-distributions" id="toc-descrete-distributions" class="nav-link" data-scroll-target="#descrete-distributions">Descrete distributions</a>
+  <ul class="collapse">
+  <li><a href="#bernoulli-is-composed-by-binomial" id="toc-bernoulli-is-composed-by-binomial" class="nav-link" data-scroll-target="#bernoulli-is-composed-by-binomial">Bernoulli is composed by binomial</a></li>
+  <li><a href="#hypergeometric-distribution-could-be-approximated-by-binomial-when-samples-are-large" id="toc-hypergeometric-distribution-could-be-approximated-by-binomial-when-samples-are-large" class="nav-link" data-scroll-target="#hypergeometric-distribution-could-be-approximated-by-binomial-when-samples-are-large">Hypergeometric distribution could be approximated by Binomial when samples are large</a></li>
+  <li><a href="#poisson-distribution-as-the-limit-of-binomial-distribution-when-the-number-of-trials-is-large-and-the-probabiliy-of-success-of-each-trial-is-inverse-proportional-to-the-number-of-trials" id="toc-poisson-distribution-as-the-limit-of-binomial-distribution-when-the-number-of-trials-is-large-and-the-probabiliy-of-success-of-each-trial-is-inverse-proportional-to-the-number-of-trials" class="nav-link" data-scroll-target="#poisson-distribution-as-the-limit-of-binomial-distribution-when-the-number-of-trials-is-large-and-the-probabiliy-of-success-of-each-trial-is-inverse-proportional-to-the-number-of-trials">Poisson distribution as the limit of Binomial distribution when the number of trials is large and the probabiliy of success of each trial is inverse-proportional to the number of trials</a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
@@ -1133,6 +1139,72 @@ E[Y]=E\left[Y_1\right]+E\left[Y_2\right]+\cdots+E\left[Y_n\right]=\frac{n}{2} \\
 <section id="wait-for-reviewing.." class="level2">
 <h2 class="anchored" data-anchor-id="wait-for-reviewing..">wait for reviewing…..</h2>
 <p><img src="images/clipboard-2808960987.png" class="img-fluid"></p>
+</section>
+</section>
+<section id="descrete-distributions" class="level1">
+<h1>Descrete distributions</h1>
+<section id="bernoulli-is-composed-by-binomial" class="level2">
+<h2 class="anchored" data-anchor-id="bernoulli-is-composed-by-binomial">Bernoulli is composed by binomial</h2>
+</section>
+<section id="hypergeometric-distribution-could-be-approximated-by-binomial-when-samples-are-large" class="level2">
+<h2 class="anchored" data-anchor-id="hypergeometric-distribution-could-be-approximated-by-binomial-when-samples-are-large">Hypergeometric distribution could be approximated by Binomial when samples are large</h2>
+</section>
+<section id="poisson-distribution-as-the-limit-of-binomial-distribution-when-the-number-of-trials-is-large-and-the-probabiliy-of-success-of-each-trial-is-inverse-proportional-to-the-number-of-trials" class="level2">
+<h2 class="anchored" data-anchor-id="poisson-distribution-as-the-limit-of-binomial-distribution-when-the-number-of-trials-is-large-and-the-probabiliy-of-success-of-each-trial-is-inverse-proportional-to-the-number-of-trials">Poisson distribution as the limit of Binomial distribution when the number of trials is large and the probabiliy of success of each trial is inverse-proportional to the number of trials</h2>
+<p>Suppose the <span class="math inline">\(X_n,n\geq1\)</span> is a sequence of random variables such that <span class="math inline">\(X_n\)</span>~Bin(<span class="math inline">\(n,p_n\)</span>), where <span class="math inline">\(p_n\)</span>~<span class="math inline">\(\lambda/n\)</span> as <span class="math inline">\(n-&gt;\infty\)</span> <span class="math inline">\(lim_{n-&gt;\infty}(np_0)=\lambda\)</span>, <strong>intuitively we can observe that</strong> <span class="math inline">\(\lambda\)</span> is the mean of</p>
+<p>given the well-known limit <span class="math inline">\(\lim _{n \rightarrow \infty}\left(1-\frac{\lambda}{n}\right)^n=e^{-\lambda}\)</span>, and <span class="math display">\[
+\begin{aligned}
+&amp; \frac{n}{n} \frac{n-1}{n} \ldots \frac{n-k+1}{n}=\prod_{i=0}^{k-1}\left(1-\frac{i}{n}\right) \\
+&amp; \lim _{n \rightarrow \infty} \prod_{i=0}^{k-1}\left(1-\frac{i}{n}\right)=1 \\
+&amp; P\left(X_n=k\right)=\binom{n}{k} p_n^k\left(1-p_n\right)^{n-k} \\
+&amp;= \frac{n \cdots(n-k+1)}{k!} p_n^k\left(1-p_n\right)^n\left(1-p_n\right)^{-k} \\
+&amp;= \frac{1}{k!}(\underbrace{n p_n}_{\rightarrow \lambda})^k \underbrace{\frac{n}{n} \frac{n-1}{n} \cdots \frac{n-k+1}{n}}_{\rightarrow 1} \underbrace{\left(1-p_n\right)^n}_{\rightarrow \mathrm{e}^{-\lambda}} \underbrace{\left(1-p_n\right)^{-k}}_{\rightarrow 1} \\
+&amp; \rightarrow \frac{\lambda^k}{k!} \mathrm{e}^{-\lambda} \underbrace{}_{\text {as } n \rightarrow \infty .}
+\end{aligned}
+\]</span></p>
+<p>Check that <span class="math inline">\(p_x(k), k=0,1,2, \cdots\)</span> defines a probability mass function: given the Taylor Series of <span class="math inline">\(e^\lambda\)</span> around <span class="math inline">\(\lambda=0\)</span> is given by <span class="math inline">\(f(x)=\)</span> <span class="math inline">\(\sum_{n=0}^{\infty} \frac{f^{(n)}(0)}{n!} x^n\)</span> and <span class="math inline">\(e^\lambda=\sum_{n=0}^{\infty} \frac{\lambda^n}{n!}\)</span>. Hence, <span class="math display">\[
+\begin{aligned}
+\sum_{k=0}^{\infty} p_X(k) &amp; =\sum_{k=0}^{\infty} \frac{\lambda^k}{k!} \mathrm{e}^{-\lambda} \\
+&amp; =\mathrm{e}^{-\lambda} \sum_{k=0}^{\infty} \frac{\lambda^k}{k!} \\
+&amp; =\mathrm{e}^{-\lambda} \cdot \mathrm{e}^\lambda \\
+&amp; =1 .
+\end{aligned}
+\]</span> ## Geometric distribution (and Geometric series–powerful!fantastic series)</p>
+<ul>
+<li><p>The probability of the first happening</p></li>
+<li><p>well-defined <span class="math inline">\(\begin{aligned} \sum_{k=1}^{\infty} p_X(k) &amp; =\sum_{k=1}^{\infty}(1-p)^{k-1} p \\ &amp; =p \sum_{k=0}^{\infty}(1-p)^k \\ &amp; =p \cdot \frac{1}{1-(1-p)} \\ &amp; =1 .\end{aligned}\)</span></p></li>
+<li><p>Tail probability of the Geometric distribution</p></li>
+</ul>
+<p>Let <span class="math inline">\(X \sim \operatorname{Geom}(p)\)</span> then <span class="math display">\[
+\begin{aligned}
+P(X&gt;n) &amp; =P(X=n+1)+P(X=n+2)+P(X=n+3)+\cdots \\
+&amp; =(1-p)^n p+(1-p)^{n+1} p+(1-p)^{n+2} p+\cdots \\
+&amp; =(1-p)^n p\left(1+(1-p)+(1-p)^2+\cdots\right) \\
+&amp; =(1-p)^n p \frac{1}{1-(1-p)} \\
+&amp; =(1-p)^n
+\end{aligned}
+\]</span> for any <span class="math inline">\(n=0,1,2, \ldots\)</span></p>
+<ul>
+<li>Memoryless property of Geometric distribution</li>
+</ul>
+<p>Suppose that <span class="math inline">\(X \sim \operatorname{Geom}(p)\)</span> and <span class="math inline">\(n \in\{1,2,3, \cdots\}\)</span>. Then <span class="math display">\[
+P(X-n=k \mid X&gt;n)=P(X=k) \quad, k=1,2,3, \cdots
+\]</span></p>
+<p>That is, the distribution of <span class="math inline">\(X-n\)</span> under the probability function <span class="math inline">\(P(\cdot \mid X&gt;n)\)</span> is the same as the distribution of <span class="math inline">\(X\)</span></p>
+<p>the memoryless property is saying that given the first n trials are unsuccessful, the number of trials until success after the first n trials has the same distribution as the unconditional number of trials until success (independent)</p>
+<ul>
+<li>Expectation</li>
+</ul>
+<p>Suppose that <span class="math inline">\(X \sim \operatorname{Geom}(p)\)</span>. Then <span class="math display">\[
+\begin{aligned}
+E(X)=\sum_{k=1}^{\infty} k P(X=k) &amp; =\sum_{k=1}^{\infty} k(1-p)^{k-1} p \\
+&amp; =p \sum_{k=1}^{\infty}\left[-\frac{\mathrm{d}}{\mathrm{~d} p}(1-p)^k\right] \\
+&amp; =-p \frac{\mathrm{~d}}{\mathrm{~d} p}\left[\sum_{k=0}^{\infty}(1-p)^k\right] \\
+&amp; =-p \frac{\mathrm{~d}}{\mathrm{~d} p}\left[\frac{1}{1-(1-p)}\right] \\
+&amp; =-p \frac{\mathrm{~d}}{\mathrm{~d} p}\left[\frac{1}{p}\right] \\
+&amp; =\frac{1}{p}
+\end{aligned}
+\]</span></p>
 
 
 </section>
