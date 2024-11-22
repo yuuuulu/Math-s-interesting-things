@@ -9,7 +9,29 @@ The history of the development of statistics has helped me gain a deeper underst
 
 Initially, I only grasped the surface of this knowledge. Then, as I delved deeper, I began to understand the underlying principles through observable phenomena. Eventually, almost miraculously, I realized how incredibly useful these theories are and how they coincide with natural occurrences. This process of moving closer and closer to generalization has profoundly illustrated to me the truth in the saying: "Mathematics is the art of giving the same name to different things."
 
-# 十堂极简概率课 中信出版 diaconis
+# 把公式推导单独放一栏（后）
+
+# error?
+
+-   Independent = Disjoint? NO!
+
+    Independent vs Disjoint: If P(E) \> 0 and P(F) \> 0, then E and F can NOT be both independent and disjoint.
+
+    Subsets are dependent. If E ⊂ F and neither P(E) = 0 nor P(F) = 1, then E and F are dependent.
+
+    Complements are dependent. If neither P(E) = 0 nor P(E) = 1, then E and E C are dependent.
+
+# My reading during this course：
+
+## 十堂极简概率课 中信出版 diaconis
+
+## 心理统计
+
+## The lady tasting tea
+
+## 概率论与数理统计（第三版） 峁诗松等老师编著
+
+## Probability....
 
 # bivariate data
 
@@ -491,33 +513,31 @@ In the case of large samples, it can ensure that the sample is evenly distribute
 
 # Random Variable
 
-## Definition: Random Variable (R.V.)
+## Random Variable (R.V.)
 
-A numerical variable whose value depends on the outcome of a chance experiment. A random variable associates a numerical value with each outcome of a chance experiment.(Think of it as a rule that translates each result of a chance event into a number.)
+A numerical variable whose value depends on the outcome of a chance experiment. A random variable associates a numerical value with each outcome of a chance experiment. (Think of it as a rule that translates each result of a chance event into a number.)
 
-A real-valued random variable X is a function
+In shorta: random variables convert random events into numbers.
 
-Continuous random variable X: S--\> R is continuous if its set of possible values includes an entire interval on the number line.
+A real-valued random variable X is a function: X : S → $\mathbb R$, where S is the sample space of a chance experiment.
 
-# sample space of 1 variable
+Continuous random variable X: S--\> R is continuous if its set of possible values includes an entire interval on the number line(measurement), which could not be count.
 
-X : S → $\mathbb R$, where S is the sample space of a chance experiment.
-
-Discrete random variable: A random variable is discrete if its set of possible value is a collection of isolated points along the number line.(counting)
-
-Continuous random variable: A random variable is continuous if its set of possible values includes an entire interval on the number line.(measurement), which could not be count.
+Discrete random variable: X: S--\> R if its set of possible value is a collection of isolated points along the number line.(counting)
 
 ### eg
 
-Examples: Coin Tossing (Discrete Random Variable) If we flip a coin 5 times, let X be the number of heads we get. Possible values of X {0,1,2,3,4,5} (where 0 means no heads, and 5 means all heads). Here, X turns each outcome of multiple coin tosses into a count of heads. Departure Time (Continuous Random Variable) Imagine tracking when people leave a subway station between 10 PM and 11 PM. Let Y represent the time (in hours) someone leaves, so Y can be any number from 10 to 11. Here, Y assigns each departure time to a point in the range \[10,11\].
+Examples: Coin Tossing (Discrete Random Variable) If we flip a coin 5 times, let X be the number of heads we get. Possible values of X {0,1,2,3,4,5} (where 0 means no heads, and 5 means all heads). Here, X turns each outcome of multiple coin tosses into a count of heads.
 
-### explaination
+Departure Time (Continuous Random Variable) Imagine tracking when people leave a subway station between 10 PM and 11 PM. Let Y represent the time (in hours) someone leaves, so Y can be any number from 10 to 11. Here, Y assigns each departure time to a point in the range \[10,11\].
 
-In short:
+## sample space of multivariables
 
-Random variables convert random events into numbers. Discrete random variables take specific values (like counting heads). Continuous random variables take any value in a range (like time).
+G:gender; F: year---corresponding to a certain student:S
 
--   Multiple variables
+(G, H) : S → $\mathbb R^2$, S={1,2,3,4}
+
+...
 
 ## Probability Mass Function and Cumulative Distribution Function for Discrete Random Variables
 
@@ -658,12 +678,6 @@ E[a X+b]=a E[X]+b
 $$
 
 -   Remark: Apart from this case, always assume $E[g(X)] \neq g(E[X])$.
-
-# sample space of multivariables
-
-G:gender; F: year---corresponding to a certain student:S
-
-(G, H) : S → $\mathbb R^2$, S={1,2,3,4}
 
 # joint distribution of X and Y
 
@@ -812,21 +826,17 @@ Density function's value could be greater than 1 because the integral of it in a
 
 ![](images/clipboard-2808960987.png)
 
-
 # Descrete distributions
-
 
 ## Bernoulli is composed by binomial
 
 ## Hypergeometric distribution could be approximated by Binomial when samples are large
 
-
 ## Poisson distribution as the limit of Binomial distribution when the number of trials is large and the probabiliy of success of each trial is inverse-proportional to the number of trials
 
-Suppose the $X_n,n\geq1$ is a sequence of random variables such that $X_n$~Bin($n,p_n$), where $p_n$~$\lambda/n$ as $n->\infty$ $lim_{n->\infty}(np_0)=\lambda$, **intuitively we can observe that** $\lambda$ is the mean of 
+Suppose the $X_n,n\geq1$ is a sequence of random variables such that $X_n$\~Bin($n,p_n$), where $p_n$\~$\lambda/n$ as $n->\infty$ $lim_{n->\infty}(np_0)=\lambda$, **intuitively we can observe that** $\lambda$ is the mean of
 
-given the well-known limit $\lim _{n \rightarrow \infty}\left(1-\frac{\lambda}{n}\right)^n=e^{-\lambda}$, and
-$$
+given the well-known limit $\lim _{n \rightarrow \infty}\left(1-\frac{\lambda}{n}\right)^n=e^{-\lambda}$, and $$
 \begin{aligned}
 & \frac{n}{n} \frac{n-1}{n} \ldots \frac{n-k+1}{n}=\prod_{i=0}^{k-1}\left(1-\frac{i}{n}\right) \\
 & \lim _{n \rightarrow \infty} \prod_{i=0}^{k-1}\left(1-\frac{i}{n}\right)=1 \\
@@ -837,27 +847,22 @@ $$
 \end{aligned}
 $$
 
-Check that $p_x(k), k=0,1,2, \cdots$ defines a probability mass function: given the Taylor Series of $e^\lambda$ around $\lambda=0$ is given by $f(x)=$ $\sum_{n=0}^{\infty} \frac{f^{(n)}(0)}{n!} x^n$ and $e^\lambda=\sum_{n=0}^{\infty} \frac{\lambda^n}{n!}$. Hence,
-$$
+Check that $p_x(k), k=0,1,2, \cdots$ defines a probability mass function: given the Taylor Series of $e^\lambda$ around $\lambda=0$ is given by $f(x)=$ $\sum_{n=0}^{\infty} \frac{f^{(n)}(0)}{n!} x^n$ and $e^\lambda=\sum_{n=0}^{\infty} \frac{\lambda^n}{n!}$. Hence, $$
 \begin{aligned}
 \sum_{k=0}^{\infty} p_X(k) & =\sum_{k=0}^{\infty} \frac{\lambda^k}{k!} \mathrm{e}^{-\lambda} \\
 & =\mathrm{e}^{-\lambda} \sum_{k=0}^{\infty} \frac{\lambda^k}{k!} \\
 & =\mathrm{e}^{-\lambda} \cdot \mathrm{e}^\lambda \\
 & =1 .
 \end{aligned}
-$$
-## Geometric distribution (and Geometric series--powerful!fantastic series)
+$$ \## Geometric distribution (and Geometric series--powerful!fantastic series)
 
-- The probability of the first happening
+-   The probability of the first happening
 
-- well-defined
-$\begin{aligned} \sum_{k=1}^{\infty} p_X(k) & =\sum_{k=1}^{\infty}(1-p)^{k-1} p \\ & =p \sum_{k=0}^{\infty}(1-p)^k \\ & =p \cdot \frac{1}{1-(1-p)} \\ & =1 .\end{aligned}$
+-   well-defined $\begin{aligned} \sum_{k=1}^{\infty} p_X(k) & =\sum_{k=1}^{\infty}(1-p)^{k-1} p \\ & =p \sum_{k=0}^{\infty}(1-p)^k \\ & =p \cdot \frac{1}{1-(1-p)} \\ & =1 .\end{aligned}$
 
+-   Tail probability of the Geometric distribution
 
-- Tail probability of the Geometric distribution
-
-Let $X \sim \operatorname{Geom}(p)$ then
-$$
+Let $X \sim \operatorname{Geom}(p)$ then $$
 \begin{aligned}
 P(X>n) & =P(X=n+1)+P(X=n+2)+P(X=n+3)+\cdots \\
 & =(1-p)^n p+(1-p)^{n+1} p+(1-p)^{n+2} p+\cdots \\
@@ -865,28 +870,21 @@ P(X>n) & =P(X=n+1)+P(X=n+2)+P(X=n+3)+\cdots \\
 & =(1-p)^n p \frac{1}{1-(1-p)} \\
 & =(1-p)^n
 \end{aligned}
-$$
-for any $n=0,1,2, \ldots$
+$$ for any $n=0,1,2, \ldots$
 
+-   Memoryless property of Geometric distribution
 
-- Memoryless property of Geometric distribution
-
-Suppose that $X \sim \operatorname{Geom}(p)$ and $n \in\{1,2,3, \cdots\}$. Then
-$$
+Suppose that $X \sim \operatorname{Geom}(p)$ and $n \in\{1,2,3, \cdots\}$. Then $$
 P(X-n=k \mid X>n)=P(X=k) \quad, k=1,2,3, \cdots
 $$
 
 That is, the distribution of $X-n$ under the probability function $P(\cdot \mid X>n)$ is the same as the distribution of $X$
 
-the memoryless property is saying that given the
-first n trials are unsuccessful, the number of trials until success after
-the first n trials has the same distribution as the unconditional number of trials until success (independent)
+the memoryless property is saying that given the first n trials are unsuccessful, the number of trials until success after the first n trials has the same distribution as the unconditional number of trials until success (independent)
 
+-   Expectation
 
-- Expectation
-
-Suppose that $X \sim \operatorname{Geom}(p)$. Then
-$$
+Suppose that $X \sim \operatorname{Geom}(p)$. Then $$
 \begin{aligned}
 E(X)=\sum_{k=1}^{\infty} k P(X=k) & =\sum_{k=1}^{\infty} k(1-p)^{k-1} p \\
 & =p \sum_{k=1}^{\infty}\left[-\frac{\mathrm{d}}{\mathrm{~d} p}(1-p)^k\right] \\
@@ -895,12 +893,9 @@ E(X)=\sum_{k=1}^{\infty} k P(X=k) & =\sum_{k=1}^{\infty} k(1-p)^{k-1} p \\
 & =-p \frac{\mathrm{~d}}{\mathrm{~d} p}\left[\frac{1}{p}\right] \\
 & =\frac{1}{p}
 \end{aligned}
-$$
-— variance
+$$ — variance
 
-
-Likewise,
-$$
+Likewise, $$
 \begin{aligned}
 E(X(X-1)) & =\sum_{k=1}^{\infty} k(k-1) P(X=k) \\
 & =\sum_{k=2}^{\infty} k(k-1)(1-p)^{k-1} p \\
@@ -910,5 +905,20 @@ E(X(X-1)) & =\sum_{k=1}^{\infty} k(k-1) P(X=k) \\
 & =p(1-p) \cdot \frac{2}{p^3} \\
 & =\frac{2(1-p)}{p^2} .
 \end{aligned}
-$$
-$$\begin{aligned} \operatorname{Var}(X) & =E(X(X-1))+E(X)-(E(X))^2 \\ & =\frac{2(1-p)}{p^2}+\frac{1}{p}-\frac{1}{p^2} \\ & =\frac{1-p}{p^2}\end{aligned}$$
+$$ $$\begin{aligned} \operatorname{Var}(X) & =E(X(X-1))+E(X)-(E(X))^2 \\ & =\frac{2(1-p)}{p^2}+\frac{1}{p}-\frac{1}{p^2} \\ & =\frac{1-p}{p^2}\end{aligned}$$
+
+
+## Geometric distribution
+
+### The irrelevance of past events to the probability of future independent events
+
+Given the first n trials are unsuccessful, the number of trials until success after the first n trials has the same distribution as the unconditional number of trials until success.
+
+X~Geom(p) and n$\in ${1,2,3,....}
+
+P(X-n=k|X>n)=P(X=k), k=1,2,3,...
+
+
+Tail probability for the probability calculation of more/higher than….
+
+

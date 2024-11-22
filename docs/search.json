@@ -740,5 +740,96 @@
     "title": "Analysis1",
     "section": "Defination",
     "text": "Defination"
+  },
+  {
+    "objectID": "mth1113.html#bernoulli-is-composed-by-binomial",
+    "href": "mth1113.html#bernoulli-is-composed-by-binomial",
+    "title": "MTH113 Intro to probability and statistics+APH003–exploring world through data",
+    "section": "Bernoulli is composed by binomial",
+    "text": "Bernoulli is composed by binomial"
+  },
+  {
+    "objectID": "mth1113.html#hypergeometric-distribution-could-be-approximated-by-binomial-when-samples-are-large",
+    "href": "mth1113.html#hypergeometric-distribution-could-be-approximated-by-binomial-when-samples-are-large",
+    "title": "MTH113 Intro to probability and statistics+APH003–exploring world through data",
+    "section": "Hypergeometric distribution could be approximated by Binomial when samples are large",
+    "text": "Hypergeometric distribution could be approximated by Binomial when samples are large"
+  },
+  {
+    "objectID": "mth1113.html#poisson-distribution-as-the-limit-of-binomial-distribution-when-the-number-of-trials-is-large-and-the-probabiliy-of-success-of-each-trial-is-inverse-proportional-to-the-number-of-trials",
+    "href": "mth1113.html#poisson-distribution-as-the-limit-of-binomial-distribution-when-the-number-of-trials-is-large-and-the-probabiliy-of-success-of-each-trial-is-inverse-proportional-to-the-number-of-trials",
+    "title": "MTH113 Intro to probability and statistics+APH003–exploring world through data",
+    "section": "Poisson distribution as the limit of Binomial distribution when the number of trials is large and the probabiliy of success of each trial is inverse-proportional to the number of trials",
+    "text": "Poisson distribution as the limit of Binomial distribution when the number of trials is large and the probabiliy of success of each trial is inverse-proportional to the number of trials\nSuppose the \\(X_n,n\\geq1\\) is a sequence of random variables such that \\(X_n\\)~Bin(\\(n,p_n\\)), where \\(p_n\\)~\\(\\lambda/n\\) as \\(n-&gt;\\infty\\) \\(lim_{n-&gt;\\infty}(np_0)=\\lambda\\), intuitively we can observe that \\(\\lambda\\) is the mean of\ngiven the well-known limit \\(\\lim _{n \\rightarrow \\infty}\\left(1-\\frac{\\lambda}{n}\\right)^n=e^{-\\lambda}\\), and \\[\n\\begin{aligned}\n& \\frac{n}{n} \\frac{n-1}{n} \\ldots \\frac{n-k+1}{n}=\\prod_{i=0}^{k-1}\\left(1-\\frac{i}{n}\\right) \\\\\n& \\lim _{n \\rightarrow \\infty} \\prod_{i=0}^{k-1}\\left(1-\\frac{i}{n}\\right)=1 \\\\\n& P\\left(X_n=k\\right)=\\binom{n}{k} p_n^k\\left(1-p_n\\right)^{n-k} \\\\\n&= \\frac{n \\cdots(n-k+1)}{k!} p_n^k\\left(1-p_n\\right)^n\\left(1-p_n\\right)^{-k} \\\\\n&= \\frac{1}{k!}(\\underbrace{n p_n}_{\\rightarrow \\lambda})^k \\underbrace{\\frac{n}{n} \\frac{n-1}{n} \\cdots \\frac{n-k+1}{n}}_{\\rightarrow 1} \\underbrace{\\left(1-p_n\\right)^n}_{\\rightarrow \\mathrm{e}^{-\\lambda}} \\underbrace{\\left(1-p_n\\right)^{-k}}_{\\rightarrow 1} \\\\\n& \\rightarrow \\frac{\\lambda^k}{k!} \\mathrm{e}^{-\\lambda} \\underbrace{}_{\\text {as } n \\rightarrow \\infty .}\n\\end{aligned}\n\\]\nCheck that \\(p_x(k), k=0,1,2, \\cdots\\) defines a probability mass function: given the Taylor Series of \\(e^\\lambda\\) around \\(\\lambda=0\\) is given by \\(f(x)=\\) \\(\\sum_{n=0}^{\\infty} \\frac{f^{(n)}(0)}{n!} x^n\\) and \\(e^\\lambda=\\sum_{n=0}^{\\infty} \\frac{\\lambda^n}{n!}\\). Hence, \\[\n\\begin{aligned}\n\\sum_{k=0}^{\\infty} p_X(k) & =\\sum_{k=0}^{\\infty} \\frac{\\lambda^k}{k!} \\mathrm{e}^{-\\lambda} \\\\\n& =\\mathrm{e}^{-\\lambda} \\sum_{k=0}^{\\infty} \\frac{\\lambda^k}{k!} \\\\\n& =\\mathrm{e}^{-\\lambda} \\cdot \\mathrm{e}^\\lambda \\\\\n& =1 .\n\\end{aligned}\n\\] ## Geometric distribution (and Geometric series–powerful!fantastic series)\n\nThe probability of the first happening\nwell-defined \\(\\begin{aligned} \\sum_{k=1}^{\\infty} p_X(k) & =\\sum_{k=1}^{\\infty}(1-p)^{k-1} p \\\\ & =p \\sum_{k=0}^{\\infty}(1-p)^k \\\\ & =p \\cdot \\frac{1}{1-(1-p)} \\\\ & =1 .\\end{aligned}\\)\nTail probability of the Geometric distribution\n\nLet \\(X \\sim \\operatorname{Geom}(p)\\) then \\[\n\\begin{aligned}\nP(X&gt;n) & =P(X=n+1)+P(X=n+2)+P(X=n+3)+\\cdots \\\\\n& =(1-p)^n p+(1-p)^{n+1} p+(1-p)^{n+2} p+\\cdots \\\\\n& =(1-p)^n p\\left(1+(1-p)+(1-p)^2+\\cdots\\right) \\\\\n& =(1-p)^n p \\frac{1}{1-(1-p)} \\\\\n& =(1-p)^n\n\\end{aligned}\n\\] for any \\(n=0,1,2, \\ldots\\)\n\nMemoryless property of Geometric distribution\n\nSuppose that \\(X \\sim \\operatorname{Geom}(p)\\) and \\(n \\in\\{1,2,3, \\cdots\\}\\). Then \\[\nP(X-n=k \\mid X&gt;n)=P(X=k) \\quad, k=1,2,3, \\cdots\n\\]\nThat is, the distribution of \\(X-n\\) under the probability function \\(P(\\cdot \\mid X&gt;n)\\) is the same as the distribution of \\(X\\)\nthe memoryless property is saying that given the first n trials are unsuccessful, the number of trials until success after the first n trials has the same distribution as the unconditional number of trials until success (independent)\n\nExpectation\n\nSuppose that \\(X \\sim \\operatorname{Geom}(p)\\). Then \\[\n\\begin{aligned}\nE(X)=\\sum_{k=1}^{\\infty} k P(X=k) & =\\sum_{k=1}^{\\infty} k(1-p)^{k-1} p \\\\\n& =p \\sum_{k=1}^{\\infty}\\left[-\\frac{\\mathrm{d}}{\\mathrm{~d} p}(1-p)^k\\right] \\\\\n& =-p \\frac{\\mathrm{~d}}{\\mathrm{~d} p}\\left[\\sum_{k=0}^{\\infty}(1-p)^k\\right] \\\\\n& =-p \\frac{\\mathrm{~d}}{\\mathrm{~d} p}\\left[\\frac{1}{1-(1-p)}\\right] \\\\\n& =-p \\frac{\\mathrm{~d}}{\\mathrm{~d} p}\\left[\\frac{1}{p}\\right] \\\\\n& =\\frac{1}{p}\n\\end{aligned}\n\\] — variance\nLikewise, \\[\n\\begin{aligned}\nE(X(X-1)) & =\\sum_{k=1}^{\\infty} k(k-1) P(X=k) \\\\\n& =\\sum_{k=2}^{\\infty} k(k-1)(1-p)^{k-1} p \\\\\n& =p(1-p) \\sum_{k=2}^{\\infty} k(k-1)(1-p)^{k-2} \\\\\n& =p(1-p) \\frac{\\mathrm{d}^2}{\\mathrm{~d} p^2}\\left[\\sum_{k=0}^{\\infty}(1-p)^k\\right] \\\\\n& =p(1-p) \\frac{\\mathrm{d}^2}{\\mathrm{~d} p^2} \\frac{1}{p} \\\\\n& =p(1-p) \\cdot \\frac{2}{p^3} \\\\\n& =\\frac{2(1-p)}{p^2} .\n\\end{aligned}\n\\] \\[\\begin{aligned} \\operatorname{Var}(X) & =E(X(X-1))+E(X)-(E(X))^2 \\\\ & =\\frac{2(1-p)}{p^2}+\\frac{1}{p}-\\frac{1}{p^2} \\\\ & =\\frac{1-p}{p^2}\\end{aligned}\\]"
+  },
+  {
+    "objectID": "mth1113.html#十堂极简概率课-中信出版-diaconis",
+    "href": "mth1113.html#十堂极简概率课-中信出版-diaconis",
+    "title": "MTH113 Intro to probability and statistics+APH003–exploring world through data",
+    "section": "十堂极简概率课 中信出版 diaconis",
+    "text": "十堂极简概率课 中信出版 diaconis"
+  },
+  {
+    "objectID": "mth1113.html#心理统计",
+    "href": "mth1113.html#心理统计",
+    "title": "MTH113 Intro to probability and statistics+APH003–exploring world through data",
+    "section": "心理统计",
+    "text": "心理统计"
+  },
+  {
+    "objectID": "mth1113.html#the-lady-tasting-tea",
+    "href": "mth1113.html#the-lady-tasting-tea",
+    "title": "MTH113 Intro to probability and statistics+APH003–exploring world through data",
+    "section": "The lady tasting tea",
+    "text": "The lady tasting tea"
+  },
+  {
+    "objectID": "mth1113.html#概率论与数理统计第三版-峁诗松等老师编著",
+    "href": "mth1113.html#概率论与数理统计第三版-峁诗松等老师编著",
+    "title": "MTH113 Intro to probability and statistics+APH003–exploring world through data",
+    "section": "概率论与数理统计（第三版） 峁诗松等老师编著",
+    "text": "概率论与数理统计（第三版） 峁诗松等老师编著"
+  },
+  {
+    "objectID": "mth1113.html#probability.",
+    "href": "mth1113.html#probability.",
+    "title": "MTH113 Intro to probability and statistics+APH003–exploring world through data",
+    "section": "Probability….",
+    "text": "Probability…."
+  },
+  {
+    "objectID": "mth1113.html#random-variable-r.v.",
+    "href": "mth1113.html#random-variable-r.v.",
+    "title": "MTH113 Intro to probability and statistics+APH003–exploring world through data",
+    "section": "Random Variable (R.V.)",
+    "text": "Random Variable (R.V.)\nA numerical variable whose value depends on the outcome of a chance experiment. A random variable associates a numerical value with each outcome of a chance experiment. (Think of it as a rule that translates each result of a chance event into a number.)\nIn shorta: random variables convert random events into numbers.\nA real-valued random variable X is a function: X : S → \\(\\mathbb R\\), where S is the sample space of a chance experiment.\nContinuous random variable X: S–&gt; R is continuous if its set of possible values includes an entire interval on the number line(measurement), which could not be count.\nDiscrete random variable: X: S–&gt; R if its set of possible value is a collection of isolated points along the number line.(counting)\n\neg\nExamples: Coin Tossing (Discrete Random Variable) If we flip a coin 5 times, let X be the number of heads we get. Possible values of X {0,1,2,3,4,5} (where 0 means no heads, and 5 means all heads). Here, X turns each outcome of multiple coin tosses into a count of heads.\nDeparture Time (Continuous Random Variable) Imagine tracking when people leave a subway station between 10 PM and 11 PM. Let Y represent the time (in hours) someone leaves, so Y can be any number from 10 to 11. Here, Y assigns each departure time to a point in the range [10,11]."
+  },
+  {
+    "objectID": "Mathematical Analysis 1.html#existence-means-beyond-any-human-efforts-and-objectively-existence.-we-take-the-value-that-we-need-means-a-human-effort-and-because-it-is-arbitrary-we-have-the-freedom-to-choose-one.-dr.-zhang",
+    "href": "Mathematical Analysis 1.html#existence-means-beyond-any-human-efforts-and-objectively-existence.-we-take-the-value-that-we-need-means-a-human-effort-and-because-it-is-arbitrary-we-have-the-freedom-to-choose-one.-dr.-zhang",
+    "title": "Analysis1",
+    "section": "‘Existence’ means beyond any human efforts, and objectively existence. We take the value that we need means a human effort, and because it is arbitrary, we have the freedom to choose one. — Dr. Zhang",
+    "text": "‘Existence’ means beyond any human efforts, and objectively existence. We take the value that we need means a human effort, and because it is arbitrary, we have the freedom to choose one. — Dr. Zhang"
+  },
+  {
+    "objectID": "mth1113.html#sample-space-of-multivariables",
+    "href": "mth1113.html#sample-space-of-multivariables",
+    "title": "MTH113 Intro to probability and statistics+APH003–exploring world through data",
+    "section": "sample space of multivariables",
+    "text": "sample space of multivariables\nG:gender; F: year—corresponding to a certain student:S\n(G, H) : S → \\(\\mathbb R^2\\), S={1,2,3,4}\n…"
+  },
+  {
+    "objectID": "mth1113.html#geometric-distribution",
+    "href": "mth1113.html#geometric-distribution",
+    "title": "MTH113 Intro to probability and statistics+APH003–exploring world through data",
+    "section": "Geometric distribution",
+    "text": "Geometric distribution\n\nThe irrelevance of past events to the probability of future independent events\nGiven the first n trials are unsuccessful, the number of trials until success after the first n trials has the same distribution as the unconditional number of trials until success.\nX~Geom(p) and n$${1,2,3,….}\nP(X-n=k|X&gt;n)=P(X=k), k=1,2,3,…\nTail probability for the probability calculation of more/higher than…."
+  },
+  {
+    "objectID": "Mathematical Analysis 1.html#triangle-inequality-is-a-strong-tool",
+    "href": "Mathematical Analysis 1.html#triangle-inequality-is-a-strong-tool",
+    "title": "Analysis1",
+    "section": "triangle inequality is a strong tool",
+    "text": "triangle inequality is a strong tool\n\\[\n\\begin{aligned}\n& \\lim _{x \\rightarrow \\infty}\\left|\\frac{\\frac{11}{x}-\\frac{9}{x^2}}{25+\\frac{35}{x}+\\frac{6}{x^2}}\\right| \\\\\n& |25+\\frac{35}{x}+\\frac{10}{x^2}\\left|=\\left|25-\\left(\\frac{35}{-x}-\\frac{10}{x^2}\\right)\\right|\\right. \\\\\n& \\left.\\geqslant|25|-| \\frac{35}{x}+\\frac{10}{x^2} \\right\\rvert\\\\ \\\\\n& \\geqslant 25-\\left|\\frac{35}{x}\\right|-\\left|\\frac{10}{x^2}\\right|\\\\\n& \\forall x&gt;10 \\\\\n\\end{aligned}\n\\] \\[\n25-| \\frac{35}{x}\\left|-\\left|\\frac{10}{x^2}\\right|&gt;25-\\left(\\frac{35}{10}+\\frac{10}{10^2}\\right)=M_1\\right.\n\\] Take \\(M_2=\\frac{22}{M_1 \\varepsilon}, \\forall|x|&gt;\\frac{22}{M_1 \\varepsilon},\\left|\\frac{11}{x}\\right|&lt;\\frac{M_1 \\varepsilon}{2}\\) Take \\(M_3=\\sqrt{\\frac{18}{m_1 \\varepsilon}}, \\forall|x|&gt;\\sqrt{\\frac{18}{m_1 \\varepsilon}},\\left|\\frac{9}{x^2}\\right|&lt;\\frac{m_1 \\varepsilon}{2}\\) \\[\n\\left|\\frac{11}{x}-\\frac{9}{x^2}\\right|&lt;\\left|\\frac{11}{x}\\right|+\\left|\\frac{9}{x^2}\\right|\n\\]\nSo Take \\(M=m \\cdot a x\\left\\{10, \\frac{22}{M_1 a}, \\sqrt{\\frac{18}{m_1 \\varepsilon}}\\right\\}\\), we hame \\(\\forall \\varepsilon&gt;0, \\forall|x|&gt;m\\), such that…&lt;\\(\\epsilon\\)"
   }
 ]

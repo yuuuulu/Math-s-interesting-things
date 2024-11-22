@@ -7,6 +7,7 @@ editor:
 
 # My main Analysis learning instructions(philosophy): Theorems come, theorems go, only examples lie forever.
 
+
 Maybe I could not remember all process of each profound theorems proof, but I could also understand Analysis in depth by handling how to use theorems to solve problems.(But I need to try to know how the proof using each condition in the theorems and internalize it by continurousely thinking) In this case, examples help me a lot.
 
 
@@ -25,6 +26,7 @@ open set is countable union of open intervals---
 欧拉 拉格朗日比较有创意，数学的趣味，但后面，cauchy weiastrass 给的连续定理，严格化
 
 # 记得写出存在，（ps：存在主义是生命价值驱动的好心情源泉）
+## 'Existence' means beyond any human efforts, and objectively existence. We take the value that we need means a human effort, and because it is arbitrary, we have the freedom to choose one. --- Dr. Zhang
 
 # max and min need to be found
 
@@ -1251,6 +1253,28 @@ so Z is countable
 
 
 # Limit(Topology version)
+
+## triangle inequality is a strong tool
+$$
+\begin{aligned}
+& \lim _{x \rightarrow \infty}\left|\frac{\frac{11}{x}-\frac{9}{x^2}}{25+\frac{35}{x}+\frac{6}{x^2}}\right| \\
+& |25+\frac{35}{x}+\frac{10}{x^2}\left|=\left|25-\left(\frac{35}{-x}-\frac{10}{x^2}\right)\right|\right. \\
+& \left.\geqslant|25|-| \frac{35}{x}+\frac{10}{x^2} \right\rvert\\ \\
+& \geqslant 25-\left|\frac{35}{x}\right|-\left|\frac{10}{x^2}\right|\\
+& \forall x>10 \\
+\end{aligned}
+$$
+$$
+25-| \frac{35}{x}\left|-\left|\frac{10}{x^2}\right|>25-\left(\frac{35}{10}+\frac{10}{10^2}\right)=M_1\right.
+$$
+Take $M_2=\frac{22}{M_1 \varepsilon}, \forall|x|>\frac{22}{M_1 \varepsilon},\left|\frac{11}{x}\right|<\frac{M_1 \varepsilon}{2}$
+Take $M_3=\sqrt{\frac{18}{m_1 \varepsilon}}, \forall|x|>\sqrt{\frac{18}{m_1 \varepsilon}},\left|\frac{9}{x^2}\right|<\frac{m_1 \varepsilon}{2}$
+$$
+\left|\frac{11}{x}-\frac{9}{x^2}\right|<\left|\frac{11}{x}\right|+\left|\frac{9}{x^2}\right|
+$$
+
+So Take $M=m \cdot a x\left\{10, \frac{22}{M_1 a}, \sqrt{\frac{18}{m_1 \varepsilon}}\right\}$, we hame
+$\forall \varepsilon>0, \forall|x|>m$, such that...<$\epsilon$
 
 
 ## understanding deeply(explain by myself...)
