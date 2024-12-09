@@ -160,7 +160,12 @@ window.Quarto = {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#thanks" id="toc-thanks" class="nav-link active" data-scroll-target="#thanks">Thanks</a></li>
+  <li><a href="#the-most-interesting-thing-i-think-in-this-modulejordan-form" id="toc-the-most-interesting-thing-i-think-in-this-modulejordan-form" class="nav-link active" data-scroll-target="#the-most-interesting-thing-i-think-in-this-modulejordan-form">The most interesting thing (I think) in this module—Jordan form</a>
+  <ul class="collapse">
+  <li><a href="#eigenvalue-and-eigenspace" id="toc-eigenvalue-and-eigenspace" class="nav-link" data-scroll-target="#eigenvalue-and-eigenspace">Eigenvalue and Eigenspace</a></li>
+  <li><a href="#generalized-eigenspace" id="toc-generalized-eigenspace" class="nav-link" data-scroll-target="#generalized-eigenspace">Generalized eigenspace</a></li>
+  <li><a href="#jordan-form-makes-me-understand-linear-algebra-more-deeply-which-also-introduces-differential-equations-to-me" id="toc-jordan-form-makes-me-understand-linear-algebra-more-deeply-which-also-introduces-differential-equations-to-me" class="nav-link" data-scroll-target="#jordan-form-makes-me-understand-linear-algebra-more-deeply-which-also-introduces-differential-equations-to-me">Jordan form makes me understand Linear Algebra more deeply, which also introduces differential equations to me</a></li>
+  </ul></li>
   <li><a href="#study-motivation" id="toc-study-motivation" class="nav-link" data-scroll-target="#study-motivation">study motivation</a></li>
   <li><a href="#chapter-0-motivationreviews" id="toc-chapter-0-motivationreviews" class="nav-link" data-scroll-target="#chapter-0-motivationreviews">Chapter 0: motivation/reviews</a>
   <ul class="collapse">
@@ -263,6 +268,7 @@ window.Quarto = {
   <li><a href="#problems" id="toc-problems" class="nav-link" data-scroll-target="#problems">problems</a></li>
   <li><a href="#understand-again" id="toc-understand-again" class="nav-link" data-scroll-target="#understand-again">understand again</a></li>
   </ul></li>
+  <li><a href="#thanks" id="toc-thanks" class="nav-link" data-scroll-target="#thanks">Thanks</a></li>
   </ul>
 </nav>
     </div>
@@ -288,14 +294,39 @@ window.Quarto = {
 </header>
 
 
-<section id="thanks" class="level1">
-<h1>Thanks</h1>
-<p>I feel so lucky to learn from Professor. Paul-Henry Leemann. He teaches Linear Algebra very well. He is also a kind, responsible and humorous teacher.</p>
+<section id="the-most-interesting-thing-i-think-in-this-modulejordan-form" class="level1">
+<h1>The most interesting thing (I think) in this module—Jordan form</h1>
+<section id="eigenvalue-and-eigenspace" class="level2">
+<h2 class="anchored" data-anchor-id="eigenvalue-and-eigenspace">Eigenvalue and Eigenspace</h2>
+<p>An operator on V has a diagnalizable matrix representation if it has the same number as dimV of eigenvectors .</p>
+<p>However, some operators have not enough eigenvectors to span a whole vector space so that the matrix could not be as simple as a diagnalizable matrix.</p>
+</section>
+<section id="generalized-eigenspace" class="level2">
+<h2 class="anchored" data-anchor-id="generalized-eigenspace">Generalized eigenspace</h2>
+<p>The introduce of generalized eigenspaces makes a matrix as simple as possible, though not much simple as a diagnal matrix for computation.</p>
+</section>
+<section id="jordan-form-makes-me-understand-linear-algebra-more-deeply-which-also-introduces-differential-equations-to-me" class="level2">
+<h2 class="anchored" data-anchor-id="jordan-form-makes-me-understand-linear-algebra-more-deeply-which-also-introduces-differential-equations-to-me">Jordan form makes me understand Linear Algebra more deeply, which also introduces differential equations to me</h2>
+<ul>
+<li><p>The characteristic polynomial tells us the eigenvalues and the dimension of each generalized eigenspace, which is the number of times the eigenvalue appears along the diagonal of the Jordan form (also known as the “multiplicity” of λ)</p></li>
+<li><p>Each Jordan block with respect to a basis of an eigenvector and others are generalized eigenvectors which could be computed based on the eigenvector and <span class="math inline">\((T-\lambda Id)^m,\)</span>where m<span class="math inline">\(\leq dimV\)</span>since the dimension of each eigenspace tells us how many Jordan blocks corresponding to that eigenvalue there are in the Jordan form. This also means that the Jordan form is unique with permutation but the Jordan basis is not unique.</p></li>
+<li><p>The size of the largest Jordan block corresponding to an eigenvalue λ of T is exactly the degree of the (t − λ) term in the minimal polynomial of T .i.e. The exponents of the different terms in the minimal polynomial tell us the sizes of the largest Jordan blocks corresponding to each eigenvalue.</p>
+<ul>
+<li><p>To kill off a Jordan block of size k, we need the polynomial <span class="math inline">\((t-\lambda)^k\)</span>. Any smaller Jordan block with the same eigenvalue will also be killed off under this polynomial</p>
+<ul>
+<li>We could explain it more clearly</li>
+</ul></li>
+</ul>
+<p>For one simple situation, which is the Jordan form with only 1 block</p>
+<p>Since the minimal polynomial applied by the operator T on V (<span class="math inline">\(M_T(T)\)</span>) must be 0, the Jordan form with only 1 block has the minimal polynomial (t-<span class="math inline">\(\lambda\)</span>)<span class="math inline">\(^{dimV}\)</span></p>
+<p>More generally, if we have a Jordan form with 2 blocks B and C, with one same eigenvalue, Since the minimal polynomial applied by the operator T on V (<span class="math inline">\(M_T(T)\)</span>) must be 0, <span class="math inline">\((T-\lambda I)^m\)</span> in <span class="math inline">\(M_T(T)\)</span> should have m satisfying <span class="math inline">\((B-\lambda I)^m=0\)</span> and <span class="math inline">\((C-\lambda I)^m=0\)</span>. In this case, since any smaller Jordan block with the same eigenvalue will also be killed off under the <span class="math inline">\((T-\lambda I)^m\)</span> in <span class="math inline">\(M_T(T)\)</span>, when the largest Jordan block is 0, smaller blocks are also 0. What is more, if <span class="math inline">\(\exists\)</span> a block with dimention greater than the power of the corresponding term in the polynomial, there then is a contradiction to the defination of the minimal polynomial(must be 0). If the largest Jordan block has the dimension strictly less than the power of the corresponding term in the polynomial, there then also is a contradiction to the defination of the minimal polynomial(smallest power)</p></li>
+</ul>
+</section>
 </section>
 <section id="study-motivation" class="level1">
 <h1>study motivation</h1>
 <ul>
-<li>Good explanation -&gt;-&gt; symbolic proof(just like I do not like <span class="math inline">\(\epsilon-\delta\)</span> language in Analysis)</li>
+<li>Good intuitively explanation for a Thm or… &gt;&gt; symbolic proof(just like I do not like <span class="math inline">\(\epsilon-\delta\)</span> language in Analysis)</li>
 </ul>
 </section>
 <section id="chapter-0-motivationreviews" class="level1">
@@ -1266,7 +1297,6 @@ T^{-1} \circ T = \text{id}_{F^{\{1,2,3,...n\}}}.
 <li><p>Lemma Let T</p></li>
 </ul>
 <p><img src="images/clipboard-868461290.png" class="img-fluid"></p>
-<p><img src="images/clipboard-4280216890.png" class="img-fluid"></p>
 <p><img src="images/clipboard-3941908751.png" class="img-fluid"></p>
 </section>
 </section>
@@ -1289,9 +1319,14 @@ T^{-1} \circ T = \text{id}_{F^{\{1,2,3,...n\}}}.
 <section id="understand-again" class="level2">
 <h2 class="anchored" data-anchor-id="understand-again">understand again</h2>
 <p><img src="images/clipboard-1253681054.png" class="img-fluid" alt="understand vector space"> see abstract vector space for a review</p>
-
-
 </section>
+</section>
+<section id="thanks" class="level1">
+<h1>Thanks</h1>
+<p>I feel so lucky to learn from Professor Paul-Henry Leemann. He teaches Linear Algebra very well. He is also a kind, responsible and humorous teacher.</p>
+<p>Professor Andrew Lin teaches Linear Algebra very very well and interesting.</p>
+
+
 </section>
 
 </main> <!-- /main -->

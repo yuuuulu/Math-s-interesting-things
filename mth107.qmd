@@ -4,13 +4,54 @@ format: html
 editor: visual
 ---
 
-# Thanks
 
-I feel so lucky to learn from Professor. Paul-Henry Leemann. He teaches Linear Algebra very well. He is also a kind, responsible and humorous teacher.
+
+
+
+# The most interesting thing (I think) in this module---Jordan form
+
+
+
+
+## Eigenvalue and Eigenspace
+
+
+An operator on V has a diagnalizable matrix representation if it has the same number as dimV of eigenvectors .
+
+However, some operators have not enough eigenvectors to span a whole vector space so that the matrix could not be as simple as a diagnalizable matrix.
+
+
+## Generalized eigenspace
+
+
+The introduce of generalized eigenspaces makes a matrix as simple as possible, though not much simple as a diagnal matrix for computation.
+
+## Jordan form makes me understand Linear Algebra more deeply, which also introduces differential equations to me
+
+- The characteristic polynomial tells us the eigenvalues and the dimension of each generalized eigenspace, which is the number of times the eigenvalue appears along the diagonal of the Jordan form (also known as the “multiplicity” of λ)
+
+- Each Jordan block with respect to a basis of an eigenvector and others are generalized eigenvectors which could be computed based on the eigenvector and $(T-\lambda Id)^m,$where m$\leq dimV$since the dimension of each eigenspace tells us how many Jordan blocks corresponding to that eigenvalue there are in the Jordan form. This also means that the Jordan form is unique with permutation but the Jordan basis is not unique.
+
+- The size of the largest Jordan block corresponding to an eigenvalue λ of T is exactly the degree of the (t − λ) term in the minimal polynomial of T .i.e. The exponents of the different terms in the minimal polynomial tell us the sizes of the largest Jordan blocks corresponding to each eigenvalue.
+
+  - To kill off a Jordan block of size k, we need the polynomial $(t-\lambda)^k$. Any smaller Jordan block with the same eigenvalue will also be killed off under this polynomial
+
+    - We could explain it more clearly 
+     
+   For one simple situation, which is the Jordan form with only 1 block
+  
+  Since the minimal polynomial applied by the operator T on V ($M_T(T)$) must be 0, the Jordan form with only 1 block has the minimal polynomial (t-$\lambda$)$^{dimV}$
+  
+  More generally, if we have a Jordan form with 2 blocks B and C, with one same eigenvalue, Since the minimal polynomial applied by the operator T on V ($M_T(T)$) must be 0, $(T-\lambda I)^m$ in $M_T(T)$ should have m satisfying $(B-\lambda I)^m=0$ and $(C-\lambda I)^m=0$. In this case, since any smaller Jordan block with the same eigenvalue will also be killed off under the $(T-\lambda I)^m$ in $M_T(T)$, when the largest Jordan block is 0, smaller blocks are also 0. What is more, if $\exists$ a block with dimention greater than the power of the corresponding term in the polynomial, there then is a contradiction to the defination of the minimal polynomial(must be 0). If the largest Jordan block has the dimension strictly less than the power of the corresponding term in the polynomial, there then also is a contradiction to the defination of the minimal polynomial(smallest power)
+      
+      
+      
+
+
 
 # study motivation
 
--   Good explanation ->-> symbolic proof(just like I do not like $\epsilon-\delta$ language in Analysis)
+-   Good intuitively explanation for a Thm or... >> symbolic proof(just like I do not like $\epsilon-\delta$ language in Analysis)
 
 # Chapter 0: motivation/reviews
 
@@ -1206,9 +1247,40 @@ see photo in particular, $m \leq n$. ok
 
 ![](images/clipboard-868461290.png)
 
-![](images/clipboard-4280216890.png)
+
 
 ![](images/clipboard-3941908751.png)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 # Tutorial
 
@@ -1235,3 +1307,13 @@ eg. ![](images/clipboard-1407097711.png)
 ## understand again
 
 ![understand vector space](images/clipboard-1253681054.png) see abstract vector space for a review
+
+
+
+
+# Thanks
+
+I feel so lucky to learn from Professor Paul-Henry Leemann. He teaches Linear Algebra very well. He is also a kind, responsible and humorous teacher.
+
+
+Professor Andrew Lin teaches Linear Algebra very very well and interesting.
