@@ -9,6 +9,8 @@ The history of the development of statistics has helped me gain a deeper underst
 
 Initially, I only grasped the surface of this knowledge. Then, as I delved deeper, I began to understand the underlying principles through observable phenomena. Eventually, almost miraculously, I realized how incredibly useful these theories are and how they coincide with natural occurrences. This process of moving closer and closer to generalization has profoundly illustrated to me the truth in the saying: "Mathematics is the art of giving the same name to different things."
 
+Theorems come, theorems go. Only examples are lying forever. (Practice to use statistics to interpret real world examples)
+
 # 把公式推导单独放一栏（后）
 
 # error?
@@ -126,7 +128,13 @@ abline(lm(satisfaction_rating ~ quality_rating), col = "red")  # 添加回归线
 
 # skew
 
-mean is much sensitive than the median so the outlier drags the mean to the skew...... ![](images/clipboard-2849357671.png)
+Data skewed to the left(negatively skewed) have a longer left tail, and the mean and media are to the left of the mode.
+
+Data skewed to the right(positively skewed) have a longer right tail, and the mean and media are to the right of the mode.
+
+mean is much sensitive than the median to the extreame value(not a resistant measure of center) so the outlier drags the mean to the skew...... ![](images/clipboard-2849357671.png)
+
+ps: the **trimmed mean** is more resistant.
 
 ![](images/clipboard-2111278063.png)
 
@@ -142,7 +150,13 @@ a mild outlier if it lies more than 1.5(iqr) away from the nearest quartile (the
 
 an extreme outlier if it lies more than 3(iqr) away from the nearest quartile.
 
-(These definitions and distances are based on the hypothetical Normal distribution (bell shaped, symmetric, normal tails). When there is a reason to suspect that the distribution is skewed, the bounds should be changed.)
+(These definitions and distances are based on the hypothetical Normal distribution (bell shaped, symmetric, normal tails). When there is a reason to suspect that the distribution is skewed, the bounds should be changed.)
+
+# quartile
+
+$Q_1$(First quartile): at least 25% of the sorted values are less than or equal to $Q_1$ and at least 75% of the values are greater than or equal to $Q_1$
+
+$Q_3$(Third quartile): ..
 
 # modified boxplot
 
@@ -237,6 +251,12 @@ ggplot(data, aes(x = "", y = ratios)) +
   coord_cartesian(ylim = c(0.3, 1))      # 设置y轴范围
 
 ```
+
+# Measures of relative standing
+
+## z Scores
+
+eg. height(among women or men (come from different populations)instead of just comparing the height itself)
 
 # tutorial
 
@@ -816,7 +836,7 @@ For a continuous random variable X, the Probability Density Function (PDF) of X 
 
 ![](images/clipboard-1910128728.png)
 
-Density function's value could be greater than 1 because the integral of it in a very tiny interval could be very small, which represents the probability.
+Density function's value could be greater than 1 because the integral of it in a very tiny interval could be very small, which represents the probability(which could not be greater than 1 and since the interval could be very tiny this condition is satisfied!).(This reminder notices that the value of pdf is not the probability since the integration is the probability which is totally 1)
 
 # Covariance
 
@@ -828,11 +848,29 @@ Density function's value could be greater than 1 because the integral of it in a
 
 # Descrete distributions
 
+A probability distribution is a graph, table of formula that gives the probability for each value of the random variable.
+
 ## Bernoulli is composed by binomial
 
 ## Hypergeometric distribution could be approximated by Binomial when samples are large
 
 ## Poisson distribution as the limit of Binomial distribution when the number of trials is large and the probabiliy of success of each trial is inverse-proportional to the number of trials
+
+-   The Poisson distribution is a discrete probability distribution that applies to occurrences of some event over a specified interval. The random variable x is the number of occurrences of the event in an interval.The probability of the event occurring x times over an interval is given by $$P(x)=\frac{u^x\cdot e^{-\mu}}{x!}$$ where the random variable x is the number of occurences of an event over some interval and the ovvurrences must be random and independent of each other.
+
+### ???The occurrences must be uniformly distributed over the interval being used
+
+The mean is $\mu$
+
+The standard deviation is $\sigma= \sqrt \mu$
+
+-   eg of Poisson distribution: (describing the behavior of rare events(with small probabilities). radioactive decay, arrivals of people in a line, eagles nesting in a region, patients arriving at an emergency room(the local hospital experiences a mean of 2.3 patients arriving at the emergency room during 10-11 P.M. on Fri. is known, we can find the probability that for a randomly selected Fri. between 10-11 P.M., exactly four patients arrive), Internet users logging onto a Web site )
+
+-   Comparison between Binomial:
+
+Binomal distribution is affected by yhe smaple size n and the probability p, whereas the Poisson distribution is affected only by mean $\mu$
+
+A binomial distribution has a limit of possible values but a Poisson distribution has a possible values x without upper bound.
 
 Suppose the $X_n,n\geq1$ is a sequence of random variables such that $X_n$\~Bin($n,p_n$), where $p_n$\~$\lambda/n$ as $n->\infty$ $lim_{n->\infty}(np_0)=\lambda$, **intuitively we can observe that** $\lambda$ is the mean of
 
@@ -907,18 +945,175 @@ E(X(X-1)) & =\sum_{k=1}^{\infty} k(k-1) P(X=k) \\
 \end{aligned}
 $$ $$\begin{aligned} \operatorname{Var}(X) & =E(X(X-1))+E(X)-(E(X))^2 \\ & =\frac{2(1-p)}{p^2}+\frac{1}{p}-\frac{1}{p^2} \\ & =\frac{1-p}{p^2}\end{aligned}$$
 
-
 ## Geometric distribution
 
 ### The irrelevance of past events to the probability of future independent events
 
 Given the first n trials are unsuccessful, the number of trials until success after the first n trials has the same distribution as the unconditional number of trials until success.
 
-X~Geom(p) and n$\in ${1,2,3,....}
+X\~Geom(p) and n\$\in \${1,2,3,....}
 
-P(X-n=k|X>n)=P(X=k), k=1,2,3,...
-
+P(X-n=k\|X\>n)=P(X=k), k=1,2,3,...
 
 Tail probability for the probability calculation of more/higher than….
 
+# Normal distribution
 
+## interpretation:
+
+-   Standard normally distributed sth. z=1.58(corresponding to 0.9429):
+
+    the probability of randomly selecting sth. with a value less than 1.58(unit) is equal to the area(probability) of 0.9429.
+
+    (Or: 94.29% of sth, will have a value below 1.58(unit))
+
+## Sampling distributions and Estimators
+
+We are beginning to embark a journey that allows us to learn about populations by obtaining data from samples since it is rare that we know all values in an entire population.
+
+**Sampling distribution of a statistic** is the probability distribution of a sample statistics (such as mean/proportion which tend to target the population mean/proportion), with all samples having the same sample size. This concept is important to understand. The behavior of a statistic can be known by understanding its distribution( (The random variable in this case is the value of that sample statistics)). Under certain condition, the distribution of sampling mean/proportion approximates a normal distribution.
+
+(ps: the advantage of sampling with replacement:
+
+when selecting a relatively small sample from a large population, it makes no significant difference whether we sample with or without replacement.
+
+Sampling with replacement results in independent events that are unaffected by previous outcomes, and independent events are easier to analyze and they result in simpler formulas.)
+
+**For a fixed sample size, the mean of all possible sample means is equal to the mean of population though sample means vary(sampling variability)**
+
+## Unbiased estimators and biased estimators
+
+Statistics that target population parameters: Mean, variance, proportion
+
+Statistics that do target population parameters: Median, Range, Standard Deviation
+
+(the bias is relatively small then sampling standard deviation in large samples so s is ofent used to estimate $\sigma$)
+
+# The Central Limit Thm
+
+It is the foundation for estimation population parameters and hypothesis testing
+
+(Recall: A random variable is a variable that has a single numerical value(eg. x=1,x=2), determined by chance, for each outcome of a procedure随机变量是一种变量，对于一个过程的每个结果都有一个随机确定的单一数值(可以理解为，现象作用其上
+
+A probability distribution is a graph, table or formula that gives the probability for each value of a random variable
+
+The sampling distribution of the mean is the probability fistribution of sample means, with all sample having the same sample size n)
+
+As the sample size increases, the corresponding sample means tend to vary less. The central limit thm tells us that if the sample size is large engough, the distribution of sample means can be approximated by normal distribution
+
+Conclusion of CLT: (it is so important since it allows us to use the basic normal distribution methods in a wide variety of different circumstances)
+
+The distribution of sample means will, as the sample size increases, approach a normal distribution
+
+The mean of all sample means is the population mean $\mu.$. $$\mu_{\bar x}=\mu$$
+
+The standard deviation of all sample means is $\sigma/ \sqrt n$ (i,e, the normal distribution from conclusion"The distribution of sample means will, as the sample size increases, approach a normal distribution" has standard deviation $\sigma/ \sqrt n$ ) $$\sigma_{\bar x}=\frac{\sigma}{\sqrt n}$$ $\sigma_{\bar x}$ is often called the standard error of the mean.
+
+30
+
+Notice: Be careful to look at if it is from a normally ditributed population or a mean for some sample/group.
+
+If given the population mean is a and a sample(c subjects) mean is b which has so small probbility under the sampling distribution with this populatio mean, if the mean is really a, then there is an extremely small probability of getting a sample mean of b or lower when c subjects are randomly selected. we can interpret it in such 2 ways:
+
+1)  population mean is true and their sample represents a chance event that is extreamely rare
+
+2)  population mean is not true and sample is typical.
+
+Because the probability is too low, it seems more reasonable to conclude that the population mean is lower than a---hypothesis testing's thinking
+
+### Optional: Correction for a finite population
+
+When sampling without replacement and the sample size n is greater than 5% of the finite populaiton size B(i.e. n\>0.05N), ...
+
+## Using the Normal distribution as an approximation to the binomial distribution
+
+requirement: np, n(1-p) $\geq$ 5
+
+Be careful: adjust x for continuity by + or - 0.5(eg. at least 99, choose 98.5)
+
+## to hypothesis testing
+
+a question (eg):
+
+In a test of a gender-selection technique assume that 100 couples using a particular treatment give birth to 52 girls (and 48 boys). If the technique has no effect, then the probability of a girl is approximately 0.5. If the probability of a girl is 0.5, find the probability that among 100 newborn babies, exactly 52 are girls. Based on the result, is there strong evidence supporting a claim that the gender-selection technique increases the likelihood that a baby is a girl?
+
+it is a binomial distribution with np=nq=100\*0.5=50$\geq 5$
+
+so we use the normal distribution with mean of 50 and $\sigma = \sqrt {npq} = 5$as an approximation to the binomial distribution
+
+to answer"is there strong evidence supporting a claim that the gender-selection technique increases the likelihood that a baby is a girl?", we need to calculate more than 52(x successes among n trials is an unusually high number of successes if P($x\geq a$) is very small)
+
+原因是因为如果只看52这个数字肯定概率很小，因为任何单个数字发生的可能性概率都很小
+
+So if the answer of P($x\geq 52$) is small we could conclude that the gender selection is useful
+
+(总结：如果是0。5概率来看的话52以上本来就不是难事，as indicated by the such large probability of  P($x\geq 52$) 所以我们没有充分证据拒绝“not effective”这个假设前提)
+
+
+
+此处还没有引入假设检验所以都是用using probability to determine when results are unusual这个思想来思考问题的：
+
+ - Unusually low： x successes among n trails is an unually low number of successes if P(x or fewer) is very small
+
+
+
+![](images/clipboard-804415.png)
+ 
+ 
+Interpretation for another example of gender selection(using only unusual results to explain): Because the probability of more than 13 girls, which is  0.001 is so low, we conclude that it is unusual to get 13 girls among 14 babies (using binomial to calculate it). This suggests that the technique of gender selection appears to be effective since it is highly unlikely that the result of 13 girls among 14 births happened by chance.
+
+## Normal distribution
+
+
+If a variable is the superposition result of a large number of small independent random factors, then the variable must obey the normal distribution of variables
+
+e.g. measure error
+
+
+### Assessing Normality
+
+
+In general, quantile plots can be used to assess any probability distribution.
+
+
+For a normal quantile plot(or normal probability plot), it is a graph of points(x,y) where each x vaue is from the original set of sample data and each y value is the cooresponding z score that is a quantile value expected from the standard normal distribution
+
+
+#### Procedures
+
+
+- Histogram(not helpful for small data set)
+
+- outliers: reject normality if there is more than 1 outlier present(not helpful for small data set)
+
+- normal quantile plot: 
+
+ sort data from lowest to highest
+
+
+## inferences from 2 samples introduces the differences between two populaton means using matched pairs but correlaition and regression analyze the association between the 2 variables and if such an association exists we wnat to describe it with an equation that can be used for predictions
+
+
+paired sampled data(or called bivariate data)
+
+- a correlation exists between two variables when one of them is related to the other in some way.
+
+
+
+- the linear correlation coefficient r measures the strength of the linear association between the paired x- and y-quantitative values in a sample. Its value is computed by using the formula(Pearson(1857-1937) product moment correlation coefficient)
+
+
+
+......otherwise there is not sufficient evidence to support the conclusion of a significant linear equation
+
+
+!!!: interpreting r: explained variation: the value of $r^2$ is the proportion of the variation in y that is explained by the linear association between x and y.(and the other percentage is explained by factors other thanx such as characteristics not included in the study)
+
+- correlation does not imply causality,just the association
+
+- average suppress individual variation and may inflate the correlation coefficient(the linear correlation coefficient became higher when reginal averages were used)
+
+
+
+
+# point estimation and confident interval 

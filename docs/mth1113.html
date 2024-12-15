@@ -213,7 +213,12 @@ window.Quarto = {
   </ul></li>
   <li><a href="#skew" id="toc-skew" class="nav-link" data-scroll-target="#skew">skew</a></li>
   <li><a href="#outlier-eg-of-normal-distribution" id="toc-outlier-eg-of-normal-distribution" class="nav-link" data-scroll-target="#outlier-eg-of-normal-distribution">outlier (eg of normal distribution)</a></li>
+  <li><a href="#quartile" id="toc-quartile" class="nav-link" data-scroll-target="#quartile">quartile</a></li>
   <li><a href="#modified-boxplot" id="toc-modified-boxplot" class="nav-link" data-scroll-target="#modified-boxplot">modified boxplot</a></li>
+  <li><a href="#measures-of-relative-standing" id="toc-measures-of-relative-standing" class="nav-link" data-scroll-target="#measures-of-relative-standing">Measures of relative standing</a>
+  <ul class="collapse">
+  <li><a href="#z-scores" id="toc-z-scores" class="nav-link" data-scroll-target="#z-scores">z Scores</a></li>
+  </ul></li>
   <li><a href="#tutorial" id="toc-tutorial" class="nav-link" data-scroll-target="#tutorial">tutorial</a></li>
   <li><a href="#the-role-of-statistics-and-the-data-analysis-process" id="toc-the-role-of-statistics-and-the-data-analysis-process" class="nav-link" data-scroll-target="#the-role-of-statistics-and-the-data-analysis-process">The role of statistics and the Data Analysis Process</a>
   <ul class="collapse">
@@ -280,12 +285,33 @@ window.Quarto = {
   <ul class="collapse">
   <li><a href="#bernoulli-is-composed-by-binomial" id="toc-bernoulli-is-composed-by-binomial" class="nav-link" data-scroll-target="#bernoulli-is-composed-by-binomial">Bernoulli is composed by binomial</a></li>
   <li><a href="#hypergeometric-distribution-could-be-approximated-by-binomial-when-samples-are-large" id="toc-hypergeometric-distribution-could-be-approximated-by-binomial-when-samples-are-large" class="nav-link" data-scroll-target="#hypergeometric-distribution-could-be-approximated-by-binomial-when-samples-are-large">Hypergeometric distribution could be approximated by Binomial when samples are large</a></li>
-  <li><a href="#poisson-distribution-as-the-limit-of-binomial-distribution-when-the-number-of-trials-is-large-and-the-probabiliy-of-success-of-each-trial-is-inverse-proportional-to-the-number-of-trials" id="toc-poisson-distribution-as-the-limit-of-binomial-distribution-when-the-number-of-trials-is-large-and-the-probabiliy-of-success-of-each-trial-is-inverse-proportional-to-the-number-of-trials" class="nav-link" data-scroll-target="#poisson-distribution-as-the-limit-of-binomial-distribution-when-the-number-of-trials-is-large-and-the-probabiliy-of-success-of-each-trial-is-inverse-proportional-to-the-number-of-trials">Poisson distribution as the limit of Binomial distribution when the number of trials is large and the probabiliy of success of each trial is inverse-proportional to the number of trials</a></li>
+  <li><a href="#poisson-distribution-as-the-limit-of-binomial-distribution-when-the-number-of-trials-is-large-and-the-probabiliy-of-success-of-each-trial-is-inverse-proportional-to-the-number-of-trials" id="toc-poisson-distribution-as-the-limit-of-binomial-distribution-when-the-number-of-trials-is-large-and-the-probabiliy-of-success-of-each-trial-is-inverse-proportional-to-the-number-of-trials" class="nav-link" data-scroll-target="#poisson-distribution-as-the-limit-of-binomial-distribution-when-the-number-of-trials-is-large-and-the-probabiliy-of-success-of-each-trial-is-inverse-proportional-to-the-number-of-trials">Poisson distribution as the limit of Binomial distribution when the number of trials is large and the probabiliy of success of each trial is inverse-proportional to the number of trials</a>
+  <ul class="collapse">
+  <li><a href="#the-occurrences-must-be-uniformly-distributed-over-the-interval-being-used" id="toc-the-occurrences-must-be-uniformly-distributed-over-the-interval-being-used" class="nav-link" data-scroll-target="#the-occurrences-must-be-uniformly-distributed-over-the-interval-being-used">???The occurrences must be uniformly distributed over the interval being used</a></li>
+  </ul></li>
   <li><a href="#geometric-distribution" id="toc-geometric-distribution" class="nav-link" data-scroll-target="#geometric-distribution">Geometric distribution</a>
   <ul class="collapse">
   <li><a href="#the-irrelevance-of-past-events-to-the-probability-of-future-independent-events" id="toc-the-irrelevance-of-past-events-to-the-probability-of-future-independent-events" class="nav-link" data-scroll-target="#the-irrelevance-of-past-events-to-the-probability-of-future-independent-events">The irrelevance of past events to the probability of future independent events</a></li>
   </ul></li>
   </ul></li>
+  <li><a href="#normal-distribution" id="toc-normal-distribution" class="nav-link" data-scroll-target="#normal-distribution">Normal distribution</a>
+  <ul class="collapse">
+  <li><a href="#interpretation" id="toc-interpretation" class="nav-link" data-scroll-target="#interpretation">interpretation:</a></li>
+  <li><a href="#sampling-distributions-and-estimators" id="toc-sampling-distributions-and-estimators" class="nav-link" data-scroll-target="#sampling-distributions-and-estimators">Sampling distributions and Estimators</a></li>
+  <li><a href="#unbiased-estimators-and-biased-estimators" id="toc-unbiased-estimators-and-biased-estimators" class="nav-link" data-scroll-target="#unbiased-estimators-and-biased-estimators">Unbiased estimators and biased estimators</a></li>
+  </ul></li>
+  <li><a href="#the-central-limit-thm" id="toc-the-central-limit-thm" class="nav-link" data-scroll-target="#the-central-limit-thm">The Central Limit Thm</a>
+  <ul class="collapse">
+  <li><a href="#optional-correction-for-a-finite-population" id="toc-optional-correction-for-a-finite-population" class="nav-link" data-scroll-target="#optional-correction-for-a-finite-population">Optional: Correction for a finite population</a></li>
+  <li><a href="#using-the-normal-distribution-as-an-approximation-to-the-binomial-distribution" id="toc-using-the-normal-distribution-as-an-approximation-to-the-binomial-distribution" class="nav-link" data-scroll-target="#using-the-normal-distribution-as-an-approximation-to-the-binomial-distribution">Using the Normal distribution as an approximation to the binomial distribution</a></li>
+  <li><a href="#to-hypothesis-testing" id="toc-to-hypothesis-testing" class="nav-link" data-scroll-target="#to-hypothesis-testing">to hypothesis testing</a></li>
+  <li><a href="#normal-distribution-1" id="toc-normal-distribution-1" class="nav-link" data-scroll-target="#normal-distribution-1">Normal distribution</a>
+  <ul class="collapse">
+  <li><a href="#assessing-normality" id="toc-assessing-normality" class="nav-link" data-scroll-target="#assessing-normality">Assessing Normality</a></li>
+  </ul></li>
+  <li><a href="#inferences-from-2-samples-introduces-the-differences-between-two-populaton-means-using-matched-pairs-but-correlaition-and-regression-analyze-the-association-between-the-2-variables-and-if-such-an-association-exists-we-wnat-to-describe-it-with-an-equation-that-can-be-used-for-predictions" id="toc-inferences-from-2-samples-introduces-the-differences-between-two-populaton-means-using-matched-pairs-but-correlaition-and-regression-analyze-the-association-between-the-2-variables-and-if-such-an-association-exists-we-wnat-to-describe-it-with-an-equation-that-can-be-used-for-predictions" class="nav-link" data-scroll-target="#inferences-from-2-samples-introduces-the-differences-between-two-populaton-means-using-matched-pairs-but-correlaition-and-regression-analyze-the-association-between-the-2-variables-and-if-such-an-association-exists-we-wnat-to-describe-it-with-an-equation-that-can-be-used-for-predictions">inferences from 2 samples introduces the differences between two populaton means using matched pairs but correlaition and regression analyze the association between the 2 variables and if such an association exists we wnat to describe it with an equation that can be used for predictions</a></li>
+  </ul></li>
+  <li><a href="#point-estimation-and-confident-interval" id="toc-point-estimation-and-confident-interval" class="nav-link" data-scroll-target="#point-estimation-and-confident-interval">point estimation and confident interval</a></li>
   </ul>
 </nav>
     </div>
@@ -316,6 +342,7 @@ window.Quarto = {
 </ul>
 <p>The history of the development of statistics has helped me gain a deeper understanding of this fascinating and practical field of knowledge. Each advancement represents a leap from specific facts to broader, generalized conclusions. What truly captivates me is the remarkable alignment between natural phenomena and statistical principles; there always seems to be a coincidence where reality and theory intersect.</p>
 <p>Initially, I only grasped the surface of this knowledge. Then, as I delved deeper, I began to understand the underlying principles through observable phenomena. Eventually, almost miraculously, I realized how incredibly useful these theories are and how they coincide with natural occurrences. This process of moving closer and closer to generalization has profoundly illustrated to me the truth in the saying: “Mathematics is the art of giving the same name to different things.”</p>
+<p>Theorems come, theorems go. Only examples are lying forever. (Practice to use statistics to interpret real world examples)</p>
 <section id="把公式推导单独放一栏后" class="level1">
 <h1>把公式推导单独放一栏（后）</h1>
 </section>
@@ -479,7 +506,10 @@ F-statistic: 2.997 on 1 and 7 DF,  p-value: 0.1271</code></pre>
 </section>
 <section id="skew" class="level1">
 <h1>skew</h1>
-<p>mean is much sensitive than the median so the outlier drags the mean to the skew…… <img src="images/clipboard-2849357671.png" class="img-fluid"></p>
+<p>Data skewed to the left(negatively skewed) have a longer left tail, and the mean and media are to the left of the mode.</p>
+<p>Data skewed to the right(positively skewed) have a longer right tail, and the mean and media are to the right of the mode.</p>
+<p>mean is much sensitive than the median to the extreame value(not a resistant measure of center) so the outlier drags the mean to the skew…… <img src="images/clipboard-2849357671.png" class="img-fluid"></p>
+<p>ps: the <strong>trimmed mean</strong> is more resistant.</p>
 <p><img src="images/clipboard-2111278063.png" class="img-fluid"></p>
 <p><img src="images/clipboard-2144359450.png" class="img-fluid"></p>
 <p><img src="images/clipboard-1854557292.png" class="img-fluid"></p>
@@ -489,7 +519,12 @@ F-statistic: 2.997 on 1 and 7 DF,  p-value: 0.1271</code></pre>
 <h1>outlier (eg of normal distribution)</h1>
 <p>a mild outlier if it lies more than 1.5(iqr) away from the nearest quartile (the nearest end of the box);</p>
 <p>an extreme outlier if it lies more than 3(iqr) away from the nearest quartile.</p>
-<p>(These definitions and distances are based on the hypothetical Normal distribution (bell shaped, symmetric, normal tails). When there is a reason to suspect that the distribution is skewed, the bounds should be changed.)</p>
+<p>(These definitions and distances are based on the hypothetical Normal distribution (bell shaped, symmetric, normal tails). When there is a reason to suspect that the distribution is skewed, the bounds should be changed.)</p>
+</section>
+<section id="quartile" class="level1">
+<h1>quartile</h1>
+<p><span class="math inline">\(Q_1\)</span>(First quartile): at least 25% of the sorted values are less than or equal to <span class="math inline">\(Q_1\)</span> and at least 75% of the values are greater than or equal to <span class="math inline">\(Q_1\)</span></p>
+<p><span class="math inline">\(Q_3\)</span>(Third quartile): ..</p>
 </section>
 <section id="modified-boxplot" class="level1">
 <h1>modified boxplot</h1>
@@ -619,6 +654,13 @@ F-statistic: 2.997 on 1 and 7 DF,  p-value: 0.1271</code></pre>
 </div>
 </div>
 </div>
+</section>
+<section id="measures-of-relative-standing" class="level1">
+<h1>Measures of relative standing</h1>
+<section id="z-scores" class="level2">
+<h2 class="anchored" data-anchor-id="z-scores">z Scores</h2>
+<p>eg. height(among women or men (come from different populations)instead of just comparing the height itself)</p>
+</section>
 </section>
 <section id="tutorial" class="level1">
 <h1>tutorial</h1>
@@ -1158,7 +1200,7 @@ E[Y]=E\left[Y_1\right]+E\left[Y_2\right]+\cdots+E\left[Y_n\right]=\frac{n}{2} \\
 <section id="discrete-and-continuous" class="level2">
 <h2 class="anchored" data-anchor-id="discrete-and-continuous">discrete and continuous</h2>
 <p><img src="images/clipboard-1910128728.png" class="img-fluid"></p>
-<p>Density function’s value could be greater than 1 because the integral of it in a very tiny interval could be very small, which represents the probability.</p>
+<p>Density function’s value could be greater than 1 because the integral of it in a very tiny interval could be very small, which represents the probability(which could not be greater than 1 and since the interval could be very tiny this condition is satisfied!).(This reminder notices that the value of pdf is not the probability since the integration is the probability which is totally 1)</p>
 </section>
 </section>
 <section id="covariance" class="level1">
@@ -1171,6 +1213,7 @@ E[Y]=E\left[Y_1\right]+E\left[Y_2\right]+\cdots+E\left[Y_n\right]=\frac{n}{2} \\
 </section>
 <section id="descrete-distributions" class="level1">
 <h1>Descrete distributions</h1>
+<p>A probability distribution is a graph, table of formula that gives the probability for each value of the random variable.</p>
 <section id="bernoulli-is-composed-by-binomial" class="level2">
 <h2 class="anchored" data-anchor-id="bernoulli-is-composed-by-binomial">Bernoulli is composed by binomial</h2>
 </section>
@@ -1179,6 +1222,19 @@ E[Y]=E\left[Y_1\right]+E\left[Y_2\right]+\cdots+E\left[Y_n\right]=\frac{n}{2} \\
 </section>
 <section id="poisson-distribution-as-the-limit-of-binomial-distribution-when-the-number-of-trials-is-large-and-the-probabiliy-of-success-of-each-trial-is-inverse-proportional-to-the-number-of-trials" class="level2">
 <h2 class="anchored" data-anchor-id="poisson-distribution-as-the-limit-of-binomial-distribution-when-the-number-of-trials-is-large-and-the-probabiliy-of-success-of-each-trial-is-inverse-proportional-to-the-number-of-trials">Poisson distribution as the limit of Binomial distribution when the number of trials is large and the probabiliy of success of each trial is inverse-proportional to the number of trials</h2>
+<ul>
+<li>The Poisson distribution is a discrete probability distribution that applies to occurrences of some event over a specified interval. The random variable x is the number of occurrences of the event in an interval.The probability of the event occurring x times over an interval is given by <span class="math display">\[P(x)=\frac{u^x\cdot e^{-\mu}}{x!}\]</span> where the random variable x is the number of occurences of an event over some interval and the ovvurrences must be random and independent of each other.</li>
+</ul>
+<section id="the-occurrences-must-be-uniformly-distributed-over-the-interval-being-used" class="level3">
+<h3 class="anchored" data-anchor-id="the-occurrences-must-be-uniformly-distributed-over-the-interval-being-used">???The occurrences must be uniformly distributed over the interval being used</h3>
+<p>The mean is <span class="math inline">\(\mu\)</span></p>
+<p>The standard deviation is <span class="math inline">\(\sigma= \sqrt \mu\)</span></p>
+<ul>
+<li><p>eg of Poisson distribution: (describing the behavior of rare events(with small probabilities). radioactive decay, arrivals of people in a line, eagles nesting in a region, patients arriving at an emergency room(the local hospital experiences a mean of 2.3 patients arriving at the emergency room during 10-11 P.M. on Fri. is known, we can find the probability that for a randomly selected Fri. between 10-11 P.M., exactly four patients arrive), Internet users logging onto a Web site )</p></li>
+<li><p>Comparison between Binomial:</p></li>
+</ul>
+<p>Binomal distribution is affected by yhe smaple size n and the probability p, whereas the Poisson distribution is affected only by mean <span class="math inline">\(\mu\)</span></p>
+<p>A binomial distribution has a limit of possible values but a Poisson distribution has a possible values x without upper bound.</p>
 <p>Suppose the <span class="math inline">\(X_n,n\geq1\)</span> is a sequence of random variables such that <span class="math inline">\(X_n\)</span>~Bin(<span class="math inline">\(n,p_n\)</span>), where <span class="math inline">\(p_n\)</span>~<span class="math inline">\(\lambda/n\)</span> as <span class="math inline">\(n-&gt;\infty\)</span> <span class="math inline">\(lim_{n-&gt;\infty}(np_0)=\lambda\)</span>, <strong>intuitively we can observe that</strong> <span class="math inline">\(\lambda\)</span> is the mean of</p>
 <p>given the well-known limit <span class="math inline">\(\lim _{n \rightarrow \infty}\left(1-\frac{\lambda}{n}\right)^n=e^{-\lambda}\)</span>, and <span class="math display">\[
 \begin{aligned}
@@ -1245,6 +1301,7 @@ E(X(X-1)) &amp; =\sum_{k=1}^{\infty} k(k-1) P(X=k) \\
 \end{aligned}
 \]</span> <span class="math display">\[\begin{aligned} \operatorname{Var}(X) &amp; =E(X(X-1))+E(X)-(E(X))^2 \\ &amp; =\frac{2(1-p)}{p^2}+\frac{1}{p}-\frac{1}{p^2} \\ &amp; =\frac{1-p}{p^2}\end{aligned}\]</span></p>
 </section>
+</section>
 <section id="geometric-distribution" class="level2">
 <h2 class="anchored" data-anchor-id="geometric-distribution">Geometric distribution</h2>
 <section id="the-irrelevance-of-past-events-to-the-probability-of-future-independent-events" class="level3">
@@ -1253,10 +1310,118 @@ E(X(X-1)) &amp; =\sum_{k=1}^{\infty} k(k-1) P(X=k) \\
 <p>X~Geom(p) and n$${1,2,3,….}</p>
 <p>P(X-n=k|X&gt;n)=P(X=k), k=1,2,3,…</p>
 <p>Tail probability for the probability calculation of more/higher than….</p>
-
-
 </section>
 </section>
+</section>
+<section id="normal-distribution" class="level1">
+<h1>Normal distribution</h1>
+<section id="interpretation" class="level2">
+<h2 class="anchored" data-anchor-id="interpretation">interpretation:</h2>
+<ul>
+<li><p>Standard normally distributed sth. z=1.58(corresponding to 0.9429):</p>
+<p>the probability of randomly selecting sth. with a value less than 1.58(unit) is equal to the area(probability) of 0.9429.</p>
+<p>(Or: 94.29% of sth, will have a value below 1.58(unit))</p></li>
+</ul>
+</section>
+<section id="sampling-distributions-and-estimators" class="level2">
+<h2 class="anchored" data-anchor-id="sampling-distributions-and-estimators">Sampling distributions and Estimators</h2>
+<p>We are beginning to embark a journey that allows us to learn about populations by obtaining data from samples since it is rare that we know all values in an entire population.</p>
+<p><strong>Sampling distribution of a statistic</strong> is the probability distribution of a sample statistics (such as mean/proportion which tend to target the population mean/proportion), with all samples having the same sample size. This concept is important to understand. The behavior of a statistic can be known by understanding its distribution( (The random variable in this case is the value of that sample statistics)). Under certain condition, the distribution of sampling mean/proportion approximates a normal distribution.</p>
+<p>(ps: the advantage of sampling with replacement:</p>
+<p>when selecting a relatively small sample from a large population, it makes no significant difference whether we sample with or without replacement.</p>
+<p>Sampling with replacement results in independent events that are unaffected by previous outcomes, and independent events are easier to analyze and they result in simpler formulas.)</p>
+<p><strong>For a fixed sample size, the mean of all possible sample means is equal to the mean of population though sample means vary(sampling variability)</strong></p>
+</section>
+<section id="unbiased-estimators-and-biased-estimators" class="level2">
+<h2 class="anchored" data-anchor-id="unbiased-estimators-and-biased-estimators">Unbiased estimators and biased estimators</h2>
+<p>Statistics that target population parameters: Mean, variance, proportion</p>
+<p>Statistics that do target population parameters: Median, Range, Standard Deviation</p>
+<p>(the bias is relatively small then sampling standard deviation in large samples so s is ofent used to estimate <span class="math inline">\(\sigma\)</span>)</p>
+</section>
+</section>
+<section id="the-central-limit-thm" class="level1">
+<h1>The Central Limit Thm</h1>
+<p>It is the foundation for estimation population parameters and hypothesis testing</p>
+<p>(Recall: A random variable is a variable that has a single numerical value(eg. x=1,x=2), determined by chance, for each outcome of a procedure随机变量是一种变量，对于一个过程的每个结果都有一个随机确定的单一数值(可以理解为，现象作用其上</p>
+<p>A probability distribution is a graph, table or formula that gives the probability for each value of a random variable</p>
+<p>The sampling distribution of the mean is the probability fistribution of sample means, with all sample having the same sample size n)</p>
+<p>As the sample size increases, the corresponding sample means tend to vary less. The central limit thm tells us that if the sample size is large engough, the distribution of sample means can be approximated by normal distribution</p>
+<p>Conclusion of CLT: (it is so important since it allows us to use the basic normal distribution methods in a wide variety of different circumstances)</p>
+<p>The distribution of sample means will, as the sample size increases, approach a normal distribution</p>
+<p>The mean of all sample means is the population mean <span class="math inline">\(\mu.\)</span>. <span class="math display">\[\mu_{\bar x}=\mu\]</span></p>
+<p>The standard deviation of all sample means is <span class="math inline">\(\sigma/ \sqrt n\)</span> (i,e, the normal distribution from conclusion”The distribution of sample means will, as the sample size increases, approach a normal distribution” has standard deviation <span class="math inline">\(\sigma/ \sqrt n\)</span> ) <span class="math display">\[\sigma_{\bar x}=\frac{\sigma}{\sqrt n}\]</span> <span class="math inline">\(\sigma_{\bar x}\)</span> is often called the standard error of the mean.</p>
+<p>30</p>
+<p>Notice: Be careful to look at if it is from a normally ditributed population or a mean for some sample/group.</p>
+<p>If given the population mean is a and a sample(c subjects) mean is b which has so small probbility under the sampling distribution with this populatio mean, if the mean is really a, then there is an extremely small probability of getting a sample mean of b or lower when c subjects are randomly selected. we can interpret it in such 2 ways:</p>
+<ol type="1">
+<li><p>population mean is true and their sample represents a chance event that is extreamely rare</p></li>
+<li><p>population mean is not true and sample is typical.</p></li>
+</ol>
+<p>Because the probability is too low, it seems more reasonable to conclude that the population mean is lower than a—hypothesis testing’s thinking</p>
+<section id="optional-correction-for-a-finite-population" class="level3">
+<h3 class="anchored" data-anchor-id="optional-correction-for-a-finite-population">Optional: Correction for a finite population</h3>
+<p>When sampling without replacement and the sample size n is greater than 5% of the finite populaiton size B(i.e.&nbsp;n&gt;0.05N), …</p>
+</section>
+<section id="using-the-normal-distribution-as-an-approximation-to-the-binomial-distribution" class="level2">
+<h2 class="anchored" data-anchor-id="using-the-normal-distribution-as-an-approximation-to-the-binomial-distribution">Using the Normal distribution as an approximation to the binomial distribution</h2>
+<p>requirement: np, n(1-p) <span class="math inline">\(\geq\)</span> 5</p>
+<p>Be careful: adjust x for continuity by + or - 0.5(eg. at least 99, choose 98.5)</p>
+</section>
+<section id="to-hypothesis-testing" class="level2">
+<h2 class="anchored" data-anchor-id="to-hypothesis-testing">to hypothesis testing</h2>
+<p>a question (eg):</p>
+<p>In a test of a gender-selection technique assume that 100 couples using a particular treatment give birth to 52 girls (and 48 boys). If the technique has no effect, then the probability of a girl is approximately 0.5. If the probability of a girl is 0.5, find the probability that among 100 newborn babies, exactly 52 are girls. Based on the result, is there strong evidence supporting a claim that the gender-selection technique increases the likelihood that a baby is a girl?</p>
+<p>it is a binomial distribution with np=nq=100*0.5=50<span class="math inline">\(\geq 5\)</span></p>
+<p>so we use the normal distribution with mean of 50 and <span class="math inline">\(\sigma = \sqrt {npq} = 5\)</span>as an approximation to the binomial distribution</p>
+<p>to answer”is there strong evidence supporting a claim that the gender-selection technique increases the likelihood that a baby is a girl?“, we need to calculate more than 52(x successes among n trials is an unusually high number of successes if P(<span class="math inline">\(x\geq a\)</span>) is very small)</p>
+<p>原因是因为如果只看52这个数字肯定概率很小，因为任何单个数字发生的可能性概率都很小</p>
+<p>So if the answer of P(<span class="math inline">\(x\geq 52\)</span>) is small we could conclude that the gender selection is useful</p>
+<p>(总结：如果是0。5概率来看的话52以上本来就不是难事，as indicated by the such large probability of P(<span class="math inline">\(x\geq 52\)</span>) 所以我们没有充分证据拒绝“not effective”这个假设前提)</p>
+<p>此处还没有引入假设检验所以都是用using probability to determine when results are unusual这个思想来思考问题的：</p>
+<ul>
+<li>Unusually low： x successes among n trails is an unually low number of successes if P(x or fewer) is very small</li>
+</ul>
+<p><img src="images/clipboard-804415.png" class="img-fluid"></p>
+<p>Interpretation for another example of gender selection(using only unusual results to explain): Because the probability of more than 13 girls, which is 0.001 is so low, we conclude that it is unusual to get 13 girls among 14 babies (using binomial to calculate it). This suggests that the technique of gender selection appears to be effective since it is highly unlikely that the result of 13 girls among 14 births happened by chance.</p>
+</section>
+<section id="normal-distribution-1" class="level2">
+<h2 class="anchored" data-anchor-id="normal-distribution-1">Normal distribution</h2>
+<p>If a variable is the superposition result of a large number of small independent random factors, then the variable must obey the normal distribution of variables</p>
+<p>e.g.&nbsp;measure error</p>
+<section id="assessing-normality" class="level3">
+<h3 class="anchored" data-anchor-id="assessing-normality">Assessing Normality</h3>
+<p>In general, quantile plots can be used to assess any probability distribution.</p>
+<p>For a normal quantile plot(or normal probability plot), it is a graph of points(x,y) where each x vaue is from the original set of sample data and each y value is the cooresponding z score that is a quantile value expected from the standard normal distribution</p>
+<section id="procedures" class="level4">
+<h4 class="anchored" data-anchor-id="procedures">Procedures</h4>
+<ul>
+<li><p>Histogram(not helpful for small data set)</p></li>
+<li><p>outliers: reject normality if there is more than 1 outlier present(not helpful for small data set)</p></li>
+<li><p>normal quantile plot:</p></li>
+</ul>
+<p>sort data from lowest to highest</p>
+</section>
+</section>
+</section>
+<section id="inferences-from-2-samples-introduces-the-differences-between-two-populaton-means-using-matched-pairs-but-correlaition-and-regression-analyze-the-association-between-the-2-variables-and-if-such-an-association-exists-we-wnat-to-describe-it-with-an-equation-that-can-be-used-for-predictions" class="level2">
+<h2 class="anchored" data-anchor-id="inferences-from-2-samples-introduces-the-differences-between-two-populaton-means-using-matched-pairs-but-correlaition-and-regression-analyze-the-association-between-the-2-variables-and-if-such-an-association-exists-we-wnat-to-describe-it-with-an-equation-that-can-be-used-for-predictions">inferences from 2 samples introduces the differences between two populaton means using matched pairs but correlaition and regression analyze the association between the 2 variables and if such an association exists we wnat to describe it with an equation that can be used for predictions</h2>
+<p>paired sampled data(or called bivariate data)</p>
+<ul>
+<li><p>a correlation exists between two variables when one of them is related to the other in some way.</p></li>
+<li><p>the linear correlation coefficient r measures the strength of the linear association between the paired x- and y-quantitative values in a sample. Its value is computed by using the formula(Pearson(1857-1937) product moment correlation coefficient)</p></li>
+</ul>
+<p>……otherwise there is not sufficient evidence to support the conclusion of a significant linear equation</p>
+<p>!!!: interpreting r: explained variation: the value of <span class="math inline">\(r^2\)</span> is the proportion of the variation in y that is explained by the linear association between x and y.(and the other percentage is explained by factors other thanx such as characteristics not included in the study)</p>
+<ul>
+<li><p>correlation does not imply causality,just the association</p></li>
+<li><p>average suppress individual variation and may inflate the correlation coefficient(the linear correlation coefficient became higher when reginal averages were used)</p></li>
+</ul>
+</section>
+</section>
+<section id="point-estimation-and-confident-interval" class="level1">
+<h1>point estimation and confident interval</h1>
+
+
 </section>
 
 </main> <!-- /main -->

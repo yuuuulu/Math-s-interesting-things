@@ -164,7 +164,10 @@ window.Quarto = {
   <ul class="collapse">
   <li><a href="#eigenvalue-and-eigenspace" id="toc-eigenvalue-and-eigenspace" class="nav-link" data-scroll-target="#eigenvalue-and-eigenspace">Eigenvalue and Eigenspace</a></li>
   <li><a href="#generalized-eigenspace" id="toc-generalized-eigenspace" class="nav-link" data-scroll-target="#generalized-eigenspace">Generalized eigenspace</a></li>
+  <li><a href="#cayley-hamlton-thm" id="toc-cayley-hamlton-thm" class="nav-link" data-scroll-target="#cayley-hamlton-thm">Cayley Hamlton Thm</a></li>
   <li><a href="#jordan-form-makes-me-understand-linear-algebra-more-deeply-which-also-introduces-differential-equations-to-me" id="toc-jordan-form-makes-me-understand-linear-algebra-more-deeply-which-also-introduces-differential-equations-to-me" class="nav-link" data-scroll-target="#jordan-form-makes-me-understand-linear-algebra-more-deeply-which-also-introduces-differential-equations-to-me">Jordan form makes me understand Linear Algebra more deeply, which also introduces differential equations to me</a></li>
+  <li><a href="#the-relationship-between-jordan-form-and-diffrential-equation" id="toc-the-relationship-between-jordan-form-and-diffrential-equation" class="nav-link" data-scroll-target="#the-relationship-between-jordan-form-and-diffrential-equation">The relationship between Jordan form and diffrential equation</a></li>
+  <li><a href="#diagnalize-2-matrix-at-the-same-time" id="toc-diagnalize-2-matrix-at-the-same-time" class="nav-link" data-scroll-target="#diagnalize-2-matrix-at-the-same-time">Diagnalize 2 matrix at the same time</a></li>
   </ul></li>
   <li><a href="#study-motivation" id="toc-study-motivation" class="nav-link" data-scroll-target="#study-motivation">study motivation</a></li>
   <li><a href="#chapter-0-motivationreviews" id="toc-chapter-0-motivationreviews" class="nav-link" data-scroll-target="#chapter-0-motivationreviews">Chapter 0: motivation/reviews</a>
@@ -263,6 +266,11 @@ window.Quarto = {
   <ul class="collapse">
   <li><a href="#begin" id="toc-begin" class="nav-link" data-scroll-target="#begin">Begin</a></li>
   </ul></li>
+  <li><a href="#inner-product-space" id="toc-inner-product-space" class="nav-link" data-scroll-target="#inner-product-space">Inner Product space</a></li>
+  <li><a href="#cauchy-schwaez-inequality-like-a-lemma-which-makes-the-proof-of-triangle-inequality-more-easily" id="toc-cauchy-schwaez-inequality-like-a-lemma-which-makes-the-proof-of-triangle-inequality-more-easily" class="nav-link" data-scroll-target="#cauchy-schwaez-inequality-like-a-lemma-which-makes-the-proof-of-triangle-inequality-more-easily">Cauchy-Schwaez inequality –like a lemma which makes the proof of triangle inequality more easily</a>
+  <ul class="collapse">
+  <li><a href="#thm-an-inner-product-space-is-a-normed-space-by-defining." id="toc-thm-an-inner-product-space-is-a-normed-space-by-defining." class="nav-link" data-scroll-target="#thm-an-inner-product-space-is-a-normed-space-by-defining.">Thm An inner product space is a normed space by defining.</a></li>
+  </ul></li>
   <li><a href="#tutorial" id="toc-tutorial" class="nav-link" data-scroll-target="#tutorial">Tutorial</a>
   <ul class="collapse">
   <li><a href="#problems" id="toc-problems" class="nav-link" data-scroll-target="#problems">problems</a></li>
@@ -303,10 +311,22 @@ window.Quarto = {
 </section>
 <section id="generalized-eigenspace" class="level2">
 <h2 class="anchored" data-anchor-id="generalized-eigenspace">Generalized eigenspace</h2>
+<p><span class="math inline">\(A=PJ_{\lambda}P^{-1}\)</span></p>
+<p>When P has linearly independent vectors(eigenvectors), A is diagonalizable</p>
+<p>So we introduce the Jordan form which is as simple as possible, though not much simple as a diagnal matrix, which need generalized eigenvector to get P—<span class="math inline">\((A-\lambda I)^2x_2=(A-\lambda I)x_1=0\)</span></p>
+<p>Since <span class="math inline">\(A=PJ_{\lambda}P^{-1}\)</span>, P=[<span class="math inline">\(x_1,x_2\)</span>], AP=A[<span class="math inline">\(x_1,x_2\)</span>]=[<span class="math inline">\(\lambda x_1, \lambda x_2+x_1\)</span>]=PJ=[<span class="math inline">\(x_1,x_2\)</span>]=<span class="math inline">\(\left[\begin{array}{ll}\lambda &amp; 1 \\ 0 &amp; \lambda\end{array}\right]\)</span></p>
 <p>The introduce of generalized eigenspaces makes a matrix as simple as possible, though not much simple as a diagnal matrix for computation.</p>
+</section>
+<section id="cayley-hamlton-thm" class="level2">
+<h2 class="anchored" data-anchor-id="cayley-hamlton-thm">Cayley Hamlton Thm</h2>
+<p>V a finite dimensional vector space then <span class="math inline">\(\chi_T(T)=0_{l(v)}\)</span></p>
+<p>eg. A=$</p>
 </section>
 <section id="jordan-form-makes-me-understand-linear-algebra-more-deeply-which-also-introduces-differential-equations-to-me" class="level2">
 <h2 class="anchored" data-anchor-id="jordan-form-makes-me-understand-linear-algebra-more-deeply-which-also-introduces-differential-equations-to-me">Jordan form makes me understand Linear Algebra more deeply, which also introduces differential equations to me</h2>
+<p>J = <span class="math inline">\(\lambda I+ N\)</span>, where N is a nilpotent matrix —D-N decomposition A = D +N DN = ND</p>
+<p>eg.<span class="math inline">\(e^A=e^{D+N} ?= e^De^N\)</span></p>
+<p>$e^{tJ_}= e^{tI} $<span class="math inline">\(e^{tN}\)</span>=<span class="math inline">\(e^{t\lambda} [I+N+t^2/2! N^2+.....]\)</span></p>
 <ul>
 <li><p>The characteristic polynomial tells us the eigenvalues and the dimension of each generalized eigenspace, which is the number of times the eigenvalue appears along the diagonal of the Jordan form (also known as the “multiplicity” of λ)</p></li>
 <li><p>Each Jordan block with respect to a basis of an eigenvector and others are generalized eigenvectors which could be computed based on the eigenvector and <span class="math inline">\((T-\lambda Id)^m,\)</span>where m<span class="math inline">\(\leq dimV\)</span>since the dimension of each eigenspace tells us how many Jordan blocks corresponding to that eigenvalue there are in the Jordan form. This also means that the Jordan form is unique with permutation but the Jordan basis is not unique.</p></li>
@@ -319,8 +339,16 @@ window.Quarto = {
 </ul>
 <p>For one simple situation, which is the Jordan form with only 1 block</p>
 <p>Since the minimal polynomial applied by the operator T on V (<span class="math inline">\(M_T(T)\)</span>) must be 0, the Jordan form with only 1 block has the minimal polynomial (t-<span class="math inline">\(\lambda\)</span>)<span class="math inline">\(^{dimV}\)</span></p>
-<p>More generally, if we have a Jordan form with 2 blocks B and C, with one same eigenvalue, Since the minimal polynomial applied by the operator T on V (<span class="math inline">\(M_T(T)\)</span>) must be 0, <span class="math inline">\((T-\lambda I)^m\)</span> in <span class="math inline">\(M_T(T)\)</span> should have m satisfying <span class="math inline">\((B-\lambda I)^m=0\)</span> and <span class="math inline">\((C-\lambda I)^m=0\)</span>. In this case, since any smaller Jordan block with the same eigenvalue will also be killed off under the <span class="math inline">\((T-\lambda I)^m\)</span> in <span class="math inline">\(M_T(T)\)</span>, when the largest Jordan block is 0, smaller blocks are also 0. What is more, if <span class="math inline">\(\exists\)</span> a block with dimention greater than the power of the corresponding term in the polynomial, there then is a contradiction to the defination of the minimal polynomial(must be 0). If the largest Jordan block has the dimension strictly less than the power of the corresponding term in the polynomial, there then also is a contradiction to the defination of the minimal polynomial(smallest power)</p></li>
+<p>More generally, if we have a Jordan form with 2 blocks B and C, with one same eigenvalue, Since the minimal polynomial applied by the operator T on V (<span class="math inline">\(M_T(T)\)</span>) must be 0, <span class="math inline">\((T-\lambda I)^m\)</span> in <span class="math inline">\(M_T(T)\)</span> should have m satisfying <span class="math inline">\((B-\lambda I)^m=0\)</span> and <span class="math inline">\((C-\lambda I)^m=0\)</span>. In this case, since any smaller Jordan block with the same eigenvalue will also be killed off under the <span class="math inline">\((T-\lambda I)^m\)</span> in <span class="math inline">\(M_T(T)\)</span>, when the largest Jordan block is 0, smaller blocks are also 0. What is more, if <span class="math inline">\(\exists\)</span> a block with dimension greater than the power of the corresponding term in the polynomial, there then is a contradiction to the defination of the minimal polynomial(must be 0). If the largest Jordan block has the dimension strictly less than the power of the corresponding term in the polynomial, there then also is a contradiction to the defination of the minimal polynomial(smallest power)</p></li>
+<li><p>Each block has a basis of eigenvector and other basis are generalized eigenvector which are linearly independent.</p></li>
+<li><p>More precisely, each term with power 1, means that the restriction of T to the corresponding generalised eigenspace is diagonalisable.So the minimal polynomial’s each term with the power of 1 means the matrix representation of the operator is diagonalizable, and each eigenvalue has the same number of corresponding power of characteristic polynomial’s term of linearly independent eigenvectors.</p></li>
 </ul>
+</section>
+<section id="the-relationship-between-jordan-form-and-diffrential-equation" class="level2">
+<h2 class="anchored" data-anchor-id="the-relationship-between-jordan-form-and-diffrential-equation">The relationship between Jordan form and diffrential equation</h2>
+</section>
+<section id="diagnalize-2-matrix-at-the-same-time" class="level2">
+<h2 class="anchored" data-anchor-id="diagnalize-2-matrix-at-the-same-time">Diagnalize 2 matrix at the same time</h2>
 </section>
 </section>
 <section id="study-motivation" class="level1">
@@ -1298,6 +1326,36 @@ T^{-1} \circ T = \text{id}_{F^{\{1,2,3,...n\}}}.
 </ul>
 <p><img src="images/clipboard-868461290.png" class="img-fluid"></p>
 <p><img src="images/clipboard-3941908751.png" class="img-fluid"></p>
+</section>
+</section>
+<section id="inner-product-space" class="level1">
+<h1>Inner Product space</h1>
+<p>&lt;.,.&gt; is a bilinear form</p>
+</section>
+<section id="cauchy-schwaez-inequality-like-a-lemma-which-makes-the-proof-of-triangle-inequality-more-easily" class="level1">
+<h1>Cauchy-Schwaez inequality –like a lemma which makes the proof of triangle inequality more easily</h1>
+<p>V inner product space</p>
+<p><span class="math inline">\(a,b \in V\)</span> |&lt;a,b&gt;| <span class="math inline">\(\leq\)</span> ||a|| ||b||</p>
+<p>pf: <span class="math inline">\(c=b-\lambda a\in V\)</span>. This <span class="math inline">\(\lambda\)</span> is Lagrange multiplier (in fact, it is just the projection, just write <span class="math inline">\(&lt;b-\lambda a,a&gt;=0\)</span> )</p>
+<p><span class="math inline">\(||c||^2=||b-\lambda a||^2\)</span></p>
+<p>=<span class="math inline">\(||b||^2-2\lambda &lt;b,a&gt;+\lambda^2||a||^2\)</span></p>
+<p><span class="math inline">\(y(\lambda)= ||b||^2-2&lt;a,b&gt;\lambda+||a||\lambda^2\geq0\)</span></p>
+<p><span class="math inline">\(\delta\leq0\)</span> —&gt; |&lt;a,b&gt;| <span class="math inline">\(\leq\)</span> ||a|| ||b||</p>
+<section id="thm-an-inner-product-space-is-a-normed-space-by-defining." class="level2">
+<h2 class="anchored" data-anchor-id="thm-an-inner-product-space-is-a-normed-space-by-defining.">Thm An inner product space is a normed space by defining.</h2>
+<p>||<strong>a</strong>||=<span class="math inline">\(\sqrt{&lt;a,a&gt;}\)</span></p>
+<p>|| || V–&gt; <span class="math inline">\(R^+\)</span> length</p>
+<ol type="1">
+<li>||a||<span class="math inline">\(\geq0, \forall a\in V\)</span></li>
+</ol>
+<p>||a||=0 iff <strong>a</strong>=0</p>
+<ol start="2" type="1">
+<li>||<strong>a</strong>+<strong>b</strong>|| <span class="math inline">\(\leq\)</span> ||a||+||b||</li>
+</ol>
+<p>pf: &lt;a,a&gt;+&lt;a,b&gt;+&lt;b,a&gt;+&lt;b,b&gt;</p>
+<p>= <span class="math inline">\(||a||^2|+2||a|||b||+||b||^2\)</span></p>
+<p><span class="math inline">\(\leq||a||^2+2||a|| ||b||+||b||^2\)</span></p>
+<p>= <span class="math inline">\((a+b)^2\)</span></p>
 </section>
 </section>
 <section id="tutorial" class="level1">

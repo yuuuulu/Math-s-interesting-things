@@ -23,10 +23,34 @@ However, some operators have not enough eigenvectors to span a whole vector spac
 
 ## Generalized eigenspace
 
+$A=PJ_{\lambda}P^{-1}$
+
+When P has linearly independent vectors(eigenvectors), A is diagonalizable
+
+So we introduce the Jordan form which is  as simple as possible, though not much simple as a diagnal matrix, which need generalized eigenvector to get P---$(A-\lambda I)^2x_2=(A-\lambda I)x_1=0$ 
+
+
+Since $A=PJ_{\lambda}P^{-1}$, P=[$x_1,x_2$], AP=A[$x_1,x_2$]=[$\lambda x_1, \lambda x_2+x_1$]=PJ=[$x_1,x_2$]=$\left[\begin{array}{ll}\lambda & 1 \\ 0 & \lambda\end{array}\right]$
 
 The introduce of generalized eigenspaces makes a matrix as simple as possible, though not much simple as a diagnal matrix for computation.
 
+
+## Cayley Hamlton Thm
+
+
+V a finite dimensional vector space then $\chi_T(T)=0_{l(v)}$
+
+eg. A=$
+
+
+
 ## Jordan form makes me understand Linear Algebra more deeply, which also introduces differential equations to me
+
+J = $\lambda I+ N$, where N is a nilpotent matrix ---D-N decomposition A = D +N  DN = ND
+
+eg.$e^A=e^{D+N} ?= e^De^N$
+
+   $e^{tJ_\lambda}= e^{t\lambda I} $$e^{tN}$=$e^{t\lambda} [I+N+t^2/2! N^2+.....]$
 
 - The characteristic polynomial tells us the eigenvalues and the dimension of each generalized eigenspace, which is the number of times the eigenvalue appears along the diagonal of the Jordan form (also known as the “multiplicity” of λ)
 
@@ -42,10 +66,24 @@ The introduce of generalized eigenspaces makes a matrix as simple as possible, t
   
   Since the minimal polynomial applied by the operator T on V ($M_T(T)$) must be 0, the Jordan form with only 1 block has the minimal polynomial (t-$\lambda$)$^{dimV}$
   
-  More generally, if we have a Jordan form with 2 blocks B and C, with one same eigenvalue, Since the minimal polynomial applied by the operator T on V ($M_T(T)$) must be 0, $(T-\lambda I)^m$ in $M_T(T)$ should have m satisfying $(B-\lambda I)^m=0$ and $(C-\lambda I)^m=0$. In this case, since any smaller Jordan block with the same eigenvalue will also be killed off under the $(T-\lambda I)^m$ in $M_T(T)$, when the largest Jordan block is 0, smaller blocks are also 0. What is more, if $\exists$ a block with dimention greater than the power of the corresponding term in the polynomial, there then is a contradiction to the defination of the minimal polynomial(must be 0). If the largest Jordan block has the dimension strictly less than the power of the corresponding term in the polynomial, there then also is a contradiction to the defination of the minimal polynomial(smallest power)
+  More generally, if we have a Jordan form with 2 blocks B and C, with one same eigenvalue, Since the minimal polynomial applied by the operator T on V ($M_T(T)$) must be 0, $(T-\lambda I)^m$ in $M_T(T)$ should have m satisfying $(B-\lambda I)^m=0$ and $(C-\lambda I)^m=0$. In this case, since any smaller Jordan block with the same eigenvalue will also be killed off under the $(T-\lambda I)^m$ in $M_T(T)$, when the largest Jordan block is 0, smaller blocks are also 0. What is more, if $\exists$ a block with dimension greater than the power of the corresponding term in the polynomial, there then is a contradiction to the defination of the minimal polynomial(must be 0). If the largest Jordan block has the dimension strictly less than the power of the corresponding term in the polynomial, there then also is a contradiction to the defination of the minimal polynomial(smallest power)
+  
+  
+- Each block has a basis of eigenvector and other basis are generalized eigenvector which are linearly independent. 
+
+- More precisely, each term with power 1, means that the restriction of T to the corresponding generalised eigenspace is diagonalisable.So the minimal polynomial's each term with the power of 1 means the matrix representation of the operator is diagonalizable, and each eigenvalue has the same number of corresponding power of characteristic polynomial's term of linearly independent eigenvectors.
+
+
+
+## The relationship between Jordan form and diffrential equation
+
       
-      
-      
+## Diagnalize 2 matrix at the same time
+
+
+
+
+
 
 
 
@@ -1264,9 +1302,53 @@ see photo in particular, $m \leq n$. ok
 
 
 
+# Inner Product space
+
+<.,.> is a bilinear form
+
+
+# Cauchy-Schwaez inequality --like a lemma which makes the proof of triangle inequality more easily
+
+V inner product space
+
+$a,b \in V$ |<a,b>| $\leq$ ||a|| ||b||
+
+pf: $c=b-\lambda a\in V$. This $\lambda$ is Lagrange multiplier (in fact, it is just the projection, just write $<b-\lambda a,a>=0$  )
+
+$||c||^2=||b-\lambda a||^2$
+
+=$||b||^2-2\lambda <b,a>+\lambda^2||a||^2$
+
+$y(\lambda)= ||b||^2-2<a,b>\lambda+||a||\lambda^2\geq0$
+
+$\delta\leq0$ ---> |<a,b>| $\leq$ ||a|| ||b||
 
 
 
+## Thm An inner product space is a normed space by defining. 
+
+||**a**||=$\sqrt{<a,a>}$
+
+|| || V--> $R^+$ length
+
+(1) ||a||$\geq0, \forall a\in V$
+
+
+  ||a||=0 iff **a**=0
+  
+  
+(2) ||**a**+**b**|| $\leq$ ||a||+||b||
+    
+
+pf: <a,a>+<a,b>+<b,a>+<b,b>
+
+= $||a||^2|+2||a|||b||+||b||^2$
+
+
+$\leq||a||^2+2||a|| ||b||+||b||^2$
+
+
+= $(a+b)^2$
 
 
 
