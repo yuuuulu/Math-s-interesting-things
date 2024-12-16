@@ -973,6 +973,8 @@ We are beginning to embark a journey that allows us to learn about populations b
 
 **Sampling distribution of a statistic** is the probability distribution of a sample statistics (such as mean/proportion which tend to target the population mean/proportion), with all samples having the same sample size. This concept is important to understand. The behavior of a statistic can be known by understanding its distribution( (The random variable in this case is the value of that sample statistics)). Under certain condition, the distribution of sampling mean/proportion approximates a normal distribution.
 
+**Though statistics does not depend on unknown parameters, the distribution of it depend on unknown parameters.**
+
 (ps: the advantage of sampling with replacement:
 
 when selecting a relatively small sample from a large population, it makes no significant difference whether we sample with or without replacement.
