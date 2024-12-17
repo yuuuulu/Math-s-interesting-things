@@ -1021,7 +1021,7 @@ F &amp; F &amp; T &amp; T &amp; T \\
 <p>method 1: Consider the set <span class="math inline">\(A = \{ n \in \mathbb{N} \mid n \notin f(n) \}\)</span>, f : N → P(N).</p>
 <p>we should prove it is not a bijection. so we could prove it is not surjective (P(N) is much bigger than N).</p>
 <p>now we ask if f is surjective:</p>
-<p>If yes, there exists <span class="math inline">\(n_0\in N\)</span> s.t. f<span class="math inline">\((n_0)=\)</span>A</p>
+<p>If yes, there exists <span class="math inline">\(n_0\in N\)</span> s.t. f<span class="math inline">\((n_0)=\)</span>A, A<span class="math inline">\(\subset\)</span>N while A <span class="math inline">\(\in\)</span> P(N)</p>
 <p>now we ask: Does <span class="math inline">\(n_o\in f(n_0)\)</span></p>
 <ol type="1">
 <li><p>if yes, <span class="math inline">\(n_0\notin A=f(n_0)\)</span></p></li>
@@ -1034,14 +1034,6 @@ F &amp; F &amp; T &amp; T &amp; T \\
 <p>N-&gt;Z</p>
 <p>n|-&gt;n/2 if n even</p>
 <p>n|-&gt; n+1/2 if n odd</p>
-<p>method 2:</p>
-<p>The hint in the problem suggests using a classical argument known as Cantor’s diagonal argument:</p>
-<p>Assume there is a bijection <span class="math inline">\(f: \mathbb{N} \to \mathcal{P}(\mathbb{N})\)</span>: This means each natural number <span class="math inline">\(n \in \mathbb{N}\)</span> is paired with a unique subset of <span class="math inline">\(\mathbb{N}\)</span>, i.e., <span class="math inline">\(f(n) \in \mathcal{P}(\mathbb{N})\)</span>. Consider the set <span class="math inline">\(S = { n \in \mathbb{N} \mid n \notin f(n) }\)</span>: This set <span class="math inline">\(S\)</span> contains all natural numbers that are not elements of their corresponding subset given by the function <span class="math inline">\(f\)</span>. Deriving a Contradiction: <span class="math inline">\(S\)</span> is a subset of <span class="math inline">\(\mathbb{N}\)</span>, so by the assumption of a bijection, there must be some <span class="math inline">\(m \in \mathbb{N}\)</span> such that <span class="math inline">\(f(m) = S\)</span>. Now, ask whether <span class="math inline">\(m \in S\)</span> or <span class="math inline">\(m \notin S\)</span>:</p>
-<p>If <span class="math inline">\(m \in S\)</span>, then by the definition of <span class="math inline">\(S\)</span>, we must have <span class="math inline">\(m \notin f(m)\)</span>, which contradicts the fact that <span class="math inline">\(f(m) = S\)</span>.</p>
-<p>If <span class="math inline">\(m \notin S\)</span>, then <span class="math inline">\(m\)</span> must be an element of <span class="math inline">\(f(m)\)</span>, which again contradicts the definition of <span class="math inline">\(S\)</span>.</p>
-<p>Since this contradiction arises, we conclude that no such bijection <span class="math inline">\(f: \mathbb{N} \to \mathcal{P}(\mathbb{N})\)</span> can exist, and therefore <span class="math inline">\(\mathcal{P}(\mathbb{N})\)</span> is uncountable.</p>
-<p>The power set <span class="math inline">\(\mathcal{P}(\mathbb{N})\)</span> is uncountable, meaning its cardinality is greater than that of the set of natural numbers <span class="math inline">\(\mathbb{N}\)</span>, even though both sets are infinite. This conclusion is a key result in set theory, demonstrating that not all infinite sets have the same “size” or cardinality.</p>
-<p>However, for the situation of including finite subsets only,</p>
 <p><img src="images/clipboard-1883408292.png" class="img-fluid"></p>
 <p><img src="images/clipboard-819524834.png" class="img-fluid"></p>
 </section>
@@ -1141,7 +1133,6 @@ n - 1+1\leq 100 - n \implies n \leq 50
 </section>
 <section id="the-real-number" class="level1">
 <h1>the real number</h1>
-<p><img src="images/clipboard-2031452374.png" class="img-fluid"></p>
 </section>
 <section id="limittopology-version" class="level1">
 <h1>Limit(Topology version)</h1>

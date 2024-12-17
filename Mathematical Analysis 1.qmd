@@ -1067,7 +1067,7 @@ surjective (P(N) is much bigger than N).
 
 now we ask if f is surjective:
 
-If yes, there exists $n_0\in N$ s.t. f$(n_0)=$A
+If yes, there exists $n_0\in N$ s.t. f$(n_0)=$A, A$\subset$N while A $\in$ P(N)
 
 now we ask: Does $n_o\in f(n_0)$
 
@@ -1086,38 +1086,6 @@ n\|-\>n/2 if n even
 
 n\|-\> n+1/2 if n odd
 
-method 2:
-
-The hint in the problem suggests using a classical argument known as
-Cantor's diagonal argument:
-
-Assume there is a bijection $f: \mathbb{N} \to \mathcal{P}(\mathbb{N})$:
-This means each natural number $n \in \mathbb{N}$ is paired with a
-unique subset of $\mathbb{N}$, i.e., $f(n) \in \mathcal{P}(\mathbb{N})$.
-Consider the set $S = { n \in \mathbb{N} \mid n \notin f(n) }$: This set
-$S$ contains all natural numbers that are not elements of their
-corresponding subset given by the function $f$. Deriving a
-Contradiction: $S$ is a subset of $\mathbb{N}$, so by the assumption of
-a bijection, there must be some $m \in \mathbb{N}$ such that $f(m) = S$.
-Now, ask whether $m \in S$ or $m \notin S$:
-
-If $m \in S$, then by the definition of $S$, we must have
-$m \notin f(m)$, which contradicts the fact that $f(m) = S$.
-
-If $m \notin S$, then $m$ must be an element of $f(m)$, which again
-contradicts the definition of $S$.
-
-Since this contradiction arises, we conclude that no such bijection
-$f: \mathbb{N} \to \mathcal{P}(\mathbb{N})$ can exist, and therefore
-$\mathcal{P}(\mathbb{N})$ is uncountable.
-
-The power set $\mathcal{P}(\mathbb{N})$ is uncountable, meaning its
-cardinality is greater than that of the set of natural numbers
-$\mathbb{N}$, even though both sets are infinite. This conclusion is a
-key result in set theory, demonstrating that not all infinite sets have
-the same "size" or cardinality.
-
-However, for the situation of including finite subsets only,
 
 ![](images/clipboard-1883408292.png)
 
@@ -1246,7 +1214,7 @@ so Z is countable
 
 # the real number
 
-![](images/clipboard-2031452374.png)
+
 
 
 
