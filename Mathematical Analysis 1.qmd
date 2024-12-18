@@ -5,10 +5,42 @@ editor:
     wrap: 72
 ---
 
+### The begining main idea of Analysis about the establishment of real number
+
+### Motivation
+
+f(x)+f(y)=f(x+y) (addition in linearity in linear transformation)
+
+(a line across the original point)
+
+- 1-->1+1-->1+1+1--->n   positive integer(addition is needed/1 is needed)
+
+- 0--->0-1---0-1-1----n  positive integer(addition is needed/0 is needed)
+
+- $\frac{p}{q}$----      rational number(multiplication is needed)
+
+Since the rational number is countable(|N|=|N$\times$N|=|Q|) but irrational number is uncountable, we could not directly go ahead from Q to R\\Q. Fortunately, we have the property of density of irrational number(of course also rational number) in R. In this case we could introduce *limit* here, and also **continuity**
+
+- This means that, usually, if a situation in rational number is true, then in the whole real number it is  almost true.
+
+- Finally we get a whole line across the original point here.
+
+#### Example
+
+If f(x) is continuous on R. g(x)=f(x) when x is a rational number. Then we have g(x)=f(x) on R.
+
+##### Proof
+
+Use sequence to think intuitively:
+
+remains to be tapped
+
+
+
 # My main Analysis learning instructions(philosophy): Theorems come, theorems go, only examples lie forever.
 
 
-Maybe I could not remember all process of each profound theorems proof, but I could also understand Analysis in depth by handling how to use theorems to solve problems.(But I need to try to know how the proof using each condition in the theorems and internalize it by continurousely thinking) In this case, examples help me a lot.
+Maybe I could not remember all process of each profound theorems proof, but I could also understand Analysis in depth by handling how to use theorems to solve problems.(But I need to try to know how the proof using each condition in the theorems and internalize it by continuousely thinking) In this case, examples help me a lot.
 
 
 数学素养和人文素养的结合
@@ -1074,6 +1106,9 @@ now we ask: Does $n_o\in f(n_0)$
 1)  if yes, $n_0\notin A=f(n_0)$
 
 2)  if no, $n_0\in A=f(n_0)$
+
+
+(or we discuss the set, we suppose x is in A and based on the condition of being in set A we get A is empty, which is contradicts to "x is in A")
 
 so f is not surjective, which means f could not be bijective. so p(N) is
 uncountable.
