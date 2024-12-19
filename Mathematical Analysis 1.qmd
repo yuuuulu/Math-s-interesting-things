@@ -31,10 +31,87 @@ If f(x) is continuous on R. g(x)=f(x) when x is a rational number. Then we have 
 
 ##### Proof
 
-Use sequence to think intuitively:
+Use sequence to think intuitively and write down the proof rigorously:
 
-remains to be tapped
---
+Without loss of generalization, here we let our R-continuous function to be $x^2$.
+
+question: If f is continuous on [a,b], f(x)=$x^2$ if x $\in$ R\\Q. Show: f(x)=$x^2, \forall x\in R $ in [a,b]
+
+proof: 
+
+Firstly we write down **Sequential criterion of limit** which we will use to finish the proof:
+
+(Sequential criterion for limits of functions). Let $f: A \rightarrow \mathbb{R}$. The following are equivalent.
+1. $\lim _{x \rightarrow a} f(x)=\ell$.
+2. For any sequence $\left(a_n\right)_{n \in \mathbb{N}}$ with $a_n \in A, a_n \neq a$ and $\lim _n a_n=a$, we have
+$$
+\lim _n f\left(a_n\right)=\ell
+$$
+
+Proof. (1) $\Rightarrow$ (2): Suppose $\lim _{x \rightarrow a} f(x)=\ell$. Then $\forall \varepsilon>0, \exists \delta>0$ such that $\forall x$ with $|x-a|<\delta$ and $x \neq a$, we have
+$$
+|f(x)-\ell|<\varepsilon
+$$
+
+Let $\lim _n a_n=a, a_n \in A$ and $a_n \neq a$ for all $n \in \mathbb{N}$. Then for the $\delta>0$ above corresponding to $\varepsilon, \exists k \in \mathbb{N}$ such that $\forall n \geq k, n \in \mathbb{N}$, we have
+$$
+\left|a_n-a\right|<\delta
+$$
+which implies
+$$
+\left|f\left(a_n\right)-\ell\right|<\varepsilon .
+$$
+
+That shows that $\lim _n f\left(a_n\right)=\ell$.
+$(2) \Rightarrow(1)$ : Suppose for the sake of contradiction that $\lim _{x \rightarrow a} f(x) \neq \ell$. Then $\exists \varepsilon_0>0$ such that $\forall \delta>0, \exists x$ with $|x-a|<\delta$ and $x \neq a$ such that
+$$
+|f(x)-\ell| \geq \varepsilon_0
+$$
+
+We construct a sequence as follows. Take $\delta=\frac{1}{n}$. Then $\exists a_n$ with $\left|a_n-a\right|<\delta=\frac{1}{n}$ and $a_n \neq a$ such that $\left|f\left(a_n\right)-\ell\right| \geq \varepsilon_0 . a_n$ satisfies
+$$
+a-\frac{1}{n}<a_n<a+\frac{1}{n} .
+$$
+
+
+
+By letting $n \rightarrow+\infty$ and using the Squeeze Theorem(or we could use another method to finish argument here by constructing only one sequence (choose $\delta$ to be $1/n$ also and then always find one $x_n$ in the $\delta-$ neighborhood and this $x_n$ is also convergent to a)), we have $\lim _n a_n=a$. So by the given condition, $\lim _n f\left(a_n\right)=\ell$. However, for all $n \in \mathbb{N}$,
+$$
+\left|f\left(a_n\right)-\ell\right| \geq \varepsilon_0 \Rightarrow f\left(a_n\right) \geq \ell+\varepsilon_0 \text { or } f\left(a_n\right) \leq \ell-\varepsilon_0 .
+$$
+contradicting to f$(a_n)$ is convergent.
+
+
+Now we begin our proof:
+
+We have known that if $a_n\in$ R//Q f(a$_n$)=${a_n}^2$
+
+Since we have the property of "irrational numbers are dense on R" we know that $\exists a_n\in(a-1/n,a+1/n), \forall n\in N, a\in Q$. This constructs our sequence $a_n$ such that $lim_{n\rightarrow \infty} a_n=a, a\in Q$
+
+This implies that $lim_{n\rightarrow\infty}f(a_n)=f(lim_{n\rightarrow\infty}a_n)$=f(a).
+
+(The first equality is because of this proposition:(Limit of composition of functions). Let $f: A \rightarrow \mathbb{R}, g: B \rightarrow \mathbb{R}$ such that $R(f) \subseteq B$. If $\lim _{x \rightarrow a} f(x)=\ell$ and $g(x)$ is continuous at $\ell$, i.e. $\lim _{x \rightarrow \ell} g(x)=g(\ell)$, then
+$$
+\lim _{x \rightarrow a} g(f(x))=g(\ell)=g\left(\lim _{x \rightarrow a} f(x)\right) .
+$$
+proof:Proof. $\forall \varepsilon>0, \exists \delta>0$ such that $\forall y$ with $|y-\ell|<\delta$ and $y \in B$, we have
+$$
+|g(y)-g(\ell)|<\varepsilon
+$$
+
+For this $\delta, \exists \delta^{\prime}>0$ such that $\forall x$ with $0<|x-a|<\delta^{\prime}$ and $x \in A$, we have
+$$
+|f(x)-\ell|<\delta
+$$
+
+So if $0<|x-a|<\delta^{\prime}$ and $x \in A$, then $|f(x)-\ell|<\delta$ and $f(x) \in B$, which imply that $|g(f(x))-g(\ell)|<\varepsilon$. This proves the proposition.
+)
+
+Also, $lim_{n\rightarrow \infty}f(a_n)=lim_{n\rightarrow \infty}{a_n}^2$=$(lim_{n\rightarrow \infty}{a_n})^2=a^2$
+
+So we have f(a)=$a^2$.
+
+
 
 
 # My main Analysis learning instructions(philosophy): Theorems come, theorems go, only examples lie forever.

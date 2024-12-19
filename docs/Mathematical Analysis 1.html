@@ -196,7 +196,6 @@ window.Quarto = {
   <ul>
   <li><a href="#the-begining-main-idea-of-analysis-about-the-establishment-of-real-number" id="toc-the-begining-main-idea-of-analysis-about-the-establishment-of-real-number" class="nav-link active" data-scroll-target="#the-begining-main-idea-of-analysis-about-the-establishment-of-real-number">The begining main idea of Analysis about the establishment of real number</a></li>
   <li><a href="#motivation" id="toc-motivation" class="nav-link" data-scroll-target="#motivation">Motivation</a></li>
-  <li><a href="#remains-to-be-tapped" id="toc-remains-to-be-tapped" class="nav-link" data-scroll-target="#remains-to-be-tapped">remains to be tapped</a></li>
   <li><a href="#my-main-analysis-learning-instructionsphilosophy-theorems-come-theorems-go-only-examples-lie-forever." id="toc-my-main-analysis-learning-instructionsphilosophy-theorems-come-theorems-go-only-examples-lie-forever." class="nav-link" data-scroll-target="#my-main-analysis-learning-instructionsphilosophy-theorems-come-theorems-go-only-examples-lie-forever.">My main Analysis learning instructions(philosophy): Theorems come, theorems go, only examples lie forever.</a></li>
   <li><a href="#记得写出存在ps存在主义是生命价值驱动的好心情源泉" id="toc-记得写出存在ps存在主义是生命价值驱动的好心情源泉" class="nav-link" data-scroll-target="#记得写出存在ps存在主义是生命价值驱动的好心情源泉">记得写出存在，（ps：存在主义是生命价值驱动的好心情源泉）</a>
   <ul class="collapse">
@@ -371,12 +370,48 @@ window.Quarto = {
 <p>If f(x) is continuous on R. g(x)=f(x) when x is a rational number. Then we have g(x)=f(x) on R.</p>
 <section id="proof" class="level5">
 <h5 class="anchored" data-anchor-id="proof">Proof</h5>
-<p>Use sequence to think intuitively:</p>
+<p>Use sequence to think intuitively and write down the proof rigorously:</p>
+<p>Without loss of generalization, here we let our R-continuous function to be <span class="math inline">\(x^2\)</span>.</p>
+<p>question: If f is continuous on [a,b], f(x)=<span class="math inline">\(x^2\)</span> if x <span class="math inline">\(\in\)</span> R\Q. Show: f(x)=$x^2, xR $ in [a,b]</p>
+<p>proof:</p>
+<p>Firstly we write down <strong>Sequential criterion of limit</strong> which we will use to finish the proof:</p>
+<p>(Sequential criterion for limits of functions). Let <span class="math inline">\(f: A \rightarrow \mathbb{R}\)</span>. The following are equivalent. 1. <span class="math inline">\(\lim _{x \rightarrow a} f(x)=\ell\)</span>. 2. For any sequence <span class="math inline">\(\left(a_n\right)_{n \in \mathbb{N}}\)</span> with <span class="math inline">\(a_n \in A, a_n \neq a\)</span> and <span class="math inline">\(\lim _n a_n=a\)</span>, we have <span class="math display">\[
+\lim _n f\left(a_n\right)=\ell
+\]</span></p>
+<p>Proof. (1) <span class="math inline">\(\Rightarrow\)</span> (2): Suppose <span class="math inline">\(\lim _{x \rightarrow a} f(x)=\ell\)</span>. Then <span class="math inline">\(\forall \varepsilon&gt;0, \exists \delta&gt;0\)</span> such that <span class="math inline">\(\forall x\)</span> with <span class="math inline">\(|x-a|&lt;\delta\)</span> and <span class="math inline">\(x \neq a\)</span>, we have <span class="math display">\[
+|f(x)-\ell|&lt;\varepsilon
+\]</span></p>
+<p>Let <span class="math inline">\(\lim _n a_n=a, a_n \in A\)</span> and <span class="math inline">\(a_n \neq a\)</span> for all <span class="math inline">\(n \in \mathbb{N}\)</span>. Then for the <span class="math inline">\(\delta&gt;0\)</span> above corresponding to <span class="math inline">\(\varepsilon, \exists k \in \mathbb{N}\)</span> such that <span class="math inline">\(\forall n \geq k, n \in \mathbb{N}\)</span>, we have <span class="math display">\[
+\left|a_n-a\right|&lt;\delta
+\]</span> which implies <span class="math display">\[
+\left|f\left(a_n\right)-\ell\right|&lt;\varepsilon .
+\]</span></p>
+<p>That shows that <span class="math inline">\(\lim _n f\left(a_n\right)=\ell\)</span>. <span class="math inline">\((2) \Rightarrow(1)\)</span> : Suppose for the sake of contradiction that <span class="math inline">\(\lim _{x \rightarrow a} f(x) \neq \ell\)</span>. Then <span class="math inline">\(\exists \varepsilon_0&gt;0\)</span> such that <span class="math inline">\(\forall \delta&gt;0, \exists x\)</span> with <span class="math inline">\(|x-a|&lt;\delta\)</span> and <span class="math inline">\(x \neq a\)</span> such that <span class="math display">\[
+|f(x)-\ell| \geq \varepsilon_0
+\]</span></p>
+<p>We construct a sequence as follows. Take <span class="math inline">\(\delta=\frac{1}{n}\)</span>. Then <span class="math inline">\(\exists a_n\)</span> with <span class="math inline">\(\left|a_n-a\right|&lt;\delta=\frac{1}{n}\)</span> and <span class="math inline">\(a_n \neq a\)</span> such that <span class="math inline">\(\left|f\left(a_n\right)-\ell\right| \geq \varepsilon_0 . a_n\)</span> satisfies <span class="math display">\[
+a-\frac{1}{n}&lt;a_n&lt;a+\frac{1}{n} .
+\]</span></p>
+<p>By letting <span class="math inline">\(n \rightarrow+\infty\)</span> and using the Squeeze Theorem(or we could use another method to finish argument here by constructing only one sequence (choose <span class="math inline">\(\delta\)</span> to be <span class="math inline">\(1/n\)</span> also and then always find one <span class="math inline">\(x_n\)</span> in the <span class="math inline">\(\delta-\)</span> neighborhood and this <span class="math inline">\(x_n\)</span> is also convergent to a)), we have <span class="math inline">\(\lim _n a_n=a\)</span>. So by the given condition, <span class="math inline">\(\lim _n f\left(a_n\right)=\ell\)</span>. However, for all <span class="math inline">\(n \in \mathbb{N}\)</span>, <span class="math display">\[
+\left|f\left(a_n\right)-\ell\right| \geq \varepsilon_0 \Rightarrow f\left(a_n\right) \geq \ell+\varepsilon_0 \text { or } f\left(a_n\right) \leq \ell-\varepsilon_0 .
+\]</span> contradicting to f<span class="math inline">\((a_n)\)</span> is convergent.</p>
+<p>Now we begin our proof:</p>
+<p>We have known that if <span class="math inline">\(a_n\in\)</span> R//Q f(a<span class="math inline">\(_n\)</span>)=<span class="math inline">\({a_n}^2\)</span></p>
+<p>Since we have the property of “irrational numbers are dense on R” we know that <span class="math inline">\(\exists a_n\in(a-1/n,a+1/n), \forall n\in N, a\in Q\)</span>. This constructs our sequence <span class="math inline">\(a_n\)</span> such that <span class="math inline">\(lim_{n\rightarrow \infty} a_n=a, a\in Q\)</span></p>
+<p>This implies that <span class="math inline">\(lim_{n\rightarrow\infty}f(a_n)=f(lim_{n\rightarrow\infty}a_n)\)</span>=f(a).</p>
+<p>(The first equality is because of this proposition:(Limit of composition of functions). Let <span class="math inline">\(f: A \rightarrow \mathbb{R}, g: B \rightarrow \mathbb{R}\)</span> such that <span class="math inline">\(R(f) \subseteq B\)</span>. If <span class="math inline">\(\lim _{x \rightarrow a} f(x)=\ell\)</span> and <span class="math inline">\(g(x)\)</span> is continuous at <span class="math inline">\(\ell\)</span>, i.e.&nbsp;<span class="math inline">\(\lim _{x \rightarrow \ell} g(x)=g(\ell)\)</span>, then <span class="math display">\[
+\lim _{x \rightarrow a} g(f(x))=g(\ell)=g\left(\lim _{x \rightarrow a} f(x)\right) .
+\]</span> proof:Proof. <span class="math inline">\(\forall \varepsilon&gt;0, \exists \delta&gt;0\)</span> such that <span class="math inline">\(\forall y\)</span> with <span class="math inline">\(|y-\ell|&lt;\delta\)</span> and <span class="math inline">\(y \in B\)</span>, we have <span class="math display">\[
+|g(y)-g(\ell)|&lt;\varepsilon
+\]</span></p>
+<p>For this <span class="math inline">\(\delta, \exists \delta^{\prime}&gt;0\)</span> such that <span class="math inline">\(\forall x\)</span> with <span class="math inline">\(0&lt;|x-a|&lt;\delta^{\prime}\)</span> and <span class="math inline">\(x \in A\)</span>, we have <span class="math display">\[
+|f(x)-\ell|&lt;\delta
+\]</span></p>
+<p>So if <span class="math inline">\(0&lt;|x-a|&lt;\delta^{\prime}\)</span> and <span class="math inline">\(x \in A\)</span>, then <span class="math inline">\(|f(x)-\ell|&lt;\delta\)</span> and <span class="math inline">\(f(x) \in B\)</span>, which imply that <span class="math inline">\(|g(f(x))-g(\ell)|&lt;\varepsilon\)</span>. This proves the proposition. )</p>
+<p>Also, <span class="math inline">\(lim_{n\rightarrow \infty}f(a_n)=lim_{n\rightarrow \infty}{a_n}^2\)</span>=<span class="math inline">\((lim_{n\rightarrow \infty}{a_n})^2=a^2\)</span></p>
+<p>So we have f(a)=<span class="math inline">\(a^2\)</span>.</p>
 </section>
 </section>
-</section>
-<section id="remains-to-be-tapped" class="level2">
-<h2 class="anchored" data-anchor-id="remains-to-be-tapped">remains to be tapped</h2>
 </section>
 <section id="my-main-analysis-learning-instructionsphilosophy-theorems-come-theorems-go-only-examples-lie-forever." class="level1">
 <h1>My main Analysis learning instructions(philosophy): Theorems come, theorems go, only examples lie forever.</h1>
