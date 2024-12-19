@@ -34,7 +34,7 @@ If f(x) is continuous on R. g(x)=f(x) when x is a rational number. Then we have 
 Use sequence to think intuitively:
 
 remains to be tapped
-
+--
 
 
 # My main Analysis learning instructions(philosophy): Theorems come, theorems go, only examples lie forever.

@@ -957,5 +957,12 @@
     "title": "Analysis1",
     "section": "",
     "text": "f(x)+f(y)=f(x+y) (addition in linearity in linear transformation)\n(a line across the original point)\n\n1–&gt;1+1–&gt;1+1+1—&gt;n positive integer(addition is needed/1 is needed)\n0—&gt;0-1—0-1-1—-n positive integer(addition is needed/0 is needed)\n\\(\\frac{p}{q}\\)—- rational number(multiplication is needed)\n\nSince the rational number is countable(|N|=|N\\(\\times\\)N|=|Q|) but irrational number is uncountable, we could not directly go ahead from Q to R\\Q. Fortunately, we have the property of density of irrational number(of course also rational number) in R. In this case we could introduce limit here, and also continuity\n\nThis means that, usually, if a situation in rational number is true, then in the whole real number it is almost true.\nFinally we get a whole line across the original point here.\n\n\n\nIf f(x) is continuous on R. g(x)=f(x) when x is a rational number. Then we have g(x)=f(x) on R.\n\n\nUse sequence to think intuitively:"
+  },
+  {
+    "objectID": "Mathematical Analysis 1.html#remains-to-be-tapped",
+    "href": "Mathematical Analysis 1.html#remains-to-be-tapped",
+    "title": "Analysis1",
+    "section": "remains to be tapped",
+    "text": "remains to be tapped"
   }
 ]
