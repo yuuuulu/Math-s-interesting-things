@@ -134,6 +134,8 @@ Data skewed to the right(positively skewed) have a longer right tail, and the me
 
 mean is much sensitive than the median to the extreame value(not a resistant measure of center) so the outlier drags the mean to the skew...... ![](images/clipboard-2849357671.png)
 
+Compare $Q_2-Q_1$ and $Q_3-Q_2$ to decide left/right skew or symmetry.
+
 ps: the **trimmed mean** is more resistant.
 
 ![](images/clipboard-2111278063.png)
@@ -858,6 +860,10 @@ A probability distribution is a graph, table of formula that gives the probabili
 
 -   The Poisson distribution is a discrete probability distribution that applies to occurrences of some event over a specified interval. The random variable x is the number of occurrences of the event in an interval.The probability of the event occurring x times over an interval is given by $$P(x)=\frac{u^x\cdot e^{-\mu}}{x!}$$ where the random variable x is the number of occurences of an event over some interval and the ovvurrences must be random and independent of each other.
 
+中心极限定理：当泊松分布的参数 
+λ 较大时，泊松分布的形状会接近正态分布。这是因为中心极限定理指出，大量独立随机变量的和趋向于正态分布，而泊松分布可以看作是大量伯努利试验成功次数的分布，当试验次数足够多时，其和可以用正态分布来近似
+
+
 ### ???The occurrences must be uniformly distributed over the interval being used
 
 The mean is $\mu$
@@ -957,10 +963,7 @@ P(X-n=k\|X\>n)=P(X=k), k=1,2,3,...
 
 Tail probability for the probability calculation of more/higher than….
 
-
-
 ## Addition
-
 
 Independent random variable with the same distribution allows the addition law
 
@@ -1056,73 +1059,52 @@ to answer"is there strong evidence supporting a claim that the gender-selection 
 
 So if the answer of P($x\geq 52$) is small we could conclude that the gender selection is useful
 
-(总结：如果是0。5概率来看的话52以上本来就不是难事，as indicated by the such large probability of  P($x\geq 52$) 所以我们没有充分证据拒绝“not effective”这个假设前提)
-
-
+(总结：如果是0。5概率来看的话52以上本来就不是难事，as indicated by the such large probability of P($x\geq 52$) 所以我们没有充分证据拒绝“not effective”这个假设前提)
 
 此处还没有引入假设检验所以都是用using probability to determine when results are unusual这个思想来思考问题的：
 
- - Unusually low： x successes among n trails is an unually low number of successes if P(x or fewer) is very small
-
-
+-   Unusually low： x successes among n trails is an unually low number of successes if P(x or fewer) is very small
 
 ![](images/clipboard-804415.png)
- 
- 
-Interpretation for another example of gender selection(using only unusual results to explain): Because the probability of more than 13 girls, which is  0.001 is so low, we conclude that it is unusual to get 13 girls among 14 babies (using binomial to calculate it). This suggests that the technique of gender selection appears to be effective since it is highly unlikely that the result of 13 girls among 14 births happened by chance.
+
+Interpretation for another example of gender selection(using only unusual results to explain): Because the probability of more than 13 girls, which is 0.001 is so low, we conclude that it is unusual to get 13 girls among 14 babies (using binomial to calculate it). This suggests that the technique of gender selection appears to be effective since it is highly unlikely that the result of 13 girls among 14 births happened by chance.
 
 ## Normal distribution
-
 
 If a variable is the superposition result of a large number of small independent random factors, then the variable must obey the normal distribution of variables
 
 e.g. measure error
 
-
 ### Assessing Normality
-
 
 In general, quantile plots can be used to assess any probability distribution.
 
-
 For a normal quantile plot(or normal probability plot), it is a graph of points(x,y) where each x vaue is from the original set of sample data and each y value is the cooresponding z score that is a quantile value expected from the standard normal distribution
-
 
 #### Procedures
 
+-   Histogram(not helpful for small data set)
 
-- Histogram(not helpful for small data set)
+-   outliers: reject normality if there is more than 1 outlier present(not helpful for small data set)
 
-- outliers: reject normality if there is more than 1 outlier present(not helpful for small data set)
+-   normal quantile plot:
 
-- normal quantile plot: 
-
- sort data from lowest to highest
-
+sort data from lowest to highest
 
 ## inferences from 2 samples introduces the differences between two populaton means using matched pairs but correlaition and regression analyze the association between the 2 variables and if such an association exists we wnat to describe it with an equation that can be used for predictions
 
-
 paired sampled data(or called bivariate data)
 
-- a correlation exists between two variables when one of them is related to the other in some way.
+-   a correlation exists between two variables when one of them is related to the other in some way.
 
-
-
-- the linear correlation coefficient r measures the strength of the linear association between the paired x- and y-quantitative values in a sample. Its value is computed by using the formula(Pearson(1857-1937) product moment correlation coefficient)
-
-
+-   the linear correlation coefficient r measures the strength of the linear association between the paired x- and y-quantitative values in a sample. Its value is computed by using the formula(Pearson(1857-1937) product moment correlation coefficient)
 
 ......otherwise there is not sufficient evidence to support the conclusion of a significant linear equation
 
-
 !!!: interpreting r: explained variation: the value of $r^2$ is the proportion of the variation in y that is explained by the linear association between x and y.(and the other percentage is explained by factors other thanx such as characteristics not included in the study)
 
-- correlation does not imply causality,just the association
+-   correlation does not imply causality,just the association
 
-- average suppress individual variation and may inflate the correlation coefficient(the linear correlation coefficient became higher when reginal averages were used)
+-   average suppress individual variation and may inflate the correlation coefficient(the linear correlation coefficient became higher when reginal averages were used)
 
-
-
-
-# point estimation and confident interval 
+# point estimation and confident interval

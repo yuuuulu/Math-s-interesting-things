@@ -510,6 +510,7 @@ F-statistic: 2.997 on 1 and 7 DF,  p-value: 0.1271</code></pre>
 <p>Data skewed to the left(negatively skewed) have a longer left tail, and the mean and media are to the left of the mode.</p>
 <p>Data skewed to the right(positively skewed) have a longer right tail, and the mean and media are to the right of the mode.</p>
 <p>mean is much sensitive than the median to the extreame value(not a resistant measure of center) so the outlier drags the mean to the skew…… <img src="images/clipboard-2849357671.png" class="img-fluid"></p>
+<p>Compare <span class="math inline">\(Q_2-Q_1\)</span> and <span class="math inline">\(Q_3-Q_2\)</span> to decide left/right skew or symmetry.</p>
 <p>ps: the <strong>trimmed mean</strong> is more resistant.</p>
 <p><img src="images/clipboard-2111278063.png" class="img-fluid"></p>
 <p><img src="images/clipboard-2144359450.png" class="img-fluid"></p>
@@ -1226,6 +1227,7 @@ E[Y]=E\left[Y_1\right]+E\left[Y_2\right]+\cdots+E\left[Y_n\right]=\frac{n}{2} \\
 <ul>
 <li>The Poisson distribution is a discrete probability distribution that applies to occurrences of some event over a specified interval. The random variable x is the number of occurrences of the event in an interval.The probability of the event occurring x times over an interval is given by <span class="math display">\[P(x)=\frac{u^x\cdot e^{-\mu}}{x!}\]</span> where the random variable x is the number of occurences of an event over some interval and the ovvurrences must be random and independent of each other.</li>
 </ul>
+<p>中心极限定理：当泊松分布的参数 λ 较大时，泊松分布的形状会接近正态分布。这是因为中心极限定理指出，大量独立随机变量的和趋向于正态分布，而泊松分布可以看作是大量伯努利试验成功次数的分布，当试验次数足够多时，其和可以用正态分布来近似</p>
 <section id="the-occurrences-must-be-uniformly-distributed-over-the-interval-being-used" class="level3">
 <h3 class="anchored" data-anchor-id="the-occurrences-must-be-uniformly-distributed-over-the-interval-being-used">???The occurrences must be uniformly distributed over the interval being used</h3>
 <p>The mean is <span class="math inline">\(\mu\)</span></p>
