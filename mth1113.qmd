@@ -51,7 +51,7 @@ Theorems come, theorems go. Only examples are lying forever. (Practice to use st
 
 ## it is not stable to predict the data outside our data sample'
 
-## Residual plost should have no pattern
+## Residual plot should have no pattern
 
 across the whole range, it could not be showing a certain trend or a specific shape.
 
