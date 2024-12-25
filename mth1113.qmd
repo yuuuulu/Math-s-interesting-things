@@ -41,6 +41,8 @@ Theorems come, theorems go. Only examples are lying forever. (Practice to use st
 
 ![](images/clipboard-1774849890.png)
 
+![](images/clipboard-807464638.png)
+
 ## background
 
 -   Regression to the mean (Galton's thinking)
@@ -860,9 +862,7 @@ A probability distribution is a graph, table of formula that gives the probabili
 
 -   The Poisson distribution is a discrete probability distribution that applies to occurrences of some event over a specified interval. The random variable x is the number of occurrences of the event in an interval.The probability of the event occurring x times over an interval is given by $$P(x)=\frac{u^x\cdot e^{-\mu}}{x!}$$ where the random variable x is the number of occurences of an event over some interval and the ovvurrences must be random and independent of each other.
 
-中心极限定理：当泊松分布的参数 
-λ 较大时，泊松分布的形状会接近正态分布。这是因为中心极限定理指出，大量独立随机变量的和趋向于正态分布，而泊松分布可以看作是大量伯努利试验成功次数的分布，当试验次数足够多时，其和可以用正态分布来近似
-
+中心极限定理：当泊松分布的参数 λ 较大时，泊松分布的形状会接近正态分布。这是因为中心极限定理指出，大量独立随机变量的和趋向于正态分布，而泊松分布可以看作是大量伯努利试验成功次数的分布，当试验次数足够多时，其和可以用正态分布来近似
 
 ### ???The occurrences must be uniformly distributed over the interval being used
 
