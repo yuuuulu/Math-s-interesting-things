@@ -1091,7 +1091,11 @@ For a normal quantile plot(or normal probability plot), it is a graph of points(
 
 sort data from lowest to highest
 
-## inferences from 2 samples introduces the differences between two populaton means using matched pairs but correlaition and regression analyze the association between the 2 variables and if such an association exists we wnat to describe it with an equation that can be used for predictions
+-   Sampling distribution of pˆ when population is infinite
+
+![](images/clipboard-1400086523.png)
+
+## ![](images/clipboard-2929822579.png)inferences from 2 samples introduces the differences between two populaton means using matched pairs but correlaition and regression analyze the association between the 2 variables and if such an association exists we wnat to describe it with an equation that can be used for predictions
 
 paired sampled data(or called bivariate data)
 
