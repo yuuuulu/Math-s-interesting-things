@@ -1112,3 +1112,10 @@ paired sampled data(or called bivariate data)
 -   average suppress individual variation and may inflate the correlation coefficient(the linear correlation coefficient became higher when reginal averages were used)
 
 # point estimation and confident interval
+
+
+
+
+
+
+- Tommorw is the exam~ Good luck!

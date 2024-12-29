@@ -84,7 +84,7 @@ contradicting to f$(a_n)$ is convergent.
 
 Now we begin our proof:
 
-We have known that if $a_n\in$ R//Q f(a$_n$)=${a_n}^2$
+We have known that if $a_n\in$ R/Q f(a$_n$)=${a_n}^2$
 
 Since we have the property of "irrational numbers are dense on R" we know that $\exists a_n\in(a-1/n,a+1/n), \forall n\in N, a\in Q$. This constructs our sequence $a_n$ such that $lim_{n\rightarrow \infty} a_n=a, a\in Q$
 
@@ -110,6 +110,23 @@ So if $0<|x-a|<\delta^{\prime}$ and $x \in A$, then $|f(x)-\ell|<\delta$ and $f(
 Also, $lim_{n\rightarrow \infty}f(a_n)=lim_{n\rightarrow \infty}{a_n}^2$=$(lim_{n\rightarrow \infty}{a_n})^2=a^2$
 
 So we have f(a)=$a^2$.
+
+
+# Continuous function
+
+
+# Sequences
+
+
+- We could see the situation of continuity of a function firstly and intuitively by SEQUENCES then give a proof using limit(sequential criteria of limit), squeeze Thm(directly or constructing sequences), 
+
+
+e.g Thomas function
+
+
+e.g
+
+
 
 
 
@@ -1506,7 +1523,6 @@ norm--the generalization of the absolute value: ||$\cdot$||: V(a vector space)--
 (2) ||$\alpha \vec x=|\alpha||\vec x|$|| $\alpha \in \mathbb R$
 
 \quad\quad triangle inequality
-
 
 
 
