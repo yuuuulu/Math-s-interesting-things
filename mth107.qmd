@@ -313,6 +313,7 @@ Where $I_p$ is the identity matrix of size $p \times p$.
 
 ### 3.4 Projection Matrix in OLS
 
+
 The projection matrix (or hat matrix) $P$ is defined as:
 
 $$
@@ -360,6 +361,8 @@ Where $\sigma^2$ is the variance of the error terms. This matrix provides inform
 ------------------------------------------------------------------------
 
 ### 4. Properties of Orthogonal Projections
+
+#### I do not need to remember the projection formula since I just write u=cv+w where v is the projection of u to v and then use <w,v>=0 to get c.
 
 Consider a vector $y$ in the vector space spanned by the columns of $X$. The projection of $y$ onto this space can be written as:
 
