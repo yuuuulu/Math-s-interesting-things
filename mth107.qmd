@@ -73,6 +73,14 @@ eg.$e^A=e^{D+N} ?= e^De^N$
 
 - More precisely, each term with power 1, means that the restriction of T to the corresponding generalised eigenspace is diagonalisable.So the minimal polynomial's each term with the power of 1 means the matrix representation of the operator is diagonalizable, and each eigenvalue has the same number of corresponding power of characteristic polynomial's term of linearly independent eigenvectors.
 
+## The relationship between the direct sum(decomposition) and diagolizable
+
+
+- If A:V--> V, A is diagonalizable then V=RangeA direct sum NullA (proof idea: clarify the basis of A by the non-zero element and zero element on the diagonal of the diagonal shape matrix of A. Based on them we could find the basis of RangeA and NullA which span V  while with the intersection of {0})
+
+
+
+
 
 
 ## The relationship between Jordan form and diffrential equation
