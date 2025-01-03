@@ -1524,8 +1524,7 @@ norm--the generalization of the absolute value: ||$\cdot$||: V(a vector space)--
 
 \quad\quad triangle inequality
 
-
-
+# 水一个commit
 
 
 # a problem about divisible using greatest common factor to solve(even Bezou's theorem)
