@@ -1362,15 +1362,37 @@ $\leq||a||^2+2||a|| ||b||+||b||^2$
 = $(a+b)^2$
 
 
+# Matrix multiplication should be familar with
+
+a complicated eg Let $D: \mathcal{P}_n(\mathbf{R}) \rightarrow \mathcal{P}_n(\mathbf{R})$ be the differentiation operator: $D(p)=p^{\prime}$, and let $\mathcal{B}=\left(1, x, x^2, \ldots, x^n\right)$ be the standard basis of $\mathcal{P}_n(\mathbf{R})$. Find $\left[D^k\right]_{\mathcal{B}}^{\mathcal{B}}$ for $k \in \mathbf{N}_{\geq 1}$
+Solution. We have $D(1)=0$ and $D\left(x^i\right)=i x^{i-1}$ for $1 \geq i \geq n$, which gives us the $(n, n)$-matrix
+$$
+[D]_{\mathcal{B}}^{\mathcal{B}}=\left[\begin{array}{lllll}
+0 & 1 & 0 & & \\
+& 0 & 2 & \ddots & \\
+& & 0 & \ddots & \ddots \\
+& & & \ddots & 0 \\
+& & & & n \\
+& & & & 0
+\end{array}\right]
+$$
+
+In general, for $1 \leq k \leq n$, we have
+$$
+D^k\left(x^i\right)= \begin{cases}i(i-1) \cdots(i-k+1) x^{i-k} & \text { if } 1 \leq k \leq i \\ 0 & \text { if } k \geq i+1\end{cases}
+$$
+which gives us the matrix $\quad k$
 
 
 
 
 
 
+# Projection
 
+Let V and W be two vector spaces and let T ∈ L(V,W) and S ∈ L(W, V ) be such that TS = $Id_W$ . Then V = range(S) ⊕ null(T ) and ST ∈ L(V ) is a projection to range(S) with nullspace null(T).
 
-
+(ps:ST may not be invertible. However, if T and S are operator $\in L(V)$, it is trivial that TS is invertible since T is surjective and S is injetive then they are all invertible so ST is invertible since $ST(T^{-1}S^{-1})=Id$ and $(T^{-1}S^{-1})ST=Id$)
 
 
 

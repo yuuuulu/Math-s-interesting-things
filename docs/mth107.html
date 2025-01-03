@@ -272,6 +272,8 @@ window.Quarto = {
   <ul class="collapse">
   <li><a href="#thm-an-inner-product-space-is-a-normed-space-by-defining." id="toc-thm-an-inner-product-space-is-a-normed-space-by-defining." class="nav-link" data-scroll-target="#thm-an-inner-product-space-is-a-normed-space-by-defining.">Thm An inner product space is a normed space by defining.</a></li>
   </ul></li>
+  <li><a href="#matrix-multiplication-should-be-familar-with" id="toc-matrix-multiplication-should-be-familar-with" class="nav-link" data-scroll-target="#matrix-multiplication-should-be-familar-with">Matrix multiplication should be familar with</a></li>
+  <li><a href="#projection" id="toc-projection" class="nav-link" data-scroll-target="#projection">Projection</a></li>
   <li><a href="#tutorial" id="toc-tutorial" class="nav-link" data-scroll-target="#tutorial">Tutorial</a>
   <ul class="collapse">
   <li><a href="#problems" id="toc-problems" class="nav-link" data-scroll-target="#problems">problems</a></li>
@@ -1367,6 +1369,27 @@ T^{-1} \circ T = \text{id}_{F^{\{1,2,3,...n\}}}.
 <p><span class="math inline">\(\leq||a||^2+2||a|| ||b||+||b||^2\)</span></p>
 <p>= <span class="math inline">\((a+b)^2\)</span></p>
 </section>
+</section>
+<section id="matrix-multiplication-should-be-familar-with" class="level1">
+<h1>Matrix multiplication should be familar with</h1>
+<p>a complicated eg Let <span class="math inline">\(D: \mathcal{P}_n(\mathbf{R}) \rightarrow \mathcal{P}_n(\mathbf{R})\)</span> be the differentiation operator: <span class="math inline">\(D(p)=p^{\prime}\)</span>, and let <span class="math inline">\(\mathcal{B}=\left(1, x, x^2, \ldots, x^n\right)\)</span> be the standard basis of <span class="math inline">\(\mathcal{P}_n(\mathbf{R})\)</span>. Find <span class="math inline">\(\left[D^k\right]_{\mathcal{B}}^{\mathcal{B}}\)</span> for <span class="math inline">\(k \in \mathbf{N}_{\geq 1}\)</span> Solution. We have <span class="math inline">\(D(1)=0\)</span> and <span class="math inline">\(D\left(x^i\right)=i x^{i-1}\)</span> for <span class="math inline">\(1 \geq i \geq n\)</span>, which gives us the <span class="math inline">\((n, n)\)</span>-matrix <span class="math display">\[
+[D]_{\mathcal{B}}^{\mathcal{B}}=\left[\begin{array}{lllll}
+0 &amp; 1 &amp; 0 &amp; &amp; \\
+&amp; 0 &amp; 2 &amp; \ddots &amp; \\
+&amp; &amp; 0 &amp; \ddots &amp; \ddots \\
+&amp; &amp; &amp; \ddots &amp; 0 \\
+&amp; &amp; &amp; &amp; n \\
+&amp; &amp; &amp; &amp; 0
+\end{array}\right]
+\]</span></p>
+<p>In general, for <span class="math inline">\(1 \leq k \leq n\)</span>, we have <span class="math display">\[
+D^k\left(x^i\right)= \begin{cases}i(i-1) \cdots(i-k+1) x^{i-k} &amp; \text { if } 1 \leq k \leq i \\ 0 &amp; \text { if } k \geq i+1\end{cases}
+\]</span> which gives us the matrix <span class="math inline">\(\quad k\)</span></p>
+</section>
+<section id="projection" class="level1">
+<h1>Projection</h1>
+<p>Let V and W be two vector spaces and let T ∈ L(V,W) and S ∈ L(W, V ) be such that TS = <span class="math inline">\(Id_W\)</span> . Then V = range(S) ⊕ null(T ) and ST ∈ L(V ) is a projection to range(S) with nullspace null(T).</p>
+<p>(ps:ST may not be invertible. However, if T and S are operator <span class="math inline">\(\in L(V)\)</span>, it is trivial that TS is invertible since T is surjective and S is injetive then they are all invertible so ST is invertible since <span class="math inline">\(ST(T^{-1}S^{-1})=Id\)</span> and <span class="math inline">\((T^{-1}S^{-1})ST=Id\)</span>)</p>
 </section>
 <section id="tutorial" class="level1">
 <h1>Tutorial</h1>
