@@ -1384,18 +1384,75 @@ $$
 which gives us the matrix $\quad k$
 
 
+# change of basis is easy if understanding linear transformation well
 
+Let $V$ be a vector space with basis $\mathcal{B}=\left(v_1, \ldots, v_n\right)$ and let $T \in \mathcal{L}(V)$ be an isomorphism. Then $T \mathcal{B}=\left(T v_1, \ldots, T v_n\right)$ is a basis by Lemma 3.1.4 and $\left[\operatorname{Id}_V\right]_{T \mathcal{B}}^{\mathcal{B}}=[T]_{\mathcal{B}}^{\mathcal{B}}$.
+
+Proof. The $j^{\text {th }}$ column of $[T]_{\mathcal{B}}^{\mathcal{B}}$ is given by the coefficients of $T\left(v_i\right)=a_{1 i} v_1+\cdots+a_{n i} v_n$ while the $i^{\text {th }}$ column of $\left[\operatorname{Id}_V\right]_{T \mathcal{B}}^{\mathcal{B}}$ is given by the coefficients of $\operatorname{Id}_V\left(T v_i\right)=T v_i=a_{1 i} v_1+$ $\cdots+a_{n i} v_n$.
+
+You can think of $[T]_{\mathcal{B}}^{\mathcal{B}}$ as "the space is fixed, vectors are moved by $T$ " and of $\left[\operatorname{Id}_V\right]_{T \mathcal{B}}^{\mathcal{B}}=$ $\left(\left[\operatorname{Id}_V\right]_{\mathcal{B}}^{T \mathcal{B}}\right)^{-1}$ as "vectors are fixed, the underlying space is moved by $T^{-1}$ ". See Figure 3.5 for an example with $T=R_\theta$ the rotation of angle $\theta$ around the origin.
+
+- this also introduces the defination of similar matrix
+
+
+(ps. 2 matrices are similar iff they have the same Jordan form)
 
 
 
 # Projection
 
-Let V and W be two vector spaces and let T ∈ L(V,W) and S ∈ L(W, V ) be such that TS = $Id_W$ . Then V = range(S) ⊕ null(T ) and ST ∈ L(V ) is a projection to range(S) with nullspace null(T).
+
+$P^2=P$
+
+## 1
+
+
+If V=$U\oplus W$, then $P_u\in \mathcal L(V)$ is a projection
+
+
+Proposition  Let $V$ be a vector space and let $P \in \mathcal{L}(V)$ be a projection. Then $V=\operatorname{range}(P) \oplus \operatorname{null}(P)$ and $P=P_{\operatorname{range}(P)}$.
+
+Proof. It is clear that range $(P)+\operatorname{null}(P) \subseteq V$. So we need to prove that the sum is direct and that it is equal to $V$. Let $v \in V$. Then one have $v=P(v)+(v-P(v))$ with $P(v) \in \operatorname{range}(P)$ and $v-P(v)$ is in null $(P)$. Indeed, $P(v-P(v))=P(v)-P^2(v)=$ $P(v)-P(v)=0$. Now, for the direct sum part. If $v \in \operatorname{range}(P) \cap \operatorname{null}(P)$ we have $v=P(w)$ and $0=P(v)=P^2(w)=P(w)=v$, so range $(P) \cap \operatorname{null}(P)=0$ which finishes the proof of range $(P)+\operatorname{null}(P) \subseteq V$.
+
+Finally, let $v \in V$. Then $v=P(v)+(v-P(v))$ is the unique decomposition $v=u+w$ with $u \in \operatorname{range}(P)$ and $w \in \operatorname{null}(P)$. Therefore, $=P_{\text {range }(P)}(v)=P(v)$ and we just demonstrated $P=P_{\text {range }(P)}$.
+
+???Another way to interpret this proposition is that there is a one-to-one correspondance between projections $P \in \mathcal{L}(V)$ and direct sums decomposition $V=U \oplus W$ where order matter. We conclude this subsection by the following result that is a generalization of this proposition.
+
+
+
+
+## 1 extension 
+
+Suppose $P_1, \ldots, P_k \in \mathcal{L}(V)$ are projections such that $P_1+\cdots+P_k=\operatorname{Id}_V$ and $P_i P_j=0_{\mathcal{L}(V)}$ if $i \neq j$. Then $V=\operatorname{range}\left(P_1\right) \oplus \cdots \oplus \operatorname{range}\left(P_k\right)$.
+
+Proof. Let $v$ be any vector in $V$. Then
+$$
+v=\operatorname{Id}_V v=\left(P_1+\cdots+P_k\right) v=P_1 v+\cdots+P_k v \in \operatorname{range}\left(P_1\right)+\cdots+\operatorname{range}\left(P_k\right)
+$$
+and thus $V=P_1 v+\cdots+P_k v \in \operatorname{range}\left(P_1\right)+\cdots+$ range $\left(P_k\right)$. We now prove that the sum is direct. Suppose $0=v_1+\cdots+v_k$ with $v_i \in \operatorname{range}\left(P_i\right)$ for $1 \leq i \leq k$. We want to prove that all the $v_i$ are zero. By definition of the range, there exist $w_i$ such that $P_i w_i=v_i$. Using that $P_i$ is a projection we have $P_i v_i=P_i^2 w_i=P_i w_i=v_i$ while $P_i v_j=P_i P_j w_j=0 w_j=0$ if $i \neq j$. Now, if we apply $P_i$ to both sides of (3.5) we obtain $0=v_i$. By doing this for all $1 \leq i \leq k$ we have that all the $v_i$ are zero as desired, and so the sum is direct.
+
+Now that we have proven the Theorem, let us discuss why it is a generalization of the defination of a projection onto rangeP alone nullP with just 2 decomposition(direct sum) Let $P \in \mathcal{L}(V)$ be a projection, $P_1:=P$ and $P_2:=\mathrm{Id}_V-P$. One easily check the following properties:
+- $P_2$ is a projection: $P_2^2=\mathrm{Id}_V^2-\mathrm{Id}_V P-P \mathrm{Id}_V+P^2=\mathrm{Id}_V-P-P+P=P_2$;
+- $P 1+P_2=\mathrm{Id}_V$;
+- and $P_1 P_2=P^2-P=0=P_2 P_1$.
+
+
+## easier way (left/right inverse)
+
+
+An easy way to create projections is to use left and right inverses.
+
+Let $V$ and $W$ be two vector spaces and let $T \in \mathcal{L}(V, W)$ and $S \in \mathcal{L}(W, V)$ be such that $T S=\operatorname{Id}_W$. Then $V=\operatorname{range}(S) \oplus \operatorname{null}(T)$ and $S T \in \mathcal{L}(V)$ is a projection to range $(S)$ with nullspace $\operatorname{null}(T)$.
+Proof. We first show that $S T$ is an abstract projection: $(S T)^2=S(T S) T=S \operatorname{Id}_W T=$ $S T$.
+
+It now remains to show that range $(S T)=\operatorname{range}(S)$ and $\operatorname{null}(S T)=\operatorname{null}(T)$. If $v$ is in range $(S T)$, then there exists $u \in V$ such that $v=S T(u)=S(T(u)) \in \operatorname{range}(S)$. So range $(S T) \subseteq \operatorname{range}(S)$. For the other inclusion, let $v \in \operatorname{range}(S)$. Thus there exists $w \in W$ with $v=S(w)=S \operatorname{Id}_W(w)=S T S(w)=S T(T(w))$ which shows that range $(S) \subseteq$ range $(S T)$.
+
+For the nullspaces, if $v \in \operatorname{null}(T)$, then $S T(v)=S(0)=0$ and hence $\operatorname{null}(T) \subseteq \operatorname{null}(S T)$. For the other inclusion, let $v$ be an element in null $(S T)$. We have $0_V=S T(v)$ and by applying $T$ to both sides $0_W=T S T(v)=\operatorname{Id}_W T(v)=T(v)$, which shows that $\operatorname{null}(S T) \subseteq \operatorname{null}(T)$.
+
+Observe that for a given $T \in \mathcal{L}(V, W)$ there exists a right inverse $S$ such that $T S=\operatorname{Id}_W$ if and only if $T$ is surjective. If such an inverse exists it is not unique, unless $T$ is an isomorphism. This is related to the fact that given a general subspace $U(=\operatorname{null}(T))$ of $V$, there exists more than one direct sum complement $X(=\operatorname{range}(S))$ such that $V=U \oplus X$. Let us exemplify this.
+
 
 (ps:ST may not be invertible. However, if T and S are operator $\in L(V)$, it is trivial that TS is invertible since T is surjective and S is injetive then they are all invertible so ST is invertible since $ST(T^{-1}S^{-1})=Id$ and $(T^{-1}S^{-1})ST=Id$)
-
-
-
 
 # Tutorial
 
