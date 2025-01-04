@@ -13,265 +13,279 @@ f(x)+f(y)=f(x+y) (addition in linearity in linear transformation)
 
 (a line across the original point)
 
-- 1-->1+1-->1+1+1--->n   positive integer(addition is needed/1 is needed)
+-   1--\>1+1--\>1+1+1---\>n positive integer(addition is needed/1 is
+    needed)
 
-- 0--->0-1---0-1-1----n  positive integer(addition is needed/0 is needed)
+-   0---\>0-1---0-1-1----n positive integer(addition is needed/0 is
+    needed)
 
-- $\frac{p}{q}$----      rational number(multiplication is needed)
+-   $\frac{p}{q}$---- rational number(multiplication is needed)
 
-Since the rational number is countable(|N|=|N$\times$N|=|Q|) but irrational number is uncountable, we could not directly go ahead from Q to R\\Q. Fortunately, we have the property of density of irrational number(of course also rational number) in R. In this case we could introduce *limit* here, and also **continuity**
+Since the rational number is countable(\|N\|=\|N$\times$N\|=\|Q\|) but
+irrational number is uncountable, we could not directly go ahead from Q
+to R\\Q. Fortunately, we have the property of density of irrational
+number(of course also rational number) in R. In this case we could
+introduce *limit* here, and also **continuity**
 
-- This means that, usually, if a situation in rational number is true, then in the whole real number it is  almost true.
+-   This means that, usually, if a situation in rational number is true,
+    then in the whole real number it is almost true.
 
-- Finally we get a whole line across the original point here.
+-   Finally we get a whole line across the original point here.
 
-#### Example
+#### Example1
 
-If f(x) is continuous on R. g(x)=f(x) when x is a rational number. Then we have g(x)=f(x) on R.
+If f(x) is continuous on R. g(x)=f(x) when x is a rational number. Then
+we have g(x)=f(x) on R.
 
 ##### Proof
 
 Use sequence to think intuitively and write down the proof rigorously:
 
-Without loss of generalization, here we let our R-continuous function to be $x^2$.
+Without loss of generalization, here we let our R-continuous function to
+be $x^2$.
 
-question: If f is continuous on [a,b], f(x)=$x^2$ if x $\in$ R\\Q. Show: f(x)=$x^2, \forall x\in R $ in [a,b]
+question: If f is continuous on \[a,b\], f(x)=$x^2$ if x $\in$ R\\Q.
+Show: f(x)=\$x\^2, \forall x\in R \$ in \[a,b\]
 
-proof: 
+proof:
 
-Firstly we write down **Sequential criterion of limit** which we will use to finish the proof:
+Firstly we write down **Sequential criterion of limit** which we will
+use to finish the proof:
 
-(Sequential criterion for limits of functions). Let $f: A \rightarrow \mathbb{R}$. The following are equivalent.
-1. $\lim _{x \rightarrow a} f(x)=\ell$.
-2. For any sequence $\left(a_n\right)_{n \in \mathbb{N}}$ with $a_n \in A, a_n \neq a$ and $\lim _n a_n=a$, we have
-$$
+(Sequential criterion for limits of functions). Let
+$f: A \rightarrow \mathbb{R}$. The following are equivalent. 1.
+$\lim _{x \rightarrow a} f(x)=\ell$. 2. For any sequence
+$\left(a_n\right)_{n \in \mathbb{N}}$ with $a_n \in A, a_n \neq a$ and
+$\lim _n a_n=a$, we have $$
 \lim _n f\left(a_n\right)=\ell
 $$
 
-Proof. (1) $\Rightarrow$ (2): Suppose $\lim _{x \rightarrow a} f(x)=\ell$. Then $\forall \varepsilon>0, \exists \delta>0$ such that $\forall x$ with $|x-a|<\delta$ and $x \neq a$, we have
-$$
+Proof. (1) $\Rightarrow$ (2): Suppose
+$\lim _{x \rightarrow a} f(x)=\ell$. Then
+$\forall \varepsilon>0, \exists \delta>0$ such that $\forall x$ with
+$|x-a|<\delta$ and $x \neq a$, we have $$
 |f(x)-\ell|<\varepsilon
 $$
 
-Let $\lim _n a_n=a, a_n \in A$ and $a_n \neq a$ for all $n \in \mathbb{N}$. Then for the $\delta>0$ above corresponding to $\varepsilon, \exists k \in \mathbb{N}$ such that $\forall n \geq k, n \in \mathbb{N}$, we have
-$$
+Let $\lim _n a_n=a, a_n \in A$ and $a_n \neq a$ for all
+$n \in \mathbb{N}$. Then for the $\delta>0$ above corresponding to
+$\varepsilon, \exists k \in \mathbb{N}$ such that
+$\forall n \geq k, n \in \mathbb{N}$, we have $$
 \left|a_n-a\right|<\delta
-$$
-which implies
-$$
+$$ which implies $$
 \left|f\left(a_n\right)-\ell\right|<\varepsilon .
 $$
 
-That shows that $\lim _n f\left(a_n\right)=\ell$.
-$(2) \Rightarrow(1)$ : Suppose for the sake of contradiction that $\lim _{x \rightarrow a} f(x) \neq \ell$. Then $\exists \varepsilon_0>0$ such that $\forall \delta>0, \exists x$ with $|x-a|<\delta$ and $x \neq a$ such that
-$$
+That shows that $\lim _n f\left(a_n\right)=\ell$. $(2) \Rightarrow(1)$ :
+Suppose for the sake of contradiction that
+$\lim _{x \rightarrow a} f(x) \neq \ell$. Then $\exists \varepsilon_0>0$
+such that $\forall \delta>0, \exists x$ with $|x-a|<\delta$ and
+$x \neq a$ such that $$
 |f(x)-\ell| \geq \varepsilon_0
 $$
 
-We construct a sequence as follows. Take $\delta=\frac{1}{n}$. Then $\exists a_n$ with $\left|a_n-a\right|<\delta=\frac{1}{n}$ and $a_n \neq a$ such that $\left|f\left(a_n\right)-\ell\right| \geq \varepsilon_0 . a_n$ satisfies
+We construct a sequence as follows. Take $\delta=\frac{1}{n}$. Then
+$\exists a_n$ with $\left|a_n-a\right|<\delta=\frac{1}{n}$ and
+$a_n \neq a$ such that
+$\left|f\left(a_n\right)-\ell\right| \geq \varepsilon_0 . a_n$ satisfies
 $$
 a-\frac{1}{n}<a_n<a+\frac{1}{n} .
 $$
 
-
-
-By letting $n \rightarrow+\infty$ and using the Squeeze Theorem(or we could use another method to finish argument here by constructing only one sequence (choose $\delta$ to be $1/n$ also and then always find one $x_n$ in the $\delta-$ neighborhood and this $x_n$ is also convergent to a)), we have $\lim _n a_n=a$. So by the given condition, $\lim _n f\left(a_n\right)=\ell$. However, for all $n \in \mathbb{N}$,
+By letting $n \rightarrow+\infty$ and using the Squeeze Theorem(or we
+could use another method to finish argument here by constructing only
+one sequence (choose $\delta$ to be $1/n$ also and then always find one
+$x_n$ in the $\delta-$ neighborhood and this $x_n$ is also convergent to
+a)), we have $\lim _n a_n=a$. So by the given condition,
+$\lim _n f\left(a_n\right)=\ell$. However, for all $n \in \mathbb{N}$,
 $$
 \left|f\left(a_n\right)-\ell\right| \geq \varepsilon_0 \Rightarrow f\left(a_n\right) \geq \ell+\varepsilon_0 \text { or } f\left(a_n\right) \leq \ell-\varepsilon_0 .
-$$
-contradicting to f$(a_n)$ is convergent.
-
+$$ contradicting to f$(a_n)$ is convergent.
 
 Now we begin our proof:
 
 We have known that if $a_n\in$ R/Q f(a$_n$)=${a_n}^2$
 
-Since we have the property of "irrational numbers are dense on R" we know that $\exists a_n\in(a-1/n,a+1/n), \forall n\in N, a\in Q$. This constructs our sequence $a_n$ such that $lim_{n\rightarrow \infty} a_n=a, a\in Q$
+Since we have the property of "irrational numbers are dense on R" we
+know that $\exists a_n\in(a-1/n,a+1/n), \forall n\in N, a\in Q$. This
+constructs our sequence $a_n$ such that
+$lim_{n\rightarrow \infty} a_n=a, a\in Q$
 
-This implies that $lim_{n\rightarrow\infty}f(a_n)=f(lim_{n\rightarrow\infty}a_n)$=f(a).
+This implies that
+$lim_{n\rightarrow\infty}f(a_n)=f(lim_{n\rightarrow\infty}a_n)$=f(a).
 
-(The first equality is because of this proposition:(Limit of composition of functions). Let $f: A \rightarrow \mathbb{R}, g: B \rightarrow \mathbb{R}$ such that $R(f) \subseteq B$. If $\lim _{x \rightarrow a} f(x)=\ell$ and $g(x)$ is continuous at $\ell$, i.e. $\lim _{x \rightarrow \ell} g(x)=g(\ell)$, then
-$$
+(The first equality is because of this proposition:(Limit of composition
+of functions). Let
+$f: A \rightarrow \mathbb{R}, g: B \rightarrow \mathbb{R}$ such that
+$R(f) \subseteq B$. If $\lim _{x \rightarrow a} f(x)=\ell$ and $g(x)$ is
+continuous at $\ell$, i.e. $\lim _{x \rightarrow \ell} g(x)=g(\ell)$,
+then $$
 \lim _{x \rightarrow a} g(f(x))=g(\ell)=g\left(\lim _{x \rightarrow a} f(x)\right) .
-$$
-proof:Proof. $\forall \varepsilon>0, \exists \delta>0$ such that $\forall y$ with $|y-\ell|<\delta$ and $y \in B$, we have
-$$
+$$ proof:Proof. $\forall \varepsilon>0, \exists \delta>0$ such that
+$\forall y$ with $|y-\ell|<\delta$ and $y \in B$, we have $$
 |g(y)-g(\ell)|<\varepsilon
 $$
 
-For this $\delta, \exists \delta^{\prime}>0$ such that $\forall x$ with $0<|x-a|<\delta^{\prime}$ and $x \in A$, we have
-$$
+For this $\delta, \exists \delta^{\prime}>0$ such that $\forall x$ with
+$0<|x-a|<\delta^{\prime}$ and $x \in A$, we have $$
 |f(x)-\ell|<\delta
 $$
 
-So if $0<|x-a|<\delta^{\prime}$ and $x \in A$, then $|f(x)-\ell|<\delta$ and $f(x) \in B$, which imply that $|g(f(x))-g(\ell)|<\varepsilon$. This proves the proposition.
-)
+So if $0<|x-a|<\delta^{\prime}$ and $x \in A$, then $|f(x)-\ell|<\delta$
+and $f(x) \in B$, which imply that $|g(f(x))-g(\ell)|<\varepsilon$. This
+proves the proposition. )
 
-Also, $lim_{n\rightarrow \infty}f(a_n)=lim_{n\rightarrow \infty}{a_n}^2$=$(lim_{n\rightarrow \infty}{a_n})^2=a^2$
+Also,
+$lim_{n\rightarrow \infty}f(a_n)=lim_{n\rightarrow \infty}{a_n}^2$=$(lim_{n\rightarrow \infty}{a_n})^2=a^2$
 
 So we have f(a)=$a^2$.
 
+# example 2
+
+This could prove the definiteness in an innner product while also show
+the good quality of continuous function----one point\>0, the whole
+neighborhood\>0
+
+![](images/clipboard-1727062441.png)
 
 # Continuous function
 
-
 # Sequences
 
-
-- We could see the situation of continuity of a function firstly and intuitively by SEQUENCES then give a proof using limit(sequential criteria of limit), squeeze Thm(directly or constructing sequences), 
-
+-   We could see the situation of continuity of a function firstly and
+    intuitively by SEQUENCES then give a proof using limit(sequential
+    criteria of limit), squeeze Thm(directly or constructing sequences),
 
 e.g Thomas function
 
-
 e.g
-
-
-
-
-
 
 # My main Analysis learning instructions(philosophy): Theorems come, theorems go, only examples lie forever.
 
+Maybe I could not remember all process of each profound theorems proof,
+but I could also understand Analysis in depth by handling how to use
+theorems to solve problems.(But I need to try to know how the proof
+using each condition in the theorems and internalize it by continuousely
+thinking) In this case, examples help me a lot.
 
-Maybe I could not remember all process of each profound theorems proof, but I could also understand Analysis in depth by handling how to use theorems to solve problems.(But I need to try to know how the proof using each condition in the theorems and internalize it by continuousely thinking) In this case, examples help me a lot.
-
-
-数学素养和人文素养的结合
-一个好的证明是natural的
+数学素养和人文素养的结合 一个好的证明是natural的
 好的数学是具有普遍性(universal)的（大数学家先看二维再推广到n维）
-sequence is the most 直观来写分析
-北极是无穷大 上帝是无穷 唯一的上帝 正无穷和负无穷最后归到一点
-两个无穷大 傅立叶级数 周期函数--周期概念 傅立叶 transform 
+sequence is the most 直观来写分析 北极是无穷大 上帝是无穷 唯一的上帝
+正无穷和负无穷最后归到一点 两个无穷大 傅立叶级数 周期函数--周期概念
+傅立叶 transform
 
 偏导数存在不一定连续 只有在一元才是对的
 
 open set is countable union of open intervals---
 
-
-欧拉 拉格朗日比较有创意，数学的趣味，但后面，cauchy weiastrass 给的连续定理，严格化
+欧拉 拉格朗日比较有创意，数学的趣味，但后面，cauchy weiastrass
+给的连续定理，严格化
 
 # 记得写出存在，（ps：存在主义是生命价值驱动的好心情源泉）
+
 ## 'Existence' means beyond any human efforts, and objectively existence. We take the value that we need means a human effort, and because it is arbitrary, we have the freedom to choose one. --- Dr. Zhang
 
 # max and min need to be found
 
-eg. Finite open sets' intersection is also open because we can choose the minimum $\epsilon$
-
-
+eg. Finite open sets' intersection is also open because we can choose
+the minimum $\epsilon$
 
 # open set is like interval
 
 ## Theorem
 
-Let $O\subset R$ be an open set then $O=\cup_{n=1}^\infty I_n$ where $I_n$ is an open interval in R
-
-
+Let $O\subset R$ be an open set then $O=\cup_{n=1}^\infty I_n$ where
+$I_n$ is an open interval in R
 
 ## Def
 
-A collection of open sets covers a set A if $A\subset \cup O_\alpha$. The collection {$O_\alpha$} is called an open cover of A.
+A collection of open sets covers a set A if $A\subset \cup O_\alpha$.
+The collection {$O_\alpha$} is called an open cover of A.
 
 ## Theorem
 
-
-Let C={$O_\alpha$} be a collection of open sets of real numbers then there is a countable subcollection {$O_i$} of C such that $\cup_{O\in C}O=\cup_{n=1}^\infty O_i$
+Let C={$O_\alpha$} be a collection of open sets of real numbers then
+there is a countable subcollection {$O_i$} of C such that
+$\cup_{O\in C}O=\cup_{n=1}^\infty O_i$
 
 Any open cover of a set of real numbers contains a countable subcover.
 
 ## i have proved that:
 
-the closure of $Q$ = R <--> $R\approx Q$ <--> $\forall x\in R, \exists x_n\in Q$ such that$x_n-->x$. Q is a countable, dense subset of R, R is separable.
-
+the closure of $Q$ = R \<--\> $R\approx Q$ \<--\>
+$\forall x\in R, \exists x_n\in Q$ such that$x_n-->x$. Q is a countable,
+dense subset of R, R is separable.
 
 # accumulation point is different to limit point
 
-eg. $a_n=(-1)^n (n+1)/n$, 1 and -1 are accumulation points but not limit points because the sequence is not convergent
-
+eg. $a_n=(-1)^n (n+1)/n$, 1 and -1 are accumulation points but not limit
+points because the sequence is not convergent
 
 # the usage of proof by contradiction in the proof of limit
 
-
 eg.
-
-
 
 ## albel: guass is a fox, 走过的地方狐狸尾巴扫掉了
 
-
 ## algebra of continuity
-
 
 $\exists \delta = min${$\delta_1,\delta_2$}
 
 # 阿贝尔26过世
 
-
-
-
 # Continuity
 
 ## history
 
-cauchy 1821(decrease indefinitely with those of $\alpha$)--weierstrass 1874 ($\epsilon-\delta$)-----
-
+cauchy 1821(decrease indefinitely with those of $\alpha$)--weierstrass
+1874 ($\epsilon-\delta$)-----
 
 ## understanding in a long process
 
-- $\delta$ decides how good the continuity of the function is.
+-   $\delta$ decides how good the continuity of the function is.
 
-
-
-
-
-
-
-
-# Preface before 
+# Preface before
 
 ## Cauchy 1822
 
-What is a limit?--number 
+What is a limit?--number
 
 Until 1870, the answer to "What is the number" had been known.
 
 (这样来看，学习数分的一年痛苦就不算什么)
 
-
-
-
-
-
 # 实数是什么
 
-实数是一个唯一的一个complete ordered field 如果有别的 它一定和实数是等价的
+实数是一个唯一的一个complete ordered field 如果有别的
+它一定和实数是等价的
 
-- dedekind思想推广到n维空间有一定难度（limit inf； limit sup这种大小只有1维空间才有）
-所以我们有了cantor的思想 是更高一级的 可以推广到更general空间(norm space;metric space所有metric space的证明思想和构造时候一模一样 方法固定如此)
+-   dedekind思想推广到n维空间有一定难度（limit inf； limit
+    sup这种大小只有1维空间才有） 所以我们有了cantor的思想 是更高一级的
+    可以推广到更general空间(norm space;metric space所有metric
+    space的证明思想和构造时候一模一样 方法固定如此)
 
 ## order--cardinality
 
-1，2，3，n
-2，4，6，2n
+1，2，3，n 2，4，6，2n
 
 f(n)=2n
 
-- explaination：无穷大加一个数还是等于无穷大
-
+-   explaination：无穷大加一个数还是等于无穷大
 
 $f:N->N\cup${$a_1,a_2,a_3$}
 
-f(1)=$a_1$ f(2)=$a_2$,..f(4)=1, f(n+3)=n, this function is one-to-one -- bijection
+f(1)=$a_1$ f(2)=$a_2$,..f(4)=1, f(n+3)=n, this function is one-to-one --
+bijection
 
 --无穷大加上任意一个实属x还是无穷大
 
 N x N is countable
 
-$S \subset N$ S is countable 
+$S \subset N$ S is countable
 
-f(m,n)-->$2^m3^n$（只要取互质的两个数就ok）
+f(m,n)--\>$2^m3^n$（只要取互质的两个数就ok）
 
-N x N--> N
+N x N--\> N
 
 f: 1-1
 
@@ -283,32 +297,24 @@ f(N x N)$\subset$ N
 
 2维3维n维
 
-(0,1) is uncountable
-反证法
-
-
+(0,1) is uncountable 反证法
 
 Cantor's diagonal process
 
 欧几里得是第一个反证法---有无穷多个质数
 
-
-
 {p1 p2 p3...}
 
 p=p1+p2+pn+...+1
 
-p1|p...pn|p---p is a prime---contradiction to countable 
-
+p1\|p...pn\|p---p is a prime---contradiction to countable
 
 (0,1)={x1,...x} countable
 
+x1=01a11a12a13. a1n$\in${0,1,2,...9} x2=01a21a22a23.
+a2n$\in${0,1,2,...9}
 
-x1=01a11a12a13. a1n$\in${0,1,2,...9}
-x2=01a21a22a23. a2n$\in${0,1,2,...9}
-
-
-construct a real number 
+construct a real number
 
 y=0.b1b2b3...
 
@@ -318,56 +324,39 @@ b2 budengyu a22 y budengyu x2
 
 b3 budengyu ann y budengyu xn
 
-bn in {a1,...a}--> y$\in$(0,1) but y$\notin${$x_1,...x_n$}
+bn in {a1,...a}--\> y$\in$(0,1) but y$\notin${$x_1,...x_n$}
 
+Ex: \[0,1) 约等于 (0,1)
 
-
-Ex: [0,1) 约等于 (0,1)
-
-proof: Let{p1,p2,....}=(0,1)$\cap Q$
-分成有理数和无理数
+proof: Let{p1,p2,....}=(0,1)$\cap Q$ 分成有理数和无理数
 
 f(0)=p1 f(p1)=p2 f(pn+1)=pn f(x)=x $x\in (0,1)-${p1,..pn}
 
 概率 特征函数
 
-
 Cantor set
-
 
 进位的概念
 
-
-
-
-
-
-
-
-
-
-
-
 ## 
 
+导数 积分 无穷级数 --都是极限 极限是什么--数数是什么 -- Augustin
+Cauchy(1789-1846)
 
-导数 积分 无穷级数 --都是极限 极限是什么--数数是什么
--- Augustin Cauchy(1789-1846)
+-   人文素养
 
+cantor 1872年是不平凡的一年， 有（Weierstrass, Dedekind, Meray, Heine,
+Cantor）同时提出了实属系统建构的理解 出版著作解决困惑人们2500多年的问题
 
-- 人文素养
-
-cantor 1872年是不平凡的一年， 有（Weierstrass, Dedekind, Meray, Heine, Cantor）同时提出了实属系统建构的理解 出版著作解决困惑人们2500多年的问题
-
-
-Weierstrass 法律 数学 喝酒 干架 退学 在中学里边仍然没有与学术脱节 复变函数 椭圆函数（研究在复数平面上的解析函数， C=$R^2$ a+ib-->(a,b) is an isomorphism）
-$C \cup {\infty}$ 相似于球面 $S^2$ 约等于  $R^2\cup \infty$ 变成closed and bounded
-one-point- compactfication 为什么实数不bounded因为无穷 无穷大这点不是实数（不满足实数性质---无穷大加无穷大还是无穷大；无穷大减无穷大是any number）因为
-
-
+Weierstrass 法律 数学 喝酒 干架 退学 在中学里边仍然没有与学术脱节
+复变函数 椭圆函数（研究在复数平面上的解析函数， C=$R^2$ a+ib--\>(a,b) is
+an isomorphism） $C \cup {\infty}$ 相似于球面 $S^2$ 约等于
+$R^2\cup \infty$ 变成closed and bounded one-point- compactfication
+为什么实数不bounded因为无穷
+无穷大这点不是实数（不满足实数性质---无穷大加无穷大还是无穷大；无穷大减无穷大是any
+number）因为
 
 任何单调有界的实属序列都有极限存在---dedekind的假设
-
 
 dedekind cut
 
@@ -377,12 +366,9 @@ if rational number
 
 古希腊哲学 古希腊数学
 
-
 Thales
 
-
-做测量工作创出非欧几何这门学问
-真正的天才是能够创出一门学问的
+做测量工作创出非欧几何这门学问 真正的天才是能够创出一门学问的
 
 牛顿是科学第一人 当人们迷迷糊糊的时候 他打开理性的光
 
@@ -402,28 +388,17 @@ Thales
 
 一个城市的发展不应该是盖房子 应该是好的博物馆音乐厅公园 提高人民素养
 
-
-
 volume 2 多变数 stolze定理 divergent定理
 
-
-limit sup   limit inf --这个东西就是我的实数
-
+limit sup limit inf --这个东西就是我的实数
 
 Cantor-==柯西序列。距离概念
 
-$|a_m-a_n|-->0$. d($a_m,a_n$-->0) metric
+$|a_m-a_n|-->0$. d($a_m,a_n$--\>0) metric
 
-
-
-
-equivalent equation
-equivalent class
-实数
-实数是一个集合
+equivalent equation equivalent class 实数 实数是一个集合
 
 cantor--集合论
-
 
 定义是最难的
 
@@ -431,20 +406,14 @@ cantor--集合论
 
 会用定理很重要 不是高斯
 
-
 用多了就知道是怎么一回事
 
+定理给了条件 哪里用到什么条件 怎么用的
 
-定理给了条件  哪里用到什么条件 怎么用的
+碰到好老师的重要性 姜立夫 量纲自然
 
-
-碰到好老师的重要性 姜立夫
-量纲自然
-
-
-
-complete的完备不是完美 不是
-门掉了一个螺丝 找一个螺丝完完全全放上去发挥作用
+complete的完备不是完美 不是 门掉了一个螺丝
+找一个螺丝完完全全放上去发挥作用
 
 认识自己 我是螺丝 完完全全发挥我的作用 把长处 恩赐发挥出来 就是complete
 
@@ -454,20 +423,13 @@ closure of A = B
 
 $\forall b\in B, \exists${$a_n$} $\subset A$ such that $a_n-->b$
 
-$A\cap B $ not equals to $\emptyset \forall \epsilon > 0 $
+\$A\cap B \$ not equals to \$\emptyset \forall \epsilon \> 0 \$
 
+实数是唯一一个complete ordered field
 
- 实数是唯一一个complete ordered field
- 
- 代数结构---分配律
- 
- 
- eg.complex number没有order所以我们定义norm
+代数结构---分配律
 
-
-
-
-
+eg.complex number没有order所以我们定义norm
 
 ![](images/clipboard-317793846.png)
 
@@ -1193,7 +1155,8 @@ surjective (P(N) is much bigger than N).
 
 now we ask if f is surjective:
 
-If yes, there exists $n_0\in N$ s.t. f$(n_0)=$A, A$\subset$N while A $\in$ P(N)
+If yes, there exists $n_0\in N$ s.t. f$(n_0)=$A, A$\subset$N while A
+$\in$ P(N)
 
 now we ask: Does $n_o\in f(n_0)$
 
@@ -1201,8 +1164,9 @@ now we ask: Does $n_o\in f(n_0)$
 
 2)  if no, $n_0\in A=f(n_0)$
 
-
-(or we discuss the set, we suppose x is in A and based on the condition of being in set A we get A is empty, which is contradicts to "x is in A")
+(or we discuss the set, we suppose x is in A and based on the condition
+of being in set A we get A is empty, which is contradicts to "x is in
+A")
 
 so f is not surjective, which means f could not be bijective. so p(N) is
 uncountable.
@@ -1214,7 +1178,6 @@ N-\>Z
 n\|-\>n/2 if n even
 
 n\|-\> n+1/2 if n odd
-
 
 ![](images/clipboard-1883408292.png)
 
@@ -1343,15 +1306,10 @@ so Z is countable
 
 # the real number
 
-
-
-
-
-
-
 # Limit(Topology version)
 
 ## triangle inequality is a strong tool
+
 $$
 \begin{aligned}
 & \lim _{x \rightarrow \infty}\left|\frac{\frac{11}{x}-\frac{9}{x^2}}{25+\frac{35}{x}+\frac{6}{x^2}}\right| \\
@@ -1360,48 +1318,42 @@ $$
 & \geqslant 25-\left|\frac{35}{x}\right|-\left|\frac{10}{x^2}\right|\\
 & \forall x>10 \\
 \end{aligned}
-$$
-$$
+$$ $$
 25-| \frac{35}{x}\left|-\left|\frac{10}{x^2}\right|>25-\left(\frac{35}{10}+\frac{10}{10^2}\right)=M_1\right.
-$$
-Take $M_2=\frac{22}{M_1 \varepsilon}, \forall|x|>\frac{22}{M_1 \varepsilon},\left|\frac{11}{x}\right|<\frac{M_1 \varepsilon}{2}$
-Take $M_3=\sqrt{\frac{18}{m_1 \varepsilon}}, \forall|x|>\sqrt{\frac{18}{m_1 \varepsilon}},\left|\frac{9}{x^2}\right|<\frac{m_1 \varepsilon}{2}$
+$$ Take
+$M_2=\frac{22}{M_1 \varepsilon}, \forall|x|>\frac{22}{M_1 \varepsilon},\left|\frac{11}{x}\right|<\frac{M_1 \varepsilon}{2}$
+Take
+$M_3=\sqrt{\frac{18}{m_1 \varepsilon}}, \forall|x|>\sqrt{\frac{18}{m_1 \varepsilon}},\left|\frac{9}{x^2}\right|<\frac{m_1 \varepsilon}{2}$
 $$
 \left|\frac{11}{x}-\frac{9}{x^2}\right|<\left|\frac{11}{x}\right|+\left|\frac{9}{x^2}\right|
 $$
 
-So Take $M=m \cdot a x\left\{10, \frac{22}{M_1 a}, \sqrt{\frac{18}{m_1 \varepsilon}}\right\}$, we hame
-$\forall \varepsilon>0, \forall|x|>m$, such that...<$\epsilon$
-
+So Take
+$M=m \cdot a x\left\{10, \frac{22}{M_1 a}, \sqrt{\frac{18}{m_1 \varepsilon}}\right\}$,
+we hame $\forall \varepsilon>0, \forall|x|>m$, such that...\<$\epsilon$
 
 ## understanding deeply(explain by myself...)
 
 ## proof of some theroem
 
-
 ### boring things(just practivce epsilon-delta language...)
 
-- $\lim _{x \rightarrow a} f(x)=\ell$ if and only if $\lim _{x \rightarrow a^{+}} f(x)=\lim _{x \rightarrow a^{-}} f(x)=\ell$.
+-   $\lim _{x \rightarrow a} f(x)=\ell$ if and only if
+    $\lim _{x \rightarrow a^{+}} f(x)=\lim _{x \rightarrow a^{-}} f(x)=\ell$.
 
-Necessary Condition
-Let $f(x) \rightarrow l$ as $x \rightarrow c$.
+Necessary Condition Let $f(x) \rightarrow l$ as $x \rightarrow c$.
 
-Then from the definition of the limit of a function:
-$$
+Then from the definition of the limit of a function: $$
 \forall \epsilon>0: \exists \delta>0: 0<|x-c|<\delta \Longrightarrow|f(x)-l|<\epsilon
 $$
 
-So for any given $\epsilon$, there exists a $\delta$ such that:
-$$
+So for any given $\epsilon$, there exists a $\delta$ such that: $$
 0<|x-c|<\delta
-$$
-implies that:
-$$
+$$ implies that: $$
 l-\epsilon<f(x)<l+\epsilon
 $$
 
-Now:
-$$
+Now: $$
 \begin{array}{ll} 
 & 0<|x-c|<\delta \\
 \leadsto \quad & -\delta<-(x-c)<0 \\
@@ -1417,43 +1369,41 @@ That is: $\forall \epsilon>0: \exists \delta>0$ :
 
 (2) : $\quad c<x<c+\delta \Longrightarrow\|f(x)-l\|<\epsilon$
 
-So given that particular value of $\epsilon$, we can find a value of $\delta$ such that the conditions for both:
+So given that particular value of $\epsilon$, we can find a value of
+$\delta$ such that the conditions for both:
 
-(1): $\quad f$ tending to the limit $l$ as $x$ tends to $c$ from the left
+(1): $\quad f$ tending to the limit $l$ as $x$ tends to $c$ from the
+left
 
 and :
 
-(2) : $\quad f$ tending to the limit $l$ as $x$ tends to $c$ from the right.
+(2) : $\quad f$ tending to the limit $l$ as $x$ tends to $c$ from the
+    right.
 
-Thus:
-$$
+Thus: $$
 \lim _{x \rightarrow c} f(x)=l
-$$
-implies that:
-$$
+$$ implies that: $$
 \lim _{x \rightarrow c^{-}} f(x)=l
-$$
-and:
-$$
+$$ and: $$
 \lim _{x \rightarrow c^{+}} f(x)=l
 $$
 
-
-
 Sufficient Condition
 
-Let $f(x) \rightarrow l$ as $x \rightarrow c^{-}$and $f(x) \rightarrow l$ as $x \rightarrow c^{+}$.
+Let $f(x) \rightarrow l$ as $x \rightarrow c^{-}$and
+$f(x) \rightarrow l$ as $x \rightarrow c^{+}$.
 
 This means that:
 
-(1): $\forall \epsilon>0: \exists \delta>0: c-\delta<x<c \Longrightarrow|f(x)-l|<\epsilon$
+(1):
+$\forall \epsilon>0: \exists \delta>0: c-\delta<x<c \Longrightarrow|f(x)-l|<\epsilon$
 
 and :
 
-(2): $\forall \epsilon>0: \exists \delta>0: c<x<c+\delta \Longrightarrow|f(x)-l|<\epsilon$
+(2):
+$\forall \epsilon>0: \exists \delta>0: c<x<c+\delta \Longrightarrow|f(x)-l|<\epsilon$
 
-In the same manner as above, the conditions on $\delta$ give us that:
-$$
+In the same manner as above, the conditions on $\delta$ give us that: $$
 \begin{array}{ll} 
 & c-\delta<x<c \\
 \wedge \quad & c<x<c+\delta \\
@@ -1461,21 +1411,15 @@ $$
 \end{array}
 $$
 
-So:
-$$
+So: $$
 \forall \epsilon>0: \exists \delta>0: 0<|x-c|<\delta \Longrightarrow|f(x)-l|<\epsilon
 $$
 
-Thus:
-$$
+Thus: $$
 \lim _{x \rightarrow c^{-}} f(x)=l
-$$
-and:
-$$
+$$ and: $$
 \lim _{x \rightarrow c^{+}} f(x)=l
-$$
-together imply that:
-$$
+$$ together imply that: $$
 \lim _{x \rightarrow c} f(x)=l
 $$
 
@@ -1485,47 +1429,37 @@ $$
 
 $x=0.a_1a_2a_3...$
 
-[0,1]={$\sum_{n=1}^\infty a_n/10^n,n\in{0,1,...9}$}
+\[0,1\]={$\sum_{n=1}^\infty a_n/10^n,n\in{0,1,...9}$}
 
-\# [0,1]=$10^{\infty}$---(uncountable)
+\# \[0,1\]=$10^{\infty}$---(uncountable)
 
-
-|{$x_1$}|$\subseteq (x_1-\epsilon,x_1+\epsilon), \forall \epsilon >0$ i.e.|{$x_1$}|=0
-
-
-
-
-
-
-
-
-
+\|{$x_1$}\|$\subseteq (x_1-\epsilon,x_1+\epsilon), \forall \epsilon >0$
+i.e.\|{$x_1$}\|=0
 
 # What is compactness?
 
-Fresch <--> H.Lebesgal
+Fresch \<--\> H.Lebesgal
 
 ## Defination
 
 # Topology
 
-|$x_n-x$|-->0
+\|$x_n-x$\|--\>0
 
-||$x_n-x$|| "norm"
+\|\|$x_n-x$\|\| "norm"
 
-norm--the generalization of the absolute value: ||$\cdot$||: V(a vector space)-->[0,$\infty$)
+norm--the generalization of the absolute value: \|\|$\cdot$\|\|: V(a
+vector space)--\>\[0,$\infty$)
 
-(1) ||$\vec x$$\geq$0||, $\forall \vec x\in V$ 
+(1) \|\|$\vec x$\$\geq\$0\|\|, $\forall \vec x\in V$
 
+\quad\quad \|\|$\vec x=0$\|\| iff$\vec x=0\in V$
 
-\quad\quad ||$\vec x=0$|| iff$\vec x=0\in V$
-
-(2) ||$\alpha \vec x=|\alpha||\vec x|$|| $\alpha \in \mathbb R$
+(2) \|\|$\alpha \vec x=|\alpha||\vec x|$\|\| $\alpha \in \mathbb R$
 
 \quad\quad triangle inequality
 
 # 水一个commit
-
 
 # a problem about divisible using greatest common factor to solve(even Bezou's theorem)
 
