@@ -1006,5 +1006,12 @@
     "title": "MTH107—NOTEs",
     "section": "Infinite here will also be true",
     "text": "Infinite here will also be true"
+  },
+  {
+    "objectID": "mth107.html#projection-is-a-useful-tool-to-do-approximation",
+    "href": "mth107.html#projection-is-a-useful-tool-to-do-approximation",
+    "title": "MTH107—NOTEs",
+    "section": "projection is a useful tool to do approximation",
+    "text": "projection is a useful tool to do approximation\nThe projection is the approximation and the vector minus projection is the error.\neg. use the inner product on continuous functions to approximate sine function using \\(P_4(R)\\)"
   }
 ]

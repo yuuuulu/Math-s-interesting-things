@@ -1341,11 +1341,7 @@ You can think of $[T]_{\mathcal{B}}^{\mathcal{B}}$ as "the space is fixed, vecto
 
 $P^2=P$
 
-
-
 ## 1
-
-
 
 If V=$U\oplus W$, then $P_u\in \mathcal L(V)$ is a projection
 
@@ -1357,8 +1353,7 @@ Finally, let $v \in V$. Then $v=P(v)+(v-P(v))$ is the unique decomposition $v=u+
 
 ???Another way to interpret this proposition is that there is a one-to-one correspondance between projections $P \in \mathcal{L}(V)$ and direct sums decomposition $V=U \oplus W$ where order matter. We conclude this subsection by the following result that is a generalization of this proposition.
 
-
-- This means that projection is a kind of decomposition---along and onto decompose one vector in a unique way, which is an intuitive understanding of a special case of direct sum.
+-   This means that projection is a kind of decomposition---along and onto decompose one vector in a unique way, which is an intuitive understanding of a special case of direct sum.
 
 ## 1 extension
 
@@ -1384,10 +1379,19 @@ Observe that for a given $T \in \mathcal{L}(V, W)$ there exists a right inverse 
 
 (ps:ST may not be invertible. However, if T and S are operator $\in L(V)$, it is trivial that TS is invertible since T is surjective and S is injetive then they are all invertible so ST is invertible since $ST(T^{-1}S^{-1})=Id$ and $(T^{-1}S^{-1})ST=Id$)
 
+## projection is a useful tool to do approximation
+
+The projection is the approximation and the vector minus projection is the error.
+
+eg. use the inner product on continuous functions to approximate sine function using $P_4(R)$
 
 ## Infinite here will also be true
 
 ![](images/clipboard-41621451.png)
+
+![](images/clipboard-3096739023.png)
+
+![](images/clipboard-703567150.png)
 
 # Tutorial
 
