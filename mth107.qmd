@@ -4,22 +4,13 @@ format: html
 editor: visual
 ---
 
-
-
-
-
 # The most interesting thing (I think) in this module---Jordan form
 
-
-
-
 ## Eigenvalue and Eigenspace
-
 
 An operator on V has a diagnalizable matrix representation if it has the same number as dimV of eigenvectors .
 
 However, some operators have not enough eigenvectors to span a whole vector space so that the matrix could not be as simple as a diagnalizable matrix.
-
 
 ## Generalized eigenspace
 
@@ -27,77 +18,57 @@ $A=PJ_{\lambda}P^{-1}$
 
 When P has linearly independent vectors(eigenvectors), A is diagonalizable
 
-So we introduce the Jordan form which is  as simple as possible, though not much simple as a diagnal matrix, which need generalized eigenvector to get P---$(A-\lambda I)^2x_2=(A-\lambda I)x_1=0$ 
+So we introduce the Jordan form which is as simple as possible, though not much simple as a diagnal matrix, which need generalized eigenvector to get P---$(A-\lambda I)^2x_2=(A-\lambda I)x_1=0$
 
-
-Since $A=PJ_{\lambda}P^{-1}$, P=[$x_1,x_2$], AP=A[$x_1,x_2$]=[$\lambda x_1, \lambda x_2+x_1$]=PJ=[$x_1,x_2$]=$\left[\begin{array}{ll}\lambda & 1 \\ 0 & \lambda\end{array}\right]$
+Since $A=PJ_{\lambda}P^{-1}$, P=\[$x_1,x_2$\], AP=A\[$x_1,x_2$\]=\[$\lambda x_1, \lambda x_2+x_1$\]=PJ=\[$x_1,x_2$\]=$\left[\begin{array}{ll}\lambda & 1 \\ 0 & \lambda\end{array}\right]$
 
 The introduce of generalized eigenspaces makes a matrix as simple as possible, though not much simple as a diagnal matrix for computation.
 
-
 ## Cayley Hamlton Thm
-
 
 V a finite dimensional vector space then $\chi_T(T)=0_{l(v)}$
 
-eg. A=$
-
-
+eg. A=\$
 
 ## Jordan form makes me understand Linear Algebra more deeply, which also introduces differential equations to me
 
-J = $\lambda I+ N$, where N is a nilpotent matrix ---D-N decomposition A = D +N  DN = ND
+J = $\lambda I+ N$, where N is a nilpotent matrix ---D-N decomposition A = D +N DN = ND
 
 eg.$e^A=e^{D+N} ?= e^De^N$
 
-   $e^{tJ_\lambda}= e^{t\lambda I} $$e^{tN}$=$e^{t\lambda} [I+N+t^2/2! N^2+.....]$
+\$e\^{tJ\_\lambda}= e\^{t\lambda I} \$$e^{tN}$=$e^{t\lambda} [I+N+t^2/2! N^2+.....]$
 
-- The characteristic polynomial tells us the eigenvalues and the dimension of each generalized eigenspace, which is the number of times the eigenvalue appears along the diagonal of the Jordan form (also known as the “multiplicity” of λ)
+-   The characteristic polynomial tells us the eigenvalues and the dimension of each generalized eigenspace, which is the number of times the eigenvalue appears along the diagonal of the Jordan form (also known as the “multiplicity” of λ)
 
-- Each Jordan block with respect to a basis of an eigenvector and others are generalized eigenvectors which could be computed based on the eigenvector and $(T-\lambda Id)^m,$where m$\leq dimV$since the dimension of each eigenspace tells us how many Jordan blocks corresponding to that eigenvalue there are in the Jordan form. This also means that the Jordan form is unique with permutation but the Jordan basis is not unique.
+-   Each Jordan block with respect to a basis of an eigenvector and others are generalized eigenvectors which could be computed based on the eigenvector and $(T-\lambda Id)^m,$where m$\leq dimV$since the dimension of each eigenspace tells us how many Jordan blocks corresponding to that eigenvalue there are in the Jordan form. This also means that the Jordan form is unique with permutation but the Jordan basis is not unique.
 
-- The size of the largest Jordan block corresponding to an eigenvalue λ of T is exactly the degree of the (t − λ) term in the minimal polynomial of T .i.e. The exponents of the different terms in the minimal polynomial tell us the sizes of the largest Jordan blocks corresponding to each eigenvalue.
+-   The size of the largest Jordan block corresponding to an eigenvalue λ of T is exactly the degree of the (t − λ) term in the minimal polynomial of T .i.e. The exponents of the different terms in the minimal polynomial tell us the sizes of the largest Jordan blocks corresponding to each eigenvalue.
 
-  - To kill off a Jordan block of size k, we need the polynomial $(t-\lambda)^k$. Any smaller Jordan block with the same eigenvalue will also be killed off under this polynomial
+    -   To kill off a Jordan block of size k, we need the polynomial $(t-\lambda)^k$. Any smaller Jordan block with the same eigenvalue will also be killed off under this polynomial
 
-    - We could explain it more clearly 
-     
-   For one simple situation, which is the Jordan form with only 1 block
-  
-  Since the minimal polynomial applied by the operator T on V ($M_T(T)$) must be 0, the Jordan form with only 1 block has the minimal polynomial (t-$\lambda$)$^{dimV}$
-  
-  More generally, if we have a Jordan form with 2 blocks B and C, with one same eigenvalue, Since the minimal polynomial applied by the operator T on V ($M_T(T)$) must be 0, $(T-\lambda I)^m$ in $M_T(T)$ should have m satisfying $(B-\lambda I)^m=0$ and $(C-\lambda I)^m=0$. In this case, since any smaller Jordan block with the same eigenvalue will also be killed off under the $(T-\lambda I)^m$ in $M_T(T)$, when the largest Jordan block is 0, smaller blocks are also 0. What is more, if $\exists$ a block with dimension greater than the power of the corresponding term in the polynomial, there then is a contradiction to the defination of the minimal polynomial(must be 0). If the largest Jordan block has the dimension strictly less than the power of the corresponding term in the polynomial, there then also is a contradiction to the defination of the minimal polynomial(smallest power)
-  
-  
-- Each block has a basis of eigenvector and other basis are generalized eigenvector which are linearly independent. 
+        -   We could explain it more clearly
 
-- More precisely, each term with power 1, means that the restriction of T to the corresponding generalised eigenspace is diagonalisable.So the minimal polynomial's each term with the power of 1 means the matrix representation of the operator is diagonalizable, and each eigenvalue has the same number of corresponding power of characteristic polynomial's term of linearly independent eigenvectors.
+    For one simple situation, which is the Jordan form with only 1 block
+
+    Since the minimal polynomial applied by the operator T on V ($M_T(T)$) must be 0, the Jordan form with only 1 block has the minimal polynomial (t-$\lambda$)$^{dimV}$
+
+    More generally, if we have a Jordan form with 2 blocks B and C, with one same eigenvalue, Since the minimal polynomial applied by the operator T on V ($M_T(T)$) must be 0, $(T-\lambda I)^m$ in $M_T(T)$ should have m satisfying $(B-\lambda I)^m=0$ and $(C-\lambda I)^m=0$. In this case, since any smaller Jordan block with the same eigenvalue will also be killed off under the $(T-\lambda I)^m$ in $M_T(T)$, when the largest Jordan block is 0, smaller blocks are also 0. What is more, if $\exists$ a block with dimension greater than the power of the corresponding term in the polynomial, there then is a contradiction to the defination of the minimal polynomial(must be 0). If the largest Jordan block has the dimension strictly less than the power of the corresponding term in the polynomial, there then also is a contradiction to the defination of the minimal polynomial(smallest power)
+
+-   Each block has a basis of eigenvector and other basis are generalized eigenvector which are linearly independent.
+
+-   More precisely, each term with power 1, means that the restriction of T to the corresponding generalised eigenspace is diagonalisable.So the minimal polynomial's each term with the power of 1 means the matrix representation of the operator is diagonalizable, and each eigenvalue has the same number of corresponding power of characteristic polynomial's term of linearly independent eigenvectors.
 
 ## The relationship between the direct sum(decomposition) and diagolizable
 
-
-- If A:V--> V, A is diagonalizable then V=RangeA direct sum NullA (proof idea: clarify the basis of A by the non-zero element and zero element on the diagonal of the diagonal shape matrix of A. Based on them we could find the basis of RangeA and NullA which span V  while with the intersection of {0})
-
-
-
-
-
+-   If A:V--\> V, A is diagonalizable then V=RangeA direct sum NullA (proof idea: clarify the basis of A by the non-zero element and zero element on the diagonal of the diagonal shape matrix of A. Based on them we could find the basis of RangeA and NullA which span V while with the intersection of {0})
 
 ## The relationship between Jordan form and diffrential equation
 
-      
 ## Diagnalize 2 matrix at the same time
-
-
-
-
-
-
-
 
 # study motivation
 
--   Good intuitively explanation for a Thm or... >> symbolic proof(just like I do not like $\epsilon-\delta$ language in Analysis)
+-   Good intuitively explanation for a Thm or... \>\> symbolic proof(just like I do not like $\epsilon-\delta$ language in Analysis)
 
 # Chapter 0: motivation/reviews
 
@@ -321,7 +292,6 @@ Where $I_p$ is the identity matrix of size $p \times p$.
 
 ### 3.4 Projection Matrix in OLS
 
-
 The projection matrix (or hat matrix) $P$ is defined as:
 
 $$
@@ -370,7 +340,7 @@ Where $\sigma^2$ is the variance of the error terms. This matrix provides inform
 
 ### 4. Properties of Orthogonal Projections
 
-#### I do not need to remember the projection formula since I just write u=cv+w where v is the projection of u to v and then use <w,v>=0 to get c.
+#### I do not need to remember the projection formula since I just write u=cv+w where v is the projection of u to v and then use \<w,v\>=0 to get c.
 
 Consider a vector $y$ in the vector space spanned by the columns of $X$. The projection of $y$ onto this space can be written as:
 
@@ -1296,35 +1266,19 @@ see photo in particular, $m \leq n$. ok
 
 ![](images/clipboard-868461290.png)
 
-
-
 ![](images/clipboard-3941908751.png)
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 # Inner Product space
 
-<.,.> is a bilinear form
-
+\<.,.\> is a bilinear form
 
 # Cauchy-Schwaez inequality --like a lemma which makes the proof of triangle inequality more easily
 
 V inner product space
 
-$a,b \in V$ |<a,b>| $\leq$ ||a|| ||b||
+$a,b \in V$ \|\<a,b\>\| $\leq$ \|\|a\|\| \|\|b\|\|
 
-pf: $c=b-\lambda a\in V$. This $\lambda$ is Lagrange multiplier (in fact, it is just the projection, just write $<b-\lambda a,a>=0$  )
+pf: $c=b-\lambda a\in V$. This $\lambda$ is Lagrange multiplier (in fact, it is just the projection, just write $<b-\lambda a,a>=0$ )
 
 $||c||^2=||b-\lambda a||^2$
 
@@ -1332,41 +1286,31 @@ $||c||^2=||b-\lambda a||^2$
 
 $y(\lambda)= ||b||^2-2<a,b>\lambda+||a||\lambda^2\geq0$
 
-$\delta\leq0$ ---> |<a,b>| $\leq$ ||a|| ||b||
+$\delta\leq0$ ---\> \|\<a,b\>\| $\leq$ \|\|a\|\| \|\|b\|\|
 
+## Thm An inner product space is a normed space by defining.
 
+\|\|**a**\|\|=$\sqrt{<a,a>}$
 
-## Thm An inner product space is a normed space by defining. 
+\|\| \|\| V--\> $R^+$ length
 
-||**a**||=$\sqrt{<a,a>}$
+(1) \|\|a\|\|$\geq0, \forall a\in V$
 
-|| || V--> $R^+$ length
+\|\|a\|\|=0 iff **a**=0
 
-(1) ||a||$\geq0, \forall a\in V$
+(2) \|\|**a**+**b**\|\| $\leq$ \|\|a\|\|+\|\|b\|\|
 
-
-  ||a||=0 iff **a**=0
-  
-  
-(2) ||**a**+**b**|| $\leq$ ||a||+||b||
-    
-
-pf: <a,a>+<a,b>+<b,a>+<b,b>
+pf: \<a,a\>+\<a,b\>+\<b,a\>+\<b,b\>
 
 = $||a||^2|+2||a|||b||+||b||^2$
 
-
 $\leq||a||^2+2||a|| ||b||+||b||^2$
-
 
 = $(a+b)^2$
 
-
 # Matrix multiplication should be familar with
 
-a complicated eg Let $D: \mathcal{P}_n(\mathbf{R}) \rightarrow \mathcal{P}_n(\mathbf{R})$ be the differentiation operator: $D(p)=p^{\prime}$, and let $\mathcal{B}=\left(1, x, x^2, \ldots, x^n\right)$ be the standard basis of $\mathcal{P}_n(\mathbf{R})$. Find $\left[D^k\right]_{\mathcal{B}}^{\mathcal{B}}$ for $k \in \mathbf{N}_{\geq 1}$
-Solution. We have $D(1)=0$ and $D\left(x^i\right)=i x^{i-1}$ for $1 \geq i \geq n$, which gives us the $(n, n)$-matrix
-$$
+a complicated eg Let $D: \mathcal{P}_n(\mathbf{R}) \rightarrow \mathcal{P}_n(\mathbf{R})$ be the differentiation operator: $D(p)=p^{\prime}$, and let $\mathcal{B}=\left(1, x, x^2, \ldots, x^n\right)$ be the standard basis of $\mathcal{P}_n(\mathbf{R})$. Find $\left[D^k\right]_{\mathcal{B}}^{\mathcal{B}}$ for $k \in \mathbf{N}_{\geq 1}$ Solution. We have $D(1)=0$ and $D\left(x^i\right)=i x^{i-1}$ for $1 \geq i \geq n$, which gives us the $(n, n)$-matrix $$
 [D]_{\mathcal{B}}^{\mathcal{B}}=\left[\begin{array}{lllll}
 0 & 1 & 0 & & \\
 & 0 & 2 & \ddots & \\
@@ -1377,12 +1321,9 @@ $$
 \end{array}\right]
 $$
 
-In general, for $1 \leq k \leq n$, we have
-$$
+In general, for $1 \leq k \leq n$, we have $$
 D^k\left(x^i\right)= \begin{cases}i(i-1) \cdots(i-k+1) x^{i-k} & \text { if } 1 \leq k \leq i \\ 0 & \text { if } k \geq i+1\end{cases}
-$$
-which gives us the matrix $\quad k$
-
+$$ which gives us the matrix $\quad k$
 
 # change of basis is easy if understanding linear transformation well
 
@@ -1392,25 +1333,23 @@ Proof. The $j^{\text {th }}$ column of $[T]_{\mathcal{B}}^{\mathcal{B}}$ is give
 
 You can think of $[T]_{\mathcal{B}}^{\mathcal{B}}$ as "the space is fixed, vectors are moved by $T$ " and of $\left[\operatorname{Id}_V\right]_{T \mathcal{B}}^{\mathcal{B}}=$ $\left(\left[\operatorname{Id}_V\right]_{\mathcal{B}}^{T \mathcal{B}}\right)^{-1}$ as "vectors are fixed, the underlying space is moved by $T^{-1}$ ". See Figure 3.5 for an example with $T=R_\theta$ the rotation of angle $\theta$ around the origin.
 
-- this also introduces the defination of similar matrix
-
+-   this also introduces the defination of similar matrix
 
 (ps. 2 matrices are similar iff they have the same Jordan form)
 
-
-
 # Projection
 
-
 $P^2=P$
+
+
 
 ## 1
 
 
+
 If V=$U\oplus W$, then $P_u\in \mathcal L(V)$ is a projection
 
-
-Proposition  Let $V$ be a vector space and let $P \in \mathcal{L}(V)$ be a projection. Then $V=\operatorname{range}(P) \oplus \operatorname{null}(P)$ and $P=P_{\operatorname{range}(P)}$.
+Proposition Let $V$ be a vector space and let $P \in \mathcal{L}(V)$ be a projection. Then $V=\operatorname{range}(P) \oplus \operatorname{null}(P)$ and $P=P_{\operatorname{range}(P)}$.
 
 Proof. It is clear that range $(P)+\operatorname{null}(P) \subseteq V$. So we need to prove that the sum is direct and that it is equal to $V$. Let $v \in V$. Then one have $v=P(v)+(v-P(v))$ with $P(v) \in \operatorname{range}(P)$ and $v-P(v)$ is in null $(P)$. Indeed, $P(v-P(v))=P(v)-P^2(v)=$ $P(v)-P(v)=0$. Now, for the direct sum part. If $v \in \operatorname{range}(P) \cap \operatorname{null}(P)$ we have $v=P(w)$ and $0=P(v)=P^2(w)=P(w)=v$, so range $(P) \cap \operatorname{null}(P)=0$ which finishes the proof of range $(P)+\operatorname{null}(P) \subseteq V$.
 
@@ -1419,31 +1358,23 @@ Finally, let $v \in V$. Then $v=P(v)+(v-P(v))$ is the unique decomposition $v=u+
 ???Another way to interpret this proposition is that there is a one-to-one correspondance between projections $P \in \mathcal{L}(V)$ and direct sums decomposition $V=U \oplus W$ where order matter. We conclude this subsection by the following result that is a generalization of this proposition.
 
 
+- This means that projection is a kind of decomposition---along and onto decompose one vector in a unique way, which is an intuitive understanding of a special case of direct sum.
 
-
-## 1 extension 
+## 1 extension
 
 Suppose $P_1, \ldots, P_k \in \mathcal{L}(V)$ are projections such that $P_1+\cdots+P_k=\operatorname{Id}_V$ and $P_i P_j=0_{\mathcal{L}(V)}$ if $i \neq j$. Then $V=\operatorname{range}\left(P_1\right) \oplus \cdots \oplus \operatorname{range}\left(P_k\right)$.
 
-Proof. Let $v$ be any vector in $V$. Then
-$$
+Proof. Let $v$ be any vector in $V$. Then $$
 v=\operatorname{Id}_V v=\left(P_1+\cdots+P_k\right) v=P_1 v+\cdots+P_k v \in \operatorname{range}\left(P_1\right)+\cdots+\operatorname{range}\left(P_k\right)
-$$
-and thus $V=P_1 v+\cdots+P_k v \in \operatorname{range}\left(P_1\right)+\cdots+$ range $\left(P_k\right)$. We now prove that the sum is direct. Suppose $0=v_1+\cdots+v_k$ with $v_i \in \operatorname{range}\left(P_i\right)$ for $1 \leq i \leq k$. We want to prove that all the $v_i$ are zero. By definition of the range, there exist $w_i$ such that $P_i w_i=v_i$. Using that $P_i$ is a projection we have $P_i v_i=P_i^2 w_i=P_i w_i=v_i$ while $P_i v_j=P_i P_j w_j=0 w_j=0$ if $i \neq j$. Now, if we apply $P_i$ to both sides of (3.5) we obtain $0=v_i$. By doing this for all $1 \leq i \leq k$ we have that all the $v_i$ are zero as desired, and so the sum is direct.
+$$ and thus $V=P_1 v+\cdots+P_k v \in \operatorname{range}\left(P_1\right)+\cdots+$ range $\left(P_k\right)$. We now prove that the sum is direct. Suppose $0=v_1+\cdots+v_k$ with $v_i \in \operatorname{range}\left(P_i\right)$ for $1 \leq i \leq k$. We want to prove that all the $v_i$ are zero. By definition of the range, there exist $w_i$ such that $P_i w_i=v_i$. Using that $P_i$ is a projection we have $P_i v_i=P_i^2 w_i=P_i w_i=v_i$ while $P_i v_j=P_i P_j w_j=0 w_j=0$ if $i \neq j$. Now, if we apply $P_i$ to both sides of (3.5) we obtain $0=v_i$. By doing this for all $1 \leq i \leq k$ we have that all the $v_i$ are zero as desired, and so the sum is direct.
 
-Now that we have proven the Theorem, let us discuss why it is a generalization of the defination of a projection onto rangeP alone nullP with just 2 decomposition(direct sum) Let $P \in \mathcal{L}(V)$ be a projection, $P_1:=P$ and $P_2:=\mathrm{Id}_V-P$. One easily check the following properties:
-- $P_2$ is a projection: $P_2^2=\mathrm{Id}_V^2-\mathrm{Id}_V P-P \mathrm{Id}_V+P^2=\mathrm{Id}_V-P-P+P=P_2$;
-- $P 1+P_2=\mathrm{Id}_V$;
-- and $P_1 P_2=P^2-P=0=P_2 P_1$.
-
+Now that we have proven the Theorem, let us discuss why it is a generalization of the defination of a projection onto rangeP alone nullP with just 2 decomposition(direct sum) Let $P \in \mathcal{L}(V)$ be a projection, $P_1:=P$ and $P_2:=\mathrm{Id}_V-P$. One easily check the following properties: - $P_2$ is a projection: $P_2^2=\mathrm{Id}_V^2-\mathrm{Id}_V P-P \mathrm{Id}_V+P^2=\mathrm{Id}_V-P-P+P=P_2$; - $P 1+P_2=\mathrm{Id}_V$; - and $P_1 P_2=P^2-P=0=P_2 P_1$.
 
 ## easier way (left/right inverse)
 
-
 An easy way to create projections is to use left and right inverses.
 
-Let $V$ and $W$ be two vector spaces and let $T \in \mathcal{L}(V, W)$ and $S \in \mathcal{L}(W, V)$ be such that $T S=\operatorname{Id}_W$. Then $V=\operatorname{range}(S) \oplus \operatorname{null}(T)$ and $S T \in \mathcal{L}(V)$ is a projection to range $(S)$ with nullspace $\operatorname{null}(T)$.
-Proof. We first show that $S T$ is an abstract projection: $(S T)^2=S(T S) T=S \operatorname{Id}_W T=$ $S T$.
+Let $V$ and $W$ be two vector spaces and let $T \in \mathcal{L}(V, W)$ and $S \in \mathcal{L}(W, V)$ be such that $T S=\operatorname{Id}_W$. Then $V=\operatorname{range}(S) \oplus \operatorname{null}(T)$ and $S T \in \mathcal{L}(V)$ is a projection to range $(S)$ with nullspace $\operatorname{null}(T)$. Proof. We first show that $S T$ is an abstract projection: $(S T)^2=S(T S) T=S \operatorname{Id}_W T=$ $S T$.
 
 It now remains to show that range $(S T)=\operatorname{range}(S)$ and $\operatorname{null}(S T)=\operatorname{null}(T)$. If $v$ is in range $(S T)$, then there exists $u \in V$ such that $v=S T(u)=S(T(u)) \in \operatorname{range}(S)$. So range $(S T) \subseteq \operatorname{range}(S)$. For the other inclusion, let $v \in \operatorname{range}(S)$. Thus there exists $w \in W$ with $v=S(w)=S \operatorname{Id}_W(w)=S T S(w)=S T(T(w))$ which shows that range $(S) \subseteq$ range $(S T)$.
 
@@ -1451,8 +1382,12 @@ For the nullspaces, if $v \in \operatorname{null}(T)$, then $S T(v)=S(0)=0$ and 
 
 Observe that for a given $T \in \mathcal{L}(V, W)$ there exists a right inverse $S$ such that $T S=\operatorname{Id}_W$ if and only if $T$ is surjective. If such an inverse exists it is not unique, unless $T$ is an isomorphism. This is related to the fact that given a general subspace $U(=\operatorname{null}(T))$ of $V$, there exists more than one direct sum complement $X(=\operatorname{range}(S))$ such that $V=U \oplus X$. Let us exemplify this.
 
-
 (ps:ST may not be invertible. However, if T and S are operator $\in L(V)$, it is trivial that TS is invertible since T is surjective and S is injetive then they are all invertible so ST is invertible since $ST(T^{-1}S^{-1})=Id$ and $(T^{-1}S^{-1})ST=Id$)
+
+
+## Infinite here will also be true
+
+![](images/clipboard-41621451.png)
 
 # Tutorial
 
@@ -1480,12 +1415,8 @@ eg. ![](images/clipboard-1407097711.png)
 
 ![understand vector space](images/clipboard-1253681054.png) see abstract vector space for a review
 
-
-
-
 # Thanks
 
 I feel so lucky to learn from Professor Paul-Henry Leemann. He teaches Linear Algebra very well. He is also a kind, responsible and humorous teacher.
-
 
 Professor Andrew Lin teaches Linear Algebra very very well and interesting.
