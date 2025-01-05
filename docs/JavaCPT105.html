@@ -165,7 +165,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#static" id="toc-static" class="nav-link active" data-scroll-target="#static">static</a></li>
+  <li><a href="#preface" id="toc-preface" class="nav-link active" data-scroll-target="#preface">Preface</a></li>
+  <li><a href="#static" id="toc-static" class="nav-link" data-scroll-target="#static">static</a></li>
   <li><a href="#data-type" id="toc-data-type" class="nav-link" data-scroll-target="#data-type">data type</a></li>
   <li><a href="#reference-variable-and-primative-data-type" id="toc-reference-variable-and-primative-data-type" class="nav-link" data-scroll-target="#reference-variable-and-primative-data-type">reference variable and primative data type</a></li>
   <li><a href="#jvm" id="toc-jvm" class="nav-link" data-scroll-target="#jvm">JVM</a></li>
@@ -200,6 +201,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
+<section id="preface" class="level1">
+<h1>Preface</h1>
+<p>The first section here is the knowledge that attracts most of my interests on this module, followed by the lecture notes I tapped when I am on the journey of this module.</p>
+</section>
 <section id="static" class="level1">
 <h1>static</h1>
 <p>有无static的区别：有static，即静态的，objects共享一个memory；无static，objects各有各的memory</p>
@@ -440,8 +445,7 @@ Car myCar = new Car("Red"); changeColor(myCar); System.out.println(myCar.color);
     public void displayInfo() {
         System.out.println("Name: " + name + ", Age: " + age);
     }
-}
-</code></pre>
+}</code></pre>
 <p>name 和 age 是构造函数 Person(String name, int age) 的局部变量。 this.name 和 this.age 是 Person 类的实例变量。 构造函数通过 this.name = name; 和 this.age = age; 将局部变量的值赋给实例变量，以便在对象的生命周期内保持这些信息。</p>
 <pre><code>public class MyClass {
     
@@ -476,8 +480,7 @@ Car myCar = new Car("Red"); changeColor(myCar); System.out.println(myCar.color);
         incrementStaticCount();    // 调用静态的私有方法
         incrementInstanceCount();  // 调用实例的私有方法
     }
-}
-</code></pre>
+}</code></pre>
 <p>静态方法 getStaticCount(): 这是一个公共的类方法，用于返回 staticCount 的值。可以通过类名直接访问，例如 MyClass.getStaticCount()。 静态方法 incrementStaticCount(): 这是一个私有的静态方法，仅能在类内部调用。例如，可以通过 updateCounts() 方法在内部调用。 实例方法 getInstanceCount(): 这是一个公共的实例方法，用于返回 instanceCount 的值。必须通过实例对象来调用，例如 myObject.getInstanceCount()。 实例方法 incrementInstanceCount(): 这是一个私有的实例方法，仅能在类内部调用。只能在 updateCounts() 方法中使用。 公共方法 updateCounts(): 这是一个公共方法，可以访问类内部的私有方法 incrementStaticCount() 和 incrementInstanceCount()。此方法可以由类的实例调用。</p>
 <pre><code>public class Test {
     public static void main(String[] args) {

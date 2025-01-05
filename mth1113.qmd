@@ -3,6 +3,10 @@ title: "MTH113 Intro to probability and statistics+APH003--exploring world throu
 editor: visual
 ---
 
+# Preface 
+
+The first section here is the knowledge that attracts most of my interests on this module, followed by the lecture notes I tapped when I am on the journey of this module.
+
 -   Motivation
 
 The history of the development of statistics has helped me gain a deeper understanding of this fascinating and practical field of knowledge. Each advancement represents a leap from specific facts to broader, generalized conclusions. What truly captivates me is the remarkable alignment between natural phenomena and statistical principles; there always seems to be a coincidence where reality and theory intersect.

@@ -5,6 +5,13 @@ editor:
     wrap: 72
 ---
 
+
+# Preface 
+
+The first section here is the knowledge that attracts most of my interests on this module, followed by the lecture notes I tapped when I am on the journey of this module.
+
+
+
 ### The begining main idea of Analysis about the establishment of real number
 
 ### Motivation

@@ -3,6 +3,11 @@ title: "JavaCPT105"
 editor: visual
 ---
 
+
+# Preface 
+
+The first section here is the knowledge that attracts most of my interests on this module, followed by the lecture notes I tapped when I am on the journey of this module.
+
 # static
 
 有无static的区别：有static，即静态的，objects共享一个memory；无static，objects各有各的memory
@@ -251,25 +256,27 @@ Car myCar = new Car("Red"); changeColor(myCar); System.out.println(myCar.color);
 
     -   Java objects have states and behaviour
 
-
 ![](images/clipboard-2442927869.png)
 
-     - Data object
-     
-             
-             - classes in java
-             
-             
-             
-             
-             A class is a template for objects.A class defines object properties. A class also describes object behavior.(objects, instances of the class, are in the main method)
-                  It is the constructor that allows our initial objects to be different when they are first created!
-                  
-                  
-                  
+```         
+ - Data object
+ 
+         
+         - classes in java
+         
+         
+         
+         
+         A class is a template for objects.A class defines object properties. A class also describes object behavior.(objects, instances of the class, are in the main method)
+              It is the constructor that allows our initial objects to be different when they are first created!
+              
+              
+              
+```
+
 # local/instance variable
 
-```
+```         
 public class Person {
     private String name; // 实例变量
     private int age;     // 实例变量
@@ -283,16 +290,11 @@ public class Person {
         System.out.println("Name: " + name + ", Age: " + age);
     }
 }
-
 ```
 
-name 和 age 是构造函数 Person(String name, int age) 的局部变量。
-this.name 和 this.age 是 Person 类的实例变量。
-构造函数通过 this.name = name; 和 this.age = age; 将局部变量的值赋给实例变量，以便在对象的生命周期内保持这些信息。
+name 和 age 是构造函数 Person(String name, int age) 的局部变量。 this.name 和 this.age 是 Person 类的实例变量。 构造函数通过 this.name = name; 和 this.age = age; 将局部变量的值赋给实例变量，以便在对象的生命周期内保持这些信息。
 
-
-
-```
+```         
 public class MyClass {
     
     // 静态变量（类变量）
@@ -327,21 +329,11 @@ public class MyClass {
         incrementInstanceCount();  // 调用实例的私有方法
     }
 }
-
 ```
-静态方法 getStaticCount():
-这是一个公共的类方法，用于返回 staticCount 的值。可以通过类名直接访问，例如 MyClass.getStaticCount()。
-静态方法 incrementStaticCount():
-这是一个私有的静态方法，仅能在类内部调用。例如，可以通过 updateCounts() 方法在内部调用。
-实例方法 getInstanceCount():
-这是一个公共的实例方法，用于返回 instanceCount 的值。必须通过实例对象来调用，例如 myObject.getInstanceCount()。
-实例方法 incrementInstanceCount():
-这是一个私有的实例方法，仅能在类内部调用。只能在 updateCounts() 方法中使用。
-公共方法 updateCounts():
-这是一个公共方法，可以访问类内部的私有方法 incrementStaticCount() 和 incrementInstanceCount()。此方法可以由类的实例调用。
 
+静态方法 getStaticCount(): 这是一个公共的类方法，用于返回 staticCount 的值。可以通过类名直接访问，例如 MyClass.getStaticCount()。 静态方法 incrementStaticCount(): 这是一个私有的静态方法，仅能在类内部调用。例如，可以通过 updateCounts() 方法在内部调用。 实例方法 getInstanceCount(): 这是一个公共的实例方法，用于返回 instanceCount 的值。必须通过实例对象来调用，例如 myObject.getInstanceCount()。 实例方法 incrementInstanceCount(): 这是一个私有的实例方法，仅能在类内部调用。只能在 updateCounts() 方法中使用。 公共方法 updateCounts(): 这是一个公共方法，可以访问类内部的私有方法 incrementStaticCount() 和 incrementInstanceCount()。此方法可以由类的实例调用。
 
-```
+```         
 public class Test {
     public static void main(String[] args) {
         MyClass myObject = new MyClass();
@@ -362,15 +354,14 @@ public class Test {
 }
 ```
 
-```
+```         
 Static Count: 0
 Instance Count: 0
 Static Count after update: 1
 Instance Count after update: 1
 ```
 
-
-```
+```         
 public class User {
     // 私有变量：默认设为私有，只有类内部可以访问
     private String username;
@@ -411,8 +402,7 @@ public class User {
 }
 ```
 
-
-```
+```         
 public class TestUser {
     public static void main(String[] args) {
         // 创建 User 对象实例
@@ -431,13 +421,13 @@ public class TestUser {
 }
 ```
 
-```
+```         
 用户名: Alice
 密码长度必须至少8位！
 密码设置失败！
 ```
 
-```
+```         
 public class Person {
     // 静态变量，所有实例共享
     private static String name;
@@ -453,7 +443,7 @@ public class Person {
 }
 ```
 
-```
+```         
 public class Person {
     // 实例变量，每个实例独立拥有
     private String name;
@@ -468,8 +458,7 @@ public class Person {
 }
 ```
 
-
-```
+```         
 public class TestPerson {
     public static void main(String[] args) {
         Person person1 = new Person("Bruce Lee");
@@ -481,9 +470,7 @@ public class TestPerson {
 }
 ```
 
-
-
-```
+```         
 public class Person {
     private String name;
     private int age;
@@ -522,56 +509,27 @@ public class TestPersonArray {
     }
 }
 ```
-# Clean code reading 
+
+# Clean code reading
 
 ## Motivation
 
-- God is in the details. --Today's agile world needs the role of architecture with patient to internalize the idea of "small things matter", especially in software development.
+-   God is in the details. --Today's agile world needs the role of architecture with patient to internalize the idea of "small things matter", especially in software development.
 
-- Craftmanship is important in these two aspects:
+-   Craftmanship is important in these two aspects:
 
-  - Knowledge of principles, patterns
-  
-  - Work hard and practic/sweat over it and watch myself fail.
-  
+    -   Knowledge of principles, patterns
+
+    -   Work hard and practic/sweat over it and watch myself fail.
+
 So, please grind the knowledge with forever practice!
 
+-   Code represents the details of the requirements.
 
-- Code represents the details of the requirements.
+-   defend the code with equal passion
 
+-   A programmer with "code-sense" will look at messy module and see options and variations, helping choose the best variation and guide to plot a sequence of behavior preserving transformations to get from here to there.
 
-- defend the code with equal passion
+-   A programmer who writes clean code is an artist who can take a blank screen through a series of transformations until it is an elegantly coded system
 
-- A programmer with "code-sense" will look at messy module and see options and variations, helping choose the best variation and guide to plot a sequence of behavior preserving transformations to get from here to there.
-
-
-- A programmer who writes clean code is an artist who can take a blank screen through a series of transformations until it is an elegantly coded system
-
-
-- 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-          
-          
+-   

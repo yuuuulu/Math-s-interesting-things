@@ -3,6 +3,17 @@ title: "MTH107---NOTEs"
 format: html
 editor: visual
 ---
+# Preface
+
+
+
+The first section here is the knowledge that attracts most of my interests on this module, followed by the lecture notes I tapped when I am on the journey of this module.
+
+## Thanks
+
+I feel so lucky to learn from Professor Paul-Henry Leemann. He teaches Linear Algebra very well. He not only teahces us how to solve tutorials, but also the real application in the real world such as the application of eigenvectors on Google search. He is also a kind, responsible and humorous teacher. His lecture notes are clean and clear with multiple good examples helping us to understand more effectively.
+
+Professor Andrew Lin teaches Linear Algebra very very well and interesting. He teaches me many tips to help me never remember sth., understand totally instead.
 
 # The most interesting thing (I think) in this module---Jordan form
 
@@ -65,6 +76,24 @@ eg.$e^A=e^{D+N} ?= e^De^N$
 ## The relationship between Jordan form and diffrential equation
 
 ## Diagnalize 2 matrix at the same time
+
+
+
+# Least-square in regression analysis
+
+This motivates me since I love regeression questions on Statistics
+
+
+?? This will always have solution since if A has linearly independent columns then $A^*A$ is invertible 
+
+### a simple example
+
+![](images/clipboard-3621424598.png)
+
+![](images/clipboard-289964766.png)
+
+
+
 
 # study motivation
 
@@ -248,163 +277,8 @@ so sth. = 0
 
 if A and B are finite sets #A=n #B=m, then $|B^A| = m^n$ (ok)
 
-## relevant to dear regression analysis
 
-![MLR](images/clipboard-3617718739.png)
 
-**matrix**
-
-### 3.1 Vector and Matrix Multiplication in Regression
-
-In linear regression, we often work with matrix and vector representations. Given a matrix $X$ (which represents the design matrix with each row corresponding to one observation and each column to a predictor), and a vector $Y$ (representing the observed responses), the regression model can be written as:
-
-$$
-Y = X \beta + \epsilon
-$$
-
-Where: - $Y$: The $n \times 1$ response vector, - $X$: The $n \times p$ design matrix, - $\beta$: The $p \times 1$ vector of unknown coefficients, - $\epsilon$: The $n \times 1$ vector of errors or residuals.
-
-The ordinary least squares (OLS) estimator for $\beta$, denoted $\hat{\beta}$, is obtained by minimizing the residual sum of squares:
-
-$$
-\hat{\beta} = (X^T X)^{-1} X^T Y
-$$
-
-### 3.2 Orthogonality of Vectors
-
-Consider two vectors $X_1$ and $X_2$. If $X_1^T X_2 = 0$, we say the vectors are orthogonal, meaning they are uncorrelated in terms of inner product space. In regression, orthogonality implies no collinearity between predictors.
-
-Orthogonality plays an important role in simplifying matrix operations in regression. For example, if $X_1$ is orthogonal to $X_2$, the matrix $X^T X$ will have off-diagonal elements equal to zero, simplifying the computation of the inverse.
-
-### 3.3 Properties of Matrix $X^T X$
-
-If the matrix $X^T X$ is invertible, the OLS estimator exists and is unique. One important property of the matrix $X^T X$ is that it is symmetric and positive semi-definite. If $X$ has full column rank (meaning that the columns of $X$ are linearly independent), then $X^T X$ is positive definite, and its inverse exists.
-
-#### Inverse of $X^T X$:
-
-If $X^T X$ is invertible, then:
-
-$$
-(X^T X)^{-1} X^T X = I_p
-$$
-
-Where $I_p$ is the identity matrix of size $p \times p$.
-
-### 3.4 Projection Matrix in OLS
-
-The projection matrix (or hat matrix) $P$ is defined as:
-
-$$
-P = X (X^T X)^{-1} X^T
-$$
-
-This matrix $P$ projects the observed data vector $Y$ onto the column space of $X$, giving the fitted values $\hat{Y}$:
-
-$$
-\hat{Y} = P Y
-$$
-
-The residuals $\hat{\epsilon}$, which are the differences between the observed and fitted values, are given by:
-
-$$
-\hat{\epsilon} = Y - \hat{Y} = (I_n - P) Y
-$$
-
-Where $I_n$ is the $n \times n$ identity matrix. The projection matrix $P$ has several key properties: - $P^2 = P$ (idempotent), - $P^T = P$ (symmetric).
-
-### 3.5 Residual Sum of Squares (RSS)
-
-The residual sum of squares (RSS) is given by:
-
-$$
-\text{RSS} = \sum_{i=1}^{n} \hat{\epsilon}_i^2 = \hat{\epsilon}^T \hat{\epsilon} = (Y - X \hat{\beta})^T (Y - X \hat{\beta})
-$$
-
-Substituting $\hat{\beta} = (X^T X)^{-1} X^T Y$, we get:
-
-$$
-\text{RSS} = Y^T (I_n - P) Y
-$$
-
-### 3.6 Variance-Covariance Matrix of $\hat{\beta}$
-
-The variance-covariance matrix of the OLS estimator $\hat{\beta}$ is:
-
-$$
-\text{Var}(\hat{\beta}) = \sigma^2 (X^T X)^{-1}
-$$
-
-Where $\sigma^2$ is the variance of the error terms. This matrix provides information about the precision of the estimated coefficients.
-
-------------------------------------------------------------------------
-
-### 4. Properties of Orthogonal Projections
-
-#### I do not need to remember the projection formula since I just write u=cv+w where v is the projection of u to v and then use \<w,v\>=0 to get c.
-
-Consider a vector $y$ in the vector space spanned by the columns of $X$. The projection of $y$ onto this space can be written as:
-
-$$
-\hat{y} = P y
-$$
-
-If $P$ is the projection matrix, then the following properties hold: - $P^T = P$ (symmetric), - $P^2 = P$ (idempotent), - $(I - P)$ is also a projection matrix (projecting onto the orthogonal complement).
-
-Thus, we can decompose any vector $Y$ as:
-
-$$
-Y = \hat{Y} + (Y - \hat{Y}) = P Y + (I - P) Y
-$$
-
-Where $\hat{Y}$ is the projection onto the space spanned by $X$, and $(Y - \hat{Y})$ is the projection onto the orthogonal complement.
-
-### Vector and Matrix Definitions
-
--   A vector $\perp$ to a matrix $X$ (i.e., orthogonal to the column space of the matrix $X$) implies that:
-
-$$
-X^T v = 0
-$$
-
-This condition means that the vector $v$ is orthogonal to every column of the matrix $X$. In regression, this condition often arises when discussing residuals, which are orthogonal to the fitted values (i.e., the column space of $X$).
-
-### Properties of Orthogonality
-
-1.  If $X^T v = 0$, then $v \perp X$ (i.e., $v$ is orthogonal to the column space of $X$).
-2.  If $X$ has linearly independent columns, then $X^T X$ is invertible.
-3.  If $X$ does not have full column rank, then $X^T X$ is not invertible. In this case, we cannot directly compute $(X^T X)^{-1}$.
-
-### Full Column Rank and Invertibility
-
-For $X$ to have full column rank, the number of columns $p$ must be less than or equal to the number of observations $n$:
-
-列空间的正交补空间只有零向量 he orthogonal complement of a column space has only zero vectors
-
-If $X$ has full column rank, then $X^T X$ is invertible. This property is crucial for solving the normal equations in ordinary least squares (OLS) regression.
-
-### Symmetric and Invertible Properties
-
-Given that $X^T X$ is symmetric, the following property holds:
-
-$$
-((X^T X)^{-1})^T = (X^T X)^{-1}
-$$
-
-This is a key result in linear regression, allowing us to solve for the OLS estimator of $\beta$:
-
-$$
-\hat{\beta} = (X^T X)^{-1} X^T Y
-$$
-
-This property ensures that the normal equations have a unique solution when $X^T X$ is invertible.
-
-------------------------------------------------------------------------
-
-### 总结：
-
-1.  **正交性**：矢量与矩阵的正交性在回归中经常用于描述残差与拟合值之间的关系。
-2.  **矩阵的性质**：矩阵 $X^T X$ 的可逆性取决于 $X$ 的列满秩（线性无关性）。当 $X$ 的列满秩时，$X^T X$ 是可逆的，从而确保了线性回归模型的唯一解。
-3.  **矩阵运算**：通过矩阵运算 $(X^T X)^{-1}$，可以得到 OLS 回归系数的估计值 $\hat{\beta}$。
 
 # Chapter 1: vector spaces
 
@@ -1393,6 +1267,15 @@ eg. use the inner product on continuous functions to approximate sine function u
 
 ![](images/clipboard-703567150.png)
 
+
+## Least-square in regression analysis
+
+### a simple example
+
+![](images/clipboard-3621424598.png)
+
+![](images/clipboard-289964766.png)
+
 # Tutorial
 
 ## problems
@@ -1419,8 +1302,4 @@ eg. ![](images/clipboard-1407097711.png)
 
 ![understand vector space](images/clipboard-1253681054.png) see abstract vector space for a review
 
-# Thanks
 
-I feel so lucky to learn from Professor Paul-Henry Leemann. He teaches Linear Algebra very well. He is also a kind, responsible and humorous teacher.
-
-Professor Andrew Lin teaches Linear Algebra very very well and interesting.
