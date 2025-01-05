@@ -3,7 +3,7 @@ title: "MTH113 Intro to probability and statistics+APH003--exploring world throu
 editor: visual
 ---
 
-# Preface 
+# Preface
 
 The first section here is the knowledge that attracts most of my interests on this module, followed by the lecture notes I tapped when I am on the journey of this module.
 
@@ -1119,9 +1119,10 @@ paired sampled data(or called bivariate data)
 
 -   Tomorrow is the exam Good luck! 12.29
 
--   12.30 Everything on MTH113 exam was fine 
+-   12.30 Everything on MTH113 exam was fine
 
 All in all, the exam did not decide anything. I think there is a long way to go and MTH113 just include not many about statistics, more than a half has been teached during high school......I will keep exploring the charismatic statistics world since we could not only understand it using the very basic life common sense but also prove them in a rigorous way, while during the proof, such as regression, we also could enjoy its explanation by linear algebra which I also enjoy.....
 
+-   I love you MTH113!!!
 
-- I love you MTH113!!!
+![](images/clipboard-1345728232.png)
