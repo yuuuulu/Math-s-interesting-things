@@ -5,12 +5,11 @@ editor:
     wrap: 72
 ---
 
+# Preface
 
-# Preface 
-
-The first section here is the knowledge that attracts most of my interests on this module, followed by the lecture notes I tapped when I am on the journey of this module.
-
-
+The first section here is the knowledge that attracts most of my
+interests on this module, followed by the lecture notes I tapped when I
+am on the journey of this module.
 
 ### The begining main idea of Analysis about the establishment of real number
 
@@ -1469,6 +1468,8 @@ vector space)--\>\[0,$\infty$)
 \quad\quad triangle inequality
 
 # 水一个commit
+
+![](images/clipboard-3326791247.png)
 
 # a problem about divisible using greatest common factor to solve(even Bezou's theorem)
 
