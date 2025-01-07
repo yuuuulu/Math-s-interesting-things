@@ -1469,7 +1469,39 @@ vector space)--\>\[0,$\infty$)
 
 # 水一个commit
 
+## 连续性+用sup构造数列
+
 ![](images/clipboard-3326791247.png)
+
+## 用sequential criterion证明连续性取合适的epsilon来说明数列存在
+
+eg.
+
+A={1/2n} where n $\in N$
+
+f(x)=0 when x $\in[0,1]$ and x is not in A  
+
+f(x)=2x when x $\in A$
+
+(1) Prove f is continuous at x when x $\in[0,1]$ and x is not in A  
+
+- method 1 sequential
+
+
+
+- method 2
+
+
+(2) Prove f is not continuous at each point on A
+
+
+- method 1 limit or $\epsilon-\delta$
+
+
+- method 2 sequencial
+
+
+
 
 # a problem about divisible using greatest common factor to solve(even Bezou's theorem)
 
