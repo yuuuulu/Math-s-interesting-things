@@ -6,7 +6,6 @@ editor: visual
 # Preface
 
 
-
 The first section here is the knowledge that attracts most of my interests on this module, followed by the lecture notes I tapped when I am on the journey of this module.
 
 ## Thanks
@@ -1300,6 +1299,6 @@ eg. ![](images/clipboard-1407097711.png)
 
 ## understand again
 
-![understand vector space](images/clipboard-1253681054.png) see abstract vector space for a review
+
 
 
