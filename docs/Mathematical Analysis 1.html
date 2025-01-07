@@ -1372,6 +1372,7 @@ l-\epsilon&lt;f(x)&lt;l+\epsilon
 <li>Prove f is continuous at x when x <span class="math inline">\(\in[0,1]\)</span> and x is not in A</li>
 </ol>
 <ul>
+<li><p>notice!!! Do not choose sequence convergent to a point that we want blindly, since there may exists no such sequence like that! For example, here, by the density of rational/irrational number, there exists no sequence composed by elements in A convergent to a point at [0,1]so we should think of another way to prove this—If b<span class="math inline">\(\in [0,1]\A\)</span>, then there is an n_0 such that$ 1/2(n_0+1)&lt;b&lt;1/2n_0,$ i.e.&nbsp;b<span class="math inline">\(\in (1/2(n_0+1),1/2n_0).\)</span> For any sequence $a_n $with $ lim_n a_n=b,$ there is an N&gt;0 such that <span class="math inline">\(a_n\in (1/2(n_0+1),1/2n_0).\)</span> ( It works as the following: We take an <span class="math inline">\(\epsilon=1/2 min{|1/2(n_0+1)-b|, |1/2n_0-b|}, then there exists an N.0 such that |a_n-b|&lt;\epsilon.\)</span> ===&gt; when n&gt;N, a_n<span class="math inline">\(\in(b- \epsilon, b+ \epsilon)\subset (1/2(n_0+1),1/2n_0) )\)</span> Notice that (1/2(n_0+1),1/2n_0) does not intersect with A. Therefore f(a_n)=0. lim_nf(a_n)=0=f(b). Hence f is continuous at b.</p></li>
 <li><p>method 1 sequential</p></li>
 <li><p>method 2</p></li>
 </ul>
@@ -1380,7 +1381,7 @@ l-\epsilon&lt;f(x)&lt;l+\epsilon
 </ol>
 <ul>
 <li><p>method 1 limit or <span class="math inline">\(\epsilon-\delta\)</span></p></li>
-<li><p>method 2 sequencial</p></li>
+<li><p>method 2 sequential creterion</p></li>
 </ul>
 </section>
 </section>

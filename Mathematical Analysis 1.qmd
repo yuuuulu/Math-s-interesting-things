@@ -1485,6 +1485,15 @@ f(x)=2x when x $\in A$
 
 (1) Prove f is continuous at x when x $\in[0,1]$ and x is not in A  
 
+- notice!!! Do not choose sequence convergent to a point that we want blindly, since there may exists no such sequence like that! For example, here, by the density of rational/irrational number, there exists no sequence composed by elements in A convergent to a point at [0,1]\A so we should think of another way to prove this---If b$\in [0,1]\A$, then there is an n_0 such that$ 1/2(n_0+1)<b<1/2n_0,$ i.e. b$\in (1/2(n_0+1),1/2n_0).$
+For any sequence $a_n \in [0,1] $with $ lim_n a_n=b,$ there is an N>0 such that $a_n\in (1/2(n_0+1),1/2n_0).$
+                    (  It works as the following: We take an $\epsilon=1/2 min{|1/2(n_0+1)-b|, |1/2n_0-b|}, then there exists an N.0 such that |a_n-b|<\epsilon.$
+                          ===>  when n>N, a_n$\in(b- \epsilon, b+ \epsilon)\subset (1/2(n_0+1),1/2n_0) )$
+Notice that (1/2(n_0+1),1/2n_0) does not intersect with A. Therefore f(a_n)=0.
+           lim_nf(a_n)=0=f(b).
+Hence f is continuous at b.
+
+
 - method 1 sequential
 
 
@@ -1498,7 +1507,7 @@ f(x)=2x when x $\in A$
 - method 1 limit or $\epsilon-\delta$
 
 
-- method 2 sequencial
+- method 2 sequential creterion
 
 
 
