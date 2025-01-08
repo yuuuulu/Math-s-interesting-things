@@ -495,11 +495,13 @@ s=supS，然后把s的所有范围讨论（通过得到某些n使得sups不等�
 ![](images/clipboard-899547799.png)
 
 ![](images/clipboard-3519769833.png)
+(notice! The rational number set does not satisfy completeness since if we choose a subset of Q, which is all rational numbers less than $\sqrt2$, when we restrict this region on Q, its supremum does not exist.)
 
 ## if a not empty set has upper bound, then it must have the unique sup.
 
 **Prove: if a not empty set has upper bound, then it must have the
 unique sup.**
+
 
 ### Method 1: (Completeness axiom)
 
