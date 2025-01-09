@@ -3,192 +3,128 @@ title: "JavaCPT105"
 editor: visual
 ---
 
-
-# Preface 
+# Preface
 
 The first section here is the knowledge that attracts most of my interests on this module, followed by the lecture notes I tapped when I am on the journey of this module.
 
 # static
 
+\
 有无static的区别：有static，即静态的，objects共享一个memory；无static，objects各有各的memory
 
-eg 共享的话，每次counter++都是作用在同一个memory;不共享，每次counter++就加在各自的memory（它们互不相干）
-
-![](images/clipboard-1810711323.png)
-
-# data type
-
-int: 4 bytes (32 bits)
-
-char: 2 bytes (16 bits) — This is because char represents a Unicode character, which uses 2 bytes.
-
-boolean: 1 byte (although the actual memory usage might vary depending on the JVM implementation, typically 1 byte is used)
-
-byte: 1 byte (8 bits) -128 to 127
-
-long: 8 bytes (64 bits)
-
-float: 4 bytes (32 bits)
-
-short: 2 bytes (16 bits)
-
-double: 8 bytes (64 bits)
-
-![](images/clipboard-3375155714.png)
+Idea: This make sense since a class is just a blueprint which could not execute a non-static method and it is "public void xx" that gives each instance different characteristic. So non-static method can only be called on individual objects.
 
 ``` java
-public class ArrayExample {
+Cat mycat= new Cat();
+mycat.meow();
+
+Cat.meow();//this does not makes sence since meow is non-static
+```
+
+``` java
+public class Person {
+    private String name;
+    private String gender;
+    private String city;
+    private String dateOfBirth;
+    private int idNumber;
+    private int personNumber;  // 每个对象的独立编号
+    private static int count;  // 静态变量用于追踪总对象数量
+
+    // 完整构造函数
+    public Person(String nam, String gender, String city, String DoB, int id) {
+        this.name = nam;
+        this.gender = gender;
+        this.city = city;
+        this.dateOfBirth = DoB;
+        this.idNumber = id;
+        count++;  // 递增静态计数器
+        this.personNumber = count;  // 分配唯一编号
+    }
+
+    // 仅包含名字的构造函数
+    public Person(String name) {
+        this.name = name;
+        count++;  // 递增静态计数器
+        this.personNumber = count;  // 分配唯一编号
+    }
+
+    // Getter 方法
+    public String getName() {
+        return this.name;
+    }
+
+    public String getGender() {
+        return this.gender;
+    }
+
+    public String getCity() {
+        return this.city;
+    }
+
+    public String getDateOfBirth() {
+        return this.dateOfBirth;
+    }
+
+    public int getIdNumber() {
+        return this.idNumber;
+    }
+
+    public int getPersonNumber() {
+        return this.personNumber;
+    }
+
+    // 比较两个人是否相同，基于名字、性别和 idNumber
+    public boolean samePerson(Person that) {
+        if (!this.name.equals(that.getName())) {
+            return false;
+        } else if (!this.gender.equals(that.getGender())) {
+            return false;
+        } else {
+            return this.idNumber == that.getIdNumber();
+        }
+    }
+
+    // 返回对象字符串表示
+    public String toString() {
+        return "Person: name=" + this.name + ", gender= " + this.gender + ", city=" + this.city + ", idNumber=" + this.idNumber + ", personNumber=" + this.personNumber;
+    }
+
+    // 打印城市
+    public void hello() {
+        System.out.println(city);
+    }
+
+    // 静态方法返回创建的总对象数量
+    public static int getCount() {
+        return count;
+    }
+}
+
+
+public class PersonProject {
     public static void main(String[] args) {
-        // 1. int array
-        int[] numbers = new int[5];
-        for (int i = 0; i < numbers.length; i++) {
-            numbers[i] = i + 1; // Initializing with values 1 to 5
-        }
+        // 创建 Person 对象
+        Person p1 = new Person("James Bond", "M", "London", "1921-11-11", 7);
+        Person p2 = new Person("James Bond", "M", "London", "1921-11-11", 7);
+        Person p3 = new Person("jack1111");  // 第二个构造函数
 
-        // 2. char array
-        char[] letters = new char[5];
-        for (int i = 0; i < letters.length; i++) {
-            letters[i] = (char) ('A' + i); // Initializing with 'A', 'B', 'C', 'D', 'E'
-        }
+        // 每个对象都有自己的编号
+        System.out.println("p1's personNumber: " + p1.getPersonNumber());
+        System.out.println("p2's personNumber: " + p2.getPersonNumber());
+        System.out.println("p3's personNumber: " + p3.getPersonNumber());
 
-        // 3. boolean array
-        boolean[] flags = new boolean[5];
-        for (int i = 0; i < flags.length; i++) {
-            flags[i] = i % 2 == 0; // Alternating true and false
-        }
-
-        // 4. byte array
-        byte[] bytes = new byte[5];
-        for (int i = 0; i < bytes.length; i++) {
-            bytes[i] = (byte) (i + 1); // Initializing with values 1 to 5
-        }
-
-        // 5. long array
-        long[] largeNumbers = new long[5];
-        for (int i = 0; i < largeNumbers.length; i++) {
-            largeNumbers[i] = (i + 1) * 1000L; // Initializing with multiples of 1000
-        }
-
-        // 6. float array
-        float[] decimals = new float[5];
-        for (int i = 0; i < decimals.length; i++) {
-            decimals[i] = i * 1.5f; // Initializing with values 0.0, 1.5, 3.0, 4.5, 6.0
-        }
-
-        // 7. short array
-        short[] smallNumbers = new short[5];
-        for (int i = 0; i < smallNumbers.length; i++) {
-            smallNumbers[i] = (short) (i * 10); // Initializing with multiples of 10
-        }
-
-        // 8. double array
-        double[] preciseDecimals = new double[5];
-        for (int i = 0; i < preciseDecimals.length; i++) {
-            preciseDecimals[i] = i * 2.5; // Initializing with values 0.0, 2.5, 5.0, 7.5, 10.0
-        }
-
-        // Output each array
-        System.out.println("int array: ");
-        printArray(numbers);
-
-        System.out.println("char array: ");
-        printArray(letters);
-
-        System.out.println("boolean array: ");
-        printArray(flags);
-
-        System.out.println("byte array: ");
-        printArray(bytes);
-
-        System.out.println("long array: ");
-        printArray(largeNumbers);
-
-        System.out.println("float array: ");
-        printArray(decimals);
-
-        System.out.println("short array: ");
-        printArray(smallNumbers);
-
-        System.out.println("double array: ");
-        printArray(preciseDecimals);
-    }
-
-    // Helper methods to print arrays
-    public static void printArray(int[] array) {
-        for (int value : array) {
-            System.out.print(value + " ");
-        }
-        System.out.println();
-    }
-
-    public static void printArray(char[] array) {
-        for (char value : array) {
-            System.out.print(value + " ");
-        }
-        System.out.println();
-    }
-
-    public static void printArray(boolean[] array) {
-        for (boolean value : array) {
-            System.out.print(value + " ");
-        }
-        System.out.println();
-    }
-
-    public static void printArray(byte[] array) {
-        for (byte value : array) {
-            System.out.print(value + " ");
-        }
-        System.out.println();
-    }
-
-    public static void printArray(long[] array) {
-        for (long value : array) {
-            System.out.print(value + " ");
-        }
-        System.out.println();
-    }
-
-    public static void printArray(float[] array) {
-        for (float value : array) {
-            System.out.print(value + " ");
-        }
-        System.out.println();
-    }
-
-    public static void printArray(short[] array) {
-        for (short value : array) {
-            System.out.print(value + " ");
-        }
-        System.out.println();
-    }
-
-    public static void printArray(double[] array) {
-        for (double value : array) {
-            System.out.print(value + " ");
-        }
-        System.out.println();
+        // 总的 Person 对象数量
+        System.out.println("Total number of Person objects created: " + Person.getCount());
+        System.out.println(p1.samePerson(p2));
+        System.out.println(p1);
     }
 }
 ```
 
+# 
+
 ```         
-int array: 
-1 2 3 4 5 
-char array: 
-A B C D E 
-boolean array: 
-true false true false true 
-byte array: 
-1 2 3 4 5 
-long array: 
-1000 2000 3000 4000 5000 
-float array: 
-0.0 1.5 3.0 4.5 6.0 
-short array: 
-0 10 20 30 40 
-double array: 
-0.0 2.5 5.0 7.5 10.0 
 ```
 
 ```         
@@ -212,6 +148,56 @@ int newValue = result++; // newValue = 5, result = 6
 ```         
 int result = 5;
 int newValue = ++result; // newValue = 6, result = 6
+```
+
+``` java
+public class Fibonacciarray{
+  int n;
+  int [] hi;
+  
+  public final1(int number){
+    this.n=number;
+    this.hi=new int[number];
+  }
+  
+  public static void main(String[] args){
+    final1 hii = new final1(8);
+    hii.setHi(generatefinal1(8));
+    System.out.println(hii);
+  }
+  
+  public static int[] generatefinal1(int n){
+    int[] resultArray = new int[n];
+    resultArray[0]=0;
+    if(n>1){
+      resultArray[1]=1;
+      
+    }
+    for(int i =2;i<n;i++){
+      resultArray[i]=resultArray[i-1]+resultArray[i-2];
+    }
+    return resultArray;
+  }
+  
+  public void setHi(int[] hi){
+    this.hi=hi;
+  }
+  
+  public StringtoString(){
+    if(hi == null){
+      ruturn "";
+    }
+    String result = "";
+    for(int i = 0; i<hi.length;i++){
+      result+=hi[i];
+      if(i<hi.length-1){
+        result +=" ";
+      }
+    }
+  }return result;
+}
+
+
 ```
 
 # reference variable and primative data type
