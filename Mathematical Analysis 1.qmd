@@ -494,14 +494,15 @@ s=supS，然后把s的所有范围讨论（通过得到某些n使得sups不等�
 
 ![](images/clipboard-899547799.png)
 
-![](images/clipboard-3519769833.png)
-(notice! The rational number set does not satisfy completeness since if we choose a subset of Q, which is all rational numbers less than $\sqrt2$, when we restrict this region on Q, its supremum does not exist.)
+![](images/clipboard-3519769833.png) (notice! The rational number set
+does not satisfy completeness since if we choose a subset of Q, which is
+all rational numbers less than $\sqrt2$, when we restrict this region on
+Q, its supremum does not exist.)
 
 ## if a not empty set has upper bound, then it must have the unique sup.
 
 **Prove: if a not empty set has upper bound, then it must have the
 unique sup.**
-
 
 ### Method 1: (Completeness axiom)
 
@@ -1471,6 +1472,12 @@ vector space)--\>\[0,$\infty$)
 
 # 水一个commit
 
+Here, be careful to choose the min delta
+
+![](images/clipboard-1556053307.png)
+
+![](images/clipboard-597490383.png)
+
 ## 连续性+用sup构造数列
 
 ![](images/clipboard-3326791247.png)
@@ -1481,38 +1488,37 @@ eg.
 
 A={1/2n} where n $\in N$
 
-f(x)=0 when x $\in[0,1]$ and x is not in A  
+f(x)=0 when x $\in[0,1]$ and x is not in A
 
 f(x)=2x when x $\in A$
 
-(1) Prove f is continuous at x when x $\in[0,1]$ and x is not in A  
+(1) Prove f is continuous at x when x $\in[0,1]$ and x is not in A
 
-- notice!!! Do not choose sequence convergent to a point that we want blindly, since there may exists no such sequence like that! For example, here, by the density of rational/irrational number, there exists no sequence composed by elements in A convergent to a point at [0,1]\A so we should think of another way to prove this---If b$\in [0,1]\A$, then there is an n_0 such that$ 1/2(n_0+1)<b<1/2n_0,$ i.e. b$\in (1/2(n_0+1),1/2n_0).$
-For any sequence $a_n \in [0,1] $with $ lim_n a_n=b,$ there is an N>0 such that $a_n\in (1/2(n_0+1),1/2n_0).$
-                    (  It works as the following: We take an $\epsilon=1/2 min{|1/2(n_0+1)-b|, |1/2n_0-b|}, then there exists an N.0 such that |a_n-b|<\epsilon.$
-                          ===>  when n>N, a_n$\in(b- \epsilon, b+ \epsilon)\subset (1/2(n_0+1),1/2n_0) )$
-Notice that (1/2(n_0+1),1/2n_0) does not intersect with A. Therefore f(a_n)=0.
-           lim_nf(a_n)=0=f(b).
-Hence f is continuous at b.
+-   notice!!! Do not choose sequence convergent to a point that we want
+    blindly, since there may exists no such sequence like that! For
+    example, here, by the density of rational/irrational number, there
+    exists no sequence composed by elements in A convergent to a point
+    at \[0,1\]\A so we should think of another way to prove this---If
+    b$\in [0,1]\A$, then there is an n_0 such that\$
+    1/2(n_0+1)\<b\<1/2n_0,\$ i.e. b$\in (1/2(n_0+1),1/2n_0).$ For any
+    sequence \$a_n \in [0,1] \$with \$ lim_n a_n=b,\$ there is an N\>0
+    such that $a_n\in (1/2(n_0+1),1/2n_0).$ ( It works as the following:
+    We take an
+    $\epsilon=1/2 min{|1/2(n_0+1)-b|, |1/2n_0-b|}, then there exists an N.0 such that |a_n-b|<\epsilon.$
+    ===\> when n\>N,
+    a_n$\in(b- \epsilon, b+ \epsilon)\subset (1/2(n_0+1),1/2n_0) )$
+    Notice that (1/2(n_0+1),1/2n_0) does not intersect with A. Therefore
+    f(a_n)=0. lim_nf(a_n)=0=f(b). Hence f is continuous at b.
 
+-   method 1 sequential
 
-- method 1 sequential
-
-
-
-- method 2
-
+-   method 2
 
 (2) Prove f is not continuous at each point on A
 
+-   method 1 limit or $\epsilon-\delta$
 
-- method 1 limit or $\epsilon-\delta$
-
-
-- method 2 sequential creterion
-
-
-
+-   method 2 sequential creterion
 
 # a problem about divisible using greatest common factor to solve(even Bezou's theorem)
 
@@ -1665,3 +1671,5 @@ $a$ or $b$.
 Since $m$ and $n$ are coprime, this leads to a contradiction.
 
 Therefore, $\sqrt{p}$ must be an irrational number.
+
+everything goes smoothly in exams but not during the learning process
