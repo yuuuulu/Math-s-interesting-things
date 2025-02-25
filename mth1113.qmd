@@ -8,13 +8,10 @@ editor: visual
 
 
 
-```{r}
+```r
 dplyr::filter()
 ```
-```{r}
-summary(cars)
 
-```
 
 
 
@@ -133,7 +130,7 @@ Borel set is a combination of open set in some spaces
 
 
 
-```{r}
+```r
 library(ggplot2)
 library(dplyr)
 library(readr)
@@ -157,6 +154,7 @@ avg = avg %>%
 
 $M_x (t)=E(e^{tx})$
 
+## case 1
 
 $M_x$ may not exist. When it exists in a neighborhood of 0, using talor
 
@@ -172,25 +170,60 @@ $$E(X^i)=M^{(j)}(0)$$
 
 eg. Then we could also get the variance by take the 2nd order derivatives
 
+## case 2
+
+$\int$
+
+eg. normal
+
+- X~N(0,1)
+
+
+idea: try to write an integral of a certain distribution's pdf and we get the result of this integral as 1. here, we get the pdf of the N(t,1) and finally we get $e^{t^2/2}$
+
+
+- X~N($\mu, \sigma^2$)
+
+
+Then X=$\mu+\sigma Z$ where Z~N(0,1)
+
+
+$$M_x(t)=E[e^{tx}]=e^{\mu t} E[e^{\sigma t Z}]=e^{\mu t} M_Z(\sigma t)=e^{\mu t +\sigma^2 t^2/2}$$
+
+
+### Gamma disteibution
+
+the family of gamma distributions generalizes the family of exponential distributions. The gamma distribution with shape r and rate $\lambda$
+
+
+#### addition rule
+
+r +
+
+$\lambda$ stays
+
+
+
+
+
+##  why MGF is useful? -- to determine if two random variables have the identical CDF / to prove the addition property of distributions
+
+
+**MGF** includes all characteristics of a distribution, from whom we could get pdf, cdf, expectation, variance
+
+- Thm If X and Y are random variables with the same MGF, which is finite on [-t, t ] for some t >0 then X and Y have the same distribution
+
+
+A gamma distribution with shape r =1 is an exponential distribution
 
 
 
 
 
 
+A more general function than MGF is the characteristic function.
 
-
-
-
-
-
-
-
-
-
-
-
-
+$\phi_X (t) = E(e^{itX})$
 
 
 

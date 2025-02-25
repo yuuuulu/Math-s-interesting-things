@@ -254,9 +254,9 @@
   {
     "objectID": "mth1113.html",
     "href": "mth1113.html",
-    "title": "MTH113 Intro to probability and statistics+APH003–exploring world through data",
+    "title": "APH101+ MTH113 Intro to probability and statistics+APH003–exploring world through data",
     "section": "",
-    "text": "The first section here is the knowledge that attracts most of my interests on this module, followed by the lecture notes I tapped when I am on the journey of this module.\n\nMotivation\n\nThe history of the development of statistics has helped me gain a deeper understanding of this fascinating and practical field of knowledge. Each advancement represents a leap from specific facts to broader, generalized conclusions. What truly captivates me is the remarkable alignment between natural phenomena and statistical principles; there always seems to be a coincidence where reality and theory intersect.\nInitially, I only grasped the surface of this knowledge. Then, as I delved deeper, I began to understand the underlying principles through observable phenomena. Eventually, almost miraculously, I realized how incredibly useful these theories are and how they coincide with natural occurrences. This process of moving closer and closer to generalization has profoundly illustrated to me the truth in the saying: “Mathematics is the art of giving the same name to different things.”\nTheorems come, theorems go. Only examples are lying forever. (Practice to use statistics to interpret real world examples)"
+    "text": "dplyr::filter()"
   },
   {
     "objectID": "mth1113.html#residual-plost-should-have-no-pattern",
@@ -268,28 +268,28 @@
   {
     "objectID": "mth1113.html#intro",
     "href": "mth1113.html#intro",
-    "title": "MTH113 Intro to probability and statistics+APH003–exploring world through data",
+    "title": "APH101+ MTH113 Intro to probability and statistics+APH003–exploring world through data",
     "section": "Intro",
     "text": "Intro\nstat is a large field in math involving the collection, organization, analysis,interpretation, and presentation of data(a collection of observations on one or more variables(A characteristic whose value may change from one observation to another))\nStatistics is the scientific discipline that provides methods to help us make sense of data.\nIt is important to be able to:\n1 Extract information from tables, charts, and graphs.\n2 Follow numerical arguments.\n3 Understand the basics of how data should be gathered, summarized, and analysed to draw statistical conclusions.\nThe Data Analysis Process\n1 Understanding the nature of the research problem or goals.\n2 Deciding what to measure and how.\n3 Collecting data.\n4 Data summarization and preliminary analysis.\n5 Formal Data Analysis (Statistical Methods).\n6 Interpretation of the results."
   },
   {
     "objectID": "mth1113.html#populations-and-samples",
     "href": "mth1113.html#populations-and-samples",
-    "title": "MTH113 Intro to probability and statistics+APH003–exploring world through data",
+    "title": "APH101+ MTH113 Intro to probability and statistics+APH003–exploring world through data",
     "section": "populations and samples",
     "text": "populations and samples\npopulation: The entire collection of individuals or objects about which information is desired\nsample: A sample is a subset of the population, selected for study.\nthen select the sample\nthen we could summarize it using 2 branches of stat.— Decriptive stat.(methods for organizing and summarizing data.) or inferential stat.(generalizing from a sample(incomplete information) to the population from which the sample was selected and assessing the reliability of such generalizations.So we run the risk(An important aspect of statistics and making statistics inferences involves quantifying the chance of making an incorrect conclusions.))\n\ndescriptive stat\n\n\ninferential stat\nsample"
   },
   {
     "objectID": "mth1113.html#types-of-data",
     "href": "mth1113.html#types-of-data",
-    "title": "MTH113 Intro to probability and statistics+APH003–exploring world through data",
+    "title": "APH101+ MTH113 Intro to probability and statistics+APH003–exploring world through data",
     "section": "Types of data",
     "text": "Types of data\n\nuni data set and bivariate and multivariate\n\n\ncategorical and numerical(discrete and continuous) with plot using excel (data analysis) or rstudio plot (ggplot2)\nfor categorial data we could use a bar chart which is a graph of a frequency distribution for categorical data.\nfor a small numerical data we could use dotplot\n\ndiscrete\n\n\nlibrary(ggplot2)\n\n# creat data：Wechat number\ndiscrete_data &lt;- data.frame(value = c(30, 15, 20,30,60))\n\n# plot\nggplot(discrete_data, aes(x = value)) +\n  geom_dotplot(binwidth = 1, dotsize = 1) +\n  ggtitle(\"Dot Plot of Discrete Data (Number of Wechats)\") +\n  theme_minimal()\n\n\n\n\n\n\n\n\n\ncontinuous\n\n\nall_athletes &lt;- c(79, 79, 86, 85, 95, 78, 89, 84, 81, 85, 89, 89, 85, 85, 81, 80, 98, 84, \n                  80, 82, 81, 70, 85, 87, 83, 86, 92, 85, 93, 94, 76, 69, 82, 80, 94, 98)\nbasketball &lt;- c(55, 36, 83, 20, 100, 62, 100, 100, 90, 91, 93, 89, 90, 80, 46, 75, 100, 71, \n                50, 62, 82, 50, 100, 83, 90, 64, 91, 67, 83, 100, 83, 100, 83, 63, 91, 95)\n\n# 设置画布的高度，以便将两个图绘制在同一页面上\nplot.new()\nplot.window(xlim = c(0, 100), ylim = c(0.5, 2.5))\n\n# 绘制 Basketball 数据的 dotplot\nstripchart(basketball, method = \"stack\", at = 2, pch = 16, col = \"orange\", \n           add = TRUE, offset = 0.5, cex = 1.2)\n\n# 绘制 All Athletes 数据的 dotplot\nstripchart(all_athletes, method = \"stack\", at = 1, pch = 16, col = \"orange\", \n           add = TRUE, offset = 0.5, cex = 1.2)\n\n# 添加 X 轴\naxis(1, at = seq(10, 100, by = 10), labels = seq(10, 100, by = 10))\n\n# 添加标签\ntext(-5, 2, \"Basketball\", xpd = TRUE, adj = 1)\ntext(-5, 1, \"All Athletes\", xpd = TRUE, adj = 1)\n\n# 添加横线\nabline(h = 1.5, col = \"black\", lwd = 2)\n\n# 添加 X 轴标签\ntitle(xlab = \"Graduation rates (%)\")\n\n\n\n\n\n\n\n\n\n# creat data--time spent in minutes\ncontinuous_data &lt;- data.frame(value = c(6, 5.25, 3.62,1,2,3.1,3.2,4,5,6,7,4,10))\n\n# dotplot\nggplot(continuous_data, aes(x = value)) +\n  geom_dotplot(binwidth = 0.1, dotsize = 1) +\n  ggtitle(\"Dot Plot of Continuous Data (Time Spent in Minutes)\") +\n  theme_minimal()\n\n\n\n\n\n\n\n\n\nlibrary(ggplot2)\n\n# 毕业率数据\nschool &lt;- 33:68\nall_athletes &lt;- c(79, 79, 86, 85, 95, 78, 89, 84, 81, 85, 89, 89, 85, 85, 81, 80, 98, 84, \n                  80, 82, 81, 70, 85, 87, 83, 86, 92, 85, 93, 94, 76, 69, 82, 80, 94, 98)\nbasketball &lt;- c(55, 36, 83, 20, 100, 62, 100, 100, 90, 91, 93, 89, 90, 80, 46, 75, 100, 71, \n                50, 62, 82, 50, 100, 83, 90, 64, 91, 67, 83, 100, 83, 100, 83, 63, 91, 95)\n\n# 创建数据框\ndata &lt;- data.frame(school, all_athletes, basketball)\n\n# 画图\nggplot() +\n  geom_dotplot(data = data, aes(x = all_athletes, y = \"All Athletes\"), binaxis = 'x', stackdir = 'up', dotsize = 0.5) +\n  geom_dotplot(data = data, aes(x = basketball, y = \"Basketball\"), binaxis = 'x', stackdir = 'up', dotsize = 0.5, color = \"red\") +\n  xlab(\"Graduation rates (%)\") +\n  ylab(\"\") +\n  theme_minimal() +\n  ggtitle(\"Dotplot of Graduation Rates for All Athletes and Basketball Players\")\n\nBin width defaults to 1/30 of the range of the data. Pick better value with\n`binwidth`.\nBin width defaults to 1/30 of the range of the data. Pick better value with\n`binwidth`.\n\n\n\n\n\n\n\n\n\n\n\n\nhistogram excel plot"
   },
   {
     "objectID": "mth1113.html#collect-data-sensibly",
     "href": "mth1113.html#collect-data-sensibly",
-    "title": "MTH113 Intro to probability and statistics+APH003–exploring world through data",
+    "title": "APH101+ MTH113 Intro to probability and statistics+APH003–exploring world through data",
     "section": "collect data sensibly",
     "text": "collect data sensibly"
   },
@@ -548,21 +548,21 @@
   {
     "objectID": "mth1113.html#it-is-not-stable-to-predict-the-data-outside-our-data-sample",
     "href": "mth1113.html#it-is-not-stable-to-predict-the-data-outside-our-data-sample",
-    "title": "MTH113 Intro to probability and statistics+APH003–exploring world through data",
+    "title": "APH101+ MTH113 Intro to probability and statistics+APH003–exploring world through data",
     "section": "it is not stable to predict the data outside our data sample’",
     "text": "it is not stable to predict the data outside our data sample’"
   },
   {
     "objectID": "mth1113.html#two-types-of-studies-observational-studies-and-experiments.",
     "href": "mth1113.html#two-types-of-studies-observational-studies-and-experiments.",
-    "title": "MTH113 Intro to probability and statistics+APH003–exploring world through data",
+    "title": "APH101+ MTH113 Intro to probability and statistics+APH003–exploring world through data",
     "section": "Two types of studies: Observational studies and Experiments.",
     "text": "Two types of studies: Observational studies and Experiments.\n\nObservational\nA study in which the investigator observes characteristics of a sample selected from one or more existing populations. The goal is to draw conclusions about the corresponding population or about differences between two or more populations.\nIn an observational study, it is impossible to draw clear cause-and-effect conclusions\n\n\nExperiments\nA study in which the investigator observes how a response variable behaves when one or more explanatory variables, also called factors, are manipulated.\nA well-designed experiment can result in data that provide evidence for a cause-and-effect relationship.\n\n\nExperimental conditions: Any particular combination of values for the explanatory variables, which are also called treatments.\n\n\n\ncomparison\n\nBoth observational studies and experiments can be used to compare groups, but in an experiment the researcher controls who is in which group, whereas this is not the case in an observational study.\nIn an observational study, it is impossible to draw clear cause-and\u0002effect conclusions\n\n\n\nconfounding vars\nA variable that is related to both how the experimental groups were formed and the response variable of interest.\n\nTwo methods for data collection: Sampling and Experimentation.\ndistinguish between selection bias, measurement or response bias, and non-response bias.\nselect a simple random sample from a given population.\ndistinguish between simple random sampling, stratified random sampling, cluster sampling, systematic sampling, and convenience sampling"
   },
   {
     "objectID": "mth1113.html#variable",
     "href": "mth1113.html#variable",
-    "title": "MTH113 Intro to probability and statistics+APH003–exploring world through data",
+    "title": "APH101+ MTH113 Intro to probability and statistics+APH003–exploring world through data",
     "section": "variable",
     "text": "variable\n\nresponse variable–y\nThe response variable is the focus of a question in a study or experiment.\n\n\nexplanotory variable–x\nAn explanatory variable is one that explains for changes in the response variable.\n\n\nexperiments and obeservational study\n\n\nbias\nselection bias：When the way the sample is selected systematically excludes some part of the population of interest.\nmeasurement or response bias\neg: survey question/scale(The scale or a machine used for measurements is not calibrated properly)\nNon-response Bias:When responses are not obtained from all individuals selected for inclusion in the sample.\nnon-response bias can distort results if those who respond differ in important ways from those who do not respond (e.g. laziness a confounding vari\u0002able).\n\n\nrandom sampling\ndef: A sample that is selected from a population in a way that ensures that every different possible sample of size n has the same chance of being selected.\nthe same chance to be selected\ncounter eg:\nConsider 100 students in a classroom, 60 females and 40 males. If we randomly sample 6 females, and 4 males, then each female has a 6/60 = 0.1 chance of being selected. Same for males, 4/40=0.1. However, not every group of 10 students is equally likely to be selected. This is not simple random sampling\nThe random selection process allows us to be confident that the sample adequately reflects the population, even when the sample consists of only a small fraction of the population.\neg.Voting Sample Size in a country\n\n\nstratified and cluster\n\nstratified random sampling:In stratified random sampling, separate simple random samples are independently selected from each subgroup. Each subgroup is called a strata.\n\nIn general, it is much easier to produce relatively accurate es\u0002timates of characteristics of a homogeneous group than of a heterogeneous group.\nstratified: according to certain characteristic\neg.Even with a small sample, it is possible to obtain an accurate estimate of the average grade point average (GPA) of students graduating with high honours from a university (Similar high grades, homogenous, thus only sample a few students). On the other hand, producing a reasonably accurate estimate of the average GPA of all seniors at the university, a much more diverse group of GPAs, is a more difficult task. Not only does this ensure that students at each GPA level are represented, it also allows for a more accurate estimate of the overall average GPA.\n\ncluster reflect general characteristic about the whole entire population\n\ncluster: randomly groups\nCluster sampling involves dividing the population of interest into non-overlapping subgroups, called clusters. Clusters are then selected at random, and then all individuals in the selected clusters are included in the sample.\n\n\nsystematic sampling\nA value k is specified (e.g. k = 50 or k = 200). Then one of the first k individuals is selected at random, after which every k-th individual in the sequence is included in the sample. A sample selected in this way is called a 1 in k systematic sample.\nIn the case of large samples, it can ensure that the sample is evenly distributed in the population."
   },
@@ -576,14 +576,14 @@
   {
     "objectID": "mth1113.html#probability-mass-function-and-cumulative-distribution-function-for-discrete-random-variables",
     "href": "mth1113.html#probability-mass-function-and-cumulative-distribution-function-for-discrete-random-variables",
-    "title": "MTH113 Intro to probability and statistics+APH003–exploring world through data",
+    "title": "APH101+ MTH113 Intro to probability and statistics+APH003–exploring world through data",
     "section": "Probability Mass Function and Cumulative Distribution Function for Discrete Random Variables",
     "text": "Probability Mass Function and Cumulative Distribution Function for Discrete Random Variables\nProbability Mass Function (PMF): \\(p_x (x) := P(X = x) ,\\forall x\\)\nCumulative Distribution Function (CDF): \\(F_x (x) := P(X \\leq x) ,\\forall x\\)\n\n# 定义每个事件的概率和对应的 X 值\noutcomes &lt;- c(\"GGGG\", \"EGGG\", \"GEGG\", \"GGEG\", \"GGGE\", \n              \"EEGG\", \"EGEG\", \"EGGE\", \"GEEG\", \"GEGE\", \n              \"GGEE\", \"GEEE\", \"EEEG\", \"EEGE\", \"EEEE\")\nprobabilities &lt;- c(0.1296, 0.0864, 0.0864, 0.0864, 0.0864, \n                   0.0576, 0.0576, 0.0576, 0.0576, 0.0576, \n                   0.0384, 0.0384, 0.0384, 0.0384, 0.0256)\nX_values &lt;- c(0, 1, 1, 1, 1, \n              2, 2, 2, 2, 2,\n              3, 3, 3, 3, 4)\n\n# 计算每个 X 值的 PMF 通过分组和求和\npmf &lt;- tapply(probabilities, X_values, sum)\n\n# 定义可能的 X 值\nX_values_unique &lt;- sort(unique(X_values))\n\n# 计算 CDF\ncdf &lt;- cumsum(pmf)\n\n# 确保 CDF 在 x &gt; 4 时为 1\ncdf &lt;- c(cdf, 1)\n\n# 更新 X 值以包括 x &gt; 4 的情况\nX_values_unique &lt;- c(X_values_unique, \"&gt;4\")\n\n# 创建数据框显示 PMF 和 CDF\ntable &lt;- data.frame(\n  X = X_values_unique,\n  `PMF P(X=x)` = c(pmf, 1-0.1296-0.3456-0.2880-0.1536-0.0256),  # PMF 没有对应的 x &gt; 4 值，填 NA\n  `CDF F(X&lt;=x)` = cdf\n)\n\n# 打印表格\nprint(table)\n\n   X PMF.P.X.x. CDF.F.X..x.\n0  0     0.1296      0.1296\n1  1     0.3456      0.4752\n2  2     0.2880      0.7632\n3  3     0.1536      0.9168\n4  4     0.0256      0.9424\n  &gt;4     0.0576      1.0000\n\n\n\nNote that the domain of a cdf is (−∞, ∞)\n\n\\(\\mathrm{pmf} \\Longrightarrow \\mathrm{cdf}\\) \\[\nF_x(x)=\\sum_{y \\leq x} p_x(y)\n\\] cdf \\(\\Longrightarrow\\) pmf Suppose \\(X\\) takes ordered values \\(x_1, x_2, x_3, \\cdots\\), then \\[\n\\begin{aligned}\np_X\\left(x_i\\right) & =P\\left(X=x_i\\right)=P\\left(x_{i-1}&lt;X \\leq x_i\\right) \\\\\n& =P\\left(X \\leq x_i\\right)-P\\left(X \\leq x_{i-1}\\right) \\\\\n& =F\\left(x_i\\right)-F\\left(x_{i-1}\\right)\n\\end{aligned}\n\\]\n\nremark: The probability of a discrete distribution varies depending on the inclusion and exclusion of the boundary values."
   },
   {
     "objectID": "mth1113.html#expectation-and-variance-for-discrete-random-variables",
     "href": "mth1113.html#expectation-and-variance-for-discrete-random-variables",
-    "title": "MTH113 Intro to probability and statistics+APH003–exploring world through data",
+    "title": "APH101+ MTH113 Intro to probability and statistics+APH003–exploring world through data",
     "section": "Expectation and Variance for Discrete Random Variables",
     "text": "Expectation and Variance for Discrete Random Variables\n\\[\n\\frac{0 \\cdot f_0+1 \\cdot f_1+2 \\cdot f_2+\\cdots+n \\cdot f_n}{N}=\\frac{1}{N} \\sum_{i=0}^n i \\cdot f_i\n\\]\nNote that in \\(\\frac{1}{N} \\sum_{i=0}^n i \\cdot f_i\\), \\[\n\\lim _{N \\rightarrow \\infty} \\frac{f_i}{N}=P(X=i)\n\\]\nSo the average number will be \\[\n\\sum_{i=0}^n i \\cdot P(X=i)\n\\]\n\nDefinition: Expectation Given a discrete random variable \\(X\\), the expectation of \\(X\\) is \\[\nE[X]=\\sum_x x \\cdot p_X(x)\n\\]\nProperties of Expectation\nIf \\(c\\) is a constant, then \\(E[c]=c\\).\nIf \\(X \\geq 0\\) then \\(E[X] \\geq 0\\).\nIf \\(a \\leq X \\leq b\\) then \\(a \\leq E[X] \\leq b\\).\nProof of 3: First show \\(E[X] \\geq a\\), then show \\(E[X] \\leq b\\), \\[\n\\begin{aligned}\nE[X] & =\\sum_x x p_X(x) \\geq \\sum_x a p_X(x), \\\\\n& =a \\sum_x p_x(x)=a .\n\\end{aligned}\n\\]\n\nSimilarly, \\(E[X] \\leq b\\).\n\nSuppose \\(X\\) is a discrete random variable and \\(Y=g(X)\\), then \\[\n\\begin{aligned}\nE[Y] & =\\sum_y y p_Y(y)=\\sum_y y P(Y=y) \\\\\n& =\\sum_y y \\sum_{\\{x: g(x)=y\\}} P(X=x) \\\\\n& =\\sum_y \\sum_{\\{x: g(x)=y\\}} y P(X=x) \\\\\n& =\\sum_y \\sum_{\\{x: g(x)=y\\}} g(x) P(X=x) \\\\\n& =\\sum_x g(x) P(X=x)\n\\end{aligned}\n\\]\nFirst moment of \\(X\\) (mean): \\[\nE[X]=\\sum_x x p_X(x) .\n\\]\nSecond moment of \\(X\\) : \\[\nE\\left[X^2\\right]=\\sum_x x^2 p_x(x) .\n\\]\nIn general, \\(E[g(X)] \\neq g(E[X])\\). For example, let \\(g(x)=x^2\\), and consider \\(X\\) such that \\[\np_X(x)= \\begin{cases}0.5, & \\text { for } x=-1 \\\\ 0.5, & \\text { for } x=1\\end{cases}\n\\]\n\nThen clearly \\(E\\left[X^2\\right]=1 \\neq 0=(E[X])^2\\).\n\nThere are exceptions (e.g. when g is linear)!\nLinearity of Expectation\n\nE[aX + b] = aE[X] + b\nproof:\nSuppose \\(g(x)=a x+b\\). Then \\[\n\\begin{aligned}\nE[g(X)] & =\\sum_x g(x) p_X(x), \\\\\n& =\\sum_x(a x+b) p_x(x), \\\\\n& =\\sum_x a x p_x(x)+\\sum_x b p_x(x), \\\\\n& =a \\sum_x x p_x(x)+b \\sum_x p_x(x), \\\\\n& =a E[X]+b=g(E[X]),\n\\end{aligned}\n\\] this implies \\[\nE[a X+b]=a E[X]+b\n\\]\n\nRemark: Apart from this case, always assume \\(E[g(X)] \\neq g(E[X])\\)."
   },
@@ -625,7 +625,7 @@
   {
     "objectID": "mth1113.html#background",
     "href": "mth1113.html#background",
-    "title": "MTH113 Intro to probability and statistics+APH003–exploring world through data",
+    "title": "APH101+ MTH113 Intro to probability and statistics+APH003–exploring world through data",
     "section": "background",
     "text": "background\n\nRegression to the mean (Galton’s thinking)"
   },
@@ -639,28 +639,28 @@
   {
     "objectID": "mth1113.html#independence-expectationsmean-and-variance",
     "href": "mth1113.html#independence-expectationsmean-and-variance",
-    "title": "MTH113 Intro to probability and statistics+APH003–exploring world through data",
+    "title": "APH101+ MTH113 Intro to probability and statistics+APH003–exploring world through data",
     "section": "independence, expectations(mean) and variance",
     "text": "independence, expectations(mean) and variance\nIndependence and Expectations If \\(X\\) and \\(Y\\) are independent, then \\[\nE[X Y]=E[X] E[Y] .\n\\]\nProof: We use \\(E[g(X, Y)]\\) where \\(g(x, y)=x y\\). \\[\n\\begin{aligned}\nE[X Y] & =\\sum_x \\sum_y x y p_{X, Y}(x, y) \\\\\n& =\\sum_x \\sum_y x y p_X(x) p_Y(y), \\quad(\\text { by inde } \\\\\n& =\\left(\\sum_x x p_X(x)\\right)\\left(\\sum_y y p_Y(y)\\right)=E[X] E[Y] .\n\\end{aligned}\n\\] (by independence)\nSimilarly, if \\(X\\) and \\(Y\\) are independent, then \\[\nE[g(X) h(Y)]=E[g(X)] E[h(Y)]\n\\]\n\nIndependence and Variances\n\nIt is always true that \\[\n\\operatorname{Var}(a X)=a^2 \\operatorname{Var}(X), \\quad \\text { and } \\quad \\operatorname{Var}(X+a)=\\operatorname{Var}(X)\n\\]\nIn general, when we have a sum of random variables \\(X\\) and \\(Y\\) \\[\n\\operatorname{Var}(X+Y) \\neq \\operatorname{Var}(X)+\\operatorname{Var}(Y) .\n\\]\nIt is only true if \\(X\\) and \\(Y\\) are independent\n\nSum of Variance for independent R.V. If two random variables \\(X\\) and \\(Y\\) are independent then \\[\n\\operatorname{Var}(X+Y)=\\operatorname{Var}(X)+\\operatorname{Var}(Y)\n\\]\nSum of Variance for independent R.V.\n\nIf two random variables \\(X\\) and \\(Y\\) are independent then \\[\n\\operatorname{Var}(X+Y)=\\operatorname{Var}(X)+\\operatorname{Var}(Y) .\n\\]\nProof: Independence implies \\(E[X Y]=E[X] E[Y]\\). Thus \\[\n\\begin{aligned}\n& \\operatorname{Var}(X+Y)=E\\left[(X+Y-(E[X]+E[Y]))^2\\right], \\\\\n& =E\\left[(X-E[X])^2+2(X-E[X])(Y-E[Y])+(Y-E[Y])^2\\right], \\\\\n& =\\operatorname{Var}(X)+\\operatorname{Var}(Y)+2 E[(X-E[X])(Y-E[Y])]\n\\end{aligned}\n\\]\nAs \\(X\\) is indep to \\(Y\\), then \\(X-\\mu_X\\) is indep to \\(Y-\\mu_Y\\) so \\[\nE[(X-E[X])(Y-E[Y])]=E[X-E[X]] E[Y-E[Y]]=0\n\\]\nExample: Assume independence, \\(\\operatorname{Var}(3 X-5 Y)=\\) \\[\n\\operatorname{Var}(3 X)+\\operatorname{Var}(-5 Y)=9 \\operatorname{Var}(X)+25 \\operatorname{Var}(Y)\n\\]\n\nExample. Independence, mean and variance\n\nLet \\(Y\\) be the random variable denoting the total number of heads by tossing a coin \\(n\\) times. Find the mean and variance of \\(Y\\).\nLet \\[\nY_i= \\begin{cases}1, & \\text { if the } i^{\\text {th }} \\text { toss gets a head } \\\\ 0, & \\text { otherwise. }\\end{cases}\n\\]\nThen \\(Y=Y_1+Y_2+\\cdots+Y_n\\) where \\(Y_1, Y_2, \\cdots, Y_n\\) are independent. For any \\(i=1,2, \\cdots, n\\), we have \\[\n\\begin{array}{ccc}\ny & 0 & 1 \\\\\nP_{Y_i}(y) & 1 / 2 & 1 / 2\n\\end{array}\n\\]\nAs \\(E\\left[Y_i\\right]=\\frac{1}{2}\\) and \\(\\operatorname{Var}\\left(Y_i\\right)=\\frac{1}{4}\\) for \\(i=1,2, \\cdots, n\\) \\[\n\\begin{gathered}\nE[Y]=E\\left[Y_1\\right]+E\\left[Y_2\\right]+\\cdots+E\\left[Y_n\\right]=\\frac{n}{2} \\\\\n\\operatorname{Var}(Y)=\\operatorname{Var}\\left(Y_1\\right)+\\operatorname{Var}\\left(Y_2\\right)+\\cdots+\\operatorname{Var}\\left(Y_n\\right)=\\frac{n}{4}\n\\end{gathered}\n\\] (for not independent cases we have the same result as E but not Var because Var is not linear)"
   },
   {
     "objectID": "mth1113.html#definition.-probability-density-function-pdf",
     "href": "mth1113.html#definition.-probability-density-function-pdf",
-    "title": "MTH113 Intro to probability and statistics+APH003–exploring world through data",
+    "title": "APH101+ MTH113 Intro to probability and statistics+APH003–exploring world through data",
     "section": "Definition. Probability Density Function (pdf)",
     "text": "Definition. Probability Density Function (pdf)\nFor a continuous random variable X, the Probability Density Function (PDF) of X is f(x) where P(X = x) = 0 for all x and for any a ≤ b"
   },
   {
     "objectID": "mth1113.html#discrete-and-continuous",
     "href": "mth1113.html#discrete-and-continuous",
-    "title": "MTH113 Intro to probability and statistics+APH003–exploring world through data",
+    "title": "APH101+ MTH113 Intro to probability and statistics+APH003–exploring world through data",
     "section": "discrete and continuous",
     "text": "discrete and continuous\n\nDensity function’s value could be greater than 1 because the integral of it in a very tiny interval could be very small, which represents the probability(which could not be greater than 1 and since the interval could be very tiny this condition is satisfied!).(This reminder notices that the value of pdf is not the probability since the integration is the probability which is totally 1)"
   },
   {
     "objectID": "mth1113.html#wait-for-reviewing..",
     "href": "mth1113.html#wait-for-reviewing..",
-    "title": "MTH113 Intro to probability and statistics+APH003–exploring world through data",
+    "title": "APH101+ MTH113 Intro to probability and statistics+APH003–exploring world through data",
     "section": "wait for reviewing…..",
     "text": "wait for reviewing….."
   },
@@ -744,63 +744,63 @@
   {
     "objectID": "mth1113.html#bernoulli-is-composed-by-binomial",
     "href": "mth1113.html#bernoulli-is-composed-by-binomial",
-    "title": "MTH113 Intro to probability and statistics+APH003–exploring world through data",
+    "title": "APH101+ MTH113 Intro to probability and statistics+APH003–exploring world through data",
     "section": "Bernoulli is composed by binomial",
     "text": "Bernoulli is composed by binomial"
   },
   {
     "objectID": "mth1113.html#hypergeometric-distribution-could-be-approximated-by-binomial-when-samples-are-large",
     "href": "mth1113.html#hypergeometric-distribution-could-be-approximated-by-binomial-when-samples-are-large",
-    "title": "MTH113 Intro to probability and statistics+APH003–exploring world through data",
+    "title": "APH101+ MTH113 Intro to probability and statistics+APH003–exploring world through data",
     "section": "Hypergeometric distribution could be approximated by Binomial when samples are large",
     "text": "Hypergeometric distribution could be approximated by Binomial when samples are large"
   },
   {
     "objectID": "mth1113.html#poisson-distribution-as-the-limit-of-binomial-distribution-when-the-number-of-trials-is-large-and-the-probabiliy-of-success-of-each-trial-is-inverse-proportional-to-the-number-of-trials",
     "href": "mth1113.html#poisson-distribution-as-the-limit-of-binomial-distribution-when-the-number-of-trials-is-large-and-the-probabiliy-of-success-of-each-trial-is-inverse-proportional-to-the-number-of-trials",
-    "title": "MTH113 Intro to probability and statistics+APH003–exploring world through data",
+    "title": "APH101+ MTH113 Intro to probability and statistics+APH003–exploring world through data",
     "section": "Poisson distribution as the limit of Binomial distribution when the number of trials is large and the probabiliy of success of each trial is inverse-proportional to the number of trials",
     "text": "Poisson distribution as the limit of Binomial distribution when the number of trials is large and the probabiliy of success of each trial is inverse-proportional to the number of trials\n\nThe Poisson distribution is a discrete probability distribution that applies to occurrences of some event over a specified interval. The random variable x is the number of occurrences of the event in an interval.The probability of the event occurring x times over an interval is given by \\[P(x)=\\frac{u^x\\cdot e^{-\\mu}}{x!}\\] where the random variable x is the number of occurences of an event over some interval and the ovvurrences must be random and independent of each other.\n\n中心极限定理：当泊松分布的参数 λ 较大时，泊松分布的形状会接近正态分布。这是因为中心极限定理指出，大量独立随机变量的和趋向于正态分布，而泊松分布可以看作是大量伯努利试验成功次数的分布，当试验次数足够多时，其和可以用正态分布来近似\n\n???The occurrences must be uniformly distributed over the interval being used\nThe mean is \\(\\mu\\)\nThe standard deviation is \\(\\sigma= \\sqrt \\mu\\)\n\neg of Poisson distribution: (describing the behavior of rare events(with small probabilities). radioactive decay, arrivals of people in a line, eagles nesting in a region, patients arriving at an emergency room(the local hospital experiences a mean of 2.3 patients arriving at the emergency room during 10-11 P.M. on Fri. is known, we can find the probability that for a randomly selected Fri. between 10-11 P.M., exactly four patients arrive), Internet users logging onto a Web site )\nComparison between Binomial:\n\nBinomal distribution is affected by yhe smaple size n and the probability p, whereas the Poisson distribution is affected only by mean \\(\\mu\\)\nA binomial distribution has a limit of possible values but a Poisson distribution has a possible values x without upper bound.\nSuppose the \\(X_n,n\\geq1\\) is a sequence of random variables such that \\(X_n\\)~Bin(\\(n,p_n\\)), where \\(p_n\\)~\\(\\lambda/n\\) as \\(n-&gt;\\infty\\) \\(lim_{n-&gt;\\infty}(np_0)=\\lambda\\), intuitively we can observe that \\(\\lambda\\) is the mean of\ngiven the well-known limit \\(\\lim _{n \\rightarrow \\infty}\\left(1-\\frac{\\lambda}{n}\\right)^n=e^{-\\lambda}\\), and \\[\n\\begin{aligned}\n& \\frac{n}{n} \\frac{n-1}{n} \\ldots \\frac{n-k+1}{n}=\\prod_{i=0}^{k-1}\\left(1-\\frac{i}{n}\\right) \\\\\n& \\lim _{n \\rightarrow \\infty} \\prod_{i=0}^{k-1}\\left(1-\\frac{i}{n}\\right)=1 \\\\\n& P\\left(X_n=k\\right)=\\binom{n}{k} p_n^k\\left(1-p_n\\right)^{n-k} \\\\\n&= \\frac{n \\cdots(n-k+1)}{k!} p_n^k\\left(1-p_n\\right)^n\\left(1-p_n\\right)^{-k} \\\\\n&= \\frac{1}{k!}(\\underbrace{n p_n}_{\\rightarrow \\lambda})^k \\underbrace{\\frac{n}{n} \\frac{n-1}{n} \\cdots \\frac{n-k+1}{n}}_{\\rightarrow 1} \\underbrace{\\left(1-p_n\\right)^n}_{\\rightarrow \\mathrm{e}^{-\\lambda}} \\underbrace{\\left(1-p_n\\right)^{-k}}_{\\rightarrow 1} \\\\\n& \\rightarrow \\frac{\\lambda^k}{k!} \\mathrm{e}^{-\\lambda} \\underbrace{}_{\\text {as } n \\rightarrow \\infty .}\n\\end{aligned}\n\\]\nCheck that \\(p_x(k), k=0,1,2, \\cdots\\) defines a probability mass function: given the Taylor Series of \\(e^\\lambda\\) around \\(\\lambda=0\\) is given by \\(f(x)=\\) \\(\\sum_{n=0}^{\\infty} \\frac{f^{(n)}(0)}{n!} x^n\\) and \\(e^\\lambda=\\sum_{n=0}^{\\infty} \\frac{\\lambda^n}{n!}\\). Hence, \\[\n\\begin{aligned}\n\\sum_{k=0}^{\\infty} p_X(k) & =\\sum_{k=0}^{\\infty} \\frac{\\lambda^k}{k!} \\mathrm{e}^{-\\lambda} \\\\\n& =\\mathrm{e}^{-\\lambda} \\sum_{k=0}^{\\infty} \\frac{\\lambda^k}{k!} \\\\\n& =\\mathrm{e}^{-\\lambda} \\cdot \\mathrm{e}^\\lambda \\\\\n& =1 .\n\\end{aligned}\n\\] ## Geometric distribution (and Geometric series–powerful!fantastic series)\n\nThe probability of the first happening\nwell-defined \\(\\begin{aligned} \\sum_{k=1}^{\\infty} p_X(k) & =\\sum_{k=1}^{\\infty}(1-p)^{k-1} p \\\\ & =p \\sum_{k=0}^{\\infty}(1-p)^k \\\\ & =p \\cdot \\frac{1}{1-(1-p)} \\\\ & =1 .\\end{aligned}\\)\nTail probability of the Geometric distribution\n\nLet \\(X \\sim \\operatorname{Geom}(p)\\) then \\[\n\\begin{aligned}\nP(X&gt;n) & =P(X=n+1)+P(X=n+2)+P(X=n+3)+\\cdots \\\\\n& =(1-p)^n p+(1-p)^{n+1} p+(1-p)^{n+2} p+\\cdots \\\\\n& =(1-p)^n p\\left(1+(1-p)+(1-p)^2+\\cdots\\right) \\\\\n& =(1-p)^n p \\frac{1}{1-(1-p)} \\\\\n& =(1-p)^n\n\\end{aligned}\n\\] for any \\(n=0,1,2, \\ldots\\)\n\nMemoryless property of Geometric distribution\n\nSuppose that \\(X \\sim \\operatorname{Geom}(p)\\) and \\(n \\in\\{1,2,3, \\cdots\\}\\). Then \\[\nP(X-n=k \\mid X&gt;n)=P(X=k) \\quad, k=1,2,3, \\cdots\n\\]\nThat is, the distribution of \\(X-n\\) under the probability function \\(P(\\cdot \\mid X&gt;n)\\) is the same as the distribution of \\(X\\)\nthe memoryless property is saying that given the first n trials are unsuccessful, the number of trials until success after the first n trials has the same distribution as the unconditional number of trials until success (independent)\n\nExpectation\n\nSuppose that \\(X \\sim \\operatorname{Geom}(p)\\). Then \\[\n\\begin{aligned}\nE(X)=\\sum_{k=1}^{\\infty} k P(X=k) & =\\sum_{k=1}^{\\infty} k(1-p)^{k-1} p \\\\\n& =p \\sum_{k=1}^{\\infty}\\left[-\\frac{\\mathrm{d}}{\\mathrm{~d} p}(1-p)^k\\right] \\\\\n& =-p \\frac{\\mathrm{~d}}{\\mathrm{~d} p}\\left[\\sum_{k=0}^{\\infty}(1-p)^k\\right] \\\\\n& =-p \\frac{\\mathrm{~d}}{\\mathrm{~d} p}\\left[\\frac{1}{1-(1-p)}\\right] \\\\\n& =-p \\frac{\\mathrm{~d}}{\\mathrm{~d} p}\\left[\\frac{1}{p}\\right] \\\\\n& =\\frac{1}{p}\n\\end{aligned}\n\\] — variance\nLikewise, \\[\n\\begin{aligned}\nE(X(X-1)) & =\\sum_{k=1}^{\\infty} k(k-1) P(X=k) \\\\\n& =\\sum_{k=2}^{\\infty} k(k-1)(1-p)^{k-1} p \\\\\n& =p(1-p) \\sum_{k=2}^{\\infty} k(k-1)(1-p)^{k-2} \\\\\n& =p(1-p) \\frac{\\mathrm{d}^2}{\\mathrm{~d} p^2}\\left[\\sum_{k=0}^{\\infty}(1-p)^k\\right] \\\\\n& =p(1-p) \\frac{\\mathrm{d}^2}{\\mathrm{~d} p^2} \\frac{1}{p} \\\\\n& =p(1-p) \\cdot \\frac{2}{p^3} \\\\\n& =\\frac{2(1-p)}{p^2} .\n\\end{aligned}\n\\] \\[\\begin{aligned} \\operatorname{Var}(X) & =E(X(X-1))+E(X)-(E(X))^2 \\\\ & =\\frac{2(1-p)}{p^2}+\\frac{1}{p}-\\frac{1}{p^2} \\\\ & =\\frac{1-p}{p^2}\\end{aligned}\\]"
   },
   {
     "objectID": "mth1113.html#十堂极简概率课-中信出版-diaconis",
     "href": "mth1113.html#十堂极简概率课-中信出版-diaconis",
-    "title": "MTH113 Intro to probability and statistics+APH003–exploring world through data",
+    "title": "APH101+ MTH113 Intro to probability and statistics+APH003–exploring world through data",
     "section": "十堂极简概率课 中信出版 diaconis",
     "text": "十堂极简概率课 中信出版 diaconis"
   },
   {
     "objectID": "mth1113.html#心理统计",
     "href": "mth1113.html#心理统计",
-    "title": "MTH113 Intro to probability and statistics+APH003–exploring world through data",
+    "title": "APH101+ MTH113 Intro to probability and statistics+APH003–exploring world through data",
     "section": "心理统计",
     "text": "心理统计"
   },
   {
     "objectID": "mth1113.html#the-lady-tasting-tea",
     "href": "mth1113.html#the-lady-tasting-tea",
-    "title": "MTH113 Intro to probability and statistics+APH003–exploring world through data",
+    "title": "APH101+ MTH113 Intro to probability and statistics+APH003–exploring world through data",
     "section": "The lady tasting tea",
     "text": "The lady tasting tea"
   },
   {
     "objectID": "mth1113.html#概率论与数理统计第三版-峁诗松等老师编著",
     "href": "mth1113.html#概率论与数理统计第三版-峁诗松等老师编著",
-    "title": "MTH113 Intro to probability and statistics+APH003–exploring world through data",
+    "title": "APH101+ MTH113 Intro to probability and statistics+APH003–exploring world through data",
     "section": "概率论与数理统计（第三版） 峁诗松等老师编著",
     "text": "概率论与数理统计（第三版） 峁诗松等老师编著"
   },
   {
     "objectID": "mth1113.html#probability.",
     "href": "mth1113.html#probability.",
-    "title": "MTH113 Intro to probability and statistics+APH003–exploring world through data",
+    "title": "APH101+ MTH113 Intro to probability and statistics+APH003–exploring world through data",
     "section": "Probability….",
     "text": "Probability…."
   },
   {
     "objectID": "mth1113.html#random-variable-r.v.",
     "href": "mth1113.html#random-variable-r.v.",
-    "title": "MTH113 Intro to probability and statistics+APH003–exploring world through data",
+    "title": "APH101+ MTH113 Intro to probability and statistics+APH003–exploring world through data",
     "section": "Random Variable (R.V.)",
     "text": "Random Variable (R.V.)\nA numerical variable whose value depends on the outcome of a chance experiment. A random variable associates a numerical value with each outcome of a chance experiment. (Think of it as a rule that translates each result of a chance event into a number.)\nIn shorta: random variables convert random events into numbers.\nA real-valued random variable X is a function: X : S → \\(\\mathbb R\\), where S is the sample space of a chance experiment.\nContinuous random variable X: S–&gt; R is continuous if its set of possible values includes an entire interval on the number line(measurement), which could not be count.\nDiscrete random variable: X: S–&gt; R if its set of possible value is a collection of isolated points along the number line.(counting)\n\neg\nExamples: Coin Tossing (Discrete Random Variable) If we flip a coin 5 times, let X be the number of heads we get. Possible values of X {0,1,2,3,4,5} (where 0 means no heads, and 5 means all heads). Here, X turns each outcome of multiple coin tosses into a count of heads.\nDeparture Time (Continuous Random Variable) Imagine tracking when people leave a subway station between 10 PM and 11 PM. Let Y represent the time (in hours) someone leaves, so Y can be any number from 10 to 11. Here, Y assigns each departure time to a point in the range [10,11]."
   },
@@ -814,14 +814,14 @@
   {
     "objectID": "mth1113.html#sample-space-of-multivariables",
     "href": "mth1113.html#sample-space-of-multivariables",
-    "title": "MTH113 Intro to probability and statistics+APH003–exploring world through data",
+    "title": "APH101+ MTH113 Intro to probability and statistics+APH003–exploring world through data",
     "section": "sample space of multivariables",
     "text": "sample space of multivariables\nG:gender; F: year—corresponding to a certain student:S\n(G, H) : S → \\(\\mathbb R^2\\), S={1,2,3,4}\n…"
   },
   {
     "objectID": "mth1113.html#geometric-distribution",
     "href": "mth1113.html#geometric-distribution",
-    "title": "MTH113 Intro to probability and statistics+APH003–exploring world through data",
+    "title": "APH101+ MTH113 Intro to probability and statistics+APH003–exploring world through data",
     "section": "Geometric distribution",
     "text": "Geometric distribution\n\nThe irrelevance of past events to the probability of future independent events\nGiven the first n trials are unsuccessful, the number of trials until success after the first n trials has the same distribution as the unconditional number of trials until success.\nX~Geom(p) and n$${1,2,3,….}\nP(X-n=k|X&gt;n)=P(X=k), k=1,2,3,…\nTail probability for the probability calculation of more/higher than…."
   },
@@ -870,7 +870,7 @@
   {
     "objectID": "mth1113.html#z-scores",
     "href": "mth1113.html#z-scores",
-    "title": "MTH113 Intro to probability and statistics+APH003–exploring world through data",
+    "title": "APH101+ MTH113 Intro to probability and statistics+APH003–exploring world through data",
     "section": "z Scores",
     "text": "z Scores\neg. height(among women or men (come from different populations)instead of just comparing the height itself)"
   },
@@ -884,21 +884,21 @@
   {
     "objectID": "mth1113.html#interpretation",
     "href": "mth1113.html#interpretation",
-    "title": "MTH113 Intro to probability and statistics+APH003–exploring world through data",
+    "title": "APH101+ MTH113 Intro to probability and statistics+APH003–exploring world through data",
     "section": "interpretation:",
     "text": "interpretation:\n\nStandard normally distributed sth. z=1.58(corresponding to 0.9429):\nthe probability of randomly selecting sth. with a value less than 1.58(unit) is equal to the area(probability) of 0.9429.\n(Or: 94.29% of sth, will have a value below 1.58(unit))"
   },
   {
     "objectID": "mth1113.html#sampling-distributions-and-estimators",
     "href": "mth1113.html#sampling-distributions-and-estimators",
-    "title": "MTH113 Intro to probability and statistics+APH003–exploring world through data",
+    "title": "APH101+ MTH113 Intro to probability and statistics+APH003–exploring world through data",
     "section": "Sampling distributions and Estimators",
     "text": "Sampling distributions and Estimators\nWe are beginning to embark a jourfa d dney that allows us to learn about populations by obtaining data from samples since it is rare that we know all values in an entire population.\nSampling distribution of a statistic is the probability distribution of a sample statistics (such as mean/proportion which tend to target the population mean/proportion), with all samples having the same sample size. This concept is important to understand. The behavior of a statistic can be known by understanding its distribution( (The random variable in this case is the value of that sample statistics)). Under certain condition, the distribution of sampling mean/proportion approximates a normal distribution.\nThough statistics does not depend on unknown parameters, the distribution of it depend on unknown parameters.(eg. Normal distribution of sample means depends on population mean(an unknow parameter) and standard deviation)\n(ps: the advantage of sampling with replacement:\nwhen selecting a relatively small sample from a large population, it makes no significant difference whether we sample with or without replacement.\nSampling with replacement results in independent events that are unaffected by previous outcomes, and independent events are easier to analyze and they result in simpler formulas.)\nFor a fixed sample size, the mean of all possible sample means is equal to the mean of population though sample means vary(sampling variability)"
   },
   {
     "objectID": "mth1113.html#unbiased-estimators-and-biased-estimators",
     "href": "mth1113.html#unbiased-estimators-and-biased-estimators",
-    "title": "MTH113 Intro to probability and statistics+APH003–exploring world through data",
+    "title": "APH101+ MTH113 Intro to probability and statistics+APH003–exploring world through data",
     "section": "Unbiased estimators and biased estimators",
     "text": "Unbiased estimators and biased estimators\nStatistics that target population parameters: Mean, variance, proportion\nStatistics that do target population parameters: Median, Range, Standard Deviation\n(the bias is relatively small then sampling standard deviation in large samples so s is ofent used to estimate \\(\\sigma\\))"
   },
@@ -912,35 +912,35 @@
   {
     "objectID": "mth1113.html#using-the-normal-distribution-as-an-approximation-to-the-binomial-distribution",
     "href": "mth1113.html#using-the-normal-distribution-as-an-approximation-to-the-binomial-distribution",
-    "title": "MTH113 Intro to probability and statistics+APH003–exploring world through data",
+    "title": "APH101+ MTH113 Intro to probability and statistics+APH003–exploring world through data",
     "section": "Using the Normal distribution as an approximation to the binomial distribution",
     "text": "Using the Normal distribution as an approximation to the binomial distribution\nrequirement: np, n(1-p) \\(\\geq\\) 5\nBe careful: adjust x for continuity by + or - 0.5(eg. at least 99, choose 98.5)"
   },
   {
     "objectID": "mth1113.html#to-hypothesis-testing",
     "href": "mth1113.html#to-hypothesis-testing",
-    "title": "MTH113 Intro to probability and statistics+APH003–exploring world through data",
+    "title": "APH101+ MTH113 Intro to probability and statistics+APH003–exploring world through data",
     "section": "to hypothesis testing",
     "text": "to hypothesis testing\na question (eg):\nIn a test of a gender-selection technique assume that 100 couples using a particular treatment give birth to 52 girls (and 48 boys). If the technique has no effect, then the probability of a girl is approximately 0.5. If the probability of a girl is 0.5, find the probability that among 100 newborn babies, exactly 52 are girls. Based on the result, is there strong evidence supporting a claim that the gender-selection technique increases the likelihood that a baby is a girl?\nit is a binomial distribution with np=nq=100*0.5=50\\(\\geq 5\\)\nso we use the normal distribution with mean of 50 and \\(\\sigma = \\sqrt {npq} = 5\\)as an approximation to the binomial distribution\nto answer”is there strong evidence supporting a claim that the gender-selection technique increases the likelihood that a baby is a girl?“, we need to calculate more than 52(x successes among n trials is an unusually high number of successes if P(\\(x\\geq a\\)) is very small)\n原因是因为如果只看52这个数字肯定概率很小，因为任何单个数字发生的可能性概率都很小\nSo if the answer of P(\\(x\\geq 52\\)) is small we could conclude that the gender selection is useful\n(总结：如果是0。5概率来看的话52以上本来就不是难事，as indicated by the such large probability of P(\\(x\\geq 52\\)) 所以我们没有充分证据拒绝“not effective”这个假设前提)\n此处还没有引入假设检验所以都是用using probability to determine when results are unusual这个思想来思考问题的：\n\nUnusually low： x successes among n trails is an unually low number of successes if P(x or fewer) is very small\n\n\nInterpretation for another example of gender selection(using only unusual results to explain): Because the probability of more than 13 girls, which is 0.001 is so low, we conclude that it is unusual to get 13 girls among 14 babies (using binomial to calculate it). This suggests that the technique of gender selection appears to be effective since it is highly unlikely that the result of 13 girls among 14 births happened by chance."
   },
   {
     "objectID": "mth1113.html#inferences-from-2-samples-introduces-the-differences-between-two-populaton-means-using-matched-pairs-but-correlaition-and-regression-analyze-the-association-between-the-2-variables-and-if-such-an-association-exists-we-wnat-to-describe-it-with-an-equation-that-can-be-used-for-predictions",
     "href": "mth1113.html#inferences-from-2-samples-introduces-the-differences-between-two-populaton-means-using-matched-pairs-but-correlaition-and-regression-analyze-the-association-between-the-2-variables-and-if-such-an-association-exists-we-wnat-to-describe-it-with-an-equation-that-can-be-used-for-predictions",
-    "title": "MTH113 Intro to probability and statistics+APH003–exploring world through data",
+    "title": "APH101+ MTH113 Intro to probability and statistics+APH003–exploring world through data",
     "section": "inferences from 2 samples introduces the differences between two populaton means using matched pairs but correlaition and regression analyze the association between the 2 variables and if such an association exists we wnat to describe it with an equation that can be used for predictions",
     "text": "inferences from 2 samples introduces the differences between two populaton means using matched pairs but correlaition and regression analyze the association between the 2 variables and if such an association exists we wnat to describe it with an equation that can be used for predictions\npaired sampled data(or called bivariate data)\n\na correlation exists between two variables when one of them is related to the other in some way.\nthe linear correlation coefficient r measures the strength of the linear association between the paired x- and y-quantitative values in a sample. Its value is computed by using the formula(Pearson(1857-1937) product moment correlation coefficient)\n\n……otherwise there is not sufficient evidence to support the conclusion of a significant linear equation\n!!!: interpreting r: explained variation: the value of \\(r^2\\) is the proportion of the variation in y that is explained by the linear association between x and y.(and the other percentage is explained by factors other thanx such as characteristics not included in the study)\n\ncorrelation does not imply causality,just the association\naverage suppress individual variation and may inflate the correlation coefficient(the linear correlation coefficient became higher when reginal averages were used)"
   },
   {
     "objectID": "mth1113.html#normal-distribution-1",
     "href": "mth1113.html#normal-distribution-1",
-    "title": "MTH113 Intro to probability and statistics+APH003–exploring world through data",
+    "title": "APH101+ MTH113 Intro to probability and statistics+APH003–exploring world through data",
     "section": "Normal distribution",
     "text": "Normal distribution\nIf a variable is the superposition result of a large number of small independent random factors, then the variable must obey the normal distribution of variables\ne.g. measure error\n\nAssessing Normality\nIn general, quantile plots can be used to assess any probability distribution.\nFor a normal quantile plot(or normal probability plot), it is a graph of points(x,y) where each x vaue is from the original set of sample data and each y value is the cooresponding z score that is a quantile value expected from the standard normal distribution\n\nProcedures\n\nHistogram(not helpful for small data set)\noutliers: reject normality if there is more than 1 outlier present(not helpful for small data set)\nnormal quantile plot:\n\nsort data from lowest to highest\n\nSampling distribution of pˆ when population is infinite"
   },
   {
     "objectID": "mth1113.html#addition",
     "href": "mth1113.html#addition",
-    "title": "MTH113 Intro to probability and statistics+APH003–exploring world through data",
+    "title": "APH101+ MTH113 Intro to probability and statistics+APH003–exploring world through data",
     "section": "Addition",
     "text": "Addition\nIndependent random variable with the same distribution allows the addition law"
   },
@@ -968,7 +968,7 @@
   {
     "objectID": "mth1113.html#residual-plot-should-have-no-pattern",
     "href": "mth1113.html#residual-plot-should-have-no-pattern",
-    "title": "MTH113 Intro to probability and statistics+APH003–exploring world through data",
+    "title": "APH101+ MTH113 Intro to probability and statistics+APH003–exploring world through data",
     "section": "Residual plot should have no pattern",
     "text": "Residual plot should have no pattern\nacross the whole range, it could not be showing a certain trend or a specific shape.\npositive and negative points sperate averagely .\n\n\n\n# 数据\nx &lt;- c(50, 55, 50, 79, 44, 37, 70, 45, 49)  # Rock surface area\ny &lt;- c(152, 48, 22, 35, 38, 171, 13, 185, 25)  # Algae colony density\n\n# (a) 计算最小二乘回归方程\nmodel &lt;- lm(y ~ x)\nsummary(model)\n\n\nCall:\nlm(formula = y ~ x)\n\nResiduals:\n   Min     1Q Median     3Q    Max \n-65.53 -63.91 -14.47  46.99  84.39 \n\nCoefficients:\n            Estimate Std. Error t value Pr(&gt;|t|)  \n(Intercept)  232.258     92.390   2.514   0.0402 *\nx             -2.926      1.690  -1.731   0.1271  \n---\nSignif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1\n\nResidual standard error: 63.32 on 7 degrees of freedom\nMultiple R-squared:  0.2998,    Adjusted R-squared:  0.1997 \nF-statistic: 2.997 on 1 and 7 DF,  p-value: 0.1271\n\n# 获取回归系数\nintercept &lt;- coef(model)[1]\nslope &lt;- coef(model)[2]\ncat(\"最小二乘回归方程: y =\", intercept, \"+\", slope, \"* x\\n\")\n\n最小二乘回归方程: y = 232.2575 + -2.925507 * x\n\n# (b) 计算 R^2 值并解释\nr_squared &lt;- summary(model)$r.squared\ncat(\"R^2 值:\", r_squared, \"\\n\")\n\nR^2 值: 0.2997552 \n\ncat(\"解释: R^2 表示了\", round(r_squared * 100, 2), \"% 的 y 的变异可以通过 x 来解释。\\n\")\n\n解释: R^2 表示了 29.98 % 的 y 的变异可以通过 x 来解释。\n\n# (c) 计算残差标准误差 s_e\nse &lt;- summary(model)$sigma\ncat(\"残差标准误差 s_e:\", se, \"\\n\")\n\n残差标准误差 s_e: 63.31527 \n\ncat(\"解释: s_e 表示了回归模型的平均预测误差，越小表明预测的精确度越高。\\n\")\n\n解释: s_e 表示了回归模型的平均预测误差，越小表明预测的精确度越高。\n\n# (d) 判断线性关系的方向和强度\ncorrelation &lt;- cor(x, y)\ncat(\"相关系数 r:\", correlation, \"\\n\")\n\n相关系数 r: -0.547499 \n\nif (correlation &gt; 0) {\n  direction &lt;- \"正相关\"\n} else {\n  direction &lt;- \"负相关\"\n}\n\nif (abs(correlation) &gt; 0.7) {\n  strength &lt;- \"强相关\"\n} else if (abs(correlation) &gt; 0.3) {\n  strength &lt;- \"中等相关\"\n} else {\n  strength &lt;- \"弱相关\"\n}\n\ncat(\"线性关系:\", direction, \"且为\", strength, \"\\n\")\n\n线性关系: 负相关 且为 中等相关 \n\n\n\n# 数据\nquality_rating &lt;- c(111, 113, 93, 130, 170, 87, 83, 117, 135, 109)\nsatisfaction_rating &lt;- c(832, 845, 794, 854, 836, 842, 877, 745, 797, 795)\n\n# 计算相关系数\ncorrelation_coefficient &lt;- cor(quality_rating, satisfaction_rating)\nprint(paste(\"相关系数 r:\", correlation_coefficient))\n\n[1] \"相关系数 r: -0.115403519735578\"\n\n# 绘制散点图\nplot(quality_rating, satisfaction_rating,\n     main = \"Scatterplot of Quality Rating vs. Satisfaction Rating\",\n     xlab = \"Quality Rating\",\n     ylab = \"Satisfaction Rating\",\n     pch = 19, col = \"blue\")\nabline(lm(satisfaction_rating ~ quality_rating), col = \"red\")  # 添加回归线"
   },
@@ -1069,5 +1069,26 @@
     "title": "Analysis1",
     "section": "用sequential criterion证明连续性取合适的epsilon来说明数列存在",
     "text": "用sequential criterion证明连续性取合适的epsilon来说明数列存在\neg.\nA={1/2n} where n \\(\\in N\\)\nf(x)=0 when x \\(\\in[0,1]\\) and x is not in A\nf(x)=2x when x \\(\\in A\\)\n\nProve f is continuous at x when x \\(\\in[0,1]\\) and x is not in A\n\n\nnotice!!! Do not choose sequence convergent to a point that we want blindly, since there may exists no such sequence like that! For example, here, by the density of rational/irrational number, there exists no sequence composed by elements in A convergent to a point at [0,1]so we should think of another way to prove this—If b\\(\\in [0,1]\\A\\), then there is an n_0 such that$ 1/2(n_0+1)&lt;b&lt;1/2n_0,$ i.e. b\\(\\in (1/2(n_0+1),1/2n_0).\\) For any sequence $a_n $with $ lim_n a_n=b,$ there is an N&gt;0 such that \\(a_n\\in (1/2(n_0+1),1/2n_0).\\) ( It works as the following: We take an \\(\\epsilon=1/2 min{|1/2(n_0+1)-b|, |1/2n_0-b|}, then there exists an N.0 such that |a_n-b|&lt;\\epsilon.\\) ===&gt; when n&gt;N, a_n\\(\\in(b- \\epsilon, b+ \\epsilon)\\subset (1/2(n_0+1),1/2n_0) )\\) Notice that (1/2(n_0+1),1/2n_0) does not intersect with A. Therefore f(a_n)=0. lim_nf(a_n)=0=f(b). Hence f is continuous at b.\nmethod 1 sequential\nmethod 2\n\n\nProve f is not continuous at each point on A\n\n\nmethod 1 limit or \\(\\epsilon-\\delta\\)\nmethod 2 sequential creterion"
+  },
+  {
+    "objectID": "mth1113.html#case-1",
+    "href": "mth1113.html#case-1",
+    "title": "APH101+ MTH113 Intro to probability and statistics+APH003–exploring world through data",
+    "section": "case 1",
+    "text": "case 1\n\\(M_x\\) may not exist. When it exists in a neighborhood of 0, using talor\n\\[e^{tx}=1+tX+(tX)^2/2+...\\]\n\\[M_x(t)=1+t\\mu+t^2 \\mu/2+...\\]\n\\(\\mu_j = E(X^i)\\) is the j-th moment of X. Therefore,\n\\[E(X^i)=M^{(j)}(0)\\]\neg. Then we could also get the variance by take the 2nd order derivatives"
+  },
+  {
+    "objectID": "mth1113.html#case-2",
+    "href": "mth1113.html#case-2",
+    "title": "APH101+ MTH113 Intro to probability and statistics+APH003–exploring world through data",
+    "section": "case 2",
+    "text": "case 2\n\\(\\int\\)\neg. normal\n\nX~N(0,1)\n\nidea: try to write an integral of a certain distribution’s pdf and we get the result of this integral as 1. here, we get the pdf of the N(t,1) and finally we get \\(e^{t^2/2}\\)\n\nX~N(\\(\\mu, \\sigma^2\\))\n\nThen X=\\(\\mu+\\sigma Z\\) where Z~N(0,1)\n\\[M_x(t)=E[e^{tx}]=e^{\\mu t} E[e^{\\sigma t Z}]=e^{\\mu t} M_Z(\\sigma t)=e^{\\mu t +\\sigma^2 t^2/2}\\]\n\nGamma disteibution\nthe family of gamma distributions generalizes the family of exponential distributions. The gamma distribution with shape r and rate \\(\\lambda\\)\n\naddition rule\nr +\n\\(\\lambda\\) stays"
+  },
+  {
+    "objectID": "mth1113.html#why-mgf-is-useful-to-determine-if-two-random-variables-have-the-identical-cdf-to-prove-the-addition-property-of-distributions",
+    "href": "mth1113.html#why-mgf-is-useful-to-determine-if-two-random-variables-have-the-identical-cdf-to-prove-the-addition-property-of-distributions",
+    "title": "APH101+ MTH113 Intro to probability and statistics+APH003–exploring world through data",
+    "section": "why MGF is useful? – to determine if two random variables have the identical CDF / to prove the addition property of distributions",
+    "text": "why MGF is useful? – to determine if two random variables have the identical CDF / to prove the addition property of distributions\nMGF includes all characteristics of a distribution, from whom we could get pdf, cdf, expectation, variance\n\nThm If X and Y are random variables with the same MGF, which is finite on [-t, t ] for some t &gt;0 then X and Y have the same distribution\n\nA gamma distribution with shape r =1 is an exponential distribution\nA more general function than MGF is the characteristic function.\n\\(\\phi_X (t) = E(e^{itX})\\)"
   }
 ]
