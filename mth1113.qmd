@@ -1,7 +1,211 @@
 ---
-title: "MTH113 Intro to probability and statistics+APH003--exploring world through data"
+title: "APH101+ MTH113 Intro to probability and statistics+APH003--exploring world through data"
 editor: visual
 ---
+
+
+
+
+
+
+```{r}
+dplyr::filter()
+```
+```{r}
+summary(cars)
+
+```
+
+
+
+# Simple random samlple
+
+We know the total population but do not know p of our interests. 
+
+Based on hypergeometric probability calculation we can estimate p as $\hat p = \text{intrests}/N= X_1+...+X_N/N$ where $X_i$~ Bernoulli(p) and $\hat p$ is a random variable. Therefore, $E[\hat p] = p$ (E[$X_i$]=p based on Bernouli distribution).
+
+
+- If $X_i$ are independent then E($X_1+X_2$) = 2E($X_1$) 
+
+
+Here, eg. E[$\hat p^2$]= 1/n E[$X_1^2$]+n-1/nE[$X_1 X_2$]
+
+Since $X_1=1$ $X_1^2=X_1$
+
+and E[$X_1 X_2$] = P[$X_1, X_2$]
+
+
+Finally, we can look at the distribution of $\hat p$, suppose we know the true p is 0.54, we can use **simulation** to randomly sample $X_1,...X_n$ from Np people who support 1 and ......who support
+
+
+```{r}
+library(ggplot2)
+
+set.seed(111)
+
+population_size <- 12141897
+
+p <- 0.54
+
+num_simulations <- 500
+
+sample_size <- 1000
+
+
+p_hat_values <- replicate(num_simulations, {
+  # Simulate sampling from the population
+  sample <- sample(c(rep(1,population_size * p), rep(0,population_size*(1-p))), sample_size, replace =FALSE) # replicate(num_simulations, {...})：这个函数会重复执行大括号中的代码num_simulations次，并将每次的结果存储在一个向量中； rep创建一个包含population_size * p个1和population_size * (1-p)个0的向量，模拟总体。
+mean(sample) #calculate the p_hat for each sample
+})
+
+
+  
+histogram <- ggplot(data.frame(p = p_hat_values), aes(x=p))+
+  geom_histogram(binwidth = 0.01, fill ="blue", color = "black")+
+  labs(title =" ",
+       x = "p_hat",
+       y= "Frequency")+
+  theme_minimal()
+
+print(histogram)
+
+```
+
+
+doing this 500 times, 
+
+
+
+
+based on the central limit theory
+
+
+
+Statistical inference and Probability distribution
+
+
+- estimation
+
+- condifidence intervals
+
+- hypothesis testing 
+
+
+# Sample Space and Probability Measure
+
+
+
+
+$\sigma$ algebra $F$ is a collection of   satisfying :
+
+full and null set
+
+
+completerment 
+
+
+countably union
+
+
+
+
+
+measurble we can find a function that takes the elements of F and output a real number
+
+
+A probability measure is a mapping P:F--> R satisfying the following 3 axioms:
+
+
+countably for mutually exclusive events $A_1, A_2,...\in F$
+
+
+
+# interpret the probability
+
+
+- frequentist view
+
+- Bayesian view
+
+
+Borel set is a combination of open set in some spaces
+
+
+
+
+```{r}
+library(ggplot2)
+library(dplyr)
+library(readr)
+library(magrittr)
+
+circ <- read_csv("Charm_City_Circulator_Ridership.csv")
+## take just average ridership per day
+avg = circ %>% 
+  filter(type == "Average")
+# keep non-missing data
+avg = avg %>% 
+  filter(!is.na(number))
+```
+
+
+
+
+# Moment Generating Functions
+
+
+
+$M_x (t)=E(e^{tx})$
+
+
+$M_x$ may not exist. When it exists in a neighborhood of 0, using talor
+
+
+$$e^{tx}=1+tX+(tX)^2/2+...$$
+
+$$M_x(t)=1+t\mu+t^2 \mu/2+...$$
+
+$\mu_j = E(X^i)$ is the j-th moment of X. Therefore,
+
+
+$$E(X^i)=M^{(j)}(0)$$
+
+eg. Then we could also get the variance by take the 2nd order derivatives
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 # Preface
 
