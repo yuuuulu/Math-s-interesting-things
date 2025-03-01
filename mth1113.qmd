@@ -34,6 +34,7 @@ and E[$X_1 X_2$] = P[$X_1, X_2$]
 
 Finally, we can look at the distribution of $\hat p$, suppose we know the true p is 0.54, we can use **simulation** to randomly sample $X_1,...X_n$ from Np people who support 1 and ......who support
 
+- God's perspective
 
 ```{r}
 library(ggplot2)
@@ -48,7 +49,7 @@ num_simulations <- 500
 
 sample_size <- 1000
 
-
+rep()
 p_hat_values <- replicate(num_simulations, {
   # Simulate sampling from the population
   sample <- sample(c(rep(1,population_size * p), rep(0,population_size*(1-p))), sample_size, replace =FALSE) # replicate(num_simulations, {...})：这个函数会重复执行大括号中的代码num_simulations次，并将每次的结果存储在一个向量中； rep创建一个包含population_size * p个1和population_size * (1-p)个0的向量，模拟总体。
@@ -226,10 +227,24 @@ A more general function than MGF is the characteristic function.
 $\phi_X (t) = E(e^{itX})$
 
 
+# Normal --> Chi-squared distribution
+
+MGF
+
+the MGF of the Gamma(1/2, 1/2) distribution is the chi-squared
 
 
 
+standard normal random variables' sum of their each own squers follow a $\chi^2$ distribution
 
+
+the addition rule lies on the sum of the dgree of freedom
+
+$(n-1)S^2/\sigma^2$ 
+
+
+
+consider 
 
 
 
