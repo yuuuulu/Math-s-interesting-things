@@ -3,38 +3,43 @@ title: "APH101+ MTH113 Intro to probability and statistics+APH003--exploring wor
 editor: visual
 ---
 
-
-
-
-
-
-```r
+``` r
 dplyr::filter()
 ```
 
+# Chi
 
+-   Standard normal
 
+-   the square sum of standard normal (MGF same)
+
+-   
+
+# Why n-1 in sampling variance
+
+-   degree of freedom
+
+-   ubiased estimation. (是指在已知sample时，这个无偏估计是所有估计中的平均值，这样我们才能称其为“无偏”。)
+
+![](images/clipboard-2819513011.png)
 
 # Simple random samlple
 
-We know the total population but do not know p of our interests. 
+We know the total population but do not know p of our interests.
 
-Based on hypergeometric probability calculation we can estimate p as $\hat p = \text{intrests}/N= X_1+...+X_N/N$ where $X_i$~ Bernoulli(p) and $\hat p$ is a random variable. Therefore, $E[\hat p] = p$ (E[$X_i$]=p based on Bernouli distribution).
+Based on hypergeometric probability calculation we can estimate p as $\hat p = \text{intrests}/N= X_1+...+X_N/N$ where $X_i$\~ Bernoulli(p) and $\hat p$ is a random variable. Therefore, $E[\hat p] = p$ (E\[$X_i$\]=p based on Bernouli distribution).
 
+-   If $X_i$ are independent then E($X_1+X_2$) = 2E($X_1$)
 
-- If $X_i$ are independent then E($X_1+X_2$) = 2E($X_1$) 
-
-
-Here, eg. E[$\hat p^2$]= 1/n E[$X_1^2$]+n-1/nE[$X_1 X_2$]
+Here, eg. E\[$\hat p^2$\]= 1/n E\[$X_1^2$\]+n-1/nE\[$X_1 X_2$\]
 
 Since $X_1=1$ $X_1^2=X_1$
 
-and E[$X_1 X_2$] = P[$X_1, X_2$]
-
+and E\[$X_1 X_2$\] = P\[$X_1, X_2$\]
 
 Finally, we can look at the distribution of $\hat p$, suppose we know the true p is 0.54, we can use **simulation** to randomly sample $X_1,...X_n$ from Np people who support 1 and ......who support
 
-- God's perspective
+-   God's perspective
 
 ```{r}
 library(ggplot2)
@@ -69,69 +74,43 @@ print(histogram)
 
 ```
 
-
-doing this 500 times, 
-
-
-
+doing this 500 times,
 
 based on the central limit theory
 
-
-
 Statistical inference and Probability distribution
 
+-   estimation
 
-- estimation
+-   condifidence intervals
 
-- condifidence intervals
-
-- hypothesis testing 
-
+-   hypothesis testing
 
 # Sample Space and Probability Measure
 
-
-
-
-$\sigma$ algebra $F$ is a collection of   satisfying :
+$\sigma$ algebra $F$ is a collection of satisfying :
 
 full and null set
 
-
-completerment 
-
+completerment
 
 countably union
 
-
-
-
-
 measurble we can find a function that takes the elements of F and output a real number
 
-
-A probability measure is a mapping P:F--> R satisfying the following 3 axioms:
-
+A probability measure is a mapping P:F--\> R satisfying the following 3 axioms:
 
 countably for mutually exclusive events $A_1, A_2,...\in F$
 
-
-
 # interpret the probability
 
+-   frequentist view
 
-- frequentist view
-
-- Bayesian view
-
+-   Bayesian view
 
 Borel set is a combination of open set in some spaces
 
-
-
-
-```r
+``` r
 library(ggplot2)
 library(dplyr)
 library(readr)
@@ -146,12 +125,7 @@ avg = avg %>%
   filter(!is.na(number))
 ```
 
-
-
-
 # Moment Generating Functions
-
-
 
 $M_x (t)=E(e^{tx})$
 
@@ -159,13 +133,11 @@ $M_x (t)=E(e^{tx})$
 
 $M_x$ may not exist. When it exists in a neighborhood of 0, using talor
 
-
 $$e^{tx}=1+tX+(tX)^2/2+...$$
 
 $$M_x(t)=1+t\mu+t^2 \mu/2+...$$
 
 $\mu_j = E(X^i)$ is the j-th moment of X. Therefore,
-
 
 $$E(X^i)=M^{(j)}(0)$$
 
@@ -177,25 +149,19 @@ $\int$
 
 eg. normal
 
-- X~N(0,1)
-
+-   X\~N(0,1)
 
 idea: try to write an integral of a certain distribution's pdf and we get the result of this integral as 1. here, we get the pdf of the N(t,1) and finally we get $e^{t^2/2}$
 
+-   X\~N($\mu, \sigma^2$)
 
-- X~N($\mu, \sigma^2$)
-
-
-Then X=$\mu+\sigma Z$ where Z~N(0,1)
-
+Then X=$\mu+\sigma Z$ where Z\~N(0,1)
 
 $$M_x(t)=E[e^{tx}]=e^{\mu t} E[e^{\sigma t Z}]=e^{\mu t} M_Z(\sigma t)=e^{\mu t +\sigma^2 t^2/2}$$
-
 
 ### Gamma disteibution
 
 the family of gamma distributions generalizes the family of exponential distributions. The gamma distribution with shape r and rate $\lambda$
-
 
 #### addition rule
 
@@ -203,57 +169,31 @@ r +
 
 $\lambda$ stays
 
-
-
-
-
-##  why MGF is useful? -- to determine if two random variables have the identical CDF / to prove the addition property of distributions
-
+## why MGF is useful? -- to determine if two random variables have the identical CDF / to prove the addition property of distributions
 
 **MGF** includes all characteristics of a distribution, from whom we could get pdf, cdf, expectation, variance
 
-- Thm If X and Y are random variables with the same MGF, which is finite on [-t, t ] for some t >0 then X and Y have the same distribution
-
+-   Thm If X and Y are random variables with the same MGF, which is finite on \[-t, t \] for some t \>0 then X and Y have the same distribution
 
 A gamma distribution with shape r =1 is an exponential distribution
-
-
-
-
-
 
 A more general function than MGF is the characteristic function.
 
 $\phi_X (t) = E(e^{itX})$
 
-
-# Normal --> Chi-squared distribution
+# Normal --\> Chi-squared distribution
 
 MGF
 
 the MGF of the Gamma(1/2, 1/2) distribution is the chi-squared
 
-
-
 standard normal random variables' sum of their each own squers follow a $\chi^2$ distribution
-
 
 the addition rule lies on the sum of the dgree of freedom
 
-$(n-1)S^2/\sigma^2$ 
+$(n-1)S^2/\sigma^2$
 
-
-
-consider 
-
-
-
-
-
-
-
-
-
+consider
 
 # Preface
 
