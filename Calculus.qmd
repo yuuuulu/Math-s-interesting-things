@@ -3,6 +3,14 @@ title: "Calculus and Multivariable Calculus"
 format: html
 editor: visual
 ---
+
+# Derivative
+
+$y'=\frac{d}{dx}\cdot y$
+
+$y''=\frac{d}{dx} \frac{d}{dx}\cdot y$=$\frac{d^2y}{dx^2}\cdot y$
+ 
+
 # surface and volume of Steinmetz solid
 
 Professor. Wang Duo, a very charismatic and responsible Calculus teacher who has worked for our country in the area of math for at least 50 years (which was his target before and he has realized his dream!), always says "You should try to solve one problem many times with new methods to handle and understand knowledge better"
@@ -108,8 +116,8 @@ see the photo attached
 
 ![](3%20cylinders%20method%202.jpg)
 
-
 # (sequence)sinx/x's 0-infinite's integral
+
 Dr.Fajin Wei teach me how to do it. He is very good at Calculus and Modeling. He is kind to help our students. Thanks to him very much!
 
 ## integral problems with solution of alternating integral test
@@ -165,94 +173,68 @@ $$
 \int_0^1 \frac{1}{1 + \left( (n + 1) \frac{\pi}{2} \right)^ p t^2} \, dt = \frac{1}{\sqrt{((n + 1) \frac{\pi}{2} )^p}} \arctan \left( \sqrt{(n + 1) \frac{\pi}{2}}^{2p}\pi/2 \right) \geq \frac{1}{\sqrt{(n + 1) \frac{\pi}{2} }^{2p}  } \frac{\pi}{4}
 $$
 
-
-
-
-
 # Extreme Values of Function using not only Lagrange but the same philosophy
 
--->
-
+--\>
 
 # introduction with the relationship between it and lasso
-The Lagrange multiplier method can transform constrained problems into unconstrained problems, which is a great wisdom. It can be used to solve lasso, and lasso is an interesting and wonderful method for dimensionality reduction in statistics, which makes me feel that the journey of learning multivariate calculus is a joy：
-## Lasso Regression
+
+The Lagrange multiplier method can transform constrained problems into unconstrained problems, which is a great wisdom. It can be used to solve lasso, and lasso is an interesting and wonderful method for dimensionality reduction in statistics, which makes me feel that the journey of learning multivariate calculus is a joy： \## Lasso Regression
 
 Lasso regression (Least Absolute Shrinkage and Selection Operator) is a regularization technique for linear regression models that introduces an L1 norm penalty. The goal is to minimize the following objective function:
 
-\[
-\text{minimize} \quad \frac{1}{2} \| \mathbf{y} - \mathbf{X}\mathbf{\beta} \|_2^2 + \lambda \|\mathbf{\beta}\|_1
-\]
+\[ \text{minimize} \quad \frac{1}{2} \| \mathbf{y} - \mathbf{X}\mathbf{\beta} \|\_2\^2 + \lambda \|\mathbf{\beta}\|\_1 \]
 
-where:
-- \(\mathbf{y}\) is the vector of target variables.
-- \(\mathbf{X}\) is the feature matrix.
-- \(\mathbf{\beta}\) is the vector of regression coefficients.
-- \(\lambda\) is the regularization parameter controlling the strength of regularization.
-- \(\|\mathbf{\beta}\|_1\) is the L1 norm of \(\mathbf{\beta}\), which is the sum of the absolute values of the coefficients.
+where: - (\mathbf{y}) is the vector of target variables. - (\mathbf{X}) is the feature matrix. - (\mathbf{\beta}) is the vector of regression coefficients. - (\lambda) is the regularization parameter controlling the strength of regularization. - (\|\mathbf{\beta}\|\_1) is the L1 norm of (\mathbf{\beta}), which is the sum of the absolute values of the coefficients.
 
 ## Lagrange Multipliers
 
-The method of Lagrange multipliers is used to solve optimization problems with constraints. It involves introducing Lagrange multipliers to incorporate constraints into the objective function, converting constrained problems into unconstrained problems. Given an objective function \( f(\mathbf{x}) \) with constraints \( g_i(\mathbf{x}) = 0 \), the Lagrange function is:
+The method of Lagrange multipliers is used to solve optimization problems with constraints. It involves introducing Lagrange multipliers to incorporate constraints into the objective function, converting constrained problems into unconstrained problems. Given an objective function ( f(\mathbf{x}) ) with constraints ( g_i(\mathbf{x}) = 0 ), the Lagrange function is:
 
-\[
-\mathcal{L}(\mathbf{x}, \lambda) = f(\mathbf{x}) + \sum_{i} \lambda_i g_i(\mathbf{x})
-\]
+\[ \mathcal{L}(\mathbf{x}, \lambda) = f(\mathbf{x}) + \sum\_{i} \lambda\_i g_i(\mathbf{x}) \]
 
-where \(\lambda_i\) are the Lagrange multipliers. By setting the derivatives of \(\mathcal{L}\) to zero, we can find the optimal solution.
+where (\lambda\_i) are the Lagrange multipliers. By setting the derivatives of (\mathcal{L}) to zero, we can find the optimal solution.
 
 ## Relationship Between Lasso and Lagrange Multipliers
 
-In Lasso regression, the L1 norm regularization term \(\|\mathbf{\beta}\|_1\) can be viewed as a constraint. The Lasso problem can be reformulated as a constrained optimization problem:
+In Lasso regression, the L1 norm regularization term (\|\mathbf{\beta}\|\_1) can be viewed as a constraint. The Lasso problem can be reformulated as a constrained optimization problem:
 
-\[
-\text{minimize} \quad \frac{1}{2} \| \mathbf{y} - \mathbf{X}\mathbf{\beta} \|_2^2 \quad \text{subject to} \quad \|\mathbf{\beta}\|_1 \leq t
-\]
+\[ \text{minimize} \quad \frac{1}{2} \| \mathbf{y} - \mathbf{X}\mathbf{\beta} \|\_2\^2 \quad \text{subject to} \quad \|\mathbf{\beta}\|\_1 \leq t \]
 
-where \(t\) is a non-negative constant representing the limit on the regularization strength.
+where (t) is a non-negative constant representing the limit on the regularization strength.
 
 ### Using Lagrange Multipliers for Lasso
 
 We can use Lagrange multipliers to solve this constrained problem. The Lagrange function is defined as:
 
-\[
-\mathcal{L}(\mathbf{\beta}, \lambda) = \frac{1}{2} \| \mathbf{y} - \mathbf{X}\mathbf{\beta} \|_2^2 + \lambda (\|\mathbf{\beta}\|_1 - t)
-\]
+\[ \mathcal{L}(\mathbf{\beta}, \lambda) = \frac{1}{2} \| \mathbf{y} - \mathbf{X}\mathbf{\beta} \|\_2\^2 + \lambda (\|\mathbf{\beta}\|\_1 - t) \]
 
-where \(\lambda\) is the Lagrange multiplier. The optimal solution \(\mathbf{\beta}^*\) satisfies:
+where (\lambda) is the Lagrange multiplier. The optimal solution (\mathbf{\beta}\^\*) satisfies:
 
-\[
-\frac{\partial \mathcal{L}}{\partial \mathbf{\beta}} = -\mathbf{X}^\top (\mathbf{y} - \mathbf{X}\mathbf{\beta}) + \lambda \text{sign}(\mathbf{\beta}) = 0
-\]
+\[ \frac{\partial \mathcal{L}}{\partial \mathbf{\beta}} = -\mathbf{X}\^\top (\mathbf{y} - \mathbf{X}\mathbf{\beta}) + \lambda \text{sign}(\mathbf{\beta}) = 0 \]
 
-\[
-\|\mathbf{\beta}\|_1 \leq t
-\]
+\[ \|\mathbf{\beta}\|\_1 \leq t \]
 
-\[
-\lambda (\|\mathbf{\beta}\|_1 - t) = 0
-\]
+\[ \lambda (\|\mathbf{\beta}\|\_1 - t) = 0 \]
 
 ## Summary
 
-- **Lasso Regression** uses L1 regularization to achieve feature selection, and its optimization problem can be transformed into a constrained optimization problem.
-- **Lagrange Multipliers** provide a method to handle constraints in optimization problems by converting them into unconstrained problems and introducing multipliers to adjust the regularization strength.
+-   **Lasso Regression** uses L1 regularization to achieve feature selection, and its optimization problem can be transformed into a constrained optimization problem.
+-   **Lagrange Multipliers** provide a method to handle constraints in optimization problems by converting them into unconstrained problems and introducing multipliers to adjust the regularization strength.
 
-In Lasso regression, the L1 regularization constraint can be handled using Lagrange multipliers, converting the problem into one with multipliers that adjust the strength of regularization.
-### Problem
+In Lasso regression, the L1 regularization constraint can be handled using Lagrange multipliers, converting the problem into one with multipliers that adjust the strength of regularization. \### Problem
 
-Find extreme values of 
+Find extreme values of
 
 $$ f(x, y) = \cos x + \cos y + \cos (x + y). $$
 
 ### Solution
 
-Since cosine is a periodic function, we can consider the region \( 0 \leq x \leq 2\pi \), \( 0 \leq y \leq 2\pi \) (bounded and closed region) to find the maximal and minimal values.
+Since cosine is a periodic function, we can consider the region ( 0 \leq x \leq 2\pi ), ( 0 \leq y \leq 2\pi ) (bounded and closed region) to find the maximal and minimal values.
 
 Firstly, we consider the interior of the region to find stationary points:
 
-$$ f_x = -\sin x - \sin (x + y) = 0 $$
-$$ f_y = -\sin y - \sin (x + y) = 0 $$
+$$ f_x = -\sin x - \sin (x + y) = 0 $$ $$ f_y = -\sin y - \sin (x + y) = 0 $$
 
 This implies:
 
@@ -260,28 +242,21 @@ $$ \sin x = \sin y $$
 
 Then, inside the region (not on boundary), we have three cases:
 
-1. \( y = x \)
-2. \( y = \pi - x \) for \( 0 < x < \pi \)
-3. \( y = 3\pi - x \) for \( \pi < x < 2\pi \)
+1.  ( y = x )
+2.  ( y = \pi - x ) for ( 0 \< x \< \pi )
+3.  ( y = 3\pi - x ) for ( \pi \< x \< 2\pi )
 
 #### Case 1
 
-$$ \sin x + \sin (x + y) = \sin x + 2 \sin x \cos x = 0 $$
-$$ \sin x (2 \cos x + 1) = 0 $$
+$$ \sin x + \sin (x + y) = \sin x + 2 \sin x \cos x = 0 $$ $$ \sin x (2 \cos x + 1) = 0 $$
 
 This implies:
 
-$$ x = \pi, y = \pi $$
-or
-$$ x = \frac{2\pi}{3}, y = \frac{2\pi}{3} $$
-or
-$$ x = \frac{4\pi}{3}, y = \frac{4\pi}{3} $$
+$$ x = \pi, y = \pi $$ or $$ x = \frac{2\pi}{3}, y = \frac{2\pi}{3} $$ or $$ x = \frac{4\pi}{3}, y = \frac{4\pi}{3} $$
 
 Evaluating the function at these points:
 
-$$ f(\pi, \pi) = -1 $$
-$$ f\left( \frac{2\pi}{3}, \frac{2\pi}{3} \right) = -\frac{3}{2} $$
-$$ f\left( \frac{4\pi}{3}, \frac{4\pi}{3} \right) = -\frac{3}{2} $$
+$$ f(\pi, \pi) = -1 $$ $$ f\left( \frac{2\pi}{3}, \frac{2\pi}{3} \right) = -\frac{3}{2} $$ $$ f\left( \frac{4\pi}{3}, \frac{4\pi}{3} \right) = -\frac{3}{2} $$
 
 #### Case 2
 
@@ -303,48 +278,38 @@ $$ x = \pi, y = 2\pi $$ (also on boundary)
 
 Due to periodic property, we consider:
 
-$$ x = 0, 0 \leq y \leq 2\pi $$
-and
-$$ y = 0, 0 \leq x \leq 2\pi $$
+$$ x = 0, 0 \leq y \leq 2\pi $$ and $$ y = 0, 0 \leq x \leq 2\pi $$
 
 Evaluating the function at these boundaries:
 
-$$ f(0, y) = 1 + 2 \cos y, \min = -1, \max = 3 $$
-$$ f(x, 0) = 1 + 2 \cos x, \min = -1, \max = 3 $$
+$$ f(0, y) = 1 + 2 \cos y, \min = -1, \max = 3 $$ $$ f(x, 0) = 1 + 2 \cos x, \min = -1, \max = 3 $$
 
-So, 
+So,
 
-$$ \max f(x, y) = 3 \text{ at } (2n\pi, 2k\pi) \text{ for any } n, k \in \mathbb{Z} $$
-$$ \min f(x, y) = -\frac{3}{2} \text{ at } \left( (2n+1)\pi \pm \frac{\pi}{3}, (2k+1)\pi \pm \frac{\pi}{3} \right) $$
-
+$$ \max f(x, y) = 3 \text{ at } (2n\pi, 2k\pi) \text{ for any } n, k \in \mathbb{Z} $$ $$ \min f(x, y) = -\frac{3}{2} \text{ at } \left( (2n+1)\pi \pm \frac{\pi}{3}, (2k+1)\pi \pm \frac{\pi}{3} \right) $$
 
 # one application problem about directional derivative and gradient
 
-Thanks to Boyun Pang to let me know this interesting question and thanks to Dr. Wang to teach me such clever method.
-The temperature \( T \) in degrees Celsius at \((x, y, z)\) is given by
+Thanks to Boyun Pang to let me know this interesting question and thanks to Dr. Wang to teach me such clever method. The temperature ( T ) in degrees Celsius at ((x, y, z)) is given by
 
 $T = \frac{10}{{x^2 + y^2 + z^2}}$
 
-where distances are in meters. A bee is flying away from the hot spot at the origin on a spiral path so that its position vector at time \( t \) seconds is
-$\mathbf{r}(t) = t \cos(\pi t) \mathbf{i} + t \sin(\pi t) \mathbf{j} + t \mathbf{k}$
+where distances are in meters. A bee is flying away from the hot spot at the origin on a spiral path so that its position vector at time ( t ) seconds is $\mathbf{r}(t) = t \cos(\pi t) \mathbf{i} + t \sin(\pi t) \mathbf{j} + t \mathbf{k}$
 
-Determine the rate of change of \( T \) in each case:
+Determine the rate of change of ( T ) in each case:
 
-1. With respect to distance traveled at time \( t=1 \).
-2. With respect to time at \( t = 1 \).
+1.  With respect to distance traveled at time ( t=1 ).
+2.  With respect to time at ( t = 1 ).
 
 (Think of two ways to do this.)
-
 
 $$
 \frac{dT}{dS} = \nabla f \cdot \mathbf{R}'(S)
 $$
 
-
 $$
 \frac{dT}{dS} = f_x \cdot x'(S) + f_y \cdot y'(S) + f_z \cdot z'(S)
 $$
-
 
 $$
 ||\vec{r(t)}||=\int_{0}^{t} \sqrt{x'^2 + y'^2 + z'^2} \, dt = S(t)
@@ -359,17 +324,10 @@ $$
 =\frac{\mathbf{r}’(t)}{||\mathbf{r}’(t)||}
 $$
 
-
 $$
 \mathbf{R}'(S) = \frac{\mathbf{r}'(t(S)) \cdot t'(S)}{\sqrt{x'^2 + y'^2 + z'^2}}
 $$
 
-
 $$
 \mathbf{R}(t) = \mathbf{r}(t)
 $$
-
-
-
-
-
