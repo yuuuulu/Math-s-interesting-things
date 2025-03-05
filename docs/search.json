@@ -1097,5 +1097,12 @@
     "title": "Calculus and Multivariable Calculus",
     "section": "",
     "text": "\\(y'=\\frac{d}{dx}\\cdot y\\)\n\\(y''=\\frac{d}{dx} \\frac{d}{dx}\\cdot y\\)=\\(\\frac{d^2y}{dx^2}\\cdot y\\)"
+  },
+  {
+    "objectID": "ProfZhu.html",
+    "href": "ProfZhu.html",
+    "title": "EM",
+    "section": "",
+    "text": "other unknown parameters\n\n\ncencer\n\n\n\npf\\(_1\\)(X)+(1-p)f\\(_2\\)(X)"
   }
 ]
