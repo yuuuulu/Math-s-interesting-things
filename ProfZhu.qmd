@@ -3,7 +3,10 @@ title: "EM"
 editor: visual
 ---
 
-
 # other unknown parameters
 
 # cencer
+
+# 
+
+pf$_1$(X)+(1-p)f$_2$(X)

@@ -7,15 +7,19 @@ editor: visual
 dplyr::filter()
 ```
 
+
+
 # Chi
 
 -   Standard normal
 
 -   the square sum of standard normal (MGF same)
 
--   
+-   （1-n-1/N-1） times Var(p)
 
 # Why n-1 in sampling variance
+
+？  
 
 -   degree of freedom
 
@@ -23,19 +27,24 @@ dplyr::filter()
 
 ![](images/clipboard-2819513011.png)
 
+  - sampling proportion is unbiased
+  
+  E($\hat P$) = E(X/n)=npn (binomial distribution) =p
+  Var---also 如果E满足 variance 不满足呢
+
 # Simple random samlple
 
 We know the total population but do not know p of our interests.
 
-Based on hypergeometric probability calculation we can estimate p as $\hat p = \text{intrests}/N= X_1+...+X_N/N$ where $X_i$\~ Bernoulli(p) and $\hat p$ is a random variable. Therefore, $E[\hat p] = p$ (E\[$X_i$\]=p based on Bernouli distribution).
+Based on hypergeometric probability calculation we can estimate p as $\hat p = \text{intrests}/N= X_1+...+X_N/N$ where $X_i$\~ Bernoulli(p) and $\hat p$ is a random variable. Therefore, $E[\hat p] = p$ (E$X_i$=p based on Bernouli distribution).
 
 -   If $X_i$ are independent then E($X_1+X_2$) = 2E($X_1$)
 
-Here, eg. E\[$\hat p^2$\]= 1/n E\[$X_1^2$\]+n-1/nE\[$X_1 X_2$\]
+Here, eg. E$\hat p^2$= 1/n E$X_1^2$+n-1/nE$X_1 X_2$
 
 Since $X_1=1$ $X_1^2=X_1$
 
-and E\[$X_1 X_2$\] = P\[$X_1, X_2$\]
+and E$X_1 X_2$ = P$X_1, X_2$
 
 Finally, we can look at the distribution of $\hat p$, suppose we know the true p is 0.54, we can use **simulation** to randomly sample $X_1,...X_n$ from Np people who support 1 and ......who support
 
