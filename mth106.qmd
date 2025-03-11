@@ -1,0 +1,12 @@
+---
+title: "Untitled"
+editor: visual
+---
+
+
+# Bernouli's equation
+
+
+DO Not Remember--understand it instead!
+
+just want to transform the equation to a 1st order differential equation to solve it using integrating factor method.

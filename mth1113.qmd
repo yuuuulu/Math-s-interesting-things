@@ -7,6 +7,15 @@ editor: visual
 dplyr::filter()
 ```
 
+# Hypothesis testing
+
+- opening: does these data (gained sleep hour) means the low dose of drugs improves the length of people's sleep?
+
+  - Suppose $X_1,...X_n \sim^{iid}$ N$(\mu,\sigma^2)$ with both of 2 parameters unknown
+  
+    - let $t_{obs}=t(x)=\frac{\bar x - \mu _0}{s/\sqrt n}$
+    
+    
 
 
 # Chi
