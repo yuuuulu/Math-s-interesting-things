@@ -12,6 +12,8 @@ website:
         text: Homepage
       - href: mth107.qmd
         text: Advanced Linear Algebra
+      - href: Simple_ODEs.html
+        text: ODEs and PDEs with codes
       - href: Mathematical Analysis 1.qmd
         text: Analysis 1
       - href: mth1113.qmd
@@ -20,6 +22,8 @@ website:
         text: PDE 
       - href: Calculus.qmd
         text: Calculus
+
+      
       #- href: sequence.qmd
        # text: sequence
       #- href: Lagrange.qmd

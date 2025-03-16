@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Foundation Math Learning - A Kun’s PDE Lecture</title>
+<title>Foundation Math Learning - Thanks to Dr.&nbsp;Mengqi Hu for offering his code to let us know the ODE better.</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -19,6 +19,40 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 </style>
 
@@ -141,7 +175,7 @@ window.Quarto = {
 <span class="menu-text">intro to prob, and stat.</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link active" href="./eng pde.html" aria-current="page"> 
+    <a class="nav-link" href="./eng pde.html"> 
 <span class="menu-text">PDE</span></a>
   </li>  
   <li class="nav-item">
@@ -164,7 +198,19 @@ window.Quarto = {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#fritz-jhons-textbook" id="toc-fritz-jhons-textbook" class="nav-link active" data-scroll-target="#fritz-jhons-textbook">Fritz Jhon’s textbook</a></li>
+  <li><a href="#explanation" id="toc-explanation" class="nav-link active" data-scroll-target="#explanation">Explanation:</a></li>
+  <li><a href="#key-modifications" id="toc-key-modifications" class="nav-link" data-scroll-target="#key-modifications">Key Modifications:</a></li>
+  <li><a href="#result" id="toc-result" class="nav-link" data-scroll-target="#result">Result:</a></li>
+  <li><a href="#adjustments-for-speedresolution" id="toc-adjustments-for-speedresolution" class="nav-link" data-scroll-target="#adjustments-for-speedresolution">Adjustments for Speed/Resolution:</a></li>
+  <li><a href="#key-features" id="toc-key-features" class="nav-link" data-scroll-target="#key-features">Key Features:</a></li>
+  <li><a href="#result-1" id="toc-result-1" class="nav-link" data-scroll-target="#result-1">Result:</a></li>
+  <li><a href="#adjustments-to-explore" id="toc-adjustments-to-explore" class="nav-link" data-scroll-target="#adjustments-to-explore">Adjustments to Explore:</a></li>
+  <li><a href="#modified-lotka-volterra-system-with-logistic-prey-growth" id="toc-modified-lotka-volterra-system-with-logistic-prey-growth" class="nav-link" data-scroll-target="#modified-lotka-volterra-system-with-logistic-prey-growth">Modified Lotka-Volterra System with Logistic Prey Growth</a></li>
+  <li><a href="#key-results" id="toc-key-results" class="nav-link" data-scroll-target="#key-results">Key Results:</a></li>
+  <li><a href="#why-this-works" id="toc-why-this-works" class="nav-link" data-scroll-target="#why-this-works">Why This Works:</a></li>
+  <li><a href="#adjustments" id="toc-adjustments" class="nav-link" data-scroll-target="#adjustments">Adjustments:</a></li>
+  <li><a href="#a-kuns-pde-lecture" id="toc-a-kuns-pde-lecture" class="nav-link" data-scroll-target="#a-kuns-pde-lecture">“A Kun’s PDE Lecture”</a></li>
+  <li><a href="#fritz-jhons-textbook" id="toc-fritz-jhons-textbook" class="nav-link" data-scroll-target="#fritz-jhons-textbook">Fritz Jhon’s textbook</a></li>
   <li><a href="#fibonacci-sequence" id="toc-fibonacci-sequence" class="nav-link" data-scroll-target="#fibonacci-sequence">fibonacci sequence</a></li>
   <li><a href="#西方的智慧" id="toc-西方的智慧" class="nav-link" data-scroll-target="#西方的智慧">西方的智慧</a></li>
   <li><a href="#分析的算术化" id="toc-分析的算术化" class="nav-link" data-scroll-target="#分析的算术化">分析的算术化</a></li>
@@ -231,7 +277,7 @@ window.Quarto = {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">A Kun’s PDE Lecture</h1>
+<h1 class="title">Thanks to Dr.&nbsp;Mengqi Hu for offering his code to let us know the ODE better.</h1>
 </div>
 
 
@@ -248,6 +294,352 @@ window.Quarto = {
 </header>
 
 
+<p>To solve the linear ODE $ ’ = A $ and visualize how different initial conditions affect the trajectories, we can use a saddle point matrix $ A $ with eigenvalues of opposite signs. This setup results in varied trajectory shapes such as diverging, converging, and hyperbolic paths depending on the initial conditions.</p>
+<section id="explanation" class="level3">
+<h3 class="anchored" data-anchor-id="explanation">Explanation:</h3>
+<ol type="1">
+<li><p><strong>Matrix $ A $:</strong> The chosen matrix $ A =</p>
+<span class="math display">\[\begin{bmatrix} 1 &amp; 0 \\ 0 &amp; -1 \end{bmatrix}\]</span>
+<p>$ has eigenvalues $ 1 $ and $ -1 $, creating a saddle point. This results in:</p>
+<ul>
+<li><strong>Unstable manifold (x-axis):</strong> Initial conditions along the x-axis diverge exponentially.</li>
+<li><strong>Stable manifold (y-axis):</strong> Initial conditions along the y-axis converge to the origin.</li>
+<li><strong>Hyperbolic trajectories:</strong> Other initial conditions follow hyperbolic paths, curving away in x and converging in y (or vice versa).</li>
+</ul></li>
+<li><p><strong>Integration:</strong> The ODE is solved numerically using <code>solve_ivp</code> for each initial condition, generating trajectories over the time span $ t $.</p></li>
+<li><p><strong>Visualization:</strong> Trajectories are plotted in the phase plane, demonstrating how different initial values lead to distinct curve shapes (diverging lines, converging lines, hyperbolas).</p></li>
+</ol>
+<p>By adjusting the initial conditions, you can observe how trajectories evolve according to the eigenvectors and eigenvalues of $ A $, illustrating the system’s dynamic behavior.</p>
+<div id="cell-2" class="cell" data-execution_count="1">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> scipy.integrate <span class="im">import</span> solve_ivp</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Define the matrix A (saddle point)</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>A <span class="op">=</span> np.array([[<span class="dv">1</span>, <span class="dv">0</span>],</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>              [<span class="dv">0</span>, <span class="op">-</span><span class="dv">1</span>]])</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> ode_system(t, x):</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> A <span class="op">@</span> x</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Time span for integration</span></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>t_span <span class="op">=</span> (<span class="dv">0</span>, <span class="dv">3</span>)</span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>t_eval <span class="op">=</span> np.linspace(t_span[<span class="dv">0</span>], t_span[<span class="dv">1</span>], <span class="dv">100</span>)</span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a><span class="co"># Generate a grid of initial conditions</span></span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>x_vals <span class="op">=</span> np.linspace(<span class="op">-</span><span class="dv">2</span>, <span class="dv">2</span>, <span class="dv">10</span>)  <span class="co"># 20 points from -2 to 2 in x</span></span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>y_vals <span class="op">=</span> np.linspace(<span class="op">-</span><span class="dv">2</span>, <span class="dv">2</span>, <span class="dv">10</span>)  <span class="co"># 20 points from -2 to 2 in y</span></span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>X, Y <span class="op">=</span> np.meshgrid(x_vals, y_vals)</span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>initial_conditions <span class="op">=</span> np.vstack([X.ravel(), Y.ravel()]).T  <span class="co"># 400 initial points</span></span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot settings</span></span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">10</span>, <span class="dv">8</span>))</span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'Phase Space Filled with Trajectories: $\mathbf</span><span class="sc">{x}</span><span class="ch">\'</span><span class="st"> = A\mathbf</span><span class="sc">{x}</span><span class="st">$'</span>)</span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'x'</span>)</span>
+<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'y'</span>)</span>
+<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot trajectories for all initial conditions</span></span>
+<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> x0 <span class="kw">in</span> initial_conditions:</span>
+<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a>    sol <span class="op">=</span> solve_ivp(ode_system, t_span, x0, t_eval<span class="op">=</span>t_eval)</span>
+<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a>    plt.plot(sol.y[<span class="dv">0</span>], sol.y[<span class="dv">1</span>], color<span class="op">=</span><span class="st">'blue'</span>, alpha<span class="op">=</span><span class="fl">0.4</span>, linewidth<span class="op">=</span><span class="fl">0.5</span>)</span>
+<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a><span class="co"># Overlay the vector field for context</span></span>
+<span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a>x_grid, y_grid <span class="op">=</span> np.meshgrid(np.linspace(<span class="op">-</span><span class="dv">2</span>, <span class="dv">2</span>, <span class="dv">15</span>), np.linspace(<span class="op">-</span><span class="dv">2</span>, <span class="dv">2</span>, <span class="dv">15</span>))</span>
+<span id="cb1-35"><a href="#cb1-35" aria-hidden="true" tabindex="-1"></a>dxdt <span class="op">=</span> A[<span class="dv">0</span>, <span class="dv">0</span>] <span class="op">*</span> x_grid <span class="op">+</span> A[<span class="dv">0</span>, <span class="dv">1</span>] <span class="op">*</span> y_grid</span>
+<span id="cb1-36"><a href="#cb1-36" aria-hidden="true" tabindex="-1"></a>dydt <span class="op">=</span> A[<span class="dv">1</span>, <span class="dv">0</span>] <span class="op">*</span> x_grid <span class="op">+</span> A[<span class="dv">1</span>, <span class="dv">1</span>] <span class="op">*</span> y_grid</span>
+<span id="cb1-37"><a href="#cb1-37" aria-hidden="true" tabindex="-1"></a>plt.quiver(x_grid, y_grid, dxdt, dydt, color<span class="op">=</span><span class="st">'red'</span>, alpha<span class="op">=</span><span class="fl">0.6</span>,</span>
+<span id="cb1-38"><a href="#cb1-38" aria-hidden="true" tabindex="-1"></a>           scale<span class="op">=</span><span class="dv">50</span>, width<span class="op">=</span><span class="fl">0.003</span>, headwidth<span class="op">=</span><span class="dv">3</span>)</span>
+<span id="cb1-39"><a href="#cb1-39" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-40"><a href="#cb1-40" aria-hidden="true" tabindex="-1"></a>plt.grid(<span class="va">True</span>)</span>
+<span id="cb1-41"><a href="#cb1-41" aria-hidden="true" tabindex="-1"></a>plt.xlim(<span class="op">-</span><span class="dv">2</span>, <span class="dv">2</span>)</span>
+<span id="cb1-42"><a href="#cb1-42" aria-hidden="true" tabindex="-1"></a>plt.ylim(<span class="op">-</span><span class="dv">2</span>, <span class="dv">2</span>)</span>
+<span id="cb1-43"><a href="#cb1-43" aria-hidden="true" tabindex="-1"></a>plt.tight_layout()</span>
+<span id="cb1-44"><a href="#cb1-44" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>&lt;&gt;:24: SyntaxWarning: invalid escape sequence '\m'
+&lt;&gt;:24: SyntaxWarning: invalid escape sequence '\m'
+/var/folders/sv/38113kcx7mq2x4f12fqtv6mw0000gn/T/ipykernel_58055/1373943954.py:24: SyntaxWarning: invalid escape sequence '\m'
+  plt.title('Phase Space Filled with Trajectories: $\mathbf{x}\' = A\mathbf{x}$')</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Simple_ODEs (1)_files/figure-html/cell-2-output-2.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="key-modifications" class="level3">
+<h3 class="anchored" data-anchor-id="key-modifications">Key Modifications:</h3>
+<ol type="1">
+<li><strong>Grid of Initial Conditions</strong>:
+<ul>
+<li>A 8x8 grid of initial points is generated using <code>np.meshgrid</code>, covering the region <span class="math inline">\([-2, 2] \times [-2, 2]\)</span>.</li>
+<li>This creates <strong>64 trajectories</strong>, densely filling the phase space.</li>
+</ul></li>
+<li><strong>Trajectory Styling</strong>:
+<ul>
+<li>Trajectories are plotted with low <code>alpha</code> (transparency) and thin lines to avoid visual clutter.</li>
+<li>All trajectories use the same color (<code>blue</code>) to emphasize collective behavior.</li>
+</ul></li>
+<li><strong>Vector Field Overlay</strong>:
+<ul>
+<li>A quiver plot (red arrows) is added to show the direction of the vector field $ ’ = A $, providing context for the trajectories.</li>
+</ul></li>
+</ol>
+</section>
+<section id="result" class="level3">
+<h3 class="anchored" data-anchor-id="result">Result:</h3>
+<ul>
+<li>The plot will show:
+<ul>
+<li><strong>Diverging paths</strong> along the unstable manifold (x-axis).</li>
+<li><strong>Converging paths</strong> along the stable manifold (y-axis).</li>
+<li><strong>Hyperbolic curves</strong> elsewhere, filling the phase space.</li>
+</ul></li>
+<li>The saddle-point dynamics are clearly visible, with trajectories stretching outward in <span class="math inline">\(x\)</span> and contracting in <span class="math inline">\(y\)</span>.</li>
+</ul>
+</section>
+<section id="adjustments-for-speedresolution" class="level3">
+<h3 class="anchored" data-anchor-id="adjustments-for-speedresolution">Adjustments for Speed/Resolution:</h3>
+<ul>
+<li>Reduce the grid resolution (e.g., <code>np.linspace(-2, 2, 10)</code> for 10 points) for faster execution.</li>
+<li>Increase <code>alpha</code> or <code>linewidth</code> to make trajectories more prominent.</li>
+</ul>
+<p>To visualize the phase space filled with trajectories, we can generate a grid of initial conditions and plot their paths. Here’s a modified version of the code that densely fills the phase portrait:</p>
+<div id="cell-5" class="cell" data-execution_count="2">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> scipy.integrate <span class="im">import</span> solve_ivp</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Define Lotka-Volterra parameters (α=prey growth, β=predation, δ=predator growth, γ=predator death)</span></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>α, β, γ, δ <span class="op">=</span> <span class="fl">1.5</span>, <span class="fl">0.5</span>, <span class="fl">0.5</span>, <span class="fl">0.5</span></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> lotkavolterra(t, z):</span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>    x, y <span class="op">=</span> z</span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>    dxdt <span class="op">=</span> α <span class="op">*</span> x <span class="op">-</span> β <span class="op">*</span> x <span class="op">*</span> y</span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>    dydt <span class="op">=</span> δ <span class="op">*</span> x <span class="op">*</span> y <span class="op">-</span> γ <span class="op">*</span> y</span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> [dxdt, dydt]</span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a><span class="co"># Time span and grid setup</span></span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>t_span <span class="op">=</span> (<span class="dv">0</span>, <span class="dv">15</span>)</span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a>t_eval <span class="op">=</span> np.linspace(t_span[<span class="dv">0</span>], t_span[<span class="dv">1</span>], <span class="dv">500</span>)</span>
+<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a><span class="co"># Generate a grid of initial conditions (avoid x=0 or y=0 to skip trivial solutions)</span></span>
+<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a>x0_vals <span class="op">=</span> np.linspace(<span class="fl">0.5</span>, <span class="dv">5</span>, <span class="dv">8</span>)  <span class="co"># Prey population</span></span>
+<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a>y0_vals <span class="op">=</span> np.linspace(<span class="fl">0.5</span>, <span class="dv">5</span>, <span class="dv">8</span>)  <span class="co"># Predator population</span></span>
+<span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a>X0, Y0 <span class="op">=</span> np.meshgrid(x0_vals, y0_vals)</span>
+<span id="cb3-22"><a href="#cb3-22" aria-hidden="true" tabindex="-1"></a>initial_conditions <span class="op">=</span> np.vstack([X0.ravel(), Y0.ravel()]).T</span>
+<span id="cb3-23"><a href="#cb3-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-24"><a href="#cb3-24" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot setup</span></span>
+<span id="cb3-25"><a href="#cb3-25" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">10</span>, <span class="dv">8</span>))</span>
+<span id="cb3-26"><a href="#cb3-26" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">"Lotka-Volterra Phase Portrait: Predator-Prey Dynamics"</span>)</span>
+<span id="cb3-27"><a href="#cb3-27" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">"Prey Population ($x$)"</span>)</span>
+<span id="cb3-28"><a href="#cb3-28" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">"Predator Population ($y$)"</span>)</span>
+<span id="cb3-29"><a href="#cb3-29" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-30"><a href="#cb3-30" aria-hidden="true" tabindex="-1"></a><span class="co"># Solve and plot trajectories for all initial conditions</span></span>
+<span id="cb3-31"><a href="#cb3-31" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> x0, y0 <span class="kw">in</span> initial_conditions:</span>
+<span id="cb3-32"><a href="#cb3-32" aria-hidden="true" tabindex="-1"></a>    sol <span class="op">=</span> solve_ivp(lotkavolterra, t_span, [x0, y0], t_eval<span class="op">=</span>t_eval)</span>
+<span id="cb3-33"><a href="#cb3-33" aria-hidden="true" tabindex="-1"></a>    plt.plot(sol.y[<span class="dv">0</span>], sol.y[<span class="dv">1</span>], color<span class="op">=</span><span class="st">'blue'</span>, alpha<span class="op">=</span><span class="fl">0.3</span>, linewidth<span class="op">=</span><span class="fl">0.7</span>)</span>
+<span id="cb3-34"><a href="#cb3-34" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-35"><a href="#cb3-35" aria-hidden="true" tabindex="-1"></a><span class="co"># Overlay the vector field (quiver plot)</span></span>
+<span id="cb3-36"><a href="#cb3-36" aria-hidden="true" tabindex="-1"></a>x_grid, y_grid <span class="op">=</span> np.meshgrid(np.linspace(<span class="dv">0</span>, <span class="dv">5</span>, <span class="dv">20</span>), np.linspace(<span class="dv">0</span>, <span class="dv">5</span>, <span class="dv">20</span>))</span>
+<span id="cb3-37"><a href="#cb3-37" aria-hidden="true" tabindex="-1"></a>dx, dy <span class="op">=</span> np.zeros_like(x_grid), np.zeros_like(y_grid)</span>
+<span id="cb3-38"><a href="#cb3-38" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(x_grid.shape[<span class="dv">0</span>]):</span>
+<span id="cb3-39"><a href="#cb3-39" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> j <span class="kw">in</span> <span class="bu">range</span>(x_grid.shape[<span class="dv">1</span>]):</span>
+<span id="cb3-40"><a href="#cb3-40" aria-hidden="true" tabindex="-1"></a>        dz <span class="op">=</span> lotkavolterra(<span class="dv">0</span>, [x_grid[i,j], y_grid[i,j]])</span>
+<span id="cb3-41"><a href="#cb3-41" aria-hidden="true" tabindex="-1"></a>        dx[i,j], dy[i,j] <span class="op">=</span> dz[<span class="dv">0</span>], dz[<span class="dv">1</span>]</span>
+<span id="cb3-42"><a href="#cb3-42" aria-hidden="true" tabindex="-1"></a>plt.quiver(x_grid, y_grid, dx, dy, color<span class="op">=</span><span class="st">'red'</span>, alpha<span class="op">=</span><span class="fl">0.6</span>, scale<span class="op">=</span><span class="dv">100</span>, width<span class="op">=</span><span class="fl">0.004</span>)</span>
+<span id="cb3-43"><a href="#cb3-43" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-44"><a href="#cb3-44" aria-hidden="true" tabindex="-1"></a><span class="co"># Mark the non-trivial fixed point (critical point)</span></span>
+<span id="cb3-45"><a href="#cb3-45" aria-hidden="true" tabindex="-1"></a>fixed_point_x <span class="op">=</span> γ <span class="op">/</span> δ</span>
+<span id="cb3-46"><a href="#cb3-46" aria-hidden="true" tabindex="-1"></a>fixed_point_y <span class="op">=</span> α <span class="op">/</span> β</span>
+<span id="cb3-47"><a href="#cb3-47" aria-hidden="true" tabindex="-1"></a>plt.scatter(fixed_point_x, fixed_point_y, color<span class="op">=</span><span class="st">'black'</span>, s<span class="op">=</span><span class="dv">80</span>, label<span class="op">=</span><span class="ss">f'Fixed Point (</span><span class="sc">{</span>fixed_point_x<span class="sc">:.1f}</span><span class="ss">, </span><span class="sc">{</span>fixed_point_y<span class="sc">:.1f}</span><span class="ss">)'</span>)</span>
+<span id="cb3-48"><a href="#cb3-48" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-49"><a href="#cb3-49" aria-hidden="true" tabindex="-1"></a>plt.xlim(<span class="dv">0</span>, <span class="dv">5</span>)</span>
+<span id="cb3-50"><a href="#cb3-50" aria-hidden="true" tabindex="-1"></a>plt.ylim(<span class="dv">0</span>, <span class="dv">5</span>)</span>
+<span id="cb3-51"><a href="#cb3-51" aria-hidden="true" tabindex="-1"></a>plt.legend()</span>
+<span id="cb3-52"><a href="#cb3-52" aria-hidden="true" tabindex="-1"></a>plt.grid(<span class="va">True</span>)</span>
+<span id="cb3-53"><a href="#cb3-53" aria-hidden="true" tabindex="-1"></a>plt.tight_layout()</span>
+<span id="cb3-54"><a href="#cb3-54" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Simple_ODEs (1)_files/figure-html/cell-3-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="key-features" class="level3">
+<h3 class="anchored" data-anchor-id="key-features">Key Features:</h3>
+<ol type="1">
+<li><strong>Lotka-Volterra Dynamics</strong>:
+<ul>
+<li><strong>Closed Orbits</strong>: Trajectories form periodic cycles (predator-prey oscillations).</li>
+<li><strong>Fixed Point</strong>: The non-trivial equilibrium at $ (x^<em>, y^</em>) = (/, /) $, marked as a black dot.</li>
+</ul></li>
+<li><strong>Grid of Initial Conditions</strong>:
+<ul>
+<li>A 15×15 grid covers initial prey and predator populations in $ [0.5, 5] $.</li>
+<li>Avoids $ x=0 $ or $ y=0 $ (trivial equilibria where one species is extinct).</li>
+</ul></li>
+<li><strong>Visual Enhancements</strong>:
+<ul>
+<li><strong>Trajectories</strong>: Plotted with transparency to show density of paths.</li>
+<li><strong>Vector Field</strong>: Red arrows indicate the direction of the dynamics.</li>
+<li><strong>Fixed Point</strong>: Highlights the center of the periodic orbits.</li>
+</ul></li>
+</ol>
+</section>
+<section id="result-1" class="level3">
+<h3 class="anchored" data-anchor-id="result-1">Result:</h3>
+<ul>
+<li>The plot shows concentric cycles around the fixed point, illustrating how different initial populations lead to oscillations of varying amplitudes.</li>
+<li>All trajectories conserve a quantity (the “Hamiltonian” of the system), forming closed loops.</li>
+</ul>
+</section>
+<section id="adjustments-to-explore" class="level3">
+<h3 class="anchored" data-anchor-id="adjustments-to-explore">Adjustments to Explore:</h3>
+<ul>
+<li>Change parameters $ , , , $ to shift the fixed point or alter oscillation frequencies.</li>
+<li>Extend the grid to larger populations (e.g., <code>np.linspace(0.5, 10, 20)</code>).</li>
+</ul>
+<p>Yes! The <strong>classical Lotka-Volterra system</strong> (with parameters $ , , , $) has <strong>neutrally stable closed orbits</strong> (trajectories neither converge to nor diverge from the fixed point). However, if we modify the system to include <strong>damping</strong> (e.g., logistic growth for prey or predator saturation), the dynamics change: trajectories can spiral inward or outward depending on parameters. Below is an example of such a modified system where solutions converge to the fixed point.</p>
+<hr>
+</section>
+<section id="modified-lotka-volterra-system-with-logistic-prey-growth" class="level3">
+<h3 class="anchored" data-anchor-id="modified-lotka-volterra-system-with-logistic-prey-growth">Modified Lotka-Volterra System with Logistic Prey Growth</h3>
+<p>We add a logistic term $ (1 - ) $ to the prey equation, introducing a carrying capacity $ K $. This creates <strong>damped oscillations</strong> converging to the fixed point:</p>
+$
+<span class="math display">\[\begin{cases}
+\frac{dx}{dt} = \alpha x \left(1 - \frac{x}{K}\right) - \beta xy, \\
+\frac{dy}{dt} = \delta xy - \gamma y.
+\end{cases}\]</span>
+<p>$</p>
+<section id="parameter-setup-for-convergence" class="level4">
+<h4 class="anchored" data-anchor-id="parameter-setup-for-convergence">Parameter Setup for Convergence:</h4>
+<div class="sourceCode" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>α <span class="op">=</span> <span class="fl">1.0</span>   <span class="co"># Prey growth rate</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>β <span class="op">=</span> <span class="fl">0.2</span>   <span class="co"># Predation rate</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>δ <span class="op">=</span> <span class="fl">0.1</span>   <span class="co"># Predator growth efficiency</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>γ <span class="op">=</span> <span class="fl">0.5</span>   <span class="co"># Predator death rate</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>K <span class="op">=</span> <span class="dv">50</span>    <span class="co"># Carrying capacity for prey (new parameter causing damping)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cell-8" class="cell" data-execution_count="3">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> scipy.integrate <span class="im">import</span> solve_ivp</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Modified Lotka-Volterra with logistic prey growth</span></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> modified_lotkavolterra(t, z, α, β, γ, δ, K):</span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>    x, y <span class="op">=</span> z</span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>    dxdt <span class="op">=</span> α <span class="op">*</span> x <span class="op">*</span> (<span class="dv">1</span> <span class="op">-</span> x<span class="op">/</span>K) <span class="op">-</span> β <span class="op">*</span> x <span class="op">*</span> y</span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>    dydt <span class="op">=</span> δ <span class="op">*</span> x <span class="op">*</span> y <span class="op">-</span> γ <span class="op">*</span> y</span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> [dxdt, dydt]</span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Parameters for damped oscillations</span></span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>params <span class="op">=</span> (<span class="fl">1.0</span>, <span class="fl">0.2</span>, <span class="fl">0.5</span>, <span class="fl">0.1</span>, <span class="dv">50</span>)  <span class="co"># α, β, γ, δ, K</span></span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a><span class="co"># Time span and initial conditions</span></span>
+<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a>t_span <span class="op">=</span> (<span class="dv">0</span>, <span class="dv">100</span>)</span>
+<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a>t_eval <span class="op">=</span> np.linspace(t_span[<span class="dv">0</span>], t_span[<span class="dv">1</span>], <span class="dv">1000</span>)</span>
+<span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-19"><a href="#cb5-19" aria-hidden="true" tabindex="-1"></a><span class="co"># Initial conditions near the fixed point</span></span>
+<span id="cb5-20"><a href="#cb5-20" aria-hidden="true" tabindex="-1"></a>initial_conditions <span class="op">=</span> [</span>
+<span id="cb5-21"><a href="#cb5-21" aria-hidden="true" tabindex="-1"></a>    [<span class="dv">10</span>, <span class="dv">5</span>],</span>
+<span id="cb5-22"><a href="#cb5-22" aria-hidden="true" tabindex="-1"></a>    [<span class="dv">30</span>, <span class="dv">15</span>],</span>
+<span id="cb5-23"><a href="#cb5-23" aria-hidden="true" tabindex="-1"></a>    [<span class="dv">40</span>, <span class="dv">25</span>],</span>
+<span id="cb5-24"><a href="#cb5-24" aria-hidden="true" tabindex="-1"></a>    [<span class="dv">5</span>, <span class="dv">20</span>]</span>
+<span id="cb5-25"><a href="#cb5-25" aria-hidden="true" tabindex="-1"></a>]</span>
+<span id="cb5-26"><a href="#cb5-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-27"><a href="#cb5-27" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot setup</span></span>
+<span id="cb5-28"><a href="#cb5-28" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">12</span>, <span class="dv">6</span>))</span>
+<span id="cb5-29"><a href="#cb5-29" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-30"><a href="#cb5-30" aria-hidden="true" tabindex="-1"></a><span class="co"># Phase portrait</span></span>
+<span id="cb5-31"><a href="#cb5-31" aria-hidden="true" tabindex="-1"></a>plt.subplot(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">1</span>)</span>
+<span id="cb5-32"><a href="#cb5-32" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">"Phase Portrait: Damped Oscillations"</span>)</span>
+<span id="cb5-33"><a href="#cb5-33" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">"Prey ($x$)"</span>)</span>
+<span id="cb5-34"><a href="#cb5-34" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">"Predator ($y$)"</span>)</span>
+<span id="cb5-35"><a href="#cb5-35" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-36"><a href="#cb5-36" aria-hidden="true" tabindex="-1"></a><span class="co"># Time series</span></span>
+<span id="cb5-37"><a href="#cb5-37" aria-hidden="true" tabindex="-1"></a>plt.subplot(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">2</span>)</span>
+<span id="cb5-38"><a href="#cb5-38" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">"Time Series: Prey and Predator"</span>)</span>
+<span id="cb5-39"><a href="#cb5-39" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">"Time"</span>)</span>
+<span id="cb5-40"><a href="#cb5-40" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">"Population"</span>)</span>
+<span id="cb5-41"><a href="#cb5-41" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-42"><a href="#cb5-42" aria-hidden="true" tabindex="-1"></a><span class="co"># Solve and plot trajectories</span></span>
+<span id="cb5-43"><a href="#cb5-43" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> x0, y0 <span class="kw">in</span> initial_conditions:</span>
+<span id="cb5-44"><a href="#cb5-44" aria-hidden="true" tabindex="-1"></a>    sol <span class="op">=</span> solve_ivp(modified_lotkavolterra, t_span, [x0, y0], args<span class="op">=</span>params, t_eval<span class="op">=</span>t_eval)</span>
+<span id="cb5-45"><a href="#cb5-45" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-46"><a href="#cb5-46" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Phase portrait</span></span>
+<span id="cb5-47"><a href="#cb5-47" aria-hidden="true" tabindex="-1"></a>    plt.subplot(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">1</span>)</span>
+<span id="cb5-48"><a href="#cb5-48" aria-hidden="true" tabindex="-1"></a>    plt.plot(sol.y[<span class="dv">0</span>], sol.y[<span class="dv">1</span>], alpha<span class="op">=</span><span class="fl">0.7</span>, linewidth<span class="op">=</span><span class="dv">1</span>,</span>
+<span id="cb5-49"><a href="#cb5-49" aria-hidden="true" tabindex="-1"></a>             label<span class="op">=</span><span class="ss">f'IV: (</span><span class="sc">{</span>x0<span class="sc">}</span><span class="ss">, </span><span class="sc">{</span>y0<span class="sc">}</span><span class="ss">)'</span>)</span>
+<span id="cb5-50"><a href="#cb5-50" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-51"><a href="#cb5-51" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Time series</span></span>
+<span id="cb5-52"><a href="#cb5-52" aria-hidden="true" tabindex="-1"></a>    plt.subplot(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">2</span>)</span>
+<span id="cb5-53"><a href="#cb5-53" aria-hidden="true" tabindex="-1"></a>    plt.plot(sol.t, sol.y[<span class="dv">0</span>], linestyle<span class="op">=</span><span class="st">'--'</span>, alpha<span class="op">=</span><span class="fl">0.7</span>, linewidth<span class="op">=</span><span class="dv">1</span>)</span>
+<span id="cb5-54"><a href="#cb5-54" aria-hidden="true" tabindex="-1"></a>    plt.plot(sol.t, sol.y[<span class="dv">1</span>], linestyle<span class="op">=</span><span class="st">'-'</span>, alpha<span class="op">=</span><span class="fl">0.7</span>, linewidth<span class="op">=</span><span class="dv">1</span>)</span>
+<span id="cb5-55"><a href="#cb5-55" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-56"><a href="#cb5-56" aria-hidden="true" tabindex="-1"></a><span class="co"># Overlay fixed point (phase portrait)</span></span>
+<span id="cb5-57"><a href="#cb5-57" aria-hidden="true" tabindex="-1"></a>x_star <span class="op">=</span> (γ <span class="op">/</span> δ)  <span class="co"># Fixed point x-coordinate</span></span>
+<span id="cb5-58"><a href="#cb5-58" aria-hidden="true" tabindex="-1"></a>y_star <span class="op">=</span> (α <span class="op">/</span> β) <span class="op">*</span> (<span class="dv">1</span> <span class="op">-</span> x_star <span class="op">/</span> params[<span class="op">-</span><span class="dv">1</span>])  <span class="co"># Fixed point y-coordinate (modified)</span></span>
+<span id="cb5-59"><a href="#cb5-59" aria-hidden="true" tabindex="-1"></a>plt.subplot(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">1</span>)</span>
+<span id="cb5-60"><a href="#cb5-60" aria-hidden="true" tabindex="-1"></a>plt.scatter(x_star, y_star, color<span class="op">=</span><span class="st">'red'</span>, s<span class="op">=</span><span class="dv">100</span>, zorder<span class="op">=</span><span class="dv">10</span>, label<span class="op">=</span><span class="st">'Stable Fixed Point'</span>)</span>
+<span id="cb5-61"><a href="#cb5-61" aria-hidden="true" tabindex="-1"></a>plt.legend()</span>
+<span id="cb5-62"><a href="#cb5-62" aria-hidden="true" tabindex="-1"></a>plt.grid(<span class="va">True</span>)</span>
+<span id="cb5-63"><a href="#cb5-63" aria-hidden="true" tabindex="-1"></a>plt.xlim(<span class="dv">0</span>, <span class="dv">60</span>)</span>
+<span id="cb5-64"><a href="#cb5-64" aria-hidden="true" tabindex="-1"></a>plt.ylim(<span class="dv">0</span>, <span class="dv">30</span>)</span>
+<span id="cb5-65"><a href="#cb5-65" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-66"><a href="#cb5-66" aria-hidden="true" tabindex="-1"></a><span class="co"># Finalize plot</span></span>
+<span id="cb5-67"><a href="#cb5-67" aria-hidden="true" tabindex="-1"></a>plt.tight_layout()</span>
+<span id="cb5-68"><a href="#cb5-68" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Simple_ODEs (1)_files/figure-html/cell-4-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<hr>
+</section>
+</section>
+<section id="key-results" class="level3">
+<h3 class="anchored" data-anchor-id="key-results">Key Results:</h3>
+<ol type="1">
+<li><strong>Damped Oscillations</strong>:
+<ul>
+<li>Trajectories spiral inward toward the fixed point $ (x^<em>, y^</em>) (5.0, 4.75) $, demonstrating <strong>asymptotic stability</strong> (unlike classical Lotka-Volterra).</li>
+<li>Oscillation amplitudes decay over time due to the logistic term $ (1 - ) $.</li>
+</ul></li>
+<li><strong>Fixed Point Stability</strong>:
+<ul>
+<li>The Jacobian matrix at $ (x^<em>, y^</em>) $ has eigenvalues with <strong>negative real parts</strong>, causing convergence.</li>
+<li>The logistic term acts as a damping force, stabilizing the system.</li>
+</ul></li>
+</ol>
+<hr>
+</section>
+<section id="why-this-works" class="level3">
+<h3 class="anchored" data-anchor-id="why-this-works">Why This Works:</h3>
+<ul>
+<li><strong>Logistic Term</strong>: The term $ (1 - ) $ limits prey growth at high populations, breaking the conservation law of the classical model.</li>
+<li><strong>Parameter Tuning</strong>: With $ K = 50 $, the damping effect is strong enough to suppress perpetual oscillations.</li>
+</ul>
+</section>
+<section id="adjustments" class="level3">
+<h3 class="anchored" data-anchor-id="adjustments">Adjustments:</h3>
+<ul>
+<li>To see <strong>divergence</strong> (unstable fixed point), set $ K &lt; /$. Trajectories will spiral outward.</li>
+<li>Remove the logistic term ($ K $) to recover classical neutrally stable orbits.</li>
+</ul>
+<p>This modification shows how structural changes to the model (not just parameter tweaks) can dramatically alter stability.<br>
+</p>
+</section>
+<section id="a-kuns-pde-lecture" class="level1">
+<h1>“A Kun’s PDE Lecture”</h1>
+</section>
 <section id="fritz-jhons-textbook" class="level1">
 <h1>Fritz Jhon’s textbook</h1>
 </section>

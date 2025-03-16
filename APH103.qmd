@@ -12,5 +12,20 @@ editor: visual
 ## Formalization of Sampling Theory
 
 
+## week 4
 
+
+
+random sampling
+
+sufficient sample size $n\ge 30$ finite population variance  independence
+
+
+B=$2\sqrt {\hat V (\bar y)}=2\sqrt {(1-n/N)S^2/n}$
+
+
+- Sample without replacement is better in the aspect of ...
+
+有无放回都ok？
+interpretation of character statistics 
 
