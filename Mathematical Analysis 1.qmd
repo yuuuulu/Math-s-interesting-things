@@ -1520,6 +1520,45 @@ f(x)=2x when x $\in A$
 
 -   method 2 sequential creterion
 
+
+
+# Sup is different from limit -- an experience from final exam
+
+The n in them are different---
+
+$\tan^{-1}x \sin x^2$
+
+```{r}
+# Define the function
+f <- function(x) {
+  atan(x) * sin(x^2)
+}
+
+# Generate a sequence of x values
+x <- seq(-10, 10, length.out = 1000)
+
+# Compute the corresponding y values
+y <- f(x)
+
+# Plot the function
+plot(x, y, type = "l", col = "blue", lwd = 2,
+     main = expression(y == arctan(x) * sin(x^2)),
+     xlab = "x", ylab = "y")
+grid()
+```
+
+its supremum exists, which is $\pi /2$, however, its limit does not exist.
+
+Reason: for sup we only need one "existence of $x_0$" since it says $\forall n \in N$ $\exists x_0 \in R$ s.t. $M < f(x_0) <M+ \epsilon$
+
+
+but for the limit we need all x greater than a number that $|f(x) - M| < \epsilon$
+
+
+For this specific example, we know that each top of $\sin x^2$ we have satisfied  $|f(x) - M| < \epsilon$ but NOT ALL! 
+
+
+
 # a problem about divisible using greatest common factor to solve(even Bezou's theorem)
 
 Q:"Proof that if a positive integer $p$ is not a perfect square, then

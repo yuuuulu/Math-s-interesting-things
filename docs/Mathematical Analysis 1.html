@@ -175,10 +175,6 @@ window.Quarto = {
 <span class="menu-text">intro to prob, and stat.</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./eng pde.html"> 
-<span class="menu-text">PDE</span></a>
-  </li>  
-  <li class="nav-item">
     <a class="nav-link" href="./Calculus.html"> 
 <span class="menu-text">Calculus</span></a>
   </li>  
@@ -337,6 +333,7 @@ window.Quarto = {
   <li><a href="#连续性用sup构造数列" id="toc-连续性用sup构造数列" class="nav-link" data-scroll-target="#连续性用sup构造数列">连续性+用sup构造数列</a></li>
   <li><a href="#用sequential-criterion证明连续性取合适的epsilon来说明数列存在" id="toc-用sequential-criterion证明连续性取合适的epsilon来说明数列存在" class="nav-link" data-scroll-target="#用sequential-criterion证明连续性取合适的epsilon来说明数列存在">用sequential criterion证明连续性取合适的epsilon来说明数列存在</a></li>
   </ul></li>
+  <li><a href="#sup-is-different-from-limit-an-experience-from-final-exam" id="toc-sup-is-different-from-limit-an-experience-from-final-exam" class="nav-link" data-scroll-target="#sup-is-different-from-limit-an-experience-from-final-exam">Sup is different from limit – an experience from final exam</a></li>
   <li><a href="#a-problem-about-divisible-using-greatest-common-factor-to-solveeven-bezous-theorem" id="toc-a-problem-about-divisible-using-greatest-common-factor-to-solveeven-bezous-theorem" class="nav-link" data-scroll-target="#a-problem-about-divisible-using-greatest-common-factor-to-solveeven-bezous-theorem">a problem about divisible using greatest common factor to solve(even Bezou’s theorem)</a></li>
   </ul>
 </nav>
@@ -1391,6 +1388,40 @@ l-\epsilon&lt;f(x)&lt;l+\epsilon
 <li><p>method 2 sequential creterion</p></li>
 </ul>
 </section>
+</section>
+<section id="sup-is-different-from-limit-an-experience-from-final-exam" class="level1">
+<h1>Sup is different from limit – an experience from final exam</h1>
+<p>The n in them are different—</p>
+<p><span class="math inline">\(\tan^{-1}x \sin x^2\)</span></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Define the function</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>f <span class="ot">&lt;-</span> <span class="cf">function</span>(x) {</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">atan</span>(x) <span class="sc">*</span> <span class="fu">sin</span>(x<span class="sc">^</span><span class="dv">2</span>)</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Generate a sequence of x values</span></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="sc">-</span><span class="dv">10</span>, <span class="dv">10</span>, <span class="at">length.out =</span> <span class="dv">1000</span>)</span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Compute the corresponding y values</span></span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="fu">f</span>(x)</span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot the function</span></span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(x, y, <span class="at">type =</span> <span class="st">"l"</span>, <span class="at">col =</span> <span class="st">"blue"</span>, <span class="at">lwd =</span> <span class="dv">2</span>,</span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a>     <span class="at">main =</span> <span class="fu">expression</span>(y <span class="sc">==</span> <span class="fu">arctan</span>(x) <span class="sc">*</span> <span class="fu">sin</span>(x<span class="sc">^</span><span class="dv">2</span>)),</span>
+<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">"x"</span>, <span class="at">ylab =</span> <span class="st">"y"</span>)</span>
+<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a><span class="fu">grid</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Mathematical-Analysis-1_files/figure-html/unnamed-chunk-1-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>its supremum exists, which is <span class="math inline">\(\pi /2\)</span>, however, its limit does not exist.</p>
+<p>Reason: for sup we only need one “existence of <span class="math inline">\(x_0\)</span>” since it says <span class="math inline">\(\forall n \in N\)</span> <span class="math inline">\(\exists x_0 \in R\)</span> s.t. <span class="math inline">\(M &lt; f(x_0) &lt;M+ \epsilon\)</span></p>
+<p>but for the limit we need all x greater than a number that <span class="math inline">\(|f(x) - M| &lt; \epsilon\)</span></p>
+<p>For this specific example, we know that each top of <span class="math inline">\(\sin x^2\)</span> we have satisfied <span class="math inline">\(|f(x) - M| &lt; \epsilon\)</span> but NOT ALL!</p>
 </section>
 <section id="a-problem-about-divisible-using-greatest-common-factor-to-solveeven-bezous-theorem" class="level1">
 <h1>a problem about divisible using greatest common factor to solve(even Bezou’s theorem)</h1>
