@@ -160,7 +160,15 @@ window.Quarto = {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#history-of-survey-sampling" id="toc-history-of-survey-sampling" class="nav-link active" data-scroll-target="#history-of-survey-sampling">History of Survey Sampling</a>
+  <li><a href="#central-limit-theorem" id="toc-central-limit-theorem" class="nav-link active" data-scroll-target="#central-limit-theorem">Central Limit Theorem</a>
+  <ul class="collapse">
+  <li><a href="#limit-distribution" id="toc-limit-distribution" class="nav-link" data-scroll-target="#limit-distribution">Limit Distribution</a></li>
+  <li><a href="#conclusion" id="toc-conclusion" class="nav-link" data-scroll-target="#conclusion">Conclusion</a>
+  <ul class="collapse">
+  <li><a href="#this-leads-the-construction-of-confidence-interval-as-well-as-sample-size-which-is-one-of-keys-to-survey-sampling" id="toc-this-leads-the-construction-of-confidence-interval-as-well-as-sample-size-which-is-one-of-keys-to-survey-sampling" class="nav-link" data-scroll-target="#this-leads-the-construction-of-confidence-interval-as-well-as-sample-size-which-is-one-of-keys-to-survey-sampling">This leads the construction of confidence interval as well as sample size, which is one of keys to SURVEY SAMPLING</a></li>
+  </ul></li>
+  </ul></li>
+  <li><a href="#history-of-survey-sampling" id="toc-history-of-survey-sampling" class="nav-link" data-scroll-target="#history-of-survey-sampling">History of Survey Sampling</a>
   <ul class="collapse">
   <li><a href="#water" id="toc-water" class="nav-link" data-scroll-target="#water">water</a></li>
   <li><a href="#formalization-of-sampling-theory" id="toc-formalization-of-sampling-theory" class="nav-link" data-scroll-target="#formalization-of-sampling-theory">Formalization of Sampling Theory</a></li>
@@ -191,6 +199,55 @@ window.Quarto = {
 </header>
 
 
+<section id="central-limit-theorem" class="level1">
+<h1>Central Limit Theorem</h1>
+<p><span class="math inline">\(X_1, X_2,..., X_n \sim^{iid} F(\mu, \sigma^2)\)</span>, <span class="math inline">\(Y_n=\sqrt n \frac{\bar x- \mu}{\sigma} --&gt;N(0,1)\)</span></p>
+<p>(p.s. Apart from this, CLT also says that When the sample size is large enough (n <span class="math inline">\(\geq\)</span> 30), the mean distribution of the sample is normal. But here we just prove the above thing)</p>
+<p>Proof: (based on MGF)</p>
+<p><span class="math inline">\(z_i =(x_i-\mu)/ \sigma\)</span> where <span class="math inline">\(Y_n=\sqrt n \bar z\)</span> and <span class="math inline">\(z_i \sim ^{iid} F(0,1)\)</span></p>
+<p><span class="math display">\[
+E(e^{tZ}) = m(t) \implies
+\begin{cases}
+m(0) = 1 \\
+m'(0) = 0 = E(Z) \\
+m''(0) = 1 + 0^2 = 1 = E(Z^2)
+\end{cases}
+\]</span></p>
+<p><span class="math display">\[m(t) = m(0) + m'(0)t + \frac{m''(\xi)}{2}t^2, \quad 0 &lt; \xi &lt; t\]</span></p>
+<p><span class="math display">\[M_{Y_n}(t) = E\left[ \exp\left\{ t \sum_{i=1}^n \frac{Z_i}{\sqrt{n}} \right\} \right] = \prod_{i=1}^n E\left[ \exp\left\{ \frac{t Z_i}{\sqrt{n}} \right\} \right].\]</span></p>
+<p><span class="math display">\[= \left[ m\left( \frac{t}{\sqrt{n}} \right) \right]^n = \left[ 1 + \frac{m''(\xi) t^2}{2n} \right]^n, \quad 0 &lt; \xi &lt; \frac{t}{\sqrt{n}}.\]</span></p>
+<p><span class="math inline">\(n \to \infty, \quad \frac{t}{\sqrt{n}} \to 0 \implies \xi \to 0 \implies m''(\xi) \to m''(0) = 1.\)</span></p>
+<p><span class="math inline">\(M_{Y_n}(t) \to \left[ 1 + \frac{t^2}{2n} \right]^n \to e^{\frac{t^2}{2}} = E(e^{tZ})\)</span></p>
+<p><span class="math inline">\(\left[ 1 + \frac{t}{n} \right]^n \to e^t \quad \text{Y}_n \xrightarrow{d} N(0,1)\)</span></p>
+<p><span class="math inline">\(\textbf{Hajek}\)</span> Let <span class="math inline">\(m_N = \max_{1 \leq i \leq n} (y_i - \bar{y})\)</span>. Then if</p>
+<p><span class="math inline">\(\frac{1}{\min(n, N-n)} \frac{m_N}{S_y^2} \to 0, \quad \frac{\bar{y} - Y}{\sqrt{\text{Var}(\bar y)}} \xrightarrow{d} N(0,1)\)</span></p>
+<section id="limit-distribution" class="level2">
+<h2 class="anchored" data-anchor-id="limit-distribution">Limit Distribution</h2>
+<p>Wold-weorwilz Thm</p>
+<p><span class="math inline">\(\{a_{N_1}, \ldots, a_{N_n}\}\)</span>, <span class="math inline">\(\{X_{n_1}, \ldots, X_{n_N}\}\)</span>,</p>
+<p><span class="math display">\[
+\frac{\frac{1}{N} \sum (a_{N_i} - \overline{a_N})^r}{\left[ \frac{1}{N} \sum (a_{N_i} - \overline{a_N})^2 \right]^{r/2}} = O(1), \quad \overline{a_N} = \frac{1}{N} \sum a_{N_i}.
+\]</span></p>
+<p><span class="math display">\[
+\frac{\frac{1}{N} \sum (X_{N_i} - \overline{X_N})^r}{\left[ \frac{1}{N} \sum (X_{N_i} - \overline{X_N})^2 \right]^{r/2}} = O(1) \quad X_N = \frac{1}{N} \sum X_{N_i}.
+\]</span> <span class="math inline">\(X_1,X_2,...X_N\)</span> uniformly distributio from <span class="math inline">\(X_{N_1},...\)</span></p>
+</section>
+<section id="conclusion" class="level2">
+<h2 class="anchored" data-anchor-id="conclusion">Conclusion</h2>
+<p>Let <span class="math inline">\(X_1, X_2, \ldots, X_n\)</span> i.i.d. <span class="math inline">\(F(\mu, \sigma^2)\)</span>. Define <span class="math inline">\(Y_n = \sqrt{n} \frac{\overline{X} - \mu}{\sigma} \xrightarrow{d} N(0,1)\)</span>.</p>
+<p>Let <span class="math inline">\(L_N = \sum a_{N_i} X_i\)</span>, <span class="math inline">\(E[L_N] = N \overline{a_N} \overline{X}\)</span>.</p>
+<p><span class="math display">\[
+\text{Var}(L_N) = \frac{1}{N-1} \left[ \sum (a_{N_i} - \overline{a_N})^2 \right] \left[ \sum (X_{N_i} - \overline{X})^2 \right]
+\]</span></p>
+<p>As <span class="math inline">\(N \to \infty\)</span>,</p>
+<p><span class="math display">\[
+P\left\{ \frac{L_N - E(L_N)}{\sqrt{\text{Var}(L_N)}} \leq z \right\} \to \frac{1}{\sqrt{2\pi}} \int_{-\infty}^z e^{-\frac{t^2}{2}} dt.
+\]</span></p>
+<section id="this-leads-the-construction-of-confidence-interval-as-well-as-sample-size-which-is-one-of-keys-to-survey-sampling" class="level3">
+<h3 class="anchored" data-anchor-id="this-leads-the-construction-of-confidence-interval-as-well-as-sample-size-which-is-one-of-keys-to-survey-sampling">This leads the construction of confidence interval as well as sample size, which is one of keys to SURVEY SAMPLING</h3>
+</section>
+</section>
+</section>
 <section id="history-of-survey-sampling" class="level1">
 <h1>History of Survey Sampling</h1>
 <section id="water" class="level2">

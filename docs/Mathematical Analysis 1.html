@@ -333,7 +333,10 @@ window.Quarto = {
   <li><a href="#连续性用sup构造数列" id="toc-连续性用sup构造数列" class="nav-link" data-scroll-target="#连续性用sup构造数列">连续性+用sup构造数列</a></li>
   <li><a href="#用sequential-criterion证明连续性取合适的epsilon来说明数列存在" id="toc-用sequential-criterion证明连续性取合适的epsilon来说明数列存在" class="nav-link" data-scroll-target="#用sequential-criterion证明连续性取合适的epsilon来说明数列存在">用sequential criterion证明连续性取合适的epsilon来说明数列存在</a></li>
   </ul></li>
-  <li><a href="#sup-is-different-from-limit-an-experience-from-final-exam" id="toc-sup-is-different-from-limit-an-experience-from-final-exam" class="nav-link" data-scroll-target="#sup-is-different-from-limit-an-experience-from-final-exam">Sup is different from limit – an experience from final exam</a></li>
+  <li><a href="#sup-is-different-from-limit-an-experience-from-final-exam" id="toc-sup-is-different-from-limit-an-experience-from-final-exam" class="nav-link" data-scroll-target="#sup-is-different-from-limit-an-experience-from-final-exam">Sup is different from limit – an experience from final exam</a>
+  <ul class="collapse">
+  <li><a href="#eg-question-from-dr.-chi-kwong-fok-about-weirestrass-extream-value-thm-continuous-function-in-a-compact-set-attains-its-max-and-min" id="toc-eg-question-from-dr.-chi-kwong-fok-about-weirestrass-extream-value-thm-continuous-function-in-a-compact-set-attains-its-max-and-min" class="nav-link" data-scroll-target="#eg-question-from-dr.-chi-kwong-fok-about-weirestrass-extream-value-thm-continuous-function-in-a-compact-set-attains-its-max-and-min">eg question from Dr.&nbsp;Chi-Kwong Fok about Weirestrass-Extream Value THM (continuous function in a compact set attains its max and min)</a></li>
+  </ul></li>
   <li><a href="#a-problem-about-divisible-using-greatest-common-factor-to-solveeven-bezous-theorem" id="toc-a-problem-about-divisible-using-greatest-common-factor-to-solveeven-bezous-theorem" class="nav-link" data-scroll-target="#a-problem-about-divisible-using-greatest-common-factor-to-solveeven-bezous-theorem">a problem about divisible using greatest common factor to solve(even Bezou’s theorem)</a></li>
   </ul>
 </nav>
@@ -1422,6 +1425,15 @@ l-\epsilon&lt;f(x)&lt;l+\epsilon
 <p>Reason: for sup we only need one “existence of <span class="math inline">\(x_0\)</span>” since it says <span class="math inline">\(\forall n \in N\)</span> <span class="math inline">\(\exists x_0 \in R\)</span> s.t. <span class="math inline">\(M &lt; f(x_0) &lt;M+ \epsilon\)</span></p>
 <p>but for the limit we need all x greater than a number that <span class="math inline">\(|f(x) - M| &lt; \epsilon\)</span></p>
 <p>For this specific example, we know that each top of <span class="math inline">\(\sin x^2\)</span> we have satisfied <span class="math inline">\(|f(x) - M| &lt; \epsilon\)</span> but NOT ALL!</p>
+<section id="eg-question-from-dr.-chi-kwong-fok-about-weirestrass-extream-value-thm-continuous-function-in-a-compact-set-attains-its-max-and-min" class="level2">
+<h2 class="anchored" data-anchor-id="eg-question-from-dr.-chi-kwong-fok-about-weirestrass-extream-value-thm-continuous-function-in-a-compact-set-attains-its-max-and-min">eg question from Dr.&nbsp;Chi-Kwong Fok about Weirestrass-Extream Value THM (continuous function in a compact set attains its max and min)</h2>
+<p>If f is a continuous and non-surjective function and the supremum of it in [0,<span class="math inline">\(+\infty\)</span>] is not in its range. show that $&gt;0, x &gt; 0, z R z &gt; x, $</p>
+<p>Firstly, negate it: <span class="math inline">\(\exists \epsilon_0 &gt;0,\)</span> s.t. <span class="math inline">\(\exists x_0 &gt;0, \forall z \in R\)</span> with z&gt;<span class="math inline">\(x_0\)</span>, f(z) $M-_0, $ where M is sup R(f) —(1)</p>
+<p>Secondly, write down the def of M is sup:</p>
+<p><span class="math inline">\(\forall \epsilon &gt;0, \exists x\in [0,+ \infty],\)</span> s.t. f(x)&gt;<span class="math inline">\(M-\epsilon\)</span>. Now take the global $$ to be <span class="math inline">\(\epsilon_0\)</span> —(2)</p>
+<p>By (1) and (2) we know that <span class="math inline">\(\forall \epsilon &gt;0, \exists x\in [0,x_0],\)</span> s.t. f(x)&gt;<span class="math inline">\(M-\epsilon\)</span> Now take the global $$ to be <span class="math inline">\(\epsilon_0\)</span></p>
+<p>By Weirestrass-Extream Value THM (continuous function in a compact set attains its max and min) we know it attains its maximum in [0,x_0]. Suppose this maximum is not the sup, then M=supR(f) &lt; its maximum, then by the IVP it must attain sup R(f) contradiction. =–also. —contradiction</p>
+</section>
 </section>
 <section id="a-problem-about-divisible-using-greatest-common-factor-to-solveeven-bezous-theorem" class="level1">
 <h1>a problem about divisible using greatest common factor to solve(even Bezou’s theorem)</h1>

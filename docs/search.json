@@ -102,14 +102,14 @@
     "href": "APH103.html",
     "title": "APH103 Survey Sampling",
     "section": "",
-    "text": "random sampling\nsufficient sample size \\(n\\ge 30\\) finite population variance independence\nB=\\(2\\sqrt {\\hat V (\\bar y)}=2\\sqrt {(1-n/N)S^2/n}\\)\n\nSample without replacement is better in the aspect of …\n\n有无放回都ok？ interpretation of character statistics"
+    "text": "\\(X_1, X_2,..., X_n \\sim^{iid} F(\\mu, \\sigma^2)\\), \\(Y_n=\\sqrt n \\frac{\\bar x- \\mu}{\\sigma} --&gt;N(0,1)\\)\n(p.s. Apart from this, CLT also says that When the sample size is large enough (n \\(\\geq\\) 30), the mean distribution of the sample is normal. But here we just prove the above thing)\nProof: (based on MGF)\n\\(z_i =(x_i-\\mu)/ \\sigma\\) where \\(Y_n=\\sqrt n \\bar z\\) and \\(z_i \\sim ^{iid} F(0,1)\\)\n\\[\nE(e^{tZ}) = m(t) \\implies\n\\begin{cases}\nm(0) = 1 \\\\\nm'(0) = 0 = E(Z) \\\\\nm''(0) = 1 + 0^2 = 1 = E(Z^2)\n\\end{cases}\n\\]\n\\[m(t) = m(0) + m'(0)t + \\frac{m''(\\xi)}{2}t^2, \\quad 0 &lt; \\xi &lt; t\\]\n\\[M_{Y_n}(t) = E\\left[ \\exp\\left\\{ t \\sum_{i=1}^n \\frac{Z_i}{\\sqrt{n}} \\right\\} \\right] = \\prod_{i=1}^n E\\left[ \\exp\\left\\{ \\frac{t Z_i}{\\sqrt{n}} \\right\\} \\right].\\]\n\\[= \\left[ m\\left( \\frac{t}{\\sqrt{n}} \\right) \\right]^n = \\left[ 1 + \\frac{m''(\\xi) t^2}{2n} \\right]^n, \\quad 0 &lt; \\xi &lt; \\frac{t}{\\sqrt{n}}.\\]\n\\(n \\to \\infty, \\quad \\frac{t}{\\sqrt{n}} \\to 0 \\implies \\xi \\to 0 \\implies m''(\\xi) \\to m''(0) = 1.\\)\n\\(M_{Y_n}(t) \\to \\left[ 1 + \\frac{t^2}{2n} \\right]^n \\to e^{\\frac{t^2}{2}} = E(e^{tZ})\\)\n\\(\\left[ 1 + \\frac{t}{n} \\right]^n \\to e^t \\quad \\text{Y}_n \\xrightarrow{d} N(0,1)\\)\n\\(\\textbf{Hajek}\\) Let \\(m_N = \\max_{1 \\leq i \\leq n} (y_i - \\bar{y})\\). Then if\n\\(\\frac{1}{\\min(n, N-n)} \\frac{m_N}{S_y^2} \\to 0, \\quad \\frac{\\bar{y} - Y}{\\sqrt{\\text{Var}(\\bar y)}} \\xrightarrow{d} N(0,1)\\)\n\n\nWold-weorwilz Thm\n\\(\\{a_{N_1}, \\ldots, a_{N_n}\\}\\), \\(\\{X_{n_1}, \\ldots, X_{n_N}\\}\\),\n\\[\n\\frac{\\frac{1}{N} \\sum (a_{N_i} - \\overline{a_N})^r}{\\left[ \\frac{1}{N} \\sum (a_{N_i} - \\overline{a_N})^2 \\right]^{r/2}} = O(1), \\quad \\overline{a_N} = \\frac{1}{N} \\sum a_{N_i}.\n\\]\n\\[\n\\frac{\\frac{1}{N} \\sum (X_{N_i} - \\overline{X_N})^r}{\\left[ \\frac{1}{N} \\sum (X_{N_i} - \\overline{X_N})^2 \\right]^{r/2}} = O(1) \\quad X_N = \\frac{1}{N} \\sum X_{N_i}.\n\\] \\(X_1,X_2,...X_N\\) uniformly distributio from \\(X_{N_1},...\\)\n\n\n\nLet \\(X_1, X_2, \\ldots, X_n\\) i.i.d. \\(F(\\mu, \\sigma^2)\\). Define \\(Y_n = \\sqrt{n} \\frac{\\overline{X} - \\mu}{\\sigma} \\xrightarrow{d} N(0,1)\\).\nLet \\(L_N = \\sum a_{N_i} X_i\\), \\(E[L_N] = N \\overline{a_N} \\overline{X}\\).\n\\[\n\\text{Var}(L_N) = \\frac{1}{N-1} \\left[ \\sum (a_{N_i} - \\overline{a_N})^2 \\right] \\left[ \\sum (X_{N_i} - \\overline{X})^2 \\right]\n\\]\nAs \\(N \\to \\infty\\),\n\\[\nP\\left\\{ \\frac{L_N - E(L_N)}{\\sqrt{\\text{Var}(L_N)}} \\leq z \\right\\} \\to \\frac{1}{\\sqrt{2\\pi}} \\int_{-\\infty}^z e^{-\\frac{t^2}{2}} dt.\n\\]"
   },
   {
     "objectID": "APH103.html#week-4",
     "href": "APH103.html#week-4",
     "title": "APH103 Survey Sampling",
-    "section": "",
-    "text": "random sampling\nsufficient sample size \\(n\\ge 30\\) finite population variance independence\nB=\\(2\\sqrt {\\hat V (\\bar y)}=2\\sqrt {(1-n/N)S^2/n}\\)\n\nSample without replacement is better in the aspect of …\n\n有无放回都ok？ interpretation of character statistics"
+    "section": "week 4",
+    "text": "week 4\nrandom sampling\nsufficient sample size \\(n\\ge 30\\) finite population variance independence\nB=\\(2\\sqrt {\\hat V (\\bar y)}=2\\sqrt {(1-n/N)S^2/n}\\)\n\nSample without replacement is better in the aspect of …\n\n有无放回都ok？ interpretation of character statistics"
   },
   {
     "objectID": "index.html",
@@ -1153,5 +1153,40 @@
     "title": "JavaCPT105",
     "section": "Motivation",
     "text": "Motivation\n\nGod is in the details. –Today’s agile world needs the role of architecture with patient to internalize the idea of “small things matter”, especially in software development.\nCraftmanship is important in these two aspects:\n\nKnowledge of principles, patterns\nWork hard and practic/sweat over it and watch myself fail.\n\n\nSo, please grind the knowledge with forever practice!\n\nCode represents the details of the requirements.\ndefend the code with equal passion\nA programmer with “code-sense” will look at messy module and see options and variations, helping choose the best variation and guide to plot a sequence of behavior preserving transformations to get from here to there.\nA programmer who writes clean code is an artist who can take a blank screen through a series of transformations until it is an elegantly coded system"
+  },
+  {
+    "objectID": "Mathematical Analysis 1.html#eg-question-from-dr.-chi-kwong-fok-about-weirestrass-extream-value-thm-continuous-function-in-a-compact-set-attains-its-max-and-min",
+    "href": "Mathematical Analysis 1.html#eg-question-from-dr.-chi-kwong-fok-about-weirestrass-extream-value-thm-continuous-function-in-a-compact-set-attains-its-max-and-min",
+    "title": "Analysis1",
+    "section": "eg question from Dr. Chi-Kwong Fok about Weirestrass-Extream Value THM (continuous function in a compact set attains its max and min)",
+    "text": "eg question from Dr. Chi-Kwong Fok about Weirestrass-Extream Value THM (continuous function in a compact set attains its max and min)\nIf f is a continuous and non-surjective function and the supremum of it in [0,\\(+\\infty\\)] is not in its range. show that $&gt;0, x &gt; 0, z R z &gt; x, $\nFirstly, negate it: \\(\\exists \\epsilon_0 &gt;0,\\) s.t. \\(\\exists x_0 &gt;0, \\forall z \\in R\\) with z&gt;\\(x_0\\), f(z) $M-_0, $ where M is sup R(f) —(1)\nSecondly, write down the def of M is sup:\n\\(\\forall \\epsilon &gt;0, \\exists x\\in [0,+ \\infty],\\) s.t. f(x)&gt;\\(M-\\epsilon\\). Now take the global $$ to be \\(\\epsilon_0\\) —(2)\nBy (1) and (2) we know that \\(\\forall \\epsilon &gt;0, \\exists x\\in [0,x_0],\\) s.t. f(x)&gt;\\(M-\\epsilon\\) Now take the global $$ to be \\(\\epsilon_0\\)\nBy Weirestrass-Extream Value THM (continuous function in a compact set attains its max and min) we know it attains its maximum in [0,x_0]. Suppose this maximum is not the sup, then M=supR(f) &lt; its maximum, then by the IVP it must attain sup R(f) contradiction. =–also. —contradiction"
+  },
+  {
+    "objectID": "APH103.html#water",
+    "href": "APH103.html#water",
+    "title": "APH103 Survey Sampling",
+    "section": "water",
+    "text": "water"
+  },
+  {
+    "objectID": "APH103.html#formalization-of-sampling-theory",
+    "href": "APH103.html#formalization-of-sampling-theory",
+    "title": "APH103 Survey Sampling",
+    "section": "Formalization of Sampling Theory",
+    "text": "Formalization of Sampling Theory"
+  },
+  {
+    "objectID": "APH103.html#limit-distribution",
+    "href": "APH103.html#limit-distribution",
+    "title": "APH103 Survey Sampling",
+    "section": "",
+    "text": "Wold-weorwilz Thm\n\\(\\{a_{N_1}, \\ldots, a_{N_n}\\}\\), \\(\\{X_{n_1}, \\ldots, X_{n_N}\\}\\),\n\\[\n\\frac{\\frac{1}{N} \\sum (a_{N_i} - \\overline{a_N})^r}{\\left[ \\frac{1}{N} \\sum (a_{N_i} - \\overline{a_N})^2 \\right]^{r/2}} = O(1), \\quad \\overline{a_N} = \\frac{1}{N} \\sum a_{N_i}.\n\\]\n\\[\n\\frac{\\frac{1}{N} \\sum (X_{N_i} - \\overline{X_N})^r}{\\left[ \\frac{1}{N} \\sum (X_{N_i} - \\overline{X_N})^2 \\right]^{r/2}} = O(1) \\quad X_N = \\frac{1}{N} \\sum X_{N_i}.\n\\] \\(X_1,X_2,...X_N\\) uniformly distributio from \\(X_{N_1},...\\)"
+  },
+  {
+    "objectID": "APH103.html#conclusion",
+    "href": "APH103.html#conclusion",
+    "title": "APH103 Survey Sampling",
+    "section": "",
+    "text": "Let \\(X_1, X_2, \\ldots, X_n\\) i.i.d. \\(F(\\mu, \\sigma^2)\\). Define \\(Y_n = \\sqrt{n} \\frac{\\overline{X} - \\mu}{\\sigma} \\xrightarrow{d} N(0,1)\\).\nLet \\(L_N = \\sum a_{N_i} X_i\\), \\(E[L_N] = N \\overline{a_N} \\overline{X}\\).\n\\[\n\\text{Var}(L_N) = \\frac{1}{N-1} \\left[ \\sum (a_{N_i} - \\overline{a_N})^2 \\right] \\left[ \\sum (X_{N_i} - \\overline{X})^2 \\right]\n\\]\nAs \\(N \\to \\infty\\),\n\\[\nP\\left\\{ \\frac{L_N - E(L_N)}{\\sqrt{\\text{Var}(L_N)}} \\leq z \\right\\} \\to \\frac{1}{\\sqrt{2\\pi}} \\int_{-\\infty}^z e^{-\\frac{t^2}{2}} dt.\n\\]"
   }
 ]

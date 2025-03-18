@@ -1557,6 +1557,21 @@ but for the limit we need all x greater than a number that $|f(x) - M| < \epsilo
 
 For this specific example, we know that each top of $\sin x^2$ we have satisfied  $|f(x) - M| < \epsilon$ but NOT ALL! 
 
+## eg question from Dr. Chi-Kwong Fok about Weirestrass-Extream Value THM (continuous function in a compact set attains its max and min)
+
+If f is a continuous and non-surjective function and the supremum of it in [0,$+\infty$] is not in its range. show that $\forall \epsilon >0, \forall x > 0, \exists z \in R \text{ with } z > x, \forall $
+
+
+Firstly, negate it: $\exists \epsilon_0 >0,$ s.t. $\exists x_0 >0, \forall z \in R$ with z>$x_0$, f(z) $\leq M-\epsilon_0, $ where M is sup R(f) ---(1)
+
+Secondly, write down the def of M is sup:
+
+$\forall \epsilon >0, \exists x\in [0,+ \infty],$ s.t. f(x)>$M-\epsilon$. Now take the global $\epsilon $ to be $\epsilon_0$ ---(2)
+
+By (1) and (2) we know that $\forall \epsilon >0, \exists x\in [0,x_0],$ s.t. f(x)>$M-\epsilon$ Now take the global $\epsilon $ to be $\epsilon_0$
+
+By  Weirestrass-Extream Value THM (continuous function in a compact set attains its max and min) we know it attains its maximum in [0,x_0]. Suppose this maximum is not the sup, then M=supR(f) < its maximum, then by the IVP it must attain sup R(f) contradiction. =--also. ---contradiction
+
 
 
 # a problem about divisible using greatest common factor to solve(even Bezou's theorem)

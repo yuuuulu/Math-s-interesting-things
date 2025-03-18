@@ -3,6 +3,84 @@ title: "APH103 Survey Sampling"
 editor: visual
 ---
 
+# Central Limit Theorem
+
+$X_1, X_2,..., X_n \sim^{iid} F(\mu, \sigma^2)$, $Y_n=\sqrt n \frac{\bar x- \mu}{\sigma} -->N(0,1)$
+
+(p.s. Apart from this, CLT also says that When the sample size is large enough (n $\geq$ 30), the mean distribution of the sample is normal. But here we just prove the above thing)
+
+Proof: (based on MGF)
+
+$z_i =(x_i-\mu)/ \sigma$ where $Y_n=\sqrt n \bar z$ and $z_i \sim ^{iid} F(0,1)$
+
+$$
+E(e^{tZ}) = m(t) \implies 
+\begin{cases} 
+m(0) = 1 \\
+m'(0) = 0 = E(Z) \\
+m''(0) = 1 + 0^2 = 1 = E(Z^2)
+\end{cases}
+$$
+
+
+$$m(t) = m(0) + m'(0)t + \frac{m''(\xi)}{2}t^2, \quad 0 < \xi < t$$
+
+
+$$M_{Y_n}(t) = E\left[ \exp\left\{ t \sum_{i=1}^n \frac{Z_i}{\sqrt{n}} \right\} \right] = \prod_{i=1}^n E\left[ \exp\left\{ \frac{t Z_i}{\sqrt{n}} \right\} \right].$$
+
+$$= \left[ m\left( \frac{t}{\sqrt{n}} \right) \right]^n = \left[ 1 + \frac{m''(\xi) t^2}{2n} \right]^n, \quad 0 < \xi < \frac{t}{\sqrt{n}}.$$
+
+$n \to \infty, \quad \frac{t}{\sqrt{n}} \to 0 \implies \xi \to 0 \implies m''(\xi) \to m''(0) = 1.$
+
+$M_{Y_n}(t) \to \left[ 1 + \frac{t^2}{2n} \right]^n \to e^{\frac{t^2}{2}} = E(e^{tZ})$
+
+$\left[ 1 + \frac{t}{n} \right]^n \to e^t \quad \text{Y}_n \xrightarrow{d} N(0,1)$
+
+
+$\textbf{Hajek}$ Let $m_N = \max_{1 \leq i \leq n} (y_i - \bar{y})$. Then if
+
+$\frac{1}{\min(n, N-n)} \frac{m_N}{S_y^2} \to 0, \quad \frac{\bar{y} - Y}{\sqrt{\text{Var}(\bar y)}} \xrightarrow{d} N(0,1)$
+
+
+## Limit Distribution
+
+Wold-weorwilz Thm
+
+$\{a_{N_1}, \ldots, a_{N_n}\}$, $\{X_{n_1}, \ldots, X_{n_N}\}$,
+
+$$
+\frac{\frac{1}{N} \sum (a_{N_i} - \overline{a_N})^r}{\left[ \frac{1}{N} \sum (a_{N_i} - \overline{a_N})^2 \right]^{r/2}} = O(1), \quad \overline{a_N} = \frac{1}{N} \sum a_{N_i}.
+$$
+
+
+
+$$
+\frac{\frac{1}{N} \sum (X_{N_i} - \overline{X_N})^r}{\left[ \frac{1}{N} \sum (X_{N_i} - \overline{X_N})^2 \right]^{r/2}} = O(1) \quad X_N = \frac{1}{N} \sum X_{N_i}.
+$$
+$X_1,X_2,...X_N$ uniformly distributio from $X_{N_1},...$
+
+## Conclusion
+
+Let $X_1, X_2, \ldots, X_n$ i.i.d. $F(\mu, \sigma^2)$. Define $Y_n = \sqrt{n} \frac{\overline{X} - \mu}{\sigma} \xrightarrow{d} N(0,1)$.
+
+Let $L_N = \sum a_{N_i} X_i$, $E[L_N] = N \overline{a_N} \overline{X}$.
+
+$$
+\text{Var}(L_N) = \frac{1}{N-1} \left[ \sum (a_{N_i} - \overline{a_N})^2 \right] \left[ \sum (X_{N_i} - \overline{X})^2 \right]
+$$
+
+As $N \to \infty$,
+
+$$
+P\left\{ \frac{L_N - E(L_N)}{\sqrt{\text{Var}(L_N)}} \leq z \right\} \to \frac{1}{\sqrt{2\pi}} \int_{-\infty}^z e^{-\frac{t^2}{2}} dt.
+$$
+
+
+### This leads the construction of confidence interval as well as sample size, which is one of keys to SURVEY SAMPLING
+
+
+
+
 
 # History of Survey Sampling
 
