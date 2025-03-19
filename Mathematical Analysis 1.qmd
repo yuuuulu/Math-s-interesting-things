@@ -5,6 +5,49 @@ editor:
     wrap: 72
 ---
 
+# Now the content follows the time, not summary at all..
+
+# Write logically
+
+
+### Each global expression should just appear once. When it has been introduced, we can regard it as a fixed thing and expand our proof behind logically.
+
+### eg
+
+- Suppose $f$ is differentiable in $(c - \delta, c + \delta) \setminus \{c\}$ for some $\delta > 0$ with $\lim\limits_{x \to c} f'(x) = A$ exists, and $f$ is continuous at $c$. Show that $f'(c)$ exists and $f'(c) = A$ in the following two ways:
+
+  - By applying Lagrange's Mean Value Theorem.
+
+  - By applying L'Hospital's Rule.
+
+
+! Explain clearly how continuity of $f$ at $c$ is used in your argument in each case.
+
+
+- proof:
+
+  Let ε > 0. Since $lim_ {x→c} f'(x) = A$ there exists δ > 0 such that ∀x ∈ (c - δ', c + δ') \ {c}, |f'(x) - A| < ε  (*) .
+
+  Now, take x ∈ (c - δ', c + δ') \ {c}.
+
+  We have that f is continuous on the closed interval between x and c and differentiable on the open interval between x and c.
+
+  So by Lagrange's MVT we have ∃ξ between x and c s.t.
+
+  (f(x) - f(c)) / (x - c) = f'(ξ)
+  
+
+  Hence, we have that
+  
+
+  |(f(x) - f(c)) / (x - c)   - A| < ε by (*) because |f'(ξ) - A| < ε.
+
+  
+  Hence $lim_{x→c} (f(x) - f(c)) / (x - c) = A.$
+  
+  i.e. f'(c) = A
+
+
 # Preface
 
 The first section here is the knowledge that attracts most of my
