@@ -1,9 +1,11 @@
 ---
-title: "Analysis1"
+title: "Analysis1 and Analysis 2"
 editor: 
   markdown: 
     wrap: 72
 ---
+
+## While the dream of becoming a pure mathematician has faded, my pursuit of Mathematical Analysis remains strong, driven by a desire to express my thoughts with precision and elegance. My ultimate aspiration of Analysis is to present ideas that captivate others, compelling them to listen. This is not just about sharing information; it's about conveying logical insights that have been distilled through my own deep engagement with the material, reflecting a genuine and personal comprehension of the subject matter.
 
 # Now the content follows the time, not summary at all..
 

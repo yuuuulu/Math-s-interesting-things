@@ -863,273 +863,273 @@
   {
     "objectID": "Mathematical Analysis 1.html#existence-means-beyond-any-human-efforts-and-objectively-existence.-we-take-the-value-that-we-need-means-a-human-effort-and-because-it-is-arbitrary-we-have-the-freedom-to-choose-one.-dr.-zhang",
     "href": "Mathematical Analysis 1.html#existence-means-beyond-any-human-efforts-and-objectively-existence.-we-take-the-value-that-we-need-means-a-human-effort-and-because-it-is-arbitrary-we-have-the-freedom-to-choose-one.-dr.-zhang",
-    "title": "Analysis1",
+    "title": "Analysis1 and Analysis 2",
     "section": "‘Existence’ means beyond any human efforts, and objectively existence. We take the value that we need means a human effort, and because it is arbitrary, we have the freedom to choose one. — Dr. Zhang",
     "text": "‘Existence’ means beyond any human efforts, and objectively existence. We take the value that we need means a human effort, and because it is arbitrary, we have the freedom to choose one. — Dr. Zhang"
   },
   {
     "objectID": "Mathematical Analysis 1.html#theorem",
     "href": "Mathematical Analysis 1.html#theorem",
-    "title": "Analysis1",
+    "title": "Analysis1 and Analysis 2",
     "section": "Theorem",
     "text": "Theorem\nLet \\(O\\subset R\\) be an open set then \\(O=\\cup_{n=1}^\\infty I_n\\) where \\(I_n\\) is an open interval in R"
   },
   {
     "objectID": "Mathematical Analysis 1.html#def",
     "href": "Mathematical Analysis 1.html#def",
-    "title": "Analysis1",
+    "title": "Analysis1 and Analysis 2",
     "section": "Def",
     "text": "Def\nA collection of open sets covers a set A if \\(A\\subset \\cup O_\\alpha\\). The collection {\\(O_\\alpha\\)} is called an open cover of A."
   },
   {
     "objectID": "Mathematical Analysis 1.html#theorem-1",
     "href": "Mathematical Analysis 1.html#theorem-1",
-    "title": "Analysis1",
+    "title": "Analysis1 and Analysis 2",
     "section": "Theorem",
     "text": "Theorem\nLet C={\\(O_\\alpha\\)} be a collection of open sets of real numbers then there is a countable subcollection {\\(O_i\\)} of C such that \\(\\cup_{O\\in C}O=\\cup_{n=1}^\\infty O_i\\)\nAny open cover of a set of real numbers contains a countable subcover."
   },
   {
     "objectID": "Mathematical Analysis 1.html#i-have-proved-that",
     "href": "Mathematical Analysis 1.html#i-have-proved-that",
-    "title": "Analysis1",
+    "title": "Analysis1 and Analysis 2",
     "section": "i have proved that:",
     "text": "i have proved that:\nthe closure of \\(Q\\) = R &lt;–&gt; \\(R\\approx Q\\) &lt;–&gt; \\(\\forall x\\in R, \\exists x_n\\in Q\\) such that\\(x_n--&gt;x\\). Q is a countable, dense subset of R, R is separable."
   },
   {
     "objectID": "Mathematical Analysis 1.html#albel-guass-is-a-fox-走过的地方狐狸尾巴扫掉了",
     "href": "Mathematical Analysis 1.html#albel-guass-is-a-fox-走过的地方狐狸尾巴扫掉了",
-    "title": "Analysis1",
+    "title": "Analysis1 and Analysis 2",
     "section": "albel: guass is a fox, 走过的地方狐狸尾巴扫掉了",
     "text": "albel: guass is a fox, 走过的地方狐狸尾巴扫掉了"
   },
   {
     "objectID": "Mathematical Analysis 1.html#algebra-of-continuity",
     "href": "Mathematical Analysis 1.html#algebra-of-continuity",
-    "title": "Analysis1",
+    "title": "Analysis1 and Analysis 2",
     "section": "algebra of continuity",
     "text": "algebra of continuity\n\\(\\exists \\delta = min\\){\\(\\delta_1,\\delta_2\\)}"
   },
   {
     "objectID": "Mathematical Analysis 1.html#history",
     "href": "Mathematical Analysis 1.html#history",
-    "title": "Analysis1",
+    "title": "Analysis1 and Analysis 2",
     "section": "history",
     "text": "history\ncauchy 1821(decrease indefinitely with those of \\(\\alpha\\))–weierstrass 1874 (\\(\\epsilon-\\delta\\))—–"
   },
   {
     "objectID": "Mathematical Analysis 1.html#understanding-in-a-long-process",
     "href": "Mathematical Analysis 1.html#understanding-in-a-long-process",
-    "title": "Analysis1",
+    "title": "Analysis1 and Analysis 2",
     "section": "understanding in a long process",
     "text": "understanding in a long process\n\n\\(\\delta\\) decides how good the continuity of the function is."
   },
   {
     "objectID": "Mathematical Analysis 1.html#cauchy-1822",
     "href": "Mathematical Analysis 1.html#cauchy-1822",
-    "title": "Analysis1",
+    "title": "Analysis1 and Analysis 2",
     "section": "Cauchy 1822",
     "text": "Cauchy 1822\nWhat is a limit?–number\nUntil 1870, the answer to “What is the number” had been known.\n(这样来看，学习数分的一年痛苦就不算什么)"
   },
   {
     "objectID": "Mathematical Analysis 1.html#ordercardinality",
     "href": "Mathematical Analysis 1.html#ordercardinality",
-    "title": "Analysis1",
+    "title": "Analysis1 and Analysis 2",
     "section": "order–cardinality",
     "text": "order–cardinality\n1，2，3，n 2，4，6，2n\nf(n)=2n\n\nexplaination：无穷大加一个数还是等于无穷大\n\n\\(f:N-&gt;N\\cup\\){\\(a_1,a_2,a_3\\)}\nf(1)=\\(a_1\\) f(2)=\\(a_2\\),..f(4)=1, f(n+3)=n, this function is one-to-one – bijection\n–无穷大加上任意一个实属x还是无穷大\nN x N is countable\n\\(S \\subset N\\) S is countable\nf(m,n)–&gt;\\(2^m3^n\\)（只要取互质的两个数就ok）\nN x N–&gt; N\nf: 1-1\n\\(2^{m_1}3^{n_1}\\)=\\(2^{m_2}3^{n_2}\\)—\\(m_1=m_2,n_1=n_2\\)\nf(N x N)\\(\\subset\\) N\n只要映射到N的subset就可以了\n2维3维n维\n(0,1) is uncountable 反证法\nCantor’s diagonal process\n欧几里得是第一个反证法—有无穷多个质数\n{p1 p2 p3…}\np=p1+p2+pn+…+1\np1|p…pn|p—p is a prime—contradiction to countable\n(0,1)={x1,…x} countable\nx1=01a11a12a13. a1n\\(\\in\\){0,1,2,…9} x2=01a21a22a23. a2n\\(\\in\\){0,1,2,…9}\nconstruct a real number\ny=0.b1b2b3…\nb1 budengyu a11 y budengyu x1\nb2 budengyu a22 y budengyu x2\nb3 budengyu ann y budengyu xn\nbn in {a1,…a}–&gt; y\\(\\in\\)(0,1) but y\\(\\notin\\){\\(x_1,...x_n\\)}\nEx: [0,1) 约等于 (0,1)\nproof: Let{p1,p2,….}=(0,1)\\(\\cap Q\\) 分成有理数和无理数\nf(0)=p1 f(p1)=p2 f(pn+1)=pn f(x)=x \\(x\\in (0,1)-\\){p1,..pn}\n概率 特征函数\nCantor set\n进位的概念"
   },
   {
     "objectID": "Mathematical Analysis 1.html#section",
     "href": "Mathematical Analysis 1.html#section",
-    "title": "Analysis1",
+    "title": "Analysis1 and Analysis 2",
     "section": "",
     "text": "导数 积分 无穷级数 –都是极限 极限是什么–数数是什么 – Augustin Cauchy(1789-1846)\n\n人文素养\n\ncantor 1872年是不平凡的一年， 有（Weierstrass, Dedekind, Meray, Heine, Cantor）同时提出了实属系统建构的理解 出版著作解决困惑人们2500多年的问题\nWeierstrass 法律 数学 喝酒 干架 退学 在中学里边仍然没有与学术脱节 复变函数 椭圆函数（研究在复数平面上的解析函数， C=\\(R^2\\) a+ib–&gt;(a,b) is an isomorphism） \\(C \\cup {\\infty}\\) 相似于球面 \\(S^2\\) 约等于 \\(R^2\\cup \\infty\\) 变成closed and bounded one-point- compactfication 为什么实数不bounded因为无穷 无穷大这点不是实数（不满足实数性质—无穷大加无穷大还是无穷大；无穷大减无穷大是any number）因为\n任何单调有界的实属序列都有极限存在—dedekind的假设\ndedekind cut\nif rational number\n毕达哥拉斯的年代的万物皆数是有理数\n古希腊哲学 古希腊数学\nThales\n做测量工作创出非欧几何这门学问 真正的天才是能够创出一门学问的\n牛顿是科学第一人 当人们迷迷糊糊的时候 他打开理性的光\n这一切是黑暗的 上帝说让牛顿去吧 于是就有了光\n改编圣经的话–文采\n毕达哥拉斯定理的证明都是非常有创意的东西\n毕达哥拉斯定理十个证明\n读慢一点\n心浮气躁\n数学是需要耐心的\n一个城市的发展不应该是盖房子 应该是好的博物馆音乐厅公园 提高人民素养\nvolume 2 多变数 stolze定理 divergent定理\nlimit sup limit inf –这个东西就是我的实数\nCantor-==柯西序列。距离概念\n\\(|a_m-a_n|--&gt;0\\). d(\\(a_m,a_n\\)–&gt;0) metric\nequivalent equation equivalent class 实数 实数是一个集合\ncantor–集合论\n定义是最难的\n有共通之处–作为定义\n会用定理很重要 不是高斯\n用多了就知道是怎么一回事\n定理给了条件 哪里用到什么条件 怎么用的\n碰到好老师的重要性 姜立夫 量纲自然\ncomplete的完备不是完美 不是 门掉了一个螺丝 找一个螺丝完完全全放上去发挥作用\n认识自己 我是螺丝 完完全全发挥我的作用 把长处 恩赐发挥出来 就是complete\n有理数在实数中有很多孔隙 把空隙。把accumulation point收紧来\nclosure of A = B\n\\(\\forall b\\in B, \\exists\\){\\(a_n\\)} \\(\\subset A\\) such that \\(a_n--&gt;b\\)\n$AB $ not equals to $&gt; 0 $\n实数是唯一一个complete ordered field\n代数结构—分配律\neg.complex number没有order所以我们定义norm\n\n和闭区间套定理极限思想的联系和区别？？？"
   },
   {
     "objectID": "Mathematical Analysis 1.html#if-a-is-an-infinite-subset-of-n-then-a-ni.e.-a-is-countably-infinite.",
     "href": "Mathematical Analysis 1.html#if-a-is-an-infinite-subset-of-n-then-a-ni.e.-a-is-countably-infinite.",
-    "title": "Analysis1",
+    "title": "Analysis1 and Analysis 2",
     "section": "If A is an infinite subset of N, then |A| = |N|,i.e. A is countably infinite.",
     "text": "If A is an infinite subset of N, then |A| = |N|,i.e. A is countably infinite.\n\n\nin fact， N could be any countable set"
   },
   {
     "objectID": "Mathematical Analysis 1.html#if-a-not-empty-set-has-upper-bound-then-it-must-have-the-unique-sup.",
     "href": "Mathematical Analysis 1.html#if-a-not-empty-set-has-upper-bound-then-it-must-have-the-unique-sup.",
-    "title": "Analysis1",
+    "title": "Analysis1 and Analysis 2",
     "section": "if a not empty set has upper bound, then it must have the unique sup.",
     "text": "if a not empty set has upper bound, then it must have the unique sup.\nProve: if a not empty set has upper bound, then it must have the unique sup.\n\nMethod 1: (Completeness axiom)\n\\[\n\\begin{gathered}\nX \\neq \\phi, \\quad Y=\\{y \\in \\mathbb{R} \\mid \\forall x \\in X(x \\leq y)\\} \\neq \\phi \\\\\n\\\\\n\\forall x \\in X, \\forall y \\in Y, x \\leq y \\\\\n\\\\\n\\Rightarrow \\exists c \\in \\mathbb R, \\forall x \\in X, \\forall y \\in Y, \\\\\n\\\\\nx \\leqslant c \\leqslant y(\\text { Completeness axiom) } \\\\\n\\\\\n\\Rightarrow(c \\in Y) \\wedge(\\{\\forall y \\in Y \\mid y \\geqslant c\\}) \\\\\n\\\\\n\\Rightarrow c=\\min Y\n\\end{gathered}\n\\]\nSo \\(c\\) is the only sup. (uniqueness of minimum element of a set—2 inequalities lead to the equality leading to the only one result).\n\n\nMethod 2: Cantor Nested Interval Property(limit思想).asdfaskfkasdjklsad\nWe choose a random upper bound \\(\\gamma, x \\in E(\\) the set) \\[\n[x, r]=\\left[a_1 b_1\\right] \\supset\\left[a_2, b_2\\right] \\supset \\cdots \\left[a_n, b_n\\right]\n\\] (each time we use the method of bisection to choose one side Including the point in \\(E\\) ) $$\n\\[\\begin{aligned}\n& \\text { Since }\\left[a_1, b_1\\right] \\supset\\left[a_2, b_2\\right] \\cdots, b_n-a_n=\\frac{\\gamma-x}{2^{n-1}} \\rightarrow 0, \\\\\n& \\beta \\in\\left[a_n, b_n\\right],(n=1,2, \\cdots), \\lim _{n \\rightarrow \\infty} a_n=\\lim _{n \\rightarrow \\infty} b_n=\\beta \\text {(limit thinking of the Cantor Nested Interval) } \\\\\n& \\Rightarrow \\forall c \\in E, c \\leqslant b_n \\Rightarrow c \\leqslant \\beta \\text { (E }  \\text {is never on the right of} [a_n,b_n]) \\\\\n& \\Rightarrow \\forall \\varepsilon&gt;0, \\exists d \\in E, d&gt;\\beta-\\varepsilon\\text { (each} [a_n,b_n] \\text { has points in E.(or see the attached picture to see more picisely))}\n\\end{aligned}\\]"
   },
   {
     "objectID": "Mathematical Analysis 1.html#if-a-not-empty-set-has-lower-bound-then-it-must-have-the-unique-inf.",
     "href": "Mathematical Analysis 1.html#if-a-not-empty-set-has-lower-bound-then-it-must-have-the-unique-inf.",
-    "title": "Analysis1",
+    "title": "Analysis1 and Analysis 2",
     "section": "If a not empty set has lower bound, then it must have the unique inf.",
     "text": "If a not empty set has lower bound, then it must have the unique inf.\n\nMethod 1: same as before.\n\n\nMethod 2: Based on before.\nSuppose We choose \\(m\\) as a lower bound of \\(E\\). \\[\n\\begin{aligned}\n& \\Rightarrow \\forall x \\in E, x \\geqslant m,-x \\leqslant-m \\text {. } \\\\\n& \\text { Let } F=\\{-x \\mid x \\in E\\} \\text {. } \\\\\n& \\Rightarrow \\beta=\\sup F \\\\\n& \\Rightarrow-x \\leqslant \\beta, x \\geqslant-\\beta \\text {. } \\\\\n& \\forall \\varepsilon&gt;0, \\exists-d \\in E,-d&gt;\\beta-\\varepsilon, \\\\\n& \\Rightarrow d&lt;-\\beta+\\varepsilon \\\\\n& \\Rightarrow-\\beta=\\inf E\n\\end{aligned}\n\\] \\[\n\\Rightarrow-\\sup (-E)=\\operatorname{inf} E \\text {. }\n\\]\n\n\nMethod 3 more generalized than Method 2’s conclusion (if c is negative then inf(cA)=csupA)\nIn fact, If \\(c&lt;0\\), then \\(\\sup (cA)=\\operatorname{cinf} A, \\inf (c A)=\\operatorname{csup} A\\). (and in particular. sup \\((-B)=-\\) inf \\(B\\) )\nSince if M=supA, \\(\\forall x\\in A,x\\leq M,cx\\geq cM\\), which indicates that cM is the lower bound of cX.\nSo, \\(cA\\) has lower bound ( \\(s\\) )if and only if \\(A\\) has upper bound(s).(inverse, also true) \\(cA\\) is not empty if and only if A is not empty.\nSo, cA has \\(\\inf (cA)\\) if and only if \\(A\\) has supA \\[\n\\begin{aligned}\n& \\forall c x \\in C A, c x \\geqslant c M \\\\\n& \\text { if } \\exists c M', \\forall c x \\in c A, c x \\geqslant c M^{\\prime}, c M^{\\prime}&gt;c M, \\\\\n& X \\leq M^{\\prime}, M^{\\prime}&lt;M(\\forall x \\in A)\n\\end{aligned}\n\\]\nContradicting to the condition that \\(M=\\sup A\\)\nSo \\(\\nexists C M^{\\prime}\\) So cM is the largest lower bound \\[\n\\begin{aligned}\n& \\text { so } c M=\\inf (c A) \\\\\n& \\text { so } c\\sup A=\\inf (c A)\n\\end{aligned}\n\\]"
   },
   {
     "objectID": "Mathematical Analysis 1.html#exercise-12s-sup",
     "href": "Mathematical Analysis 1.html#exercise-12s-sup",
-    "title": "Analysis1",
+    "title": "Analysis1 and Analysis 2",
     "section": "exercise: (1,2]’s sup–",
     "text": "exercise: (1,2]’s sup–\n\nMethod 1\n\n2 is an upper bound of [1,2) (obviously)\nif \\(\\exists \\varepsilon&gt;0\\), s.t \\(2-\\varepsilon\\) is also an upper bound of \\([1,2)\\) \\[\n\\begin{aligned}\n& \\because 1 \\in[1,2) \\\\\n& \\therefore2-\\varepsilon \\geqslant 1\n\\end{aligned}\n\\] choose \\(2-\\frac{\\varepsilon}{2} \\in(2-\\varepsilon, 2)\\) Then \\(2-\\frac{\\varepsilon}{2} \\in[1,2)\\) So \\(\\exists\\left(2-\\frac{\\varepsilon}{2}\\right) \\in[1,2)\\) while \\(\\left(2-\\frac{\\varepsilon}{2}\\right)&gt;(2-\\varepsilon)\\) So \\(2-\\varepsilon\\) is not an upper bound, contradicting to the suppose. So we have proved that 2 is the smallest upper bound, i.e. \\(\\sup [1,2)=2\\).\n\n\n\nMethod 2\n\n2 is an upper bound of [1,2) (obviously)\n\\(\\forall \\varepsilon&gt;0, \\exists b \\in[1,2)\\) with \\(b&gt;2-\\varepsilon\\). We can take \\(b=\\max \\left\\{2-\\frac{\\varepsilon}{2}, 1\\right\\}\\)."
   },
   {
     "objectID": "Mathematical Analysis 1.html#exercise-supcsupabsupasupb-from-professor-a-kun",
     "href": "Mathematical Analysis 1.html#exercise-supcsupabsupasupb-from-professor-a-kun",
-    "title": "Analysis1",
+    "title": "Analysis1 and Analysis 2",
     "section": "exercise: supC=sup(A+B)=supA+supB from Professor A Kun",
     "text": "exercise: supC=sup(A+B)=supA+supB from Professor A Kun\n\\[\n\\begin{array}{rl}\n\\text { if } A\\subset R,  B\\subset R, \\text { define: } \\\\\nC  :=A+B=\\{z \\in R: z=x+y, x \\in A, y \\in B\\} \\\\\nD  :=A-B=\\{z \\in R: z=x-y, x \\in A, y \\in B\\}\n\\end{array}\n\\] show that \\[\n\\begin{aligned}\n& \\text { (1) } \\sup C=\\sup (A+B)=\\sup A+\\sup B \\\\\n& \\text { (2) } \\sup D=\\sup (A-B)=\\sup A-\\inf B\n\\end{aligned}\n\\] (1) Proof:: Obviously,\\(C\\) has upper bounds if and only if \\(A\\) and \\(B\\) have upper bounds, and \\(C\\) is not empty. So \\(C\\) has sup C if and only if and only if \\(A\\) has sup \\(A\\) and \\(B\\) has sup \\(B\\). (Completeness axiom).\n\nprove: \\(\\sup C \\leqslant \\sin A+\\sup B\\). \\[\n\\because x+y \\leqslant \\sup A+\\sup  B\n\\] \\(\\therefore(\\operatorname{sip} A+\\sup B)\\) is an upper bound of \\(C\\) \\[\n\\therefore \\sin C \\leqslant \\sin A+\\sup B\n\\]\nProve : \\(\\sup C \\geqslant \\operatorname{supA}+\\) sup B \\[\n\\begin{aligned}\n& \\because \\forall \\varepsilon&gt;0, \\exists x \\in A, y \\in B \\text {, s.t. } \\\\\n& \\operatorname{sup} A-\\varepsilon&lt;x, \\operatorname{sup} B-\\varepsilon&lt;y . \\\\\n& \\Rightarrow \\sup A+\\sup B-2 \\varepsilon&lt;x+y \\\\\n& \\text { i.e. }(\\operatorname{sup} A+\\sup B-2 \\varepsilon)_{\\text {max }}&lt;(x+y)_{\\text {max }}\n\\end{aligned}\n\\]\n\nSince \\(x+y \\leq\\) sup c We have \\(\\sup A+\\sup B-2 \\varepsilon&lt;\\sup c, \\forall \\varepsilon&gt;0\\) \\[\n\\begin{aligned}\n& \\text { i.e. } \\operatorname{(sup} A+\\sup B-2 \\varepsilon)_{\\text {max }}&lt;\\sup C \\\\\n\\end{aligned}\n\\]\nWe. As \\(\\varepsilon \\rightarrow 0\\), We have \\(\\operatorname{sup} A+\\sup B \\leqslant \\operatorname{} \\operatorname{sup} C\\) So, we have \\(\\operatorname{Sup} C=\\operatorname{Sup} A+\\operatorname{Sup} B\\). Then, we have \\(\\sup D=\\sup (A-B)\\) \\[\n\\begin{aligned}\n& =\\sup (A+(-B)) \\\\\n& =\\sup A+\\sup (-B) \\\\\n& =\\sup A-\\inf B\n\\end{aligned}\n\\] (We have proved \\(\\sup (-B)=-\\inf B\\) before)\n\nanother example\n Let M ∈ R and A, B be two bounded, negative subsets of R,0 &lt; x, y &lt; M, ∀x ∈ A, y ∈ B\nwhen we are proving sup C = sup(AB) = sup A · sup B\nOn the other hand, from the definition of $a^*$ and $b^*, \\forall \\epsilon&gt;0$ there exist $a \\in A$ and $b \\in B$ such that\n\\[\na^*-\\epsilon&lt;a&lt;a^* \\quad \\text { and } \\quad b^*-\\epsilon&lt;b&lt;b^*\n\\]\nThen \\[\n\\left(a^*-\\epsilon\\right)\\left(b^*-\\epsilon\\right)&lt;a b \\leqslant a^* b^*\n\\] or ignoring \\(\\epsilon^2\\) term (If ε &gt; 0, then ε, 3ε, ε², ε⁵, they all represent “any number greater than zero”, and ε’ also represents any number greater than zero, so they are equivalent, that is, we can say that they are equal to ε’.) \\[\na^* b^*-(a+b) \\epsilon=a^* b^*-\\epsilon^{\\prime}&lt;a b \\leq c^*\n\\]\nThis is true for all \\(\\epsilon^{\\prime}&gt;0\\), so \\[\n\\sup A \\sup B=a^* b^* \\leq c^*=\\sup C\n\\]\nCombining the above two inequalities, we can conclude that \\(\\sup A \\sup B=\\) \\(\\sup C\\). ## an exercise about think good Archimedean number from Professor Andrew Lin(A Kun)\n\nConsider the set \\[\nA=\\left\\{\\left.(-1)^n\\left(1-\\frac{1}{n}\\right) \\right\\rvert\\, n \\in \\mathbb{Z}^{+}\\right\\} .\n\\]\n\n\nShow that 1 is an upper bound for \\(A\\).\nShow that if \\(d\\) is an upper bound for \\(A\\), then \\(d \\geq 1\\).\nUse (a) and (b) to show that \\(\\sup A=1\\). [Solution]:\nWe will show that for any \\(x \\in A, x \\leq 1\\). Since \\(x \\in A\\), then \\(x=(-1)^n(1-\\) \\(1 / n\\) ) for some \\(n \\in \\mathbb{Z}^{+}\\). Since \\(\\frac{1}{n}&gt;0\\), then \\(1-\\frac{1}{n}&lt;1\\). We argue our desired inequality in two cases. If \\(n\\) is even, then \\(x=(-1)^n(1-1 / n)=1-1 / n&lt;1\\). If \\(n\\) is odd, then \\(x=(-1)^n(1-1 / n)=-1+1 / n&lt;0&lt;1\\). In either case, \\(x \\leq 1\\) (in fact, \\(x&lt;1\\) ) and 1 is an upper bound for \\(A\\).\nLet \\(d\\) be an upper bound for \\(A\\). Thus, \\((-1)^n(1-1 / n) \\leq d\\) for all \\(n \\in \\mathbb{Z}^{+}\\). Assume, to the contrary that \\(d&lt;1\\). Thus, \\(1-d&gt;0\\). By the Archimedean Property, there exists an \\(n \\in \\mathbb{Z}^{+}\\)such that \\(1&lt;(1-d) n\\). Since \\(n&gt;0\\), we can rewrite this as \\(\\frac{1}{n}&lt;1-d\\), which is equivalent to \\(d&lt;1-\\frac{1}{n}\\). If \\(n\\) is even, then \\((-1)^n=1\\) and we have that \\[\nd&lt;(-1)^n\\left(1-\\frac{1}{n}\\right) \\in A\n\\] contradicting the fact that \\(d\\) is an upper bound. If \\(n\\) is odd, then consider instead \\(n+1\\), which is even. Then, \\((-1)^{n+1}=1\\) and \\[\nd&lt;1-\\frac{1}{n}&lt;(-1)^{n+1}\\left(1-\\frac{1}{n+1}\\right) \\in A\n\\]\n\nThis again contradicts that \\(d\\) is an upper bound for \\(A\\). Either way, we reach a contradiction and therefore conclude that \\(d \\geq 1\\).\n\nobviously\n\nlower bound + inequaility —smallest upper bound—sup"
   },
   {
     "objectID": "Mathematical Analysis 1.html#another-exercise-about-another-episilon-from-professor-a-kun",
     "href": "Mathematical Analysis 1.html#another-exercise-about-another-episilon-from-professor-a-kun",
-    "title": "Analysis1",
+    "title": "Analysis1 and Analysis 2",
     "section": "another exercise about another episilon from Professor A Kun",
     "text": "another exercise about another episilon from Professor A Kun\n\nFind the least upper bound for the following set and \\[\nA=\\left\\{\\frac{1}{2}, \\frac{2}{3}, \\frac{3}{4}, \\cdots, \\frac{n}{n+1}, \\cdots\\right\\}\n\\] [Solution]: We note that every element of \\(A\\) is less than 1 since \\[\n\\frac{n}{n+1}&lt;1, \\quad n=1,2,3, \\cdots\n\\]\n\nWe claim that the least upper bound is \\(1, \\sup A=1\\). Assume that 1 is not the least upper bound. Then there is an \\(\\epsilon&gt;0\\) such that \\(1-\\epsilon\\) is also an upper bound. However, we claim that there is a natural number \\(n\\) such that \\[\n1-\\epsilon&lt;\\frac{n}{n+1}\n\\]\nThis inequality is equivalent to the following sequence of inequalities \\[\n1-\\frac{n}{n+1}&lt;\\epsilon \\quad \\Longleftrightarrow \\quad \\frac{1}{\\epsilon}-1&lt;n\n\\]\nReversing the above sequence of inequalities shows that if \\(n&gt;\\frac{1}{\\epsilon}-1\\), then \\(1-\\epsilon&lt;\\frac{n}{n+1}\\) showing that \\(1-\\epsilon\\) is not an upper bound for \\(A\\).\n(if n &gt; 1/ \\(\\epsilon\\)-1, \\(\\nexists \\epsilon\\) s.t. 1-\\(\\epsilon\\) is an upper bound, contradicting to our suppose)\nThis verifies our answer."
   },
   {
     "objectID": "Mathematical Analysis 1.html#prove-cantor-nested-interval-property",
     "href": "Mathematical Analysis 1.html#prove-cantor-nested-interval-property",
-    "title": "Analysis1",
+    "title": "Analysis1 and Analysis 2",
     "section": "Prove Cantor Nested Interval Property",
     "text": "Prove Cantor Nested Interval Property\nProve:\n\n\\(\\exists c \\in\\) all closed internals\n\ni.e. if the non-empty closed intervals \\(I_1 \\supset I_2 \\supset I_3 \\cdots, \\exists c \\in R\\), s.t. \\(c\\in I_i, \\forall i \\in \\mathbb{N}\\), \\(c \\in\\) \\(\\bigcap_{i=1}^{\\infty} I_i\\)\n\nIf the limit of the lengths of these intervals are 0 then the point is unique\n\ni.e. if\\(\\left|I_n\\right| \\rightarrow 0\\), c is unique\n\n\n\\[\n\\forall \\varepsilon&gt;0, \\exists I_n(|I_n| &lt; \\varepsilon) \\Rightarrow c \\text { ! }\n\\]\nProof:\n\nproof of 1\n\n\\(I_1=[a_1, b_1]\\)\nclaim \\(\\forall I_n=[a_n, b_n], I_m=[a_m, b_m]\\) i.e. \\(a_n \\leq b_m\\)\n(if \\(a_n&gt;b_m\\), then \\(a_m \\leq b_m&lt;a_n&lt;b_n\\), which means they are separate internals without any intersection.) \\[\n\\begin{aligned}\n&\\text { Let } X=\\left\\{a_n\\right\\} (\\text { left endpoint set) } \\\\\n&\\text { Let } Y=\\left\\{b_m\\right\\}(\\text { right endpoint set) } \\\\\n& \\forall a_n \\in X, \\forall b_m \\in Y, a_n \\leq c\\leq b_m\n\\end{aligned}\n\\] \\(\\Rightarrow \\exists c \\in \\mathbb{R}\\), s.t., \\(\\forall a_n \\in X\\) \\(\\forall b_m \\in Y,a_n\\leqslant b_m\\).(completeness axiom) We then let \\(m=n \\Rightarrow c \\in I_n\\)\n\nproof of 2\n\nBased on “Any implication is equivalent to its contrapositive”\n\\[\n\\begin{aligned}\n& \\text { if } \\exists c_1&lt;c_2, \\text { s.t. } c_1, c_2 \\in I_n, \\\\\n& \\forall n \\in \\mathbb{R}, a_n \\leqslant c_1&lt;c_2 \\leqslant b_n, \\\\\n& \\Rightarrow\\left|I_n\\right|=b_n-a_n \\geqslant c_2-c_1\n\\end{aligned}\n\\]\nWe then choose \\(\\varepsilon=\\frac{c_2-c_1}{2}&gt;0\\)\nthen there exists no \\(I_n\\) s.t. \\(\\left|I_n\\right|&lt;\\varepsilon\\), since\n\\(|I_n|\\geqslant c_2-c_1 \\geqslant \\frac{c_2-c_1}{2}\\)\nSo if \\(\\exists I_n s. t .\\left|I_n\\right|&lt;\\varepsilon\\), \\(c!\\)"
   },
   {
     "objectID": "Mathematical Analysis 1.html#prove-finite-covering-lemma",
     "href": "Mathematical Analysis 1.html#prove-finite-covering-lemma",
-    "title": "Analysis1",
+    "title": "Analysis1 and Analysis 2",
     "section": "prove finite covering lemma",
     "text": "prove finite covering lemma\nProve：Finite Covering Lemma \\[\n\\begin{gathered}\n\\text { Def: } S:=\\{X\\}, \\text { ( } x \\text { is a set) } \\\\\nY \\subset \\bigcup_{X \\in S} X\n\\end{gathered}\n\\]\nWe say. \\(S\\) is a cover of \\(Y\\). \\[\n\\text { i.e. } \\forall y \\in Y, \\exists X \\in S,(y \\in X)\n\\]\nFinite Covering Lemma:\nIf \\(I:[a, b]\\), \\[\nI \\subset \\bigcup_{n \\in I} U_n, U_n=\\left(\\alpha_n, \\beta_n\\right)\n\\] \\(\\exists U_1, \\cdots U_k\\), s.t., \\(I\\subset \\bigcup_{i=1}^k U_i\\)\n（Summray of Finite Covering Lemma: A closed internal can be covered by finite number of open internals）\nproof:\nsuppose \\(I=[a, b]\\) could not be coverd by finite number open intervals:\nThen we use the method of bisection to separate I,s.t.\n\\[\n\\begin{aligned}\n& I=I_1 \\supset I_2 \\supset I_3 \\cdots I_n \\supset \\cdots \\text { ( all In can not be covered } \\\\\n& \\left|I_n\\right|=\\frac{b-a}{2^n} \\rightarrow 0 \\\\\n& \\text { Gover) } \\\\\n& \\Rightarrow \\exists: C \\in \\bigcap_{i=1}^{\\infty} I_i \\text { (Cantor Nested Interral Property) } \\\\\n& c_i\\in[a_i,b_i]\\\\\n& \\Rightarrow C\\in I\\subset \\bigcup U_i\\text {(based on the given condition of the proof problem)}\\\\\n& \\Rightarrow \\exists U=[\\alpha,\\beta],s.t.c\\in U，let ：\\varepsilon =min[c-\\alpha,\\beta-c]\\\\\n& \\Rightarrow I_n\\subset U\n\\end{aligned}\n\\]\n\nwhich indicates that at least this \\(I_n\\) is covered by U, contradicting to the suppose.\nso the finite covering lemma is true."
   },
   {
     "objectID": "Mathematical Analysis 1.html#statement",
     "href": "Mathematical Analysis 1.html#statement",
-    "title": "Analysis1",
+    "title": "Analysis1 and Analysis 2",
     "section": "statement",
     "text": "statement\np\n\n—An assertion that is either true or false but not both\ne.g.\n\nNegation of a statement p is a statement which means the opposite of P\n~p—-read “not p”\n\n\nQuantifiers\nall, every, each,no(none)—universal quantifiers\nsome,there exists, there is at least on, etc.—existential quantifiers\nP: some a’s are b’s\n~P: all a’s are not b’s/ no a’s are b’s\nP: some a are not b\n~p: all a are b\n\n\nTruth table: give the truth values of related statements in all possible cases\n(relevant to boolean in computer science)\n# Example of boolean logic in a program\nis_raining = True\nhas_umbrella = False\n\nif is_raining and not has_umbrella: # which is the only situation that implication fails\n    print(\"You need an umbrella!\")\nelse:\n    print(\"You're good to go!\")\ncompound statement: combining several statements via logical operations\nConjunction: p^q. p and q\nDisjunction: p v q–p or q\none of them is true, p v q is true, so we only need to decide if oe of them is true, if it is, the p v q is true\np V (~p) is always true\na statement that is always true is called a tautology"
   },
   {
     "objectID": "Mathematical Analysis 1.html#p101.4",
     "href": "Mathematical Analysis 1.html#p101.4",
-    "title": "Analysis1",
+    "title": "Analysis1 and Analysis 2",
     "section": "P10,1.4",
     "text": "P10,1.4\nEquivalence of statements: Two statements are logically equivalent, if they have the same truth values in all possible situations.\n\\(A\\equiv B\\)\n‘abstract non-sense’\nThem(De Morgan’s laws)\nA,B\n\\(\\sim (A \\land B) \\equiv (\\sim A) \\lor (\\sim B)\\)\n\\(\\sim (A \\lor B) \\equiv (\\sim A) \\land (\\sim B)\\)\ndraw truth table to look at values\n交的话（and），都T才T；并的话（or），1T则T\nConditional:\nIf p(hypothesis/assumption/condition), then q(conclusion/consequence/result).\nread: p implies q/assume p, then q.\nkey point: the implication is False when the rule is broken\n\\[\n\\begin{array}{|c|c|c|}\n\\hline\nA & B & A \\rightarrow B \\\\\n\\hline\nT & T & T \\\\\nT & F & F \\\\\nF & T & T \\\\\nF & F & T \\\\\n\\hline\n\\end{array}\n\\] Def: p, q,p–&gt;q\n1)Converse: q—&gt;p,i.e. if q, then p\n2)Contrapositive: (q)–&gt;(p), i.e. if not q, then not p\nProp: (p–&gt;q)\\(\\equiv\\) ((q)–&gt;(p))(a statement and its contrapositive are logically equivalent) \\[\n\\begin{array}{|c|c|c|c|c|c|c|}\n\\hline\np & q & \\sim p & \\sim q & p \\rightarrow q & \\sim q \\rightarrow \\sim p & (p \\rightarrow q) \\equiv (\\sim q \\rightarrow \\sim p) \\\\\n\\hline\nT & T & F & F & T & T & T \\\\\nT & F & F & T & F & F & T \\\\\nF & T & T & F & T & T & T \\\\\nF & F & T & T & T & T & T \\\\\n\\hline\n\\end{array}\n\\]\n(always remember: implication fails only when the rule brokens instead of……(others))\nProof by contradiction: we want to prove p—&gt;q, we prove (q)—-&gt;(p) instead\nproof: Assume ~q, if , then if , then … –&gt; ~p, which is contradict to the original assumption p\n   Hence the assumption ~q is false, i.e. q is true.#\n   \ne.g.: n is a natural number. Prove that if n^2 is divisible by 2(p), then n is divisible by 2(q).\nProof: Assume that n is not divisible by 2(~q),—&gt; n is odd(defination), i.e. n =2k+1,k\\(\\in Z\\)\n—&gt; n^2 =(2k+1)^2(multiplicaiton)=2()+1, which is odd\n—&gt; n^2 is not divisible by 2(~p),\nThus the aassumption that n is not divisible by 2 is false so n is divisible by 2.#\nbiconditional: p,q,\n(p–&gt;q)\\(\\land\\)(q—&gt;p)—p &lt;–&gt; q—-reads‘p if and only if q’.\nstatement converse\n\\[\n\\begin{array}{|c|c|c|c|c|}\n\\hline\np & q & p \\rightarrow q & q \\rightarrow p & p \\leftrightarrow q \\\\\n\\hline\nT & T & T & T & T \\\\\nT & F & F & T & F \\\\\nF & T & T & F & F \\\\\nF & F & T & T & T \\\\\n\\hline\n\\end{array}\n\\]\nThem.: the only case p&lt;–&gt;q is true is then both p and q ture or false"
   },
   {
     "objectID": "Mathematical Analysis 1.html#proposition",
     "href": "Mathematical Analysis 1.html#proposition",
-    "title": "Analysis1",
+    "title": "Analysis1 and Analysis 2",
     "section": "proposition",
     "text": "proposition\n$x,yQ $, x is less than y, \\(\\exists z\\in Q\\) s.t. x&lt;z&lt;y.\nproof: \\(x,y\\in Q, x&lt;y\\),x=m/n,x=p/q,z=x+y/2\\(\\in\\)(x+x/2,y+y/2),i.e.x&lt;z&lt;y,z=pn+mq/2qn\\(\\in \\mathbb Q\\) by defination."
   },
   {
     "objectID": "Mathematical Analysis 1.html#russel-paradox",
     "href": "Mathematical Analysis 1.html#russel-paradox",
-    "title": "Analysis1",
+    "title": "Analysis1 and Analysis 2",
     "section": "Russel paradox",
     "text": "Russel paradox\nlet R be the set of all sets that are not a member of themself. i.e.R={S|S\\(\\notin\\)S}\nso if \\(R\\in R\\),R\\(\\notin\\) R\nif \\(R\\notin R\\), R\\(\\in R\\)\nif \\(x\\in A\\),then \\(x\\in B\\) is the subset defination of A \\(\\subseteq\\) B.\nif \\(A\\subset B\\), A is a proper subset of B. i.e. \\(A\\subset B\\) if \\(A\\subseteq B\\) and \\(\\exists x\\in B\\), s.t. \\(x\\notin\\) A\n\\(N\\subset Z \\subset Q \\subset R\\)"
   },
   {
     "objectID": "Mathematical Analysis 1.html#proposition-1",
     "href": "Mathematical Analysis 1.html#proposition-1",
-    "title": "Analysis1",
+    "title": "Analysis1 and Analysis 2",
     "section": "Proposition",
     "text": "Proposition\nthe empty set is a subset of any set\nproof:\nmethod1: (truth table)\nmethod2:"
   },
   {
     "objectID": "Mathematical Analysis 1.html#def-1",
     "href": "Mathematical Analysis 1.html#def-1",
-    "title": "Analysis1",
+    "title": "Analysis1 and Analysis 2",
     "section": "Def",
     "text": "Def\nthe complement of A is denoted by \\(A^c\\)\nthe intersection \\(A \\cap B\\)\nthe union \\(A \\cup B\\)"
   },
   {
     "objectID": "Mathematical Analysis 1.html#countability-and-bijections",
     "href": "Mathematical Analysis 1.html#countability-and-bijections",
-    "title": "Analysis1",
+    "title": "Analysis1 and Analysis 2",
     "section": "Countability and Bijections",
     "text": "Countability and Bijections\nCountable Set: A set is said to be countable if it is either finite or has the same size (cardinality) as the set of natural numbers \\(\\mathbb{N}\\). A set is countably infinite if there exists a bijection (a one-to-one correspondence) between that set and \\(\\mathbb{N}\\).\nUncountable Set: A set is uncountable if no such bijection exists, meaning its cardinality is strictly greater than that of \\(\\mathbb{N}\\).\nBijection: A bijection between two sets \\(A\\) and \\(B\\) is a function \\(f: A \\to B\\) that is both injective (one-to-one) and surjective (onto).\n\nThe Problem: Showing that \\(\\mathcal{P}(\\mathbb{N})\\) is Uncountable\n\nmethod 1: Consider the set \\(A = \\{ n \\in \\mathbb{N} \\mid n \\notin f(n) \\}\\), f : N → P(N).\nwe should prove it is not a bijection. so we could prove it is not surjective (P(N) is much bigger than N).\nnow we ask if f is surjective:\nIf yes, there exists \\(n_0\\in N\\) s.t. f\\((n_0)=\\)A, A\\(\\subset\\)N while A \\(\\in\\) P(N)\nnow we ask: Does \\(n_o\\in f(n_0)\\)\n\nif yes, \\(n_0\\notin A=f(n_0)\\)\nif no, \\(n_0\\in A=f(n_0)\\)\n\n(or we discuss the set, we suppose x is in A and based on the condition of being in set A we get A is empty, which is contradicts to “x is in A”)\nso f is not surjective, which means f could not be bijective. so p(N) is uncountable.\n\neg of a bijection between 2 sets(namely 2 sets with the same size)\n\nN-&gt;Z\nn|-&gt;n/2 if n even\nn|-&gt; n+1/2 if n odd\n\n\n\n\nan eg question-Logical Puzzle on Truth of Statements relavent to truth table\nConsider the following 99 statements:\n\n\\(S_1\\): “Among these 99 statements, there is at most one true statement.”\n\\(S_2\\): “Among these 99 statements, there are at most two true statements.”\n…\n\\(S_{99}\\): “Among these 99 statements, there are at most 99 true statements.”\n\nThe goal is to determine which statements among these 99 are true.\n(hint:Consider the chain of implications from statement \\(S_n\\) to \\(S_{n+1}\\). Which statement implies which? )\nsol: we fail the hypothesis of \\(S_{n+1}\\Rightarrow S_n\\)，but because\n\\[\n\\begin{array}{|c|c|c|}\n\\hline\nS_n & S_{n+1} & S_n \\Rightarrow S_{n+1} \\\\\n\\hline\nT & T & T \\\\\nT & F & F \\\\\nF & T & T \\\\\nF & F & T \\\\\n\\hline\n\\end{array}\n\\]\nThus, we conclude that the truth of \\(S_n\\) implies the truth of all subsequent statements \\(S_{n+1}\\).\n)\n\\[\nS_n \\Rightarrow S_{n+1}\n\\] so there exists an \\(S_n\\), after which are true while before which are false.\nso:There are \\(100 - n\\) true statements.\n\\[\n100 - n \\leq n \\implies n \\geq 50\n\\]\nThere are \\(n - 1\\) false statements.\n\\[\nn - 1+1\\leq 100 - n \\implies n \\leq 50\n\\] so The 50th statement \\(S_{50}\\) is true. Statements \\(S_1\\) to \\(S_{49}\\) are false, and statements \\(S_{50}\\) to \\(S_{99}\\) are true."
   },
   {
     "objectID": "Mathematical Analysis 1.html#cardinality",
     "href": "Mathematical Analysis 1.html#cardinality",
-    "title": "Analysis1",
+    "title": "Analysis1 and Analysis 2",
     "section": "Cardinality",
     "text": "Cardinality\n\nnumebr of elements in a finite set: Def: let A be a set, if A contains finitely many elements, then the number of elements of A is called the cardinality of A, denoted by |A|(|A|\\(\\in Z_{\\geq0}\\)\nA, B have infinitely many elements. If \\(\\exists f:A-&gt;B\\) is a bijective map, then we regard the A, B have the same “cardinality”, i.e.|A|=|B|"
   },
   {
     "objectID": "Mathematical Analysis 1.html#a-x-bcartesian-product",
     "href": "Mathematical Analysis 1.html#a-x-bcartesian-product",
-    "title": "Analysis1",
+    "title": "Analysis1 and Analysis 2",
     "section": "A x B–Cartesian product",
     "text": "A x B–Cartesian product\n\neg\n|A|=3, |B|=2, |A x B|=6"
   },
   {
     "objectID": "Mathematical Analysis 1.html#map",
     "href": "Mathematical Analysis 1.html#map",
-    "title": "Analysis1",
+    "title": "Analysis1 and Analysis 2",
     "section": "map",
     "text": "map\nQuestion from the Cardinality:\nWhat happens if A has infinitely many elements?\nDef: LEt A and B be 2 sets, A map(function)f: A–&gt;B assigns each element in A\nthere has 3 kinds of maps(see 107)\n\neg\nthe graph of f(x) in A x B is f: A–&gt; B(x \\(\\in A\\),y\\(\\in B\\))"
   },
   {
     "objectID": "Mathematical Analysis 1.html#inverse-defination",
     "href": "Mathematical Analysis 1.html#inverse-defination",
-    "title": "Analysis1",
+    "title": "Analysis1 and Analysis 2",
     "section": "inverse defination",
     "text": "inverse defination\nif f is a bijective map, so as \\(f^{-1}\\)."
   },
   {
     "objectID": "Mathematical Analysis 1.html#countable",
     "href": "Mathematical Analysis 1.html#countable",
-    "title": "Analysis1",
+    "title": "Analysis1 and Analysis 2",
     "section": "countable",
     "text": "countable\n\nA set A is called countable if A iseither a finite set of there exists a bijective map f: A to N.(Otherwise is uncountable)\n\n\neg\n\n\\(B=[x|x=2n,n\\in N\\) is countable\n\nproof: for x|–&gt;x/2 of B–&gt;N i) injective , $x_1 $ not = \\(x_2\\), f(x_1)=x/2, = f(x_2)\n   ii) surjective, $\\forall y\\in N $, $\\exists x\\in B$ s.t. ,f(2y)=x, $2y\\in B$\n   \n   so bijective\n   \n\nZ is countable (负无穷到正无穷范围内的整数)\n\nf:N–&gt;Z(n|–&gt;n/2 if even, 1-n/2 if odd)\nn|–&gt;n/2 if even makes the positive integer possible\n1-n/2 if odd makes negative integer possible\nand both of them are bijections\nso Z is countable"
   },
   {
     "objectID": "Mathematical Analysis 1.html#triangle-inequality-is-a-strong-tool",
     "href": "Mathematical Analysis 1.html#triangle-inequality-is-a-strong-tool",
-    "title": "Analysis1",
+    "title": "Analysis1 and Analysis 2",
     "section": "triangle inequality is a strong tool",
     "text": "triangle inequality is a strong tool\n\\[\n\\begin{aligned}\n& \\lim _{x \\rightarrow \\infty}\\left|\\frac{\\frac{11}{x}-\\frac{9}{x^2}}{25+\\frac{35}{x}+\\frac{6}{x^2}}\\right| \\\\\n& |25+\\frac{35}{x}+\\frac{10}{x^2}\\left|=\\left|25-\\left(\\frac{35}{-x}-\\frac{10}{x^2}\\right)\\right|\\right. \\\\\n& \\left.\\geqslant|25|-| \\frac{35}{x}+\\frac{10}{x^2} \\right\\rvert\\\\ \\\\\n& \\geqslant 25-\\left|\\frac{35}{x}\\right|-\\left|\\frac{10}{x^2}\\right|\\\\\n& \\forall x&gt;10 \\\\\n\\end{aligned}\n\\] \\[\n25-| \\frac{35}{x}\\left|-\\left|\\frac{10}{x^2}\\right|&gt;25-\\left(\\frac{35}{10}+\\frac{10}{10^2}\\right)=M_1\\right.\n\\] Take \\(M_2=\\frac{22}{M_1 \\varepsilon}, \\forall|x|&gt;\\frac{22}{M_1 \\varepsilon},\\left|\\frac{11}{x}\\right|&lt;\\frac{M_1 \\varepsilon}{2}\\) Take \\(M_3=\\sqrt{\\frac{18}{m_1 \\varepsilon}}, \\forall|x|&gt;\\sqrt{\\frac{18}{m_1 \\varepsilon}},\\left|\\frac{9}{x^2}\\right|&lt;\\frac{m_1 \\varepsilon}{2}\\) \\[\n\\left|\\frac{11}{x}-\\frac{9}{x^2}\\right|&lt;\\left|\\frac{11}{x}\\right|+\\left|\\frac{9}{x^2}\\right|\n\\]\nSo Take \\(M=m \\cdot a x\\left\\{10, \\frac{22}{M_1 a}, \\sqrt{\\frac{18}{m_1 \\varepsilon}}\\right\\}\\), we hame \\(\\forall \\varepsilon&gt;0, \\forall|x|&gt;m\\), such that…&lt;\\(\\epsilon\\)"
   },
   {
     "objectID": "Mathematical Analysis 1.html#understanding-deeplyexplain-by-myself",
     "href": "Mathematical Analysis 1.html#understanding-deeplyexplain-by-myself",
-    "title": "Analysis1",
+    "title": "Analysis1 and Analysis 2",
     "section": "understanding deeply(explain by myself…)",
     "text": "understanding deeply(explain by myself…)"
   },
   {
     "objectID": "Mathematical Analysis 1.html#proof-of-some-theroem",
     "href": "Mathematical Analysis 1.html#proof-of-some-theroem",
-    "title": "Analysis1",
+    "title": "Analysis1 and Analysis 2",
     "section": "proof of some theroem",
     "text": "proof of some theroem\n\nboring things(just practivce epsilon-delta language…)\n\n\\(\\lim _{x \\rightarrow a} f(x)=\\ell\\) if and only if \\(\\lim _{x \\rightarrow a^{+}} f(x)=\\lim _{x \\rightarrow a^{-}} f(x)=\\ell\\).\n\nNecessary Condition Let \\(f(x) \\rightarrow l\\) as \\(x \\rightarrow c\\).\nThen from the definition of the limit of a function: \\[\n\\forall \\epsilon&gt;0: \\exists \\delta&gt;0: 0&lt;|x-c|&lt;\\delta \\Longrightarrow|f(x)-l|&lt;\\epsilon\n\\]\nSo for any given \\(\\epsilon\\), there exists a \\(\\delta\\) such that: \\[\n0&lt;|x-c|&lt;\\delta\n\\] implies that: \\[\nl-\\epsilon&lt;f(x)&lt;l+\\epsilon\n\\]\nNow: \\[\n\\begin{array}{ll}\n& 0&lt;|x-c|&lt;\\delta \\\\\n\\leadsto \\quad & -\\delta&lt;-(x-c)&lt;0 \\\\\n& \\vee \\quad 0&lt;(x-c)&lt;\\delta \\\\\n\\leadsto \\quad & c-\\delta&lt;x&lt;c \\\\\n& \\vee \\quad c&lt;x&lt;c+\\delta\n\\end{array}\n\\]\nThat is: \\(\\forall \\epsilon&gt;0: \\exists \\delta&gt;0\\) :\n(1): \\(\\quad c-\\delta&lt;x&lt;c \\Longrightarrow\\|f(x)-l\\|&lt;\\epsilon\\)\n\n: \\(\\quad c&lt;x&lt;c+\\delta \\Longrightarrow\\|f(x)-l\\|&lt;\\epsilon\\)\n\nSo given that particular value of \\(\\epsilon\\), we can find a value of \\(\\delta\\) such that the conditions for both:\n(1): \\(\\quad f\\) tending to the limit \\(l\\) as \\(x\\) tends to \\(c\\) from the left\nand :\n\n: \\(\\quad f\\) tending to the limit \\(l\\) as \\(x\\) tends to \\(c\\) from the right.\n\nThus: \\[\n\\lim _{x \\rightarrow c} f(x)=l\n\\] implies that: \\[\n\\lim _{x \\rightarrow c^{-}} f(x)=l\n\\] and: \\[\n\\lim _{x \\rightarrow c^{+}} f(x)=l\n\\]\nSufficient Condition\nLet \\(f(x) \\rightarrow l\\) as \\(x \\rightarrow c^{-}\\)and \\(f(x) \\rightarrow l\\) as \\(x \\rightarrow c^{+}\\).\nThis means that:\n(1): \\(\\forall \\epsilon&gt;0: \\exists \\delta&gt;0: c-\\delta&lt;x&lt;c \\Longrightarrow|f(x)-l|&lt;\\epsilon\\)\nand :\n(2): \\(\\forall \\epsilon&gt;0: \\exists \\delta&gt;0: c&lt;x&lt;c+\\delta \\Longrightarrow|f(x)-l|&lt;\\epsilon\\)\nIn the same manner as above, the conditions on \\(\\delta\\) give us that: \\[\n\\begin{array}{ll}\n& c-\\delta&lt;x&lt;c \\\\\n\\wedge \\quad & c&lt;x&lt;c+\\delta \\\\\n& 0&lt;|x-c|&lt;\\delta\n\\end{array}\n\\]\nSo: \\[\n\\forall \\epsilon&gt;0: \\exists \\delta&gt;0: 0&lt;|x-c|&lt;\\delta \\Longrightarrow|f(x)-l|&lt;\\epsilon\n\\]\nThus: \\[\n\\lim _{x \\rightarrow c^{-}} f(x)=l\n\\] and: \\[\n\\lim _{x \\rightarrow c^{+}} f(x)=l\n\\] together imply that: \\[\n\\lim _{x \\rightarrow c} f(x)=l\n\\]"
   },
   {
     "objectID": "Mathematical Analysis 1.html#decimal-scale",
     "href": "Mathematical Analysis 1.html#decimal-scale",
-    "title": "Analysis1",
+    "title": "Analysis1 and Analysis 2",
     "section": "decimal scale",
     "text": "decimal scale\n\\(x=0.a_1a_2a_3...\\)\n[0,1]={\\(\\sum_{n=1}^\\infty a_n/10^n,n\\in{0,1,...9}\\)}\n# [0,1]=\\(10^{\\infty}\\)—(uncountable)\n|{\\(x_1\\)}|\\(\\subseteq (x_1-\\epsilon,x_1+\\epsilon), \\forall \\epsilon &gt;0\\) i.e.|{\\(x_1\\)}|=0"
   },
   {
     "objectID": "Mathematical Analysis 1.html#defination",
     "href": "Mathematical Analysis 1.html#defination",
-    "title": "Analysis1",
+    "title": "Analysis1 and Analysis 2",
     "section": "Defination",
     "text": "Defination"
   },
   {
     "objectID": "Mathematical Analysis 1.html#连续性用sup构造数列",
     "href": "Mathematical Analysis 1.html#连续性用sup构造数列",
-    "title": "Analysis1",
+    "title": "Analysis1 and Analysis 2",
     "section": "连续性+用sup构造数列",
     "text": "连续性+用sup构造数列"
   },
   {
     "objectID": "Mathematical Analysis 1.html#用sequential-criterion证明连续性取合适的epsilon来说明数列存在",
     "href": "Mathematical Analysis 1.html#用sequential-criterion证明连续性取合适的epsilon来说明数列存在",
-    "title": "Analysis1",
+    "title": "Analysis1 and Analysis 2",
     "section": "用sequential criterion证明连续性取合适的epsilon来说明数列存在",
     "text": "用sequential criterion证明连续性取合适的epsilon来说明数列存在\neg.\nA={1/2n} where n \\(\\in N\\)\nf(x)=0 when x \\(\\in[0,1]\\) and x is not in A\nf(x)=2x when x \\(\\in A\\)\n\nProve f is continuous at x when x \\(\\in[0,1]\\) and x is not in A\n\n\nnotice!!! Do not choose sequence convergent to a point that we want blindly, since there may exists no such sequence like that! For example, here, by the density of rational/irrational number, there exists no sequence composed by elements in A convergent to a point at [0,1]so we should think of another way to prove this—If b\\(\\in [0,1]\\A\\), then there is an n_0 such that$ 1/2(n_0+1)&lt;b&lt;1/2n_0,$ i.e. b\\(\\in (1/2(n_0+1),1/2n_0).\\) For any sequence $a_n $with $ lim_n a_n=b,$ there is an N&gt;0 such that \\(a_n\\in (1/2(n_0+1),1/2n_0).\\) ( It works as the following: We take an \\(\\epsilon=1/2 min{|1/2(n_0+1)-b|, |1/2n_0-b|}, then there exists an N.0 such that |a_n-b|&lt;\\epsilon.\\) ===&gt; when n&gt;N, a_n\\(\\in(b- \\epsilon, b+ \\epsilon)\\subset (1/2(n_0+1),1/2n_0) )\\) Notice that (1/2(n_0+1),1/2n_0) does not intersect with A. Therefore f(a_n)=0. lim_nf(a_n)=0=f(b). Hence f is continuous at b.\nmethod 1 sequential\nmethod 2\n\n\nProve f is not continuous at each point on A\n\n\nmethod 1 limit or \\(\\epsilon-\\delta\\)\nmethod 2 sequential creterion"
   },
@@ -1157,7 +1157,7 @@
   {
     "objectID": "Mathematical Analysis 1.html#eg-question-from-dr.-chi-kwong-fok-about-weirestrass-extream-value-thm-continuous-function-in-a-compact-set-attains-its-max-and-min",
     "href": "Mathematical Analysis 1.html#eg-question-from-dr.-chi-kwong-fok-about-weirestrass-extream-value-thm-continuous-function-in-a-compact-set-attains-its-max-and-min",
-    "title": "Analysis1",
+    "title": "Analysis1 and Analysis 2",
     "section": "eg question from Dr. Chi-Kwong Fok about Weirestrass-Extream Value THM (continuous function in a compact set attains its max and min)",
     "text": "eg question from Dr. Chi-Kwong Fok about Weirestrass-Extream Value THM (continuous function in a compact set attains its max and min)\nIf f is a continuous and non-surjective function and the supremum of it in [0,\\(+\\infty\\)] is not in its range. show that $&gt;0, x &gt; 0, z R z &gt; x, $\nFirstly, negate it: \\(\\exists \\epsilon_0 &gt;0,\\) s.t. \\(\\exists x_0 &gt;0, \\forall z \\in R\\) with z&gt;\\(x_0\\), f(z) $M-_0, $ where M is sup R(f) —(1)\nSecondly, write down the def of M is sup:\n\\(\\forall \\epsilon &gt;0, \\exists x\\in [0,+ \\infty],\\) s.t. f(x)&gt;\\(M-\\epsilon\\). Now take the global $$ to be \\(\\epsilon_0\\) —(2)\nBy (1) and (2) we know that \\(\\forall \\epsilon &gt;0, \\exists x\\in [0,x_0],\\) s.t. f(x)&gt;\\(M-\\epsilon\\) Now take the global $$ to be \\(\\epsilon_0\\)\nBy Weirestrass-Extream Value THM (continuous function in a compact set attains its max and min) we know it attains its maximum in [0,x_0]. Suppose this maximum is not the sup, then M=supR(f) &lt; its maximum, then by the IVP it must attain sup R(f) contradiction. =–also. —contradiction"
   },
