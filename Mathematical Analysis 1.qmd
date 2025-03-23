@@ -9,45 +9,78 @@ editor:
 
 # Now the content follows the time, not summary at all..
 
-# Write logically
+# Understand intuitively (Never memorize anything in math!)
 
+![](images/clipboard-120870201.png)
+
+# Write logically
 
 ### Each global expression should just appear once. When it has been introduced, we can regard it as a fixed thing and expand our proof behind logically.
 
 ### eg
 
-- Suppose $f$ is differentiable in $(c - \delta, c + \delta) \setminus \{c\}$ for some $\delta > 0$ with $\lim\limits_{x \to c} f'(x) = A$ exists, and $f$ is continuous at $c$. Show that $f'(c)$ exists and $f'(c) = A$ in the following two ways:
+-   Suppose $f$ is differentiable in
+    $(c - \delta, c + \delta) \setminus \{c\}$ for some $\delta > 0$
+    with $\lim\limits_{x \to c} f'(x) = A$ exists, and $f$ is continuous
+    at $c$. Show that $f'(c)$ exists and $f'(c) = A$ in the following
+    two ways:
 
-  - By applying Lagrange's Mean Value Theorem.
+    -   By applying Lagrange's Mean Value Theorem.
 
-  - By applying L'Hospital's Rule.
+    -   By applying L'Hospital's Rule.
+
+! Explain clearly how continuity of $f$ at $c$ is used in your argument
+in each case.
+
+-   proof:
+
+    Let ε \> 0. Since $lim_ {x→c} f'(x) = A$ there exists δ \> 0 such
+    that ∀x ∈ (c - δ', c + δ')  {c}, \|f'(x) - A\| \< ε (\*) .
+
+    Now, take x ∈ (c - δ', c + δ')  {c}.
+
+    We have that f is continuous on the closed interval between x and c
+    and differentiable on the open interval between x and c.
+
+    So by Lagrange's MVT we have ∃ξ between x and c s.t.
+
+    (f(x) - f(c)) / (x - c) = f'(ξ)
+
+    Hence, we have that
+
+    \|(f(x) - f(c)) / (x - c) - A\| \< ε by (\*) because \|f'(ξ) - A\|
+    \< ε.
+
+    Hence $lim_{x→c} (f(x) - f(c)) / (x - c) = A.$
+
+    i.e. f'(c) = A
+    
+    
+## All ways to distinguish whether it is uniformly continuous
+
+please fill this before your final exam!
 
 
-! Explain clearly how continuity of $f$ at $c$ is used in your argument in each case.
+### practice before my mid-term exam (my way to think that of question is like this)
+
+$f(x) = x^4$ is not uniformly continuous on $\mathbb{R}$.
+
+Choose $x_n = \sqrt[4]{n+1}$, $y_n = \sqrt[4]{n}$.
+
+Since $x^4$ is differentiable on $[n, n+1]$, by Lagrange's MVT,
+
+$$|x_n - y_n| = \frac{1}{4} \xi^{-\frac{3}{4}} (n+1-n), \text{ where } \xi \in (n, n+1)$$
+
+So $|x_n - y_n| = \frac{1}{4} \xi^{-\frac{3}{4}} < \frac{1}{4} n^{-\frac{3}{4}} = \frac{1}{4 \sqrt[4]{n^3}}$
+
+So $0 < |x_n - y_n| < \frac{1}{4 \sqrt[4]{n^3}}$
+
+So $\lim_{n \to \infty} |x_n - y_n| = 0$ by squeeze theorem
+
+So for $\varepsilon_0 = \frac{1}{2}$, by the definition of limit，$\forall \delta > 0$, $\exists m > 0$ s.t. for $n_0\in \mathbb{N} > m$, $|x_{n_0} - y_{n_0}| < \delta$ but $|f(x_{n_0}) - f(y_{n_0})| = 1 > \varepsilon_0 = \frac{1}{2}$,
 
 
-- proof:
-
-  Let ε > 0. Since $lim_ {x→c} f'(x) = A$ there exists δ > 0 such that ∀x ∈ (c - δ', c + δ') \ {c}, |f'(x) - A| < ε  (*) .
-
-  Now, take x ∈ (c - δ', c + δ') \ {c}.
-
-  We have that f is continuous on the closed interval between x and c and differentiable on the open interval between x and c.
-
-  So by Lagrange's MVT we have ∃ξ between x and c s.t.
-
-  (f(x) - f(c)) / (x - c) = f'(ξ)
-  
-
-  Hence, we have that
-  
-
-  |(f(x) - f(c)) / (x - c)   - A| < ε by (*) because |f'(ξ) - A| < ε.
-
-  
-  Hence $lim_{x→c} (f(x) - f(c)) / (x - c) = A.$
-  
-  i.e. f'(c) = A
+This satisfies the negation of the definition of "uniformly continuous".
 
 
 # Preface
@@ -1546,7 +1579,7 @@ f(x)=2x when x $\in A$
     at \[0,1\]\A so we should think of another way to prove this---If
     b$\in [0,1]\A$, then there is an n_0 such that\$
     1/2(n_0+1)\<b\<1/2n_0,\$ i.e. b$\in (1/2(n_0+1),1/2n_0).$ For any
-    sequence \$a_n \in [0,1] \$with \$ lim_n a_n=b,\$ there is an N\>0
+    sequence \$a_n \in \[0,1\] \$with \$ lim_n a_n=b,\$ there is an N\>0
     such that $a_n\in (1/2(n_0+1),1/2n_0).$ ( It works as the following:
     We take an
     $\epsilon=1/2 min{|1/2(n_0+1)-b|, |1/2n_0-b|}, then there exists an N.0 such that |a_n-b|<\epsilon.$
@@ -1564,8 +1597,6 @@ f(x)=2x when x $\in A$
 -   method 1 limit or $\epsilon-\delta$
 
 -   method 2 sequential creterion
-
-
 
 # Sup is different from limit -- an experience from final exam
 
@@ -1592,32 +1623,43 @@ plot(x, y, type = "l", col = "blue", lwd = 2,
 grid()
 ```
 
-its supremum exists, which is $\pi /2$, however, its limit does not exist.
+its supremum exists, which is $\pi /2$, however, its limit does not
+exist.
 
-Reason: for sup we only need one "existence of $x_0$" since it says $\forall n \in N$ $\exists x_0 \in R$ s.t. $M < f(x_0) <M+ \epsilon$
+Reason: for sup we only need one "existence of $x_0$" since it says
+$\forall n \in N$ $\exists x_0 \in R$ s.t. $M < f(x_0) <M+ \epsilon$
 
+but for the limit we need all x greater than a number that
+$|f(x) - M| < \epsilon$
 
-but for the limit we need all x greater than a number that $|f(x) - M| < \epsilon$
-
-
-For this specific example, we know that each top of $\sin x^2$ we have satisfied  $|f(x) - M| < \epsilon$ but NOT ALL! 
+For this specific example, we know that each top of $\sin x^2$ we have
+satisfied $|f(x) - M| < \epsilon$ but NOT ALL!
 
 ## eg question from Dr. Chi-Kwong Fok about Weirestrass-Extream Value THM (continuous function in a compact set attains its max and min)
 
-If f is a continuous and non-surjective function and the supremum of it in [0,$+\infty$] is not in its range. show that $\forall \epsilon >0, \forall x > 0, \exists z \in R \text{ with } z > x, \forall $
+If f is a continuous and non-surjective function and the supremum of it
+in \[0,$+\infty$\] is not in its range. show that \$\forall \epsilon
+\>0, \forall x \> 0, \exists z \in R \text{ with } z \> x, \forall \$
 
-
-Firstly, negate it: $\exists \epsilon_0 >0,$ s.t. $\exists x_0 >0, \forall z \in R$ with z>$x_0$, f(z) $\leq M-\epsilon_0, $ where M is sup R(f) ---(1)
+Firstly, negate it: $\exists \epsilon_0 >0,$ s.t.
+$\exists x_0 >0, \forall z \in R$ with z\>$x_0$, f(z) \$\leq
+M-\epsilon\_0, \$ where M is sup R(f) ---(1)
 
 Secondly, write down the def of M is sup:
 
-$\forall \epsilon >0, \exists x\in [0,+ \infty],$ s.t. f(x)>$M-\epsilon$. Now take the global $\epsilon $ to be $\epsilon_0$ ---(2)
+$\forall \epsilon >0, \exists x\in [0,+ \infty],$ s.t.
+f(x)\>$M-\epsilon$. Now take the global \$\epsilon \$ to be $\epsilon_0$
+---(2)
 
-By (1) and (2) we know that $\forall \epsilon >0, \exists x\in [0,x_0],$ s.t. f(x)>$M-\epsilon$ Now take the global $\epsilon $ to be $\epsilon_0$
+By (1) and (2) we know that $\forall \epsilon >0, \exists x\in [0,x_0],$
+s.t. f(x)\>$M-\epsilon$ Now take the global \$\epsilon \$ to be
+$\epsilon_0$
 
-By  Weirestrass-Extream Value THM (continuous function in a compact set attains its max and min) we know it attains its maximum in [0,x_0]. Suppose this maximum is not the sup, then M=supR(f) < its maximum, then by the IVP it must attain sup R(f) contradiction. =--also. ---contradiction
-
-
+By Weirestrass-Extream Value THM (continuous function in a compact set
+attains its max and min) we know it attains its maximum in \[0,x_0\].
+Suppose this maximum is not the sup, then M=supR(f) \< its maximum, then
+by the IVP it must attain sup R(f) contradiction. =--also.
+---contradiction
 
 # a problem about divisible using greatest common factor to solve(even Bezou's theorem)
 
