@@ -13,6 +13,8 @@ editor:
 
 ![](images/clipboard-120870201.png)
 
+![](images/clipboard-37991470.png)
+
 # Write logically
 
 ### Each global expression should just appear once. When it has been introduced, we can regard it as a fixed thing and expand our proof behind logically.
@@ -54,12 +56,10 @@ in each case.
     Hence $lim_{x→c} (f(x) - f(c)) / (x - c) = A.$
 
     i.e. f'(c) = A
-    
-    
+
 ## All ways to distinguish whether it is uniformly continuous
 
 please fill this before your final exam!
-
 
 ### practice before my mid-term exam (my way to think that of question is like this)
 
@@ -67,21 +67,23 @@ $f(x) = x^4$ is not uniformly continuous on $\mathbb{R}$.
 
 Choose $x_n = \sqrt[4]{n+1}$, $y_n = \sqrt[4]{n}$.
 
-Since $x^4$ is differentiable on $[n, n+1]$, by Lagrange's MVT,
+Since $x^{1/4}$ is differentiable on $[n, n+1]$, by Lagrange's MVT,
 
 $$|x_n - y_n| = \frac{1}{4} \xi^{-\frac{3}{4}} (n+1-n), \text{ where } \xi \in (n, n+1)$$
 
-So $|x_n - y_n| = \frac{1}{4} \xi^{-\frac{3}{4}} < \frac{1}{4} n^{-\frac{3}{4}} = \frac{1}{4 \sqrt[4]{n^3}}$
+So
+$|x_n - y_n| = \frac{1}{4} \xi^{-\frac{3}{4}} < \frac{1}{4} n^{-\frac{3}{4}} = \frac{1}{4 \sqrt[4]{n^3}}$
 
 So $0 < |x_n - y_n| < \frac{1}{4 \sqrt[4]{n^3}}$
 
 So $\lim_{n \to \infty} |x_n - y_n| = 0$ by squeeze theorem
 
-So for $\varepsilon_0 = \frac{1}{2}$, by the definition of limit，$\forall \delta > 0$, $\exists m > 0$ s.t. for $n_0\in \mathbb{N} > m$, $|x_{n_0} - y_{n_0}| < \delta$ but $|f(x_{n_0}) - f(y_{n_0})| = 1 > \varepsilon_0 = \frac{1}{2}$,
-
+So for $\varepsilon_0 = \frac{1}{2}$, by the definition of
+limit，$\forall \delta > 0$, $\exists m > 0$ s.t. for
+$n_0\in \mathbb{N} > m$, $|x_{n_0} - y_{n_0}| < \delta$ but
+$|f(x_{n_0}) - f(y_{n_0})| = 1 > \varepsilon_0 = \frac{1}{2}$,
 
 This satisfies the negation of the definition of "uniformly continuous".
-
 
 # Preface
 
