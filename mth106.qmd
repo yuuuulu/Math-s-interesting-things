@@ -1,11 +1,163 @@
 ---
-title: "Untitled"
+title: "ODEs and PDEs ---MTH106"
 editor: visual
 ---
 
+# Intro
+
+## To study ODEs and PDEs, the thinking way of Linear Algebra should be used!
+
+$x^{(2)}$= x'' = $\frac {d^2 x}{dy^2}$--this notation of the second order's is actually share the same idea of "division"
+
+## Order
+
+## Liniarity
+
+$a_n(x) \frac{d^n y}{dx^n } + ... +a_1(x) \frac{d y}{dx } +a_0(x)y =g(x) $
+
+-   eg
+
+(y-x)dx+4xdy=0
+
+-   $\frac {d^2 y}{dx^2}+\sin y=0$ is not linear since it has nonlinear function of y
+
+## solution of an ODE
+
+### ? why continuous? ---
+
+An funtion defined on an interval I and possessing at least **n derivatives that are continuous on I**, which when substituted into an nth-order ordinary differential equation reduces the equation to an identity, is said to be a solution of the equation on the interval.
+
+We cannot think solution of an ordinary differential equation without simultaneously thinking interval.
+
+### trivial solution --y=0, I
+
+### Solution Curve SEE CODEs
+
+### Explicit and implicit solution shape of ODEs
+
+### Singular solution
+
+### A solution of a system
+
+System:
+
+$$\cases{^{{\frac{dx}{dt}}=f(t,x,y)} _{\frac{dy}{dt}=g(t,x,y)}}$$ Solution: x =$\Phi_1(t)$, y=$\Phi_2(t)$ defined on a common interval I that satisfy each equation of the system on this interval.
+
+# Initial Value Problem --codes
+
+-   def
+
+On some interval I containing $x_0$, the problems of solving an nth-order DE subject to n side conditions (initial conditions (IC)) specified at $x_0$
+
+![](images/clipboard-935811087.png)
+
+## Existence and Uniqueness
+
+Does a solution of the problem exist? If a solution exists, is it unique?
+
+![](images/clipboard-381625365.png)
+
+## Interval of Existence and Uniqueness
+
+Suppose y(x) represents a solution of the first order initial- value problem. The following three sets on the real x-axis may not be the same:
+
+the domain of the function y(x), D
+
+the interval I over which the solution y(x) is defined or exists,
+
+and the interval $I_0$ of existence and uniqueness.
+
+$I_0 \subseteq I \subseteq D$
+
+# Differential Equations as Mathematical Models
+
+## Newton's law
+
+# Autonomous 1st Order DEs
+
+for y(x): $\frac{dy}{dx} = f(y)$
+
+Critical Points (equilibrium point/ stationary point)--f(y)=0
+
+-   eg. Population increase model
+
+$\frac{dp}{dt} = p(a-bp)$
+
+let f(p)=p(a-bp)=0 and catogorize the x-axis based on it, discussing the different situation intuitively
+
+![](images/clipboard-1219784406.png)
+
+## Properties of the solutions of autonomous DE
+
+-   A solution curve
+-   ![](images/clipboard-1811387429.png)
+
+## ? Translation Property--only autonomous DEs has this property?
+
+-   meaning: translation?
+-   ![](images/clipboard-1854338105.png)
+
+If y(x) is a solution of an autonomous differential equation dy ∕dx = f(y), then y1(x) = y(x − k) (y of (x-k)), k a constant, is also a solution.
+
+# Separable Equations
+
+$\frac {dy}{dx}=g(x)h(y)$
+
+## singular solution
+
+$\frac {dy}{h(y)}=g(x)dx$. If r is a zero of the function h(y), substituting y=r into dy/dx=g(x)h(y) makes both sides zero (y = r is a constant solution of the differential equation). As a consequence, y = r might not show up in the family of solutions that are obtained after integration and simplification. Such a solution is called a singular solution.
+
+## initial value problem
+
+### intergral-defined function
+
+![](images/clipboard-2402865730.png)
+
+-   eg
+
+![](images/clipboard-1563205732.png)
+
+# Linear equation
+
+$a_1(x)\frac{dy}{dx}+a_0(x)y=g(x)$ is said to be a linear equation in the variable y.
+
+-   standard form:
+
+$\frac{dy}{dx}+P(x)y=f(x)$
+
+
+
+## Integrating factor method
+
+### solution
+
+idea: want to written into $\frac{d}{dx}()=f(x)$ then we assume after multiplying a factor $\mu(x)$ we can write $\frac{d}{dx}(\mu(x)y(x))=\mu(x)f(x)$
+
+we get $\mu(x) = ce^{\int^{p(x)dx}{}}$.
+
+let c=1 we get the integrating factor
+
+### IVP
+
+![](images/clipboard-960467589.png)
+
+## ?Error function
+
+![](images/clipboard-2824072994.png)
+
+![](images/clipboard-4209968738.png)
+
+## Exact equations
+
+
+z=f(x,y)=c
+
+
+## Non-exact
+
+
 
 # Bernouli's equation
-
 
 DO Not Remember--understand it instead!
 

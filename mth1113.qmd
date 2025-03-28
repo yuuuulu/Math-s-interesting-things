@@ -7,6 +7,17 @@ editor: visual
 dplyr::filter()
 ```
 
+# margin of error
+
+For a given level of confidence c, The greatest possible
+distance between the point estimate and the value of the
+parameter it is estimating.
+ 
+ Sometimes called the maximum error of estimate or
+error tolerance.
+
+
+
 # Hypothesis testing
 
 - opening: does these data (gained sleep hour) means the low dose of drugs improves the length of people's sleep?

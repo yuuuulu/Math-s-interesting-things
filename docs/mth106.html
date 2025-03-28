@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Foundation Math Learning - Untitled</title>
+<title>Foundation Math Learning - ODEs and PDEs —MTH106</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -67,6 +67,35 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 </head>
 
@@ -131,7 +160,26 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#bernoulis-equation" id="toc-bernoulis-equation" class="nav-link active" data-scroll-target="#bernoulis-equation">Bernouli’s equation</a></li>
+  <li><a href="#intro" id="toc-intro" class="nav-link active" data-scroll-target="#intro">Intro</a>
+  <ul class="collapse">
+  <li><a href="#to-study-odes-and-pdes-the-thinking-way-of-linear-algebra-should-be-used" id="toc-to-study-odes-and-pdes-the-thinking-way-of-linear-algebra-should-be-used" class="nav-link" data-scroll-target="#to-study-odes-and-pdes-the-thinking-way-of-linear-algebra-should-be-used">To study ODEs and PDEs, the thinking way of Linear Algebra should be used!</a></li>
+  <li><a href="#order" id="toc-order" class="nav-link" data-scroll-target="#order">order</a></li>
+  <li><a href="#liniarity" id="toc-liniarity" class="nav-link" data-scroll-target="#liniarity">liniarity</a></li>
+  <li><a href="#solution-of-an-ode" id="toc-solution-of-an-ode" class="nav-link" data-scroll-target="#solution-of-an-ode">solution of an ODE</a>
+  <ul class="collapse">
+  <li><a href="#why-continuous" id="toc-why-continuous" class="nav-link" data-scroll-target="#why-continuous">? why continuous? —</a></li>
+  <li><a href="#trivial-solution-y0-i" id="toc-trivial-solution-y0-i" class="nav-link" data-scroll-target="#trivial-solution-y0-i">trivial solution –y=0, I</a></li>
+  <li><a href="#solution-curve-see-codes" id="toc-solution-curve-see-codes" class="nav-link" data-scroll-target="#solution-curve-see-codes">Solution Curve SEE CODEs</a></li>
+  <li><a href="#explicit-and-implicit-solution-shape-of-odes" id="toc-explicit-and-implicit-solution-shape-of-odes" class="nav-link" data-scroll-target="#explicit-and-implicit-solution-shape-of-odes">Explicit and implicit solution shape of ODEs</a></li>
+  <li><a href="#singular-solution" id="toc-singular-solution" class="nav-link" data-scroll-target="#singular-solution">Singular solution</a></li>
+  <li><a href="#a-solution-of-a-system" id="toc-a-solution-of-a-system" class="nav-link" data-scroll-target="#a-solution-of-a-system">A solution of a system</a></li>
+  </ul></li>
+  </ul></li>
+  <li><a href="#initial-value-problem-codes" id="toc-initial-value-problem-codes" class="nav-link" data-scroll-target="#initial-value-problem-codes">Initial Value Problem –codes</a>
+  <ul class="collapse">
+  <li><a href="#existence-and-uniqueness" id="toc-existence-and-uniqueness" class="nav-link" data-scroll-target="#existence-and-uniqueness">Existence and Uniqueness</a></li>
+  </ul></li>
+  <li><a href="#bernoulis-equation" id="toc-bernoulis-equation" class="nav-link" data-scroll-target="#bernoulis-equation">Bernouli’s equation</a></li>
   </ul>
 </nav>
     </div>
@@ -140,7 +188,7 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Untitled</h1>
+<h1 class="title">ODEs and PDEs —MTH106</h1>
 </div>
 
 
@@ -157,6 +205,65 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
+<section id="intro" class="level1">
+<h1>Intro</h1>
+<section id="to-study-odes-and-pdes-the-thinking-way-of-linear-algebra-should-be-used" class="level2">
+<h2 class="anchored" data-anchor-id="to-study-odes-and-pdes-the-thinking-way-of-linear-algebra-should-be-used">To study ODEs and PDEs, the thinking way of Linear Algebra should be used!</h2>
+<p><span class="math inline">\(x^{(2)}\)</span>= x’’ = <span class="math inline">\(\frac {d^2 x}{dy^2}\)</span>–this notation of the second order’s is actually share the same idea of “division”</p>
+</section>
+<section id="order" class="level2">
+<h2 class="anchored" data-anchor-id="order">order</h2>
+</section>
+<section id="liniarity" class="level2">
+<h2 class="anchored" data-anchor-id="liniarity">liniarity</h2>
+<p>$a_n(x) + … +a_1(x) +a_0(x)y =g(x) $</p>
+<ul>
+<li>eg</li>
+</ul>
+<p>(y-x)dx+4xdy=0</p>
+<ul>
+<li><span class="math inline">\(\frac {d^2 y}{dx^2}+\sin y=0\)</span> is not linear since it has nonlinear function of y</li>
+</ul>
+</section>
+<section id="solution-of-an-ode" class="level2">
+<h2 class="anchored" data-anchor-id="solution-of-an-ode">solution of an ODE</h2>
+<section id="why-continuous" class="level3">
+<h3 class="anchored" data-anchor-id="why-continuous">? why continuous? —</h3>
+<p>An funtion defined on an interval I and possessing at least <strong>n derivatives that are continuous on I</strong>, which when substituted into an nth-order ordinary differential equation reduces the equation to an identity, is said to be a solution of the equation on the interval.</p>
+<p>We cannot think solution of an ordinary differential equation without simultaneously thinking interval.</p>
+</section>
+<section id="trivial-solution-y0-i" class="level3">
+<h3 class="anchored" data-anchor-id="trivial-solution-y0-i">trivial solution –y=0, I</h3>
+</section>
+<section id="solution-curve-see-codes" class="level3">
+<h3 class="anchored" data-anchor-id="solution-curve-see-codes">Solution Curve SEE CODEs</h3>
+</section>
+<section id="explicit-and-implicit-solution-shape-of-odes" class="level3">
+<h3 class="anchored" data-anchor-id="explicit-and-implicit-solution-shape-of-odes">Explicit and implicit solution shape of ODEs</h3>
+</section>
+<section id="singular-solution" class="level3">
+<h3 class="anchored" data-anchor-id="singular-solution">Singular solution</h3>
+</section>
+<section id="a-solution-of-a-system" class="level3">
+<h3 class="anchored" data-anchor-id="a-solution-of-a-system">A solution of a system</h3>
+<p>System:</p>
+<p><span class="math display">\[\cases{^{{\frac{dx}{dt}}=f(t,x,y)} _{\frac{dy}{dt}=g(t,x,y)}}\]</span> Solution: x =<span class="math inline">\(\Phi_1(t)\)</span>, y=<span class="math inline">\(\Phi_2(t)\)</span> defined on a common interval I that satisfy each equation of the system on this interval.</p>
+</section>
+</section>
+</section>
+<section id="initial-value-problem-codes" class="level1">
+<h1>Initial Value Problem –codes</h1>
+<ul>
+<li>def</li>
+</ul>
+<p>On some interval I containing <span class="math inline">\(x_0\)</span>, the problems of solving an nth-order DE subject to n side conditions (initial conditions (IC)) specified at <span class="math inline">\(x_0\)</span></p>
+<p><img src="images/clipboard-935811087.png" class="img-fluid"></p>
+<section id="existence-and-uniqueness" class="level2">
+<h2 class="anchored" data-anchor-id="existence-and-uniqueness">Existence and Uniqueness</h2>
+<p>Does a solution of the problem exist? If a solution exists, is it unique?</p>
+<p><img src="images/clipboard-381625365.png" class="img-fluid"></p>
+</section>
+</section>
 <section id="bernoulis-equation" class="level1">
 <h1>Bernouli’s equation</h1>
 <p>DO Not Remember–understand it instead!</p>
