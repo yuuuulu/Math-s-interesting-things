@@ -3,6 +3,8 @@ title: "ODEs and PDEs ---MTH106"
 editor: visual
 ---
 
+
+
 # Plz write the Cauchy-Euler equation as the simplest one and THEN use the method of variation of parameters!!!
 
 # Motivation from Professor Chi-Kun Lin: Differential equations reveal the secrets of nature even before we solve them. DEs are really related to the nature.
