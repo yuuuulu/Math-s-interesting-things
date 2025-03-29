@@ -3,7 +3,36 @@ title: "ODEs and PDEs ---MTH106"
 editor: visual
 ---
 
+# Plz write the Cauchy-Euler equation as the simplest one and THEN use the method of variation of parameters!!!
+
+# Motivation from Professor Chi-Kun Lin: Differential equations reveal the secrets of nature even before we solve them. DEs are really related to the nature.
+
+
+## Eg of Variation of Parameters introduced by Professor Chi-Kun Lin:
+
+The method of variation of parameters is a clever and elegant approach in solving non-homogeneous differential equations, especially in the context of physics. When we consider a differential equation, the non-homogeneous term F(x) can be seen as an external force acting on the system. In the absence of this force, the solution space of the homogeneous equation is spanned by a set of linearly independent solutions, such as $y_1$ and $y_2$. These solutions form the basis of the homogeneous solution through linear combinations.
+
+However, when the external force $F(x)$ is introduced, it perturbs the system and necessitates the inclusion of a particular solution that specifically responds to this force. This particular solution still involves the original basis functions $y_1$ and $y_2$, but it introduces new coefficients $u_1(x)$ and $u_2(x)$ that are functions of the independent variable $x$. These coefficients are not constants; instead, they vary in a way that reflects the influence of the external force. The idea is that these coefficients $u_1(x)$ and $u_2(x)$ can be adjusted to account for the systematic changes induced by the physical quantity represented by $F(x)$.
+
+The brilliance of the variation of parameters method lies in its ability to construct a particular solution by allowing these coefficients to vary. This method hypothesizes that by introducing these variable coefficients, the particular solution can effectively capture the response of the system to the external force. And indeed, this construction turns out to be effective. It provides a systematic way to find a particular solution that complements the homogeneous solution, thereby giving us the complete solution to the non-homogeneous differential equation. The name “variation of parameters” aptly describes the essence of this method, emphasizing the dynamic adjustment of the parameters (coefficients) in response to the external force.
+
+## Eg of the behind story of "Euler-Lagrange Equation"
+
+$\frac{d}{dt}\frac{\partial L}{\partial q^{`}\alpha}-\frac{\partial L}{\partial q \alpha}$
+
+
+While it's often said that Lagrange was Euler's student and that Euler had already discovered some of Lagrange's work but chose not to publish to allow Lagrange to gain recognition, the reality of their relationship was a bit more nuanced.
+
+Euler was indeed supportive of Lagrange's work and recognized his talent. At the age of 19, Lagrange had made significant contributions to mathematics that caught Euler's attention. Lagrange sent Euler his work on the calculus of variations, and Euler was very supportive. He recognized Lagrange’s talents and helped introduce him to the wider mathematical community.
+
+Euler held back his own work on the calculus of variations to let Lagrange publish first. When Euler left Berlin for St. Petersburg in 1766, he recommended that Lagrange succeed him as the director of the Berlin Academy. This act was seen as a testament to Euler's generous spirit and his recognition of Lagrange's abilities.
+ 
+
+
+
 # Intro
+
+
 
 ## To study ODEs and PDEs, the thinking way of Linear Algebra should be used!
 
@@ -133,7 +162,7 @@ $\frac{dy}{dx}+P(x)y=f(x)$
 
 idea: want to written into $\frac{d}{dx}()=f(x)$ then we assume after multiplying a factor $\mu(x)$ we can write $\frac{d}{dx}(\mu(x)y(x))=\mu(x)f(x)$
 
-we get $\mu(x) = ce^{\int^{p(x)dx}{}}$.
+we get $\mu(x) = ce^{\int{p(x)dx}{}}$.
 
 let c=1 we get the integrating factor
 

@@ -1200,22 +1200,22 @@
     "objectID": "mth106.html#to-study-odes-and-pdes-the-thinking-way-of-linear-algebra-should-be-used",
     "href": "mth106.html#to-study-odes-and-pdes-the-thinking-way-of-linear-algebra-should-be-used",
     "title": "ODEs and PDEs —MTH106",
-    "section": "",
-    "text": "\\(x^{(2)}\\)= x’’ = \\(\\frac {d^2 x}{dy^2}\\)–this notation of the second order’s is actually share the same idea of “division”"
+    "section": "To study ODEs and PDEs, the thinking way of Linear Algebra should be used!",
+    "text": "To study ODEs and PDEs, the thinking way of Linear Algebra should be used!\n\\(x^{(2)}\\)= x’’ = \\(\\frac {d^2 x}{dy^2}\\)–this notation of the second order’s is actually share the same idea of “division”"
   },
   {
     "objectID": "mth106.html#liniarity",
     "href": "mth106.html#liniarity",
     "title": "ODEs and PDEs —MTH106",
-    "section": "",
-    "text": "$a_n(x) + … +a_1(x) +a_0(x)y =g(x) $\n\neg\n\n(y-x)dx+4xdy=0\n\n\\(\\frac {d^2 y}{dx^2}+\\sin y=0\\) is not linear since it has nonlinear function of y"
+    "section": "Liniarity",
+    "text": "Liniarity\n$a_n(x) + … +a_1(x) +a_0(x)y =g(x) $\n\neg\n\n(y-x)dx+4xdy=0\n\n\\(\\frac {d^2 y}{dx^2}+\\sin y=0\\) is not linear since it has nonlinear function of y"
   },
   {
     "objectID": "mth106.html#solution-of-an-ode",
     "href": "mth106.html#solution-of-an-ode",
     "title": "ODEs and PDEs —MTH106",
-    "section": "",
-    "text": "An funtion defined on an interval I and possessing at least n derivatives that are continuous on I, which when substituted into an nth-order ordinary differential equation reduces the equation to an identity, is said to be a solution of the equation on the interval.\nWe cannot think solution of an ordinary differential equation without simultaneously thinking interval.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nSystem:\n\\[\\cases{^{{\\frac{dx}{dt}}=f(t,x,y)} _{\\frac{dy}{dt}=g(t,x,y)}}\\] Solution: x =\\(\\Phi_1(t)\\), y=\\(\\Phi_2(t)\\) defined on a common interval I that satisfy each equation of the system on this interval."
+    "section": "solution of an ODE",
+    "text": "solution of an ODE\n\n? why continuous? —\nAn funtion defined on an interval I and possessing at least n derivatives that are continuous on I, which when substituted into an nth-order ordinary differential equation reduces the equation to an identity, is said to be a solution of the equation on the interval.\nWe cannot think solution of an ordinary differential equation without simultaneously thinking interval.\n\n\ntrivial solution –y=0, I\n\n\nSolution Curve SEE CODEs\n\n\nExplicit and implicit solution shape of ODEs\n\n\nSingular solution\n\n\nA solution of a system\nSystem:\n\\[\\cases{^{{\\frac{dx}{dt}}=f(t,x,y)} _{\\frac{dy}{dt}=g(t,x,y)}}\\] Solution: x =\\(\\Phi_1(t)\\), y=\\(\\Phi_2(t)\\) defined on a common interval I that satisfy each equation of the system on this interval."
   },
   {
     "objectID": "mth106.html#existence-and-uniqueness",
@@ -1223,5 +1223,96 @@
     "title": "ODEs and PDEs —MTH106",
     "section": "Existence and Uniqueness",
     "text": "Existence and Uniqueness\nDoes a solution of the problem exist? If a solution exists, is it unique?"
+  },
+  {
+    "objectID": "mth106.html#eg-of-variation-of-parameters-introduced-by-professor-chi-kun-lin",
+    "href": "mth106.html#eg-of-variation-of-parameters-introduced-by-professor-chi-kun-lin",
+    "title": "ODEs and PDEs —MTH106",
+    "section": "Eg of Variation of Parameters introduced by Professor Chi-Kun Lin:",
+    "text": "Eg of Variation of Parameters introduced by Professor Chi-Kun Lin:\nThe method of variation of parameters is a clever and elegant approach in solving non-homogeneous differential equations, especially in the context of physics. When we consider a differential equation, the non-homogeneous term F(x) can be seen as an external force acting on the system. In the absence of this force, the solution space of the homogeneous equation is spanned by a set of linearly independent solutions, such as \\(y_1\\) and \\(y_2\\). These solutions form the basis of the homogeneous solution through linear combinations.\nHowever, when the external force \\(F(x)\\) is introduced, it perturbs the system and necessitates the inclusion of a particular solution that specifically responds to this force. This particular solution still involves the original basis functions \\(y_1\\) and \\(y_2\\), but it introduces new coefficients \\(u_1(x)\\) and \\(u_2(x)\\) that are functions of the independent variable \\(x\\). These coefficients are not constants; instead, they vary in a way that reflects the influence of the external force. The idea is that these coefficients \\(u_1(x)\\) and \\(u_2(x)\\) can be adjusted to account for the systematic changes induced by the physical quantity represented by \\(F(x)\\).\nThe brilliance of the variation of parameters method lies in its ability to construct a particular solution by allowing these coefficients to vary. This method hypothesizes that by introducing these variable coefficients, the particular solution can effectively capture the response of the system to the external force. And indeed, this construction turns out to be effective. It provides a systematic way to find a particular solution that complements the homogeneous solution, thereby giving us the complete solution to the non-homogeneous differential equation. The name “variation of parameters” aptly describes the essence of this method, emphasizing the dynamic adjustment of the parameters (coefficients) in response to the external force."
+  },
+  {
+    "objectID": "mth106.html#eg-of-the-behind-story-of-euler-lagrange-equation",
+    "href": "mth106.html#eg-of-the-behind-story-of-euler-lagrange-equation",
+    "title": "ODEs and PDEs —MTH106",
+    "section": "Eg of the behind story of “Euler-Lagrange Equation”",
+    "text": "Eg of the behind story of “Euler-Lagrange Equation”\n\\(\\frac{d}{dt}\\frac{\\partial L}{\\partial q^{`}\\alpha}-\\frac{\\partial L}{\\partial q \\alpha}\\)\nWhile it’s often said that Lagrange was Euler’s student and that Euler had already discovered some of Lagrange’s work but chose not to publish to allow Lagrange to gain recognition, the reality of their relationship was a bit more nuanced.\nEuler was indeed supportive of Lagrange’s work and recognized his talent. At the age of 19, Lagrange had made significant contributions to mathematics that caught Euler’s attention. Lagrange sent Euler his work on the calculus of variations, and Euler was very supportive. He recognized Lagrange’s talents and helped introduce him to the wider mathematical community.\nEuler held back his own work on the calculus of variations to let Lagrange publish first. When Euler left Berlin for St. Petersburg in 1766, he recommended that Lagrange succeed him as the director of the Berlin Academy. This act was seen as a testament to Euler’s generous spirit and his recognition of Lagrange’s abilities."
+  },
+  {
+    "objectID": "mth106.html#order",
+    "href": "mth106.html#order",
+    "title": "ODEs and PDEs —MTH106",
+    "section": "Order",
+    "text": "Order"
+  },
+  {
+    "objectID": "mth106.html#interval-of-existence-and-uniqueness",
+    "href": "mth106.html#interval-of-existence-and-uniqueness",
+    "title": "ODEs and PDEs —MTH106",
+    "section": "Interval of Existence and Uniqueness",
+    "text": "Interval of Existence and Uniqueness\nSuppose y(x) represents a solution of the first order initial- value problem. The following three sets on the real x-axis may not be the same:\nthe domain of the function y(x), D\nthe interval I over which the solution y(x) is defined or exists,\nand the interval \\(I_0\\) of existence and uniqueness.\n\\(I_0 \\subseteq I \\subseteq D\\)"
+  },
+  {
+    "objectID": "mth106.html#newtons-law",
+    "href": "mth106.html#newtons-law",
+    "title": "ODEs and PDEs —MTH106",
+    "section": "Newton’s law",
+    "text": "Newton’s law"
+  },
+  {
+    "objectID": "mth106.html#properties-of-the-solutions-of-autonomous-de",
+    "href": "mth106.html#properties-of-the-solutions-of-autonomous-de",
+    "title": "ODEs and PDEs —MTH106",
+    "section": "Properties of the solutions of autonomous DE",
+    "text": "Properties of the solutions of autonomous DE\n\nA solution curve"
+  },
+  {
+    "objectID": "mth106.html#translation-propertyonly-autonomous-des-has-this-property",
+    "href": "mth106.html#translation-propertyonly-autonomous-des-has-this-property",
+    "title": "ODEs and PDEs —MTH106",
+    "section": "? Translation Property–only autonomous DEs has this property?",
+    "text": "? Translation Property–only autonomous DEs has this property?\n\nmeaning: translation?\n\n\nIf y(x) is a solution of an autonomous differential equation dy ∕dx = f(y), then y1(x) = y(x − k) (y of (x-k)), k a constant, is also a solution."
+  },
+  {
+    "objectID": "mth106.html#singular-solution-1",
+    "href": "mth106.html#singular-solution-1",
+    "title": "ODEs and PDEs —MTH106",
+    "section": "singular solution",
+    "text": "singular solution\n\\(\\frac {dy}{h(y)}=g(x)dx\\). If r is a zero of the function h(y), substituting y=r into dy/dx=g(x)h(y) makes both sides zero (y = r is a constant solution of the differential equation). As a consequence, y = r might not show up in the family of solutions that are obtained after integration and simplification. Such a solution is called a singular solution."
+  },
+  {
+    "objectID": "mth106.html#initial-value-problem",
+    "href": "mth106.html#initial-value-problem",
+    "title": "ODEs and PDEs —MTH106",
+    "section": "initial value problem",
+    "text": "initial value problem\n\nintergral-defined function\n\n\neg"
+  },
+  {
+    "objectID": "mth106.html#integrating-factor-method",
+    "href": "mth106.html#integrating-factor-method",
+    "title": "ODEs and PDEs —MTH106",
+    "section": "Integrating factor method",
+    "text": "Integrating factor method\n\nsolution\nidea: want to written into \\(\\frac{d}{dx}()=f(x)\\) then we assume after multiplying a factor \\(\\mu(x)\\) we can write \\(\\frac{d}{dx}(\\mu(x)y(x))=\\mu(x)f(x)\\)\nwe get \\(\\mu(x) = ce^{\\int{p(x)dx}{}}\\).\nlet c=1 we get the integrating factor\n\n\nIVP"
+  },
+  {
+    "objectID": "mth106.html#error-function",
+    "href": "mth106.html#error-function",
+    "title": "ODEs and PDEs —MTH106",
+    "section": "?Error function",
+    "text": "?Error function"
+  },
+  {
+    "objectID": "mth106.html#exact-equations",
+    "href": "mth106.html#exact-equations",
+    "title": "ODEs and PDEs —MTH106",
+    "section": "Exact equations",
+    "text": "Exact equations\nz=f(x,y)=c"
+  },
+  {
+    "objectID": "mth106.html#non-exact",
+    "href": "mth106.html#non-exact",
+    "title": "ODEs and PDEs —MTH106",
+    "section": "Non-exact",
+    "text": "Non-exact"
   }
 ]

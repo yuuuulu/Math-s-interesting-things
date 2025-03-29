@@ -160,11 +160,17 @@ window.Quarto = {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#intro" id="toc-intro" class="nav-link active" data-scroll-target="#intro">Intro</a>
+  <li><a href="#plz-write-the-cauchy-euler-equation-as-the-simplest-one-and-then-use-the-method-of-variation-of-parameters" id="toc-plz-write-the-cauchy-euler-equation-as-the-simplest-one-and-then-use-the-method-of-variation-of-parameters" class="nav-link active" data-scroll-target="#plz-write-the-cauchy-euler-equation-as-the-simplest-one-and-then-use-the-method-of-variation-of-parameters">Plz write the Cauchy-Euler equation as the simplest one and THEN use the method of variation of parameters!!!</a></li>
+  <li><a href="#motivation-from-professor-chi-kun-lin-differential-equations-reveal-the-secrets-of-nature-even-before-we-solve-them.-des-are-really-related-to-the-nature." id="toc-motivation-from-professor-chi-kun-lin-differential-equations-reveal-the-secrets-of-nature-even-before-we-solve-them.-des-are-really-related-to-the-nature." class="nav-link" data-scroll-target="#motivation-from-professor-chi-kun-lin-differential-equations-reveal-the-secrets-of-nature-even-before-we-solve-them.-des-are-really-related-to-the-nature.">Motivation from Professor Chi-Kun Lin: Differential equations reveal the secrets of nature even before we solve them. DEs are really related to the nature.</a>
+  <ul class="collapse">
+  <li><a href="#eg-of-variation-of-parameters-introduced-by-professor-chi-kun-lin" id="toc-eg-of-variation-of-parameters-introduced-by-professor-chi-kun-lin" class="nav-link" data-scroll-target="#eg-of-variation-of-parameters-introduced-by-professor-chi-kun-lin">Eg of Variation of Parameters introduced by Professor Chi-Kun Lin:</a></li>
+  <li><a href="#eg-of-the-behind-story-of-euler-lagrange-equation" id="toc-eg-of-the-behind-story-of-euler-lagrange-equation" class="nav-link" data-scroll-target="#eg-of-the-behind-story-of-euler-lagrange-equation">Eg of the behind story of “Euler-Lagrange Equation”</a></li>
+  </ul></li>
+  <li><a href="#intro" id="toc-intro" class="nav-link" data-scroll-target="#intro">Intro</a>
   <ul class="collapse">
   <li><a href="#to-study-odes-and-pdes-the-thinking-way-of-linear-algebra-should-be-used" id="toc-to-study-odes-and-pdes-the-thinking-way-of-linear-algebra-should-be-used" class="nav-link" data-scroll-target="#to-study-odes-and-pdes-the-thinking-way-of-linear-algebra-should-be-used">To study ODEs and PDEs, the thinking way of Linear Algebra should be used!</a></li>
-  <li><a href="#order" id="toc-order" class="nav-link" data-scroll-target="#order">order</a></li>
-  <li><a href="#liniarity" id="toc-liniarity" class="nav-link" data-scroll-target="#liniarity">liniarity</a></li>
+  <li><a href="#order" id="toc-order" class="nav-link" data-scroll-target="#order">Order</a></li>
+  <li><a href="#liniarity" id="toc-liniarity" class="nav-link" data-scroll-target="#liniarity">Liniarity</a></li>
   <li><a href="#solution-of-an-ode" id="toc-solution-of-an-ode" class="nav-link" data-scroll-target="#solution-of-an-ode">solution of an ODE</a>
   <ul class="collapse">
   <li><a href="#why-continuous" id="toc-why-continuous" class="nav-link" data-scroll-target="#why-continuous">? why continuous? —</a></li>
@@ -178,6 +184,35 @@ window.Quarto = {
   <li><a href="#initial-value-problem-codes" id="toc-initial-value-problem-codes" class="nav-link" data-scroll-target="#initial-value-problem-codes">Initial Value Problem –codes</a>
   <ul class="collapse">
   <li><a href="#existence-and-uniqueness" id="toc-existence-and-uniqueness" class="nav-link" data-scroll-target="#existence-and-uniqueness">Existence and Uniqueness</a></li>
+  <li><a href="#interval-of-existence-and-uniqueness" id="toc-interval-of-existence-and-uniqueness" class="nav-link" data-scroll-target="#interval-of-existence-and-uniqueness">Interval of Existence and Uniqueness</a></li>
+  </ul></li>
+  <li><a href="#differential-equations-as-mathematical-models" id="toc-differential-equations-as-mathematical-models" class="nav-link" data-scroll-target="#differential-equations-as-mathematical-models">Differential Equations as Mathematical Models</a>
+  <ul class="collapse">
+  <li><a href="#newtons-law" id="toc-newtons-law" class="nav-link" data-scroll-target="#newtons-law">Newton’s law</a></li>
+  </ul></li>
+  <li><a href="#autonomous-1st-order-des" id="toc-autonomous-1st-order-des" class="nav-link" data-scroll-target="#autonomous-1st-order-des">Autonomous 1st Order DEs</a>
+  <ul class="collapse">
+  <li><a href="#properties-of-the-solutions-of-autonomous-de" id="toc-properties-of-the-solutions-of-autonomous-de" class="nav-link" data-scroll-target="#properties-of-the-solutions-of-autonomous-de">Properties of the solutions of autonomous DE</a></li>
+  <li><a href="#translation-propertyonly-autonomous-des-has-this-property" id="toc-translation-propertyonly-autonomous-des-has-this-property" class="nav-link" data-scroll-target="#translation-propertyonly-autonomous-des-has-this-property">? Translation Property–only autonomous DEs has this property?</a></li>
+  </ul></li>
+  <li><a href="#separable-equations" id="toc-separable-equations" class="nav-link" data-scroll-target="#separable-equations">Separable Equations</a>
+  <ul class="collapse">
+  <li><a href="#singular-solution-1" id="toc-singular-solution-1" class="nav-link" data-scroll-target="#singular-solution-1">singular solution</a></li>
+  <li><a href="#initial-value-problem" id="toc-initial-value-problem" class="nav-link" data-scroll-target="#initial-value-problem">initial value problem</a>
+  <ul class="collapse">
+  <li><a href="#intergral-defined-function" id="toc-intergral-defined-function" class="nav-link" data-scroll-target="#intergral-defined-function">intergral-defined function</a></li>
+  </ul></li>
+  </ul></li>
+  <li><a href="#linear-equation" id="toc-linear-equation" class="nav-link" data-scroll-target="#linear-equation">Linear equation</a>
+  <ul class="collapse">
+  <li><a href="#integrating-factor-method" id="toc-integrating-factor-method" class="nav-link" data-scroll-target="#integrating-factor-method">Integrating factor method</a>
+  <ul class="collapse">
+  <li><a href="#solution" id="toc-solution" class="nav-link" data-scroll-target="#solution">solution</a></li>
+  <li><a href="#ivp" id="toc-ivp" class="nav-link" data-scroll-target="#ivp">IVP</a></li>
+  </ul></li>
+  <li><a href="#error-function" id="toc-error-function" class="nav-link" data-scroll-target="#error-function">?Error function</a></li>
+  <li><a href="#exact-equations" id="toc-exact-equations" class="nav-link" data-scroll-target="#exact-equations">Exact equations</a></li>
+  <li><a href="#non-exact" id="toc-non-exact" class="nav-link" data-scroll-target="#non-exact">Non-exact</a></li>
   </ul></li>
   <li><a href="#bernoulis-equation" id="toc-bernoulis-equation" class="nav-link" data-scroll-target="#bernoulis-equation">Bernouli’s equation</a></li>
   </ul>
@@ -205,6 +240,25 @@ window.Quarto = {
 </header>
 
 
+<section id="plz-write-the-cauchy-euler-equation-as-the-simplest-one-and-then-use-the-method-of-variation-of-parameters" class="level1">
+<h1>Plz write the Cauchy-Euler equation as the simplest one and THEN use the method of variation of parameters!!!</h1>
+</section>
+<section id="motivation-from-professor-chi-kun-lin-differential-equations-reveal-the-secrets-of-nature-even-before-we-solve-them.-des-are-really-related-to-the-nature." class="level1">
+<h1>Motivation from Professor Chi-Kun Lin: Differential equations reveal the secrets of nature even before we solve them. DEs are really related to the nature.</h1>
+<section id="eg-of-variation-of-parameters-introduced-by-professor-chi-kun-lin" class="level2">
+<h2 class="anchored" data-anchor-id="eg-of-variation-of-parameters-introduced-by-professor-chi-kun-lin">Eg of Variation of Parameters introduced by Professor Chi-Kun Lin:</h2>
+<p>The method of variation of parameters is a clever and elegant approach in solving non-homogeneous differential equations, especially in the context of physics. When we consider a differential equation, the non-homogeneous term F(x) can be seen as an external force acting on the system. In the absence of this force, the solution space of the homogeneous equation is spanned by a set of linearly independent solutions, such as <span class="math inline">\(y_1\)</span> and <span class="math inline">\(y_2\)</span>. These solutions form the basis of the homogeneous solution through linear combinations.</p>
+<p>However, when the external force <span class="math inline">\(F(x)\)</span> is introduced, it perturbs the system and necessitates the inclusion of a particular solution that specifically responds to this force. This particular solution still involves the original basis functions <span class="math inline">\(y_1\)</span> and <span class="math inline">\(y_2\)</span>, but it introduces new coefficients <span class="math inline">\(u_1(x)\)</span> and <span class="math inline">\(u_2(x)\)</span> that are functions of the independent variable <span class="math inline">\(x\)</span>. These coefficients are not constants; instead, they vary in a way that reflects the influence of the external force. The idea is that these coefficients <span class="math inline">\(u_1(x)\)</span> and <span class="math inline">\(u_2(x)\)</span> can be adjusted to account for the systematic changes induced by the physical quantity represented by <span class="math inline">\(F(x)\)</span>.</p>
+<p>The brilliance of the variation of parameters method lies in its ability to construct a particular solution by allowing these coefficients to vary. This method hypothesizes that by introducing these variable coefficients, the particular solution can effectively capture the response of the system to the external force. And indeed, this construction turns out to be effective. It provides a systematic way to find a particular solution that complements the homogeneous solution, thereby giving us the complete solution to the non-homogeneous differential equation. The name “variation of parameters” aptly describes the essence of this method, emphasizing the dynamic adjustment of the parameters (coefficients) in response to the external force.</p>
+</section>
+<section id="eg-of-the-behind-story-of-euler-lagrange-equation" class="level2">
+<h2 class="anchored" data-anchor-id="eg-of-the-behind-story-of-euler-lagrange-equation">Eg of the behind story of “Euler-Lagrange Equation”</h2>
+<p><span class="math inline">\(\frac{d}{dt}\frac{\partial L}{\partial q^{`}\alpha}-\frac{\partial L}{\partial q \alpha}\)</span></p>
+<p>While it’s often said that Lagrange was Euler’s student and that Euler had already discovered some of Lagrange’s work but chose not to publish to allow Lagrange to gain recognition, the reality of their relationship was a bit more nuanced.</p>
+<p>Euler was indeed supportive of Lagrange’s work and recognized his talent. At the age of 19, Lagrange had made significant contributions to mathematics that caught Euler’s attention. Lagrange sent Euler his work on the calculus of variations, and Euler was very supportive. He recognized Lagrange’s talents and helped introduce him to the wider mathematical community.</p>
+<p>Euler held back his own work on the calculus of variations to let Lagrange publish first. When Euler left Berlin for St.&nbsp;Petersburg in 1766, he recommended that Lagrange succeed him as the director of the Berlin Academy. This act was seen as a testament to Euler’s generous spirit and his recognition of Lagrange’s abilities.</p>
+</section>
+</section>
 <section id="intro" class="level1">
 <h1>Intro</h1>
 <section id="to-study-odes-and-pdes-the-thinking-way-of-linear-algebra-should-be-used" class="level2">
@@ -212,10 +266,10 @@ window.Quarto = {
 <p><span class="math inline">\(x^{(2)}\)</span>= x’’ = <span class="math inline">\(\frac {d^2 x}{dy^2}\)</span>–this notation of the second order’s is actually share the same idea of “division”</p>
 </section>
 <section id="order" class="level2">
-<h2 class="anchored" data-anchor-id="order">order</h2>
+<h2 class="anchored" data-anchor-id="order">Order</h2>
 </section>
 <section id="liniarity" class="level2">
-<h2 class="anchored" data-anchor-id="liniarity">liniarity</h2>
+<h2 class="anchored" data-anchor-id="liniarity">Liniarity</h2>
 <p>$a_n(x) + … +a_1(x) +a_0(x)y =g(x) $</p>
 <ul>
 <li>eg</li>
@@ -262,6 +316,98 @@ window.Quarto = {
 <h2 class="anchored" data-anchor-id="existence-and-uniqueness">Existence and Uniqueness</h2>
 <p>Does a solution of the problem exist? If a solution exists, is it unique?</p>
 <p><img src="images/clipboard-381625365.png" class="img-fluid"></p>
+</section>
+<section id="interval-of-existence-and-uniqueness" class="level2">
+<h2 class="anchored" data-anchor-id="interval-of-existence-and-uniqueness">Interval of Existence and Uniqueness</h2>
+<p>Suppose y(x) represents a solution of the first order initial- value problem. The following three sets on the real x-axis may not be the same:</p>
+<p>the domain of the function y(x), D</p>
+<p>the interval I over which the solution y(x) is defined or exists,</p>
+<p>and the interval <span class="math inline">\(I_0\)</span> of existence and uniqueness.</p>
+<p><span class="math inline">\(I_0 \subseteq I \subseteq D\)</span></p>
+</section>
+</section>
+<section id="differential-equations-as-mathematical-models" class="level1">
+<h1>Differential Equations as Mathematical Models</h1>
+<section id="newtons-law" class="level2">
+<h2 class="anchored" data-anchor-id="newtons-law">Newton’s law</h2>
+</section>
+</section>
+<section id="autonomous-1st-order-des" class="level1">
+<h1>Autonomous 1st Order DEs</h1>
+<p>for y(x): <span class="math inline">\(\frac{dy}{dx} = f(y)\)</span></p>
+<p>Critical Points (equilibrium point/ stationary point)–f(y)=0</p>
+<ul>
+<li>eg. Population increase model</li>
+</ul>
+<p><span class="math inline">\(\frac{dp}{dt} = p(a-bp)\)</span></p>
+<p>let f(p)=p(a-bp)=0 and catogorize the x-axis based on it, discussing the different situation intuitively</p>
+<p><img src="images/clipboard-1219784406.png" class="img-fluid"></p>
+<section id="properties-of-the-solutions-of-autonomous-de" class="level2">
+<h2 class="anchored" data-anchor-id="properties-of-the-solutions-of-autonomous-de">Properties of the solutions of autonomous DE</h2>
+<ul>
+<li>A solution curve</li>
+<li><img src="images/clipboard-1811387429.png" class="img-fluid"></li>
+</ul>
+</section>
+<section id="translation-propertyonly-autonomous-des-has-this-property" class="level2">
+<h2 class="anchored" data-anchor-id="translation-propertyonly-autonomous-des-has-this-property">? Translation Property–only autonomous DEs has this property?</h2>
+<ul>
+<li>meaning: translation?</li>
+<li><img src="images/clipboard-1854338105.png" class="img-fluid"></li>
+</ul>
+<p>If y(x) is a solution of an autonomous differential equation dy ∕dx = f(y), then y1(x) = y(x − k) (y of (x-k)), k a constant, is also a solution.</p>
+</section>
+</section>
+<section id="separable-equations" class="level1">
+<h1>Separable Equations</h1>
+<p><span class="math inline">\(\frac {dy}{dx}=g(x)h(y)\)</span></p>
+<section id="singular-solution-1" class="level2">
+<h2 class="anchored" data-anchor-id="singular-solution-1">singular solution</h2>
+<p><span class="math inline">\(\frac {dy}{h(y)}=g(x)dx\)</span>. If r is a zero of the function h(y), substituting y=r into dy/dx=g(x)h(y) makes both sides zero (y = r is a constant solution of the differential equation). As a consequence, y = r might not show up in the family of solutions that are obtained after integration and simplification. Such a solution is called a singular solution.</p>
+</section>
+<section id="initial-value-problem" class="level2">
+<h2 class="anchored" data-anchor-id="initial-value-problem">initial value problem</h2>
+<section id="intergral-defined-function" class="level3">
+<h3 class="anchored" data-anchor-id="intergral-defined-function">intergral-defined function</h3>
+<p><img src="images/clipboard-2402865730.png" class="img-fluid"></p>
+<ul>
+<li>eg</li>
+</ul>
+<p><img src="images/clipboard-1563205732.png" class="img-fluid"></p>
+</section>
+</section>
+</section>
+<section id="linear-equation" class="level1">
+<h1>Linear equation</h1>
+<p><span class="math inline">\(a_1(x)\frac{dy}{dx}+a_0(x)y=g(x)\)</span> is said to be a linear equation in the variable y.</p>
+<ul>
+<li>standard form:</li>
+</ul>
+<p><span class="math inline">\(\frac{dy}{dx}+P(x)y=f(x)\)</span></p>
+<section id="integrating-factor-method" class="level2">
+<h2 class="anchored" data-anchor-id="integrating-factor-method">Integrating factor method</h2>
+<section id="solution" class="level3">
+<h3 class="anchored" data-anchor-id="solution">solution</h3>
+<p>idea: want to written into <span class="math inline">\(\frac{d}{dx}()=f(x)\)</span> then we assume after multiplying a factor <span class="math inline">\(\mu(x)\)</span> we can write <span class="math inline">\(\frac{d}{dx}(\mu(x)y(x))=\mu(x)f(x)\)</span></p>
+<p>we get <span class="math inline">\(\mu(x) = ce^{\int{p(x)dx}{}}\)</span>.</p>
+<p>let c=1 we get the integrating factor</p>
+</section>
+<section id="ivp" class="level3">
+<h3 class="anchored" data-anchor-id="ivp">IVP</h3>
+<p><img src="images/clipboard-960467589.png" class="img-fluid"></p>
+</section>
+</section>
+<section id="error-function" class="level2">
+<h2 class="anchored" data-anchor-id="error-function">?Error function</h2>
+<p><img src="images/clipboard-2824072994.png" class="img-fluid"></p>
+<p><img src="images/clipboard-4209968738.png" class="img-fluid"></p>
+</section>
+<section id="exact-equations" class="level2">
+<h2 class="anchored" data-anchor-id="exact-equations">Exact equations</h2>
+<p>z=f(x,y)=c</p>
+</section>
+<section id="non-exact" class="level2">
+<h2 class="anchored" data-anchor-id="non-exact">Non-exact</h2>
 </section>
 </section>
 <section id="bernoulis-equation" class="level1">
