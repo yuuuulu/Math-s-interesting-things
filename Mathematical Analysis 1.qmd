@@ -1600,6 +1600,10 @@ f(x)=2x when x $\in A$
 
 -   method 2 sequential creterion
 
+# Though below are equivalent:
+
+$\alpha$ is an upper bound of f and $\alpha$ is a a functional limit of one or some sequences in the domain of f  ----$\alpha$ is the supremum of f.
+
 # Sup is different from limit -- an experience from final exam
 
 The n in them are different---
@@ -1636,6 +1640,8 @@ $|f(x) - M| < \epsilon$
 
 For this specific example, we know that each top of $\sin x^2$ we have
 satisfied $|f(x) - M| < \epsilon$ but NOT ALL!
+
+
 
 ## eg question from Dr. Chi-Kwong Fok about Weirestrass-Extream Value THM (continuous function in a compact set attains its max and min)
 
