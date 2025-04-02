@@ -3,8 +3,8 @@ title: "MTH107---NOTEs"
 format: html
 editor: visual
 ---
-# Preface
 
+# Preface
 
 The first section here is the knowledge that attracts most of my interests on this module, followed by the lecture notes I tapped when I am on the journey of this module.
 
@@ -13,6 +13,9 @@ The first section here is the knowledge that attracts most of my interests on th
 I feel so lucky to learn from Professor Paul-Henry Leemann. He teaches Linear Algebra very well. He not only teahces us how to solve tutorials, but also the real application in the real world such as the application of eigenvectors on Google search. He is also a kind, responsible and humorous teacher. His lecture notes are clean and clear with multiple good examples helping us to understand more effectively.
 
 Professor Andrew Lin teaches Linear Algebra very very well and interesting. He teaches me many tips to help me never remember sth., understand totally instead.
+
+
+
 
 # The most interesting thing (I think) in this module---Jordan form
 
@@ -68,6 +71,10 @@ eg.$e^A=e^{D+N} ?= e^De^N$
 
 -   More precisely, each term with power 1, means that the restriction of T to the corresponding generalised eigenspace is diagonalisable.So the minimal polynomial's each term with the power of 1 means the matrix representation of the operator is diagonalizable, and each eigenvalue has the same number of corresponding power of characteristic polynomial's term of linearly independent eigenvectors.
 
+## Matrix basic knowledge
+
+- AB $\neq$ BA -- it is not a number, but a linear transformation (a function). AB is the composition of two functions, while BA is another composition of two functions. They are not the same in general.
+
 ## The relationship between the direct sum(decomposition) and diagolizable
 
 -   If A:V--\> V, A is diagonalizable then V=RangeA direct sum NullA (proof idea: clarify the basis of A by the non-zero element and zero element on the diagonal of the diagonal shape matrix of A. Based on them we could find the basis of RangeA and NullA which span V while with the intersection of {0})
@@ -76,23 +83,17 @@ eg.$e^A=e^{D+N} ?= e^De^N$
 
 ## Diagnalize 2 matrix at the same time
 
-
-
 # Least-square in regression analysis
 
 This motivates me since I love regeression questions on Statistics
 
-
-?? This will always have solution since if A has linearly independent columns then $A^*A$ is invertible 
+?? This will always have solution since if A has linearly independent columns then $A^*A$ is invertible
 
 ### a simple example
 
 ![](images/clipboard-3621424598.png)
 
 ![](images/clipboard-289964766.png)
-
-
-
 
 # study motivation
 
@@ -275,9 +276,6 @@ so sth. = 0
 \|A\|: number of elements in A(set))
 
 if A and B are finite sets #A=n #B=m, then $|B^A| = m^n$ (ok)
-
-
-
 
 # Chapter 1: vector spaces
 
@@ -1266,7 +1264,6 @@ eg. use the inner product on continuous functions to approximate sine function u
 
 ![](images/clipboard-703567150.png)
 
-
 ## Least-square in regression analysis
 
 ### a simple example
@@ -1298,7 +1295,3 @@ g(f(x))=$x^2$=$id_{\mathbb R\geq0}$ f(g(x))=\|$x$\|is not equal to $id_{\mathbb 
 eg. ![](images/clipboard-1407097711.png)
 
 ## understand again
-
-
-
-

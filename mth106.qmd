@@ -3,12 +3,9 @@ title: "ODEs and PDEs ---MTH106"
 editor: visual
 ---
 
-
-
 # Plz write the Cauchy-Euler equation as the simplest one and THEN use the method of variation of parameters!!!
 
 # Motivation from Professor Chi-Kun Lin: Differential equations reveal the secrets of nature even before we solve them. DEs are really related to the nature.
-
 
 ## Eg of Variation of Parameters introduced by Professor Chi-Kun Lin:
 
@@ -22,19 +19,13 @@ The brilliance of the variation of parameters method lies in its ability to cons
 
 $\frac{d}{dt}\frac{\partial L}{\partial q^{`}\alpha}-\frac{\partial L}{\partial q \alpha}$
 
-
 While it's often said that Lagrange was Euler's student and that Euler had already discovered some of Lagrange's work but chose not to publish to allow Lagrange to gain recognition, the reality of their relationship was a bit more nuanced.
 
 Euler was indeed supportive of Lagrange's work and recognized his talent. At the age of 19, Lagrange had made significant contributions to mathematics that caught Euler's attention. Lagrange sent Euler his work on the calculus of variations, and Euler was very supportive. He recognized Lagrange’s talents and helped introduce him to the wider mathematical community.
 
 Euler held back his own work on the calculus of variations to let Lagrange publish first. When Euler left Berlin for St. Petersburg in 1766, he recommended that Lagrange succeed him as the director of the Berlin Academy. This act was seen as a testament to Euler's generous spirit and his recognition of Lagrange's abilities.
- 
-
-
 
 # Intro
-
-
 
 ## To study ODEs and PDEs, the thinking way of Linear Algebra should be used!
 
@@ -44,7 +35,7 @@ $x^{(2)}$= x'' = $\frac {d^2 x}{dy^2}$--this notation of the second order's is a
 
 ## Liniarity
 
-$a_n(x) \frac{d^n y}{dx^n } + ... +a_1(x) \frac{d y}{dx } +a_0(x)y =g(x) $
+\$a_n(x) \frac{d^n y}{dx^n } + ... +a_1(x) \frac{d y}{dx } +a_0(x)y =g(x) \$
 
 -   eg
 
@@ -156,8 +147,6 @@ $a_1(x)\frac{dy}{dx}+a_0(x)y=g(x)$ is said to be a linear equation in the variab
 
 $\frac{dy}{dx}+P(x)y=f(x)$
 
-
-
 ## Integrating factor method
 
 ### solution
@@ -180,16 +169,37 @@ let c=1 we get the integrating factor
 
 ## Exact equations
 
-
 z=f(x,y)=c
 
-
 ## Non-exact
-
-
 
 # Bernouli's equation
 
 DO Not Remember--understand it instead!
 
 just want to transform the equation to a 1st order differential equation to solve it using integrating factor method.
+
+# W7
+
+## Homogeneous Linear System
+
+
+
+Just follow the idea in $y''+my'+ny=0$, when facing the linear system $\cases{{\vec {x'} = A\vec x}\\{ay'+by=0}}$, we also assume that $\vec {x'} = \vec ke^{\lambda t}$ and substitute it into $\vec {x'} = Ax$
+
+
+## phase portrait and stable/ unstable / semi-stable points
+
+## ? JORDAN FORM AND ODE system?
+
+
+## 对称矩阵重复n次的eigenvalue一定能找到n个线性无关的特征向量
+
+## 把一个矩阵化为对角矩阵 （gauss- Jordan elimination）
+
+
+
+
+
+
+

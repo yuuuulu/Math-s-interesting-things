@@ -5,7 +5,21 @@ editor:
     wrap: 72
 ---
 
+
 ## While the dream of becoming a pure mathematician has faded, my pursuit of Mathematical Analysis remains strong, driven by a desire to express my thoughts with precision and elegance. My ultimate aspiration of Analysis is to present ideas that captivate others, compelling them to listen. This is not just about sharing information; it's about conveying logical insights that have been distilled through my own deep engagement with the material, reflecting a genuine and personal comprehension of the subject matter.
+
+
+## epislon-delta language is not important, the most important thing is to understand the essence of the proof and the logic behind it. It is better to see everything intuitively.
+
+
+### eg. The sum of continuous functions
+
+- 2 functions
+
+- n functions
+
+- infinite functions ---not continuous! --We could not choose the minimum $\delta$ to make the sum continuous.
+
 
 # Now the content follows the time, not summary at all..
 
@@ -319,7 +333,6 @@ eg.
 
 $\exists \delta = min${$\delta_1,\delta_2$}
 
-# 阿贝尔26过世
 
 # Continuity
 
@@ -1822,3 +1835,6 @@ Since $m$ and $n$ are coprime, this leads to a contradiction.
 Therefore, $\sqrt{p}$ must be an irrational number.
 
 everything goes smoothly in exams but not during the learning process
+
+
+## compact -"closed and bounded" is just appropriate for the real number set, but for the general metric space is not true---the real meaning is "every open cover has a finite subcover"
