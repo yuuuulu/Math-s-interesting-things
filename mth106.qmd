@@ -3,6 +3,28 @@ title: "ODEs and PDEs ---MTH106"
 editor: visual
 ---
 
+# Integrating factor is the translation of the diffrentiation operation
+
+$y'+ky = f(x)$ is just $(D+k)y=f(x)$--> y=1/(D+k)f(x)
+
+- idea : integrating factor and exact differential
+
+$e^{kx} (y'+ky) =e^{kx} f(x)$
+
+
+$ye^{kx} = \int e^{kx} f(x) dx$
+
+y= $\frac{1}{e^{kx}} \int e^{kx} f(x) dx$ = $e^{-kx} \int e^{kx} f(x) dx$
+
+So the solution of y = $\frac{1}{e^{kx}} \int e^{kx} f(x) dx$ is the same as the solution of y=1/(D+k)f(x)
+
+
+eg. $1/(D-2) (xe^x) = e^{-2x} \int e^{x} e^{2x} x dx = e^{-2x} \int e^{3x} x dx = e^{-2x} (e^{3x} (1/3)x - 1/9 e^{3x}) = 1/3 x e^x - 1/9 e^x$
+
+
+
+
+
 # Plz write the Cauchy-Euler equation as the simplest one and THEN use the method of variation of parameters!!!
 
 # Motivation from Professor Chi-Kun Lin: Differential equations reveal the secrets of nature even before we solve them. DEs are really related to the nature.
@@ -179,6 +201,9 @@ DO Not Remember--understand it instead!
 
 just want to transform the equation to a 1st order differential equation to solve it using integrating factor method.
 
+
+
+
 # W7
 
 ## Homogeneous Linear System
@@ -192,10 +217,25 @@ Just follow the idea in $y''+my'+ny=0$, when facing the linear system $\cases{{\
 
 ## ? JORDAN FORM AND ODE system?
 
+When we solve $ay''+by'+cy=0$ if m is a double root, then $y_1=e^{mx}$, $y_2=xe^{mx}$
+
+Naturally, here we assume $\vec x_2 =\vec k t e^{\lambda t}$, substitute $\vec x_2$ into the system $\vec {x'} = Ax$;
+
+LHS = $\vec {x_2'} = \vec k(e^{\lambda t }+\lambda te^{\lambda t})=A\vec x_2$=$A\vec k t e^{\lambda t}$ =RHS
+
+Then we get $\vec k = \vec 0$. 
+
+So our assumption is not true.
+
+There is an extra term 
+
 
 ## 对称矩阵重复n次的eigenvalue一定能找到n个线性无关的特征向量
 
 ## 把一个矩阵化为对角矩阵 （gauss- Jordan elimination）
+
+## 
+
 
 
 

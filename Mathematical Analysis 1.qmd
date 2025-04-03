@@ -8,6 +8,40 @@ editor:
 
 ## While the dream of becoming a pure mathematician has faded, my pursuit of Mathematical Analysis remains strong, driven by a desire to express my thoughts with precision and elegance. My ultimate aspiration of Analysis is to present ideas that captivate others, compelling them to listen. This is not just about sharing information; it's about conveying logical insights that have been distilled through my own deep engagement with the material, reflecting a genuine and personal comprehension of the subject matter.
 
+## If a question is not trivial, we should know where is the difficulty of it
+
+eg. f is a continuous function on [0,1] $\int_0^1 f(x) x^n dx =0$, prove that f(x)=0 for all x in [0,1].
+
+we have $\int_0^1 f(x) [a_nx^n+...+ax+a_0]dx=0$
+
+We have $\int_0^1 |f(x)|^2 dx=0$ (Since $ |f(x)|^2$ is not negative, Suppose f(x) is not equal to 0, then we could find a point x0 where f(x0) is not equal to 0, then we could find a small interval around x0 where f(x) is not equal to 0, then this interval's integral could not be =0, which is a contradiction (the meaning of "continuity" is that if a point is greater than 0, then there is a neighborhood of this point where the function is greater than 0.))
+
+We have $|f|^2=0$ a.e. $x\in [0,1]$
+
+So $f(x)=0$ a.e. $x\in [0,1]$
+
+
+uncountable is the difficulty of this question (density argument : The closure of Q is R means that $\forall x \in R$ $\exists x_n \in Q$ such that $x_n$ converges to x)
+
+So we use the proof by contradiction:
+
+
+
+
+
+
+## Banach fixed point theorem
+
+(Z is a complete metric space (Banach space), T:Z->Z is a contraction mapping, then f has a unique fixed point)
+
+### proof
+
+
+
+
+
+
+
 
 ## epislon-delta language is not important, the most important thing is to understand the essence of the proof and the logic behind it. It is better to see everything intuitively.
 
@@ -1838,3 +1872,13 @@ everything goes smoothly in exams but not during the learning process
 
 
 ## compact -"closed and bounded" is just appropriate for the real number set, but for the general metric space is not true---the real meaning is "every open cover has a finite subcover"
+
+## Gauss is a fox, and the fox's tail sweeps away the places he has passed through. ---Abel 
+
+Gauss had the habit of not writing down his proofs, which made it difficult for others to understand his work. He had good habits of writing his daily work in his diary, which was a good way to keep track of his progress.
+
+## Read Euler, read Euler, he is the master of us all. ---Laplace
+
+Euler telled us both the true things and the false things in mathematics. He demonstrated the whole thinking process of mathematics.
+
+Not only did Euler did good mathematics research but also he was a good teacher. He had cultivated lots of students. He wrote a lot of books and papers, which were very helpful for the development of mathematics.
