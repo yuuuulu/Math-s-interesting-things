@@ -133,6 +133,10 @@ window.Quarto = {
 <span class="menu-text">ODEs and PDEs with codes</span></a>
   </li>  
   <li class="nav-item">
+    <a class="nav-link" href="./mth106.html"> 
+<span class="menu-text">ODE, PDE, and Fourier Series</span></a>
+  </li>  
+  <li class="nav-item">
     <a class="nav-link" href="./Mathematical Analysis 1.html"> 
 <span class="menu-text">Analysis 1</span></a>
   </li>  
@@ -170,6 +174,7 @@ window.Quarto = {
   <li><a href="#generalized-eigenspace" id="toc-generalized-eigenspace" class="nav-link" data-scroll-target="#generalized-eigenspace">Generalized eigenspace</a></li>
   <li><a href="#cayley-hamlton-thm" id="toc-cayley-hamlton-thm" class="nav-link" data-scroll-target="#cayley-hamlton-thm">Cayley Hamlton Thm</a></li>
   <li><a href="#jordan-form-makes-me-understand-linear-algebra-more-deeply-which-also-introduces-differential-equations-to-me" id="toc-jordan-form-makes-me-understand-linear-algebra-more-deeply-which-also-introduces-differential-equations-to-me" class="nav-link" data-scroll-target="#jordan-form-makes-me-understand-linear-algebra-more-deeply-which-also-introduces-differential-equations-to-me">Jordan form makes me understand Linear Algebra more deeply, which also introduces differential equations to me</a></li>
+  <li><a href="#matrix-basic-knowledge" id="toc-matrix-basic-knowledge" class="nav-link" data-scroll-target="#matrix-basic-knowledge">Matrix basic knowledge</a></li>
   <li><a href="#the-relationship-between-the-direct-sumdecomposition-and-diagolizable" id="toc-the-relationship-between-the-direct-sumdecomposition-and-diagolizable" class="nav-link" data-scroll-target="#the-relationship-between-the-direct-sumdecomposition-and-diagolizable">The relationship between the direct sum(decomposition) and diagolizable</a></li>
   <li><a href="#the-relationship-between-jordan-form-and-diffrential-equation" id="toc-the-relationship-between-jordan-form-and-diffrential-equation" class="nav-link" data-scroll-target="#the-relationship-between-jordan-form-and-diffrential-equation">The relationship between Jordan form and diffrential equation</a></li>
   <li><a href="#diagnalize-2-matrix-at-the-same-time" id="toc-diagnalize-2-matrix-at-the-same-time" class="nav-link" data-scroll-target="#diagnalize-2-matrix-at-the-same-time">Diagnalize 2 matrix at the same time</a></li>
@@ -358,6 +363,12 @@ window.Quarto = {
 <p>More generally, if we have a Jordan form with 2 blocks B and C, with one same eigenvalue, Since the minimal polynomial applied by the operator T on V (<span class="math inline">\(M_T(T)\)</span>) must be 0, <span class="math inline">\((T-\lambda I)^m\)</span> in <span class="math inline">\(M_T(T)\)</span> should have m satisfying <span class="math inline">\((B-\lambda I)^m=0\)</span> and <span class="math inline">\((C-\lambda I)^m=0\)</span>. In this case, since any smaller Jordan block with the same eigenvalue will also be killed off under the <span class="math inline">\((T-\lambda I)^m\)</span> in <span class="math inline">\(M_T(T)\)</span>, when the largest Jordan block is 0, smaller blocks are also 0. What is more, if <span class="math inline">\(\exists\)</span> a block with dimension greater than the power of the corresponding term in the polynomial, there then is a contradiction to the defination of the minimal polynomial(must be 0). If the largest Jordan block has the dimension strictly less than the power of the corresponding term in the polynomial, there then also is a contradiction to the defination of the minimal polynomial(smallest power)</p></li>
 <li><p>Each block has a basis of eigenvector and other basis are generalized eigenvector which are linearly independent.</p></li>
 <li><p>More precisely, each term with power 1, means that the restriction of T to the corresponding generalised eigenspace is diagonalisable.So the minimal polynomial’s each term with the power of 1 means the matrix representation of the operator is diagonalizable, and each eigenvalue has the same number of corresponding power of characteristic polynomial’s term of linearly independent eigenvectors.</p></li>
+</ul>
+</section>
+<section id="matrix-basic-knowledge" class="level2">
+<h2 class="anchored" data-anchor-id="matrix-basic-knowledge">Matrix basic knowledge</h2>
+<ul>
+<li>AB <span class="math inline">\(\neq\)</span> BA – it is not a number, but a linear transformation (a function). AB is the composition of two functions, while BA is another composition of two functions. They are not the same in general.</li>
 </ul>
 </section>
 <section id="the-relationship-between-the-direct-sumdecomposition-and-diagolizable" class="level2">

@@ -20,6 +20,40 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -133,6 +167,10 @@ window.Quarto = {
 <span class="menu-text">ODEs and PDEs with codes</span></a>
   </li>  
   <li class="nav-item">
+    <a class="nav-link active" href="./mth106.html" aria-current="page"> 
+<span class="menu-text">ODE, PDE, and Fourier Series</span></a>
+  </li>  
+  <li class="nav-item">
     <a class="nav-link" href="./Mathematical Analysis 1.html"> 
 <span class="menu-text">Analysis 1</span></a>
   </li>  
@@ -160,7 +198,17 @@ window.Quarto = {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#plz-write-the-cauchy-euler-equation-as-the-simplest-one-and-then-use-the-method-of-variation-of-parameters" id="toc-plz-write-the-cauchy-euler-equation-as-the-simplest-one-and-then-use-the-method-of-variation-of-parameters" class="nav-link active" data-scroll-target="#plz-write-the-cauchy-euler-equation-as-the-simplest-one-and-then-use-the-method-of-variation-of-parameters">Plz write the Cauchy-Euler equation as the simplest one and THEN use the method of variation of parameters!!!</a></li>
+  <li><a href="#fourier-series" id="toc-fourier-series" class="nav-link active" data-scroll-target="#fourier-series">Fourier Series</a>
+  <ul class="collapse">
+  <li><a href="#proof" id="toc-proof" class="nav-link" data-scroll-target="#proof">Proof</a></li>
+  <li><a href="#thm" id="toc-thm" class="nav-link" data-scroll-target="#thm">THM</a>
+  <ul class="collapse">
+  <li><a href="#piecewise-continuous-function" id="toc-piecewise-continuous-function" class="nav-link" data-scroll-target="#piecewise-continuous-function">piecewise continuous function</a></li>
+  </ul></li>
+  <li><a href="#thmcondition-for-convergence" id="toc-thmcondition-for-convergence" class="nav-link" data-scroll-target="#thmcondition-for-convergence">thm–condition for convergence</a></li>
+  </ul></li>
+  <li><a href="#integrating-factor-is-the-translation-of-the-diffrentiation-operation" id="toc-integrating-factor-is-the-translation-of-the-diffrentiation-operation" class="nav-link" data-scroll-target="#integrating-factor-is-the-translation-of-the-diffrentiation-operation">Integrating factor is the translation of the diffrentiation operation</a></li>
+  <li><a href="#plz-write-the-cauchy-euler-equation-as-the-simplest-one-and-then-use-the-method-of-variation-of-parameters" id="toc-plz-write-the-cauchy-euler-equation-as-the-simplest-one-and-then-use-the-method-of-variation-of-parameters" class="nav-link" data-scroll-target="#plz-write-the-cauchy-euler-equation-as-the-simplest-one-and-then-use-the-method-of-variation-of-parameters">Plz write the Cauchy-Euler equation as the simplest one and THEN use the method of variation of parameters!!!</a></li>
   <li><a href="#motivation-from-professor-chi-kun-lin-differential-equations-reveal-the-secrets-of-nature-even-before-we-solve-them.-des-are-really-related-to-the-nature." id="toc-motivation-from-professor-chi-kun-lin-differential-equations-reveal-the-secrets-of-nature-even-before-we-solve-them.-des-are-really-related-to-the-nature." class="nav-link" data-scroll-target="#motivation-from-professor-chi-kun-lin-differential-equations-reveal-the-secrets-of-nature-even-before-we-solve-them.-des-are-really-related-to-the-nature.">Motivation from Professor Chi-Kun Lin: Differential equations reveal the secrets of nature even before we solve them. DEs are really related to the nature.</a>
   <ul class="collapse">
   <li><a href="#eg-of-variation-of-parameters-introduced-by-professor-chi-kun-lin" id="toc-eg-of-variation-of-parameters-introduced-by-professor-chi-kun-lin" class="nav-link" data-scroll-target="#eg-of-variation-of-parameters-introduced-by-professor-chi-kun-lin">Eg of Variation of Parameters introduced by Professor Chi-Kun Lin:</a></li>
@@ -215,6 +263,15 @@ window.Quarto = {
   <li><a href="#non-exact" id="toc-non-exact" class="nav-link" data-scroll-target="#non-exact">Non-exact</a></li>
   </ul></li>
   <li><a href="#bernoulis-equation" id="toc-bernoulis-equation" class="nav-link" data-scroll-target="#bernoulis-equation">Bernouli’s equation</a></li>
+  <li><a href="#w7" id="toc-w7" class="nav-link" data-scroll-target="#w7">W7</a>
+  <ul class="collapse">
+  <li><a href="#homogeneous-linear-system" id="toc-homogeneous-linear-system" class="nav-link" data-scroll-target="#homogeneous-linear-system">Homogeneous Linear System</a></li>
+  <li><a href="#phase-portrait-and-stable-unstable-semi-stable-points" id="toc-phase-portrait-and-stable-unstable-semi-stable-points" class="nav-link" data-scroll-target="#phase-portrait-and-stable-unstable-semi-stable-points">phase portrait and stable/ unstable / semi-stable points</a></li>
+  <li><a href="#jordan-form-and-ode-system" id="toc-jordan-form-and-ode-system" class="nav-link" data-scroll-target="#jordan-form-and-ode-system">? JORDAN FORM AND ODE system?</a></li>
+  <li><a href="#对称矩阵重复n次的eigenvalue一定能找到n个线性无关的特征向量" id="toc-对称矩阵重复n次的eigenvalue一定能找到n个线性无关的特征向量" class="nav-link" data-scroll-target="#对称矩阵重复n次的eigenvalue一定能找到n个线性无关的特征向量">对称矩阵重复n次的eigenvalue一定能找到n个线性无关的特征向量</a></li>
+  <li><a href="#把一个矩阵化为对角矩阵-gauss--jordan-elimination" id="toc-把一个矩阵化为对角矩阵-gauss--jordan-elimination" class="nav-link" data-scroll-target="#把一个矩阵化为对角矩阵-gauss--jordan-elimination">把一个矩阵化为对角矩阵 （gauss- Jordan elimination）</a></li>
+  <li><a href="#section" id="toc-section" class="nav-link" data-scroll-target="#section"></a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
@@ -240,6 +297,88 @@ window.Quarto = {
 </header>
 
 
+<section id="fourier-series" class="level1">
+<h1>Fourier Series</h1>
+<p>We can use functions in a orthogonal set,</p>
+<p><span class="math display">\[\left\{ 1, \cos\left(\frac{\pi}{p}x\right), \cos\left(\frac{2\pi}{p}x\right), \cos\left(\frac{3\pi}{p}x\right), \ldots, \sin\left(\frac{\pi}{p}x\right), \sin\left(\frac{2\pi}{p}x\right), \sin\left(\frac{3\pi}{p}x\right), \ldots \right\}\]</span></p>
+<p>(similar to a orthognal basis in linear algebra, to obtain the Fourier series). Specifically, we start with the orthogonal set {1, sin, cos, …}. By projecting the function onto these basis functions or computing the inner product three times—(f, 1), (f, cos), and (f, sin)—we can derive the Fourier series representation of the function.</p>
+<section id="proof" class="level2">
+<h2 class="anchored" data-anchor-id="proof">Proof</h2>
+<p><img src="images/clipboard-2874869730.png" class="img-fluid"></p>
+<p><img src="images/clipboard-2116251045.png" class="img-fluid"></p>
+<p><img src="images/clipboard-3831873794.png" class="img-fluid"></p>
+</section>
+<section id="thm" class="level2">
+<h2 class="anchored" data-anchor-id="thm">THM</h2>
+<section id="piecewise-continuous-function" class="level3">
+<h3 class="anchored" data-anchor-id="piecewise-continuous-function">piecewise continuous function</h3>
+<ul>
+<li>A function f(x) is piecewise continuous on an interval [a, b] if it is continuous on each subinterval (open interval) of [a, b] and has a finite number of (or jump) discontinuities in the interval. The function can be defined in pieces, and at each piece, it must be continuous.</li>
+</ul>
+</section>
+</section>
+<section id="thmcondition-for-convergence" class="level2">
+<h2 class="anchored" data-anchor-id="thmcondition-for-convergence">thm–condition for convergence</h2>
+<p>f, and f’ are piecewise continuous on [-p,p], then for every x $$ [-p,p], the Fourier series of f(x) converges to f(x) at every point x in [-p,p] where f is continuous. If f has a jump discontinuity at x, the Fourier series converges to the average of the left-hand and right-hand limits of f at x.</p>
+</section>
+</section>
+<section id="integrating-factor-is-the-translation-of-the-diffrentiation-operation" class="level1">
+<h1>Integrating factor is the translation of the diffrentiation operation</h1>
+<p><span class="math inline">\(y'+ky = f(x)\)</span> is just <span class="math inline">\((D+k)y=f(x)\)</span>–&gt; y=1/(D+k)f(x)</p>
+<ul>
+<li>idea : integrating factor and exact differential</li>
+</ul>
+<p><span class="math inline">\(e^{kx} (y'+ky) =e^{kx} f(x)\)</span></p>
+<p><span class="math inline">\(ye^{kx} = \int e^{kx} f(x) dx\)</span></p>
+<p>y= <span class="math inline">\(\frac{1}{e^{kx}} \int e^{kx} f(x) dx\)</span> = <span class="math inline">\(e^{-kx} \int^m e^{km} f(m) dm\)</span>–convolution</p>
+<p>So the solution of y = <span class="math inline">\(\frac{1}{e^{kx}} \int e^{kx} f(x) dx\)</span> is the same as the solution of y=1/(D+k)f(x)</p>
+<p>eg. <span class="math inline">\(1/(D-2) (xe^x) = e^{-2x} \int e^{x} e^{2x} x dx = e^{-2x} \int e^{3x} x dx = e^{-2x} (e^{3x} (1/3)x - 1/9 e^{3x}) = 1/3 x e^x - 1/9 e^x\)</span></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>result <span class="ot">&lt;-</span> <span class="fl">0.927</span> <span class="sc">/</span><span class="dv">6</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">tan</span>(<span class="fl">5.356</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] -1.333028</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">atan</span>(<span class="fl">5.356</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 1.386215</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tan</span>(<span class="sc">-</span><span class="fl">0.9271752</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] -1.333</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fl">0.8</span><span class="sc">*</span><span class="fu">cos</span>(<span class="dv">8</span> <span class="sc">*</span>pi<span class="sc">/</span><span class="dv">12</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] -0.4</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fl">0.8</span><span class="sc">*</span><span class="fu">cos</span>(<span class="dv">8</span> <span class="sc">*</span>pi<span class="sc">/</span><span class="dv">8</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] -0.8</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fl">0.8</span><span class="sc">*</span><span class="fu">cos</span>(<span class="dv">8</span> <span class="sc">*</span>pi<span class="sc">/</span><span class="dv">6</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] -0.4</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fl">0.8</span><span class="sc">*</span><span class="fu">cos</span>(<span class="dv">8</span> <span class="sc">*</span>pi<span class="sc">/</span><span class="dv">4</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.8</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fl">0.8</span><span class="sc">*</span><span class="fu">cos</span>(<span class="dv">8</span> <span class="sc">*</span> (<span class="dv">9</span><span class="sc">*</span>pi<span class="sc">/</span><span class="dv">32</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.5656854</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fl">0.8</span><span class="sc">*</span><span class="fu">cos</span>(<span class="dv">8</span> <span class="sc">*</span> <span class="dv">3</span><span class="sc">*</span>pi<span class="sc">/</span><span class="dv">16</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] -1.469576e-16</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="sc">-</span><span class="fl">6.4</span><span class="sc">*</span><span class="fu">sin</span>(<span class="dv">8</span><span class="sc">*</span><span class="dv">3</span><span class="sc">*</span>pi<span class="sc">/</span><span class="dv">16</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 6.4</code></pre>
+</div>
+</div>
+</section>
 <section id="plz-write-the-cauchy-euler-equation-as-the-simplest-one-and-then-use-the-method-of-variation-of-parameters" class="level1">
 <h1>Plz write the Cauchy-Euler equation as the simplest one and THEN use the method of variation of parameters!!!</h1>
 </section>
@@ -414,8 +553,36 @@ window.Quarto = {
 <h1>Bernouli’s equation</h1>
 <p>DO Not Remember–understand it instead!</p>
 <p>just want to transform the equation to a 1st order differential equation to solve it using integrating factor method.</p>
+</section>
+<section id="w7" class="level1">
+<h1>W7</h1>
+<section id="homogeneous-linear-system" class="level2">
+<h2 class="anchored" data-anchor-id="homogeneous-linear-system">Homogeneous Linear System</h2>
+<p>Just follow the idea in <span class="math inline">\(y''+my'+ny=0\)</span>, when facing the linear system <span class="math inline">\(\cases{{\vec {x'} = A\vec x}\\{ay'+by=0}}\)</span>, we also assume that <span class="math inline">\(\vec {x'} = \vec ke^{\lambda t}\)</span> and substitute it into <span class="math inline">\(\vec {x'} = Ax\)</span></p>
+</section>
+<section id="phase-portrait-and-stable-unstable-semi-stable-points" class="level2">
+<h2 class="anchored" data-anchor-id="phase-portrait-and-stable-unstable-semi-stable-points">phase portrait and stable/ unstable / semi-stable points</h2>
+</section>
+<section id="jordan-form-and-ode-system" class="level2">
+<h2 class="anchored" data-anchor-id="jordan-form-and-ode-system">? JORDAN FORM AND ODE system?</h2>
+<p>When we solve <span class="math inline">\(ay''+by'+cy=0\)</span> if m is a double root, then <span class="math inline">\(y_1=e^{mx}\)</span>, <span class="math inline">\(y_2=xe^{mx}\)</span></p>
+<p>Naturally, here we assume <span class="math inline">\(\vec x_2 =\vec k t e^{\lambda t}\)</span>, substitute <span class="math inline">\(\vec x_2\)</span> into the system <span class="math inline">\(\vec {x'} = Ax\)</span>;</p>
+<p>LHS = <span class="math inline">\(\vec {x_2'} = \vec k(e^{\lambda t }+\lambda te^{\lambda t})=A\vec x_2\)</span>=<span class="math inline">\(A\vec k t e^{\lambda t}\)</span> =RHS</p>
+<p>Then we get <span class="math inline">\(\vec k = \vec 0\)</span>.</p>
+<p>So our assumption is not true.</p>
+<p>There is an extra term</p>
+</section>
+<section id="对称矩阵重复n次的eigenvalue一定能找到n个线性无关的特征向量" class="level2">
+<h2 class="anchored" data-anchor-id="对称矩阵重复n次的eigenvalue一定能找到n个线性无关的特征向量">对称矩阵重复n次的eigenvalue一定能找到n个线性无关的特征向量</h2>
+</section>
+<section id="把一个矩阵化为对角矩阵-gauss--jordan-elimination" class="level2">
+<h2 class="anchored" data-anchor-id="把一个矩阵化为对角矩阵-gauss--jordan-elimination">把一个矩阵化为对角矩阵 （gauss- Jordan elimination）</h2>
+</section>
+<section id="section" class="level2">
+<h2 class="anchored" data-anchor-id="section"></h2>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->

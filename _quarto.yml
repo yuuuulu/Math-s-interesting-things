@@ -14,6 +14,9 @@ website:
         text: Advanced Linear Algebra
       - href: Simple_ODEs.html
         text: ODEs and PDEs with codes
+      - href: mth106.qmd
+        text: ODE, PDE, and Fourier Series
+      
       - href: Mathematical Analysis 1.qmd
         text: Analysis 1
       - href: mth1113.qmd

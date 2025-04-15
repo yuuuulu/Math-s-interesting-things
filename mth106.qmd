@@ -3,14 +3,47 @@ title: "ODEs and PDEs ---MTH106"
 editor: visual
 ---
 
+# Fourier Series
+
+We can use functions in a orthogonal set,
+
+$$\left\{ 1, \cos\left(\frac{\pi}{p}x\right), \cos\left(\frac{2\pi}{p}x\right), \cos\left(\frac{3\pi}{p}x\right), \ldots, \sin\left(\frac{\pi}{p}x\right), \sin\left(\frac{2\pi}{p}x\right), \sin\left(\frac{3\pi}{p}x\right), \ldots \right\}$$
+
+(similar to a orthognal basis in linear algebra, to obtain the Fourier series). Specifically, we start with the orthogonal set {1, sin, cos, ...}. By projecting the function onto these basis functions or computing the inner product three times—(f, 1), (f, cos), and (f, sin)—we can derive the Fourier series representation of the function.
+
+## Proof
+
+![](images/clipboard-2874869730.png)
+
+![](images/clipboard-2116251045.png)
+
+![](images/clipboard-3831873794.png)
+
+
+
+## THM
+
+### piecewise continuous function
+
+-   A function f(x) is piecewise continuous on an interval [a, b] if it is continuous on each subinterval (open interval) of [a, b] and has a finite number of (or jump) discontinuities in the interval. The function can be defined in pieces, and at each piece, it must be continuous.
+
+## thm--condition for convergence
+
+f, and f' are piecewise continuous on [-p,p], then for every x $\in $ [-p,p], the Fourier series of f(x) converges to f(x) at every point x in [-p,p] where f is continuous. If f has a jump discontinuity at x, the Fourier series converges to the average of the left-hand and right-hand limits of f at x.
+
+
+
+
+
+
+
 # Integrating factor is the translation of the diffrentiation operation
 
-$y'+ky = f(x)$ is just $(D+k)y=f(x)$--> y=1/(D+k)f(x)
+$y'+ky = f(x)$ is just $(D+k)y=f(x)$--\> y=1/(D+k)f(x)
 
-- idea : integrating factor and exact differential
+-   idea : integrating factor and exact differential
 
 $e^{kx} (y'+ky) =e^{kx} f(x)$
-
 
 $ye^{kx} = \int e^{kx} f(x) dx$
 
@@ -18,9 +51,7 @@ y= $\frac{1}{e^{kx}} \int e^{kx} f(x) dx$ = $e^{-kx} \int^m e^{km} f(m) dm$--con
 
 So the solution of y = $\frac{1}{e^{kx}} \int e^{kx} f(x) dx$ is the same as the solution of y=1/(D+k)f(x)
 
-
 eg. $1/(D-2) (xe^x) = e^{-2x} \int e^{x} e^{2x} x dx = e^{-2x} \int e^{3x} x dx = e^{-2x} (e^{3x} (1/3)x - 1/9 e^{3x}) = 1/3 x e^x - 1/9 e^x$
-
 
 ```{r}
 result <- 0.927 /6
@@ -45,10 +76,6 @@ tan(-0.9271752)
 -6.4*sin(8*3*pi/16)
 
 ```
-
-
-
-
 
 # Plz write the Cauchy-Euler equation as the simplest one and THEN use the method of variation of parameters!!!
 
@@ -226,17 +253,11 @@ DO Not Remember--understand it instead!
 
 just want to transform the equation to a 1st order differential equation to solve it using integrating factor method.
 
-
-
-
 # W7
 
 ## Homogeneous Linear System
 
-
-
 Just follow the idea in $y''+my'+ny=0$, when facing the linear system $\cases{{\vec {x'} = A\vec x}\\{ay'+by=0}}$, we also assume that $\vec {x'} = \vec ke^{\lambda t}$ and substitute it into $\vec {x'} = Ax$
-
 
 ## phase portrait and stable/ unstable / semi-stable points
 
@@ -248,23 +269,14 @@ Naturally, here we assume $\vec x_2 =\vec k t e^{\lambda t}$, substitute $\vec x
 
 LHS = $\vec {x_2'} = \vec k(e^{\lambda t }+\lambda te^{\lambda t})=A\vec x_2$=$A\vec k t e^{\lambda t}$ =RHS
 
-Then we get $\vec k = \vec 0$. 
+Then we get $\vec k = \vec 0$.
 
 So our assumption is not true.
 
-There is an extra term 
-
+There is an extra term
 
 ## 对称矩阵重复n次的eigenvalue一定能找到n个线性无关的特征向量
 
 ## 把一个矩阵化为对角矩阵 （gauss- Jordan elimination）
 
 ## 
-
-
-
-
-
-
-
-

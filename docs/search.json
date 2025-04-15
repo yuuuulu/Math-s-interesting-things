@@ -235,7 +235,7 @@
     "href": "mth106.html",
     "title": "ODEs and PDEs —MTH106",
     "section": "",
-    "text": "\\(x^{(2)}\\)= x’’ = \\(\\frac {d^2 x}{dy^2}\\)–this notation of the second order’s is actually share the same idea of “division”\n\n\n\n\n\n\n$a_n(x) + … +a_1(x) +a_0(x)y =g(x) $\n\neg\n\n(y-x)dx+4xdy=0\n\n\\(\\frac {d^2 y}{dx^2}+\\sin y=0\\) is not linear since it has nonlinear function of y\n\n\n\n\n\n\nAn funtion defined on an interval I and possessing at least n derivatives that are continuous on I, which when substituted into an nth-order ordinary differential equation reduces the equation to an identity, is said to be a solution of the equation on the interval.\nWe cannot think solution of an ordinary differential equation without simultaneously thinking interval.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nSystem:\n\\[\\cases{^{{\\frac{dx}{dt}}=f(t,x,y)} _{\\frac{dy}{dt}=g(t,x,y)}}\\] Solution: x =\\(\\Phi_1(t)\\), y=\\(\\Phi_2(t)\\) defined on a common interval I that satisfy each equation of the system on this interval."
+    "text": "We can use functions in a orthogonal set,\n\\[\\left\\{ 1, \\cos\\left(\\frac{\\pi}{p}x\\right), \\cos\\left(\\frac{2\\pi}{p}x\\right), \\cos\\left(\\frac{3\\pi}{p}x\\right), \\ldots, \\sin\\left(\\frac{\\pi}{p}x\\right), \\sin\\left(\\frac{2\\pi}{p}x\\right), \\sin\\left(\\frac{3\\pi}{p}x\\right), \\ldots \\right\\}\\]\n(similar to a orthognal basis in linear algebra, to obtain the Fourier series). Specifically, we start with the orthogonal set {1, sin, cos, …}. By projecting the function onto these basis functions or computing the inner product three times—(f, 1), (f, cos), and (f, sin)—we can derive the Fourier series representation of the function.\n\n\n\n\n\n\n\n\n\n\n\nA function f(x) is piecewise continuous on an interval [a, b] if it is continuous on each subinterval (open interval) of [a, b] and has a finite number of (or jump) discontinuities in the interval. The function can be defined in pieces, and at each piece, it must be continuous.\n\n\n\n\n\nf, and f’ are piecewise continuous on [-p,p], then for every x $$ [-p,p], the Fourier series of f(x) converges to f(x) at every point x in [-p,p] where f is continuous. If f has a jump discontinuity at x, the Fourier series converges to the average of the left-hand and right-hand limits of f at x."
   },
   {
     "objectID": "Calculus.html",
@@ -1314,5 +1314,103 @@
     "title": "ODEs and PDEs —MTH106",
     "section": "Non-exact",
     "text": "Non-exact"
+  },
+  {
+    "objectID": "mth106.html#thm",
+    "href": "mth106.html#thm",
+    "title": "ODEs and PDEs —MTH106",
+    "section": "",
+    "text": "A function f(x) is piecewise continuous on an interval [a, b] if it is continuous on each subinterval (open interval) of [a, b] and has a finite number of (or jump) discontinuities in the interval. The function can be defined in pieces, and at each piece, it must be continuous."
+  },
+  {
+    "objectID": "mth106.html#thmcondition-for-convergence",
+    "href": "mth106.html#thmcondition-for-convergence",
+    "title": "ODEs and PDEs —MTH106",
+    "section": "",
+    "text": "f, and f’ are piecewise continuous on [-p,p], then for every x $$ [-p,p], the Fourier series of f(x) converges to f(x) at every point x in [-p,p] where f is continuous. If f has a jump discontinuity at x, the Fourier series converges to the average of the left-hand and right-hand limits of f at x."
+  },
+  {
+    "objectID": "mth106.html#homogeneous-linear-system",
+    "href": "mth106.html#homogeneous-linear-system",
+    "title": "ODEs and PDEs —MTH106",
+    "section": "Homogeneous Linear System",
+    "text": "Homogeneous Linear System\nJust follow the idea in \\(y''+my'+ny=0\\), when facing the linear system \\(\\cases{{\\vec {x'} = A\\vec x}\\\\{ay'+by=0}}\\), we also assume that \\(\\vec {x'} = \\vec ke^{\\lambda t}\\) and substitute it into \\(\\vec {x'} = Ax\\)"
+  },
+  {
+    "objectID": "mth106.html#phase-portrait-and-stable-unstable-semi-stable-points",
+    "href": "mth106.html#phase-portrait-and-stable-unstable-semi-stable-points",
+    "title": "ODEs and PDEs —MTH106",
+    "section": "phase portrait and stable/ unstable / semi-stable points",
+    "text": "phase portrait and stable/ unstable / semi-stable points"
+  },
+  {
+    "objectID": "mth106.html#jordan-form-and-ode-system",
+    "href": "mth106.html#jordan-form-and-ode-system",
+    "title": "ODEs and PDEs —MTH106",
+    "section": "? JORDAN FORM AND ODE system?",
+    "text": "? JORDAN FORM AND ODE system?\nWhen we solve \\(ay''+by'+cy=0\\) if m is a double root, then \\(y_1=e^{mx}\\), \\(y_2=xe^{mx}\\)\nNaturally, here we assume \\(\\vec x_2 =\\vec k t e^{\\lambda t}\\), substitute \\(\\vec x_2\\) into the system \\(\\vec {x'} = Ax\\);\nLHS = \\(\\vec {x_2'} = \\vec k(e^{\\lambda t }+\\lambda te^{\\lambda t})=A\\vec x_2\\)=\\(A\\vec k t e^{\\lambda t}\\) =RHS\nThen we get \\(\\vec k = \\vec 0\\).\nSo our assumption is not true.\nThere is an extra term"
+  },
+  {
+    "objectID": "mth106.html#对称矩阵重复n次的eigenvalue一定能找到n个线性无关的特征向量",
+    "href": "mth106.html#对称矩阵重复n次的eigenvalue一定能找到n个线性无关的特征向量",
+    "title": "ODEs and PDEs —MTH106",
+    "section": "对称矩阵重复n次的eigenvalue一定能找到n个线性无关的特征向量",
+    "text": "对称矩阵重复n次的eigenvalue一定能找到n个线性无关的特征向量"
+  },
+  {
+    "objectID": "mth106.html#把一个矩阵化为对角矩阵-gauss--jordan-elimination",
+    "href": "mth106.html#把一个矩阵化为对角矩阵-gauss--jordan-elimination",
+    "title": "ODEs and PDEs —MTH106",
+    "section": "把一个矩阵化为对角矩阵 （gauss- Jordan elimination）",
+    "text": "把一个矩阵化为对角矩阵 （gauss- Jordan elimination）"
+  },
+  {
+    "objectID": "Mathematical Analysis 1.html#if-a-question-is-not-trivial-we-should-know-where-is-the-difficulty-of-it",
+    "href": "Mathematical Analysis 1.html#if-a-question-is-not-trivial-we-should-know-where-is-the-difficulty-of-it",
+    "title": "Analysis1 and Analysis 2",
+    "section": "If a question is not trivial, we should know where is the difficulty of it",
+    "text": "If a question is not trivial, we should know where is the difficulty of it\nHere the difficulty is uncountable\neg. f is a continuous function on [0,1] \\(\\int_0^1 f(x) x^n dx =0\\), prove that f(x)=0 for all x in [0,1].\nwe have \\(\\int_0^1 f(x) [a_nx^n+...+ax+a_0]dx=0\\)\nWe have \\(\\int_0^1 |f(x)|^2 dx=0\\) (Weierstrass Approximation Theorem and Since $ |f(x)|^2$ is not negative, Suppose f(x) is not equal to 0, then we could find a point x0 where f(x0) is not equal to 0, then we could find a small interval around x0 where f(x) is not equal to 0, then this interval’s integral could not be =0, which is a contradiction (the meaning of “continuity” is that if a point is greater than 0, then there is a neighborhood of this point where the function is greater than 0.))\nWe have \\(|f|^2=0\\) a.e. \\(x\\in [0,1]\\)\nSo \\(f(x)=0\\) a.e. \\(x\\in [0,1]\\)\nuncountable is the difficulty of this question (density argument : The closure of Q is R means that \\(\\forall x \\in R\\) \\(\\exists x_n \\in Q\\) such that \\(x_n\\) converges to x)\nSo we use the proof by contradiction:"
+  },
+  {
+    "objectID": "Mathematical Analysis 1.html#epislon-delta-language-is-not-important-the-most-important-thing-is-to-understand-the-essence-of-the-proof-and-the-logic-behind-it.-it-is-better-to-see-everything-intuitively.",
+    "href": "Mathematical Analysis 1.html#epislon-delta-language-is-not-important-the-most-important-thing-is-to-understand-the-essence-of-the-proof-and-the-logic-behind-it.-it-is-better-to-see-everything-intuitively.",
+    "title": "Analysis1 and Analysis 2",
+    "section": "epislon-delta language is not important, the most important thing is to understand the essence of the proof and the logic behind it. It is better to see everything intuitively.",
+    "text": "epislon-delta language is not important, the most important thing is to understand the essence of the proof and the logic behind it. It is better to see everything intuitively.\n\neg. The sum of continuous functions\n\n2 functions\nn functions\ninfinite functions —not continuous! –We could not choose the minimum \\(\\delta\\) to make the sum continuous."
+  },
+  {
+    "objectID": "Mathematical Analysis 1.html#easy-to-think-wrongly",
+    "href": "Mathematical Analysis 1.html#easy-to-think-wrongly",
+    "title": "Analysis1 and Analysis 2",
+    "section": "easy to think wrongly",
+    "text": "easy to think wrongly\nIf \\(f'(x)\\) exists, \\((f^2)'\\)= \\(2f(x)f'(x)\\) but the counter direction might not be true\n\neg. If \\(f^2\\) is differentialble and \\(f^2 &gt; 0\\), then |f| is differentiable since we could write |f| as some function of f(x) and \\(f^2\\) is differentiable. So we could use the chain rule to show that |f| is differentiable. eg. \\(|f|=e^{1/2lnf^2}\\) or just \\(|f|=\\sqrt {f^2}\\)\neg. If \\(f^2\\) is differentiable, and \\(f^2 &gt; 0\\) \\(f\\) may not differentiable since f itself may NOT continuous at any \\(x\\in \\mathbb{R}\\). f(x) is 1 when x is rational and -1 when x is irrational. f(x) is not continuous at any point in \\(\\mathbb{R}\\), so f(x) is not differentiable at any point in \\(\\mathbb{R}\\)."
+  },
+  {
+    "objectID": "Mathematical Analysis 1.html#integrability",
+    "href": "Mathematical Analysis 1.html#integrability",
+    "title": "Analysis1 and Analysis 2",
+    "section": "Integrability",
+    "text": "Integrability\nWhen we consider a continuous functon’s integrability on [a,b], we could divide the function into 2 parts—one is good and the other is bad. For the good part, the uniform continuity guarantes the integrability. For the bad part, we could use the property of boundedness to show that the integral is finite using very thin intervals to cover the bad part. So we could use the property of boundedness to show that the integral is finite using very thin intervals to cover the bad part."
+  },
+  {
+    "objectID": "Mathematical Analysis 1.html#compact--closed-and-bounded-is-just-appropriate-for-the-real-number-set-but-for-the-general-metric-space-is-not-truethe-real-meaning-is-every-open-cover-has-a-finite-subcover",
+    "href": "Mathematical Analysis 1.html#compact--closed-and-bounded-is-just-appropriate-for-the-real-number-set-but-for-the-general-metric-space-is-not-truethe-real-meaning-is-every-open-cover-has-a-finite-subcover",
+    "title": "Analysis1 and Analysis 2",
+    "section": "compact -“closed and bounded” is just appropriate for the real number set, but for the general metric space is not true—the real meaning is “every open cover has a finite subcover”",
+    "text": "compact -“closed and bounded” is just appropriate for the real number set, but for the general metric space is not true—the real meaning is “every open cover has a finite subcover”"
+  },
+  {
+    "objectID": "Mathematical Analysis 1.html#gauss-is-a-fox-and-the-foxs-tail-sweeps-away-the-places-he-has-passed-through.-abel",
+    "href": "Mathematical Analysis 1.html#gauss-is-a-fox-and-the-foxs-tail-sweeps-away-the-places-he-has-passed-through.-abel",
+    "title": "Analysis1 and Analysis 2",
+    "section": "Gauss is a fox, and the fox’s tail sweeps away the places he has passed through. —Abel",
+    "text": "Gauss is a fox, and the fox’s tail sweeps away the places he has passed through. —Abel\nGauss had the habit of not writing down his proofs, which made it difficult for others to understand his work. He had good habits of writing his daily work in his diary, which was a good way to keep track of his progress."
+  },
+  {
+    "objectID": "Mathematical Analysis 1.html#read-euler-read-euler-he-is-the-master-of-us-all.-laplace",
+    "href": "Mathematical Analysis 1.html#read-euler-read-euler-he-is-the-master-of-us-all.-laplace",
+    "title": "Analysis1 and Analysis 2",
+    "section": "Read Euler, read Euler, he is the master of us all. —Laplace",
+    "text": "Read Euler, read Euler, he is the master of us all. —Laplace\nEuler telled us both the true things and the false things in mathematics. He demonstrated the whole thinking process of mathematics.\nNot only did Euler did good mathematics research but also he was a good teacher. He had cultivated lots of students. He wrote a lot of books and papers, which were very helpful for the development of mathematics."
   }
 ]
