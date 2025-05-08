@@ -149,6 +149,61 @@ $|f(x_{n_0}) - f(y_{n_0})| = 1 > \varepsilon_0 = \frac{1}{2}$,
 
 This satisfies the negation of the definition of "uniformly continuous".
 
+
+# Uniform convergence
+
+
+## eg of  an interesting function
+
+
+$$f_n(x)=nx^n(1-x^2)^n$$
+
+
+
+This function has a pointwise limit of 0 by squeeze theorem and L'Hospital's theorem.
+
+
+It is easy to check the change of its limit and integral is not the same, i.e. $lim_n \int_0^1 f_n(x)$ is not equal to $\int_0^1 lim_n f_n(x)$, so it is not uniformly convergent.
+
+If we look at the limit of its supremum, we could find that the supremum of this function is $\infty$ when n is large enough. So we could use the supremum to show that the limit of this function is not uniformly convergent. This is not trivial to understand since its pointwise limit is 0 but the supremum is $\infty$. That is because when n is very large, there is a very thin but tall peak, which makes the supremum of this function to be $\infty$.
+
+
+Or we also firstly draw this picture and find intuitively that its supremum is $\infty$ when n is large enough. So we could use the supremum to show that the limit of this function is not uniformly convergent.
+
+
+```{r}
+# Load necessary library
+library(ggplot2)
+
+# Define the function
+f_n <- function(x, n) {
+  return(n * x^n * (1 - x^2)^n)
+}
+
+# Set the value of n
+n <- 100
+
+# Create a sequence of x values from -1 to 1
+x_values <- seq(0, 1, length.out = 1000)
+
+# Compute the corresponding y values
+y_values <- sapply(x_values, f_n, n = n)
+
+# Create a data frame for ggplot
+data <- data.frame(x = x_values, y = y_values)
+
+# Plot the function using ggplot2
+ggplot(data, aes(x = x, y = y)) +
+  geom_line(color = "blue") +
+  labs(title = paste("Plot of f_n(x) = nx^n(1 - x^2)^n for n =", n),
+       x = "x",
+       y = "f_n(x)") +
+  theme_minimal()
+```
+
+
+
+
 # Preface
 
 The first section here is the knowledge that attracts most of my
