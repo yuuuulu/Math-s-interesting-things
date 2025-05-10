@@ -1,7 +1,47 @@
 ---
-title: "ODEs and PDEs ---MTH106"
+title: "ODEs and PDEs with Dimension nalysis ---MTH106 + Seminars hold by Prof. Andrew Lin"
 editor: visual
 ---
+
+
+# Q
+
+## ??5.1 part 2
+
+plot of 3 cases damped motion
+
+p31 可以震荡在0附近吗 pass x at most 1 time？
+
+
+undamped is similar to damped
+
+
+## ？？？有点分不清wranskian和
+
+wronskian 是判断函数之间是否线性无关的一个方法 用求导
+
+而wronskian for linear system是判断线性系统的解是否线性无关的一个方法 不用求导
+
+
+
+## 那个phase portrait那个lambda符号一样的 趋于正无穷的时候 应该是偏向power更大的那里吧
+
+
+## ？？那个作业为啥对应了两个eigenfunctions
+
+
+
+
+
+
+# Read "Differential Equations with Applications and Historical Notes" by George F. Simmons
+
+
+Differential equations are the heart of analysis, which is the natural goal of elementary calculus and the most important part of mathematics for understanding the physical sciences.
+
+
+
+
 
 # Fourier Series
 
