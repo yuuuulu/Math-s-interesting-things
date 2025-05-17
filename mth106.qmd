@@ -27,8 +27,25 @@ wronskian 是判断函数之间是否线性无关的一个方法 用求导
 ## 那个phase portrait那个lambda符号一样的 趋于正无穷的时候 应该是偏向power更大的那里吧
 
 
+## 椭圆的phase portrait p32 notes
+
+
+## 8.3 p6 c是任意数就行不写c哈
+
 ## ？？那个作业为啥对应了两个eigenfunctions
 
+## 算inverse matrix
+
+## 8.4 p6那个怎么就变成定积分了nie 为什么是等价的 8.3 page 38 --包括要复习前面的！！！和算出来直接带入的区别是什么
+
+
+
+## 11.1没看weight哪些概念
+
+
+## 11.4 regular strum liouville problem 
+
+这个3用背锅吗
 
 
 

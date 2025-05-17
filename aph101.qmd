@@ -1,0 +1,2490 @@
+---
+title: "APH101-Biostatistics And R"
+format: html
+editor: visual
+toc: true
+---
+
+# I am deeply grateful to Dr. Daiyun Huang for his instruction in the "Biostatistics and R" course. This course has marked the beginning of my formal journey into the world of statistics. Dr. Huang's comprehensive lectures, accompanied by detailed PDFs, and his well-structured labs, complete with code and solutions, have been incredibly valuable. They have not only enhanced my intuitive grasp of key statistical concepts, such as hypothesis testing, but also significantly improved my proficiency in R programming.
+
+# Also, thanks to the course of "Introduction to statistical learning" by Trevor Hastie and Robert Tibshirani. Examples in their online video lectures are abundant and easy to understand for beginners. Their book is also very helpful.
+
+
+# Review and Introduce Probability
+
+## Simple Random Sampling
+
+We can get information about the population by taking a sample from it. The sample should be representative of the population.
+
+A simple random sample of size n is a sample selected from a population in such a way that every possible sample of size n has the same chance of being selected and without replacement.
+
+## Unbiased estimator
+
+An estimator is a statistic used to estimate a population parameter. An estimator is unbiased if the expected value of the estimator equals the population parameter.
+
+$E(\hat \theta) = \theta$
+
+where $\hat \theta$ is the estimator and $\theta$ is the population parameter.
+
+eg.
+
+$$
+\mathbb{E}[\hat{p}]=\mathbb{E}\left[\frac{X_1+X_2+\cdots+X_n}{n}\right]=\frac{1}{n}\left(\mathbb{E}\left[X_1\right]+\cdots+\mathbb{E}\left[X_n\right]\right)=p
+$$
+
+## Variance
+
+$$
+\operatorname{Var}[X]=\mathbb{E}\left[X^2\right]-(\mathbb{E}[X])^2
+$$
+
+$$
+\begin{aligned}
+\mathbb{E}\left[\hat{p}^2\right] & =\mathbb{E}\left[\left(\frac{X_1+X_2+\cdots+X_n}{n}\right)^2\right] \\
+& =\frac{1}{n^2} \mathbb{E}\left[X_1^2+\cdots+X_n^2+2\left(X_1 X_2+X_1 X_3+\cdots+X_{n-1} X_n\right)\right] \\
+& =\frac{1}{n^2}\left(n \mathbb{E}\left[X_1^2\right]+2\binom{n}{2} \mathbb{E}\left[X_1 X_2\right]\right) \\
+& =\frac{1}{n} \mathbb{E}\left[X_1^2\right]+\frac{n-1}{n} \mathbb{E}\left[X_1 X_2\right]
+\end{aligned}
+$$
+
+$$
+\mathbb{E}\left[\hat{p}^2\right]=\frac{1}{n} \mathbb{E}\left[X_1^2\right]+\frac{n-1}{n} \mathbb{E}\left[X_1 X_2\right]
+$$
+
+Since $X_1$ is 0 or $1, X_1=X_1^2$. Then $\mathbb{E}\left[X_1^2\right]=\mathbb{E}\left[X_1\right]=p$.
+
+Notice: $X_1$ and $X_2$ are not independent.
+
+$$
+\mathbb{E}\left[X_1 X_2\right]=\mathbb{P}\left[X_1=1, X_2=1\right]=\mathbb{P}\left[X_1=1\right] \mathbb{P}\left[X_2=1 \mid X_1=1\right]
+$$
+
+$$
+\mathbb{P}\left[X_1=1\right]=p, \quad \mathbb{P}\left[X_2=1 \mid X_1=1\right]=\frac{N p-1}{N-1}
+$$
+
+$$
+\begin{aligned}
+\operatorname{Var}[\hat{p}] & =\mathbb{E}\left[\hat{p}^2\right]-(\mathbb{E}[\hat{p}])^2 \\
+& =\frac{1}{n} p+\frac{n-1}{n} p\left(\frac{N p-1}{N-1}\right)-p^2 \\
+& =\left(\frac{1}{n}-\frac{n-1}{n} \frac{1}{N-1}\right) p+\left(\frac{n-1}{n} \frac{N}{N-1}-1\right) p^2 \\
+& =\frac{N-n}{n(N-1)} p+\frac{n-N}{n(N-1)} p^2 \\
+& =\frac{p(1-p)}{n} \frac{N-n}{N-1}=\frac{p(1-p)}{n}\left(1-\frac{n-1}{N-1}\right)
+\end{aligned}
+$$ When N is much bigger than n, it is $\frac{p(1-p)}{n}$, which is like we sample n things with replacement (independently).
+
+## Sampling distribution
+
+The sampling distribution of a statistic is the probability distribution of that statistic based on a random sample.
+
+### Sample mean of i.i.d. normals
+
+Sample mean follows a normal distribution with mean $\mu$ and standard deviation $\frac{\sigma}{\sqrt{n}}$.
+
+## Simulation
+
+Below codes explains the central limit theorem (CLT) and the sampling distribution of the sample proportion.
+
+```{r}
+library(ggplot2)
+
+set.seed(111)
+
+population_size <- 12141897
+
+p <- 0.54
+
+num_simulations <- 50
+
+sample_size <- 500
+
+rep()
+p_hat_values <- replicate(num_simulations, {
+  # Simulate sampling from the population
+  sample <- sample(c(rep(1,population_size * p), rep(0,population_size*(1-p))),sample_size, replace =FALSE) # replicate(num_simulations, {...})：这个函数会重复执行大括号中的代码num_simulations次，并将每次的结果存储在一个向量中； rep创建一个包含population_size * p个1和population_size * (1-p)个0的向量，模拟总体。
+mean(sample) #calculate the p_hat for each sample
+})
+
+
+  
+histogram <- ggplot(data.frame(p = p_hat_values), aes(x=p))+
+  geom_histogram(binwidth = 0.01, fill ="blue", color = "black")+
+  labs(title =" ",
+       x = "p_hat",
+       y= "Frequency")+
+  theme_minimal()
+
+print(histogram)
+
+```
+
+## Moment generating functions
+
+Moment generating function (MGF) and characteristic function are powerful functions that describe the underlying features of a random variable.
+
+### Definition
+
+$M_x(t) = \mathbb E (e^{tx})$
+
+### Theorems about MGF
+
+1.  If $X$ and $Y$ are random variables with the same MGF, which is finite on $\left[-t_0, t_0\right]$ for some $t_0>0$, then $X$ and $Y$ have the same distribution.
+
+**MGFs can be used as a tool to determine if two random variables have the identical CDF.**
+
+2.  Let $X_1, \cdots, X_n$ be independent random variables, with MGFs $M_{X_1}, \cdots, M_{X_n}$. Then the MGF of their sum is given by $$
+    M_{X_1+\cdots+X_n}(t)=M_{X_1}(t) \cdots M_{X_n}(t)
+    $$
+
+#### Example of Gamma and Exponential MGF
+
+A gamma distribution with shape $r=1$ is an exponential distribution. If $X \sim \operatorname{Gamma}\left(r_X, \lambda\right)$ and $Y \sim \operatorname{Gamma}\left(r_Y, \lambda\right)$ are independent, then we have $X+Y \sim \operatorname{Gamma}\left(r_X+r_Y, \lambda\right)$. As a special case, if $X_1, X_2, \cdots, X_n$ are i.i.d. with $\operatorname{Exp}(\lambda)$ distribution, then $X_1+X_2+\cdots+X_n$ has $\operatorname{Gamma}(n, \lambda)$ distribution.
+
+Suppose $X \sim \operatorname{Exp}(\lambda)$, for $\lambda>0$. Then $$
+M_X(t)=\mathbb{E}\left[e^{t X}\right]=\int_0^{\infty} e^{t x} \lambda e^{-\lambda x} d x=\lambda \int_0^{\infty} e^{(t-\lambda) x} d x
+$$
+
+Similar to Gamma MGF, the integral of Exponential MGF converges only for $t<\lambda$. For $t<\lambda$, we can integrate: $$
+M_X(t)=\lambda\left[\frac{e^{(t-\lambda) x}}{t-\lambda}\right]_0^{\infty}=\frac{\lambda}{\lambda-t}
+$$
+
+Since the Gamma MGF is $M_X(t)=\frac{\lambda^r}{(\lambda-t)^r}$ for any $t<\lambda$ For shape $r=1$, Exponential MGF = Gamma MGF.
+
+
+## Distribution Transformation
+
+### Universality of the Uniform---From uniform you can get everything
+
+Let u\~unif(0,1), F be a CDF(assume F is strictly increased, continuous). Then there comes a theorem: $$
+x = F^{-1}(u)
+$$ Then $$
+X \sim F
+$$ (Proof: $$
+P(X\leq x)=P(F^{-1}(u)\leq x)=P(F(F^{-1}(u))\leq F(x))=P(u\leq F(x))=F(x)
+$$)
+
+You can convert from the random uniforms to whatever you want to simulate. One example is the simulation of Logistic distribution: F(X)=$e^x$/($1+e^x$)
+
+u\~unif(0,1), $$
+X = F^{-1}(u)=log(u/1-u)
+$$ and X\~F
+
+Another example is that we could try to use uniform to simulate normal distribution:
+
+The Box-Muller transform generates pairs of independent standard normally distributed (zero mean, unit variance) random numbers, given a source of uniformly distributed random numbers.
+
+Given two independent random variables $U_1$ and $U_2$ that are uniformly distributed on the interval (0, 1), we can generate two independent standard normal random variables $Z_0$ and $Z_1$ using the following formulas:
+
+$$
+Z_0 = \sqrt{-2 \ln U_1} \cos(2 \pi U_2)
+$$
+
+$$
+Z_1 = \sqrt{-2 \ln U_1} \sin(2 \pi U_2)
+$$
+
+Inversely, the example could be: let $Z_0$ and $Z_1$ be standard normal random variables with the following values: $Z_0$ = 0.5 and $Z_1$ = -1.0.
+
+1.  **Compute CDF values**:
+
+    For standard normal distribution, the CDF $$ \Phi(z) $$ is given by:
+
+    $$
+    \Phi(z) = \frac{1}{2} \left[ 1 + \text{erf} \left( \frac{z}{\sqrt{2}} \right) \right]
+    $$
+
+    (ps:$$
+    \text{erf}(x) = \frac{2}{\sqrt{\pi}} \int_{0}^{x} e^{-t^2} \, dt
+    $$)
+
+    -   For $$ Z_0 = 0.5 $$:
+
+        $$
+        \Phi(0.5) = \frac{1}{2} \left[ 1 + \text{erf} \left( \frac{0.5}{\sqrt{2}} \right) \right]
+        $$
+
+    -   For $$ Z_1 = -1.0 $$:
+
+        $$
+        \Phi(-1.0) = \frac{1}{2} \left[ 1 + \text{erf} \left( \frac{-1.0}{\sqrt{2}} \right) \right]
+        $$
+
+2.  **Compute Uniform values**:
+
+    Since the CDF values $$ \Phi(Z_0) $$ and $$ \Phi(Z_1) $$ are in the range \[0, 1\], we can directly use them as uniform random variables $U_0$ and $U_1$.
+
+    -   $$U_0 = \Phi(0.5)$$
+    -   $$U_1 = \Phi(-1.0)$$
+
+3.  **Result**:
+
+    -   Using the error function values:
+        -   $$ \Phi(0.5) \approx 0.6915 $$
+        -   $$ \Phi(-1.0) \approx 0.1587 $$
+
+    Thus, the corresponding uniform distribution values are:
+
+    -   $$ U_0 \approx 0.6915 $$
+    -   $$ U_1 \approx 0.1587 $$
+
+Another example is that we can create a function that has good quality as F in the theorem, for example, $$
+u=F(x)=1-e^{-x}          (x>0)
+$$ then we can simulate X\~F:X=-ln(1-u)\~F
+
+Also, if $$
+X \sim F
+$$
+
+Then, $$
+F(x) \sim unif(0,1)
+$$ e.g. let X\~F, if$$
+F(x_0)=1/3$$ then $$P(F(X)\leq 1/3)=P(X\leq x_0)=F(x_0)=1/3 $$ which follows the uniform distribution(0,1) because 1/3 generates 1/3. (Uniform distribution: Probability(CDF) is proportional to length)
+
+### Normal Distribution
+
+#### From Standard Normal Distribution to Normal Distribution
+
+$f(z)=ce^{-z^2/2}$ is a function with good qualities such as symmetric........
+
+To generate normalization constant c using CDF=1, instead of using impossible integral methods to compute it we should try to find the area under it. In that case, we transfer the integral shape to the double integral's multiplication then we get c: $$
+\int_{-\infty}^{\infty}\exp(-z^2/2) dz=\int_{-\infty}^{\infty}\exp(-z^2/2) dz=\int_{-\infty}^{\infty}\exp(-x^2/2)dx\int_{-\infty}^{\infty}\exp(-y^2/2)dy
+$$ $$
+=\int_{0}^{\infty}\exp(-r^2/2)r dr\int_{0}^{2π} d\theta\ =\sqrt2\pi\
+$$ So $$
+c=1/\sqrt2\pi\
+$$ .......
+
+### From.....
+
+111
+
+#### Exponential distribution
+
+the only one parameter is the rate parameter. The probability density function (pdf) of an exponential distribution with rate parameter (\lambda \> 0) is given by:
+
+$$
+f_X(x) = 
+\begin{cases} 
+\lambda e^{-\lambda x} & \text{for } x \geq 0, \\
+0 & \text{for } x < 0.
+\end{cases}
+$$ The cumulative distribution function (cdf) of an exponential distribution with rate parameter (\lambda \> 0) is given by:
+
+$$
+F_X(x) = 
+\begin{cases} 
+1 - e^{-\lambda x} & \text{for } x \geq 0, \\
+0 & \text{for } x < 0.
+\end{cases}
+$$ 2.Let Y\~\lambda x, then Y \~Expo(1)
+
+proof: since $$
+P(Y\leq y)=P(X\leq y/\lambda)=1-e^{-y}
+$$ (just plot it into x) and we could check that E\[X\]=Var\[X\]=1, so X=Y/$\lambda$ has E\[x\]=1/$\lambda$, Var\[x\]=1/$\lambda^2$
+
+e.g. Memoryless Property(This property implies that the remaining lifetime distribution does not depend on how much time has already elapsed.)(The exponential distribution is the only continuous distribution that has the memoryless property):$$ P(X\geq s+t|X\geq s)=P(X\geq t)$$ which is actually satisfied by the exponential and we could prove it(though it intuitively makes sence): Here $$
+P(X\geq s)=1-P(X\leq s)=e^{-\lambda s}
+$$ $$
+P(X \geq s+t \mid X \geq s)=\frac{P(X \geq s+t \text { and } X \geq s)}{P(X \geq s)}
+$$
+
+Since $X \geq s+t$ implies $X \geq s$, we can simplify the numerator: $$
+P(X \geq s+t \mid X \geq s)=\frac{P(X \geq s+t)}{P(X \geq s)}
+$$
+
+Now, substitute the survival function for the exponential distribution: $$
+P(X \geq s+t \mid X \geq s)=\frac{e^{-\lambda(s+t)}}{e^{-\lambda s}}
+$$
+
+Simplify the expression: $$
+P(X \geq s+t \mid X \geq s)=\frac{e^{-\lambda s} \cdot e^{-\lambda t}}{e^{-\lambda s}}=e^{-\lambda t}
+$$
+
+Notice that $e^{-\lambda t}=P(X \geq t)$ : $$
+P(X \geq s+t \mid X \geq s)=P(X \geq t)
+$$ usefulness of it: $$
+X\sim Expo(\lambda),E(X|X>a)=a+E(X-a|X>a)=a+1/\lambda
+$$
+
+e.g.2The hazard rate (or failure rate) for an exponential distribution is constant over time. For an exponential random variable $X$ with rate parameter $\lambda$, the hazard rate is: $$
+h(t)=\frac{f_X(t)}{1-F_X(t)}=\lambda .
+$$
+
+A constant hazard rate implies that the event is equally likely to occur at any point in time, which is a reasonable assumption for many processes, such as the lifetime of certain electronic components or the occurrence of certain types of random failures.
+
+e.g.3 The exponential distribution is closely related to the Poisson process, which is a process that models the occurrence of events happening independently at a constant average rate. If the times between consecutive events in a Poisson process are independent and identically distributed, then these interarrival times follow an exponential distribution. This relationship makes the exponential distribution a natural choice in contexts where events occur randomly over time, such as phone calls arriving at a switchboard or buses arriving at a bus stop.
+
+#### Ga
+
+If r.v.X\~N(0,1), then $X^2$\~$Ga$(1/2,1/2)
+
+Proof: If r.v. (X \sim N(0,1)), then (X\^2 \sim \text{Ga}\left(\frac{1}{2}, \frac{1}{2}\right))
+
+Let (X) be a random variable such that (X \sim N(0,1)).
+
+The probability density function (pdf) of (X) is: $$
+f_X(x) = \frac{1}{\sqrt{2\pi}} e^{-\frac{x^2}{2}}, \quad -\infty < x < \infty.
+$$
+
+First, we find the pdf of (Y = X\^2).
+
+The cumulative distribution function (CDF) of (Y) is given by: $$
+F_Y(y) = P(Y \leq y) = P(X^2 \leq y).
+$$
+
+Since (X\^2 \geq 0), we only consider (y \geq 0): $$
+F_Y(y) = P(-\sqrt{y} \leq X \leq \sqrt{y}).
+$$
+
+Using the CDF of the normal distribution, we have: $$
+F_Y(y) = \int_{-\sqrt{y}}^{\sqrt{y}} \frac{1}{\sqrt{2\pi}} e^{-\frac{x^2}{2}} \, dx.
+$$
+
+The pdf of (Y) is the derivative of the CDF: $$
+f_Y(y) = \frac{d}{dy} F_Y(y).
+$$
+
+$$
+F_Y(y) = 2 \int_{0}^{\sqrt{y}} \frac{1}{\sqrt{2\pi}} e^{-\frac{x^2}{2}} \, dx.
+$$
+
+$$
+F_Y(y) = 2 \int_{0}^{\sqrt{y}} \frac{1}{\sqrt{2\pi}} e^{-u} \frac{du}{\sqrt{2u}} = \frac{2}{\sqrt{2\pi}} \int_{0}^{\sqrt{y}} e^{-u} \frac{du}{\sqrt{2u}}.
+$$
+
+Thus, $$
+f_Y(y) = \frac{d}{dy} \left( \frac{2}{\sqrt{2\pi}} \int_{0}^{\sqrt{y}} e^{-u} \frac{du}{\sqrt{2u}} \right).
+$$
+
+Differentiating with respect to y gives: $$
+f_Y(y) = \frac{1}{\sqrt{2\pi}} \cdot e^{-\frac{y}{2}} \cdot y^{-\frac{1}{2}}.
+$$
+
+Simplifying, we get: $$
+f_Y(y) = \frac{1}{\sqrt{2\pi}} y^{-\frac{1}{2}} e^{-\frac{y}{2}}.
+$$
+
+$$
+Y = X^2 \sim \text{Ga}\left(\frac{1}{2}, \frac{1}{2}\right).
+$$
+
+#### Chi-square
+
+Chi-square is a
+
+1.Let ( $Z_1$, $Z_2$, \ldots, $Z_i$ ) are independent standard normal random variables(i.e. Z\~N(0,1)), then the random variable ( X ) defined by
+
+$$
+X = Z_1^2 + Z_2^2 + \cdots + Z_i^2
+$$ ($Z_j$\~iid.N(0,1))
+
+follows a chi-square distribution with ( i ) degrees of freedom. So chi-square of 1 is the same thing as Gamma of (1/2,1/2) so chi-square of n is Gamma(n/2,1/2)
+
+2.If $$
+Z_i = \frac{x_i - \mu}{\sigma}
+$$ The sum of squared standardized deviations is:
+
+$$
+\sum_{i=1}^n Z_i^2 = \sum_{i=1}^n \left( \frac{x_i - \mu}{\sigma} \right)^2 = \frac{1}{\sigma^2} \sum_{i=1}^n (x_i - \mu)^2
+$$
+
+Let $x_1, x_2, \cdots, x_n$ be samples of $N\left(\mu, \sigma^2\right)$ , $\mu$ is a known constant, find the distribution of statistics: $$
+T=\sum_{i=1}^n\left(x_i-\mu\right)^2
+$$
+
+sol: $y_i=\left(x_i-\mu\right) / \sigma, i=1,2, \cdots, n$, 则 $y_1, y_2, \cdots, y_n$ are iid r.v. of $N(0,1)$,so$$
+\frac{T}{\sigma^2}=\sum_{i=1}^n\left(\frac{x_i-\mu}{\sigma}\right)^2=\sum_{i=1}^n y_i^2 \sim \chi^2(n),
+$$ (i.e.$$
+\sum_{i=1}^n Z_i^2 {\sigma^2}\sim \chi^2(n)$$)
+
+Besides, $T$'s PDF is $$
+p(t)=\frac{1}{\left(2 \sigma^2\right)^{n / 2} \Gamma(n / 2)} \mathrm{e}^{-\frac{1}{2 \sigma^2} t^{\frac{n}{2}}-1}, \quad t>0,
+$$
+
+which is Gamma distribution $G a\left(\frac{n}{2}, \frac{1}{2 \sigma^2}\right) \cdot$
+
+3.chi-square is uesful because of theorems below:let $x_1, x_2, \cdots, x_n$ are samples from $N\left(\mu, \sigma^2\right)$ , whose sample mean and sample variance are$$
+\bar{x}=\frac{1}{n} \sum_{i=1}^n x_i \text { and } s^2=\frac{1}{n-1} \sum_{i=1}^n\left(x_i-\bar{x}\right)^2,
+$$
+
+then we can get: (1) $\bar{x}$ and $s^2$ are independent; (2) $\bar{x} \sim N\left(\mu, \sigma^2 / n\right)$; (3) $\frac{(n-1) s^2}{\sigma^2} \sim \chi^2(n-1)$.
+
+Proof: $$
+p\left(x_1, x_2, \cdots, x_n\right)=\left(2 \pi \sigma^2\right)^{-n / 2} \mathrm{e}^{-\sum_{i=1}^n \frac{\left(x_i-\mu\right)^2}{2 \sigma^2}}=\left(2 \pi \sigma^2\right)^{-n / 2} \exp \left\{-\frac{\sum_{i=1}^n x_i^2-2 n \bar{x} \mu+n \mu^2}{2 \sigma^2}\right\}
+$$
+
+denote$\boldsymbol{X}=\left(x_1, x_2, \cdots, x_n\right)^{\mathrm{T}}$, then we create an $n$-dimension orthogonal $\boldsymbol{A}$ and every element in the first row is $1 / \sqrt{n}$, such as $$
+A=\left(\begin{array}{ccccc}
+\frac{1}{\sqrt{n}} & \frac{1}{\sqrt{n}} & \frac{1}{\sqrt{n}} & \cdots & \frac{1}{\sqrt{n}} \\
+\frac{1}{\sqrt{2 \cdot 1}} & -\frac{1}{\sqrt{2 \cdot 1}} & 0 & \cdots & 0 \\
+\frac{1}{\sqrt{3 \cdot 2}} & \frac{1}{\sqrt{3 \cdot 2}} & -\frac{2}{\sqrt{3 \cdot 2}} & \cdots & 0 \\
+\vdots & \vdots & \vdots & & \vdots \\
+\frac{1}{\sqrt{n(n-1)}} & \frac{1}{\sqrt{n(n-1)}} & \frac{1}{\sqrt{n(n-1)}} & \cdots & -\frac{n-1}{\sqrt{n(n-1)}}
+\end{array}\right),
+$$ 令 $\boldsymbol{Y}=\left(y_1, y_2, \cdots, y_n\right)^{\mathrm{T}}=\boldsymbol{A} \boldsymbol{X}$, $|Jacobi|=1$, and we can find thatt$$
+\begin{gathered}
+\bar{x}=\frac{1}{\sqrt{n}} y_1, \\
+\sum_{i=1}^n y_i^2=\boldsymbol{Y}^{\mathrm{T}} \boldsymbol{Y}=\boldsymbol{X}^{\mathrm{T}} \boldsymbol{A}^{\mathrm{T}} \boldsymbol{A} \boldsymbol{X}=\sum_{i=1}^n x_i^2,
+\end{gathered}
+$$
+
+so$y_1, y_2, \cdots, y_n$ 's joint density function is $$
+\begin{aligned}
+p\left(y_1, y_2, \cdots, y_n\right) & =\left(2 \pi \sigma^2\right)^{-n / 2} \exp \left\{-\frac{\sum_{i=1}^n y_i^2-2 \sqrt{n} y_1 \mu+n \mu^2}{2 \sigma^2}\right\} \\
+& =\left(2 \pi \sigma^2\right)^{-n / 2} \exp \left\{-\frac{\sum_{i=2}^n y_i^2+\left(y_1-\sqrt{n} \mu\right)^2}{2 \sigma^2}\right\}
+\end{aligned}
+$$
+
+So, $\boldsymbol{Y}=\left(y_1, y_2, \cdots, y_n\right)^{\mathrm{T}}$ independently distributed as normal distribution and their variances are all equal to$\sigma^2$, but their means are not all the same because $y_2, \cdots, y_n$ 's means are $0, y_1$'s is $\sqrt{n} \mu$, which ends our proof of (2). $$
+(n-1) s^2=\sum_{i=1}^n\left(x_i-\bar{x}\right)^2=\sum_{i=1}^n x_i^2-(\sqrt{n} \bar{x})^2=\sum_{i=1}^n y_i^2-y_1^2=\sum_{i=2}^n y_i^2,
+$$
+
+This proves conclusion (1). Since $y_2, \cdots, y_n$ are independently and identically distributed as $N\left(0, \sigma^2\right)$, we have: $$
+\frac{(n-1) s^2}{\sigma^2}=\sum_{i=2}^n\left(\frac{y_i}{\sigma}\right)^2 \sim \chi^2(n-1) .
+$$
+
+Theorem is proved. (similar to the proof above this maybe easier to understand:$\begin{aligned} & i z\left(Y_1, Y_2, \cdots, Y_2\right)^{\top}=A\left(X_1, \cdots, x_n\right)^{\top} \\ & \text { then } \sum_{i=1}^n Y_i^2=\left(Y_1, \cdots, Y_n\right)\left(Y_1, \cdots, Y_n\right)^{\top} \\ & =\left[A\left(x_1, \cdots, x_n\right)^{\top}\right]^{\top}\left[A\left(x_1, \cdots, X_n\right)^{\top}\right] \\ & =\left(x_1, \cdots, x_n\right) A^{\top} A\left(x_1, \cdots, x_n\right)^{\top} \\ & =\left(x_1, \cdots, x_n\right) E\left(x_1, \cdots, x_n\right)^{\top}=\sum_{i=1}^n x_i^2 \\ & \end{aligned}$) $\begin{aligned} & \text { besides } Y_1=\frac{1}{\sqrt{n}} x_1+\cdots+\frac{1}{\sqrt{n}} x_n=\frac{1}{\sqrt{n}} \sum_{i=1}^n X_i \\ & \text { and } Y_1=\sqrt{n} \cdot \frac{1}{n} \sum_{i=1}^n X_i=\sqrt{n} \bar{X}, \text { then } \bar{x}=\frac{1}{\sqrt{n}} y_i \\ & B S^2=\frac{1}{n-1} \sum_{i=1}^n\left(x_i-\bar{x}\right)^2=\frac{1}{n-1}\left[\sum_{i=1}^n x_i^2-n \bar{x}^2\right] \\ & =\frac{1}{n-1}\left[\sum_{i=1}^n Y_i^2-Y_1^2\right]=\frac{1}{n-1} \sum_{i=2}^n Y_i^2 \\ & 2 \oplus L=(\sqrt{2 \pi} \sigma)^{-n} \exp \left[-\frac{1}{2 \sigma^2} \sum_{i=1}^n\left(x_i-\mu\right)^2\right] \text {. } \\ & =(\sqrt{2 \pi} \sigma)^{-n} \exp \left[-\frac{1}{2 \sigma^2}\left(\sum_{i=1}^n x_i^2-2 \mu n \bar{x}+\mu^2 n\right]\right. \\ & =(\sqrt{2 \pi} \sigma)^{-n} \exp \left[-\frac{1}{2 \sigma^2}\left(\sum_{1=1}^n y_i{ }^2-2 \mu n \frac{1}{\sqrt{n}} Y_1+n \mu^2\right]\right. \\ & \end{aligned}$ $$=(\sqrt2\pi\sigma)^{-1}exp[-1/2\sigma^2(Y_1-\sqrt nu)^2]×(\sqrt2\pi\sigma)^{-1}exp[-1/2\sigma^2{Y_2}^2]*...*(\sqrt2\pi\sigma)^{-1}exp[-1/2\sigma^2{Y_n}^2]
+$$
+
+So L is $Y_1$...$Y_n$'s joint density function and so they are independent. Besides, we have proved that its mean is $1/\sqrt n$$Y_1$ and $S^2$=$1/n-1 \Sigma{i=2}Y_i^2$, so the normal distribution's mean and variance are independent.
+
+When the random variable $\chi^2 \sim \chi^2(n)$, for a given $\alpha$ (where $0<$ $\alpha<1$ ), the value $\chi_{1-\alpha}^2(n)$ satisfying the probability equation $P\left(\chi^2 \leqslant \chi_{1-\alpha}^2(n)\right)=1-$ $\alpha$ is called the $1-\alpha$ quantile of the $\chi^2$ distribution with $n$ degrees of freedom.
+
+Suppose the random variables $X_1 \sim \chi^2(m)$ and $X_2 \sim \chi^2(n)$, and $X_1$ and $X_2$ are independent. Then the distribution of $F=\frac{X_1 / m}{X_2 / n}$ is called the $\mathrm{F}$ distribution with $m$ and $n$ degrees of freedom, denoted as $F \sim F(m, n)$. Here, $m$ is called the numerator degrees of freedom and $n$ the denominator degrees of freedom. We derive the density function of the $\mathrm{F}$ distribution in two steps. First, we derive the density function of $Z=\frac{X_1}{X_2}$. Let $p_1(x)$ and $p_2(x)$ be the density functions of $\chi^2(m)$ and $\chi^2(n)$ respectively. According to the formula for the distribution of the quotient of independent random variables, the density function of $Z$ is: $$
+\begin{gathered}
+p_Z(z)=\int_0^{\infty} x_2 p_1\left(z x_2\right) p_2\left(x_2\right) \mathrm{d} x_2 \\
+=\frac{z^{\frac{m}{2}-1}}{\Gamma\left(\frac{m}{2}\right) \Gamma\left(\frac{n}{2}\right) 2^{\frac{m+n}{2}}} \int_0^{\infty} x_2^{\frac{n}{2}-1} e^{-\frac{x_2}{2}(1+z)} \mathrm{d} x_2 .
+\end{gathered}
+$$
+
+Using the transformation $u=\frac{x_2}{2}(1+z)$, we get: $$
+p_Z(z)=\frac{z^{\frac{m}{2}-1}(1+z)^{-\frac{m+n}{2}}}{\Gamma\left(\frac{m}{2}\right) \Gamma\left(\frac{n}{2}\right)} \int_0^{\infty} u^{\frac{n}{2}-1} e^{-u} \mathrm{~d} u
+$$
+
+The final integral is the gamma function $\Gamma\left(\frac{n}{2}\right)$, so: $$
+p_Z(z)=\frac{\Gamma\left(\frac{m+n}{2}\right)}{\Gamma\left(\frac{m}{2}\right) \Gamma\left(\frac{n}{2}\right)} z^{\frac{m}{2}-1}(1+z)^{-\frac{m+n}{2}}, \quad z \geq 0 .
+$$
+
+Second, we derive the density function of $F=\frac{n}{m} Z$. Let the value of $F$ be $y$. For $y \geq 0$, we have: $$
+\begin{aligned}
+p_F(y) & =p_Z\left(\frac{m}{n} y\right) \cdot \frac{m}{n}=\frac{\Gamma\left(\frac{m+n}{2}\right)}{\Gamma\left(\frac{m}{2}\right) \Gamma\left(\frac{n}{2}\right)}\left(\frac{m}{n} y\right)^{\frac{m}{2}-1}\left(1+\frac{m}{n} y\right)^{-\frac{m+n}{2}} \cdot \frac{m}{n} \\
+& =\frac{\Gamma\left(\frac{m+n}{2}\right)}{\Gamma\left(\frac{m}{2}\right) \Gamma\left(\frac{n}{2}\right)}\left(\frac{m}{n}\right)\left(\frac{m}{n} y\right)^{\downarrow \frac{2}{2}-1}\left(1+\frac{m}{n} y\right)^{-\frac{m+n}{2}}
+\end{aligned}
+$$
+
+When the random variable $F \sim F(m, n)$, for a given $\alpha$ (where $0<\alpha<1$ ), the value $F_{1-\alpha}(m, n)$ satisfying the probability equation $P\left(F \leqslant F_{1-\alpha}(m, n)\right)=1-\alpha$ is called the $1-\alpha$ quantile of the $\mathrm{F}$ distribution with $m$ and $n$ degrees of freedom. By the construction of the $\mathrm{F}$ distribution, if $F \sim F(m, n)$, then $1 / F \sim F(n, m)$. Therefore, for a given $\alpha$ (where $0<\alpha<1$ ), $$
+\alpha=P\left(\frac{1}{F} \leqslant F_\alpha(n, m)\right)=P\left(F \geqslant \frac{1}{F_\alpha(n, m)}\right) .
+$$
+
+Thus, $$
+P\left(F \leqslant \frac{1}{F_\alpha(n, m)}\right)=1-\alpha
+$$
+
+This implies $$
+F_\alpha(n, m)=\frac{1}{F_{1-\alpha}(m, n)} .
+$$
+
+Corollary Suppose $x_1, x_2, \cdots, x_m$ is a sample from $N\left(\mu_1, \sigma_1^2\right)$ and $y_1, y_2, \cdots, y_n$ is a sample from $N\left(\mu_2, \sigma_2^2\right)$, and these two samples are independent. Let: $$
+s_x^2=\frac{1}{m-1} \sum_{i=1}^m\left(x_i-\bar{x}\right)^2, \quad s_y^2=\frac{1}{n-1} \sum_{i=1}^n\left(y_i-\bar{y}\right)^2,
+$$ where $$
+\bar{x}=\frac{1}{m} \sum_{i=1}^m x_i, \quad \bar{y}=\frac{1}{n} \sum_{i=1}^n y_i
+$$ then $$
+F=\frac{s_x^2 / \sigma_1^2}{s_y^2 / \sigma_2^2} \sim F(m-1, n-1) .
+$$
+
+In particular, if $\sigma_1^2=\sigma_2^2$, then $F=\frac{s_x}{s_y^2} \sim F(m-1, n-1)$. Proof: Since the two samples are independent, $s_x^2$ and $s_y^2$ are independent. According to a Theorem , we have $$
+\frac{(m-1) s_x^2}{\sigma_1^2} \sim \chi^2(m-1), \quad \frac{(n-1) s_y^2}{\sigma_2^2} \sim \chi^2(n-1) .
+$$
+
+By the definition of the $\mathrm{F}$ distribution, $F \sim F(m-1, n-1)$. Corollary: Suppose $x_1, x_2, \cdots, x_n$ is a sample from a normal distribution $N\left(\mu, \sigma^2\right)$, and let $\bar{x}$ and $s^2$ denote the sample mean and sample variance of the sample, respectively. Then $$
+t=\frac{\sqrt{n}(\bar{x}-\mu)}{s} \sim t(n-1) .
+$$
+
+Proof: From a Theorem we obtain $$
+\frac{\bar{x}-\mu}{\sigma / \sqrt{n}} \sim N(0,1)
+$$
+
+Then, $$
+\frac{\sqrt{n}(\bar{x}-\mu)}{s}=\frac{\frac{\bar{x}-\mu}{\sigma / \sqrt{n}}}{\sqrt{\frac{(n-1) s^2 / \sigma^2}{n-1}}}
+$$
+
+Since the numerator is a standard normal variable and the denominator's square root contains a $\chi^2$ variable with $n-1$ degrees of freedom divided by its degrees of freedom, and they are independent, by the definition of the $t$ distribution, $t \sim t(n-1)$. The proof is complete.
+
+Corollary: In the notation of Corollary , assume $\sigma_1^2=\sigma_2^2=\sigma^2$, and let $$
+s_w^2=\frac{(m-1) s_x^2+(n-1) s_y^2}{m+n-2}=\frac{\sum_{i=1}^m\left(x_i-\bar{x}\right)^2+\sum_{i=1}^n\left(y_i-\bar{y}\right)^2}{m+n-2}
+$$
+
+Then $$
+\frac{(\bar{x}-\bar{y})-\left(\mu_1-\mu_2\right)}{s_w \sqrt{\frac{1}{m}+\frac{1}{n}}} \sim t(m+n-2)
+$$
+
+Proof: Since $\bar{x} \sim N\left(\mu_1, \frac{\sigma^2}{m}\right), \bar{y} \sim N\left(\mu_2, \frac{\sigma^2}{n}\right)$, and $\bar{x}$ and $\bar{y}$ are independent, we have
+
+$$
+\bar{x}-\bar{y} \sim N\left(\mu_1-\mu_2,\left(\frac{1}{m}+\frac{1}{n}\right) \sigma^2\right) .
+$$
+
+Thus, $$
+\frac{(\bar{x}-\bar{y})-\left(\mu_1-\mu_2\right)}{\sigma \sqrt{\frac{1}{m}+\frac{1}{n}}} \sim N(0,1) .
+$$
+
+By a Theorem , we know that $\frac{(m-1) s_x^2}{\sigma^2} \sim \chi^2(m-1)$ and $\frac{(n-1) s_y^2}{\sigma^2} \sim \chi^2(n-1)$, and they are independent. By additivity, we have $$
+\frac{(m+n-2) s_w^2}{\sigma^2}=\frac{(m-1) s_x^2+(n-1) s_y^2}{\sigma^2} \sim \chi^2(m+n-2) .
+$$
+
+Since $\bar{x}-\bar{y}$ and $s_w^2$ are independent, by the definition of the $\mathrm{t}$ distribution, we get the desired result. $\square$
+
+One interesting example shows the relationship of above distributions used charismatically to solve problems: r.v.: $X_1 ， X_2 ， X_3 ， X_4$ indpendently identically distribute(iid) as $N\left(0 . \sigma^2\right)$. $Z=\left(x_1^2+x_2^2\right) /\left(x_1^2+x_2^2+x_3^2+x_4^2\right)$ prove: $Z \sim U(0.1)$. $$
+\begin{aligned}
+& \text { Solution: } Let Y=\frac{X_3^2+X_4^2}{X_1^2+X_2^2}=\frac{\left[\left(\frac{X_3}{\sigma}\right)^2+\left(\frac{X_4}{\sigma}\right)^2\right] / 2}{\left[\left(\frac{X_1}{\sigma}\right)^2+\left(\frac{X_2}{\sigma}\right)^2\right] / 2} \sim F(2,2) . \\
+& \text { i.e.  } f_Y(y)=\frac{1}{(1+y)^2},  y>0 \\
+& \text { then } P(Z \leq z)=P\left(\frac{1}{1+Y} \leq z\right)=P\left(Y \geqslant \frac{1}{z}-1\right) \\
+& =\int_{\frac{1}{z}-1}^{+\infty} \frac{1}{(1+y)^2} d y=z \quad \text { H } 0<z<1 . \\
+& \therefore Z \sim U(0.1)
+\end{aligned}
+$$ (ps:\$
+
+```{=tex}
+\begin{aligned} & f(x)=\frac{\Gamma\left(\frac{n_1+n_2}{2}\right)}{\Gamma\left(\frac{n_2}{2}\right) \Gamma\left(\frac{n_1}{2}\right)}\left(\frac{n_1}{n_2}\right)\left(\frac{n_1}{n_2} x\right)^{\frac{n_1}{2}-1}\left(1+\frac{n_1}{n_2} x\right)^{\frac{-1}{2}\left(n_1+n_2\right)} . \\ & \text { of these } x>0 \text {. and } E(x)=\frac{n_2}{n_2-2} \text {, when } n_2>2 \text {. } \\ & \operatorname{Var}(X)=\frac{2 n_2^2\left(n_1+n_2-2\right)}{n_1\left(n_2-2\right)^2\left(n_2-4\right)} \text {when $n_2>4$. } \\ & \end{aligned}
+```
+\
+
+
+
+## PDF functions's transformation(from books)
+
+
+### Standard normal distribution
+
+Pdf : $f(x) = \frac{1}{\sqrt{2\pi}} e^{-\frac{x^2}{2}}$\
+
+### Chi-square distribution
+
+
+
+
+
+### From standard normal distribution $f(x) = \frac{1}{\sqrt{2\pi}} e^{-\frac{x^2}{2}}$, we want to get Chi-square distribution $f(x; k) = \frac{1}{2^{k/2} \Gamma(k/2)} x^{k/2 - 1} e^{-x/2}$\
+
+Assuming that $Z \sim N(0, 1)$\
+$W=Z^2$\
+So we can deduce the pdf for the variable W $$
+\begin{align}
+f_W(w)&=Pr(Z^2=w)\\
+& =f_Z(\sqrt{w}) \left| \frac{d(\sqrt{w})}{dw} \right| + f_Z(-\sqrt{w}) \left| \frac{d(-\sqrt{w})}{dw} \right|\\
+&=2 \cdot \frac{1}{\sqrt{2\pi}} e^{-w / 2} \cdot \frac{1}{2\sqrt{w}} = \frac{1}{\sqrt{2\pi w}} e^{-w / 2}\\
+\end{align}
+$$
+
+$\Gamma(z) = \int_0^\infty t^{z-1} e^{-t} \, dt$\
+$\Gamma(1/2)$=$\sqrt(\pi)$,we can know that $W\sim \chi^2(1)$\
+
+Now, we can introduce the variable Y.\
+$Y=\sum_{i=1}^k Z_i^2$ ($Z_i$ is independent of each other)\
+We want to get the mgf of Y $$
+\begin{align}
+M_Y(t)&=E[e^{tY}]\\
+& =E[e^{tZ_1^2}e^{tZ_2^2}...e^{tZ_k^2}]\\
+& =E[e^{tZ_1^2}]E[e^{tZ_2^2}]...E[e^{tZ_k^2}] \\
+& = \prod_{i=1}^k M_{Z_i^2}(t)\\
+&=(1-2t)^{-r1/2}(1-2t)^{-r2/2}...(1-2t)^{-rk/2}\\
+& =(1-2t)^{-\sum_{i=1}^kri/2}\\
+\end{align}
+$$ Because the mgf of Chi-square function is $(1-2t)^{-r/2}$\
+r is the degree of freedom of this chi-square function\
+So $Y\sim \chi^2(r1+r2+...+rk)$\
+r1,r2...rk represents the degree of freedom of every single sample\
+Here, df=1 for every sample
+
+### Student- t distribution
+
+
+
+
+### From standard normal distribution $f(x) = \frac{1}{\sqrt{2\pi}} e^{-\frac{x^2}{2}}$, we want to get Student- t distribution $f(t) = \frac{\Gamma \left(\frac{\nu+1}{2}\right)}{\sqrt{\nu \pi} \, \Gamma \left(\frac{\nu}{2}\right)} \left(1 + \frac{t^2}{\nu}\right)^{-\frac{\nu+1}{2}}$, where $\Gamma$ is the gamma function and $\nu$ is the degrees of freedom.\
+
+Given two independent variables Z and V ($Z \sim N(0, 1)$ & $V\sim \chi^2(\nu)$), then we construct a new variable $T=\frac{Z}{\sqrt(V/\nu)}$.\
+The joint pdf is $$
+g(z,v)=\frac{1}{\sqrt{2\pi}} e^{-\frac{z^2}{2}}\frac{1}{2^{\nu/2} \Gamma(\nu/2)} v^{\nu/2 - 1} e^{-v/2}
+$$ Cdf of T is given by $$
+\begin{align}
+F(t) & =Pr(\frac{Z}{\sqrt(V/\nu)}\leq t)\\
+& =Pr(Z\leq {\sqrt(V/\nu)}t)\\
+& =\int_{0}^{\infty} \int_{-\infty}^{\sqrt(V/\nu)t} g(z,v) \, dz \, dv
+\end{align}
+$$ Simplify F(t) $$
+F(t)=\frac{1}{\sqrt{\pi}\Gamma(\nu/2)}\int_{0}^{\infty}[\int_{-\infty}^{\sqrt(V/\nu)t} \frac{e^{-z^2/2}}{2^\frac{\nu+1}{2}}dz]v^{\frac{\nu}{2}-1}e^{-\frac{v}{2}}dv
+$$
+
+To get pdf, we will differentiate F(t) $$
+\begin{align}
+f(t) &=F'(t)=\frac{1}{\sqrt{\pi}\Gamma(\nu/2)}\int_{0}^{\infty} \frac{e^{-(v/2)(t^2/\nu)}}{2^{\frac{\nu+1}{2}}}\sqrt\frac{v}{\nu}v^{\nu/2-1}e^{-\frac{v}{2}}dv\\
+&=\frac{1}{\sqrt{\pi\nu}\Gamma(\nu/2)}\int_{0}^{\infty}\frac{v^{(\nu+1)/2-1}}{2^{(\nu+1)/2}}e^{-(\nu/2)(1+t^2/\nu)}dv
+\end{align}
+$$ We need to make the change of variables: $y=(1+t^2/\nu)v$\
+And we need to change dv: $\frac{dv}{dy}=\frac{1}{1+t^2/\nu}$
+
+$$
+\begin{align}
+f(t)&=\frac{\Gamma[(\nu+1)/2]}{\sqrt{\pi\nu}\Gamma(\nu/2)}[\frac{1}{(1+t^2/\nu)^{(\nu+1)/2}}]\int_{0}^{\infty}\frac{y^{(\nu+1)/2-1}}{\Gamma[(\nu+1)/2]2^{(\nu+1)/2}}e^{-y/2}dy
+\end{align}
+$$ This part $\int_{0}^{\infty}\frac{y^{(\nu+1)/2-1}}{\Gamma[(\nu+1)/2]2^{(\nu+1)/2}}e^{-y/2}dy$ is equal to 1, because this part is the whole area under the chi-square distribution with $\nu+1$ degrees of freedom. So, the pdf for T can be written as follows $$
+f(t)=\frac{\Gamma[(\nu+1)/2]}{\sqrt{\pi\nu}\Gamma(\nu/2)}\frac{1}{(1+t^2/\nu)^{(\nu+1)/2}}
+$$
+
+### F-distribution
+
+
+
+
+### We will do some trnsformation on chi-square distribution to get F-distribution
+
+Assuming that we have two independent random variables $$
+X \sim \chi^2(n_1) \quad and\quad  Y \sim \chi^2(n_2)\
+$$ Now,we will define a new variable F $$
+F = \frac{(X / n_1)}{(Y / n_2)}
+$$ This looks a little complex, so let's do some simplification. $$
+U = \frac{X}{n_1} \quad \text{and} \quad V = \frac{Y}{n_2}\
+$$
+
+So, $F = \frac{U}{V}$.\
+Because, X and Y are independent of each other. Obviously, U and V are also independent of each other.\
+
+$$
+f_{U,V}(u,v) = f_U(u) f_V(v)
+$$ $$
+f_U(u) = \frac{(n_1 u)^{n_1/2 - 1} e^{-n_1 u/2}}{2^{n_1/2} \Gamma(n_1/2)}
+$$ $$
+f_V(v) = \frac{(n_2 v)^{n_2/2 - 1} e^{-n_2 v/2}}{2^{n_2/2} \Gamma(n_2/2)}
+$$ To find the joint density function of F & V, we use Jacobian transformation $$
+J =\left| \frac{\partial(U,V)}{\partial(F,V)} \right| = \left| \begin{matrix}
+\frac{\partial U}{\partial F} & \frac{\partial U}{\partial V} \\
+\frac{\partial V}{\partial F} & \frac{\partial V}{\partial V}
+\end{matrix} \right| = \left| \begin{matrix}
+V & F \\
+0 & 1
+\end{matrix} \right| = V
+$$ $$
+f_{F,V}(f,v) = f_{U,V}(u,v) \left| \frac{\partial(u,v)}{\partial(f,v)} \right|= f_{U,V}(u,v)v
+$$ Then, we substitute$f_U(u)$ and $f_V(v)$ into $f_{F,V}(f,v)$ $$
+f_{F,V}(f,v) = \frac{(n_1 u)^{n_1/2 - 1} e^{-n_1 u/2}}{2^{n_1/2} \Gamma(n_1/2)} \cdot \frac{(n_2 v)^{n_2/2 - 1} e^{-n_2 v/2}}{2^{n_2/2} \Gamma(n_2/2)} \cdot v
+$$ Use the condition u=fv $$
+\begin{align}
+f_{F,V}(f,v) &= \frac{(n_1 fv)^{n_1/2 - 1} e^{-n_1 fv/2}}{2^{n_1/2} \Gamma(n_1/2)} \cdot \frac{(n_2 v)^{n_2/2 - 1} e^{-n_2 v/2}}{2^{n_2/2} \Gamma(n_2/2)} \cdot v\\
+& =\frac{(n_1 f v)^{n_1/2 - 1} e^{-n_1 f v/2}}{2^{n_1/2} \Gamma(n_1/2)} \cdot \frac{(n_2 v)^{n_2/2 - 1} e^{-n_2 v/2}}{2^{n_2/2} \Gamma(n_2/2)} \cdot v\\
+& = \frac{n_1^{n_1/2-1} f^{n_1/2 - 1} v^{n_1/2 - 1} e^{-n_1 f v/2}}{2^{n_1/2} \Gamma(n_1/2)} \cdot \frac{n_2^{n_2/2-1} v^{n_2/2 - 1} e^{-n_2 v/2}}{2^{n_2/2} \Gamma(n_2/2)} \cdot v\\
+& = \frac{n_1^{n_1/2-1} n_2^{n_2/2-1} f^{n_1/2 - 1} v^{(n_1 + n_2)/2 - 1} e^{-(n_1 f + n_2) v/2}}{2^{(n_1 + n_2)/2} \Gamma(n_1/2) \Gamma(n_2/2)}
+\end{align}
+$$ We will integrate this density function with respect to V $$
+\begin{align}
+f_F(f) &= \int_0^\infty f_{F,V}(f,v) dv\\
+&= \int_0^\infty \frac{n_1^{n_1/2-1} n_2^{n_2/2-1} f^{n_1/2 - 1} v^{(n_1 + n_2)/2 - 1} e^{-(n_1 f + n_2) v/2}}{2^{(n_1 + n_2)/2} \Gamma(n_1/2) \Gamma(n_2/2)} dv\\
+\end{align}
+$$ Let's do some substitutions to make it look simpler $$
+\begin{align}
+c = \frac{n_1 f + n_2}{2}
+\end{align}
+$$ This is the definition of Gamma function $$
+\int_0^\infty v^{(n_1 + n_2)/2 - 1} e^{-c v} dv = \frac{\Gamma((n_1 + n_2)/2)}{c^{(n_1 + n_2)/2}}
+$$
+
+Then $$
+f_F(f) = \frac{n_1^{n_1/2-1} n_2^{n_2/2-1} f^{n_1/2 - 1}}{2^{(n_1 + n_2)/2} \Gamma(n_1/2) \Gamma(n_2/2)} \cdot \frac{\Gamma((n_1 + n_2)/2)}{\left(\frac{n_1 f + n_2}{2}\right)^{(n_1 + n_2)/2}}
+$$ Let's rewrite it in an approximate F-distribution pdf form $$
+f_F(f) = \frac{n_1^{n_1/2-1} n_2^{n_2/2-1} f^{n_1/2 - 1} \Gamma((n_1 + n_2)/2)}{2^{(n_1 + n_2)/2} \Gamma(n_1/2) \Gamma(n_2/2)} \cdot \left(\frac{2}{n_1 f + n_2}\right)^{(n_1 + n_2)/2}
+$$
+
+### beta and Gamma
+
+When considering the product of two Gamma functions $$(\Gamma(a) \Gamma(b))$$, we can write it as two independent integrals:
+
+$$
+\Gamma(a) \Gamma(b) = \left( \int_0^\infty t^{a-1} e^{-t} \, dt \right) \left( \int_0^\infty s^{b-1} e^{-s} \, ds \right)
+$$
+
+To convert this product into a double integral, we can use a change of variables. Consider using polar coordinates in the two independent integrals, which allows us to use certain integration techniques to simplify them. First, we transform the integration region from Cartesian coordinates to polar coordinates:
+
+$$
+t = r \cos \theta, \quad s = r \sin \theta
+$$
+
+The Jacobian determinant is $$r$$, so the integral can be rewritten as:
+
+$$
+\Gamma(a) \Gamma(b) = \int_0^\infty \int_0^\infty t^{a-1} e^{-t} s^{b-1} e^{-s} \, dt \, ds
+$$
+
+Using the polar coordinate transformation, the integral becomes:
+
+$$
+= \int_0^\frac{\pi}{2} \int_0^\infty (r \cos \theta)^{a-1} e^{-r \cos \theta} (r \sin \theta)^{b-1} e^{-r \sin \theta} r \, dr \, d\theta
+$$
+
+Separating all $$r$$ and $$\theta$$ related terms:
+
+$$
+= \int_0^\frac{\pi}{2} (\cos \theta)^{a-1} (\sin \theta)^{b-1} \, d\theta \int_0^\infty r^{a+b-1} e^{-r(\cos \theta + \sin \theta)} \, dr
+$$
+
+First, compute the $$r$$ integral part:
+
+$$
+\int_0^\infty r^{a+b-1} e^{-r(\cos \theta + \sin \theta)} \, dr = \frac{\Gamma(a+b)}{(\cos \theta + \sin \theta)^{a+b}}
+$$
+
+Next, compute the $$\theta$$ integral part:
+
+$$
+\int_0^\frac{\pi}{2} (\cos \theta)^{a-1} (\sin \theta)^{b-1} \, d\theta = B(a, b)
+$$
+
+where $$B(a, b)$$ is the Beta function, defined as:
+
+$$
+B(a, b) = \int_0^1 t^{a-1} (1-t)^{b-1} \, dt
+$$
+
+Therefore, we get:
+
+$$
+\Gamma(a) \Gamma(b) = \frac{\Gamma(a+b)}{(\cos \theta + \sin \theta)^{a+b}} \cdot B(a, b)
+$$
+
+Since $$\cos \theta + \sin \theta = 1$$ (in polar coordinates), we have:
+
+$$
+\Gamma(a) \Gamma(b) = \Gamma(a+b) B(a, b)
+$$
+
+Thus, the double integral form of the Gamma function product directly comes from the polar transformation and the application of the Beta function. This is an important mathematical technique used to simplify complex integrals and functional relationships.
+
+### Why is the integral result as shown?
+
+The given integral,
+
+$$
+\int_0^\infty r^{a+b-1} e^{-r (\cos \theta + \sin \theta)} \, dr,
+$$
+
+can be evaluated using the definition of the Gamma function. The Gamma function $$\Gamma(z)$$ is defined as:
+
+$$
+\Gamma(z) = \int_0^\infty t^{z-1} e^{-t} \, dt.
+$$
+
+To see why the integral can be expressed in terms of the Gamma function, let's rewrite the integral in a form that matches the Gamma function's definition. The integral has the form:
+
+$$
+\int_0^\infty r^{a+b-1} e^{-r (\cos \theta + \sin \theta)} \, dr.
+$$
+
+Let's set $$t = r (\cos \theta + \sin \theta)$$, then $$r = \frac{t}{\cos \theta + \sin \theta}$$ and $$dr = \frac{dt}{\cos \theta + \sin \theta}$$. Substituting these into the integral gives:
+
+$$
+\int_0^\infty \left( \frac{t}{\cos \theta + \sin \theta} \right)^{a+b-1} e^{-t} \cdot \frac{dt}{\cos \theta + \sin \theta}.
+$$
+
+Simplifying inside the integral:
+
+$$
+\int_0^\infty \frac{t^{a+b-1}}{(\cos \theta + \sin \theta)^{a+b}} e^{-t} \, dt.
+$$
+
+Since $$(\cos \theta + \sin \theta)^{a+b}$$ is a constant with respect to $$t$$, it can be factored out of the integral:
+
+$$
+\frac{1}{(\cos \theta + \sin \theta)^{a+b}} \int_0^\infty t^{a+b-1} e^{-t} \, dt.
+$$
+
+The integral
+
+$$
+\int_0^\infty t^{a+b-1} e^{-t} \, dt
+$$
+
+is recognized as the Gamma function $$\Gamma(a+b)$$. Thus, we have:
+
+$$
+\frac{1}{(\cos \theta + \sin \theta)^{a+b}} \Gamma(a+b).
+$$
+
+Therefore,
+
+$$
+\int_0^\infty r^{a+b-1} e^{-r (\cos \theta + \sin \theta)} \, dr = \frac{\Gamma(a+b)}{(\cos \theta + \sin \theta)^{a+b}}.
+$$
+
+This demonstrates why the integral is evaluated as shown:
+
+$$
+\int_0^\infty r^{a+b-1} e^{-r (\cos \theta + \sin \theta)} \, dr = \frac{\Gamma(a+b)}{(\cos \theta + \sin \theta)^{a+b}}.
+$$
+(method 2 for integral calculation: x=uv,y=u(1-v) J=-u)
+
+
+
+
+## Three Main Sampling distribution
+
+### Chi-square distribution
+
+Suppose $X_1, \cdots, X_n \stackrel{\text { i.i.d. }}{\sim} \mathcal{N}(0,1)$.the distribution of the statistic $$
+X_1^2+\cdots+X_n^2
+$$ is called a chi-square distribution with $n$ degrees of freedom, denoted by $\chi^2(n)$.
+
+Besides, random variable $X_i^2 \sim \operatorname{Gamma}\left(\frac{1}{2}, \frac{1}{2}\right)$ corresponds to the chi-squared distribution with 1 degree of freedom, denoted as $\chi_1^2$.
+
+This is derived by the MGF:
+
+Since $$
+M_{X_1^2+\cdots+X_n^2}(t)=M_{X_1^2}(t) \times \cdots \times M_{X_n^2}(t)= \begin{cases}\infty & t \geq \frac{1}{2} \\ (1-2 t)^{-\frac{n}{2}} & t<\frac{1}{2}\end{cases}
+$$
+
+This is the MGF of the $\operatorname{Gamma}\left(\frac{n}{2}, \frac{1}{2}\right)$ distribution, so $X_1^2+\cdots+X_n^2 \sim \operatorname{Gamma}\left(\frac{n}{2}, \frac{1}{2}\right)$. This is called the chi-squared distribution with $\mathbf{n}$ degree of freedom, denoted $\chi_n^2$.
+
+#### Properties
+
+The random variable $\frac{(X-\mu)^2}{\sigma^2}$ follows a $\chi^2$-distribution with 1 degree of freedom when $X$ follows a normal distribution with mean $\mu$ and variance $\sigma^2$.
+
+-   If $W_1, \ldots, W_n$ are independent $\chi^2$ random variables with, respectively, $v_1, \cdots, v_n$ degrees of freedom, then the random variable $W_1+\cdots+W_n$ follows a $\chi^2$-distribution with $v_1+\cdots+v_n$ degree of freedom.
+
+-   The random variable $\frac{(\bar{X}-\mu)^2}{\sigma^2 / n}$ follows a $\chi^2$-distribution with 1 degree of freedom when $X$ follows a normal distribution with mean $\mu$ and variance $\sigma^2$.
+
+#### Code to plot examples of Chi-square distribution
+
+```{r}
+library(ggplot2)
+
+# Create a sequence of values
+x <- seq(0, 20, length.out = 200)
+
+# Calculate the density for different degrees of freedom
+df4 <- dchisq(x, df = 4)
+df8 <- dchisq(x, df = 8)
+df12 <- dchisq(x, df = 12)
+
+chi_data <- data.frame(x, df4, df8, df12)
+ggplot(chi_data, aes(x)) +
+  geom_line(aes(y = df4, color = "df=4")) +
+  geom_line(aes(y = df8, color = "df=8")) +
+  geom_line(aes(y = df12, color = "df=12")) +
+  labs(title = "Chi-Square Distribution",
+       x = "Value",
+       y = "Density") +
+  scale_color_manual(name = "Degrees of Freedom", values = c("df=4" = "blue","df=8" = "red", "df=12" = "green")) +
+  theme_minimal()
+```
+
+#### Application
+
+Chi-square distribution is primarily used in testing:
+
+-   Goodness-of-fit
+
+-   Independence in contingency tables
+
+### Student's t-distribution
+
+#### Construction
+
+The statistic $T=\frac{\bar{X}-\mu}{S / \sqrt{n}}$ follows a $t$-distribution with $v=n-1$ degrees of freedom when $X_1, \cdots, X_n$ are i.i.d. normal RVs.
+
+$$
+\bar{X} \sim \mathcal{N}\left(\mu, \frac{\sigma^2}{n}\right) \quad \frac{\bar{X}-\mu}{\sigma / \sqrt{n}} \sim \mathcal{N}(0,1) \quad \frac{(n-1) s^2}{\sigma^2} \sim \chi_{n-1}^2
+$$
+
+If we know the population variance $\sigma^2$, we can easily do inference using the statistic $\frac{\bar{X}-\mu}{\sigma / \sqrt{n}}$. However, $\sigma^2$ is usually unknown in practice.
+
+$$
+\bar{X} \sim \mathcal{N}\left(\mu, \frac{\sigma^2}{n}\right) \quad \frac{\bar{X}-\mu}{\sigma / \sqrt{n}} \sim \mathcal{N}(0,1) \quad \frac{(n-1) s^2}{\sigma^2} \sim \chi_{n-1}^2
+$$
+
+We can construct the $t$-statistic using the sample variance $S^2$ : $$
+T=\frac{\frac{\bar{X}-\mu}{\sigma / \sqrt{n}}}{\sqrt{\frac{(n-1) s^2}{\sigma^2} /(n-1)}}=\frac{\bar{X}-\mu}{S / \sqrt{n}}
+$$
+
+Notice the sample mean $\bar{X}$ and the sample variance $S^2$ are independent (the proof is beyond the scope of this course). So the $T$ is now a ratio of a standard normal variable and the square root of a $\chi^2 \mathrm{RV}$ divided by its degrees of freedom. This is the definition of a $t$-distribution with $n-1$ degrees of freedom.
+
+#### Properties
+
+The $t$-distribution is primarily used in contexts where the underlying population is assumed to be normally distributed, especially when the sample size is small. Used extensively in problems that deal with inference about population mean $\mu$ when population variance $\sigma^2$ is unknown.
+
+-   problems where one is trying to determine if means from two samples are significantly different when population variances $\sigma_1^2$ and $\sigma_2^2$ are unknown.
+
+#### Code to plot examples of t-distribution
+
+```{r}
+# Load necessary libraries
+library(ggplot2)
+
+# Create a sequence of values
+x <- seq(-4, 4, length.out = 1000)
+
+# Calculate the density for different degrees of freedom
+df_values <- c(1, 2, 3, 5, 10, 30)
+distributions <- lapply(df_values, function(df) dt(x, df = df))
+
+# Create a data frame to store the data
+df_data <- data.frame(x = x)
+for (i in seq_along(df_values)) {
+  df_data[paste0("df", df_values[i])] <- distributions[[i]]
+}
+
+# Plot the densities
+ggplot(df_data, aes(x = x)) +
+  geom_line(aes(y = df1, color = "df=1")) +
+  geom_line(aes(y = df2, color = "df=2")) +
+  geom_line(aes(y = df3, color = "df=3")) +
+  geom_line(aes(y = df5, color = "df=5")) +
+  geom_line(aes(y = df10, color = "df=10")) +
+  geom_line(aes(y = df30, color = "df=30")) +
+  geom_line(aes(y = dnorm(x), color = "Standard Normal")) +
+  scale_color_manual(name = "Distribution", 
+                     values = c("df=1" = "red", "df=2" = "red", "df=3" = "red", 
+                                "df=5" = "green", "df=10" = "green", "df=30" = "green", 
+                                "Standard Normal" = "blue")) +
+  labs(title = "Density of the t-distribution compared to the standard normal distribution",
+       x = "x",
+       y = "Density") +
+  theme_minimal()
+```
+
+### F-distribution
+
+Let $U$ and $V$ be two independent RVs following $\chi^2$ distributions with $\nu_1$ and $\nu_2$ degrees of freedom, respectively. Then the distribution of the random variable $F=\frac{U / \nu_1}{V / \nu_2}$ is known as $F$-distribution.
+
+#### Example
+
+If $S_1^2$ and $S_2^2$ are the variances of independent RVs of size $n_1$ and $n_2$ taken from normal populations with variances $\sigma_1^2$ and $\sigma_2^2$ respectively, then $$
+F=\frac{S_1^2 / \sigma_1^2}{S_2^2 / \sigma_2^2}=\frac{\sigma_2^2 S_1^2}{\sigma_1^2 S_2^2}
+$$ follows an $F$-distribution with $\nu_1=n_1-1$ and $\nu_2=n_2-1$ degrees of freedom.
+
+#### Code to plot examples of F-distribution
+
+```{r}
+# Load necessary libraries
+library(ggplot2)
+
+# Create a sequence of values
+x <- seq(0, 5, length.out = 1000)
+
+# Calculate the density for different degrees of freedom
+df1_values <- c(1, 2, 5, 10, 100)
+df2_values <- c(1, 1, 2, 1, 100)
+distributions <- lapply(1:length(df1_values), function(i) df(x, df1 = df1_values[i], df2 = df2_values[i]))
+
+# Create a data frame to store the data
+df_data <- data.frame(x = x)
+for (i in seq_along(df1_values)) {
+  df_data[paste0("df1", df1_values[i], "_df2", df2_values[i])] <- distributions[[i]]
+}
+
+# Plot the densities
+ggplot(df_data, aes(x = x)) +
+  geom_line(aes(y = df11_df21, color = "d1=1, d2=1")) +
+  geom_line(aes(y = df12_df21, color = "d1=2, d2=1")) +
+  geom_line(aes(y = df15_df22, color = "d1=5, d2=2")) +
+  geom_line(aes(y = df110_df21, color = "d1=10, d2=1")) +
+  geom_line(aes(y = df1100_df2100, color = "d1=100, d2=100")) +
+  scale_color_manual(name = "", 
+                     values = c("d1=1, d2=1" = "red", "d1=2, d2=1" = "black", 
+                                "d1=5, d2=2" = "blue", "d1=10, d2=1" = "green", 
+                                "d1=100, d2=100" = "grey")) +
+  labs(title = "F-distribution with different degrees of freedom",
+       x = "x",
+       y = "Density") +
+  theme_minimal() +
+  theme(legend.position = "top")
+```
+
+
+
+#### Application
+
+Analysis of variance (ANOVA)
+
+# Estimation of Population Characteristic
+
+## Point Estimation
+
+A point estimate of a population characteristic is a single number that is based on sample data and represents a plausible value of the characteristic.
+
+# Interval Estimation---Confidence interval(CI)
+
+An interval estimate of a parameter $\theta$ is an interval of the form $\hat{\theta}_L<\theta<\hat{\theta}_U$, where $\hat{\theta}_L$ and $\hat{\theta}_U$ depend on the value of $\hat{\theta}$ for a particular sample and also on the sampling distribution of $\hat{\Theta}$.
+
+## Introduction
+
+-   If we were to construct a 95% confidence interval for some population characteristics (population proportion p or population mean $\mu$), we would be using a method that is successful 95% of the time.
+
+-   This is also about the question relevant to "How to choose a sample size"
+
+## Definition
+
+A $100(1-\alpha) \%$ confidence interval is an interval of the form $\hat{\theta}_L<\theta<\hat{\theta}_U$, where $\hat{\theta}_L$ and $\hat{\theta}_U$ are respectively values of $\widehat{\Theta}_L$ and $\widehat{\Theta}_U$ obtained for a particular sample, based on $$
+P\left(\widehat{\Theta}_L<\theta<\widehat{\Theta}_U\right)=1-\alpha \quad ; \quad 0<\alpha<1
+$$ in the estimation of population parameter $\theta$.
+
+## Interpretation
+
+For confidence level of 95%, t for any normal distribution: About 95% of the values are within 1.96 standard deviations of the mean. (Recall the concept of Z-scores)
+
+That is, if this method was used to generate an interval estimate over and over again with different samples, in the long run 95% of the resulting intervals would include the actual value of the characteristic being estimated.
+
+-   The confidence level 95% refers to the method used to construct the interval rather than to any particular interval, such as the one we obtained.
+
+### eg
+
+#### Proportion
+
+-   check to make sure that the three necessary conditions are met:
+
+$n\hat p \ge 10, n(1-\hat p) \ge 10$
+
+$\frac {\hat p -p }{\sigma/\sqrt n} = 1.96$)
+
+-   sample size question
+
+Using sample proportion with 95% confidence interval, and we want ME no more than 5%, we may be interested in solving n from the following equation:
+
+0.05=1.96 $\sqrt {\frac {\hat p(1-\hat p) }{ n}}$
+
+#### CI on Mean
+
+Here, $\bar x$ is the sample mean from a simple random sample.
+
+$\mu$ is the population mean which we are interested in estimating.
+
+##### CI on $\mu$ with $\sigma$ known n $\ge 30$ or the population is normal --- Use z-statistics
+
+CI: $\bar x \pm z_{\alpha/2} \frac {\sigma}{\sqrt n}$, for example, 95% CI is $\bar x \pm 1.96 \frac {\sigma}{\sqrt n}$
+
+##### One-side Confidence Bound on $\mu$ with $\sigma$ known n $\ge 30$ or the population is normal --- Use z-statistics
+
+Upper one-side bound: $\mu <\bar x + z_{\alpha} \frac {\sigma}{\sqrt n}$
+
+Lower one-side bound: $\mu >\bar x - z_{\alpha} \frac {\sigma}{\sqrt n}$
+
+For example, 95% Confidence bound on $\mu$ is $\bar x \pm 1.645 \frac {\sigma}{\sqrt n}$
+
+##### CI on $\mu$ with $\sigma$ unknown and the population is normal --- Use t-statistics (use s as the estimate for σ (t-statistics with df = n-1))
+
+CI: $\bar x \pm t_{\alpha/2} \frac {s}{\sqrt n}$, for example, 95% CI is $\bar x \pm t_{0.025} \frac {s}{\sqrt n}$ and df = n-1
+
+Remark: The distribution of t is more spread out than the standard normal distribution but when n $\ge 30$, t and z are very close to each other.
+
+##### CI for $\mu_1 - \mu_2$, both $\sigma_1^2$ and $\sigma_2^2$ are known
+
+CI of $\mu_1-\mu_2$: $(\bar x_1 - \bar x_2) \pm z_{\alpha/2} \sqrt {\frac {\sigma_1^2}{n_1} + \frac {\sigma_2^2}{n_2}}$
+
+##### CI for $\mu_1 - \mu_2$, both $\sigma_1^2$ and $\sigma_2^2$ are unknown but assumed equal
+
+CI of $\mu_1-\mu_2$: $(\bar x_1 - \bar x_2) \pm t_{\alpha/2} s_p \sqrt {\frac {1}{n_1} + \frac {1}{n_2}}$ with df = $n_1+n_2-2$ where $s_p = \sqrt {\frac {(n_1-1)s_1^2 + (n_2-1)s_2^2}{n_1+n_2-2}}$
+
+##### CI for paired observations
+
+Previous, we have two independent samples, now we have two dependent samples. We can use the difference between the two samples to construct a confidence interval.
+
+CI of $\mu_d$: $\bar d \pm t_{\alpha/2} \frac {s_d}{\sqrt n}$ with df = n-1 where $s_d$ is the sample standard deviation of the differences $d_i = x_{1i} - x_{2i}$ and $\bar d$ is the sample mean of the differences.
+
+##### Estimating $\sigma$
+
+a $100(1-\alpha)\%$ CI for $\sigma^2$ is $\left(\frac{(n-1) S^2}{\chi_{\alpha / 2, n-1}^2}, \frac{(n-1) S^2}{\chi_{1-\alpha / 2, n-1}^2}\right)$
+
+where $S^2$ is the sample variance and $\chi_{\alpha / 2, n-1}^2$ and $\chi_{1-\alpha / 2, n-1}^2$ are the critical values of the chi-square distribution with $n-1$ degrees of freedom.
+
+##### Estimating $\sigma_1^2/ \sigma_2^2$
+
+A $100(1-\alpha)\%$ CI for $\frac{\sigma_1^2}{\sigma_2^2}$ using F-statistics with $f_{1-\alpha/2}(n_1-1,n_2-1)=1/f_{\alpha/2}(n_1-1,n_2-1)$ is $$
+\frac{s_1^2}{s_2^2} \frac{1}{f_{\alpha / 2}\left(n_1-1, n_2-1\right)}<\frac{\sigma_1^2}{\sigma_2^2}<\frac{s_1^2}{s_2^2} f_{\alpha / 2}\left(n_2-1, n_1-1\right)
+$$ where $f_{\alpha / 2}\left(v_1, v_2\right)$ is an $F$-value with $v_1$ and $v_2$ degrees of freedom, leaving an area of $\alpha / 2$ to the right, and $f_{\alpha / 2}\left(v_2, v_1\right)$ is a similar $F$-value with $v_2$ and $v_1$ degrees of freedom.
+
+# Hypothesis Testing
+
+![](images/clipboard-2219722049.png)
+
+-   z-test
+
+Suppose $X_1, \cdots, X_n \xrightarrow[\sim]{\text { iid }} \mathcal{N}\left(\mu, \sigma^2\right)$, where $\mu$ is unknown and where $\sigma^2=\sigma_0^2$ is known.
+
+Suppose we wish to test $H_0: \mu=\mu_0$ against $H_1: \mu>\mu_0$. Then we can use the test statistic $$
+Z=\frac{\bar{X}-\mu_0}{\sigma_0 / \sqrt{n}}
+$$
+
+If $H_0$ is true then $Z \sim \mathcal{N}(0,1)$. Let $$
+z_{\mathrm{obs}}=\frac{\bar{x}-\mu_0}{\sigma_0 / \sqrt{n}}
+$$
+
+A large value of $z_{\text {obs }}$ casts doubt on the validity of $H_0$ and indicates a departure from $H_0$ in the direction of $H_1$. So the $p$-value for testing $H_0$ against $H_1$ is $$
+\begin{aligned}
+p & =P\left(Z \geq Z_{\mathrm{obs}} \mid H_0\right) \\
+& =P\left(\mathcal{N}(0,1) \geq Z_{\mathrm{obs}}\right) \\
+& =1-\Phi\left(Z_{\mathrm{obs}}\right)
+\end{aligned}
+$$
+
+The z-test of $H_0: \mu=\mu_0$ against the alternative $H_1: \mu<\mu_0$ is similar but this time a small, i.e. very negative, value of $Z_{\text {obs }}$ casts doubt on $H_0$. So the $p$-value is $$
+\begin{aligned}
+p & =P\left(Z \leq Z_{\mathrm{obs}} \mid H_0\right) \\
+& =P\left(\mathcal{N}(0,1) \leq Z_{\mathrm{obs}}\right) \\
+& =\Phi\left(Z_{\mathrm{obs}}\right)
+\end{aligned}
+$$
+
+Finally, consider testing $H_0: \mu=\mu_0$ against the alternative $H_1: \mu \neq$ $\mu_0$. Let $z_0=\left|z_{\text {obs }}\right|$. A large value of $z_0$ indicates a departure from $H_0$, so the $p$-value is $$
+\begin{aligned}
+p & =P\left(|Z| \geq z_0 \mid H_0\right) \\
+& =P\left(\mathcal{N}(0,1) \geq z_0\right)+P\left(\mathcal{N}(0,1) \leq-z_0\right) \\
+& =2\left(1-\phi\left(z_0\right)\right)
+\end{aligned}
+$$
+
+-   t-test
+
+We can use the test statistic $$
+T=\frac{\bar{X}-\mu_0}{S / \sqrt{n}}
+$$
+
+If $H_0$ is true then $T \sim t_{n-1}$. Let $t_{\mathrm{obs}}=t(x)=\frac{\bar{x}-\mu_0}{s / \sqrt{n}}$ and $t_0=\left|t_{\mathrm{obs}}\right|$. Similarly, we have $\square$ the $p$-value is $P\left(t_{n-1} \geq t_{\mathrm{obs}}\right)$ - the $p$-value is $P\left(t_{n-1} \leq t_{\text {obs }}\right)$ the $p$-value is $2 P\left(t_{n-1} \geq t_0\right)$
+
+## Example of one-sample t-test
+
+A marine biologist is studying a species of fish known to have an average length of 20 cm in ocean populations. A new population in a freshwater lake is being analyzed to determine if the environmental differences have altered the fish’s average length. The biologist measures the lengths of 10 randomly selected fish, yielding the following data:
+
+22, 23, 21, 24, 22, 20, 25, 19, 23, 22
+
+Assuming the data satisfy the assumption of normality, please address the following using a significance level of 0.1:
+
+### a
+
+-   null hypothesis: The mean length of fish is 20 cm ($H_0: \mu = 20$).
+
+-   alternative hypothesis: The mean length of fish is not 20 cm ($H_1: \mu \ne 20$).
+
+### b
+
+Since the data is supposed to be normally distributed, the sampling distribution of the sample mean follows t-distribution. The t-test statistic is calculated as follows:
+
+$$t = \frac{\bar x - \mu}{s / \sqrt n}$$
+
+The t-test statistic is calculated as follows:
+
+```{r}
+data2_4 <- c(22, 23, 21, 24, 22, 20, 25, 19, 23, 22)
+
+x_bar <- mean(data2_4)
+
+s <- sd(data2_4)
+
+t <- (x_bar - 20) / (s / sqrt(length(data2_4)))
+
+t
+
+```
+
+The t-test statistic is 3.705882...
+
+### c
+
+Using pt() function, the p-value is calculated as follows:
+
+```{r}
+p_value <- 2 * pt(-t, df = 9)
+p_value
+```
+
+The p-value is approximately 0.1. Since the p-value is less than 0.1, we reject the null hypothesis.
+
+Therefore, there is sufficient evidence to conclude that the population mean is not equal to 20 which means the environmental differences have altered the fish’s average length.
+
+### d
+
+Using qt() function to find the critical value for a two-tailed test with 90% confidence level:
+
+```{r}
+t_critical <- qt(0.95, df = 9)
+t_critical
+
+```
+
+The critical value for a two-tailed test with 90% confidence level is about 1.833113.
+
+Since the t-test statistic 3.705882 is greater than the critical value 1.833113, which is in the critical region. Therefore, we reject the null hypothesis.
+
+Also, we could use confidence interval to verify the result. The 90% confidence interval for the population mean is calculated as follows:
+
+```{r}
+ci_4 <- c(x_bar - t_critical * s / sqrt(10), x_bar + t_critical * s / sqrt(10))
+ci_4
+
+```
+
+So the 90% confidence interval for the population mean is about (21.1, 23.2).
+
+The confidence interval does not contain the hypothesized value 20. Therefore, we reject the null hypothesis.
+
+Therefore, there is sufficient evidence to conclude that the population mean is not equal to 20 which means the environmental differences have altered the fish’s average length.
+
+
+## Example of unpaired t-test
+
+Suppose $\sigma_1^2$ and $\sigma_2^2$ are unknown but assumed equal. We want to test the null hypothesis $H_0: \mu_1 = \mu_2$ against the alternative hypothesis $H_1: \mu_1 \ne \mu_2$. The test statistic is given by
+
+$$
+t = \frac{\bar x_1 - \bar x_2}{s_p \sqrt{\frac{1}{n_1} + \frac{1}{n_2}}}
+$$
+
+where $s_p$ is the pooled sample standard deviation, given by
+
+$$
+s_p = \sqrt{\frac{(n_1 - 1)s_1^2 + (n_2 - 1)s_2^2}{n_1 + n_2 - 2}}
+$$
+
+![](images/clipboard-3291557304.png)
+
+
+## Example of one-sample Variance Test
+
+
+$\chi^2$-test for variance. Suppose $X_1, \cdots, X_n$ are i.i.d. normal random variables with mean $\mu$ and variance $\sigma^2$. We want to test the null hypothesis $H_0: \sigma^2 = \sigma_0^2$ against the alternative hypothesis $H_1: \sigma^2 \ne \sigma_0^2$. The test statistic is given by
+
+
+$$
+\chi^2 = \frac{(n - 1)s^2}{\sigma^2}
+$$
+
+
+## Example of two-sample Variance Test
+
+| $H_0$ | Test Statistic | $H_1$ | Rejection Region |
+| :--- | :--- | :--- | :--- |
+| $\sigma_1^2=\sigma_2^2$ | $f=\frac{s_1^2}{s_2^2}$ | $\sigma_1^2<\sigma_2^2$ | $f<f_\alpha\left(\nu_1, \nu_2\right)$ |
+|  |  | $\sigma_1^2>\sigma_2^2$ | $f>f_{1-\alpha}\left(\nu_1, \nu_2\right)$ |
+|  | $\sigma_1^2 \neq \sigma_2^2$ | $f<f_{\alpha / 2}\left(\nu_1, \nu_2\right)$ or $f>f_{1-\alpha / 2}\left(\nu_1, \nu_2\right)$ |  |
+| $\nu_1=n_1-1$ and $\nu_2=n_2-1$ are two degree of freedom. |  |  |  |
+
+
+$$
+F=\frac{\frac{\left(n_1-1\right) S_1^2}{\sigma_1^2} /\left(n_1-1\right)}{\frac{\left(n_2-1\right) S_2^2}{\sigma_2^2} /\left(n_2-1\right)}=\frac{\sigma_2^2 S_1^2}{\sigma_1^2 S_2^2}
+$$
+
+If $\sigma_1^2=\sigma_2^2$, we have
+$$
+F=\frac{S_1^2}{S_2^2} \sim F_{n_1-1, n_2-1}
+$$
+
+## ANOVA-- Analysis of Variance
+
+- one-way ANOVA
+
+we need to test the null hypothesis that the group
+population means are all the same against the alternative that at
+least one group population mean differs from the others. That is,
+
+$H_0: \mu_1=\mu_2=\cdots=\mu_k$ against $H_1: \text { at least one } \mu_i \text { differs from the others.}$
+
+ANOVA Table
+
+
+| Source | DF | Sum Sq | Mean Sq | F value | p value |
+| :--- | ---: | ---: | ---: | ---: | ---: |
+| Factor | m-1 | 11.84 (SS between) | 2.9587 (MSB) | 8.074 (MSB/MSW) | $5.38 \mathrm{e}-05$ (p-value) |
+| Error | n-m | 16.49 (SS Within)| 0.3664 (MSW) |  |  |
+| Total | n-1 | 28.33 (SS Total) |  |  |  |
+
+
+Source means "the source of the variation in the data." the
+possible sources for a one-factor study are Factor, Residuals,
+and Total.
+
+
+Factor means "the variability due to the factor of interest." In the
+drug example, the factor was the different drug. In the learning
+example on the previous page, the factor was the method of
+learning. Sometimes the row heading is labeled as Between.
+
+
+Error (or Residuals) means "the variability within the groups" or
+"unexplained random error." Sometimes the row heading is
+labeled as Within.
+
+
+Total means "the total variation in the data from the grand
+mean".
+
+DF means "the degrees of freedom in the source."
+
+
+Sum Sq means "the sum of squares due to the source."
+
+
+Mean Sq means "the mean sum of squares due to the source."
+
+
+F value means "the F-statistic."
+
+
+P value means "the P-value."
+
+
+SS(Total)=SS(Between)+SS(Within), where
+
+SS(Between) is the sum of squares between the group means
+and the grand mean. As the name suggests, it quantifies the
+variability between the groups of interest.
+
+
+SS(Within) is the sum of squares between the data and the
+group means. It quantifies the variability within the groups of
+interest.
+
+
+SS(Total) is the sum of squares between the n data points and
+the grand mean. As the name suggests, it quantifies the total
+variability in the observed data.
+
+
+
+
+- two-way ANOVA
+
+We can extend the idea of a one-way ANOVA, which tests the
+effects of one factor on a response variable, to a two-way
+ANOVA which tests the effects of two factors and their interaction
+on a response variable.
+
+| Source | DF | Sum Sq | MSW | F |
+| :--- | :--- | :--- | :--- | :--- |
+| Cells | $a b-1$ | $\sum_{i=1}^a \sum_{j=1}^b n\left(\bar{X}_{i j}-\bar{X}_{\ldots . .}\right)^2$ |  |  |
+| A | a-1 | bn $\sum_{i=1}^a\left(\bar{X}_{i . .}-\bar{X}_{\ldots .}\right)^2$ | SS(A) | MS(Error |
+| B | b-1 | an $\sum_{j=1}^b\left(\bar{X}_{. j .}-\bar{X}_{\ldots .}\right)^2$ | SS(B) | MS(B) |
+| $\mathrm{A} \times \mathrm{B}$ | $(a-1)(b-1)$ | SS(Cells)-SS(A)-SS(B) | SS(AB) | MS(Error |
+|  |  |  | DF(A $\times$ B) | MS(Error |
+| Error | $a b(n-1)$ | $\sum_{i=1}^a \sum_{j=1}^b \sum_{l=1}^n\left(X_{i j l}-\bar{X}_{i j} .\right)^2$ | SS(Error) |  |
+| Total | $a b n-1$ | $\sum_{i=1}^a \sum_{j=1}^b n\left(X_{i j l}-\bar{X}_{\ldots .}\right)^2$ |  |  |
+
+- $F=\frac{\mathrm{MS}(\mathrm{A})}{\mathrm{MS}(\text { Error })}$, for $H_0$ : no effect of factor A on response variable,
+
+- $F=\frac{\mathrm{MS}(\mathrm{B})}{\mathrm{MS}(\text { Error) }}$, for $H_0$ : no effect of factor B on response variable,
+
+- $F=\frac{\mathrm{MS}(\mathrm{A} \times \mathrm{B})}{\mathrm{MS}(\text { Error })}$, for $H_0$ : no effect of interaction on response variable.
+
+We reject any $H_0$ if $F \geq F_{\text {critical }}$; otherwise, we do not reject $H_0$.
+
+
+### Example of two-way ANOVA
+
+Two-way ANOVA. In this question, we will use the built-in R data set ToothGrowth to perform two-way ANOVA test. ToothGrowth includes information from a study on the effects of vitamin C on tooth growth in Guinea pigs. The response is the length of odontoblasts (cells responsible for tooth growth) in 60 guinea pigs. Each animal received one of three dose levels of vitamin C (0.5, 1, and 2 mg/day) by one of two delivery methods, orange juice or ascorbic acid (a form of vitamin C and coded as VC). Assuming the data satisfy the assumptions of normality and equal variance, please address the following using a significance level of 0.05
+
+#### a
+
+-   The effects of vitamin C on tooth growth in guinea pigs:
+
+  -   null hypothesis: $H_0$: mean tooth growth for all doses of vitamin C are equal
+
+  -   alternative hypothesis: $H_1$: at least one of the means of all doses of vitamin C is different from the others
+
+-   The effects of delivery method on tooth growth in guinea pigs:
+
+  -   null hypothesis: $H_0$: mean tooth growth for the delivery method of orange juice and ascorbic acid are equal.
+
+  -   alternative hypothesis $H_1$: mean tooth growth for the delivery method of orange juice and ascorbic acid are different.
+
+-   The interaction effects of the dose of vitamin C and delivery method on tooth growth in guinea pigs:
+
+  -   null hypothesis: $H_0:$ there is no interaction between the dose of vitamin C and delivery method on tooth growth in guinea pigs, meaning that the relationship between vitamin C and tooth growth is the same for both delivery methods (similarly, the relationship between delivery method and tooth growth is the same for all doses of vitamin C).
+
+  -   alternative hypothesis: $H_1$: there is an interaction between the dose vitamin C and delivery method on tooth growth in guinea pigs, meaning that the relationship between vitamin C and tooth growth is different for both delivery methods (similarly, the relationship between delivery method and tooth growth depends on the dose of vitamin C).
+
+#### b
+
+We can plot the relationship one by one using two plots
+
+```{r}
+
+library(ggplot2)
+data(ToothGrowth)
+head(ToothGrowth)
+
+# potential effects of vitamin C on tooth growth.
+
+ggplot(ToothGrowth, aes(x = factor(dose), y = len)) +
+  geom_boxplot() +
+  labs(x = "Dose (mg/day)", y = "Tooth Growth (len)", title = "Tooth Growth by Dose of vitamin C")
+
+
+# potential effects of delivery method on tooth growth.
+
+ggplot(ToothGrowth, aes(x = supp, y = len)) +
+  geom_boxplot() +
+  labs(x = "Delivery Method", y = "Tooth Growth (len)", title = "Tooth Growth by Delivery Method") 
+
+
+
+```
+
+or just one:
+
+```{r}
+library(ggplot2)
+
+# potential effects of vitamin C and delivery method. 
+
+# OJ represents orange juice and VC represents ascorbic acid.
+
+ggplot(ToothGrowth, aes(x = factor(dose), y = len, fill = supp)) +
+  geom_boxplot() +
+  labs(x = "Dose (mg/day)", y = "Tooth Growth (len)", title = "Tooth Growth by Dose and Delivery Method") 
+
+```
+
+#### c
+
+```{r}
+
+# Perform two-way ANOVA
+
+anova_result <- aov(len ~ supp * dose, data = ToothGrowth)
+
+summary(anova_result)
+
+```
+
+Since all p-values are less than 0.05, we reject all null hypotheses. Therefore, there is sufficient evidence to conclude that the dose of vitamin C, delivery method, and their interaction have significant effects on tooth growth in guinea pigs.
+
+#### d
+
+```{r}
+library(car)
+
+qqPlot(anova_result$residuals, main = "QQ-plot of residuals")
+
+```
+
+
+
+
+
+## Non-parametric tests
+
+ 
+### Application of testing the goodness of fit
+
+Testing whether there is a "good fit" between the observed data and
+the assumed probability model amounts to testing:
+
+
+
+#### Construction of test statistics with an example of 2 categories
+
+Population is 60% female and 40% male. Then, if a sample of 100 students yields 53 females and 47 males,
+can we conclude that the sample is (random and) representative of
+the population? That is, how "good" do the data "fit" the assumed
+probability model of 60% female and 40% male?
+
+Here, let $Y_1$ denote the number of females selected, $Y_1 \sim B(n,p_1)$ and let $Y_2$ denote males selected, $Y_2 = (n-Y_1)\sim B(n,p_2)=B(n,1-p_1)$.
+
+for samples satisfying the general rule of thumb (the
+expected number of successes must be at least 5 and the
+expected number of failures must be at least 5), we can use the normal approximation to the binomial distribution. The test statistic is given by
+
+$$
+Z = \frac{Y_1 - np_1}{\sqrt{np_1(1-p_1)}}\sim N(0,1)
+$$
+
+which is at least approximately normally distributed.
+
+
+and
+$$
+Z^2 =Q_1= \frac{(Y_1 - np_1)^2}{np_1(1-p_1)}\sim \chi^2(1)
+$$
+
+which is an approximate chi-square distribution with one degree of
+freedom.
+
+Now we can multiply $Q_1$ by 1 = $(1-p_1)+p_1$ to get
+
+$$
+Q_1 = \frac{(Y_1 - np_1)^2(1-p_1)}{np_1(1-p_1)} + \frac{(Y_1 - np_1)^2p_1}{np_1(1-p_1)}\sim \chi^2(1)
+$$
+
+Since $Y_1=n-Y_2$ and $p_1=1-p_2$, after simplifying, we have
+
+$$
+Q_1 = \frac{(Y_1-np_1)^2}{np_1} + \frac{(-(Y_2-np_2))^2}{np_2}\sim \chi^2(1)
+$$
+
+which is 
+$Q_1=\sum_{i=1}^2 \frac{\left(Y_i-n p_i\right)^2}{n p_i}=\sum_{i=1}^2 \frac{(\text { Observed }- \text { Expected })^2}{\text { Expected }}\sim \chi^2(1)$
+
+
+
+
+Hence, it is observed that if the observed counts are very different from the expected counts, then the test statistic will be large. So we reject the null hypothesis if $Q_1$ is large and how large is large is determined by the critical value of the chi-square distribution with one degree of freedom.
+
+The statistics $Q_1$ is called the chi-square goodness of fit statistic.
+
+Going back to the example, 
+
+ - $H_0$:$p_F = 0.6$
+ 
+ - $H_1$:$p_F \ne 0.6$
+
+we can calculate the test statistic using a significant level of $\alpha = 0.05$ ($\chi^2_{0.05,1}=3.84$)as follows:
+
+$$
+Q_1 = \frac{(53-60)^2}{60} + \frac{(47-40)^2}{40} = 2.04
+$$
+
+Since $Q_1=2.04<3.84$, we do not reject the null hypothesis. Therefore, we conclude that the sample is (random and) representative of the population.
+
+
+**This can be extended to k categories**
+
+
+
+#### Construction of test statistics with an example of k categories
+
+
+For categories more than 2, i.e.
+
+
+| Categories | 1 | 2 | $\cdots$ | $k-1$ | $k$ |
+| :--- | :--- | :--- | :--- | :--- | :--- |
+| Observed | $Y_1$ | $Y_2$ | $\cdots$ | $Y_{k-1}$ | $n-Y_1-Y_2-\cdots-Y_{k-1}$ |
+| Expected | $n p_1$ | $n p_2$ | $\cdots$ | $n p_{k-1}$ | $n p_k$ |
+
+
+Karl Pearson showed that the chi-square statistic $Q_{k-1}$ defined as:
+$$
+Q_{k-1}=\sum_{i=1}^k \frac{\left(Y_i-n p_i\right)^2}{n p_i}
+$$
+follows approximately a chi-square random variable with $k-1$ degrees of freedom. Let's try it out on an example.
+
+
+- Example:
+
+
+| Categories | Brown | Yellow | Orange | Green | Coffee | Total |
+| :--- | :--- | :--- | :--- | :--- | :--- | :--- |
+| Observed $y_i$ | 224 | 119 | 130 | 48 | 59 | 580 |
+| Assumed $H_0\left(p_i\right)$ | 0.4 | 0.2 | 0.2 | 0.1 | 0.1 | 1.0 |
+| Expected $n p_i$ | 232 | 116 | 116 | 58 | 58 | 580 |
+
+
+
+$Q_4=\frac{(224-232)^2}{232}+\frac{(119-116)^2}{116}+\frac{(130-116)^2}{116}+\frac{(48-58)^2}{58}+\frac{(59-58)^2}{58}=3.784$
+
+
+
+
+Because there are $k=5$ categories, we have to compare our chisquare statistic $Q_4$ to a chi-square distribution with $k-1=5-1=4$ degrees of freedom:
+$$
+Q_4=3.784<\chi_{4,0.05}^2=9.488
+$$
+we fail to reject the null hypothesis.
+
+
+### Application of testing for homogeneity
+
+This is to look at a method for testing whether two or more multinomial
+distributions are equal.
+
+- Example:
+
+Test the hypothesis that the acceptances of males and females are ditributed equally among the four schools,
+
+
+| (Acceptances) | Bus | Eng | L Arts | Sci | (FIXED) Total |
+| :--- | :--- | :--- | :--- | :--- | :--- |
+| Male | 240 (20%) | 480 (40%) | 120 (10%) | 360 (30%) | 1200 |
+| Female | 240 (30%) | 80 (10%) | 320 (40%) | 160 (20%) | 800 |
+| Total | 480 (24%) | 560 (28%) | 440 (22%) | 520 (26%) | 2000 |
+
+Here,
+
+$H_0: p_{M B}=p_{F B}, p_{M E}=p_{F E}, p_{M L}=p_{F L}$, and $p_{M S}=p_{F S}$
+
+$H_1: p_{M B} \neq p_{F B}$ or $p_{M E} \neq p_{F E}$ or $p_{M L} \neq p_{F L}$, or $p_{M S} \neq p_{F S}$
+
+where:
+
+- $p_{M j}$ is the proportion of males accepted into school $j=B, E, L, S$.
+
+- $p_{F j}$ is the proportion of females accepted into school $j=B, E, L, S$.
+
+In conducting such a hypothesis test, we're comparing the proportions of two multinomial distributions.
+
+
+
+
+| #(Acc) | Bus ( $j=1$ ) | Eng ( $j=2$ ) | L Arts ( $j=3$ ) | Sci $(j=4)$ | (FIXED) Total |
+| :--- | :--- | :--- | :--- | :--- | :--- |
+| $\mathrm{M}(i=1)$ | $y_{11}\left(\hat{p}_{11}\right)$ | $y_{12}\left(\hat{p}_{12}\right)$ | $y_{13}\left(\hat{p}_{13}\right)$ | $y_{14}\left(\hat{p}_{14}\right)$ | $n_1=\sum_{j=1}^k y_{1 j}$ |
+| F $(i=2)$ | $y_{21}\left(\hat{p}_{21}\right)$ | $y_{22}\left(\hat{p}_{22}\right)$ | $y_{23}\left(\hat{p}_{23}\right)$ | $y_{24}\left(\hat{p}_{24}\right)$ | $n_2=\sum_{j=1}^k y_{2 j}$ |
+| Total | $y_{11}+y_{21}\left(\hat{p}_1\right)$ | $y_{12}+y_{22}\left(\hat{p}_2\right)$ | $y_{13}+y_{23}\left(\hat{p}_3\right)$ | $y_{14}+y_{24}\left(\hat{p}_4\right)$ | $n_1+n_2$ |
+
+
+
+The chi-square test statistic for testing the equality of two multinomial distributions:
+$$
+Q=\sum_{i=1}^2 \sum_{j=1}^k \frac{\left(y_{i j}-n_i \hat{p}_j\right)^2}{n_i \hat{p}_j}
+$$
+follows an approximate chi-square distribution with $k-1$ degrees of freedom. Reject the null hypothesis of equal proportions if $Q$ is large (since if male and female distributed nearly equally, the expected number of each should be $n_i\hat p_j$):
+$$
+Q \geq \chi_{\alpha, k-1}^2
+$$
+
+(omit the derive of the above Q)
+
+Generally, 
+
+
+$$
+Q=\sum_{i=1}^h \sum_{j=1}^k \frac{\left(y_{i j}-n_i \hat{p}_j\right)^2}{n_i \hat{p}_j}\sim \chi^2_{(h-1)(k-1)}
+$$
+
+
+#### Further example
+
+The head of a surgery department at a university medical center was
+concerned that surgical residents in training applied unnecessary
+blood transfusions at a different rate than the more experienced
+attending physicians. Therefore, he ordered a study of the 49
+Attending Physicians and 71 Residents in Training with privileges
+at the hospital. For each of the 120 surgeons, the number of blood
+transfusions prescribed unnecessarily in a one-year period was
+recorded. Based on the number recorded, a surgeon was identified
+as either prescribing unnecessary blood transfusions Frequently,
+Occasionally, Rarely, or Never. Here’s a summary table (or
+"contingency table") of the resulting data:
+
+| Physician | Frequent | Occasionally | Rarely | Never | Total |
+| :--- | :--- | :--- | :--- | :--- | :--- |
+| Attending | 6.942 | 12.658 | 22.05 | 7.35 | 49 |
+| Resident | 10.058 | 18.342 | 31.95 | 10.65 | 71 |
+| Total | 17 | 31 | 54 | 18 | 120 |
+
+
+Here,
+
+$H_0: p_{R F}=p_{A F}, p_{R O}=p_{A O}, p_{R R}=p_{A R}$, and $p_{R N}=p_{A N}$
+
+
+$H_1: p_{R F} \neq p_{A F}$ or $p_{R O} \neq p_{A O}$ or $p_{R R} \neq p_{A R}$, or $p_{R N} \neq p_{A N}$
+
+We should also calculate the expected counts under the null hypothesis. The expected counts are calculated as follows:
+
+| Physician | Frequent | Occasionally | Rarely | Never | Total |
+| :--- | :--- | :--- | :--- | :--- | :--- |
+| Attending | 6.942 | 12.658 | 22.05 | 7.35 | 49 |
+| Resident | 10.058 | 18.342 | 31.95 | 10.65 | 71 |
+| Total | 17 | 31 | 54 | 18 | 120 |
+
+
+where, for example, $6.942=\frac{17}{120} \times 49$ and $10.058=\frac{17}{120} \times 71$. Now that we have the observed and expected counts, calculating the chisquare statistic is a straightforward exercise:
+$$
+Q=\frac{(2-6.942)^2}{6.942}+\cdots+\frac{(5-10.65)^2}{10.65}=31.88
+$$
+
+The chi-square test tells us to reject the null hypothesis, at the 0.05 level, if $Q$ is greater than a chi-square random variable with 3 degrees of freedom, that is, if $Q=31.88>7.815$, we reject the null hypothesis.
+
+
+### Application of testing for independence
+
+
+
+This is to look at whether two or more categorical variables are independent.
+
+(previously,the the sampling scheme involves: Taking two random (and therefore independent) samples with n1
+and n2 fixed in advance and observing into which of the k categories the first random
+samples fall, and observing into which of the k categories the second random
+samples fall. )
+
+
+lets consider a different example to illustrate an alternative sampling scheme. Suppose 395 people are randomly selected, and are
+"cross-classified" into one of eight cells, depending into which age
+category they fall and whether or not they support legalizing marijuana:
+
+(the sampling scheme involves: Taking one random sample of size n, with n fixed in advance,
+and then "cross-classifying" each subject into one and only one of
+the mutually exclusive and exhaustive $A_i\cap B_j$ cells.)
+
+| Marijuana Support |  | Variable B (Age) |  |  |  |  |
+| :--- | :--- | :--- | :--- | :--- | :--- | :--- |
+| Variable A | OBSERVED | $(18-24) B_1$ | (25-34) $B_1 2$ | (35-49) $B_3$ | $(50-64) B_4$ | Total |
+|  | (YES) $A_1$ | 60 | 54 | 46 | 41 | 201 |
+|  | (NO) $A_2$ | 40 | 44 | 53 | 57 | 194 |
+|  | Total | 100 | 98 | 99 | 98 | $n=395$ |
+
+
+Here, 
+
+H0 : Variable A is independent of variable B, that is $P(A_i\cap B_j)=PA_i \times B_j$ for all i and j
+
+H1: Variable A is not independent
+of variable B.
+
+
+Generally, 
+
+
+
+Suppose we have $k$ (column) levels of Variable B indexed by the letter $j$, and $h$ (row) levels of Variable $A$ indexed by the letter $i$. Then, we can summarize the data and probability model in tabular format, as follows:
+
+
+| Variable B |  |  |  |  |  |  |
+| :---: | :---: | :---: | :---: | :---: | :---: | :---: |
+| Variable A | $B_1(j=1)$ | $B_2(j=2)$ | $B_3(j=3)$ | $B_4(j=4)$ | Total |  |
+| $A_1(i=1)$ | $Y_{11}\left(p_{11}\right)$ | $Y_{12}\left(p_{12}\right)$ | $Y_{13}\left(p_{13}\right)$ | $Y_{14}\left(p_{14}\right)$ | $\left(p_{1 .}\right)$ |  |
+| $A_2(i=2)$ | $Y_{21}\left(p_{21}\right)$ | $Y_{22}\left(p_{22}\right)$ | $Y_{23}\left(p_{23}\right)$ | $Y_{24}\left(p_{24}\right)$ | $\left(p_{2 .}\right)$ |  |
+| Total | $\left(p_{.1}\right)$ | $\left(p_{.2}\right)$ | $\left(p_{.3}\right)$ | $\left(p_{.4}\right)$ | $n$ |  |
+
+
+where $p_{i j}=Y_{i j} / n, p_i .=\sum_{j=1}^k p_{i j}$, and $p_{. j}=\sum_{i=1}^h p_{i j}$
+
+
+
+$Q=\sum_{j=1}^k \sum_{i=1}^h \frac{\left(y_{i j}-\frac{y_i \cdot y_{\cdot j}}{n}\right)^2}{\frac{y_i \cdot y_{\cdot j}}{n}}\sim \chi^2_{(h-1)(k-1)}$
+
+
+
+
+
+
+
+#### Are chi-square statistic for homogeneity and the chi-square statistic for independence equivalent?
+
+
+Although their chi-square statistics are equivalent, the two tests are not equivalent since their sampling experiment designs are different.
+
+Here’s the table of expected counts:
+
+| Bicycle Riding Interest |  | Variable B (Age) |  |  |  |  |
+| :--- | :--- | :--- | :--- | :--- | :--- | :--- |
+| Variable A | EXPECTED | 18-24 | 25-34 | 35-49 | 50-64 | Total |
+|  | YES | 50.886 | 49.868 | 50.377 | 49.868 | 201 |
+|  | NO | 49.114 | 48.132 | 48.623 | 48.132 | 194 |
+|  | Total | 100 | 98 | 99 | 98 | 395 |
+
+
+$$
+Q=\frac{(60-50.886)^2}{50.886}+\cdots+\frac{(57-48.132)^2}{48.132}=8.006
+$$
+
+The chi-square test tells us to reject the null hypothesis, at the 0.05 level, since $Q$ is greater than a chi-square random variable with 3 degrees of freedom, that is, $Q=8.006>7.815$.
+
+
+
+#### Summary
+
+Parametric tests make assumptions that aspects of the data
+follow some sort of theoretical probability distribution.
+Non-parametric tests or distribution free methods do not, and are
+used when the distributional assumptions for a parametric test
+are not met. While this is an advantage, it often comes at a cost
+of power (in the sense they are less likely to be able to detect a
+difference when a true difference exists).
+
+
+Most non-parametric tests are just hypothesis tests; there is no
+estimation of a confidence interval.
+
+
+Most non-parametric methods are based on ranking the values
+of a variable in ascending order and then calculating a test
+statistic based on the sums of these ranks.
+
+Non-parametric tests include:
+
+- Two-sample independent t-test - Wilcoxon rank-sum test or
+Mann-Whitney U test
+
+- Paired t-test - Wilcoxon signed-rank test
+
+- One-way ANOVA - Kruskal-Wallace Test
+
+- Normality tests - Shapiro-Wilk test and Kolmogorov-Smirnov
+test
+
+
+# Linear Regression
+
+
+
+## Simple linear regression
+
+### Brief introduction
+
+
+Some people think simple methods is bad and like complicated methods , but actually simple is very good--SLR works very well in lots of situations.
+
+SLR is used to answer:
+
+is there a relationship between..
+
+How strong the relationship is 
+
+which variable contribute to this relationship
+
+How accurate could we predict the response variable
+
+Is the relationship linear?
+
+Is there a synergy among independent variables?
+
+This is a
+model with two random variables, X and Y, where we are trying to
+predict Y from X. Here are the model’s assumptions:
+
+- The distribution of X is arbitrary, possibly is even non-random;
+
+
+- If X=x, then $Y = \beta_0+\beta_1x+\epsilon$ for some constants $\beta_0, \beta_1$ and some random noise variable $\epsilon$
+
+- $\epsilon$ has mean 0, a constant variance $\sigma^2$, and is uncorrelated with X and uncorrelated across observations Cov$(\epsilon_i, \epsilon_j)=0$ for $i \ne j$
+
+
+Using Least Squares, we can estimate $\hat \beta_0$ and  $\hat \beta_1$, which are unbiased estimates of $\beta_0$ and $\beta_1$.
+
+
+- Gaussian-Noise Simple Linear Regression Model
+
+Now we further assume that the distribution of $\epsilon$ is normal, i.e. $\epsilon \sim N(0, \sigma^2)$, independent of X.
+
+They tell us, exactly, the probability distribution for Y given X,
+and so will let us get exact distributions for predictions and for other
+inferential statistics.
+
+
+### Maximum Likelihood Estimation (MLE)
+
+#### Introduction to MLE
+
+Likelihood is a fundamental concept in statistics that measures how
+well a particular set of parameters (e.g., the mean of a distribution)
+explains observed data. Think of it as a "score" that tells you which
+parameter values make your data most plausible.
+
+Compared to probability, which answers: "What’s the chance of seeing this data if we
+assume specific parameters?" , likelihood answers: "Given this data, how plausible are these parameters?"
+
+If the parameters are $b_0, b_1, s^2$ (reserving the Greek letters for their true values), then $Y \mid X=x \sim N\left(b_0+b_1 x, s^2\right)$, and $Y_i$ and $Y_j$ are independent given $X_i$ and $X_j$, so the overall likelihood is
+$$
+\prod_{i=1}^n \frac{1}{\sqrt{2 \pi s^2}} e^{-\frac{\left(y_i-\left(b_0+b_i x_i\right)\right)^2}{2 s^2}}
+$$
+
+As usual, we work with the log-likelihood, which gives us the same information but replaces products with sums:
+$$
+L\left(b_0, b_1, s^2\right)=-\frac{n}{2} \ln \left(2 \pi s^2\right)-\frac{1}{2 s^2} \sum_{i=1}^n\left(y_i-\left(b_0+b_1 x_i\right)\right)^2
+$$
+
+maximize it:
+
+$\begin{aligned} \frac{\partial L}{\partial b_0} & =-\frac{1}{2 s^2} \sum_{i=1}^n 2\left(y_i-\left(b_0+b_1 x_i\right)\right)(-1) \\ \frac{\partial L}{\partial b_1} & =-\frac{1}{2 s^2} \sum_{i=1}^n 2\left(y_i-\left(b_0+b_1 x_i\right)\right)\left(-x_i\right)\end{aligned}$
+
+#### Same result of MLE as least squares in linear regression
+
+Notice that when we set these derivatives to zero, all the multiplicative constants - in particular, the prefactor of $1 / 2 s^2$ - go away. We are left with
+$$
+\begin{aligned}
+\sum_{i=1}^n\left(y_i-\left(\hat{\beta_0}+\hat{\beta_1} x_i\right)\right) & =0 \\
+\sum_{i=1}^n\left(y_i-\left(\hat{\beta_0}+\hat{\beta_0} x_i\right)\right) x_i & =0
+\end{aligned}
+$$
+
+These are, up to a factor of $1 / n$, exactly the equations we got from the method of least squares. That means that the least squares solution is the maximum likelihood estimate under the Gaussian noise model.
+
+Maximum likelihood estimates of the regression curve coincide with least-squares estimates when the noise around the curve is additive, Gaussian, of constant variance, and both independent of $X$ and of other noise terms. If any of those assumptions fail, maximum likelihood and least squares estimates can diverge.
+
+### Hypothesis testing for estimates with unknown $\sigma^2$
+
+#### Residual sum of squares (RSS) and t-statistics construction in linear regression
+
+It can be shown that (the proof is beyond the scope of this course)
+$$
+\frac{R S S}{\sigma^2}=\frac{(n-2) \hat{\sigma}^2}{\sigma^2} \sim \chi_{n-2}^2
+$$
+
+This allows us to construct a $t$-value
+$$
+t=\frac{\hat{\beta}-\beta}{s_{\hat{\beta}}} \sim t_{n-2}
+$$
+
+Under the normality assumption of the error terms, the estimator of the slope coefficient will itself be normally distributed with mean $\beta_i$ and variance $\operatorname{Var}\left[\beta_i\right]$
+For $\hat{\beta_1}$, its mean is $\beta_1$ and its variance is $\sigma^2 / \sum\left(x_i-\bar{x}\right)^2$. When $\sigma^2$ is known, we know
+$$
+\frac{\hat{\beta}_1-\beta_1}{\frac{\sigma}{\sqrt{\sum_{i=1}^n\left(x_i-\bar{x}\right)^2}}}
+$$
+follows standard normal distribution. However, in practice, $\sigma^2$ is often unknown. We then divide this standard normal distributed term by
+$$
+\sqrt{\frac{(n-2) \hat{\sigma}^2}{(n-2) \sigma^2}}=\frac{\hat{\sigma}}{\sigma}
+$$
+
+Therefore, when we write
+$$
+s_{\hat{\beta_1}}=\frac{\hat{\sigma}}{\sqrt{\sum_{i=1}^n\left(x_i-\bar{x}\right)^2}}
+$$
+we construct a $t$-statistic for $\hat{\beta_1}$ with degrees of freedom $n-2$.
+This then allows us to construct a $100(1-\alpha) \%$ confidence interval for $\beta_1$ :
+$$
+\hat{\beta_1} \pm t_{n-2, \alpha / 2} \times \boldsymbol{s}_{\hat{\beta_1}}
+$$
+
+We can also do similar calculation to get the $t$-statistic and confidence interval for $\beta_0$.
+
+
+#### Hyphothesis Testing 
+
+$$
+t =\hat {\beta}-\beta / s_{\hat{\beta_1}} \sim t_{n-2}
+$$
+$H_0: \beta_i =0$
+
+$H_1: \beta_i \ne 0$
+
+#### Codes of linear regression with CI
+
+```{r}
+lmodel <- lm(Petal.Length ~ Petal.Width, data=iris)
+summary(lmodel)
+confint(lmodel)
+conf_interval <- predict(lmodel, data=iris, interval='confidence', level=0.95)
+plot(iris$Petal.Width, iris$Petal.Length,
+     xlab='Petal.Width', ylab='Petal.Length',
+     main='Simple Linear Regression')
+abline(lmodel, col='lightblue')
+matlines(iris$Petal.Width, conf_interval[,2:3], col='blue', lty=2)
+
+# Using ggplot2
+library(ggplot2)
+ggplot(iris, aes(x=Petal.Width, y=Petal.Length)) +
+  geom_point() +
+  geom_smooth(method=stats::lm, se=T, level=0.95)
+
+```
+
+#### Linear Regression and ANOVA
+
+```r
+fev_dat <- read.table('fev_dat.txt', header=T)
+fev_dat_subset <- fev_dat[fev_dat$age >= 6 & fev_dat$age <= 10,]
+ggplot(fev_dat_subset, aes(x=age, y=FEV)) +
+  geom_point() +
+  geom_smooth(method=stats::lm, se=T, level=0.95)
+summary(aov(FEV ~ age, data=fev_dat_subset))
+summary(lm(FEV ~ age, data=fev_dat_subset))
+anova(lm(FEV ~ age, data=fev_dat_subset))
+```
+
+
+
+
+
+### $R^2$--the fraction of variability explained by the regression
+
+$$
+R^2 =1-\frac{SSR}{SSTO}
+$$
+
+## Multiple linear regression (MLR)
+
+
+$y=X\beta+\epsilon$, where y is a n × 1 row vector, X is a n × (k + 1) matrix, and β is a (k + 1) × 1 column vector for all n
+observations.
+
+### A potential problem in practice --multicollinearity
+
+
+When multicollinearity exists, any of the following pitfalls can be exacerbated:
+
+
+- The estimated regression coefficient of any one variable depends on which other predictors are included
+in the model
+
+- The precision of the estimated regression coefficients decreases as more predictors are added to the
+model
+
+- The marginal contribution of any one predictor variable in reducing the error sum of squares depends
+on which other predictors are already in the model
+
+- Typothesis tests for βj = 0 may yield different conclusions depending on which predictors are in the
+model
+
+#### Perfect multicollinearity
+
+Perfect multicollinearity refers to a situation where the predictive variables have an exact linear
+relationship. When there is perfect collinearity, the design matrix X has less than full rank, and therefore
+the moment matrix X′X cannot be inverted. In this situation, the parameter estimates of the regression are
+not well-defined, as the system of equations has infinitely many solutions.
+
+
+#### Imperfect multicollinearity
+
+Imperfect multicollinearity refers to a situation where the predictive variables have a nearly exact linear relationship.
+
+
+$R^2=r^2$ where r
+is the Pearson correlation coefficient.
+
+### Adjusted R-squared 
+
+Adjusted R-squared is a modified version of R-squared that adjusts for the number of predictors in a model. It provides a more accurate measure of the model's explanatory power, penalizing for the addition of irrelevant predictors. This helps in comparing models with different numbers of predictors.
+
+# Logistic Regression
+
+This is a regression of categorical outcome.
+
+In regression analysis with a categorical outcome, such as predicting a binary variable (yes or no), simple linear regression is not ideal. This is because:
+
+- The predicted values may fall outside the range of 0 to 1, which is not meaningful for probabilities.
+
+- Small changes in the predictors can lead to relatively small fluctuations in the predicted probabilities near the 0.5 mark (natural threshold), which is actually where decision-making is most critical. 
+
+So we need S-curve to satisfy above things.
+
+
+```{r}
+curve(1 / (1 + exp(-x)), from = -6, to = 6, xlab = "x", ylab = "f(x)",
+main = "Logistic Function: f(x) = 1 / (1 + exp(-x))", col = "blue", lwd = 2)
+```
+
+An example of a not well-predicted logistic model (since stock is not easy to predict)
+
+```{r}
+library(ISLR2)
+attach(Smarket)
+glm.fits <- glm(
+    Direction ~ Lag1 + Lag2 + Lag3 + Lag4 + Lag5 + Volume,
+    data = Smarket, family = binomial
+  )
+summary(glm.fits)
+
+glm.probs <- predict(glm.fits, type = "response")
+glm.probs[1:10]
+glm.pred <- rep("Down", 1250)
+glm.pred[glm.probs > .5] = "Up"
+table(glm.pred, Direction)
+(507 + 145) / 1250
+mean(glm.pred == Direction)
+```
+
+
+## Odds
+Odds are another way of quantifying the probability of an event, commonly used in gambling (and logistic regression).
+
+For some event $E$,
+$$
+\operatorname{odds}(E)=\frac{P(E)}{P\left(E^c\right)}=\frac{P(E)}{1-P(E)}
+$$
+
+The odds ratio (OR) is the ratio of the odds of an event occurring in one group to the odds of it occuring in another group. If the event in each of the groups are $p_1$ (first group) and $p_2$ (second group), then the odds ratio is:
+$$
+\mathrm{OR}=\frac{p_1 /\left(1-p_1\right)}{p_2 /\left(1-p_2\right)}
+$$
+
+
+
+# Generalized Linear Models
+
+Under the hood, we're still using a linear model $\left(\beta_0+\beta_1 x\right)$, but now it's embedded in a function that ensures valid probabilities. This is the essence of logistic regression - a generalized linear model (GLM) designed for binary outcomes.
+
+Given predictor $X$ and d an outcom $Y$, a GLM is defined by three components:
+- A random component, that specifies a distribution for $Y \mid X$
+- A systematic component, that relates a parameter $\eta$ to the predictor $X$
+$$
+\eta=\beta_0+\beta_1 X_1+\cdots+\beta_k X_k
+$$
+- A link function, that connects the random and systematic component
+
+## Random Component
+
+The random component specifies a distribution for the outcome variable (conditional on $X$ ). In the case of linear regression, we assume that $Y \mid X \sim \mathcal{N}\left(\mu, \sigma^2\right)$, for some mean $\mu$ and variance $\sigma^2$. In the case of logistic regression, we assume that $Y \mid X \sim \operatorname{Bern}(p)$ for some probability $p$.
+
+In a generalized model, we are allowed to assume that $Y \mid X$ has a probability density function or probability mass function of the form
+$$
+f(y ; \theta, \phi)=\exp \left(\frac{y \theta-b(\theta)}{a(\phi)}+c(y, \phi)\right)
+$$
+
+Here $\theta, \phi$ are parameters, and $a, b, c$ are functions. Any density of the above form is called an exponential family density. The parameter $\theta$ is called the natural parameter, and the parameter $\phi$ the dispersion parameter.
+
+
+
+
+## Exponential Family
+
+Exponential families include many of the most common distributions. For example:
+- Exponential
+$$
+f(y ; \lambda)=\lambda e^{-\lambda y}=\exp (-y \lambda+\ln \lambda)
+$$
+where $\theta=-\lambda, \phi=1, b(\theta)=\ln \lambda, a(\phi)=1$, and $c(y, \phi)=0$
+- Poisson
+$$
+f(y ; \lambda)=\frac{e^{-\lambda} \lambda^y}{y!}=\exp (y \ln \lambda-\lambda-\ln (y!))
+$$
+where $\theta=\ln \lambda, \phi=1, b(\theta)=e^\theta=\lambda, a(\phi)=1$, and $c(y, \phi)=-\lambda-\ln (y!)$
+
+
+
+## Systematic Component and Link Component
+
+The systematic component relates a parameter $\eta$ to the predictors $X$. In a GLM, this is always done via
+$$
+\eta=X \beta=\beta_0+\beta_1 X_1+\cdots+\beta_k X_k
+$$
+
+We will denote the expectation of the distribution in random component as $\mu$, i.e., $\mathbb{E}[Y \mid X]=\mu$. It will be our goal to estimate $\mu$.
+Finally, the link component connects the random and systematic components, via a link function $g$. In particular, this link function provides a connection between $\mu$ and $\eta$, as in
+$$
+g(\mu)=\eta \quad \text { or } \quad \mu=g^{-1}(\eta)
+$$
+
+## Example
+
+### Gaussian-noise Linear Regression
+
+- Random Component: $Y \mid X \sim \mathcal{N}\left(\mu, \sigma^2\right)$ and $\mathbb{E}[Y \mid X]=\mu$
+- Systematic Component: $\eta=X \beta$
+- Link Component: $g(\mu)=\mu$, so that $\mu=\eta=X \beta$
+
+### Bernoulli
+
+Suppose that $Y \in\{0,1\}$, and we model the distribution of $Y \mid X$ as Bernoulli with success probability $p$. Then the probability mass function (not a density, since $Y$ is discrete) is
+$$
+f(y)=p^y(1-p)^{1-y}
+$$
+
+We can rewrite to fit the exponential family form as
+$$
+\begin{aligned}
+f(y) & =\exp (y \log p+(1-y) \log (1-p)) \\
+& =\exp (y \log (p /(1-p))+\log (1-p))
+\end{aligned}
+$$
+
+
+$$
+f(y ; \theta, \phi)=\exp \left(\frac{y \theta-b(\theta)}{a(\phi)}+c(y, \phi)\right)
+$$
+
+Here we would identify $\theta=\log (p /(1-p))$ as the natural parameter. Note that the mean here is $\mu=p$, and using the inverse of the above relationship, we can directly write the mean $p$ as a function of $\theta$, as in $p=e^\theta /\left(1+e^\theta\right)$. Hence $b(\theta)=\log (1-p)=-\log \left(1+e^\theta\right)$. There is no dispersion parameter, so we can set $a(\phi)=1$. Also, $c(y, \phi)=0$.
+
+# Link Function
+
+$$
+g(\mu)=\Phi^{-1}(\mu)
+$$
+where $\Phi$ is the standard normal CDF.
+
+### Logistic
+
+
+The three GLM criteria give us:
+- $y_i \sim \operatorname{Bern}\left(p_i\right)$
+- $\eta=\beta_0+\beta_1 X_1+\cdots+\beta_k X_k$
+- $\operatorname{logit}(p)=\log \frac{p}{1-p}=\eta$
+
+From which we know,
+$$
+p_i=\frac{\exp \left(\beta_0+\beta_1 x_{i 1}+\cdots+\beta_k X_{i k}\right)}{1+\exp \left(\beta_0+\beta_1 x_{i 1}+\cdots+\beta_k X_{i k}\right)}
+$$
+
+
+# Survival Analysis
+
+
+Survival analysis is used to analyze data in which the time until the
+event is of interest. The response is often referred to as a failure
+time, survival time, or event time.
+
+
+## Some definations
+
+Hazard ratios; ratios of hazard functions between different
+groups (e.g., exposed vs. unexposed) while adjusting for
+confounders.
+
+censoring - which occurs when the survival time is
+only partially known
+
+  - Fixed type I censoring occurs when a study is designed to end
+after C years of follow-up. In this case, everyone who does not
+have an event observed during the course of the study is
+censored at C years.
+
+  - In random type I censoring, the study is designed to end after
+C years, but censored subjects do not all have the same
+censoring time. This is the main type of right-censoring we will
+be concerned with.
+
+  - In type II censoring, a study ends when there is a pre-specified
+number of events.
+
+
+## Kaplan-Meier estimate
+
+```{r}
+library(ISLR2)
+names(BrainCancer)
+attach(BrainCancer)
+table(status)
+
+library(survival)
+fit.surv <- survfit(Surv(time, status) ~ 1)
+plot(fit.surv, xlab = "Months",
+    ylab = "Estimated Probability of Survival")
+
+
+
+```
+
+## Cox-proportional harzards model
+
+S(t) = P(T>t)=1-F(t)
+
+$h(t)=\lim _{\Delta t \rightarrow 0} \frac{P(t<T \leq t+\Delta t \mid T>t)}{\Delta t}$
+
+
+```{r}
+fit.all <- coxph(
+Surv(time, status) ~ sex + diagnosis + loc + ki + gtv +
+   stereo)
+fit.all
+modaldata <- data.frame(
+     diagnosis = levels(diagnosis),
+     sex = rep("Female", 4),
+     loc = rep("Supratentorial", 4),
+     ki = rep(mean(ki), 4),
+     gtv = rep(mean(gtv), 4),
+     stereo = rep("SRT", 4)
+     )
+survplots <- survfit(fit.all, newdata = modaldata)
+plot(survplots, xlab = "Months",
+    ylab = "Survival Probability", col = 2:5)
+legend("bottomleft", levels(diagnosis), col = 2:5, lty = 1)
+```
+
+
+
+
+
+
+
+# Labs for R-code
+
+## basic calculation
+
+```{r}
+exp(1)  # exp() is the exponential function
+log(5)  # unless you specify the base, R will assume base e
+log(5, base=10)  # base 10
+```
+
+
+## Vectors
+```{r}
+seq(from=1, to=4, by=1)
+seq(1, 4)  # 'by' has a default of 1
+1:4  # a shortcut for seq(1,4)
+seq(1, 5, by=.5)
+seq(1, 5, length.out=11) 
+```
+
+```{r}
+x <- 1:4
+x * x
+x %*% x    # scalar ("inner") product (1 x 1 matrix)
+```
+
+
+
+## Vector Algebra
+All algebra done with vectors will be done element-wise by default. For matrix and vector multiplication as usually defined by mathematicians, use `%*%` instead of `*`. So two vectors added together result in their individual elements being summed.
+```{r}
+x <- 1:4
+y <- 5:8
+x + y
+x * y
+```
+
+## Matrices
+```{r}
+a <- c(1, 2, 3)
+b <- c(4, 5, 6)
+rbind(a,b)  # Row Bind: a,b are rows in resultant matrix    
+```
+
+## Factors
+
+```{r}
+iris$Species <- factor(iris$Species,
+                       levels = c('versicolor','setosa','virginica'),
+                       labels = c('Versicolor','Setosa','Virginica'))
+boxplot(Sepal.Length ~ Species, data=iris)
+```
+
+## List
+
+```{r}
+mylist <- list(letters=c("A", "b", "c"), 
+        numbers=1:3, matrix(1:25, ncol=5))
+head(mylist)
+```
+
+## ggplot 2
+
+```{r}
+library(ggplot2)
+data(iris)  # load the iris dataset that comes with R
+str(iris)   # what columns do we have to play with...
+ggplot(iris, aes(x=Sepal.Length, y=Sepal.Width)) +
+  geom_point(aes(color=Species)) +
+  labs(title="Iris Sepal Length vs Width",
+       x="Sepal Length (cm)",
+       y="Sepal Width (cm)") +
+  theme_minimal()
+boxplot(iris$Sepal.Length ~ iris$Species)
+hist(iris$Sepal.Length)
+# plot(iris$Sepal.Length, iris$Petal.Length)
+plot(Petal.Length ~ Sepal.Length, data=iris)
+abline(lm(Petal.Length ~ Sepal.Length, data=iris), col="red")
+
+```
+
+
+## Data manipulation
+
+```{r}
+library(dplyr)
+library(tidyverse)
+
+# summary
+
+data(iris)
+summary(iris)
+
+# apply
+
+iris <- iris[,-5]  # Exclude the Species column
+apply(iris, MARGIN=2, FUN=mean)
+
+# lappy and sapply
+x <- list(a = 1:10, beta = exp(-3:3), logic = c(TRUE,FALSE,FALSE,TRUE))
+lapply(x, quantile, probs = 1:3/4)
+sapply(x, quantile, probs = 1:3/4)
+
+# select
+
+starwars %>% select(hair_color, skin_color, eye_color)
+
+# filter
+starwars %>% filter(species == "Droid" & mass < 100)
+
+# arrange
+starwars %>% arrange(desc(height))
+
+# mutate
+
+starwars %>% 
+  mutate(bmi = mass / ((height / 100) ^ 2)) %>% 
+  select(name, bmi) %>% head()
+
+
+# summarise
+
+starwars %>% 
+  group_by(species) %>% 
+  summarise(mean_height = mean(height, na.rm = TRUE)) %>% 
+  arrange(desc(mean_height))
+
+```
+
+## Evaluation Metrics for Classification
+
+```{r}
+#Load the dataset 
+library(readr)
+data = read_csv('survey_lung_cancer.csv', show_col_types = FALSE)
+data$LUNG_CANCER <- ifelse(data$LUNG_CANCER=="YES", 1, 0)
+summary(data)
+```
+
+```{r}
+library(ggplot2)
+ggplot(data, aes(x = factor(SMOKING), fill = factor(LUNG_CANCER))) +
+geom_bar(position = "fill") +
+scale_fill_manual(values = c("0" = "lightblue", "1" = "salmon")) +
+theme_minimal()
+```
+
+```{r}
+### Data SAMPLING ####
+library(caret)
+set.seed(101)
+split = createDataPartition(data$LUNG_CANCER, p = 0.80, list = FALSE)
+train_data = data[split,]
+test_data = data[-split,]
+nrow(train_data)
+nrow(test_data)
+nrow(train_data)/nrow(data)
+```
+
+```{r}
+#error metrics -- Confusion Matrix
+err_metric=function(CM)
+{
+  TN =CM[1,1]
+  TP =CM[2,2]
+  FP =CM[1,2]
+  FN =CM[2,1]
+  precision =(TP)/(TP+FP)
+  recall_score =(TP)/(TP+FN)
+  f1_score=2*((precision*recall_score)/(precision+recall_score))
+  accuracy_model  =(TP+TN)/(TP+TN+FP+FN)
+  False_positive_rate =(FP)/(FP+TN)
+  False_negative_rate =(FN)/(FN+TP)
+  print(paste("Precision value of the model: ",round(precision,2)))
+  print(paste("Accuracy of the model: ",round(accuracy_model,2)))
+  print(paste("Recall value of the model: ",round(recall_score,2)))
+  print(paste("False Positive rate of the model: ",round(False_positive_rate,2)))
+  print(paste("False Negative rate of the model: ",round(False_negative_rate,2)))
+  print(paste("F1 score of the model: ",round(f1_score,2)))
+}
+```
+
+```{r}
+# Logistic regression
+logit_m =glm(formula = LUNG_CANCER ~ ., data = train_data, family = 'binomial')
+summary(logit_m)
+```
+
+```{r}
+# Logistic regression
+logit_m2 =glm(formula = LUNG_CANCER ~ ANXIETY+PEER_PRESSURE+`CHRONIC DISEASE`+FATIGUE+ALLERGY+`ALCOHOL CONSUMING`+COUGHING+`SWALLOWING DIFFICULTY`, data = train_data, family = 'binomial')
+summary(logit_m2)
+```
+
+```{r}
+library(dplyr)
+logit_P_prob = predict(logit_m, newdata = select(test_data, -LUNG_CANCER), type = 'response')
+logit_P_prob[1:3]
+logit_P <- ifelse(logit_P_prob > 0.5, 1, 0) # Probability check
+logit_P[1:3]
+```
+```{r}
+CM = table(test_data$LUNG_CANCER, logit_P)
+print(CM)
+```
+```{r}
+err_metric(CM)
+```
+```{r}
+#ROC-curve using pROC library
+library(pROC)
+roc_score=roc(test_data$LUNG_CANCER, logit_P_prob) #AUC score
+plot(roc_score, main = "ROC curve -- Logistic Regression")
+```
+
+

@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Foundation Math Learning - ODEs and PDEs —MTH106</title>
+<title>Foundation Math Learning - ODEs and PDEs with Dimension nalysis —MTH106 + Seminars hold by Prof.&nbsp;Andrew Lin</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -159,6 +159,10 @@ window.Quarto = {
 <span class="menu-text">Homepage</span></a>
   </li>  
   <li class="nav-item">
+    <a class="nav-link" href="./aph101.html"> 
+<span class="menu-text">Biostat and R</span></a>
+  </li>  
+  <li class="nav-item">
     <a class="nav-link" href="./mth107.html"> 
 <span class="menu-text">Advanced Linear Algebra</span></a>
   </li>  
@@ -198,7 +202,21 @@ window.Quarto = {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#fourier-series" id="toc-fourier-series" class="nav-link active" data-scroll-target="#fourier-series">Fourier Series</a>
+  <li><a href="#q" id="toc-q" class="nav-link active" data-scroll-target="#q">Q</a>
+  <ul class="collapse">
+  <li><a href="#part-2" id="toc-part-2" class="nav-link" data-scroll-target="#part-2">??5.1 part 2</a></li>
+  <li><a href="#有点分不清wranskian和" id="toc-有点分不清wranskian和" class="nav-link" data-scroll-target="#有点分不清wranskian和">？？？有点分不清wranskian和</a></li>
+  <li><a href="#那个phase-portrait那个lambda符号一样的-趋于正无穷的时候-应该是偏向power更大的那里吧" id="toc-那个phase-portrait那个lambda符号一样的-趋于正无穷的时候-应该是偏向power更大的那里吧" class="nav-link" data-scroll-target="#那个phase-portrait那个lambda符号一样的-趋于正无穷的时候-应该是偏向power更大的那里吧">那个phase portrait那个lambda符号一样的 趋于正无穷的时候 应该是偏向power更大的那里吧</a></li>
+  <li><a href="#椭圆的phase-portrait-p32-notes" id="toc-椭圆的phase-portrait-p32-notes" class="nav-link" data-scroll-target="#椭圆的phase-portrait-p32-notes">椭圆的phase portrait p32 notes</a></li>
+  <li><a href="#p6-c是任意数就行不写c哈" id="toc-p6-c是任意数就行不写c哈" class="nav-link" data-scroll-target="#p6-c是任意数就行不写c哈">8.3 p6 c是任意数就行不写c哈</a></li>
+  <li><a href="#那个作业为啥对应了两个eigenfunctions" id="toc-那个作业为啥对应了两个eigenfunctions" class="nav-link" data-scroll-target="#那个作业为啥对应了两个eigenfunctions">？？那个作业为啥对应了两个eigenfunctions</a></li>
+  <li><a href="#算inverse-matrix" id="toc-算inverse-matrix" class="nav-link" data-scroll-target="#算inverse-matrix">算inverse matrix</a></li>
+  <li><a href="#p6那个怎么就变成定积分了nie-为什么是等价的-8.3-page-38-包括要复习前面的和算出来直接带入的区别是什么" id="toc-p6那个怎么就变成定积分了nie-为什么是等价的-8.3-page-38-包括要复习前面的和算出来直接带入的区别是什么" class="nav-link" data-scroll-target="#p6那个怎么就变成定积分了nie-为什么是等价的-8.3-page-38-包括要复习前面的和算出来直接带入的区别是什么">8.4 p6那个怎么就变成定积分了nie 为什么是等价的 8.3 page 38 –包括要复习前面的！！！和算出来直接带入的区别是什么</a></li>
+  <li><a href="#没看weight哪些概念" id="toc-没看weight哪些概念" class="nav-link" data-scroll-target="#没看weight哪些概念">11.1没看weight哪些概念</a></li>
+  <li><a href="#regular-strum-liouville-problem" id="toc-regular-strum-liouville-problem" class="nav-link" data-scroll-target="#regular-strum-liouville-problem">11.4 regular strum liouville problem</a></li>
+  </ul></li>
+  <li><a href="#read-differential-equations-with-applications-and-historical-notes-by-george-f.-simmons" id="toc-read-differential-equations-with-applications-and-historical-notes-by-george-f.-simmons" class="nav-link" data-scroll-target="#read-differential-equations-with-applications-and-historical-notes-by-george-f.-simmons">Read “Differential Equations with Applications and Historical Notes” by George F. Simmons</a></li>
+  <li><a href="#fourier-series" id="toc-fourier-series" class="nav-link" data-scroll-target="#fourier-series">Fourier Series</a>
   <ul class="collapse">
   <li><a href="#proof" id="toc-proof" class="nav-link" data-scroll-target="#proof">Proof</a></li>
   <li><a href="#thm" id="toc-thm" class="nav-link" data-scroll-target="#thm">THM</a>
@@ -284,7 +302,7 @@ window.Quarto = {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">ODEs and PDEs —MTH106</h1>
+<h1 class="title">ODEs and PDEs with Dimension nalysis —MTH106 + Seminars hold by Prof.&nbsp;Andrew Lin</h1>
 </div>
 
 
@@ -301,6 +319,49 @@ window.Quarto = {
 </header>
 
 
+<section id="q" class="level1">
+<h1>Q</h1>
+<section id="part-2" class="level2">
+<h2 class="anchored" data-anchor-id="part-2">??5.1 part 2</h2>
+<p>plot of 3 cases damped motion</p>
+<p>p31 可以震荡在0附近吗 pass x at most 1 time？</p>
+<p>undamped is similar to damped</p>
+</section>
+<section id="有点分不清wranskian和" class="level2">
+<h2 class="anchored" data-anchor-id="有点分不清wranskian和">？？？有点分不清wranskian和</h2>
+<p>wronskian 是判断函数之间是否线性无关的一个方法 用求导</p>
+<p>而wronskian for linear system是判断线性系统的解是否线性无关的一个方法 不用求导</p>
+</section>
+<section id="那个phase-portrait那个lambda符号一样的-趋于正无穷的时候-应该是偏向power更大的那里吧" class="level2">
+<h2 class="anchored" data-anchor-id="那个phase-portrait那个lambda符号一样的-趋于正无穷的时候-应该是偏向power更大的那里吧">那个phase portrait那个lambda符号一样的 趋于正无穷的时候 应该是偏向power更大的那里吧</h2>
+</section>
+<section id="椭圆的phase-portrait-p32-notes" class="level2">
+<h2 class="anchored" data-anchor-id="椭圆的phase-portrait-p32-notes">椭圆的phase portrait p32 notes</h2>
+</section>
+<section id="p6-c是任意数就行不写c哈" class="level2">
+<h2 class="anchored" data-anchor-id="p6-c是任意数就行不写c哈">8.3 p6 c是任意数就行不写c哈</h2>
+</section>
+<section id="那个作业为啥对应了两个eigenfunctions" class="level2">
+<h2 class="anchored" data-anchor-id="那个作业为啥对应了两个eigenfunctions">？？那个作业为啥对应了两个eigenfunctions</h2>
+</section>
+<section id="算inverse-matrix" class="level2">
+<h2 class="anchored" data-anchor-id="算inverse-matrix">算inverse matrix</h2>
+</section>
+<section id="p6那个怎么就变成定积分了nie-为什么是等价的-8.3-page-38-包括要复习前面的和算出来直接带入的区别是什么" class="level2">
+<h2 class="anchored" data-anchor-id="p6那个怎么就变成定积分了nie-为什么是等价的-8.3-page-38-包括要复习前面的和算出来直接带入的区别是什么">8.4 p6那个怎么就变成定积分了nie 为什么是等价的 8.3 page 38 –包括要复习前面的！！！和算出来直接带入的区别是什么</h2>
+</section>
+<section id="没看weight哪些概念" class="level2">
+<h2 class="anchored" data-anchor-id="没看weight哪些概念">11.1没看weight哪些概念</h2>
+</section>
+<section id="regular-strum-liouville-problem" class="level2">
+<h2 class="anchored" data-anchor-id="regular-strum-liouville-problem">11.4 regular strum liouville problem</h2>
+<p>这个3用背锅吗</p>
+</section>
+</section>
+<section id="read-differential-equations-with-applications-and-historical-notes-by-george-f.-simmons" class="level1">
+<h1>Read “Differential Equations with Applications and Historical Notes” by George F. Simmons</h1>
+<p>Differential equations are the heart of analysis, which is the natural goal of elementary calculus and the most important part of mathematics for understanding the physical sciences.</p>
+</section>
 <section id="fourier-series" class="level1">
 <h1>Fourier Series</h1>
 <p>We can use functions in a orthogonal set,</p>
