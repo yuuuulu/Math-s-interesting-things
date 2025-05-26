@@ -159,7 +159,7 @@ window.Quarto = {
 <span class="menu-text">Homepage</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./aph101.html"> 
+    <a class="nav-link" href="./APHA101.html"> 
 <span class="menu-text">Biostat and R</span></a>
   </li>  
   <li class="nav-item">
@@ -202,7 +202,8 @@ window.Quarto = {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#q" id="toc-q" class="nav-link active" data-scroll-target="#q">Q</a>
+  <li><a href="#a-difficult-quesiton-about-variation-parameters-method-for-a-1st-order-odes" id="toc-a-difficult-quesiton-about-variation-parameters-method-for-a-1st-order-odes" class="nav-link active" data-scroll-target="#a-difficult-quesiton-about-variation-parameters-method-for-a-1st-order-odes">A difficult quesiton about variation parameters method for a 1st order ODEs</a></li>
+  <li><a href="#q" id="toc-q" class="nav-link" data-scroll-target="#q">Q</a>
   <ul class="collapse">
   <li><a href="#part-2" id="toc-part-2" class="nav-link" data-scroll-target="#part-2">??5.1 part 2</a></li>
   <li><a href="#有点分不清wranskian和" id="toc-有点分不清wranskian和" class="nav-link" data-scroll-target="#有点分不清wranskian和">？？？有点分不清wranskian和</a></li>
@@ -319,6 +320,72 @@ window.Quarto = {
 </header>
 
 
+<section id="a-difficult-quesiton-about-variation-parameters-method-for-a-1st-order-odes" class="level1">
+<h1>A difficult quesiton about variation parameters method for a 1st order ODEs</h1>
+<p>Find the solution of the equation</p>
+<p><span class="math display">\[
+\frac{dy}{dx} - P(x)y = e^{2x}, \quad y(0) = 1,
+\]</span></p>
+<p>where <span class="math display">\[P(x) = \begin{cases}
+1 &amp; x \in [0,1), \\
+0 &amp; x \notin [0,1).
+\end{cases}\]</span></p>
+<p><strong>[Solution:]</strong> Consider the homogeneous equation</p>
+<p><span class="math display">\[
+\frac{dy}{dx} - P(x)y = 0,
+\]</span></p>
+<p>by separating the variables we have <span class="math inline">\(\frac{dy}{y} = P(x)dx\)</span>, namely <span class="math inline">\(\ln|y| = \int_0^x P(t)dt + C_1\)</span>, and we get</p>
+<p><span class="math display">\[
+y = Ce^{\int_0^x P(t)dt} = \begin{cases}
+C &amp; x &lt; 0 \\
+Ce^x &amp; x \in [0,1) \\
+Ce &amp; x \geq 1.
+\end{cases}
+\]</span></p>
+<p>Now by variation of parameters we suppose <span class="math inline">\(u = u(x)\)</span>, and <span class="math inline">\(y = u(x)e^{\int_0^x P(t)dt}\)</span> is the solution, hence</p>
+<p><span class="math display">\[
+u'(x) = e^{2x - \int_0^x P(t)dt} = \begin{cases}
+e^{2x} &amp; x &lt; 0, \\
+e^x &amp; x \in [0,1), \\
+e^{2x-1} &amp; x \geq 1.
+\end{cases}
+\]</span></p>
+<p>(this is because :</p>
+<p>The differential equation is given by: <span class="math display">\[
+y' + p(x)y = f(x).
+\]</span></p>
+<p>Integrating factor is: <span class="math display">\[
+e^{\int p(x)dx}.
+\]</span></p>
+<p>Multiplying through by the integrating factor: <span class="math display">\[
+\frac{d}{dx} \left[ e^{\int p(x)dx} y \right] = f(x) e^{\int p(x)dx}.
+\]</span></p>
+<p>Solving for <span class="math inline">\(y\)</span>:</p>
+<p><span class="math display">\[
+y e^{\int p(x)dx} = \int f(x) e^{\int p(x)dx} dx + C.
+\]</span></p>
+<p>Thus, the general solution is: <span class="math display">\[
+y = Ce^{-\int p(x)dx} + e^{-\int p(x)dx} \int f(x) e^{\int p(x)dx} dx,
+\]</span> where <span class="math inline">\(y_c\)</span> represents the complementary solution <span class="math inline">\(Ce^{-\int p(x)dx}\)</span> and <span class="math inline">\(y_p\)</span> represents the particular solution <span class="math inline">\(e^{-\int p(x)dx} \int f(x) e^{\int p(x)dx}\)</span>.</p>
+<p>)</p>
+<p>and <span class="math inline">\(C(0) = 1\)</span> since <span class="math inline">\(y(0) = 1\)</span>.</p>
+<p>We see that</p>
+<p><span class="math display">\[
+u(x) = u(0) + \int_0^x u'(t)dt = \begin{cases}
+\frac{e^{2x} + 1}{2} &amp; x &lt; 0 \\
+e^x &amp; x \in [0,1) \\
+\frac{e^{2x-1} + e}{2} &amp; x \geq 1.
+\end{cases}
+\]</span></p>
+<p>Finally we get</p>
+<p><span class="math display">\[
+y = \begin{cases}
+\frac{e^{2x} + 1}{2} &amp; x &lt; 0 \\
+e^{2x} &amp; x \in [0,1) \\
+\frac{e^{2x} + e^2}{2} &amp; x \geq 1.
+\end{cases}
+\]</span></p>
+</section>
 <section id="q" class="level1">
 <h1>Q</h1>
 <section id="part-2" class="level2">

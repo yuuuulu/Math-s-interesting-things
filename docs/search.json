@@ -235,7 +235,7 @@
     "href": "mth106.html",
     "title": "ODEs and PDEs with Dimension nalysis —MTH106 + Seminars hold by Prof. Andrew Lin",
     "section": "",
-    "text": "plot of 3 cases damped motion\np31 可以震荡在0附近吗 pass x at most 1 time？\nundamped is similar to damped\n\n\n\nwronskian 是判断函数之间是否线性无关的一个方法 用求导\n而wronskian for linear system是判断线性系统的解是否线性无关的一个方法 不用求导\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n这个3用背锅吗"
+    "text": "Find the solution of the equation\n\\[\n\\frac{dy}{dx} - P(x)y = e^{2x}, \\quad y(0) = 1,\n\\]\nwhere \\[P(x) = \\begin{cases}\n1 & x \\in [0,1), \\\\\n0 & x \\notin [0,1).\n\\end{cases}\\]\n[Solution:] Consider the homogeneous equation\n\\[\n\\frac{dy}{dx} - P(x)y = 0,\n\\]\nby separating the variables we have \\(\\frac{dy}{y} = P(x)dx\\), namely \\(\\ln|y| = \\int_0^x P(t)dt + C_1\\), and we get\n\\[\ny = Ce^{\\int_0^x P(t)dt} = \\begin{cases}\nC & x &lt; 0 \\\\\nCe^x & x \\in [0,1) \\\\\nCe & x \\geq 1.\n\\end{cases}\n\\]\nNow by variation of parameters we suppose \\(u = u(x)\\), and \\(y = u(x)e^{\\int_0^x P(t)dt}\\) is the solution, hence\n\\[\nu'(x) = e^{2x - \\int_0^x P(t)dt} = \\begin{cases}\ne^{2x} & x &lt; 0, \\\\\ne^x & x \\in [0,1), \\\\\ne^{2x-1} & x \\geq 1.\n\\end{cases}\n\\]\n(this is because :\nThe differential equation is given by: \\[\ny' + p(x)y = f(x).\n\\]\nIntegrating factor is: \\[\ne^{\\int p(x)dx}.\n\\]\nMultiplying through by the integrating factor: \\[\n\\frac{d}{dx} \\left[ e^{\\int p(x)dx} y \\right] = f(x) e^{\\int p(x)dx}.\n\\]\nSolving for \\(y\\):\n\\[\ny e^{\\int p(x)dx} = \\int f(x) e^{\\int p(x)dx} dx + C.\n\\]\nThus, the general solution is: \\[\ny = Ce^{-\\int p(x)dx} + e^{-\\int p(x)dx} \\int f(x) e^{\\int p(x)dx} dx,\n\\] where \\(y_c\\) represents the complementary solution \\(Ce^{-\\int p(x)dx}\\) and \\(y_p\\) represents the particular solution \\(e^{-\\int p(x)dx} \\int f(x) e^{\\int p(x)dx}\\).\n)\nand \\(C(0) = 1\\) since \\(y(0) = 1\\).\nWe see that\n\\[\nu(x) = u(0) + \\int_0^x u'(t)dt = \\begin{cases}\n\\frac{e^{2x} + 1}{2} & x &lt; 0 \\\\\ne^x & x \\in [0,1) \\\\\n\\frac{e^{2x-1} + e}{2} & x \\geq 1.\n\\end{cases}\n\\]\nFinally we get\n\\[\ny = \\begin{cases}\n\\frac{e^{2x} + 1}{2} & x &lt; 0 \\\\\ne^{2x} & x \\in [0,1) \\\\\n\\frac{e^{2x} + e^2}{2} & x \\geq 1.\n\\end{cases}\n\\]"
   },
   {
     "objectID": "Calculus.html",
@@ -1690,22 +1690,22 @@
     "objectID": "mth106.html#part-2",
     "href": "mth106.html#part-2",
     "title": "ODEs and PDEs with Dimension nalysis —MTH106 + Seminars hold by Prof. Andrew Lin",
-    "section": "",
-    "text": "plot of 3 cases damped motion\np31 可以震荡在0附近吗 pass x at most 1 time？\nundamped is similar to damped"
+    "section": "??5.1 part 2",
+    "text": "??5.1 part 2\nplot of 3 cases damped motion\np31 可以震荡在0附近吗 pass x at most 1 time？\nundamped is similar to damped"
   },
   {
     "objectID": "mth106.html#有点分不清wranskian和",
     "href": "mth106.html#有点分不清wranskian和",
     "title": "ODEs and PDEs with Dimension nalysis —MTH106 + Seminars hold by Prof. Andrew Lin",
-    "section": "",
-    "text": "wronskian 是判断函数之间是否线性无关的一个方法 用求导\n而wronskian for linear system是判断线性系统的解是否线性无关的一个方法 不用求导"
+    "section": "？？？有点分不清wranskian和",
+    "text": "？？？有点分不清wranskian和\nwronskian 是判断函数之间是否线性无关的一个方法 用求导\n而wronskian for linear system是判断线性系统的解是否线性无关的一个方法 不用求导"
   },
   {
     "objectID": "mth106.html#regular-strum-liouville-problem",
     "href": "mth106.html#regular-strum-liouville-problem",
     "title": "ODEs and PDEs with Dimension nalysis —MTH106 + Seminars hold by Prof. Andrew Lin",
-    "section": "",
-    "text": "这个3用背锅吗"
+    "section": "11.4 regular strum liouville problem",
+    "text": "11.4 regular strum liouville problem\n这个3用背锅吗"
   },
   {
     "objectID": "mth106.html#proof",
@@ -1720,5 +1720,54 @@
     "title": "MTH107—NOTEs",
     "section": "Matrix basic knowledge",
     "text": "Matrix basic knowledge\n\nAB \\(\\neq\\) BA – it is not a number, but a linear transformation (a function). AB is the composition of two functions, while BA is another composition of two functions. They are not the same in general."
+  },
+  {
+    "objectID": "mth106.html#那个phase-portrait那个lambda符号一样的-趋于正无穷的时候-应该是偏向power更大的那里吧",
+    "href": "mth106.html#那个phase-portrait那个lambda符号一样的-趋于正无穷的时候-应该是偏向power更大的那里吧",
+    "title": "ODEs and PDEs with Dimension nalysis —MTH106 + Seminars hold by Prof. Andrew Lin",
+    "section": "那个phase portrait那个lambda符号一样的 趋于正无穷的时候 应该是偏向power更大的那里吧",
+    "text": "那个phase portrait那个lambda符号一样的 趋于正无穷的时候 应该是偏向power更大的那里吧"
+  },
+  {
+    "objectID": "mth106.html#椭圆的phase-portrait-p32-notes",
+    "href": "mth106.html#椭圆的phase-portrait-p32-notes",
+    "title": "ODEs and PDEs with Dimension nalysis —MTH106 + Seminars hold by Prof. Andrew Lin",
+    "section": "椭圆的phase portrait p32 notes",
+    "text": "椭圆的phase portrait p32 notes"
+  },
+  {
+    "objectID": "mth106.html#p6-c是任意数就行不写c哈",
+    "href": "mth106.html#p6-c是任意数就行不写c哈",
+    "title": "ODEs and PDEs with Dimension nalysis —MTH106 + Seminars hold by Prof. Andrew Lin",
+    "section": "8.3 p6 c是任意数就行不写c哈",
+    "text": "8.3 p6 c是任意数就行不写c哈"
+  },
+  {
+    "objectID": "mth106.html#那个作业为啥对应了两个eigenfunctions",
+    "href": "mth106.html#那个作业为啥对应了两个eigenfunctions",
+    "title": "ODEs and PDEs with Dimension nalysis —MTH106 + Seminars hold by Prof. Andrew Lin",
+    "section": "？？那个作业为啥对应了两个eigenfunctions",
+    "text": "？？那个作业为啥对应了两个eigenfunctions"
+  },
+  {
+    "objectID": "mth106.html#算inverse-matrix",
+    "href": "mth106.html#算inverse-matrix",
+    "title": "ODEs and PDEs with Dimension nalysis —MTH106 + Seminars hold by Prof. Andrew Lin",
+    "section": "算inverse matrix",
+    "text": "算inverse matrix"
+  },
+  {
+    "objectID": "mth106.html#p6那个怎么就变成定积分了nie-为什么是等价的-8.3-page-38-包括要复习前面的和算出来直接带入的区别是什么",
+    "href": "mth106.html#p6那个怎么就变成定积分了nie-为什么是等价的-8.3-page-38-包括要复习前面的和算出来直接带入的区别是什么",
+    "title": "ODEs and PDEs with Dimension nalysis —MTH106 + Seminars hold by Prof. Andrew Lin",
+    "section": "8.4 p6那个怎么就变成定积分了nie 为什么是等价的 8.3 page 38 –包括要复习前面的！！！和算出来直接带入的区别是什么",
+    "text": "8.4 p6那个怎么就变成定积分了nie 为什么是等价的 8.3 page 38 –包括要复习前面的！！！和算出来直接带入的区别是什么"
+  },
+  {
+    "objectID": "mth106.html#没看weight哪些概念",
+    "href": "mth106.html#没看weight哪些概念",
+    "title": "ODEs and PDEs with Dimension nalysis —MTH106 + Seminars hold by Prof. Andrew Lin",
+    "section": "11.1没看weight哪些概念",
+    "text": "11.1没看weight哪些概念"
   }
 ]

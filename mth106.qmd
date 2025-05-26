@@ -3,6 +3,99 @@ title: "ODEs and PDEs with Dimension nalysis ---MTH106 + Seminars hold by Prof. 
 editor: visual
 ---
 
+# A difficult quesiton about variation parameters method for a 1st order ODEs
+
+Find the solution of the equation
+
+$$
+\frac{dy}{dx} - P(x)y = e^{2x}, \quad y(0) = 1,
+$$
+
+where $$P(x) = \begin{cases} 
+1 & x \in [0,1), \\
+0 & x \notin [0,1).
+\end{cases}$$
+
+**[Solution:]** Consider the homogeneous equation
+
+$$
+\frac{dy}{dx} - P(x)y = 0,
+$$
+
+by separating the variables we have $\frac{dy}{y} = P(x)dx$, namely $\ln|y| = \int_0^x P(t)dt + C_1$, and we get
+
+$$
+y = Ce^{\int_0^x P(t)dt} = \begin{cases} 
+C & x < 0 \\
+Ce^x & x \in [0,1) \\
+Ce & x \geq 1.
+\end{cases}
+$$
+
+Now by variation of parameters we suppose $u = u(x)$, and $y = u(x)e^{\int_0^x P(t)dt}$ is the solution, hence
+
+$$
+u'(x) = e^{2x - \int_0^x P(t)dt} = \begin{cases} 
+e^{2x} & x < 0, \\
+e^x & x \in [0,1), \\
+e^{2x-1} & x \geq 1.
+\end{cases}
+$$
+
+(this is because : 
+
+
+The differential equation is given by:
+$$
+y' + p(x)y = f(x).
+$$
+
+Integrating factor is:
+$$
+e^{\int p(x)dx}.
+$$
+
+Multiplying through by the integrating factor:
+$$
+\frac{d}{dx} \left[ e^{\int p(x)dx} y \right] = f(x) e^{\int p(x)dx}.
+$$
+
+Solving for $y$:
+
+$$
+y e^{\int p(x)dx} = \int f(x) e^{\int p(x)dx} dx + C.
+$$
+
+Thus, the general solution is:
+$$
+y = Ce^{-\int p(x)dx} + e^{-\int p(x)dx} \int f(x) e^{\int p(x)dx} dx,
+$$
+where $y_c$ represents the complementary solution $Ce^{-\int p(x)dx}$ and $y_p$ represents the particular solution $e^{-\int p(x)dx} \int f(x) e^{\int p(x)dx}$.
+
+)
+
+and $C(0) = 1$ since $y(0) = 1$.
+
+We see that
+
+$$
+u(x) = u(0) + \int_0^x u'(t)dt = \begin{cases} 
+\frac{e^{2x} + 1}{2} & x < 0 \\
+e^x & x \in [0,1) \\
+\frac{e^{2x-1} + e}{2} & x \geq 1.
+\end{cases}
+$$
+
+Finally we get
+
+$$
+y = \begin{cases} 
+\frac{e^{2x} + 1}{2} & x < 0 \\
+e^{2x} & x \in [0,1) \\
+\frac{e^{2x} + e^2}{2} & x \geq 1.
+\end{cases}
+$$
+
 
 # Q
 
