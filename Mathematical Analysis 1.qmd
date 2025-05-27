@@ -31,8 +31,10 @@ $$
 \left |h_n(x) - a\right|= \left| \frac{a}{n} + \frac{x}{n}+\frac{x}{n^2}\right|
 $$
 
+Take a to be the sequence $n$
+
 $$
-\lim_{n \to \infty} |h_n(x) - a| = \lim_{n \to \infty} \left| \frac{a}{n} + \frac{x}{n} + \frac{x}{n^2} \right| = 1 \ne 0
+\lim_{n \to \infty} |h_n(x) - a_n| = \lim_{n \to \infty} \left| \frac{n}{n} + \frac{x}{n} + \frac{x}{n^2} \right| = 1 \ne 0
 $$
 
 By the definition of uniform convergence, we have concluded that $h_n(x)$ is not uniformly convergent.
@@ -42,10 +44,6 @@ By the definition of uniform convergence, we have concluded that $h_n(x)$ is not
 
 - Next one 
 
-This series if from former series but wecan also use this method to prove.
-
-Idea: when n is large enough, $\sin \left(1 + \frac{x}{n}\right)$ is always positive and also $|\sin x| \leq |x|, \forall x \in \mathbb{R}$
-
 We know that
 
 $$
@@ -54,21 +52,11 @@ $$
 
 is defined on $A$, which is a compact set and $A \subseteq [-M, M], M > 0$.
 
-$$
-\Rightarrow |x| \leq M \quad \text{Choose } N(\varepsilon) = \frac{M}{ \frac{\pi}{2}-2}, \text{ when } n \geq N(\varepsilon)
-$$
+This series if from Fourier series but wecan also use this method to prove.
 
-$$
-\frac{|x|}{n} \leq \frac{M}{n} \leq \frac{M}{N(\varepsilon)} < \frac{\pi}{2} - 1
-$$
+Idea: when n is large enough, $\sin \left(1 + \frac{x}{n}\right)$ is always positive and also $|\sin x| \leq |x|, \forall x \in \mathbb{R}$
 
-$$
-1 - \left(\frac{\pi}{2} - 1\right) < 1 + \frac{x}{n} < 1 + \left(\frac{\pi}{2} - 1\right)
-$$
 
-$$
-2 - \frac{\pi}{2} < 1 + \frac{x}{n} < \frac{\pi}{2}
-$$
 
 This means that
 
@@ -115,7 +103,7 @@ $$
 \frac{(-1)^n}{\sqrt{n}} \cos \frac{x}{n} = \frac{(-1)^n}{\sqrt{n}} \left( 1 - 2 \sin^2 \frac{x}{2n} \right)\\= \frac{(-1)^n}{\sqrt{n}} - \frac{2(-1)^n}{\sqrt{n}} \sin^2 \frac{x}{2n}
 $$
 
-For $\frac{(-1)^n}{\sqrt{n}}$, since it is not convergent, we only need to consider the second part.
+For $\frac{(-1)^n}{\sqrt{n}}$, since it is not relevant to x, we only need to consider the second part.
 
 
 
@@ -131,7 +119,7 @@ By p-test,$\sum_{n=1}^{\infty}\frac{1}{\sqrt{n}} \left| \frac{x}{2n} \right|^2$ 
 
 By Weierstrass M-test for series,
 
-$ \frac{(-1)^n}{\sqrt{n}} \sin^2 \frac{x}{2n}$ converges uniformly.
+$\frac{(-1)^n}{\sqrt{n}} \sin^2 \frac{x}{2n}$ converges uniformly.
 
 
 

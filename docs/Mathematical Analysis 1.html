@@ -419,32 +419,21 @@ h_n(x) = a + \frac{a}{n} \left(1 + \frac{1}{b}+\frac{1}{bn}\right) = a + \frac{a
 <p><span class="math display">\[
 \left |h_n(x) - a\right|= \left| \frac{a}{n} + \frac{x}{n}+\frac{x}{n^2}\right|
 \]</span></p>
+<p>Take a to be the sequence <span class="math inline">\(n\)</span></p>
 <p><span class="math display">\[
-\lim_{n \to \infty} |h_n(x) - a| = \lim_{n \to \infty} \left| \frac{a}{n} + \frac{x}{n} + \frac{x}{n^2} \right| = 1 \ne 0
+\lim_{n \to \infty} |h_n(x) - a_n| = \lim_{n \to \infty} \left| \frac{n}{n} + \frac{x}{n} + \frac{x}{n^2} \right| = 1 \ne 0
 \]</span></p>
 <p>By the definition of uniform convergence, we have concluded that <span class="math inline">\(h_n(x)\)</span> is not uniformly convergent.</p>
 <ul>
 <li>Next one</li>
 </ul>
-<p>This series if from former series but wecan also use this method to prove.</p>
-<p>Idea: when n is large enough, <span class="math inline">\(\sin \left(1 + \frac{x}{n}\right)\)</span> is always positive and also <span class="math inline">\(|\sin x| \leq |x|, \forall x \in \mathbb{R}\)</span></p>
 <p>We know that</p>
 <p><span class="math display">\[
 \frac{(-1)^n}{\sqrt{n}} \sin \left(1 + \frac{x}{n}\right)
 \]</span></p>
 <p>is defined on <span class="math inline">\(A\)</span>, which is a compact set and <span class="math inline">\(A \subseteq [-M, M], M &gt; 0\)</span>.</p>
-<p><span class="math display">\[
-\Rightarrow |x| \leq M \quad \text{Choose } N(\varepsilon) = \frac{M}{ \frac{\pi}{2}-2}, \text{ when } n \geq N(\varepsilon)
-\]</span></p>
-<p><span class="math display">\[
-\frac{|x|}{n} \leq \frac{M}{n} \leq \frac{M}{N(\varepsilon)} &lt; \frac{\pi}{2} - 1
-\]</span></p>
-<p><span class="math display">\[
-1 - \left(\frac{\pi}{2} - 1\right) &lt; 1 + \frac{x}{n} &lt; 1 + \left(\frac{\pi}{2} - 1\right)
-\]</span></p>
-<p><span class="math display">\[
-2 - \frac{\pi}{2} &lt; 1 + \frac{x}{n} &lt; \frac{\pi}{2}
-\]</span></p>
+<p>This series if from Fourier series but wecan also use this method to prove.</p>
+<p>Idea: when n is large enough, <span class="math inline">\(\sin \left(1 + \frac{x}{n}\right)\)</span> is always positive and also <span class="math inline">\(|\sin x| \leq |x|, \forall x \in \mathbb{R}\)</span></p>
 <p>This means that</p>
 <p><span class="math display">\[
 \sin \left(1 + \frac{x}{n}\right) &gt; 0
@@ -472,14 +461,14 @@ h_n(x) = a + \frac{a}{n} \left(1 + \frac{1}{b}+\frac{1}{bn}\right) = a + \frac{a
 <p><span class="math display">\[
 \frac{(-1)^n}{\sqrt{n}} \cos \frac{x}{n} = \frac{(-1)^n}{\sqrt{n}} \left( 1 - 2 \sin^2 \frac{x}{2n} \right)\\= \frac{(-1)^n}{\sqrt{n}} - \frac{2(-1)^n}{\sqrt{n}} \sin^2 \frac{x}{2n}
 \]</span></p>
-<p>For <span class="math inline">\(\frac{(-1)^n}{\sqrt{n}}\)</span>, since it is not convergent, we only need to consider the second part.</p>
+<p>For <span class="math inline">\(\frac{(-1)^n}{\sqrt{n}}\)</span>, since it is not relevant to x, we only need to consider the second part.</p>
 <p>For <span class="math inline">\(\frac{(-1)^n}{\sqrt{n}} \sin^2 \frac{x}{2n}\)</span></p>
 <p><span class="math display">\[
 \left| \frac{(-1)^n}{\sqrt{n}} \sin^2 \frac{x}{2n} \right| \leq \frac{1}{\sqrt{n}} \left| \frac{x}{2n} \right|^2
 \]</span></p>
 <p>By p-test,<span class="math inline">\(\sum_{n=1}^{\infty}\frac{1}{\sqrt{n}} \left| \frac{x}{2n} \right|^2\)</span> is convergent.</p>
 <p>By Weierstrass M-test for series,</p>
-<p>$ ^2 $ converges uniformly.</p>
+<p><span class="math inline">\(\frac{(-1)^n}{\sqrt{n}} \sin^2 \frac{x}{2n}\)</span> converges uniformly.</p>
 </section>
 <section id="while-the-dream-of-becoming-a-pure-mathematician-has-faded-my-pursuit-of-mathematical-analysis-remains-strong-driven-by-a-desire-to-express-my-thoughts-with-precision-and-elegance.-my-ultimate-aspiration-of-analysis-is-to-present-ideas-that-captivate-others-compelling-them-to-listen.-this-is-not-just-about-sharing-information-its-about-conveying-logical-insights-that-have-been-distilled-through-my-own-deep-engagement-with-the-material-reflecting-a-genuine-and-personal-comprehension-of-the-subject-matter." class="level2">
 <h2 class="anchored" data-anchor-id="while-the-dream-of-becoming-a-pure-mathematician-has-faded-my-pursuit-of-mathematical-analysis-remains-strong-driven-by-a-desire-to-express-my-thoughts-with-precision-and-elegance.-my-ultimate-aspiration-of-analysis-is-to-present-ideas-that-captivate-others-compelling-them-to-listen.-this-is-not-just-about-sharing-information-its-about-conveying-logical-insights-that-have-been-distilled-through-my-own-deep-engagement-with-the-material-reflecting-a-genuine-and-personal-comprehension-of-the-subject-matter.">While the dream of becoming a pure mathematician has faded, my pursuit of Mathematical Analysis remains strong, driven by a desire to express my thoughts with precision and elegance. My ultimate aspiration of Analysis is to present ideas that captivate others, compelling them to listen. This is not just about sharing information; it’s about conveying logical insights that have been distilled through my own deep engagement with the material, reflecting a genuine and personal comprehension of the subject matter.</h2>
