@@ -9,368 +9,6 @@ toc: true
 
 # Also, thanks to the course of "Introduction to statistical learning" by Trevor Hastie and Robert Tibshirani. Examples in their online video lectures are abundant and easy to understand for beginners. Their book is also very helpful.
 
-# Final review of R codes
-
-
-## Calculation
-
-```{r}
-log(exp(1)) #  base `e` is the default (log(e) is not defined)
-```
-
-
-## Vectors -Lab 2
-
-```{r}
-x <- c(1,2,3,4)
-class(x)
-x %*%x # scalar ("inner") product (but default in R as an 1*1 matrix)
-rep(c('a','b'),3)
-rep(c(2, 4, 8), each = 3)
-y <- seq(from = 1, to = 4, by =1)
-class(y)
-1:4 # c(1,2,3,4) and 1:4 are all the same in.R
-seq(1,5, length.out=11)
-# vac<-c((1,2,3),(3,4,5)) is wrong, but the below is true
-vec1 <- c(1,2,3)
-vec2 <- c(4,5,6)
-vec3 <- c(vec1, vec2)
-vec3[1] == vec1[1]
-vec3[3:5];vec3[c(2,3)]
-vec3[-1] # everything but the first element
-vec3[-2*c(1,2)]
-x <- -5:5
-class(x)
-str(x)
-x <- c(-5:5)
-str(x)
-abs(-5:5)
-exp(c(-5:5))
-exp(-5:5)
-x <- c(1, 2, 3, 4, 5,6)
-y <- c(10,11)
-result <- x + y
-print(result)
-# sample variance and population variance 
-x <- c(1, 2, 3, 4, 5)
-# x * y  # Element-wise multiplication: 10 40 90 160 250 360
-c(1,2)*c(2,3)
-
-# Calculate the sample variance using R's var() function
-sample_variance <- var(x)
-
-# Calculate the sample(var(x)) and population variance
-n <- length(x)
-sample_variance <-var(x)
-population_variance <- sample_variance * (n - 1) / n
-print(population_variance)
-
-```
-
-## Rmd knowledge
-
-{r, echo = FALSE} Hidden Code
-
-eval: run or not
-
-message/warning
-
-result
-
-# Probability in R
-
-```{r}
-library(mosaic)
-plotDist('norm',mean=10,sd=2)
-plotDist('binom',size=10,prob=.2) # x-axis is the number of success from 1-10
-plotDist("pois", lambda = 2)
-
-sum(dpois(0:3, lambda = 2)) # the probability it is less than or equal to 3 of Poison(2)
-ppois(3, lambda = 2) 
-ppois(3, lambda = 2) == sum(dpois(0:3, lambda = 2)) # this inequivalance is because the floating point precision
-
-#xpnorm(-1)  # P(Z ≤ -1) = 0.1586553 -package mosaic
-#xpnorm(-1, lower.tail = FALSE)  # P(Z ≥ 1.5) = 0.0668072
-pnorm(-1)
-pnorm(-1,lower.tail = F)
-
-pnorm(0)
-qnorm(0)
-qnorm(0.95)
-qnorm(0.975)
-
-```
-
-# Data class
-
-```{r}
-df<-("R is the statistical analysis language")
-strsplit(df, split = " ")
-strsplit(df, split = "")
-df<-"all16i5need6is4a9long8vacation"
-?strsplit
-strsplit(df,split = "[0-9]+")
-paste("Good", "afternoon", "ladies", "and", "gentlemen")
-paste0("Good", "afternoon", "ladies", "and", "gentlemen")
-6 != 10
-x <- -10:10
-which(x>0)
-x[which(x>0)]
-
-
-vowels <- c("a", "e", "i", "o", "u")
-
-which(is.element(letters, vowels))
-
-# Note that logical elements are NOT in quotes.
-z = c("TRUE", "FALSE", "TRUE", "FALSE") 
-as.logical(z)
-
-# TRUE = 1 and FALSE = 0. sum() and mean() work on logical vectors
-
-# remember:
-TRUE & TRUE
-TRUE & FALSE
-TRUE | FALSE
-
-
-## Factor
-
-y <- c('B','B','A','A','C')
-z <- factor(y)
-str(z)
-as.numeric(z)
-levels(z)
-
-z <- factor(z,                       # vector of data levels to convert 
-            levels=c('B','A','C'),   # Order of the levels
-            labels=c("B Group", "A Group", "C Group")) # Pretty labels to use
-z
-
-### eg of use in the plot's x-axis name lable
-
-iris$Species <- factor(iris$Species,
-                       levels = c('versicolor','setosa','virginica'),
-                       labels = c('Versicolor','Setosa','Virginica'))
-boxplot(Sepal.Length ~ Species, data=iris)
-
-### another eg
-ages <- c(17, 25, 16, 30, 14, 18)
-age_category <- ifelse(ages >= 18, "Adult", "Minor")
-age_factor <- factor(age_category, levels = c("Minor", "Adult"))
-age_factor
-
-# transform a conituous numerical vector and transform it into a factor
-
-x <- 1:10
-
-# cut(x,breaks=3)
-cut(x, breaks = c(0, 2.5, 5.0, 7.5, 10))
-cut(x, breaks=3, labels=c('Low','Medium','High'))
-
-# dates
-mydates <- as.Date(c("2023-04-07", "2023-01-01"))
-mydates
-
-days <- mydates[1] - mydates[2]; days
-
-```
-
-The following symbols can be used with the `format()` function to print dates.
-
-* %d	day as a number (0-31)  01-31
-* %a  abbreviated weekday  Mon
-* %A	unabbreviated weekday  Monday
-* %m	month (00-12)  00-12
-* %b  abbreviated month  Jan
-* %B	unabbreviated month  January
-* %y  2-digit year  07
-* %Y  4-digit year  2007
-
-```{r}
-today <- Sys.Date()
-format(today, format="%B %d %Y")
-
-# or library(lubridate)
-#x = c("2014-02-4 05:02:00","2016/09/24 14:02:00") 
-#ymd_hms(x)
-
-# POSIXct
-```
-
-```{r}
-# Matrices
-
-n=1:9
-mat = matrix(n,nrow=3)
-mat
-y <- diag(n)
-
-# use %*% as the product of matrices
-
-## Eigenvalue and Eigenvector
-
-A <- matrix(c(13, -4, 2, -4, 11, -2, 2, -2, 8), 3, 3, byrow=TRUE)
-ev <- eigen(A)
-
-(values <- ev$values)
-(vectors <- ev$vectors)
-
-## Data selection --row then column
-
-mat[1, 1]
-mat[1,]
-mat[,1] 
-class(mat[1, ]) # Note that the class of the returned object is no longer a matrix
-
-# Data frames
-
-Data_Frame <- data.frame(Tr =c("1","2","3"),
-                         Pu =c(11,21,32),
-                         Dur=c(22,222,1))
-Data_Frame
-summary(Data_Frame)
-
-# List ---Can hold vectors, strings, matrices, models, list of other list, lists upon lists!
-
-mylist <- list(letters=c("a","b","c"),
-               numbers=1:3,matrix(1:25,ncol=5))
-head(mylist)
-
-# Can reference data using $ (if the elements are named), or using [], or [[]]
-
-mylist[1] # list
-mylist["letters"] # list
-mylist[[1]] # vector
-mylist$letters == mylist[["letters"]]
-mylist[[3]][1:2,1:2]
-class(mylist[[3]][1:2,1:2])
-x = c(0, 2, 2, 3, 4); 2 %in% x
-
-# eg of Matrices data frames
-x <- c(5.1, 4.9, 5.6, 4.2, 4.8, 4.5, 5.3, 5.2)   # some toy data
-results <- t.test(x, alternative='less', mu=5)   # do a t-test
-str(results)    
-results$p.value
-
-```
-
-Practice of Lab 5
-
-```{r}
-db_data <- list(
-  drugs = list(
-    general_information = data.frame(
-      drugbank_id = c("DB001", "DB002", "DB003", "DB004", "DB005"),
-      name = c("Aspirin", "Ibuprofen", "Paracetamol", "Insulin", "Morphine"),
-      type = c("small molecule", "small molecule", "small molecule", "biotech", "small molecule"),
-      created = as.Date(c("2020-01-01", "2020-02-01", "2020-03-01", "2020-04-01", "2020-05-01")),
-      stringsAsFactors = FALSE
-    ),
-    drug_classification = data.frame(
-      drugbank_id = c("DB001", "DB002", "DB003", "DB004", "DB005"),
-      classification = c("Analgesic", "Anti-inflammatory", "Analgesic", "Hormone", "Analgesic"),
-      stringsAsFactors = FALSE
-    ),
-    experimental_properties = data.frame(
-      drugbank_id = c("DB001", "DB002", "DB003", "DB004", "DB005", "DB001", "DB002", "DB003", "DB004", "DB005"),
-      kind = c("logP", "logP", "logP", "logP", "logP", "Molecular Weight", "Molecular Weight", "Molecular Weight", "Molecular Weight", "Molecular Weight"),
-      value = c("1.2", "1.5", "0.8", "2.1", "1.8", "180.1", "206.3", "151.2", "5800.0", "281.5"),
-      stringsAsFactors = FALSE
-    )
-  )
-)
-
-general_information <- db_data$drugs$general_information
-
-print(general_information)
-# 20. Number of drugs in the general_information dataframe
-general_information <- db_data$drugs$general_information
-nrow(general_information)
-
-# 21. Filter drugs of type "biotech"
-general_information[general_information$type == 'biotech',]
-
-# 22. Sort by the created column and display the first 5 rows
-general_information$created <- as.Date(general_information$created)
-sorted_df <- general_information[order(general_information$created), ]
-head(sorted_df, 5)
-
-# 23. Subset with specific columns and display the first 5 rows
-subset_df <- general_information[, c("drugbank_id", "name")]
-head(subset_df, 5)
-
-# 24. Merge dataframes and count rows
-drug_classification <- db_data$drugs$drug_classification
-merged_df <- merge(general_information, drug_classification, by = "drugbank_id")
-nrow(merged_df)
-
-# 25. Count unique experimental properties (kind)
-experimental_properties <- db_data$drugs$experimental_properties
-unique_kinds <- unique(experimental_properties$kind)
-length(unique_kinds)
-
-# 26. Filter for kind "logP" and count rows
-logP_df <- experimental_properties[experimental_properties$kind == "logP", ]
-nrow(logP_df)
-
-# 27. Convert value column to numeric and calculate mean
-logP_df$value <- as.numeric(logP_df$value)
-mean(logP_df$value, na.rm = TRUE)
-
-# 28. Calculate summary statistics for logP values
-summary(logP_df$value)
-sd(logP_df$value, na.rm = TRUE)
-
-# 29. Create a histogram of molecular weight values
-molecular_weight <- experimental_properties[experimental_properties$kind == "Molecular Weight", ]
-molecular_weight$value <- as.numeric(molecular_weight$value)
-# clean based on 3 sigma rule
-molecular_weight_clean <- molecular_weight[
-  abs(molecular_weight$value - mean(molecular_weight$value, na.rm = TRUE)) <= 3 * sd(molecular_weight$value, na.rm = TRUE),]
-hist(molecular_weight_clean$value, main = "Histogram of Molecular Weight", xlab = "Molecular Weight", ylab = "Frequency", col = "lightblue",breaks = 20)
-
-# 30. Filter for kind "Water Solubility" and count unique values
-water_solubility_df <- experimental_properties[experimental_properties$kind == "Water Solubility", ]
-length(unique(water_solubility_df$value))
-```
-
-# LAB 5 --data visualization
-
-```{r, fig.align='center'}
-library(ggplot2)
-data(iris)
-boxplot(iris$Sepal.Length ~ iris$Species)
-hist(iris$Sepal.Length)
-plot(Petal.Length ~ Sepal.Length, data=iris)
-abline(lm(Petal.Length ~ Sepal.Length, data=iris), col="red")
-data(mpg, package='ggplot2')
-ggplot(data=mpg, aes(x=class)) +
-  geom_bar()
-table(mpg$class)
-df <- as.data.frame(table(mpg$class))
-df
-# By default, the geom_bar() just counts the number of cases and displays how many observations were in each factor level. If we have a data frame that we have already summarized, geom_col will allow us to set the height of the bar by a y column.
-
-ggplot(df, aes(Var1, Freq)) +
-  geom_col()
-ggplot(mpg,aes(x=hwy)) +geom_histogram(binwidth = 2)
-
-
-# density instead of the count 
-
-p1 <- ggplot(mpg, aes(x=hwy, y=after_stat(density))) + 
-  geom_histogram(bins=8, fill="blue", alpha=0.5) +
-  labs(title="Histogram of Highway MPG density")
-p2 <- ggplot(mpg, aes(x=hwy)) + 
-  geom_density(fill='red', alpha=0.5) +
-  labs(title="Density Plot of Highway MPG")
-library(gridExtra)
-grid.arrange(p1, p2, ncol = 2)
-```
-
-
-
 
 # Review and Introduce Probability
 
@@ -918,7 +556,7 @@ Pdf : $f(x) = \frac{1}{\sqrt{2\pi}} e^{-\frac{x^2}{2}}$\
 
 ### Chi-square distribution
 
-### From standard normal distribution $f(x) = \frac{1}{\sqrt{2\pi}} e^{-\frac{x^2}{2}}$, we want to get Chi-square distribution $f(x; k) = \frac{1}{2^{k/2} \Gamma(k/2)} x^{k/2 - 1} e^{-x/2}$ 
+### From standard normal distribution $f(x) = \frac{1}{\sqrt{2\pi}} e^{-\frac{x^2}{2}}$, we want to get Chi-square distribution $f(x; k) = \frac{1}{2^{k/2} \Gamma(k/2)} x^{k/2 - 1} e^{-x/2}$
 
 Assuming that $Z \sim N(0, 1)$\
 $W=Z^2$\
@@ -952,7 +590,7 @@ Here, df=1 for every sample
 
 ### Student- t distribution
 
-### From standard normal distribution $f(x) = \frac{1}{\sqrt{2\pi}} e^{-\frac{x^2}{2}}$, we want to get Student- t distribution $f(t) = \frac{\Gamma \left(\frac{\nu+1}{2}\right)}{\sqrt{\nu \pi} \, \Gamma \left(\frac{\nu}{2}\right)} \left(1 + \frac{t^2}{\nu}\right)^{-\frac{\nu+1}{2}}$, where $\Gamma$ is the gamma function and $\nu$ is the degrees of freedom. 
+### From standard normal distribution $f(x) = \frac{1}{\sqrt{2\pi}} e^{-\frac{x^2}{2}}$, we want to get Student- t distribution $f(t) = \frac{\Gamma \left(\frac{\nu+1}{2}\right)}{\sqrt{\nu \pi} \, \Gamma \left(\frac{\nu}{2}\right)} \left(1 + \frac{t^2}{\nu}\right)^{-\frac{\nu+1}{2}}$, where $\Gamma$ is the gamma function and $\nu$ is the degrees of freedom.
 
 Given two independent variables Z and V ($Z \sim N(0, 1)$ & $V\sim \chi^2(\nu)$), then we construct a new variable $T=\frac{Z}{\sqrt(V/\nu)}$.\
 The joint pdf is $$
@@ -1937,7 +1575,7 @@ lets consider a different example to illustrate an alternative sampling scheme. 
 (the sampling scheme involves: Taking one random sample of size n, with n fixed in advance, and then "cross-classifying" each subject into one and only one of the mutually exclusive and exhaustive $A_i\cap B_j$ cells.)
 
 | Marijuana Support |             | Variable B (Age) |                 |               |               |         |
-|:----------|:----------|:----------|:----------|:----------|:----------|:----------|
+|:---------|:---------|:---------|:---------|:---------|:---------|:---------|
 | Variable A        | OBSERVED    | $(18-24) B_1$    | (25-34) $B_1 2$ | (35-49) $B_3$ | $(50-64) B_4$ | Total   |
 |                   | (YES) $A_1$ | 60               | 54              | 46            | 41            | 201     |
 |                   | (NO) $A_2$  | 40               | 44              | 53            | 57            | 194     |
@@ -1954,7 +1592,7 @@ Generally,
 Suppose we have $k$ (column) levels of Variable B indexed by the letter $j$, and $h$ (row) levels of Variable $A$ indexed by the letter $i$. Then, we can summarize the data and probability model in tabular format, as follows:
 
 | Variable B |                             |                             |                             |                             |                        |     |
-|:---------:|:---------:|:---------:|:---------:|:---------:|:---------:|:---------:|
+|:--------:|:--------:|:--------:|:--------:|:--------:|:--------:|:--------:|
 | Variable A |         $B_1(j=1)$          |         $B_2(j=2)$          |         $B_3(j=3)$          |         $B_4(j=4)$          |         Total          |     |
 | $A_1(i=1)$ | $Y_{11}\left(p_{11}\right)$ | $Y_{12}\left(p_{12}\right)$ | $Y_{13}\left(p_{13}\right)$ | $Y_{14}\left(p_{14}\right)$ | $\left(p_{1 .}\right)$ |     |
 | $A_2(i=2)$ | $Y_{21}\left(p_{21}\right)$ | $Y_{22}\left(p_{22}\right)$ | $Y_{23}\left(p_{23}\right)$ | $Y_{24}\left(p_{24}\right)$ | $\left(p_{2 .}\right)$ |     |
@@ -1971,7 +1609,7 @@ Although their chi-square statistics are equivalent, the two tests are not equiv
 Here’s the table of expected counts:
 
 | Bicycle Riding Interest |          | Variable B (Age) |        |        |        |       |
-|:------------------------|:---------|:-----------------|:-------|:-------|:-------|:------|
+|:------------|:---------|:---------|:---------|:---------|:---------|:---------|
 | Variable A              | EXPECTED | 18-24            | 25-34  | 35-49  | 50-64  | Total |
 |                         | YES      | 50.886           | 49.868 | 50.377 | 49.868 | 201   |
 |                         | NO       | 49.114           | 48.132 | 48.623 | 48.132 | 194   |
@@ -2332,7 +1970,6 @@ plot(fit.surv, xlab = "Months",
     ylab = "Estimated Probability of Survival")
 
 
-
 ```
 
 ## Cox-proportional harzards model
@@ -2361,6 +1998,364 @@ legend("bottomleft", levels(diagnosis), col = 2:5, lty = 1)
 ```
 
 # Labs for R-code
+
+# Final review of R codes
+
+## Calculation
+
+```{r}
+log(exp(1)) #  base `e` is the default (log(e) is not defined)
+```
+
+## Vectors -Lab 2
+
+```{r}
+x <- c(1,2,3,4)
+class(x)
+x %*%x # scalar ("inner") product (but default in R as an 1*1 matrix)
+rep(c('a','b'),3)
+rep(c(2, 4, 8), each = 3)
+y <- seq(from = 1, to = 4, by =1)
+class(y)
+1:4 # c(1,2,3,4) and 1:4 are all the same in.R
+seq(1,5, length.out=11)
+# vac<-c((1,2,3),(3,4,5)) is wrong, but the below is true
+vec1 <- c(1,2,3)
+vec2 <- c(4,5,6)
+vec3 <- c(vec1, vec2)
+vec3[1] == vec1[1]
+vec3[3:5];vec3[c(2,3)]
+vec3[-1] # everything but the first element
+vec3[-2*c(1,2)]
+x <- -5:5
+class(x)
+str(x)
+x <- c(-5:5)
+str(x)
+abs(-5:5)
+exp(c(-5:5))
+exp(-5:5)
+x <- c(1, 2, 3, 4, 5,6)
+y <- c(10,11)
+result <- x + y
+print(result)
+# sample variance and population variance 
+x <- c(1, 2, 3, 4, 5)
+# x * y  # Element-wise multiplication: 10 40 90 160 250 360
+c(1,2)*c(2,3)
+
+# Calculate the sample variance using R's var() function
+sample_variance <- var(x)
+
+# Calculate the sample(var(x)) and population variance
+n <- length(x)
+sample_variance <-var(x)
+population_variance <- sample_variance * (n - 1) / n
+print(population_variance)
+
+```
+
+## Rmd knowledge
+
+{r, echo = FALSE} Hidden Code
+
+eval: run or not
+
+message/warning
+
+result
+
+# Probability in R
+
+```{r}
+library(mosaic)
+plotDist('norm',mean=10,sd=2)
+plotDist('binom',size=10,prob=.2) # x-axis is the number of success from 1-10
+plotDist("pois", lambda = 2)
+
+sum(dpois(0:3, lambda = 2)) # the probability it is less than or equal to 3 of Poison(2)
+ppois(3, lambda = 2) 
+ppois(3, lambda = 2) == sum(dpois(0:3, lambda = 2)) # this inequivalance is because the floating point precision
+
+#xpnorm(-1)  # P(Z ≤ -1) = 0.1586553 -package mosaic
+#xpnorm(-1, lower.tail = FALSE)  # P(Z ≥ 1.5) = 0.0668072
+pnorm(-1)
+pnorm(-1,lower.tail = F)
+
+pnorm(0)
+qnorm(0)
+qnorm(0.95)
+qnorm(0.975)
+
+```
+
+# Data class
+
+```{r}
+df<-("R is the statistical analysis language")
+strsplit(df, split = " ")
+strsplit(df, split = "")
+df<-"all16i5need6is4a9long8vacation"
+?strsplit
+strsplit(df,split = "[0-9]+")
+paste("Good", "afternoon", "ladies", "and", "gentlemen")
+paste0("Good", "afternoon", "ladies", "and", "gentlemen")
+6 != 10
+x <- -10:10
+which(x>0)
+x[which(x>0)]
+
+
+vowels <- c("a", "e", "i", "o", "u")
+
+which(is.element(letters, vowels))
+
+# Note that logical elements are NOT in quotes.
+z = c("TRUE", "FALSE", "TRUE", "FALSE") 
+as.logical(z)
+
+# TRUE = 1 and FALSE = 0. sum() and mean() work on logical vectors
+
+# remember:
+TRUE & TRUE
+TRUE & FALSE
+TRUE | FALSE
+
+
+## Factor
+
+y <- c('B','B','A','A','C')
+z <- factor(y)
+str(z)
+as.numeric(z)
+levels(z)
+
+z <- factor(z,                       # vector of data levels to convert 
+            levels=c('B','A','C'),   # Order of the levels
+            labels=c("B Group", "A Group", "C Group")) # Pretty labels to use
+z
+
+### eg of use in the plot's x-axis name lable
+
+iris$Species <- factor(iris$Species,
+                       levels = c('versicolor','setosa','virginica'),
+                       labels = c('Versicolor','Setosa','Virginica'))
+boxplot(Sepal.Length ~ Species, data=iris)
+
+### another eg
+ages <- c(17, 25, 16, 30, 14, 18)
+age_category <- ifelse(ages >= 18, "Adult", "Minor")
+age_factor <- factor(age_category, levels = c("Minor", "Adult"))
+age_factor
+
+# transform a conituous numerical vector and transform it into a factor
+
+x <- 1:10
+
+# cut(x,breaks=3)
+cut(x, breaks = c(0, 2.5, 5.0, 7.5, 10))
+cut(x, breaks=3, labels=c('Low','Medium','High'))
+
+# dates
+mydates <- as.Date(c("2023-04-07", "2023-01-01"))
+mydates
+
+days <- mydates[1] - mydates[2]; days
+
+```
+
+The following symbols can be used with the `format()` function to print dates.
+
+-   %d day as a number (0-31) 01-31
+-   %a abbreviated weekday Mon
+-   %A unabbreviated weekday Monday
+-   %m month (00-12) 00-12
+-   %b abbreviated month Jan
+-   %B unabbreviated month January
+-   %y 2-digit year 07
+-   %Y 4-digit year 2007
+
+```{r}
+today <- Sys.Date()
+format(today, format="%B %d %Y")
+
+# or library(lubridate)
+#x = c("2014-02-4 05:02:00","2016/09/24 14:02:00") 
+#ymd_hms(x)
+
+# POSIXct
+```
+
+```{r}
+# Matrices
+
+n=1:9
+mat = matrix(n,nrow=3)
+mat
+y <- diag(n)
+
+# use %*% as the product of matrices
+
+## Eigenvalue and Eigenvector
+
+A <- matrix(c(13, -4, 2, -4, 11, -2, 2, -2, 8), 3, 3, byrow=TRUE)
+ev <- eigen(A)
+
+(values <- ev$values)
+(vectors <- ev$vectors)
+
+## Data selection --row then column
+
+mat[1, 1]
+mat[1,]
+mat[,1] 
+class(mat[1, ]) # Note that the class of the returned object is no longer a matrix
+
+# Data frames
+
+Data_Frame <- data.frame(Tr =c("1","2","3"),
+                         Pu =c(11,21,32),
+                         Dur=c(22,222,1))
+Data_Frame
+summary(Data_Frame)
+
+# List ---Can hold vectors, strings, matrices, models, list of other list, lists upon lists!
+
+mylist <- list(letters=c("a","b","c"),
+               numbers=1:3,matrix(1:25,ncol=5))
+head(mylist)
+
+# Can reference data using $ (if the elements are named), or using [], or [[]]
+
+mylist[1] # list
+mylist["letters"] # list
+mylist[[1]] # vector
+mylist$letters == mylist[["letters"]]
+mylist[[3]][1:2,1:2]
+class(mylist[[3]][1:2,1:2])
+x = c(0, 2, 2, 3, 4); 2 %in% x
+
+# eg of Matrices data frames
+x <- c(5.1, 4.9, 5.6, 4.2, 4.8, 4.5, 5.3, 5.2)   # some toy data
+results <- t.test(x, alternative='less', mu=5)   # do a t-test
+str(results)    
+results$p.value
+
+```
+
+Practice of Lab 5
+
+```{r}
+db_data <- list(
+  drugs = list(
+    general_information = data.frame(
+      drugbank_id = c("DB001", "DB002", "DB003", "DB004", "DB005"),
+      name = c("Aspirin", "Ibuprofen", "Paracetamol", "Insulin", "Morphine"),
+      type = c("small molecule", "small molecule", "small molecule", "biotech", "small molecule"),
+      created = as.Date(c("2020-01-01", "2020-02-01", "2020-03-01", "2020-04-01", "2020-05-01")),
+      stringsAsFactors = FALSE
+    ),
+    drug_classification = data.frame(
+      drugbank_id = c("DB001", "DB002", "DB003", "DB004", "DB005"),
+      classification = c("Analgesic", "Anti-inflammatory", "Analgesic", "Hormone", "Analgesic"),
+      stringsAsFactors = FALSE
+    ),
+    experimental_properties = data.frame(
+      drugbank_id = c("DB001", "DB002", "DB003", "DB004", "DB005", "DB001", "DB002", "DB003", "DB004", "DB005"),
+      kind = c("logP", "logP", "logP", "logP", "logP", "Molecular Weight", "Molecular Weight", "Molecular Weight", "Molecular Weight", "Molecular Weight"),
+      value = c("1.2", "1.5", "0.8", "2.1", "1.8", "180.1", "206.3", "151.2", "5800.0", "281.5"),
+      stringsAsFactors = FALSE
+    )
+  )
+)
+
+general_information <- db_data$drugs$general_information
+
+print(general_information)
+# 20. Number of drugs in the general_information dataframe
+general_information <- db_data$drugs$general_information
+nrow(general_information)
+
+# 21. Filter drugs of type "biotech"
+general_information[general_information$type == 'biotech',]
+
+# 22. Sort by the created column and display the first 5 rows
+general_information$created <- as.Date(general_information$created)
+sorted_df <- general_information[order(general_information$created), ]
+head(sorted_df, 5)
+
+# 23. Subset with specific columns and display the first 5 rows
+subset_df <- general_information[, c("drugbank_id", "name")]
+head(subset_df, 5)
+
+# 24. Merge dataframes and count rows
+drug_classification <- db_data$drugs$drug_classification
+merged_df <- merge(general_information, drug_classification, by = "drugbank_id")
+nrow(merged_df)
+
+# 25. Count unique experimental properties (kind)
+experimental_properties <- db_data$drugs$experimental_properties
+unique_kinds <- unique(experimental_properties$kind)
+length(unique_kinds)
+
+# 26. Filter for kind "logP" and count rows
+logP_df <- experimental_properties[experimental_properties$kind == "logP", ]
+nrow(logP_df)
+
+# 27. Convert value column to numeric and calculate mean
+logP_df$value <- as.numeric(logP_df$value)
+mean(logP_df$value, na.rm = TRUE)
+
+# 28. Calculate summary statistics for logP values
+summary(logP_df$value)
+sd(logP_df$value, na.rm = TRUE)
+
+# 29. Create a histogram of molecular weight values
+molecular_weight <- experimental_properties[experimental_properties$kind == "Molecular Weight", ]
+molecular_weight$value <- as.numeric(molecular_weight$value)
+# clean based on 3 sigma rule
+molecular_weight_clean <- molecular_weight[
+  abs(molecular_weight$value - mean(molecular_weight$value, na.rm = TRUE)) <= 3 * sd(molecular_weight$value, na.rm = TRUE),]
+hist(molecular_weight_clean$value, main = "Histogram of Molecular Weight", xlab = "Molecular Weight", ylab = "Frequency", col = "lightblue",breaks = 20)
+
+# 30. Filter for kind "Water Solubility" and count unique values
+water_solubility_df <- experimental_properties[experimental_properties$kind == "Water Solubility", ]
+length(unique(water_solubility_df$value))
+```
+
+# LAB 5 --data visualization
+
+```{r, fig.align='center'}
+library(ggplot2)
+data(iris)
+boxplot(iris$Sepal.Length ~ iris$Species)
+hist(iris$Sepal.Length)
+plot(Petal.Length ~ Sepal.Length, data=iris)
+abline(lm(Petal.Length ~ Sepal.Length, data=iris), col="red")
+data(mpg, package='ggplot2')
+ggplot(data=mpg, aes(x=class)) +
+  geom_bar()
+table(mpg$class)
+df <- as.data.frame(table(mpg$class))
+df
+# By default, the geom_bar() just counts the number of cases and displays how many observations were in each factor level. If we have a data frame that we have already summarized, geom_col will allow us to set the height of the bar by a y column.
+
+ggplot(df, aes(Var1, Freq)) +
+  geom_col()
+ggplot(mpg,aes(x=hwy)) +geom_histogram(binwidth = 2)
+
+
+# density instead of the count 
+
+p1 <- ggplot(mpg, aes(x=hwy, y=after_stat(density))) + 
+  geom_histogram(bins=8, fill="blue", alpha=0.5) +
+  labs(title="Histogram of Highway MPG density")
+p2 <- ggplot(mpg, aes(x=hwy)) + 
+  geom_density(fill='red', alpha=0.5) +
+  labs(title="Density Plot of Highway MPG")
+library(gridExtra)
+grid.arrange(p1, p2, ncol = 2)
+```
 
 ## basic calculation
 
