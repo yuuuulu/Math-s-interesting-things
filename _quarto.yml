@@ -10,7 +10,7 @@ website:
         text: yuuuulu
       - href: index.qmd
         text: Homepage
-      - href: aph101.qmd
+      - href: aph101.html
         text: Biostat and R
       - href: mth107.html
         text: Advanced Linear Algebra
