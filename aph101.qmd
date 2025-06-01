@@ -627,9 +627,12 @@ $$
 
 Assuming that we have two independent random variables $$
 X \sim \chi^2(n_1) \quad and\quad  Y \sim \chi^2(n_2)\
-$$ Now,we will define a new variable F $$
+$$ Now,we will define a new variable F 
+$$
 F = \frac{(X / n_1)}{(Y / n_2)}
-$$ This looks a little complex, so let's do some simplification. $$
+$$ This looks a little complex, so let's do some simplification.
+
+$$
 U = \frac{X}{n_1} \quad \text{and} \quad V = \frac{Y}{n_2}\
 $$
 
@@ -808,6 +811,7 @@ $$ (method 2 for integral calculation: x=uv,y=u(1-v) J=-u)
 
 ## Three Main Sampling distribution
 
+
 ### Chi-square distribution
 
 Suppose $X_1, \cdots, X_n \stackrel{\text { i.i.d. }}{\sim} \mathcal{N}(0,1)$.the distribution of the statistic $$
@@ -854,6 +858,7 @@ ggplot(chi_data, aes(x)) +
        y = "Density") +
   scale_color_manual(name = "Degrees of Freedom", values = c("df=4" = "blue","df=8" = "red", "df=12" = "green")) +
   theme_minimal()
+
 ```
 
 #### Application
@@ -940,6 +945,7 @@ $$ follows an $F$-distribution with $\nu_1=n_1-1$ and $\nu_2=n_2-1$ degrees of f
 
 #### Code to plot examples of F-distribution
 
+
 ```{r}
 # Load necessary libraries
 library(ggplot2)
@@ -1006,7 +1012,7 @@ $$ in the estimation of population parameter $\theta$.
 
 For confidence level of 95% CI for any normal distribution: About 95% of the values are within 1.96 standard deviations of the mean. (Recall the concept of Z-scores)
 
-That is, if $\text{Estimate}± (Z \times \sigma) $ was used to generate an interval estimate over and over again with different samples, in the long run 95% of the resulting intervals would include the actual value of the characteristic being estimated.
+That is, if $\text{Estimate}± (Z \times \sigma)$ was used to generate an interval estimate over and over again with different samples, in the long run 95% of the resulting intervals would include the actual value of the characteristic being estimated.
 
 -   The confidence level 95% refers to the method used to construct the interval rather than to any particular interval, such as the one we obtained.
 
