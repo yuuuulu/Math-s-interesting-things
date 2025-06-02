@@ -1937,7 +1937,13 @@ $$ where $\Phi$ is the standard normal CDF.
 
 ### Logistic
 
-The three GLM criteria give us: - $y_i \sim \operatorname{Bern}\left(p_i\right)$ - $\eta=\beta_0+\beta_1 X_1+\cdots+\beta_k X_k$ - $\operatorname{logit}(p)=\log \frac{p}{1-p}=\eta$
+The three GLM criteria give us: 
+
+- $y_i \sim \operatorname{Bern}\left(p_i\right)$ 
+
+- $\eta=\beta_0+\beta_1 X_1+\cdots+\beta_k X_k$ 
+
+- $\operatorname{logit}(p)=\log \frac{p}{1-p}=\eta$
 
 From which we know, $$
 p_i=\frac{\exp \left(\beta_0+\beta_1 x_{i 1}+\cdots+\beta_k X_{i k}\right)}{1+\exp \left(\beta_0+\beta_1 x_{i 1}+\cdots+\beta_k X_{i k}\right)}
@@ -2008,18 +2014,25 @@ legend("bottomleft", levels(diagnosis), col = 2:5, lty = 1)
 log(exp(1)) #  base `e` is the default (log(e) is not defined)
 ```
 
-## Vectors -Lab 2
+## Vectors
 
 ```{r}
 x <- c(1,2,3,4)
 class(x)
+
 x %*%x # scalar ("inner") product (but default in R as an 1*1 matrix)
+
 rep(c('a','b'),3)
 rep(c(2, 4, 8), each = 3)
 y <- seq(from = 1, to = 4, by =1)
-class(y)
-1:4 # c(1,2,3,4) and 1:4 are all the same in.R
+class(x)
+str(x)
+x <- c(-5:5)
+str(x)
+1:4 # c(1,2,3,4) and 1:4 are the same in.R
+
 seq(1,5, length.out=11)
+
 # vac<-c((1,2,3),(3,4,5)) is wrong, but the below is true
 vec1 <- c(1,2,3)
 vec2 <- c(4,5,6)
@@ -2029,44 +2042,56 @@ vec3[3:5];vec3[c(2,3)]
 vec3[-1] # everything but the first element
 vec3[-2*c(1,2)]
 x <- -5:5
-class(x)
-str(x)
-x <- c(-5:5)
-str(x)
+
 abs(-5:5)
-exp(c(-5:5))
-exp(-5:5)
+
 x <- c(1, 2, 3, 4, 5,6)
 y <- c(10,11)
-result <- x + y
+result <- x + y 
 print(result)
-# sample variance and population variance 
-x <- c(1, 2, 3, 4, 5)
-# x * y  # Element-wise multiplication: 10 40 90 160 250 360
+
+# x * y 
 c(1,2)*c(2,3)
+c(1,2)%*%c(2,3)
 
-# Calculate the sample variance using R's var() function
-sample_variance <- var(x)
-
+#####Application
 # Calculate the sample(var(x)) and population variance
+x <- c(1, 2, 3, 4, 5)
 n <- length(x)
+# Calculate the sample variance using R's var() function
 sample_variance <-var(x)
+sample_variance
 population_variance <- sample_variance * (n - 1) / n
-print(population_variance)
+population_variance
 
 ```
-
 ## Rmd knowledge
 
-{r, echo = FALSE} Hidden Code
+{r, echo = FALSE} --Hidden Code
 
-eval: run or not
+{r, eval = FALSE} --Do not run this code
 
-message/warning
+{r, message = FALSE} --Do not show the message
 
-result
+{r, warning = FALSE} --Do not show the warning
+
+{r,results='hide'} --Do not show the results
+
 
 # Probability in R
+
+```{r}
+dnorm(0) # density at 0
+pnorm(-1) # cumulative probability at -1
+pnorm(-1,lower.tail = F) # cumulative probability at -1, upper tail
+pnorm(0)
+qnorm(0) # quantile at 0 (with the cumulative probability of 0)
+pnorm(1.645) 
+qnorm(0.95) # norm quantile at 0.95 (with the cumulative probability of 0.95)
+pnorm(1.96)
+qnorm(0.975)
+```
+
 
 ```{r}
 library(mosaic)
@@ -2080,19 +2105,958 @@ ppois(3, lambda = 2) == sum(dpois(0:3, lambda = 2)) # this inequivalance is beca
 
 #xpnorm(-1)  # P(Z ≤ -1) = 0.1586553 -package mosaic
 #xpnorm(-1, lower.tail = FALSE)  # P(Z ≥ 1.5) = 0.0668072
-pnorm(-1)
-pnorm(-1,lower.tail = F)
+```
 
-pnorm(0)
-qnorm(0)
-qnorm(0.95)
-qnorm(0.975)
+# R basic
 
+```{r}
+paste("Good", "afternoon", "ladies", "and", "gentlemen")
+paste0("Good", "afternoon", "ladies", "and", "gentlemen")
+
+x <- -10:10
+which(x>0)
+x[which(x>0)]
+vowels <- c('a','e','i','o','u')
+which(is.element(letters, vowels))
 ```
 
 # Data class
 
+## Numeric
+
+## Integer
+
 ```{r}
+y <- 42L
+class(y)
+```
+
+
+## Character
+
+```{r}
+x <- "123"
+class(x)
+# [1] "character"
+
+x <- as.numeric(x)
+class(x)
+# [1] "numeric"
+```
+
+
+## Logical
+
+```{r}
+# Note that logical elements are NOT in quotes.
+z = c("TRUE", "FALSE", "TRUE", "FALSE")
+class(z)
+as.logical(z)
+
+# TRUE = 1 and FALSE = 0. sum() and mean() work on logical vectors
+
+# remember:
+TRUE & TRUE
+TRUE & FALSE
+TRUE | FALSE
+
+```
+
+## Factor
+
+```{r}
+y <- c('B','B','A','A','C')
+z <- factor(y)
+str(z)
+as.numeric(z)
+levels(z)
+
+z <- factor(z,                       # vector of data levels to convert 
+            levels=c('B','A','C'),   # Order of the levels
+            labels=c("B Group", "A Group", "C Group")) # Pretty labels to use
+z
+#####Application
+### eg of use in the plot's x-axis name lable
+
+iris$Species <- factor(iris$Species,
+                       levels = c('versicolor','setosa','virginica'),
+                       labels = c('Versicolor','Setosa','Virginica'))
+#boxplot(Sepal.Length ~ Species, data=iris)
+
+### another eg
+#age_category <- ifelse(ages >= 18, "Adult", "Minor")
+#age_factor <- factor(age_category, levels = c("Minor", "Adult"))
+#age_factor
+
+### transform a continuous numerical vector into a factor
+
+x <- 1:10
+cut(x, breaks = c(0, 2.5, 5.0, 7.5, 10))
+x<-cut(x, breaks=3, labels=c('Low','Medium','High'))
+str(x)
+
+```
+
+
+## Date and time
+
+The following symbols can be used with the `format()` function to print dates.
+
+-   %d day as a number (0-31) 01-31
+-   %a abbreviated weekday Mon
+-   %A unabbreviated weekday Monday
+-   %m month (00-12) 00-12
+-   %b abbreviated month Jan
+-   %B unabbreviated month January
+-   %y 2-digit year 07
+-   %Y 4-digit year 2007
+
+```{r}
+mydates <- as.Date(c("2023-04-07", "2023-01-01"))
+mydates
+
+days <- mydates[1] - mydates[2]; days
+
+today <- Sys.Date()
+format(today, format="%B %d %Y")
+```
+
+## Data frame 
+
+```{r}
+Data_Frame <- data.frame(Tr =c("1","2","3"),
+                         Pu =c(11,21,32),
+                         Dur=c(22,222,1))
+Data_Frame
+summary(Data_Frame)
+
+### table and data frame
+table(mpg$class)
+df <- as.data.frame(table(mpg$class))
+df
+```
+
+## List
+
+```{r}
+# List ---Can hold vectors, strings, matrices, models, list of other list, lists upon lists!
+
+mylist <- list(letters=c("a","b","c"),
+               numbers=1:3,matrix(1:25,ncol=5))
+head(mylist)
+
+# Can reference data using $ (if the elements are named), or using [], or [[]]
+
+mylist[1] # list
+mylist["letters"] # list
+mylist[[1]] # vector
+mylist$letters == mylist[["letters"]]
+mylist[[3]][1:2,1:2]
+class(mylist[[3]][1:2,1:2])
+x = c(0, 2, 2, 3, 4); 2 %in% x
+# eg of using list
+x <- c(5.1, 4.9, 5.6, 4.2, 4.8, 4.5, 5.3, 5.2)   # some toy data
+results <- t.test(x, alternative='less', mu=5)   # do a t-test
+str(results)    
+results$p.value
+```
+
+## Matrix
+
+```{r}
+# Matrices
+
+n=1:9
+mat = matrix(n,nrow=3)
+mat
+y <- diag(n)
+
+# use %*% as the product of matrices
+
+## Eigenvalue and Eigenvector
+
+A <- matrix(c(13, -4, 2, -4, 11, -2, 2, -2, 8), 3, 3, byrow=TRUE)
+ev <- eigen(A)
+
+(values <- ev$values)
+(vectors <- ev$vectors)
+
+## Data selection --row then column
+
+mat[1, 1]
+mat[1,]
+mat[,1] 
+class(mat[1, ]) # Note that the class of the returned object is no longer a matrix
+
+```
+
+
+## Example 1
+
+```{r}
+db_data <- list(
+  drugs = list(
+    general_information = data.frame(
+      drugbank_id = c("DB001", "DB002", "DB003", "DB004", "DB005"),
+      name = c("Aspirin", "Ibuprofen", "Paracetamol", "Insulin", "Morphine"),
+      type = c("small molecule", "small molecule", "small molecule", "biotech", "small molecule"),
+      created = as.Date(c("2020-01-01", "2020-02-01", "2020-03-01", "2020-04-01", "2020-05-01")),
+      stringsAsFactors = FALSE
+    ),
+    drug_classification = data.frame(
+      drugbank_id = c("DB001", "DB002", "DB003", "DB004", "DB005"),
+      classification = c("Analgesic", "Anti-inflammatory", "Analgesic", "Hormone", "Analgesic"),
+      stringsAsFactors = FALSE
+    ),
+    experimental_properties = data.frame(
+      drugbank_id = c("DB001", "DB002", "DB003", "DB004", "DB005", "DB001", "DB002", "DB003", "DB004", "DB005"),
+      kind = c("logP", "logP", "logP", "logP", "logP", "Molecular Weight", "Molecular Weight", "Molecular Weight", "Molecular Weight", "Molecular Weight"),
+      value = c("1.2", "1.5", "0.8", "2.1", "1.8", "180.1", "206.3", "151.2", "5800.0", "281.5"),
+      stringsAsFactors = FALSE
+    )
+  )
+)
+db_data
+
+general_information <- db_data$drugs$general_information
+
+print(general_information)
+# 20. Number of drugs in the general_information dataframe
+general_information <- db_data$drugs$general_information
+nrow(general_information)
+
+# 21. Filter drugs of type "biotech"
+general_information[general_information$type == 'biotech',]
+
+# 22. Sort by the created column and display the first 5 rows
+general_information$created <- as.Date(general_information$created)
+sorted_df <- general_information[order(general_information$created), ]
+head(sorted_df, 5)
+
+# 23. Subset with specific columns and display the first 5 rows
+subset_df <- general_information[, c("drugbank_id", "name")]
+head(subset_df, 5)
+
+# 24. Merge dataframes and count rows
+drug_classification <- db_data$drugs$drug_classification
+merged_df <- merge(general_information, drug_classification, by = "drugbank_id")
+nrow(merged_df)
+
+# 25. Count unique experimental properties (kind)
+experimental_properties <- db_data$drugs$experimental_properties
+unique_kinds <- unique(experimental_properties$kind)
+length(unique_kinds)
+
+# 26. Filter for kind "logP" and count rows
+logP_df <- experimental_properties[experimental_properties$kind == "logP", ]
+nrow(logP_df)
+
+# 27. Convert value column to numeric and calculate mean
+logP_df$value <- as.numeric(logP_df$value)
+mean(logP_df$value, na.rm = TRUE)
+
+# 28. Calculate summary statistics for logP values
+summary(logP_df$value)
+sd(logP_df$value, na.rm = TRUE)
+
+# 29. Create a histogram of molecular weight values
+molecular_weight <- experimental_properties[experimental_properties$kind == "Molecular Weight", ]
+molecular_weight$value <- as.numeric(molecular_weight$value)
+# clean based on 3 sigma rule
+molecular_weight_clean <- molecular_weight[
+  abs(molecular_weight$value - mean(molecular_weight$value, na.rm = TRUE)) <= 3 * sd(molecular_weight$value, na.rm = TRUE),]
+hist(molecular_weight_clean$value, main = "Histogram of Molecular Weight", xlab = "Molecular Weight", ylab = "Frequency", col = "lightblue",breaks = 20)
+
+# 30. Filter for kind "Water Solubility" and count unique values
+water_solubility_df <- experimental_properties[experimental_properties$kind == "Water Solubility", ]
+length(unique(water_solubility_df$value))
+```
+
+
+# Data visualization (mainly: ggplot2)
+
+## Box plots
+
+```{r}
+library(ggplot2)
+data(iris)
+boxplot(iris$Sepal.Length ~ iris$Species)
+ggplot(mpg, aes(x=class, y=hwy)) + 
+  geom_boxplot() +
+  scale_y_continuous(breaks = seq(10, 45, by=5))  #---diy scale in y-axis 
+
+# ggplot(mpg, aes(x=class, y=hwy)) + geom_boxplot() +scale_y_continuous(breaks = seq(10, 45, by=5), minor_breaks = NULL)
+```
+
+## Histogram plots
+
+```{r}
+hist(iris$Sepal.Length)
+plot(Petal.Length ~ Sepal.Length, data=iris)
+abline(lm(Petal.Length ~ Sepal.Length, data=iris), col="red")
+data(mpg, package='ggplot2')
+ggplot(data=mpg, aes(x=class)) +
+  geom_bar()
+# By default, the geom_bar() just counts the number of cases and displays how many observations were in each factor level. If we have a data frame that we have already summarized, geom_col will allow us to set the height of the bar by a y column.
+table(mpg$class)
+df <- as.data.frame(table(mpg$class))
+df
+ggplot(df, aes(Var1, Freq)) +
+  geom_col()
+ggplot(mpg,aes(x=hwy)) +geom_histogram(binwidth = 2)
+```
+
+## Density plots
+
+```{r}
+p1 <- ggplot(mpg, aes(x=hwy, y=after_stat(density))) + 
+  geom_histogram(bins=8, fill="blue", alpha=0.5) +
+  labs(title="Histogram of Highway MPG density")
+p2 <- ggplot(mpg, aes(x=hwy)) + 
+  geom_density(fill='red', alpha=0.5) +
+  labs(title="Density Plot of Highway MPG")
+library(gridExtra)
+grid.arrange(p1, p2, ncol = 2)
+```
+
+- mutiple plots in one figure
+
+```{r}
+ggplot(iris, aes(x = Sepal.Length)) +
+  geom_density(aes(fill = Species,color=Species), alpha = 0.5) +
+  labs(title = "Density plot") +
+  labs(x = "Sepal Length", y = "Density") +
+  labs(fill = "area",color="line")  # fill is the area,color is the line or dot
+```
+
+
+## Scatter plots
+
+
+```{r}
+mtcars$cyl <- factor(mtcars$cyl) 
+
+ggplot(mtcars, aes(x=wt, y=mpg, col=cyl)) + geom_point() +
+  labs(title='Weight vs Miles per Gallon') +
+  labs(x="Weight in tons (2000 lbs)", y="Miles per Gallon (US)" ) +
+  labs(color="Cylinders") + # color is dot or line
+  scale_color_manual(values=c('blue', 'darkmagenta', 'aquamarine')) # diy color
+```
+
+
+## Scatter plots with regression line
+
+```{r}
+ggplot(data=iris, aes(x=Sepal.Length, y=Petal.Length,color=Species))+
+  geom_point()+# Anything set inside an aes() command will be of the form attribute=Column_Name and will change based on the data. Anything set outside an aes() command will be in the form attribute=value and will be fixed.
+   geom_smooth(method="lm") #By default, geom_smooth(method="lm") fits a linear regression line for each Species separately because Species are mapped to colors, and geom_smooth automatically draws a line for each category.
+
+ggplot(data=iris, aes(x=Sepal.Length, y=Petal.Length)) +
+  geom_point(aes(color=Species,shape=Species))+
+  geom_smooth(method="lm")
+
+
+# Zooming in/out--Danger!  This removes the data points first!
+#ggplot(trees, aes(x=Girth, y=Volume)) + 
+  #geom_point() +
+  #geom_smooth(method='lm') +
+  #xlim( 8, 19 ) + ylim(0, 60)
+```
+
+```{r}
+library(palmerpenguins)
+ggplot(penguins, aes(x=flipper_length_mm, y=body_mass_g)) + geom_point(aes(color=bill_depth_mm, shape=species), na.rm=T) + geom_smooth(na.rm=T, se=F) + scale_color_gradient2(low='yellow', mid='green', high='blue', midpoint = 17) + labs(x='Flipper length (millimeters)', y='Body mass (grams)', color='Bill depth (millimeters)') + theme_bw()
+```
+
+
+## Heat map
+
+```{r}
+# data
+mine.table <- data.frame(
+  Sample.name = rep(paste0("Sample", 1:5), each = 3),
+  Class = rep(c("Class1", "Class2", "Class3"), times = 5),
+  Abundance = c(0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1.0, 1.1, 1.2, 1.3, 1.4, 1.5),
+  Depth = c(0.5,0.5,0.5, 0.6,0.6,0.6, 0.7,0.7,0.7, 0.8,0.8,0.8, 0.9,0.9,0.9)
+)
+print(mine.table)
+
+
+mine.heatmap <- ggplot(data = mine.table, mapping = aes(x = Sample.name, y = Class, fill = Abundance)) + 
+  geom_tile() + # create the heatmap with tiles+
+  scale_y_discrete(limits = rev(levels(factor(mine.table$Class)))) +  # reverse the order of the y-axis --class1 to class 3 (if not have this:class 3 to class 1)
+  scale_fill_gradient(low = "white", high = "blue") +  # color
+  theme_minimal() +  # control the theme of the plot
+  theme(axis.text.x = element_text(angle = 45, hjust = 1)) +  # Rotate the X-axis label for better display
+  labs(x = "Sample Name",  # x-axis label
+       y = "Class",  # y-axis label
+       fill = "Abundance")+ # fill legend label by "Abundance"
+       ggtitle("Heatmap of Abundance by Sample and Class")+ # add title
+       geom_text(aes(label = round(Abundance, 2)), color = "black", size = 3) # add text labels to the tiles
+
+
+print(mine.heatmap)
+```
+
+Create heat map using facet_grid to show the data in different panels by depth
+
+
+```{r}
+mine.heatmap <- ggplot(data = mine.table, mapping = aes(x = Sample.name, y = Class, fill = Abundance)) + 
+  geom_tile() + # create the heatmap with tiles+
+  facet_grid(~ Depth,switch = 'x', scales='free', space='free')+ # facet_grid to show the data in different panels by depth
+  scale_y_discrete(limits = rev(levels(factor(mine.table$Class)))) +  # reverse the order of the y-axis --class1 to class 3 (if not have this:class 3 to class 1)
+  scale_fill_gradient(low="#FFFFFF", high="#012345")+  # color
+  theme_minimal() +  # control the theme of the plot
+  theme(axis.text.x = element_text(angle = 45, hjust = 1)) +  # Rotate the X-axis label for better display
+  labs(x = "Sample Name",  # x-axis label
+       y = "Class",  # y-axis label
+       fill = "Abundance")+ # fill legend label by "Abundance"
+       ggtitle("Heatmap of Abundance by Sample and Class")+ # add title
+       geom_text(aes(label = round(Abundance, 2)), color = "black", size = 3) # add text labels to the tiles
+  
+       
+
+
+print(mine.heatmap)
+
+
+```
+
+
+## Faceting (make many panels of graphics where each panel represents the same relationship between variables, but something changes between each pane)
+
+```{r}
+ggplot(iris, aes(x=Sepal.Length, y=Sepal.Width)) +
+  geom_point() +
+  facet_grid(.~Species) #or facet_grid(Species~.)--Categorical variables of species will be vertical
+```
+-   Another example
+
+```{r}
+library(reshape)
+data(tips, package='reshape')
+head(tips, 3)
+ggplot(tips, aes(x = total_bill, y = tip / total_bill)) +
+  geom_point() +
+  facet_grid( smoker ~ day )
+# 'free_y' means the scale of different panels are adjusted by themselves
+ggplot(tips, aes(x = total_bill, y = tip / total_bill)) +
+  geom_point() +
+  facet_wrap( ~ day, scales='free_y')
+# log scales ---a wrapper of  scale_y_continuous() function , trans_new() function
+# ggplot(ACS, aes(x=Age, y=Income)) + geom_point() +
+# scale_y_log10(breaks=c(1, 10, 100),
+#            minor=c(1:10,
+#                 seq(10, 100, by=10 ),
+#                seq(100, 1000, by=100))) +
+#  ylab('Income (1000s of dollars)')
+
+
+
+```
+-   Multi-plot
+
+```{r}
+p1 <- ggplot(ChickWeight, aes(x=Time, y=weight, colour=Diet, group=Chick)) +
+    geom_line() +
+    ggtitle("Growth curve for individual chicks")
+# Second plot
+p2 <- ggplot(ChickWeight, aes(x=Time, y=weight, colour=Diet)) +
+    geom_point(alpha=.3) +
+    geom_smooth(alpha=.2, linewidth=1) +
+    ggtitle("Fitted growth curve per diet")
+# Third plot 
+p3 <- ggplot(subset(ChickWeight, Time==21), aes(x=weight, colour=Diet)) +
+    geom_density() +
+    ggtitle("Final weight, by diet")
+
+
+# to realize:
+# plot1 plot2 plot2
+# plot1 plot2 plot2
+# plot1 plot3 plot3
+
+my.layout = cbind( c(1,1,1), c(2,2,3), c(2,2,3) ) # each c represents a column in a matrix and 1,2,3 represents p1,p2,p3
+library(Rmisc)
+Rmisc::multiplot( p1, p2, p3, layout=my.layout)
+
+
+
+# OR library(ggpubr) https://rpkgs.datanovia.com/ggpubr/). 
+
+library(ggpubr)
+# Box plot (bp)
+bxp <- ggboxplot(ToothGrowth, x = "dose", y = "len",
+                 color = "dose", palette = "jco")
+# Dot plot (dp)
+dp <- ggdotplot(ToothGrowth, x = "dose", y = "len",
+                 color = "dose", palette = "jco", binwidth = 1)
+mtcars$name <- rownames(mtcars)
+mtcars$cyl <- as.factor(mtcars$cyl)
+bp <- ggbarplot(mtcars, x = "name", y = "mpg",
+          fill = "cyl",               # change fill color by cyl
+          color = "white",            # Set bar border colors to white
+          palette = "jco",            # jco journal color palett. see ?ggpar
+          sort.val = "asc",           # Sort the value in ascending order
+          sort.by.groups = TRUE,      # Sort inside each group
+          x.text.angle = 90           # Rotate vertically x axis texts
+          ) + font("x.text", size = 8)
+# Scatter plots (sp)
+sp <- ggscatter(mtcars, x = "wt", y = "mpg",
+                add = "reg.line",               # Add regression line
+                conf.int = TRUE,                # Add confidence interval
+                color = "cyl", palette = "jco", # Color by groups "cyl"
+                shape = "cyl"                   # Change point shape by groups "cyl"
+                ) + 
+  stat_cor(aes(color = cyl), label.x = 3)       # Add correlation coefficient
+
+ggarrange(bxp, dp, bp + rremove("x.text"),
+          labels = c("A", "B", "C"),
+          ncol = 2, nrow = 2)
+# Themes
+# Rmisc::multiplot( p1 + theme_bw(),          # Black and white
+#                   p1 + theme_minimal(),   
+#                   p1 + theme_dark(),        
+#                   p1 + theme_light(),
+#                   cols=2 )
+
+#ggsave('p1.png', width=6, height=3, dpi=350)
+
+
+```
+
+# Data manipulation
+
+```{r}
+library(dplyr)
+library(tidyverse)
+```
+
+## apply
+
+```{r}
+# apply
+# Summarize each column by calculating the mean.
+apply(iris[,-5],        # what object do we want to apply the function to
+      MARGIN=1,    # rows = 1, columns = 2, (same order as [rows, cols]
+      FUN=mean     # what function do we want to apply     
+     ) %>% head(10)
+
+
+average <- apply( 
+  iris[,-5],        # what object do we want to apply the function to
+  MARGIN=2,    # rows = 1, columns = 2, (same order as [rows, cols]
+  FUN=mean     # what function do we want to apply
+)
+iris <- rbind(iris[,-5], average)
+iris %>% head(3)
+```
+
+There are several variants of the apply() function, and the most frequently used ones are lapply() and sapply(). These two functions apply a given function to each element of a list or vector and returns a corresponding list or vector of results.
+
+
+```{r}
+#lapply
+x <- list(a = 1:10, beta = exp(-3:3), logic = c(TRUE,FALSE,FALSE,TRUE))
+x
+lapply(x, quantile, probs = 1:3/4) # list 
+sapply(x, quantile, probs = 1:3/4) # matrix
+```
+
+## Tibbles
+
+A tibble, or tbl_df, is a modern reimagining of the data.frame, keeping what time has proven to be effective, and throwing out what is not. Tibbles are data.frames that are lazy and surly: they do less (i.e. they don t change variable names or types, and don t do partial matching) and complain more (e.g. when a variable does not exist). This forces you to confront problems earlier, typically leading to cleaner, more expressive code. Tibbles also have an enhanced print() method which makes them easier to use with large datasets containing complex objects.
+
+```{r}
+data <- data.frame(a = 1:3, b = letters[1:3], c = Sys.Date() - 1:3)
+data
+
+as_tibble(data)
+
+```
+
+
+## %>% 
+
+The pipe operator %>% is used to pass the result of one function to the next function in a chain, making the code more readable and concise. For example, if we wanted to start with x, and first apply function f(), then g(), and then h(), the usual R command would be h(g(f(x))) which is hard to read because you have to start reading at the innermost set of parentheses. Using the pipe command %\>%, this sequence of operations becomes x %\>% f() %\>% g() %\>% h().
+
+
+## select
+
+```r
+
+# Correct usage of select() within a pipeline
+starwars %>% select(-ends_with('color'))
+
+```
+
+## filter
+
+```{r}
+library(dplyr)
+
+# Filter rows where species is "Droid" and mass is greater than or equal to 100
+filtered_data <- starwars %>% filter(species == "Droid", mass < 100)
+print(filtered_data)
+
+```
+
+## slice
+
+This function is used to select rows by their position in the data frame. It can be used to select specific rows or a range of rows.
+
+filter rows based on row number:
+
+```{r}
+starwars %>% slice(2:4)
+```
+
+
+## arrange
+
+This function is used to sort the rows of a data frame by one or more columns. The default sorting of the number in the dataset is in ascending order, but you can use the `desc()` function to sort in descending order.
+
+```{r}
+starwars %>% arrange(desc(name)) #The default sorting is in ascending order
+
+starwars %>% arrange(desc(height)) %>% head(3)
+dd <- data.frame(
+  Trt = factor(c("High", "Med", "High", "Low"),        
+               levels = c("Low", "Med", "High")), # level
+  y = c(8, 3, 9, 9),      
+  z = c(1, 1, 1, 2)) 
+dd %>% arrange(Trt, desc(y))
+```
+
+## mutate
+
+This function is used to create new columns or modify existing columns in a data frame. It allows you to perform calculations and transformations on the data.
+
+```r
+# select using the old columns
+starwars$bmi = starwars$mass / ((starwars$height / 100) ^ 2)
+starwars %>% select(name, bmi) %>% head(3)
+
+# mutate avoids all the starwars$
+
+starwars$bmi <- NULL
+starwars %>% 
+  mutate(bmi = mass / ((height / 100) ^ 2)) %>%  
+  select(name, bmi) %>% head(3)
+
+# mutate_at() and mutate_if() allow us to apply a function to a particular column and save the output.
+
+subset <- starwars %>% 
+  mutate(square_height = (height / 100) ^ 2,
+         bmi = mass / square_height) %>%
+  select(name, square_height, bmi)
+subset %>% head(3)
+
+subset %>% mutate_if(is.numeric, round, digits=0) # here, is.numeric is the condition
+
+subset %>% mutate_at(2:3, round, digits=0) %>% head() # column 2 3
+
+# Apply the transformation to columns 2 and 3 for rows 1 to 3
+result <- subset %>% 
+  mutate_at(2:3, ~ifelse(row_number() %in% 1:3, round(., digits = 0), .))
+
+subset %>% mutate(avg.example = select(., square_height:bmi) %>% rowMeans())
+
+
+```
+
+## summarise
+
+This function is used to create a summary table. It reduces the data frame to a single row containing summary statistics.
+
+```r
+starwars %>% summarise(mean.height=mean(height, na.rm=T), sd.height=sd(height, na.rm=T))
+
+# apply the same statistic to each column
+starwars %>% select(height:mass) %>% summarise_all(list(min=min, max=max), na.rm=T)
+starwars %>% summarise_if(is.numeric, list(min=min, max=max), na.rm = T)
+```
+## group_by
+
+This function is used to group the data frame by one or more columns. It is often used in combination with `summarise()` to calculate summary statistics for each group.
+
+
+```r
+
+library(dplyr)
+library(palmerpenguins)
+table(penguins$sex, penguins$species)
+penguins %>% 
+  filter(!is.na(sex)) %>%
+  group_by(sex, species) %>%           
+  summarise(n = n(), 
+            mean.flipper = mean(flipper_length_mm),
+            sd.flipper = sd(flipper_length_mm),
+            .groups='keep') %>%
+  head(3)
+  
+```
+
+## examples
+
+Find the flight with the longest departure delay among flights from the same origin and destination (use `filter()`). Relocate the origin, destination, and departure delay to the first three columns and sort by origin and dest.
+
+``` r
+flights %>% 
+  filter(!is.na(dep_delay)) %>% 
+  group_by(origin, dest) %>% 
+  filter(dep_delay == max(dep_delay)) %>% 
+  relocate(origin, dest, dep_delay) %>% 
+  arrange(origin, dest)
+```
+
+Find the flight with the longest departure delay among flights from the same origin and destination (use `top_n()` or `slice_max()`). Relocate the origin, destination, and departure delay to the first three columns and sort by origin and dest.
+
+``` r
+flights %>% 
+  filter(!is.na(dep_delay)) %>% 
+  group_by(origin, dest) %>% 
+  top_n(1, dep_delay) %>%  # or using slice_max(dep_delay) %>% 
+  relocate(origin, dest, dep_delay) %>% 
+  arrange(origin, dest)
+```
+
+How do departure delays vary at different times of the day? Summarize the averaged departure delays by hours and create an new column named as `dep_delay_level` which `cut()` the averaged departure delays into three levels (low, median, and high).
+
+``` r
+flights %>% 
+  group_by(hour) %>% 
+  summarize(avg_dep_delay = mean(dep_delay, na.rm = TRUE)) %>%
+  mutate(dep_delay_level = cut(avg_dep_delay, breaks=3, c('low', 'median', 'high')))
+```
+
+ How do departure delays vary at different times of the day? Illustrate your answer with a `geom_smooth()` plot.
+
+``` r
+flights %>% 
+  group_by(hour) %>% 
+  summarize(avg_dep_delay = mean(dep_delay, na.rm = TRUE)) %>%
+  ggplot(aes(x = hour, y = avg_dep_delay)) + geom_smooth()
+```
+
+``` r
+# ways to deleter the blanks
+students %>%
+  rename(
+    student_id = `Student ID`,
+    full_name = `Full Name`
+  ) %>% head(3)
+```
+
+``` r
+
+
+read_csv(
+  "# A comment I want to skip
+  x,y,z
+  1,2,3",
+  comment = "#"
+)
+```
+
+```{r}
+library(tidyr)
+grade.book <- rbind(
+  data.frame(name='Alison',  HW.1=8, HW.2=5, HW.3=8, HW.4=4),
+  data.frame(name='Brandon', HW.1=5, HW.2=3, HW.3=6, HW.4=9),
+  data.frame(name='Charles', HW.1=9, HW.2=7, HW.3=9, HW.4=10))
+grade.book
+tidy.scores <- grade.book %>%
+  pivot_longer(
+    cols = starts_with("HW"),
+    names_to = "Homework",
+    values_to = "Score"
+  )
+tidy.scores
+tidy.scores %>% pivot_wider(names_from=Homework, values_from=Score)
+
+# table joins
+
+Fish.Data <- tibble(
+  Lake_ID = c('A','A','B','B','C','C'), 
+  Fish.Weight=rnorm(6, mean=260, sd=25) ) # make up some data
+Fish.Data
+Lake.Data <- tibble(
+  Lake_ID = c('B','C','D'),   
+  Lake_Name = c('Lake Elaine', 'Mormon Lake', 'Lake Mary'),   
+  pH=c(6.5, 6.3, 6.1),
+  area = c(40, 210, 240),
+  avg_depth = c(8, 10, 38))
+Lake.Data
+full_join(Fish.Data, Lake.Data)
+left_join(Fish.Data, Lake.Data)
+inner_join(Fish.Data, Lake.Data)
+```
+
+``` r
+mutate(
+    week = parse_number(week)
+  )
+```
+
+how many data points are in the data set
+
+``` r
+gender_year <- Survey %>% 
+  filter(!is.na(Year)) %>% 
+  group_by(Sex, Year) %>% 
+  count() %>% 
+  rename(nu=n)
+gender_year
+gender_year %>% pivot_wider(names_from = Year, values_from = nu)
+```
+
+``` r
+who2 %>% 
+  head(3)
+who2 <- who2 %>% 
+  pivot_longer(
+    cols = !(country:year), 
+    names_to = c("diagnosis", "gender", "age"), 
+    names_sep = "_",
+    values_to = "count"
+  ) %>% 
+  filter(!is.na(count))
+who2
+```
+
+``` r
+left_join(feb14_VX, airports, by=c('dest'='faa'))
+```
+```r
+
+library(psych)
+drug_prop <- drug_prop %>% 
+  filter(class == 'Carboxylic acids and derivatives') 
+drug_prop %>% 
+  select(logP, logS, water_solubility) %>% 
+  pairs.panels()
+```
+
+
+## ps:the comparison between whether to use %\>% or not
+
+
+
+``` r
+# %>% 
+penguins %>% 
+  filter(!is.na(sex)) %>%
+  group_by(sex, species) %>%           
+  mutate(Sum.Sq.Cells = (flipper_length_mm - mean(flipper_length_mm))^2)  %>%  
+  select(sex, species, flipper_length_mm, Sum.Sq.Cells) %>% head()
+
+# not use %>% 
+head(
+  select(mutate(group_by(filter(penguins, !is.na(sex)), sex, species),
+                Sum.Sq.Cells = (flipper_length_mm - mean(flipper_length_mm))^2),
+       sex, species, flipper_length_mm, Sum.Sq.Cells))
+```
+
+``` r
+library(nycflights13)
+str(nycflights13::flights)
+# the order of group_by and summarize matters
+flights %>% 
+  group_by(carrier) %>% 
+  summarize(avg_dep_delay = mean(dep_delay, na.rm = TRUE)) %>% 
+  arrange(desc(avg_dep_delay))
+```
+# Control flow
+
+## while loop
+
+```r
+x <- 1
+while (x < 10) {
+  print(x)
+  x <- x + 1
+}
+```
+
+
+## for loop
+
+### Fibonacci sequence 
+
+```{r}
+F <- rep(0, 10)        
+F[1] <- 0             
+F[2] <- 1              
+cat('F = ', F, '\n') 
+
+for( n in 3:10 ){
+  F[n] <- F[n-1] + F[n-2]
+  cat('F = ', F, '\n')    
+}
+```
+### bootstrap estimate of a sampling distribution
+
+ - bootstrap estimate of a sampling distribution
+ 
+```{r}
+library(dplyr)
+library(ggplot2)
+SampDist <- data.frame()
+
+for (i in 1:1000){
+  SampDist <- trees %>% 
+    slice_sample(n=30, replace =TRUE) %>% 
+    dplyr::summarise(xbar=mean(Height)) %>% 
+    rbind(SampDist)
+}
+ggplot(SampDist,aes(x=xbar)) +
+  geom_histogram()
+
+```
+
+
+# Functions
+
+## Functions condtruction
+
+copy of x
+
+```{r}
+k <- 3
+example.func <- function(x){
+  x <- sort(x)
+  if (k > 1){
+    print(x)
+  }
+}
+x <- c(3,1,5,4,2)
+example.func(x)
+x # x is changed inside the function but not outsied the function
+```
+
+
+## Ellipses
+
+```{r}
+# a function that draws the regression line and confidence interval
+# notice it doesn't return anything, all it does is draw a plot
+show.lm <- function(m, interval.type='confidence', fill.col='light grey', ...){
+  x <- m$model[,2]       # extract the predictor variable
+  y <- m$model[,1]       # extract the response
+  pred <- predict(m, interval=interval.type)
+  plot(x, y, ...)
+  polygon( c(x,rev(x)),                         # draw the ribbon defined
+           c(pred[,'lwr'], rev(pred[,'upr'])),  # by lwr and upr - polygon
+           col='light grey')                    # fills in the region defined by            
+  lines(x, pred[, 'fit'])                       # a set of vertices, need to reverse            
+  points(x, y)                                  # the uppers to make a nice figure
+} 
+```
+# Data class
+
+```r
 df<-("R is the statistical analysis language")
 strsplit(df, split = " ")
 strsplit(df, split = "")

@@ -7,6 +7,12 @@ editor:
 
 # Uniform Convergence is the most interesting topic that I have learned in this module! LOVELOVE, I love analysis!
 
+## Weierstrass continuous nowhere differentiable function
+
+This example's proof tells that the example of x to be 0 is important
+
+The series construction method of this proof is very intrinsic.
+
 ## Final exam review (most are about uniform convergence, which is really, really intereting for me since I have got some exercises from Prof. Andrew Lin and also Dr. Chi-Kwong Fok has helped me a lot in his office hours)
 
 
