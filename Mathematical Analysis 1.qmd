@@ -5,6 +5,12 @@ editor:
     wrap: 72
 ---
 
+## Analysis ~ limit ~ approximation ~ inequality
+
+"Analysis" is from Newton, which is originally means "anatomy". 
+
+
+
 # Uniform Convergence is the most interesting topic that I have learned in this module! LOVELOVE, I love analysis!
 
 ## Weierstrass continuous nowhere differentiable function
