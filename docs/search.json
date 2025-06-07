@@ -1981,261 +1981,261 @@
     "text": "example\n\nLung Cancer Classification (https://www.kaggle.com/datasets/mysarahmadbhat/lung-cancer?select=survey+lung+cancer.csv)\nThe effectiveness of cancer prediction system helps the people to know their cancer risk with low cost and it also helps the people to take the appropriate decision based on their cancer risk status. The data is collected from the website online lung cancer prediction system.\nTotal no. of attributes: 16 No. of instances: 284\nAttribute information:\nGender: M(male), F(female) Age: Age of the patient Smoking: YES=2, NO=1. Yellow fingers: YES=2, NO=1. Anxiety: YES=2, NO=1. Peer_pressure: YES=2, NO=1. Chronic Disease: YES=2, NO=1. Fatigue: YES=2, NO=1. Allergy: YES=2, NO=1. Wheezing: YES=2, NO=1. Alcohol: YES=2, NO=1. Coughing: YES=2, NO=1. Shortness of Breath: YES=2, NO=1. Swallowing Difficulty: YES=2, NO=1. Chest pain: YES=2, NO=1. Lung Cancer: YES, NO.\nGoal: It is your job to classify Lung Cancer using other variables\n\nExample Code\n\n#Load the dataset \nlibrary(readr)\ndata = read_csv('/Users/luyu/Desktop/survey_lung_cancer.csv', show_col_types = FALSE)\ndata$LUNG_CANCER &lt;- ifelse(data$LUNG_CANCER==\"YES\", 1, 0)\nsummary(data)\n\n    GENDER               AGE           SMOKING      YELLOW_FINGERS\n Length:309         Min.   :21.00   Min.   :1.000   Min.   :1.00  \n Class :character   1st Qu.:57.00   1st Qu.:1.000   1st Qu.:1.00  \n Mode  :character   Median :62.00   Median :2.000   Median :2.00  \n                    Mean   :62.67   Mean   :1.563   Mean   :1.57  \n                    3rd Qu.:69.00   3rd Qu.:2.000   3rd Qu.:2.00  \n                    Max.   :87.00   Max.   :2.000   Max.   :2.00  \n    ANXIETY      PEER_PRESSURE   CHRONIC DISEASE    FATIGUE     \n Min.   :1.000   Min.   :1.000   Min.   :1.000   Min.   :1.000  \n 1st Qu.:1.000   1st Qu.:1.000   1st Qu.:1.000   1st Qu.:1.000  \n Median :1.000   Median :2.000   Median :2.000   Median :2.000  \n Mean   :1.498   Mean   :1.502   Mean   :1.505   Mean   :1.673  \n 3rd Qu.:2.000   3rd Qu.:2.000   3rd Qu.:2.000   3rd Qu.:2.000  \n Max.   :2.000   Max.   :2.000   Max.   :2.000   Max.   :2.000  \n    ALLERGY         WHEEZING     ALCOHOL CONSUMING    COUGHING    \n Min.   :1.000   Min.   :1.000   Min.   :1.000     Min.   :1.000  \n 1st Qu.:1.000   1st Qu.:1.000   1st Qu.:1.000     1st Qu.:1.000  \n Median :2.000   Median :2.000   Median :2.000     Median :2.000  \n Mean   :1.557   Mean   :1.557   Mean   :1.557     Mean   :1.579  \n 3rd Qu.:2.000   3rd Qu.:2.000   3rd Qu.:2.000     3rd Qu.:2.000  \n Max.   :2.000   Max.   :2.000   Max.   :2.000     Max.   :2.000  \n SHORTNESS OF BREATH SWALLOWING DIFFICULTY   CHEST PAIN     LUNG_CANCER    \n Min.   :1.000       Min.   :1.000         Min.   :1.000   Min.   :0.0000  \n 1st Qu.:1.000       1st Qu.:1.000         1st Qu.:1.000   1st Qu.:1.0000  \n Median :2.000       Median :1.000         Median :2.000   Median :1.0000  \n Mean   :1.641       Mean   :1.469         Mean   :1.557   Mean   :0.8738  \n 3rd Qu.:2.000       3rd Qu.:2.000         3rd Qu.:2.000   3rd Qu.:1.0000  \n Max.   :2.000       Max.   :2.000         Max.   :2.000   Max.   :1.0000  \n\n\nlibrary(ggplot2)\nggplot(data, aes(x = factor(SMOKING), fill = factor(LUNG_CANCER))) +\ngeom_bar(position = \"fill\") +\nscale_fill_manual(values = c(\"0\" = \"lightblue\", \"1\" = \"salmon\")) +\ntheme_minimal()\n\n### Data SAMPLING ####\nlibrary(caret)\n\n\nAttaching package: 'caret'\n\n\nThe following object is masked from 'package:purrr':\n\n    lift\n\n\nThe following object is masked from 'package:mosaic':\n\n    dotPlot\n\n\nThe following object is masked from 'package:survival':\n\n    cluster\n\nset.seed(101)\nsplit = createDataPartition(data$LUNG_CANCER, p = 0.80, list = FALSE)\ntrain_data = data[split,]\ntest_data = data[-split,]\nnrow(train_data)\n\n[1] 248\n\nnrow(test_data)\n\n[1] 61\n\n\n\n#error metrics -- Confusion Matrix\nerr_metric=function(CM)\n{\n  TN =CM[1,1]\n  TP =CM[2,2]\n  FP =CM[1,2]\n  FN =CM[2,1]\n  precision =(TP)/(TP+FP)\n  recall_score =(TP)/(TP+FN)\n  f1_score=2*((precision*recall_score)/(precision+recall_score))\n  accuracy_model  =(TP+TN)/(TP+TN+FP+FN)\n  False_positive_rate =(FP)/(FP+TN)\n  False_negative_rate =(FN)/(FN+TP)\n  print(paste(\"Precision value of the model: \",round(precision,2)))\n  print(paste(\"Accuracy of the model: \",round(accuracy_model,2)))\n  print(paste(\"Recall value of the model: \",round(recall_score,2)))\n  print(paste(\"False Positive rate of the model: \",round(False_positive_rate,2)))\n  print(paste(\"False Negative rate of the model: \",round(False_negative_rate,2)))\n  print(paste(\"F1 score of the model: \",round(f1_score,2)))\n}\n\n\n# Logistic regression\nlogit_m =glm(formula = LUNG_CANCER ~ ., data = train_data, family = 'binomial')\nsummary(logit_m)\n\n\nCall:\nglm(formula = LUNG_CANCER ~ ., family = \"binomial\", data = train_data)\n\nCoefficients:\n                         Estimate Std. Error z value Pr(&gt;|z|)    \n(Intercept)             -32.13449    6.57393  -4.888 1.02e-06 ***\nGENDERM                  -0.84716    0.82793  -1.023 0.306203    \nAGE                       0.01537    0.03490   0.440 0.659756    \nSMOKING                   1.10495    0.82246   1.343 0.179119    \nYELLOW_FINGERS            1.10971    0.82005   1.353 0.175982    \nANXIETY                   2.08645    1.08610   1.921 0.054725 .  \nPEER_PRESSURE             1.94159    0.74009   2.623 0.008704 ** \n`CHRONIC DISEASE`         3.91378    1.12190   3.489 0.000486 ***\nFATIGUE                   2.62906    0.89032   2.953 0.003148 ** \nALLERGY                   1.42702    0.83764   1.704 0.088454 .  \nWHEEZING                  1.07933    0.90761   1.189 0.234357    \n`ALCOHOL CONSUMING`       2.41116    0.98495   2.448 0.014365 *  \nCOUGHING                  3.14783    1.22386   2.572 0.010110 *  \n`SHORTNESS OF BREATH`    -0.22681    0.84245  -0.269 0.787757    \n`SWALLOWING DIFFICULTY`   2.24613    1.24347   1.806 0.070865 .  \n`CHEST PAIN`              0.89356    0.73930   1.209 0.226791    \n---\nSignif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1\n\n(Dispersion parameter for binomial family taken to be 1)\n\n    Null deviance: 198.230  on 247  degrees of freedom\nResidual deviance:  77.353  on 232  degrees of freedom\nAIC: 109.35\n\nNumber of Fisher Scoring iterations: 8\n\n\n\n# Logistic regression\nlogit_m2 =glm(formula = LUNG_CANCER ~ ANXIETY+PEER_PRESSURE+`CHRONIC DISEASE`+FATIGUE+ALLERGY+`ALCOHOL CONSUMING`+COUGHING+`SWALLOWING DIFFICULTY`, data = train_data, family = 'binomial')\nsummary(logit_m2)\n\n\nCall:\nglm(formula = LUNG_CANCER ~ ANXIETY + PEER_PRESSURE + `CHRONIC DISEASE` + \n    FATIGUE + ALLERGY + `ALCOHOL CONSUMING` + COUGHING + `SWALLOWING DIFFICULTY`, \n    family = \"binomial\", data = train_data)\n\nCoefficients:\n                        Estimate Std. Error z value Pr(&gt;|z|)    \n(Intercept)             -27.3830     5.5206  -4.960 7.05e-07 ***\nANXIETY                   2.5514     0.8659   2.947 0.003213 ** \nPEER_PRESSURE             2.1822     0.7245   3.012 0.002593 ** \n`CHRONIC DISEASE`         3.5120     0.9696   3.622 0.000292 ***\nFATIGUE                   2.4939     0.6979   3.573 0.000353 ***\nALLERGY                   2.0104     0.7428   2.707 0.006796 ** \n`ALCOHOL CONSUMING`       2.5084     0.8653   2.899 0.003744 ** \nCOUGHING                  3.2220     0.9540   3.377 0.000732 ***\n`SWALLOWING DIFFICULTY`   2.5273     1.0096   2.503 0.012309 *  \n---\nSignif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1\n\n(Dispersion parameter for binomial family taken to be 1)\n\n    Null deviance: 198.230  on 247  degrees of freedom\nResidual deviance:  83.501  on 239  degrees of freedom\nAIC: 101.5\n\nNumber of Fisher Scoring iterations: 8\n\n\n\nlibrary(dplyr)\nlogit_P_prob = predict(logit_m, newdata = select(test_data, -LUNG_CANCER), type = 'response')\nlogit_P_prob[1:3]\n\n        1         2         3 \n0.9912600 0.9997708 0.9980692 \n\nlogit_P &lt;- ifelse(logit_P_prob &gt; 0.5, 1, 0) # Probability check\nlogit_P[1:3]\n\n1 2 3 \n1 1 1 \n\n\n\nCM = table(test_data$LUNG_CANCER, logit_P)\nprint(CM)\n\n   logit_P\n     0  1\n  0  3  2\n  1  1 55\n\n\n\nerr_metric(CM)\n\n[1] \"Precision value of the model:  0.96\"\n[1] \"Accuracy of the model:  0.95\"\n[1] \"Recall value of the model:  0.98\"\n[1] \"False Positive rate of the model:  0.4\"\n[1] \"False Negative rate of the model:  0.02\"\n[1] \"F1 score of the model:  0.97\"\n\n\n\n#ROC-curve using pROC library\nlibrary(pROC)\n\nType 'citation(\"pROC\")' for a citation.\n\n\n\nAttaching package: 'pROC'\n\n\nThe following object is masked from 'package:colorspace':\n\n    coords\n\n\nThe following objects are masked from 'package:mosaic':\n\n    cov, var\n\n\nThe following objects are masked from 'package:stats':\n\n    cov, smooth, var\n\nroc_score=roc(test_data$LUNG_CANCER, logit_P_prob) #AUC score\n\nSetting levels: control = 0, case = 1\n\n\nSetting direction: controls &lt; cases\n\nplot(roc_score, main = \"ROC curve -- Logistic Regression\")"
   },
   {
-    "objectID": "APH103.html",
-    "href": "APH103.html",
-    "title": "APH103-SurveySampling",
+    "objectID": "aph103.html",
+    "href": "aph103.html",
+    "title": "aph103-SurveySampling",
     "section": "",
     "text": "\\(X_1, X_2,..., X_n \\sim^{iid} F(\\mu, \\sigma^2)\\), \\(Y_n=\\sqrt n \\frac{\\bar x- \\mu}{\\sigma} --&gt;N(0,1)\\)\n(p.s. Apart from this, CLT also says that When the sample size is large enough (n \\(\\geq\\) 30), the mean distribution of the sample is normal. But here we just prove the above thing)\nProof: (based on MGF)\n\\(z_i =(x_i-\\mu)/ \\sigma\\) where \\(Y_n=\\sqrt n \\bar z\\) and \\(z_i \\sim ^{iid} F(0,1)\\)\n\\[\nE(e^{tZ}) = m(t) \\implies\n\\begin{cases}\nm(0) = 1 \\\\\nm'(0) = 0 = E(Z) \\\\\nm''(0) = 1 + 0^2 = 1 = E(Z^2)\n\\end{cases}\n\\]\n\\[m(t) = m(0) + m'(0)t + \\frac{m''(\\xi)}{2}t^2, \\quad 0 &lt; \\xi &lt; t\\]\n\\[M_{Y_n}(t) = E\\left[ \\exp\\left\\{ t \\sum_{i=1}^n \\frac{Z_i}{\\sqrt{n}} \\right\\} \\right] = \\prod_{i=1}^n E\\left[ \\exp\\left\\{ \\frac{t Z_i}{\\sqrt{n}} \\right\\} \\right].\\]\n\\[= \\left[ m\\left( \\frac{t}{\\sqrt{n}} \\right) \\right]^n = \\left[ 1 + \\frac{m''(\\xi) t^2}{2n} \\right]^n, \\quad 0 &lt; \\xi &lt; \\frac{t}{\\sqrt{n}}.\\]\n\\(n \\to \\infty, \\quad \\frac{t}{\\sqrt{n}} \\to 0 \\implies \\xi \\to 0 \\implies m''(\\xi) \\to m''(0) = 1.\\)\n\\(M_{Y_n}(t) \\to \\left[ 1 + \\frac{t^2}{2n} \\right]^n \\to e^{\\frac{t^2}{2}} = E(e^{tZ})\\)\n\\(\\left[ 1 + \\frac{t}{n} \\right]^n \\to e^t \\quad \\text{Y}_n \\xrightarrow{d} N(0,1)\\)\n\\(\\textbf{Hajek}\\) Let \\(m_N = \\max_{1 \\leq i \\leq n} (y_i - \\bar{y})\\). Then if\n\\(\\frac{1}{\\min(n, N-n)} \\frac{m_N}{S_y^2} \\to 0, \\quad \\frac{\\bar{y} - Y}{\\sqrt{\\text{Var}(\\bar y)}} \\xrightarrow{d} N(0,1)\\)\n\n\nWold-weorwilz Thm\n\\(\\{a_{N_1}, \\ldots, a_{N_n}\\}\\), \\(\\{X_{n_1}, \\ldots, X_{n_N}\\}\\),\n\\[\n\\frac{\\frac{1}{N} \\sum (a_{N_i} - \\overline{a_N})^r}{\\left[ \\frac{1}{N} \\sum (a_{N_i} - \\overline{a_N})^2 \\right]^{r/2}} = O(1), \\quad \\overline{a_N} = \\frac{1}{N} \\sum a_{N_i}.\n\\]\n\\[\n\\frac{\\frac{1}{N} \\sum (X_{N_i} - \\overline{X_N})^r}{\\left[ \\frac{1}{N} \\sum (X_{N_i} - \\overline{X_N})^2 \\right]^{r/2}} = O(1) \\quad X_N = \\frac{1}{N} \\sum X_{N_i}.\n\\] \\(X_1,X_2,...X_N\\) uniformly distributio from \\(X_{N_1},...\\)\n\n\n\nLet \\(X_1, X_2, \\ldots, X_n\\) i.i.d. \\(F(\\mu, \\sigma^2)\\). Define \\(Y_n = \\sqrt{n} \\frac{\\overline{X} - \\mu}{\\sigma} \\xrightarrow{d} N(0,1)\\).\nLet \\(L_N = \\sum a_{N_i} X_i\\), \\(E[L_N] = N \\overline{a_N} \\overline{X}\\).\n\\[\n\\text{Var}(L_N) = \\frac{1}{N-1} \\left[ \\sum (a_{N_i} - \\overline{a_N})^2 \\right] \\left[ \\sum (X_{N_i} - \\overline{X})^2 \\right]\n\\]\nAs \\(N \\to \\infty\\),\n\\[\nP\\left\\{ \\frac{L_N - E(L_N)}{\\sqrt{\\text{Var}(L_N)}} \\leq z \\right\\} \\to \\frac{1}{\\sqrt{2\\pi}} \\int_{-\\infty}^z e^{-\\frac{t^2}{2}} dt.\n\\]"
   },
   {
-    "objectID": "APH103.html#limit-distribution",
-    "href": "APH103.html#limit-distribution",
-    "title": "APH103-SurveySampling",
+    "objectID": "aph103.html#limit-distribution",
+    "href": "aph103.html#limit-distribution",
+    "title": "aph103-SurveySampling",
     "section": "",
     "text": "Wold-weorwilz Thm\n\\(\\{a_{N_1}, \\ldots, a_{N_n}\\}\\), \\(\\{X_{n_1}, \\ldots, X_{n_N}\\}\\),\n\\[\n\\frac{\\frac{1}{N} \\sum (a_{N_i} - \\overline{a_N})^r}{\\left[ \\frac{1}{N} \\sum (a_{N_i} - \\overline{a_N})^2 \\right]^{r/2}} = O(1), \\quad \\overline{a_N} = \\frac{1}{N} \\sum a_{N_i}.\n\\]\n\\[\n\\frac{\\frac{1}{N} \\sum (X_{N_i} - \\overline{X_N})^r}{\\left[ \\frac{1}{N} \\sum (X_{N_i} - \\overline{X_N})^2 \\right]^{r/2}} = O(1) \\quad X_N = \\frac{1}{N} \\sum X_{N_i}.\n\\] \\(X_1,X_2,...X_N\\) uniformly distributio from \\(X_{N_1},...\\)"
   },
   {
-    "objectID": "APH103.html#conclusion",
-    "href": "APH103.html#conclusion",
-    "title": "APH103-SurveySampling",
+    "objectID": "aph103.html#conclusion",
+    "href": "aph103.html#conclusion",
+    "title": "aph103-SurveySampling",
     "section": "",
     "text": "Let \\(X_1, X_2, \\ldots, X_n\\) i.i.d. \\(F(\\mu, \\sigma^2)\\). Define \\(Y_n = \\sqrt{n} \\frac{\\overline{X} - \\mu}{\\sigma} \\xrightarrow{d} N(0,1)\\).\nLet \\(L_N = \\sum a_{N_i} X_i\\), \\(E[L_N] = N \\overline{a_N} \\overline{X}\\).\n\\[\n\\text{Var}(L_N) = \\frac{1}{N-1} \\left[ \\sum (a_{N_i} - \\overline{a_N})^2 \\right] \\left[ \\sum (X_{N_i} - \\overline{X})^2 \\right]\n\\]\nAs \\(N \\to \\infty\\),\n\\[\nP\\left\\{ \\frac{L_N - E(L_N)}{\\sqrt{\\text{Var}(L_N)}} \\leq z \\right\\} \\to \\frac{1}{\\sqrt{2\\pi}} \\int_{-\\infty}^z e^{-\\frac{t^2}{2}} dt.\n\\]"
   },
   {
-    "objectID": "APH103.html#sampling-distribution",
-    "href": "APH103.html#sampling-distribution",
-    "title": "APH103-SurveySampling",
+    "objectID": "aph103.html#sampling-distribution",
+    "href": "aph103.html#sampling-distribution",
+    "title": "aph103-SurveySampling",
     "section": "Sampling distribution",
     "text": "Sampling distribution\nWhat we learned before about sampling distribution are the situation of “Sampling with Replacement”.\nWe are beginning to embark a journey that allows us to learn about populations by obtaining data from samples since it is rare that we know all values in an entire population.\nSampling distribution of a statistic is the probability distribution of a sample statistics (such as mean/proportion which tend to target the population mean/proportion), with all samples having the same sample size. This concept is important to understand. The behavior of a statistic can be known by understanding its distribution( (The random variable in this case is the value of that sample statistics)). Under certain condition, the distribution of sampling mean/proportion approximates a normal distribution.\nThough statistics does not depend on unknown parameters, the distribution of it depend on unknown parameters.(eg. Normal distribution of sample means depends on population mean(an unknow parameter) and standard deviation)\n(ps: the advantage of sampling with replacement:\nwhen selecting a relatively small sample from a large population, it makes no significant difference whether we sample with or without replacement.\nSampling with replacement results in independent events that are unaffected by previous outcomes, and independent events are easier to analyze and they result in simpler formulas.)\nFor a fixed sample size, the mean of all possible sample means is equal to the mean of population though sample means vary(sampling variability)\n\nExample\nIf the population follows \\(N \\sim (\\mu, \\sigma^2)\\), the sampling distribution of mean follows \\(N \\sim (\\mu, \\sigma^2/\\sqrt n)\\)"
   },
   {
-    "objectID": "APH103.html#estimator-for-population-mean",
-    "href": "APH103.html#estimator-for-population-mean",
-    "title": "APH103-SurveySampling",
+    "objectID": "aph103.html#estimator-for-population-mean",
+    "href": "aph103.html#estimator-for-population-mean",
+    "title": "aph103-SurveySampling",
     "section": "Estimator for population mean",
     "text": "Estimator for population mean\nEstimator for population mean \\(\\mu\\): \\[\n\\hat{\\mu} = \\bar{y} =  \\frac{1}{n}\\sum_{i=1}^n y_i\n\\]\nEstimator for the variance of \\(\\bar{y}\\) \\[\n\\hat{V}(\\bar{y}) = \\left( 1-\\frac{n}{N} \\right) \\frac{s^2}{n}\n\\]"
   },
   {
-    "objectID": "APH103.html#estimator-for-population-total",
-    "href": "APH103.html#estimator-for-population-total",
-    "title": "APH103-SurveySampling",
+    "objectID": "aph103.html#estimator-for-population-total",
+    "href": "aph103.html#estimator-for-population-total",
+    "title": "aph103-SurveySampling",
     "section": "Estimator for population total",
     "text": "Estimator for population total\nEstimator for population total \\(\\hat{\\tau}\\): \\[\n\\hat{\\tau} = N\\bar{y} =  \\frac{N}{n}\\sum_{i=1}^n y_i\n\\]\nEstimator for the variance of \\(\\tau\\) \\[\n\\hat{V}(\\hat{\\tau}) = \\hat{V}(N\\bar{y}) = N^2 \\left( 1-\\frac{n}{N} \\right) \\frac{s^2}{n}\n\\]\n\nA note on Bounds\nThe estimator for the bound on the error of estimation is \\(2\\sqrt{V(\\hat\\lambda)}\\) where \\(V(\\hat\\lambda)\\) is the variance of the estimator (\\(\\hat\\mu\\), \\(\\hat\\tau\\), or \\(\\hat{p}\\)).\n(Notation deviates from the textbook)\n\\(2\\sqrt{}\\) is an approximated version of a t-test that the text uses to simplify calculation."
   },
   {
-    "objectID": "APH103.html#sample-size-estimates-for-population-mean-and-for-population-total",
-    "href": "APH103.html#sample-size-estimates-for-population-mean-and-for-population-total",
-    "title": "APH103-SurveySampling",
+    "objectID": "aph103.html#sample-size-estimates-for-population-mean-and-for-population-total",
+    "href": "aph103.html#sample-size-estimates-for-population-mean-and-for-population-total",
+    "title": "aph103-SurveySampling",
     "section": "Sample size estimates for population mean and for population total",
     "text": "Sample size estimates for population mean and for population total\nSample size required to estimate \\(\\mu\\) or \\(\\tau\\) with a bound on the error of estimation \\(B\\). \\[\nn = \\frac{N\\sigma^2}{(N-1)D + \\sigma^2} \\\\\n\\text{where} \\\\\nD = \\frac{B^2}{4} \\text{ for } \\mu \\text{ and} \\\\\nD = \\frac{B^2}{4N^2} \\text{ for } \\tau\n\\]\n\nFuction in R for sample size estimate"
   },
   {
-    "objectID": "APH103.html#estimator-for-population-proportion",
-    "href": "APH103.html#estimator-for-population-proportion",
-    "title": "APH103-SurveySampling",
+    "objectID": "aph103.html#estimator-for-population-proportion",
+    "href": "aph103.html#estimator-for-population-proportion",
+    "title": "aph103-SurveySampling",
     "section": "Estimator for population proportion",
     "text": "Estimator for population proportion\nEstimator for the population proportion \\(p\\): \\[\n\\hat{p} = \\bar{y} = \\frac{\\sum_{i=1}^n y_i}{n}\n\\]\nEstimated variance of \\(\\hat{p}\\): \\[\n\\hat{V}(\\hat{p}) = \\left(1 - \\frac{n}{N} \\right) \\frac{\\hat{p} \\hat{q}}{n-1} \\\\\n\\text{where} \\\\\n\\hat{q} = 1-\\hat{p}\n\\]"
   },
   {
-    "objectID": "APH103.html#sample-size-estimate-for-population-proportion",
-    "href": "APH103.html#sample-size-estimate-for-population-proportion",
-    "title": "APH103-SurveySampling",
+    "objectID": "aph103.html#sample-size-estimate-for-population-proportion",
+    "href": "aph103.html#sample-size-estimate-for-population-proportion",
+    "title": "aph103-SurveySampling",
     "section": "Sample size estimate for population proportion",
     "text": "Sample size estimate for population proportion\n\\(\\sigma^2\\) si replaced with \\(pq\\) in the sample size formula to estimate \\(p\\) with a bound on the error of estimation \\(B\\): \\[\nn = \\frac{Npq}{(N-1)D + pq} \\\\\n\\text{where} \\\\\nD = \\frac{B^2}{4}\n\\]"
   },
   {
-    "objectID": "APH103.html#example-exercise",
-    "href": "APH103.html#example-exercise",
-    "title": "APH103-SurveySampling",
+    "objectID": "aph103.html#example-exercise",
+    "href": "aph103.html#example-exercise",
+    "title": "aph103-SurveySampling",
     "section": "Example Exercise",
     "text": "Example Exercise\n\nThe Fish and Game Department of a particular state was concerned about the direction of its future hunting programs. To provide for a greater potential for future hunting, the department wanted to determine the proportion of hunters seeking any type of game bird. A simple random sample of \\(n=1000\\) of the \\(N=99,000\\) licensed hunters was obtained. Suppose 430 indicated that they hunted game birds. Estimate \\(p\\), the proportion of licensed hunters seeking game birds. Place a bound on the error of estimation. Using the data, determine the sample size the department must obtain to estimate the proportion of game bird hunters, given a bound on the error of estimation of magnitude \\(B=0.02\\). Recall the estimator of a simple random sample. The proportion \\(\\hat{p}=\\frac{1}{n} \\sum_{i=1}^n y_i=\\frac{430}{1000}=\\frac{43}{100}\\) The bound on the error of \\(\\hat{p}\\) is \\[\n\\begin{aligned}\n2 \\sqrt{\\hat{v}(\\hat{p})} & =2 \\sqrt{\\left(1-\\frac{1000}{99000}\\right) \\times \\frac{\\frac{43}{100} \\times\\left(1-\\frac{43}{1000}\\right)}{1000-1}} \\\\\n& =2 \\times \\sqrt{\\frac{98}{99} \\times \\frac{43}{100} \\times \\frac{57}{100} \\times \\frac{1}{998}} \\\\\n& =2 \\times 0.016 \\\\\n& =0.032\n\\end{aligned}\n\\]\n\nIf \\(B=0.02\\), then the sample size \\(n\\) the department must obtain to estimate \\(p\\) is \\(\\hat{n}=\\frac{N \\hat{p} \\hat{q}}{(N-1) D+\\hat{p} \\hat{q}}=\\frac{89000 \\times \\frac{43}{100} \\times \\frac{57}{100}}{(99000-1) \\times\\left(\\frac{0.02}{1}\\right)^2+\\frac{43}{100} \\times \\frac{57}{100}}\\) \\(\\approx 2392\\).\nTherefore in this question the estimator of \\(P\\) \\[\n\\hat{p}=\\frac{25}{30}=\\frac{5}{6}\n\\] and the bound of error is \\[\n\\begin{aligned}\n2 \\sqrt{\\hat{v}(\\hat{p})} & =2 \\cdot \\sqrt{\\left(1-\\frac{30}{300}\\right) \\times \\frac{\\frac{5}{6} \\times \\frac{1}{6}}{30-1}} \\\\\n& =2 \\times \\sqrt{\\frac{7}{10} \\times \\frac{5}{36} \\times \\frac{1}{28}} \\\\\n& =2 \\times 0.0657 \\\\\n& =0.1314\n\\end{aligned}\n\\]\nHere if \\(B=0.05\\), then the sample size required to estimated \\(p\\) is given by \\[\n\\begin{aligned}\n\\hat{n} & =\\frac{N p q}{(N-1) D+p q} \\\\\n& =\\frac{300 \\times \\frac{5}{6} \\times \\frac{1}{6}}{(300-1) \\times \\frac{(0.05)^2}{4}+\\frac{5}{8} \\times \\frac{1}{6}} \\approx 128\n\\end{aligned}\n\\]\nTherefore, we need 128 samples at least.\n\nState park officials were interested in the proportion of campers who consider the camp-site spacing adequate in a particular campground. They decided to take a simple random sample of \\(n=30\\) from the first \\(N=300\\) camping parties that visited the campground. Let \\(y_i=0\\) if the head of the \\(i t h\\) party sampled does not think the campsite spacing is adequate and \\(y_i=1\\) if he does \\((i=1,2, \\ldots, 30)\\). Use the data in the accompanying table to estimate \\(p\\), the proportion of campers who consider the campsite spacing adequate. Place a bound on the error of estimation. Use the data to determine the sample size required to estimate \\(p\\) with a bound on the error of estimation of magnitude \\(B=0.05\\).\n\n\n\n\nCamper sampled\nResponse, \\(y_i\\)\n\n\n\n\n1\n1\n\n\n2\n0\n\n\n3\n1\n\n\n.\n.\n\n\n.\n.\n\n\n29\n1\n\n\n30\n1\n\n\n\n\\(\\sum_{i=1}^{30} y_i=25\\)\n\n\n\n\\[\n\\begin{aligned}\n& \\text {the estimator of the population } \\\\\n& \\text { proportion } p \\text { is } \\hat{p}=\\bar{y}=\\frac{\\sum_{i=1}^n y_i}{n} \\\\\n& \\text { and the variance of } p \\text { is. } \\\\\n& \\qquad \\hat{V}(\\hat{p})=\\left(1-\\frac{n}{N}\\right) \\frac{\\hat{p} \\hat{q}}{n-1} \\text {, where } \\hat{q}=1-\\hat{p}\n\\end{aligned}\n\\] and the bound on the error of estimation is \\[\n\\begin{gathered}\n2 \\sqrt{\\hat{V}(\\hat{p})}=2 \\cdot \\sqrt{\\left(1-\\frac{n}{N 1}\\right) \\frac{\\hat{p} q}{n-1}} \\\\\n\\text { Let } B=2 \\sqrt{\\hat{V}(\\hat{p})} \\text {, then } 2 \\sqrt{\\left(1-\\frac{n}{N}\\right) \\frac{p q}{n-1}}=B\n\\end{gathered}\n\\] we have \\(n=\\frac{N p q}{(N-1) D+p q}\\), where \\(q=1-p\\) and \\(D=\\frac{B^2}{4}\\)\n\nAn investigator is interested in estimating the total number of “count trees” (trees larger than a specified size) on a plantation of \\(N=1500\\) acres. This information is used to determine the total volume of lumber for trees on the plantation. A simple random sample of \\(n=100\\) one-acre plots was selected, and each plot was examined for the number of count trees. The sample average for the \\(n=100\\) one-acre plots was \\(\\bar{y}=25.2\\) with a sample variance of \\(s^2=136\\). Estimate the total number of count trees on the plantation. Place a bound on the error of estimation. Using the results of the survey, determine the sample size required to estimate \\(\\tau\\), the total number of trees on the plantation, with a bound on the error of estimation of magnitude \\(B=1500\\).\n\nThe estimation of total number of count tree \\(i\\) is given by \\(\\hat{\\tau}=N \\cdot \\bar{y}=1500 \\times 25.2=37800\\) and the bound on the error of \\(\\hat{\\imath}\\) is \\[\n\\begin{aligned}\n2 \\cdot N \\cdot \\sqrt{\\hat{V}(\\bar{y})} & =2 \\cdot N \\cdot \\sqrt{\\left(1-\\frac{n}{N}\\right) \\cdot \\frac{S^2}{n}} \\\\\n& =2 \\times 1500 \\times \\sqrt{\\left(1-\\frac{100}{1500}\\right) \\cdot \\frac{136}{100}} \\\\\n& =3379.84\n\\end{aligned}\n\\]\nIf \\(B=1500\\), then the sample size required to estimate \\(\\tau\\) is given by \\[\n\\begin{aligned}\n\\hat{n} & =\\frac{N S^2}{(N-1) D+S^2}, \\text { where } D=\\frac{B^2}{4 N^2} \\\\\n& =\\frac{1500 \\times 136}{(1500-1) \\times \\frac{(1500)^2}{4 \\times(1500)^2}+136} \\approx 400\n\\end{aligned}\n\\]"
   },
   {
-    "objectID": "APH103.html#estimator-for-population-mean-1",
-    "href": "APH103.html#estimator-for-population-mean-1",
-    "title": "APH103-SurveySampling",
+    "objectID": "aph103.html#estimator-for-population-mean-1",
+    "href": "aph103.html#estimator-for-population-mean-1",
+    "title": "aph103-SurveySampling",
     "section": "Estimator for population mean",
     "text": "Estimator for population mean\nEstimator for population mean \\(\\mu\\): \\[\n\\bar{y}_{st} = \\frac{1}{N}\\sum_{i=1}^LN_i\\bar{y}_i\n\\]\nEstimator of variance of \\(\\bar{y}_{st}\\) \\[\n\\hat{V}(\\bar{y}_{st}) = \\frac{1}{N^2}\\sum_{i=1}^L \\left[ N^2_i \\left( \\frac{N_i-n_i}{N_i} \\right) \\left( \\frac{s^2_i}{n_i} \\right) \\right]\n\\]"
   },
   {
-    "objectID": "APH103.html#estimator-for-population-total-1",
-    "href": "APH103.html#estimator-for-population-total-1",
-    "title": "APH103-SurveySampling",
+    "objectID": "aph103.html#estimator-for-population-total-1",
+    "href": "aph103.html#estimator-for-population-total-1",
+    "title": "aph103-SurveySampling",
     "section": "Estimator for population total",
     "text": "Estimator for population total\nEstimator for population total \\(\\tau\\): \\[\nN\\bar{y}_{st} = \\sum_{i=1}^L N_i \\bar{y}_i\n\\]\nEstimator for the variance of \\(\\tau\\): \\[\nN^2 \\hat{V}(\\bar{y}_{st}) = \\sum_{i=1}^L N_i^2 \\left ( \\frac{N_i-n_i}{N_i} \\right ) \\left ( \\frac{s_i^2}{n_i} \\right )\n\\]"
   },
   {
-    "objectID": "APH103.html#approximate-sample-size-with-a-fixed-bound",
-    "href": "APH103.html#approximate-sample-size-with-a-fixed-bound",
-    "title": "APH103-SurveySampling",
+    "objectID": "aph103.html#approximate-sample-size-with-a-fixed-bound",
+    "href": "aph103.html#approximate-sample-size-with-a-fixed-bound",
+    "title": "aph103-SurveySampling",
     "section": "Approximate Sample size with a fixed Bound",
     "text": "Approximate Sample size with a fixed Bound\nApproximate sample size \\(n\\) required to estimate \\(\\mu\\) or \\(\\tau\\) with a bound \\(B\\) on the error of estimation:\n\\[\nn = \\frac{\\sum_{i=1}^L N_i^2 \\sigma^2_i/a_i}{N^2 D + \\sum_{i=1}^L N_i \\sigma^2_i} \\\\\nD = \\frac{B^2}{4} \\text{ when estimating } \\mu \\\\\nD = \\frac{B^2}{4N^2} \\text{ when estimating } \\tau \\\\\n\\]"
   },
   {
-    "objectID": "APH103.html#example-exercise-1",
-    "href": "APH103.html#example-exercise-1",
-    "title": "APH103-SurveySampling",
+    "objectID": "aph103.html#example-exercise-1",
+    "href": "aph103.html#example-exercise-1",
+    "title": "aph103-SurveySampling",
     "section": "Example Exercise",
     "text": "Example Exercise\n\nAn advertising firm, interested in determining how much to emphasize television advertising in a certain county, decides to conduct a sample survey to estimate the average number of hours each week that households within the county watch televi- sion. The county contains two towns, A and B, and a rural area. Town A is built around a factory, and most households contain factory workers with school-age chil- dren. Town B is an exclusive suburb of a city in a neighboring county and contains older residents with few children at home. There are 155 households in town A, 62 in town B, and 93 in the rural area. Discuss the merits of using stratified random sam- pling in this situation.The advertising firm in here decides to use telephone interviews rather than personal interviews because all households in the county have telephones, and this method reduces costs. The cost of obtaining an observation is then the same in all three strata. The stratum standard deviations are again approximated by \\(\\sigma_1 \\approx 5, \\sigma_2 \\approx 15\\), and \\(\\sigma_3 \\approx 10\\). The firm desires to estimate the population mean \\(\\mu\\) with a bound on the error of estimation equal to 2 hours. Find the appropriate sample\n\nstep (1) Given a bound \\(B=2, \\Rightarrow D=\\frac{B^2}{4}=1\\)\n\nOptimal Allocation Theorem (Neyman allocation) Here the costs are same for all strata.\n\\(\\left\\{\\begin{array}{l}n_i=n \\cdot \\frac{N_i \\sigma_i}{\\sum_{i=1}^L N_i \\sigma_i} \\\\ \\hat{V}\\left(\\bar{y}_{s t}\\right)=\\frac{1}{N^2} \\sum_{i=1}^L N_i^2\\left(1-\\frac{n_i}{N_i}\\right) \\cdot\\left(\\frac{\\sigma_i^2}{n_i}\\right) \\\\ D=\\sqrt{\\hat{V}\\left(\\bar{y}_{s t}\\right)}\\end{array} \\Rightarrow n=\\frac{\\left(\\sum_{k=1}^L N_k \\sigma_k\\right)^2}{N^2 \\cdot D+\\sum_{i=1}^L N_i \\sigma_i^2}\\right.\\)\n\\[\n\\begin{aligned}\n& \\begin{aligned}\n\\sum_{i=1}^3 N_i \\sigma_i\n& =155 \\times 5+62 \\times 15+93 \\times 10 \\\\\n& =2635\n\\end{aligned} \\\\\n& \\begin{aligned}\nn_1=n \\cdot \\frac{155 \\times 5}{2635} & =n \\cdot(0.30)\n\\end{aligned} \\\\\n& \\begin{aligned}\nn_2= & n \\frac{62 \\times 15}{2635}=n \\cdot(0.35) \\\\\nn_3=n & \\frac{93 \\times 10}{2635}=n \\cdot(0.35)\n\\end{aligned}\n\\end{aligned}\n\\]\nCalculate sample size, \\(\\eta\\). \\[\n\\left\\{\\begin{array}{l}\n\\sum_{i=1}^3 N_i \\sigma_1^2=27125 . \\\\\nN^2 D=(310)^2 \\cdot 1=96100 \\\\\n\\sum_{i=1}^2 N_i \\sigma_i=2635\n\\end{array} \\Longrightarrow n=\\frac{2635^2}{96100+27125}=56.34 \\text {. or } 57\\right.\n\\]\nStratum sample sizes \\[\nn_1=57 \\times 0.3=17.1 \\rightarrow 18 \\text { to control the bound. }\n\\] \\[\n\\begin{aligned}\n& n_2=57 \\times 0.35=20 \\\\\n& n_3=57 \\times 0.35=20\n\\end{aligned}\n\\]\n\nTherefore, the sample size \\(n\\) is 58 .\n\nA quality control inspector must estimate the proportion of defective microcomputer chips coming from two different assembly operations. She knows that, among the chips in the lot to be inspected, \\(60 \\%\\) are from assembly operation A and \\(40 \\%\\) are from assembly operation B. In a random sample of 100 chips, 38 turn out to be from operation A and 62 from operation B. Among the sampled chips from operation A, six are defective. Among the sampled chips from operation B, ten are defective.\n\n\nConsidering only the simple random sample of 100 chips, estimate the proportion of defectives in the lot, and place a bound on the error of estimation.\nStratifying the sample, after selection, into chips from operation A and B, estimate the proportion of defectives in the population, and place a bound on the error of estimation. Ignore the fpc in both cases. Which answers do you find more acceptable?\n\nPart (a): Estimation of the Proportion of Defective Chips in the Lot (Simple Random Sampling) Calculation of the Proportion of Defective Chips: - Total number of defective chips in the sample: \\(6+10=16\\) - Total sample size: 100 - The estimated proportion of defectives \\(\\hat{p}\\) is: \\(\\hat{p}=\\frac{\\text { Number of defectives }}{\\text { Total sample size }}=\\frac{16}{100}=0.16\\)\nEstimation Error: - The standard error (SE) of the proportion is calculated using the formula for the standard error of a proportion: \\(S E=\\sqrt{\\frac{\\hat{p}(1-\\hat{p})}{n}}\\) Plugging in the values we get: \\(S E=\\) \\(\\sqrt{\\frac{0.16 \\times 0.84}{100}}=\\sqrt{\\frac{0.1344}{100}}=\\sqrt{0.001344} \\approx 0.0367\\) - A 95% confidence interval for the proportion can be estimated as: \\(\\mathrm{CI}=\\hat{p} \\pm 1.96 \\times\\) \\(S E=0.16 \\pm 1.96 \\times 0.0367 \\approx 0.16 \\pm 0.0719\\) Thus, the \\(95 \\% \\mathrm{Cl}\\) is approximately: [0.0881, 0.2319]"
   },
   {
-    "objectID": "APH103.html#estimator-for-population-mean-2",
-    "href": "APH103.html#estimator-for-population-mean-2",
-    "title": "APH103-SurveySampling",
+    "objectID": "aph103.html#estimator-for-population-mean-2",
+    "href": "aph103.html#estimator-for-population-mean-2",
+    "title": "aph103-SurveySampling",
     "section": "Estimator for population mean",
     "text": "Estimator for population mean\nEstimator for population mean \\(\\mu\\): \\[\n\\hat{\\mu} = \\bar{y}_{sy} =  \\frac{1}{n}\\sum_{i=1}^n y_i\n\\] Estimator of variance of \\(\\bar{y}_{st}\\) \\[\n\\hat{V}(\\bar{y}_{st}) = \\left( 1-\\frac{n}{N} \\right) \\frac{s^2}{n}\n\\] assuming a randomly ordered population\nNotice that this is the same estimator as used in a Simple Random Sample\nThe true variance of \\(\\bar{y}_{st}\\) is given by \\[\nV(\\bar{y}_{sy}) = \\frac{\\sigma^2}{n} [1+(n-1) \\rho]\n\\]\nWhere \\(\\rho\\) is a measure of the correlation between pairs of observations in the same systematic sample. It consists of the variability within sample over the variability between samples.\n- characteristics of a systematic sample compared to that of the population \\[\n\\rho \\approx \\frac{MSB - MST}{(n-1)MST} \\\\\n\\]\n\\[\nMSB = \\frac{n}{k-1} \\sum_{i=1}^k (\\bar{y}_i - \\bar{\\bar{y}}_i)^2 \\\\\nMSW = \\frac{1}{k(n-1)} \\sum_{i=1}^k \\sum_{j=1}^n (y_{ij} - \\bar{y}_i)^2 \\\\\nSST = \\sum_{i=1}^k \\sum_{j=1}^n (y_{ij} - \\bar{\\bar{y}})^2\n\\] where \\(\\bar{\\bar{y}}\\) is the overall mean per element. here, for \\(\\rho\\) is \\[\n\\rho = \\frac{(k-1)nMSB - SST}{(n-1)SST}\n\\]\nSystematic sampling uses the same estimators as simple random sampling because it is designed to be practically as random as a SRS, and a better estimate is not possible without taking multiple cluster samples. As such, the remaining equations for population total, proportions, sample size, etc. are the same as in SRS and can be found in Chapter 4."
   },
   {
-    "objectID": "APH103.html#in-k-sampling-for-mean",
-    "href": "APH103.html#in-k-sampling-for-mean",
-    "title": "APH103-SurveySampling",
+    "objectID": "aph103.html#in-k-sampling-for-mean",
+    "href": "aph103.html#in-k-sampling-for-mean",
+    "title": "aph103-SurveySampling",
     "section": "1 in k sampling for mean",
     "text": "1 in k sampling for mean\nEstimator for the population mean \\(\\mu\\) under \\(1 \\text{ in } k'\\) systematic sampling: \\[\n\\hat{\\mu} = \\sum_{i=1}^{n_s} \\frac{\\bar{y}_i}{n_s}\n\\] \\(y_i\\) is the mean of the \\(i^{th}\\) systematic sample.\n\\(n_s\\) is the number in the sample.\nEstimated variance of \\(\\hat{\\mu}\\): \\[\n\\hat{V}(\\hat{\\mu}) = \\left(1- \\frac{n}{N} \\right) \\frac{s^2_{\\bar{y}}}{n_s} \\\\\n\\text{where} \\\\\ns^2_{\\bar{y}} = \\frac{\\sum_{i=1}^{n_s} (\\bar{y_i} - \\hat{\\mu})^2}{n_s-1}\n\\]"
   },
   {
-    "objectID": "APH103.html#in-k-sampling-for-total",
-    "href": "APH103.html#in-k-sampling-for-total",
-    "title": "APH103-SurveySampling",
+    "objectID": "aph103.html#in-k-sampling-for-total",
+    "href": "aph103.html#in-k-sampling-for-total",
+    "title": "aph103-SurveySampling",
     "section": "1 in k sampling for total",
     "text": "1 in k sampling for total\n\\(1 \\text{ in } k'\\) systematic sampling can be used for population total, \\(\\tau\\), too\n\\[\n\\hat{\\tau} = N\\hat{\\mu} = N \\sum_{i=1}^{n_s} \\frac{\\bar{y}_i}{n_s}\n\\]\nEstimated variance of \\(\\hat{\\tau}\\): \\[\n\\hat{V}(\\hat{\\tau}) = N^2\\hat{V}(\\hat\\mu) = N^2 \\left(1- \\frac{n}{N} \\right) \\frac{s^2_{\\bar{y}}}{n_s} \\\\\n\\]"
   },
   {
-    "objectID": "APH103.html#example-exercise-2",
-    "href": "APH103.html#example-exercise-2",
-    "title": "APH103-SurveySampling",
+    "objectID": "aph103.html#example-exercise-2",
+    "href": "aph103.html#example-exercise-2",
+    "title": "aph103-SurveySampling",
     "section": "Example Exercise",
     "text": "Example Exercise\nA college is concerned about improving its relations with a neighboring community. A 1-in-150 systematic sample of the \\(N=4500\\) students listed in the directory is taken to estimate the total amount of money spent on clothing during one quarter of the school year. The results of the sample are listed in the accompanying table. Use these data to estimate \\(\\tau\\) and place a bound on the error of estimation.\n\n\n\n\n\n\n\n\n\n\n\nStudent\nAmount spent (dollar)\nStudent\nAmount spent (dollars)\nStudent\nAmount spent (dollars)\n\n\n\n\n1\n30\n11\n29\n21\n9\n\n\n2\n22\n12\n21\n22\n15\n\n\n3\n10\n13\n13\n23\n6\n\n\n4\n62\n14\n15\n24\n93\n\n\n5\n28\n15\n23\n25\n21\n\n\n6\n31\n16\n32\n26\n20\n\n\n7\n40\n17\n14\n27\n13\n\n\n8\n29\n18\n29\n28\n12\n\n\n9\n17\n19\n48\n29\n29\n\n\n10\n51\n20\n50\n30\n38\n\n\n\n\\[\n\\begin{aligned}\n& \\hat{\\gamma}=N \\mu=N \\sum_{i=1}^{n_s} \\frac{\\bar{y}_i}{n_s} \\\\\n& =4500 \\times \\frac{850}{30} \\\\\n& B E=2 \\sqrt{\\operatorname{Var}^2 r(\\gamma)} \\\\\n& =\\sqrt[2]{N^2\\left(1-\\frac{n}{N}\\right) \\frac{S_T^S}{n_S}} \\\\\n& S^2 \\bar{y}=338.6437 \\\\\n& B E=30137.06\n\\end{aligned}\n\\]"
   },
   {
-    "objectID": "APH103.html#notations",
-    "href": "APH103.html#notations",
-    "title": "APH103-SurveySampling",
+    "objectID": "aph103.html#notations",
+    "href": "aph103.html#notations",
+    "title": "aph103-SurveySampling",
     "section": "Notations",
     "text": "Notations\n\\(N-\\quad\\) number of clusters in the population\n\\(n-\\) number of clusters in a SRS\n\\(m_i-\\) number of elements in cluster \\(i\\)\n\\(\\bar{m}=\\frac{1}{n} \\sum_{i=1}^n m_i\\) average cluster size for the sample\n\\(M=\\sum_{i=1}^N m_i\\) number of elements in the population\n\\(\\bar{M}=\\frac{M}{N}\\) average cluster size for the population\n\\(y_i-\\) total of all observations in the \\(i^{t h}\\) cluster"
   },
   {
-    "objectID": "APH103.html#population-mean",
-    "href": "APH103.html#population-mean",
-    "title": "APH103-SurveySampling",
+    "objectID": "aph103.html#population-mean",
+    "href": "aph103.html#population-mean",
+    "title": "aph103-SurveySampling",
     "section": "Population mean",
     "text": "Population mean\nEstimator for the population mean \\(\\mu\\): \\[\n\\bar{y} = \\frac{\\sum_{i=1}^n y_i}{\\sum_{i=1}^n m_i}\n\\]\nEstimated variance of \\(\\bar{y}\\): \\[\n\\hat{V}(\\bar{y}) = \\left( \\frac{N-n}{N n \\bar{M}^2} \\right) s_r^2 \\\\\n\\text{where} \\\\\ns_r^2 = \\frac{\\sum_{i=1}^n (y_i - \\bar{y} m_i)^2}{n-1}\n\\] Note: If \\(\\bar{M}\\) is unknown, it can be approximated by \\(\\bar{m}\\)."
   },
   {
-    "objectID": "APH103.html#population-total",
-    "href": "APH103.html#population-total",
-    "title": "APH103-SurveySampling",
+    "objectID": "aph103.html#population-total",
+    "href": "aph103.html#population-total",
+    "title": "aph103-SurveySampling",
     "section": "Population total",
     "text": "Population total\nEstimator for the population mean \\(\\tau\\): \\[\nM\\bar{y} = M \\left( \\frac{\\sum_{i=1}^n y_i}{\\sum_{i=1}^n m_i} \\right)\n\\]\nEstimated variance of \\(M\\bar{y}\\): \\[\n\\hat{V}(M\\bar{y}) = M^2\\hat{V}(\\bar{y}) = N^2 \\left( \\frac{N-n}{Nn} \\right) s_r^2 \\\\\n\\text{where} \\\\\ns_r^2 = \\frac{\\sum_{i=1}^n (y_i - \\bar{y} m_i)^2}{n-1}\n\\]"
   },
   {
-    "objectID": "APH103.html#population-total-m-unknown",
-    "href": "APH103.html#population-total-m-unknown",
-    "title": "APH103-SurveySampling",
+    "objectID": "aph103.html#population-total-m-unknown",
+    "href": "aph103.html#population-total-m-unknown",
+    "title": "aph103-SurveySampling",
     "section": "Population total (M unknown)",
     "text": "Population total (M unknown)\n\\[\nN\\bar{y_t} = \\frac{N}{n} \\sum_{i=1}^n y_i \\text{ where } \\bar{y_t} = \\frac{\\sum_{i=1}^n y_i}{n}\n\\]\nEstimated variance of \\(N\\bar{y_t}\\): \\[\n\\hat{V} (N\\bar{y_t}) = N^2\\hat{V}(\\bar{y_t}) = N^2 \\left( \\frac{N-n}{Nn} \\right) s_t^2 \\\\\n\\text{where} \\\\\ns_t^2 = \\frac{\\sum_{i=1}^n (y_i - \\bar{y_t})^2}{n-1}\n\\]"
   },
   {
-    "objectID": "APH103.html#approximate-sample-size-required-to-estimate-population-mean",
-    "href": "APH103.html#approximate-sample-size-required-to-estimate-population-mean",
-    "title": "APH103-SurveySampling",
+    "objectID": "aph103.html#approximate-sample-size-required-to-estimate-population-mean",
+    "href": "aph103.html#approximate-sample-size-required-to-estimate-population-mean",
+    "title": "aph103-SurveySampling",
     "section": "Approximate sample size required to estimate population mean",
     "text": "Approximate sample size required to estimate population mean\nApproximate sample size required to estimate \\(\\mu\\), with a bound \\(B\\) on the error of estimation: \\[\nn = \\frac{N\\sigma^2_r}{ND + \\sigma^2_r} \\\\\n\\sigma^2_r \\text{ is estimated by } s_r^2 \\\\\nD = \\frac{B^2\\bar{M}^2}{4}\n\\]"
   },
   {
-    "objectID": "APH103.html#approximate-sample-size-required-to-estimate-population-total",
-    "href": "APH103.html#approximate-sample-size-required-to-estimate-population-total",
-    "title": "APH103-SurveySampling",
+    "objectID": "aph103.html#approximate-sample-size-required-to-estimate-population-total",
+    "href": "aph103.html#approximate-sample-size-required-to-estimate-population-total",
+    "title": "aph103-SurveySampling",
     "section": "Approximate sample size required to estimate population total",
     "text": "Approximate sample size required to estimate population total\nApproximate sample size required to estimate \\(\\tau\\), using \\(M\\bar{y}\\), with a bound \\(B\\) on the error of estimation: \\[\nn = \\frac{N\\sigma^2_r}{ND + \\sigma^2_r} \\\\\n\\sigma^2_r \\text{ is estimated by } s_r^2 \\\\\nD = \\frac{B^2}{4N^2}\n\\]\n(Note that the only difference between (8.12) and (8.13) is D.)"
   },
   {
-    "objectID": "APH103.html#approximate-sample-size-required-to-estimate-population-total-without-m",
-    "href": "APH103.html#approximate-sample-size-required-to-estimate-population-total-without-m",
-    "title": "APH103-SurveySampling",
+    "objectID": "aph103.html#approximate-sample-size-required-to-estimate-population-total-without-m",
+    "href": "aph103.html#approximate-sample-size-required-to-estimate-population-total-without-m",
+    "title": "aph103-SurveySampling",
     "section": "Approximate sample size required to estimate population total (without M)",
     "text": "Approximate sample size required to estimate population total (without M)\nApproximate sample size required to estimate \\(\\tau\\), using \\(N\\bar{y_t}\\), with a bound \\(B\\) on the error of estimation: \\[\nn = \\frac{N\\sigma^2_t}{ND + \\sigma^2_t} \\\\\n\\sigma^2_t \\text{ is estimated by } s_t^2 \\\\\nD = \\frac{B^2}{4N^2}\n\\]"
   },
   {
-    "objectID": "APH103.html#population-proportion",
-    "href": "APH103.html#population-proportion",
-    "title": "APH103-SurveySampling",
+    "objectID": "aph103.html#population-proportion",
+    "href": "aph103.html#population-proportion",
+    "title": "aph103-SurveySampling",
     "section": "Population proportion",
     "text": "Population proportion\nEstimator for the population proportion \\(p\\): \\[\n\\hat{p} = \\frac{\\sum_{i=1}^n a_i}{\\sum_{i=1}^n m_i}\n\\]\nEstimated variance of \\(\\hat{p}\\): \\[\n\\hat{V}(\\hat{p}) = \\left( \\frac{N-n}{N n \\bar{M}^2} \\right) s_p^2 \\\\\n\\text{where} \\\\\ns_p^2 = \\frac{\\sum_{i=1}^n (a_i - \\hat{p} m_i)^2}{n-1}\n\\]"
   },
   {
-    "objectID": "APH103.html#probabilities-proportional-to-size-pps",
-    "href": "APH103.html#probabilities-proportional-to-size-pps",
-    "title": "APH103-SurveySampling",
+    "objectID": "aph103.html#probabilities-proportional-to-size-pps",
+    "href": "aph103.html#probabilities-proportional-to-size-pps",
+    "title": "aph103-SurveySampling",
     "section": "Probabilities proportional to size (PPS)",
     "text": "Probabilities proportional to size (PPS)\nMethod: Cumulative sum method / Maximum size method / Catalog method\nEstimator of the population mean \\(\\mu\\): \\[\n\\hat{u}_{pps} = \\bar{\\bar{y}} = \\frac{1}{n}\\sum_{i=1}^n \\bar{y_i}\n\\]\nEstimator for the variance of \\(\\hat{u}_{pps}\\): \\[\n\\hat{V}(\\hat{u}_{pps}) = \\frac{1}{n(n-1)} \\sum_{i=1}^n (\\bar{y_i} - \\hat{u}_{pps})^2\n\\]\nEstimator of the population total \\(\\tau\\): \\[\n\\hat{\\tau}_{pps} = \\frac{M}{n}\\sum_{i=1}^n \\bar{y_i}\n\\]\nEstimator for the variance of \\(\\hat{\\tau}_{pps}\\): \\[\n\\hat{V}(\\hat{\\tau}_{pps}) = \\frac{M^2}{n(n-1)} \\sum_{i=1}^n (\\bar{y_i} - \\hat{u}_{pps})^2\n\\]"
   },
   {
-    "objectID": "APH103.html#example-exercise-3",
-    "href": "APH103.html#example-exercise-3",
-    "title": "APH103-SurveySampling",
+    "objectID": "aph103.html#example-exercise-3",
+    "href": "aph103.html#example-exercise-3",
+    "title": "aph103-SurveySampling",
     "section": "Example Exercise",
     "text": "Example Exercise\n\nCluster sampling\n\nA sociologist wants to estimate the per-capita income in a certain small city. No list of resident adults is available. Here, cluster sampling seems to be the logical choice for the survey design because no lists of elements are available. Each of the city blocks will be considered one cluster, and the clusters are numbered on a city map, with the numbers from 1 to 415.The experimenter has enough time and money to sample n = 25 clusters and to interview every household within each cluster. Hence, 25 random numbers between 1 and 415 are selected, and the clusters having these numbers are marked on the map. Interviewers are then assigned to each of the sampled clusters.\n\n\n\n\n\n\n\n\n\n\n\nCluster\nNumber of residents, \\(m_i\\)\nTotal income per cluster, \\(y_i\\) (dollars)\nCluster\nNumber of residents, \\(m_i\\)\nTotal income per cluster, \\(y_i\\) (dollars)\n\n\n\n\n1\n8\n$96,000\n14\n10\n$49,000\n\n\n2\n12\n121,000\n15\n9\n53,000\n\n\n3\n4\n42,000\n16\n3\n50,000\n\n\n4\n5\n65,000\n17\n6\n32,000\n\n\n5\n6\n52,000\n18\n5\n22,000\n\n\n6\n6\n40,000\n19\n5\n45,000\n\n\n7\n7\n75,000\n20\n4\n37,000\n\n\n8\n5\n65,000\n21\n6\n51,000\n\n\n9\n8\n45,000\n22\n8\n30,000\n\n\n10\n3\n50,000\n23\n7\n39,000\n\n\n11\n2\n85,000\n24\n3\n47,000\n\n\n12\n6\n43,000\n25\n8\n41,000\n\n\n13\n5\n54,000\n\n\\(\\sum_{i=1}^{25} m_i=151\\)\n\\(\\sum_{i=1}^{25} y_i=\\)  $1,329,000\n\n\n\n\n\n\n\n\\(N\\)\nMean\nMedian\nSD\n\n\n\n\nResident\n25\n6.040\n6.000\n2.371\n\n\nIncome\n25\n53,160\n49,000\n21,784\n\n\n\\(y_i-\\bar{y} m_i\\)\n25\n0\n993\n25,189\n\n\n\n\\(\\bar{y}=\\frac{\\sum_{i=1}^n y_i}{\\sum_{i=1}^n m_i}=\\frac{\\$ 1,329,000}{151}=\\frac{\\$ 53,160}{6.04}=\\$ 8801\\)\nBecause \\(M\\) is not known, the \\(\\bar{M}\\) appearing in Eq. (8.2) must be estimated by \\(\\bar{m}\\), where \\[\n\\bar{m}=\\frac{\\sum_{i=1}^n m_i}{n}=\\frac{151}{25}=6.04\n\\]\n\\(\\begin{aligned} \\hat{V}(\\bar{y}) & =\\left(1-\\frac{n}{N}\\right) \\frac{s_{\\mathrm{r}}^2}{n \\bar{M}^2} \\\\ & =\\left[1-\\frac{25}{415}\\right] \\frac{(25,189)^2}{25(6.04)^2}=653,785\\end{aligned}\\)\nThus, the estimate of \\(\\mu\\) with a bound on the error of estimation is given by \\[\n\\bar{y} \\pm 2 \\sqrt{\\hat{V}(\\bar{y})}=8801 \\pm 2 \\sqrt{653,785}=8801 \\pm 1617\n\\]\nAnd for total income \\(\\tau\\) is given by\n\\(M\\bar y = 2500(8801) = \\$ 22,002,500\\)\nThe bound on the error of estimation is given by\n\\[\nM\\bar y \\pm 2 \\sqrt{M^2\\hat{V}(\\bar y)}=22,002,500 \\pm 2 \\sqrt{(2500)^2(653,785)}\n\\]\nBut, here, if M is not known, we can use the following equation to estimate the total income \\(\\tau\\):\n\\[\nN\\bar y_t = \\frac{N}{n}\\sum_{i=1}^n y_i = \\frac{415}{25}(1,329,000) = 22061400\n\\]\nSince \\(s_t^2= \\frac{\\sum_{i=1}^n (y_i - \\bar y_t)^2}{n-1}\\), we can use the following equation to estimate the variance of \\(\\hat{\\tau}=(21784)^2\\):\nthe bound of error is\n\\[\nN\\bar y_t \\pm 2 \\sqrt{N^2(1-\\frac{n}{N})\\frac{s_t^2}{n}}=22,061,400 \\pm 2 \\sqrt{(415)^2(1-25/415)(21784)^2/25}\n\\]\n\nPPS (probability proportional to size) sampling\n\nAn investigator wishes to estimate the average number of defects per board on boards of electronic components manufactured for installation in computers. The boards contain varying numbers of components, and the investigator thinks that the number of defects should be positively correlated with the number of components on a board. Thus, pps sampling is used, with the probability of selecting any one board for the sample being proportional to the number of components on that board. A sample of n = 4 boards is to be selected from the N = 10 boards of one day of production. The number of components on each of the ten boards are\n10, 12, 22, 8, 16, 24, 9, 10, 8, 31\nShow how to select n = 4 boards with probabilities proportional to size.\n(the sum of 10, 12, 22, 8, 16, 24, 9, 10, 8, 31 is 150)\nSol:\nMethod 1: Cumulative sums method – randomly get 4 numbers from 0 to 150\nMethod 2: Maximum size method – generate the ramdom pair (i,j) \\(i \\in [1,N], j\\in[1,M]\\), where N=10, M=31. If the pair does not exist then change another one until 4 boards are selected.\nMethod 3: Catalog method\n\nSequence 1,2,…,\\(x_1\\),\\(x_1+1\\),…,\\(x_1+x_2,x_1+x_2+1,\\),..\\(x_1+...+x_n\\) –&gt; (1,2,…,150),where \\(x_i\\) is the size of each board.\nk = 150/4 = 37\n\n\\(R_1 =\\) SRS(1,2,…,37)\n\\(R_2 = R_1 +37\\)\n\\(R_3 = R_2 +37\\)\n\\(R_4 = R_3 +37\\)\n\nIf \\(\\sum _{i=1}^{j-1} x_i &lt; R_1 \\leq \\sum _{i=1}^{j} x_i, y_i=y_j\\) select the j-th board\n\nThen we will estimate the average number of defects per board on boards of electronic components manufactured for installation in computers. If the number of defects found boards 2, 3, 5, and 7 was 1, 3, 2, and 1, respectively\nFirstly, calculate the cluster mean and probability. \\[\n\\begin{array}{lll}\n\\bar{y}_1=\\frac{1}{12}, & \\bar{y}_2=\\frac{3}{22}, & \\bar{y}_3=\\frac{2}{16},\\bar y_4 = \\frac{1}{9}\\\\\np_1=\\frac{12}{150}, & p_2=\\frac{22}{150}, & p_3=\\frac{9}{150}, p_4=\\frac{9}{150}\n\\end{array}\n\\]\nSecondly, the estimation of average number is given by \\[\n\\begin{aligned}\n\\hat{\\mu}_{p p s} & =\\frac{1}{n} \\sum_{i=1}^n \\frac{\\bar{y}_i}{p_i}=\\frac{1}{4}\\left(\\frac{\\bar{y}_1}{p_1}+\\frac{\\bar{y}_2}{p_2}+\\frac{\\bar{y}_3}{p_2}+\\frac{\\bar{y}_4}{p_4}\\right) \\approx 1.25 \\\\\n\\text { And } \\hat{v}\\left(\\hat{\\mu}_{p p s}\\right) & =\\frac{1}{n(n-1)} \\sum_{i=1}^n\\left(\\frac{\\bar{y}_i}{p_i}-\\hat{\\mu}_{p p s}\\right)^2 \\\\\n& =\\frac{1}{4 \\times 3} \\times(1.665) \\\\\n& \\approx 0.14\n\\end{aligned}\n\\]\nTherefore, the bound \\(B=2 \\sqrt{\\hat{v}\\left(\\hat{\\mu_{\\text {pps }}}\\right)}=2 \\sqrt{0.14} \\approx 0.75\\)"
   },
   {
-    "objectID": "APH103.html#advantages",
-    "href": "APH103.html#advantages",
-    "title": "APH103-SurveySampling",
+    "objectID": "aph103.html#advantages",
+    "href": "aph103.html#advantages",
+    "title": "aph103-SurveySampling",
     "section": "Advantages",
     "text": "Advantages\nThe advantages of two-stage cluster sampling over other designs are the same as those listed in Chapter 8 for cluster sampling. First, a frame listing all elements in the population may be impossible or costly to obtain, whereas obtaining a list of all clus- ters may be easy. For example, compiling a list of all university students in the coun- try would be expensive and time-consuming, but a list of universities can be readily acquired. Second, the cost of obtaining data may be inflated by travel costs if the sampled elements are spread over a large geographic area. Thus, sampling clusters of elements that are physically close together is often economical."
   },
   {
-    "objectID": "APH103.html#how-to-draw",
-    "href": "APH103.html#how-to-draw",
-    "title": "APH103-SurveySampling",
+    "objectID": "aph103.html#how-to-draw",
+    "href": "aph103.html#how-to-draw",
+    "title": "aph103-SurveySampling",
     "section": "How to draw",
     "text": "How to draw\nRandomly select clusters first, then randomly sample elements within chosen clusters."
   },
   {
-    "objectID": "APH103.html#population-mean-1",
-    "href": "APH103.html#population-mean-1",
-    "title": "APH103-SurveySampling",
+    "objectID": "aph103.html#population-mean-1",
+    "href": "aph103.html#population-mean-1",
+    "title": "aph103-SurveySampling",
     "section": "Population mean",
     "text": "Population mean\nUnbiased estimator of the population mean \\(\\mu\\) : \\[\n\\hat{\\mu}=\\left(\\frac{N}{M}\\right) \\frac{\\sum_{i=1}^n M_i \\bar{y}_i}{n}=\\frac{1}{\\bar{M}} \\frac{\\sum_{i=1}^n M_i \\bar{y}_i}{n}\n\\] assuming simple random sampling at each stage.\nEstimated variance of \\(\\hat{\\boldsymbol{\\mu}}\\) : \\[\n\\hat{V}(\\hat{\\mu})=\\left(1-\\frac{n}{N}\\right)\\left(\\frac{1}{n \\bar{M}^2}\\right) s_{\\mathrm{b}}^2+\\frac{1}{n N \\bar{M}^2} \\sum_{i=1}^n M_i^2\\left(1-\\frac{m_i}{M_i}\\right)\\left(\\frac{s_i^2}{m_i}\\right)\n\\] where \\[\ns_{\\mathrm{b}}^2=\\frac{\\sum_{i=1}^n\\left(M_i \\bar{y}_i-\\bar{M} \\hat{\\mu}\\right)^2}{n-1}\n\\] and \\[\ns_i^2=\\frac{\\sum_{j=1}^{m_i}\\left(y_{i j}-\\bar{y}_i\\right)^2}{m_i-1} \\quad i=1,2, \\ldots, n\n\\]\nNotice that \\(s_{\\mathrm{b}}^2\\) is simply the sample variance among the terms \\(M_i \\bar{y}_i\\)."
   },
   {
-    "objectID": "APH103.html#population-total-1",
-    "href": "APH103.html#population-total-1",
-    "title": "APH103-SurveySampling",
+    "objectID": "aph103.html#population-total-1",
+    "href": "aph103.html#population-total-1",
+    "title": "aph103-SurveySampling",
     "section": "Population total",
     "text": "Population total\nEstimation of the population total \\(\\boldsymbol{\\tau}\\) : \\[\n\\hat{\\tau}=M \\hat{\\mu}=\\frac{N}{n} \\sum_{i=1}^n M_i \\bar{y}_i\n\\] assuming simple random sampling at each stage. Estimated variance of \\(\\hat{\\boldsymbol{\\tau}}\\) : \\[\n\\begin{aligned}\n\\hat{V}(\\hat{\\tau}) & =M^2 \\hat{V}(\\hat{\\mu}) \\\\\n& =\\left(1-\\frac{n}{N}\\right)\\left(\\frac{N^2}{n}\\right) s_{\\mathrm{b}}^2+\\frac{N}{n} \\sum_{i=1}^n M_i^2\\left(1-\\frac{m_i}{M_i}\\right)\\left(\\frac{s_i^2}{m_i}\\right)\n\\end{aligned}\n\\]"
   },
   {
-    "objectID": "APH103.html#ratio-estimation-of-population-mean",
-    "href": "APH103.html#ratio-estimation-of-population-mean",
-    "title": "APH103-SurveySampling",
+    "objectID": "aph103.html#ratio-estimation-of-population-mean",
+    "href": "aph103.html#ratio-estimation-of-population-mean",
+    "title": "aph103-SurveySampling",
     "section": "Ratio Estimation of Population Mean",
     "text": "Ratio Estimation of Population Mean\nRatio estimator of the population mean \\(\\mu\\) : \\[\n\\hat{\\mu}_{\\mathrm{r}}=\\frac{\\sum_{i=1}^n M_i \\bar{y}_i}{\\sum_{i=1}^n M_i}\n\\]\nEstimated variance of \\(\\hat{\\boldsymbol{\\mu}}_{\\mathbf{r}}\\) : \\[\n\\hat{V}\\left(\\hat{\\mu}_{\\mathrm{r}}\\right)=\\left(1-\\frac{n}{N}\\right)\\left(\\frac{1}{n \\bar{M}^2}\\right) s_{\\mathrm{r}}^2+\\frac{1}{n N \\bar{M}^2} \\sum_{i=1}^n M_i^2\\left(1-\\frac{m_i}{M_i}\\right)\\left(\\frac{s_i^2}{m_i}\\right)\n\\]\nwhere \\[\ns_{\\mathrm{r}}^2=\\frac{\\sum_{i=1}^n M_i^2\\left(\\bar{y}_i-\\hat{\\mu}_{\\mathrm{r}}\\right)^2}{n-1}=\\frac{\\sum_{i=1}^n\\left(M_i \\bar{y}_i-M_i \\hat{\\mu}_{\\mathrm{r}}\\right)^2}{n-1}\n\\] and \\[\ns_i^2=\\frac{\\sum_{i=1}^{m_i}\\left(y_{i j}-\\bar{y}_i\\right)^2}{m_i-1} \\quad i=1,2, \\ldots, n\n\\]"
   },
   {
-    "objectID": "APH103.html#population-proportion-1",
-    "href": "APH103.html#population-proportion-1",
-    "title": "APH103-SurveySampling",
+    "objectID": "aph103.html#population-proportion-1",
+    "href": "aph103.html#population-proportion-1",
+    "title": "aph103-SurveySampling",
     "section": "Population proportion",
     "text": "Population proportion\nEstimator of a population proportion \\(\\boldsymbol{p}\\) : \\[\n\\hat{p}=\\frac{\\sum_{i=1}^n M_i \\hat{p}_i}{\\sum_{i=1}^n M_i}\n\\]\nEstimated variance of \\(\\boldsymbol{p}\\) : \\[\n\\hat{V}(\\hat{p})=\\left(1-\\frac{n}{N}\\right)\\left(\\frac{1}{n \\bar{M}^2}\\right) s_{\\mathrm{r}}^2+\\frac{1}{n N \\bar{M}^2} \\sum_{i=1}^n M_i^2\\left(1-\\frac{m_i}{M_i}\\right)\\left(\\frac{\\hat{p}_i \\hat{q}_i}{m_i-1}\\right)\n\\]\nwhere \\[\ns_{\\mathrm{r}}^2=\\frac{\\sum_{i=1}^n M_i^2\\left(\\hat{p}_i-\\hat{p}\\right)^2}{n-1}=\\frac{\\sum_{i=1}^n\\left(M_i \\hat{p}_i-M_i \\hat{p}\\right)^2}{n-1}\n\\] and \\(\\hat{q}_i=1-\\hat{p}_i\\)."
   },
   {
-    "objectID": "APH103.html#probabilities-proportional-to-size-pps-1",
-    "href": "APH103.html#probabilities-proportional-to-size-pps-1",
-    "title": "APH103-SurveySampling",
+    "objectID": "aph103.html#probabilities-proportional-to-size-pps-1",
+    "href": "aph103.html#probabilities-proportional-to-size-pps-1",
+    "title": "aph103-SurveySampling",
     "section": "Probabilities proportional to size (PPS)",
     "text": "Probabilities proportional to size (PPS)\nEstimator of the population mean \\(\\mu\\) : \\[\n\\hat{\\mu}_{\\mathrm{pps}}=\\frac{1}{n} \\sum_{i=1}^n \\bar{y}_i\n\\]\nEstimated variance of \\(\\hat{\\boldsymbol{\\mu}}_{\\text {pps }}\\) : \\[\n\\hat{V}\\left(\\hat{\\mu}_{\\mathrm{pps}}\\right)=\\frac{1}{n(n-1)} \\sum_{i=1}^n\\left(\\bar{y}_i-\\hat{\\mu}_{\\mathrm{pps}}\\right)^2\n\\]\nEstimator of the population total \\(\\boldsymbol{\\tau}\\) : \\[\n\\hat{\\tau}_{\\mathrm{pps}}=\\frac{M}{n} \\sum_{i=1}^n \\bar{y}_i\n\\]\nEstimated variance of \\(\\hat{\\boldsymbol{\\tau}}_{\\mathbf{p p s}}\\) : \\[\n\\hat{V}\\left(\\hat{\\tau}_{\\mathrm{pps}}\\right)=\\frac{M^2}{n(n-1)} \\sum_{i=1}^n\\left(\\bar{y}_i-\\hat{\\mu}_{\\mathrm{pps}}\\right)^2\n\\]"
   },
   {
-    "objectID": "APH103.html#example-exercise-4",
-    "href": "APH103.html#example-exercise-4",
-    "title": "APH103-SurveySampling",
+    "objectID": "aph103.html#example-exercise-4",
+    "href": "aph103.html#example-exercise-4",
+    "title": "aph103-SurveySampling",
     "section": "Example Exercise",
     "text": "Example Exercise\nTo improve telephone service, an executive of a certain company wants to estimate the total number of phone calls placed by secretaries in the company during one day. The company contains 12 departments, each making approximately the same number of calls per day. Each department employs approximately 20 secretaries, and the number of calls made varies considerably from secretary to secretary. The executive decides to employ two-stage cluster sampling, using a small number of departments (clusters) and selecting a fairly large number of secretaries (elements) from each. Ten secretaries are sampled from each of four departments. The data are summarized in the accompanying table. Estimate the total number of calls placed by the secretaries in this company and place a bound on the error of estimation.\n\n\n\n\n\n\n\n\n\n\nDepartment\nNumber of  secretaries\nNumber of  secretaries sampled\nMean,  \\(\\bar{y}_i\\)\nVariance,  \\(s_i^2\\)\n\n\n\n\n1\n21\n10\n15.5\n2.8\n\n\n2\n23\n10\n15.8\n3.1\n\n\n3\n20\n10\n17.0\n3.5\n\n\n4\n20\n10\n14.9\n3.4\n\n\n\n\\[\n\\bar{M}=21\n\\]\nRecall the properties of two-stage sampling the estimation of population total \\[\n\\hat{\\tau}=\\frac{N}{n} \\cdot \\sum_{i=1}^n M_i \\bar{y}_i\n\\] and \\(\\hat{V}(\\hat{\\tau})=\\left(1-\\frac{n}{N}\\right)\\left(\\frac{N^2}{n}\\right) s_b^2+\\frac{N}{n} \\sum_{i=1}^n M_1^2\\left(1-\\frac{m_i}{M_i}\\right)\\left(\\frac{s_i^2}{m_i}\\right)\\) where \\(\\quad S_b^2=\\frac{\\sum_{i=1}^n\\left(M_i \\hat{y}_i-\\bar{M} \\hat{\\mu}\\right)^2}{n-1}\\)\n\\[\n\\begin{aligned}\n\\hat{\\mu}= & \\frac{1}{\\bar{M}} \\cdot \\frac{1}{n} \\sum_{i=1}^n M_i \\bar{y}_i=\\frac{1}{21} \\times \\frac{1}{4} \\times[21 \\times 15.5+23 \\times 15.8+20 \\times 17+20 \\times 148] \\\\\n& \\approx 15.80 \\\\\nS_b^2 & =\\frac{\\sum_{i=1}^n\\left(M_i \\bar{y}_i-\\bar{M} \\bar{\\mu}\\right)^2}{n-1} \\\\\n& =\\frac{(21 \\times 15.5-158 \\times 21)^2+\\cdots}{4-1}=\\frac{39.69+998.56+67.24+1143.44}{3} \\\\\n& =749.31\n\\end{aligned}\n\\]\nTherefore the total number of calls is. \\[\n\\begin{aligned}\n\\hat{\\imath} & =\\frac{N}{n} \\sum_{i=1}^n M_i \\bar{y}_i \\\\\n& =\\frac{12}{4}[21 \\times 15.5+23 \\times 15.8+20 \\times 17+20 \\times 14.8] \\\\\n& =3980.7\n\\end{aligned}\n\\] \\[\n\\begin{aligned}\nV(\\imath) & =\\left(1-\\frac{n}{N}\\right)\\left(\\frac{N^2}{n}\\right) S_b^2+\\frac{N}{n} \\sum_{i=1}^n M_i^2\\left(1-\\frac{m_i}{M_i}\\right)\\left(\\frac{S_i^2}{m_0}\\right) \\\\\n& =\\left(1-\\frac{4}{12}\\right) \\times\\left(\\frac{12^2}{4}\\right) \\times 749.31 \\\\\n& +\\frac{12}{4} \\times\\left[21^2 \\times\\left(1-\\frac{10}{21}\\right) \\times \\frac{2.8}{10}+23^2 \\times\\left(1-\\frac{10}{23}\\right) \\times \\frac{3.1}{10}\\right. \\\\\n& \\left.+20^2 \\times\\left(1-\\frac{10}{20}\\right) \\times \\frac{3.5}{10}+20^2 \\times\\left(1-\\frac{10}{20}\\right) \\times \\frac{3.4}{10}\\right] \\\\\n& -19869.55\n\\end{aligned}\n\\] bound \\(2 \\sqrt{\\hat{v}(7)}=137.37\\)."
   },
   {
-    "objectID": "APH103.html#advantages-and-disadvantages-of-common-sampling-methods",
-    "href": "APH103.html#advantages-and-disadvantages-of-common-sampling-methods",
-    "title": "APH103-SurveySampling",
+    "objectID": "aph103.html#advantages-and-disadvantages-of-common-sampling-methods",
+    "href": "aph103.html#advantages-and-disadvantages-of-common-sampling-methods",
+    "title": "aph103-SurveySampling",
     "section": "Advantages and Disadvantages of Common Sampling Methods",
     "text": "Advantages and Disadvantages of Common Sampling Methods\n\nSimple Random Sampling:\n\nAdvantages: It is easy to operate and ensures that each individual in the population has an equal probability of being selected. Theoretically, it can obtain an unbiased sample, and the results have strong statistical inference ability.\nDisadvantages: When the population is large, the numbering and sampling process are cumbersome. If there is an obvious hierarchical structure in the population, the sample may not well represent the characteristics of each layer.\n\n\n\nStratified Sampling:\n\nAdvantages: First, the population is stratified according to characteristics, and then independent sampling is carried out from each layer, making the sample more representative and improving the accuracy of estimation. It also allows for separate analysis of each layer to understand the differences among different levels.\nDisadvantages: It requires a certain understanding of the characteristics of the population to stratify reasonably. The sampling procedure is more complex than simple random sampling, and the calculation amount is relatively large.\n\n\n\nCluster Sampling:\n\nAdvantages: The sampling unit is a group, and sampling and investigation are relatively convenient, which can reduce the cost and difficulty of sampling. It is suitable for situations where the population is widely distributed and individual access is difficult.\nDisadvantages: Individuals within a cluster often have similarities, which may lead to insufficient sample representativeness. The sampling error is usually larger than that of simple random sampling and stratified sampling.\n\n\n\nSystematic Sampling:\n\nAdvantages: After arranging the population in a certain order, sampling is carried out at equal intervals. It is simple to operate and easy to implement. In some cases, the sample is evenly distributed and can have good representativeness.\nDisadvantages: If there are periodic changes in the population, and the sampling interval is related to the period, it may lead to serious bias.\n\nPrevention and Correction of Sample Selection Bias\n\n\nPrevention and Correction of Sample Selection Bias\n\nPrevention:\nReasonable Sampling Design: Adopt scientific sampling methods, such as random sampling and stratified sampling, to ensure that each individual has an appropriate probability of being selected. Clearly define the source and scope of the sample and consider the diversity of the population. For example, in consumer surveys, cover people of different ages, regions, and income levels.\nEstablish Strict Criteria: When selecting samples, establish clear inclusion and exclusion criteria to avoid"
   }
