@@ -27,7 +27,7 @@ website:
         #text: PDE  
       - href: Calculus.html
         text: Calculus
-      - href: aph103.html
+      - href: aph103.qmd
         text: SurveySampling
 
       

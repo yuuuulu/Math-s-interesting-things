@@ -70,7 +70,7 @@ Finally, we can look at the distribution of $\hat p$, suppose we know the true p
 
 -   God's perspective
 
-```{r}
+```r
 library(ggplot2)
 
 set.seed(111)
