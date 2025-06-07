@@ -1,0 +1,2465 @@
+---
+title: "APH101-Biostatistics And R"
+format: pdf
+author: "Yu.Lu23"
+date: "2025-06-02"
+editor: visual
+toc: true
+---
+
+# Final review of statistics knowledge
+
+## Three main sampling distributions in hypothesis testing
+
+## Chi-square distribution
+
+Suppose $X_1, \cdots, X_n \stackrel{\text { i.i.d. }}{\sim} \mathcal{N}(0,1)$.the distribution of the statistic $$
+X_1^2+\cdots+X_n^2
+$$ is called a chi-square distribution with $n$ degrees of freedom, denoted by $\chi^2(n)$.
+
+Besides, random variable $X_i^2 \sim \operatorname{Gamma}\left(\frac{1}{2}, \frac{1}{2}\right)$ corresponds to the chi-squared distribution with 1 degree of freedom, denoted as $\chi_1^2$.
+
+This is derived by the MGF:
+
+Since 
+$$
+M_{X_1^2+\cdots+X_n^2}(t)=M_{X_1^2}(t) \times \cdots \times M_{X_n^2}(t)= \begin{cases}\infty & t \geq \frac{1}{2} \\ (1-2 t)^{-\frac{n}{2}} & t<\frac{1}{2}\end{cases}
+$$
+
+This is the MGF of the $\operatorname{Gamma}\left(\frac{n}{2}, \frac{1}{2}\right)$ distribution, so $X_1^2+\cdots+X_n^2 \sim \operatorname{Gamma}\left(\frac{n}{2}, \frac{1}{2}\right)$. This is called the chi-squared distribution with $\mathbf{n}$ degree of freedom, denoted $\chi_n^2$.
+
+### Properties
+
+
+-   If $W_1, \ldots, W_n$ are independent $\chi^2$ random variables with, respectively, $v_1, \cdots, v_n$ degrees of freedom, then the random variable $W_1+\cdots+W_n$ follows a $\chi^2$-distribution with $v_1+\cdots+v_n$ degree of freedom.
+
+-   The random variable $\frac{(\bar{X}-\mu)^2}{\sigma^2 / n}$ follows a $\chi^2$-distribution with 1 degree of freedom when $X$ follows a normal distribution with mean $\mu$ and variance $\sigma^2$.
+
+### Application
+
+Chi-square distribution is primarily used in testing:
+
+-   Goodness-of-fit
+
+-   Independence in contingency tables
+
+
+## Student's t-distribution
+
+### Construction
+
+The statistic $T=\frac{\bar{X}-\mu}{S / \sqrt{n}}$ follows a $t$-distribution with $v=n-1$ degrees of freedom when $X_1, \cdots, X_n$ are i.i.d. normal RVs.
+
+$$
+\bar{X} \sim \mathcal{N}\left(\mu, \frac{\sigma^2}{n}\right) \quad \frac{\bar{X}-\mu}{\sigma / \sqrt{n}} \sim \mathcal{N}(0,1) \quad \frac{(n-1) s^2}{\sigma^2} \sim \chi_{n-1}^2
+$$
+
+If we know the population variance $\sigma^2$, we can easily do inference using the statistic $\frac{\bar{X}-\mu}{\sigma / \sqrt{n}}$. However, $\sigma^2$ is usually unknown in practice.
+
+$$
+\bar{X} \sim \mathcal{N}\left(\mu, \frac{\sigma^2}{n}\right) \quad \frac{\bar{X}-\mu}{\sigma / \sqrt{n}} \sim \mathcal{N}(0,1) \quad \frac{(n-1) s^2}{\sigma^2} \sim \chi_{n-1}^2
+$$
+
+We can construct the $t$-statistic using the sample variance $S^2$ : $$
+T=\frac{\frac{\bar{X}-\mu}{\sigma / \sqrt{n}}}{\sqrt{\frac{(n-1) s^2}{\sigma^2} /(n-1)}}=\frac{\bar{X}-\mu}{S / \sqrt{n}}
+$$
+
+Notice the sample mean $\bar{X}$ and the sample variance $S^2$ are independent (the proof is beyond the scope of this course). So the $T$ is now a ratio of a standard normal variable and the square root of a $\chi^2 \mathrm{RV}$ divided by its degrees of freedom. This is the definition of a $t$-distribution with $n-1$ degrees of freedom.
+
+### Properties
+
+The $t$-distribution is primarily used in contexts where the underlying population is assumed to be normally distributed, especially when the sample size is small. Used extensively in problems that deal with inference about population mean $\mu$ when population variance $\sigma^2$ is unknown; problems where one is trying to determine if means from two samples are significantly different when population variances $\sigma_1^2$ and $\sigma_2^2$ are unknown.
+
+## F-distribution
+
+
+Let $U$ and $V$ be two independent random variables following $\chi^2$ distributions with $\nu_1$ and $\nu_2$ degrees of freedom, respectively. Then the distribution of the random variable $F=\frac{U / \nu_1}{V / \nu_2}$ is known as $F$-distribution.
+
+### Example
+
+If $S_1^2$ and $S_2^2$ are the variances of independent RVs of size $n_1$ and $n_2$ taken from normal populations with variances $\sigma_1^2$ and $\sigma_2^2$ respectively, then $$
+F=\frac{S_1^2 / \sigma_1^2}{S_2^2 / \sigma_2^2}=\frac{\sigma_2^2 S_1^2}{\sigma_1^2 S_2^2}
+$$ follows an $F$-distribution with $\nu_1=n_1-1$ and $\nu_2=n_2-1$ degrees of freedom.
+
+# Estimation of Population Characteristic
+
+## Point Estimation
+
+A point estimate of a population characteristic is a single number that is based on sample data and represents a plausible value of the characteristic.
+
+## Interval Estimation---Confidence interval(CI)
+
+An interval estimate of a parameter $\theta$ is an interval of the form $\hat{\theta}_L<\theta<\hat{\theta}_U$, where $\hat{\theta}_L$ and $\hat{\theta}_U$ depend on the value of $\hat{\theta}$ for a particular sample and also on the sampling distribution of $\hat{\Theta}$.
+
+-   If we were to construct a 95% confidence interval for some population characteristics (population proportion p or population mean $\mu$), we would be using a method that is successful 95% of the time.
+
+-   This is also about the question relevant to "How to choose a sample size"
+
+### Definition
+
+A $100(1-\alpha) \%$ confidence interval is an interval of the form $\hat{\theta}_L<\theta<\hat{\theta}_U$, where $\hat{\theta}_L$ and $\hat{\theta}_U$ are respectively values of $\widehat{\Theta}_L$ and $\widehat{\Theta}_U$ obtained for a particular sample, based on
+$$
+P\left(\widehat{\Theta}_L<\theta<\widehat{\Theta}_U\right)=1-\alpha \quad ; \quad 0<\alpha<1
+$$ 
+in the estimation of population parameter $\theta$.
+
+## Interpretation
+
+For confidence level of 95% CI for any normal distribution: About 95% of the values are within 1.96 standard deviations of the mean. (Recall the concept of Z-scores)
+
+That is, if $$\text{Estimate}± (Z \times \sigma)$$ was used to generate an interval estimate over and over again with different samples, in the long run 95% of the resulting intervals would include the actual value of the characteristic being estimated.
+
+The confidence level 95% refers to the method used to construct the interval rather than to any particular interval, such as the one we obtained.
+
+### CI on Mean
+
+Here, $\bar x$ is the sample mean from a simple random sample.
+
+$\mu$ is the population mean which we are interested in estimating.
+
+#### CI on $\mu$ with $\sigma$ known n $\ge 30$ or the population is normal --- Use z-statistics
+
+CI: $\bar x \pm z_{\alpha/2} \frac {\sigma}{\sqrt n}$, for example, 95% CI is $\bar x \pm 1.96 \frac {\sigma}{\sqrt n}$
+
+#### One-side Confidence Bound on $\mu$ with $\sigma$ known n $\ge 30$ or the population is normal --- Use z-statistics
+
+Upper one-side bound: $\mu <\bar x + z_{\alpha} \frac {\sigma}{\sqrt n}$
+
+Lower one-side bound: $\mu >\bar x - z_{\alpha} \frac {\sigma}{\sqrt n}$
+
+For example, 95% Confidence bound on $\mu$ is $\bar x \pm 1.645 \frac {\sigma}{\sqrt n}$
+
+#### CI on $\mu$ with $\sigma$ unknown and the population is normal --- Use t-statistics (use s as the estimate for σ (t-statistics with df = n-1))
+
+CI: $\bar x \pm t_{\alpha/2} \frac {s}{\sqrt n}$, for example, 95% CI is $\bar x \pm t_{0.025} \frac {s}{\sqrt n}$ and df = n-1
+
+Remark: The distribution of t is more spread out than the standard normal distribution but when n $\ge 30$, t and z are very close to each other.
+
+#### CI for $\mu_1 - \mu_2$, both $\sigma_1^2$ and $\sigma_2^2$ are known
+
+CI of $\mu_1-\mu_2$: $(\bar x_1 - \bar x_2) \pm z_{\alpha/2} \sqrt {\frac {\sigma_1^2}{n_1} + \frac {\sigma_2^2}{n_2}}$
+
+#### CI for $\mu_1 - \mu_2$, both $\sigma_1^2$ and $\sigma_2^2$ are unknown but assumed equal
+
+CI of $\mu_1-\mu_2$: $(\bar x_1 - \bar x_2) \pm t_{\alpha/2} s_p \sqrt {\frac {1}{n_1} + \frac {1}{n_2}}$ with df = $n_1+n_2-2$ where $s_p = \sqrt {\frac {(n_1-1)s_1^2 + (n_2-1)s_2^2}{n_1+n_2-2}}$
+
+#### CI for paired observations
+
+Previous, we have two independent samples, now we have two dependent samples. We can use the difference between the two samples to construct a confidence interval.
+
+CI of $\mu_d$: $\bar d \pm t_{\alpha/2} \frac {s_d}{\sqrt n}$ with df = n-1 where $s_d$ is the sample standard deviation of the differences $d_i = x_{1i} - x_{2i}$ and $\bar d$ is the sample mean of the differences.
+
+### CI for Estimating $\sigma$
+
+a $100(1-\alpha)\%$ CI for $\sigma^2$ is $\left(\frac{(n-1) S^2}{\chi_{\alpha / 2, n-1}^2}, \frac{(n-1) S^2}{\chi_{1-\alpha / 2, n-1}^2}\right)$
+
+where $S^2$ is the sample variance and $\chi_{\alpha / 2, n-1}^2$ and $\chi_{1-\alpha / 2, n-1}^2$ are the critical values of the chi-square distribution with $n-1$ degrees of freedom.
+
+#### Estimating $\sigma_1^2/ \sigma_2^2$
+
+A $100(1-\alpha)\%$ CI for $\frac{\sigma_1^2}{\sigma_2^2}$ using F-statistics with $f_{1-\alpha/2}(n_1-1,n_2-1)=1/f_{\alpha/2}(n_1-1,n_2-1)$ is $$
+\frac{s_1^2}{s_2^2} \frac{1}{f_{\alpha / 2}\left(n_1-1, n_2-1\right)}<\frac{\sigma_1^2}{\sigma_2^2}<\frac{s_1^2}{s_2^2} f_{\alpha / 2}\left(n_2-1, n_1-1\right)
+$$ where $f_{\alpha / 2}\left(v_1, v_2\right)$ is an $F$-value with $v_1$ and $v_2$ degrees of freedom, leaving an area of $\alpha / 2$ to the right, and $f_{\alpha / 2}\left(v_2, v_1\right)$ is a similar $F$-value with $v_2$ and $v_1$ degrees of freedom.
+
+
+# Hypothesis Testing
+
+-   z-test
+
+Suppose $X_1, \cdots, X_n \xrightarrow[\sim]{\text { iid }} \mathcal{N}\left(\mu, \sigma^2\right)$, where $\mu$ is unknown and where $\sigma^2=\sigma_0^2$ is known.
+
+Suppose we wish to test $H_0: \mu=\mu_0$ against $H_1: \mu>\mu_0$. Then we can use the test statistic $$
+Z=\frac{\bar{X}-\mu_0}{\sigma_0 / \sqrt{n}}
+$$
+
+If $H_0$ is true then $Z \sim \mathcal{N}(0,1)$. Let $$
+z_{\mathrm{obs}}=\frac{\bar{x}-\mu_0}{\sigma_0 / \sqrt{n}}
+$$
+
+A large value of $z_{\text {obs }}$ casts doubt on the validity of $H_0$ and indicates a departure from $H_0$ in the direction of $H_1$. So the $p$-value for testing $H_0$ against $H_1$ is $$
+\begin{aligned}
+p & =P\left(Z \geq Z_{\mathrm{obs}} \mid H_0\right) \\
+& =P\left(\mathcal{N}(0,1) \geq Z_{\mathrm{obs}}\right) \\
+& =1-\Phi\left(Z_{\mathrm{obs}}\right)
+\end{aligned}
+$$
+
+The z-test of $H_0: \mu=\mu_0$ against the alternative $H_1: \mu<\mu_0$ is similar but this time a small, i.e. very negative, value of $Z_{\text {obs }}$ casts doubt on $H_0$. So the $p$-value is $$
+\begin{aligned}
+p & =P\left(Z \leq Z_{\mathrm{obs}} \mid H_0\right) \\
+& =P\left(\mathcal{N}(0,1) \leq Z_{\mathrm{obs}}\right) \\
+& =\Phi\left(Z_{\mathrm{obs}}\right)
+\end{aligned}
+$$
+
+Finally, consider testing $H_0: \mu=\mu_0$ against the alternative $H_1: \mu \neq$ $\mu_0$. Let $z_0=\left|z_{\text {obs }}\right|$. A large value of $z_0$ indicates a departure from $H_0$, so the $p$-value is $$
+\begin{aligned}
+p & =P\left(|Z| \geq z_0 \mid H_0\right) \\
+& =P\left(\mathcal{N}(0,1) \geq z_0\right)+P\left(\mathcal{N}(0,1) \leq-z_0\right) \\
+& =2\left(1-\phi\left(z_0\right)\right)
+\end{aligned}
+$$
+
+-   t-test
+
+We can use the test statistic $$
+T=\frac{\bar{X}-\mu_0}{S / \sqrt{n}}
+$$
+
+If $H_0$ is true then $T \sim t_{n-1}$. Let $t_{\mathrm{obs}}=t(x)=\frac{\bar{x}-\mu_0}{s / \sqrt{n}}$ and $t_0=\left|t_{\mathrm{obs}}\right|$. Similarly, we have $\square$ the $p$-value is $P\left(t_{n-1} \geq t_{\mathrm{obs}}\right)$ - the $p$-value is $P\left(t_{n-1} \leq t_{\text {obs }}\right)$ the $p$-value is $2 P\left(t_{n-1} \geq t_0\right)$
+
+## Example of one-sample t-test
+
+A marine biologist is studying a species of fish known to have an average length of 20 cm in ocean populations. A new population in a freshwater lake is being analyzed to determine if the environmental differences have altered the fish’s average length. The biologist measures the lengths of 10 randomly selected fish, yielding the following data:
+
+22, 23, 21, 24, 22, 20, 25, 19, 23, 22
+
+Assuming the data satisfy the assumption of normality, please address the following using a significance level of 0.1:
+
+### a
+
+-   null hypothesis: The mean length of fish is 20 cm ($H_0: \mu = 20$).
+
+-   alternative hypothesis: The mean length of fish is not 20 cm ($H_1: \mu \ne 20$).
+
+### b
+
+Since the data is supposed to be normally distributed, the sampling distribution of the sample mean follows t-distribution. The t-test statistic is calculated as follows:
+
+$$t = \frac{\bar x - \mu}{s / \sqrt n}$$
+
+The t-test statistic is calculated as follows:
+
+```{r}
+data2_4 <- c(22, 23, 21, 24, 22, 20, 25, 19, 23, 22)
+
+x_bar <- mean(data2_4)
+
+s <- sd(data2_4)
+
+t <- (x_bar - 20) / (s / sqrt(length(data2_4)))
+
+t
+
+```
+
+The t-test statistic is 3.705882...
+
+### c
+
+Using pt() function, the p-value is calculated as follows:
+
+```{r}
+p_value <- 2 * pt(-t, df = 9)
+p_value
+```
+
+The p-value is approximately 0.1. Since the p-value is less than 0.1, we reject the null hypothesis.
+
+Therefore, there is sufficient evidence to conclude that the population mean is not equal to 20 which means the environmental differences have altered the fish’s average length.
+
+### d
+
+Using qt() function to find the critical value for a two-tailed test with 90% confidence level:
+
+```{r}
+t_critical <- qt(0.95, df = 9)
+t_critical
+
+```
+
+The critical value for a two-tailed test with 90% confidence level is about 1.833113.
+
+Since the t-test statistic 3.705882 is greater than the critical value 1.833113, which is in the critical region. Therefore, we reject the null hypothesis.
+
+Also, we could use confidence interval to verify the result. The 90% confidence interval for the population mean is calculated as follows:
+
+```{r}
+ci_4 <- c(x_bar - t_critical * s / sqrt(10), x_bar + t_critical * s / sqrt(10))
+ci_4
+
+```
+
+So the 90% confidence interval for the population mean is about (21.1, 23.2).
+
+The confidence interval does not contain the hypothesized value 20. Therefore, we reject the null hypothesis.
+
+Therefore, there is sufficient evidence to conclude that the population mean is not equal to 20 which means the environmental differences have altered the fish’s average length.
+
+## Example of unpaired t-test
+
+Suppose $\sigma_1^2$ and $\sigma_2^2$ are unknown but assumed equal. We want to test the null hypothesis $H_0: \mu_1 = \mu_2$ against the alternative hypothesis $H_1: \mu_1 \ne \mu_2$. The test statistic is given by
+
+$$
+t = \frac{\bar x_1 - \bar x_2}{s_p \sqrt{\frac{1}{n_1} + \frac{1}{n_2}}}
+$$
+
+where $s_p$ is the pooled sample standard deviation, given by
+
+$$
+s_p = \sqrt{\frac{(n_1 - 1)s_1^2 + (n_2 - 1)s_2^2}{n_1 + n_2 - 2}}
+$$
+
+![](images/clipboard-3291557304.png)
+
+## Example of one-sample Variance Test
+
+$\chi^2$-test for variance. Suppose $X_1, \cdots, X_n$ are i.i.d. normal random variables with mean $\mu$ and variance $\sigma^2$. We want to test the null hypothesis $H_0: \sigma^2 = \sigma_0^2$ against the alternative hypothesis $H_1: \sigma^2 \ne \sigma_0^2$. The test statistic is given by
+
+$$
+\chi^2 = \frac{(n - 1)s^2}{\sigma^2}
+$$
+
+## Example of two-sample Variance Test
+
+| $H_0$                                                      | Test Statistic               | $H_1$                                                                                        | Rejection Region                          |
+|:-----------------|:-----------------|:-----------------|:-----------------|
+| $\sigma_1^2=\sigma_2^2$                                    | $f=\frac{s_1^2}{s_2^2}$      | $\sigma_1^2<\sigma_2^2$                                                                      | $f<f_\alpha\left(\nu_1, \nu_2\right)$     |
+|                                                            |                              | $\sigma_1^2>\sigma_2^2$                                                                      | $f>f_{1-\alpha}\left(\nu_1, \nu_2\right)$ |
+|                                                            | $\sigma_1^2 \neq \sigma_2^2$ | $f<f_{\alpha / 2}\left(\nu_1, \nu_2\right)$ or $f>f_{1-\alpha / 2}\left(\nu_1, \nu_2\right)$ |                                           |
+| $\nu_1=n_1-1$ and $\nu_2=n_2-1$ are two degree of freedom. |                              |                                                                                              |                                           |
+
+$$
+F=\frac{\frac{\left(n_1-1\right) S_1^2}{\sigma_1^2} /\left(n_1-1\right)}{\frac{\left(n_2-1\right) S_2^2}{\sigma_2^2} /\left(n_2-1\right)}=\frac{\sigma_2^2 S_1^2}{\sigma_1^2 S_2^2}
+$$
+
+If $\sigma_1^2=\sigma_2^2$, we have $$
+F=\frac{S_1^2}{S_2^2} \sim F_{n_1-1, n_2-1}
+$$
+
+## ANOVA-- Analysis of Variance
+
+-   one-way ANOVA
+
+we need to test the null hypothesis that the group population means are all the same against the alternative that at least one group population mean differs from the others. That is,
+
+$H_0: \mu_1=\mu_2=\cdots=\mu_k$ against $H_1: \text { at least one } \mu_i \text { differs from the others.}$
+
+ANOVA Table
+
+| Source |  DF |             Sum Sq |      Mean Sq |         F value |                        p value |
+|:-----------|-----------:|-----------:|-----------:|-----------:|-----------:|
+| Factor | m-1 | 11.84 (SS between) | 2.9587 (MSB) | 8.074 (MSB/MSW) | $5.38 \mathrm{e}-05$ (p-value) |
+| Error  | n-m |  16.49 (SS Within) | 0.3664 (MSW) |                 |                                |
+| Total  | n-1 |   28.33 (SS Total) |              |                 |                                |
+
+Source means "the source of the variation in the data." the possible sources for a one-factor study are Factor, Residuals, and Total.
+
+Factor means "the variability due to the factor of interest." In the drug example, the factor was the different drug. In the learning example on the previous page, the factor was the method of learning. Sometimes the row heading is labeled as Between.
+
+Error (or Residuals) means "the variability within the groups" or "unexplained random error." Sometimes the row heading is labeled as Within.
+
+Total means "the total variation in the data from the grand mean".
+
+DF means "the degrees of freedom in the source."
+
+Sum Sq means "the sum of squares due to the source."
+
+Mean Sq means "the mean sum of squares due to the source."
+
+F value means "the F-statistic."
+
+P value means "the P-value."
+
+SS(Total)=SS(Between)+SS(Within), where
+
+SS(Between) is the sum of squares between the group means and the grand mean. As the name suggests, it quantifies the variability between the groups of interest.
+
+SS(Within) is the sum of squares between the data and the group means. It quantifies the variability within the groups of interest.
+
+SS(Total) is the sum of squares between the n data points and the grand mean. As the name suggests, it quantifies the total variability in the observed data.
+
+-   two-way ANOVA
+
+We can extend the idea of a one-way ANOVA, which tests the effects of one factor on a response variable, to a two-way ANOVA which tests the effects of two factors and their interaction on a response variable.
+
+| Source                         | DF           | Sum Sq                                                                           | MSW              | F        |
+|:--------------|:--------------|:--------------|:--------------|:--------------|
+| Cells                          | $a b-1$      | $\sum_{i=1}^a \sum_{j=1}^b n\left(\bar{X}_{i j}-\bar{X}_{\ldots . .}\right)^2$   |                  |          |
+| A                              | a-1          | bn $\sum_{i=1}^a\left(\bar{X}_{i . .}-\bar{X}_{\ldots .}\right)^2$               | SS(A)            | MS(Error |
+| B                              | b-1          | an $\sum_{j=1}^b\left(\bar{X}_{. j .}-\bar{X}_{\ldots .}\right)^2$               | SS(B)            | MS(B)    |
+| $\mathrm{A} \times \mathrm{B}$ | $(a-1)(b-1)$ | SS(Cells)-SS(A)-SS(B)                                                            | SS(AB)           | MS(Error |
+|                                |              |                                                                                  | DF(A $\times$ B) | MS(Error |
+| Error                          | $a b(n-1)$   | $\sum_{i=1}^a \sum_{j=1}^b \sum_{l=1}^n\left(X_{i j l}-\bar{X}_{i j} .\right)^2$ | SS(Error)        |          |
+| Total                          | $a b n-1$    | $\sum_{i=1}^a \sum_{j=1}^b n\left(X_{i j l}-\bar{X}_{\ldots .}\right)^2$         |                  |          |
+
+-   $F=\frac{\mathrm{MS}(\mathrm{A})}{\mathrm{MS}(\text { Error })}$, for $H_0$ : no effect of factor A on response variable,
+
+-   $F=\frac{\mathrm{MS}(\mathrm{B})}{\mathrm{MS}(\text { Error) }}$, for $H_0$ : no effect of factor B on response variable,
+
+-   $F=\frac{\mathrm{MS}(\mathrm{A} \times \mathrm{B})}{\mathrm{MS}(\text { Error })}$, for $H_0$ : no effect of interaction on response variable.
+
+We reject any $H_0$ if $F \geq F_{\text {critical }}$; otherwise, we do not reject $H_0$.
+
+### Example of two-way ANOVA
+
+Two-way ANOVA. In this question, we will use the built-in R data set ToothGrowth to perform two-way ANOVA test. ToothGrowth includes information from a study on the effects of vitamin C on tooth growth in Guinea pigs. The response is the length of odontoblasts (cells responsible for tooth growth) in 60 guinea pigs. Each animal received one of three dose levels of vitamin C (0.5, 1, and 2 mg/day) by one of two delivery methods, orange juice or ascorbic acid (a form of vitamin C and coded as VC). Assuming the data satisfy the assumptions of normality and equal variance, please address the following using a significance level of 0.05
+
+#### a
+
+-   The effects of vitamin C on tooth growth in guinea pigs:
+
+-   null hypothesis: $H_0$: mean tooth growth for all doses of vitamin C are equal
+
+-   alternative hypothesis: $H_1$: at least one of the means of all doses of vitamin C is different from the others
+
+-   The effects of delivery method on tooth growth in guinea pigs:
+
+-   null hypothesis: $H_0$: mean tooth growth for the delivery method of orange juice and ascorbic acid are equal.
+
+-   alternative hypothesis $H_1$: mean tooth growth for the delivery method of orange juice and ascorbic acid are different.
+
+-   The interaction effects of the dose of vitamin C and delivery method on tooth growth in guinea pigs:
+
+-   null hypothesis: $H_0:$ there is no interaction between the dose of vitamin C and delivery method on tooth growth in guinea pigs, meaning that the relationship between vitamin C and tooth growth is the same for both delivery methods (similarly, the relationship between delivery method and tooth growth is the same for all doses of vitamin C).
+
+-   alternative hypothesis: $H_1$: there is an interaction between the dose vitamin C and delivery method on tooth growth in guinea pigs, meaning that the relationship between vitamin C and tooth growth is different for both delivery methods (similarly, the relationship between delivery method and tooth growth depends on the dose of vitamin C).
+
+#### b
+
+We can plot the relationship one by one using two plots
+
+```{r}
+
+library(ggplot2)
+data(ToothGrowth)
+head(ToothGrowth)
+
+# potential effects of vitamin C on tooth growth.
+
+ggplot(ToothGrowth, aes(x = factor(dose), y = len)) +
+  geom_boxplot() +
+  labs(x = "Dose (mg/day)", y = "Tooth Growth (len)", title = "Tooth Growth by Dose of vitamin C")
+
+
+# potential effects of delivery method on tooth growth.
+
+ggplot(ToothGrowth, aes(x = supp, y = len)) +
+  geom_boxplot() +
+  labs(x = "Delivery Method", y = "Tooth Growth (len)", title = "Tooth Growth by Delivery Method") 
+
+
+
+```
+
+or just one:
+
+```{r}
+library(ggplot2)
+
+# potential effects of vitamin C and delivery method. 
+
+# OJ represents orange juice and VC represents ascorbic acid.
+
+ggplot(ToothGrowth, aes(x = factor(dose), y = len, fill = supp)) +
+  geom_boxplot() +
+  labs(x = "Dose (mg/day)", y = "Tooth Growth (len)", title = "Tooth Growth by Dose and Delivery Method") 
+
+```
+
+#### c
+
+```{r}
+
+# Perform two-way ANOVA
+
+anova_result <- aov(len ~ supp * dose, data = ToothGrowth)
+
+summary(anova_result)
+
+```
+
+Since all p-values are less than 0.05, we reject all null hypotheses. Therefore, there is sufficient evidence to conclude that the dose of vitamin C, delivery method, and their interaction have significant effects on tooth growth in guinea pigs.
+
+#### d
+
+```{r}
+library(car)
+
+qqPlot(anova_result$residuals, main = "QQ-plot of residuals")
+
+```
+
+## Non-parametric tests
+
+### Application of testing the goodness of fit
+
+Testing whether there is a "good fit" between the observed data and the assumed probability model amounts to testing:
+
+#### Construction of test statistics with an example of 2 categories
+
+Population is 60% female and 40% male. Then, if a sample of 100 students yields 53 females and 47 males, can we conclude that the sample is (random and) representative of the population? That is, how "good" do the data "fit" the assumed probability model of 60% female and 40% male?
+
+Here, let $Y_1$ denote the number of females selected, $Y_1 \sim B(n,p_1)$ and let $Y_2$ denote males selected, $Y_2 = (n-Y_1)\sim B(n,p_2)=B(n,1-p_1)$.
+
+for samples satisfying the general rule of thumb (the expected number of successes must be at least 5 and the expected number of failures must be at least 5), we can use the normal approximation to the binomial distribution. The test statistic is given by
+
+$$
+Z = \frac{Y_1 - np_1}{\sqrt{np_1(1-p_1)}}\sim N(0,1)
+$$
+
+which is at least approximately normally distributed.
+
+and $$
+Z^2 =Q_1= \frac{(Y_1 - np_1)^2}{np_1(1-p_1)}\sim \chi^2(1)
+$$
+
+which is an approximate chi-square distribution with one degree of freedom.
+
+Now we can multiply $Q_1$ by 1 = $(1-p_1)+p_1$ to get
+
+$$
+Q_1 = \frac{(Y_1 - np_1)^2(1-p_1)}{np_1(1-p_1)} + \frac{(Y_1 - np_1)^2p_1}{np_1(1-p_1)}\sim \chi^2(1)
+$$
+
+Since $Y_1=n-Y_2$ and $p_1=1-p_2$, after simplifying, we have
+
+$$
+Q_1 = \frac{(Y_1-np_1)^2}{np_1} + \frac{(-(Y_2-np_2))^2}{np_2}\sim \chi^2(1)
+$$
+
+which is $Q_1=\sum_{i=1}^2 \frac{\left(Y_i-n p_i\right)^2}{n p_i}=\sum_{i=1}^2 \frac{(\text { Observed }- \text { Expected })^2}{\text { Expected }}\sim \chi^2(1)$
+
+Hence, it is observed that if the observed counts are very different from the expected counts, then the test statistic will be large. So we reject the null hypothesis if $Q_1$ is large and how large is large is determined by the critical value of the chi-square distribution with one degree of freedom.
+
+The statistics $Q_1$ is called the chi-square goodness of fit statistic.
+
+Going back to the example,
+
+-   $H_0$:$p_F = 0.6$
+
+-   $H_1$:$p_F \ne 0.6$
+
+we can calculate the test statistic using a significant level of $\alpha = 0.05$ ($\chi^2_{0.05,1}=3.84$)as follows:
+
+$$
+Q_1 = \frac{(53-60)^2}{60} + \frac{(47-40)^2}{40} = 2.04
+$$
+
+Since $Q_1=2.04<3.84$, we do not reject the null hypothesis. Therefore, we conclude that the sample is (random and) representative of the population.
+
+**This can be extended to k categories**
+
+#### Construction of test statistics with an example of k categories
+
+For categories more than 2, i.e.
+
+| Categories | 1       | 2       | $\cdots$ | $k-1$       | $k$                        |
+|:-----------|:-----------|:-----------|:-----------|:-----------|:-----------|
+| Observed   | $Y_1$   | $Y_2$   | $\cdots$ | $Y_{k-1}$   | $n-Y_1-Y_2-\cdots-Y_{k-1}$ |
+| Expected   | $n p_1$ | $n p_2$ | $\cdots$ | $n p_{k-1}$ | $n p_k$                    |
+
+Karl Pearson showed that the chi-square statistic $Q_{k-1}$ defined as: $$
+Q_{k-1}=\sum_{i=1}^k \frac{\left(Y_i-n p_i\right)^2}{n p_i}
+$$ follows approximately a chi-square random variable with $k-1$ degrees of freedom. Let's try it out on an example.
+
+-   Example:
+
+| Categories                    | Brown | Yellow | Orange | Green | Coffee | Total |
+|:------------------------------|:------|:-------|:-------|:------|:-------|:------|
+| Observed $y_i$                | 224   | 119    | 130    | 48    | 59     | 580   |
+| Assumed $H_0\left(p_i\right)$ | 0.4   | 0.2    | 0.2    | 0.1   | 0.1    | 1.0   |
+| Expected $n p_i$              | 232   | 116    | 116    | 58    | 58     | 580   |
+
+$Q_4=\frac{(224-232)^2}{232}+\frac{(119-116)^2}{116}+\frac{(130-116)^2}{116}+\frac{(48-58)^2}{58}+\frac{(59-58)^2}{58}=3.784$
+
+Because there are $k=5$ categories, we have to compare our chisquare statistic $Q_4$ to a chi-square distribution with $k-1=5-1=4$ degrees of freedom: $$
+Q_4=3.784<\chi_{4,0.05}^2=9.488
+$$ we fail to reject the null hypothesis.
+
+### Application of testing for homogeneity
+
+This is to look at a method for testing whether two or more multinomial distributions are equal.
+
+-   Example:
+
+Test the hypothesis that the acceptances of males and females are ditributed equally among the four schools,
+
+| (Acceptances) | Bus       | Eng       | L Arts    | Sci       | (FIXED) Total |
+|:--------------|:----------|:----------|:----------|:----------|:--------------|
+| Male          | 240 (20%) | 480 (40%) | 120 (10%) | 360 (30%) | 1200          |
+| Female        | 240 (30%) | 80 (10%)  | 320 (40%) | 160 (20%) | 800           |
+| Total         | 480 (24%) | 560 (28%) | 440 (22%) | 520 (26%) | 2000          |
+
+Here,
+
+$H_0: p_{M B}=p_{F B}, p_{M E}=p_{F E}, p_{M L}=p_{F L}$, and $p_{M S}=p_{F S}$
+
+$H_1: p_{M B} \neq p_{F B}$ or $p_{M E} \neq p_{F E}$ or $p_{M L} \neq p_{F L}$, or $p_{M S} \neq p_{F S}$
+
+where:
+
+-   $p_{M j}$ is the proportion of males accepted into school $j=B, E, L, S$.
+
+-   $p_{F j}$ is the proportion of females accepted into school $j=B, E, L, S$.
+
+In conducting such a hypothesis test, we're comparing the proportions of two multinomial distributions.
+
+| #(Acc)            | Bus ( $j=1$ )                         | Eng ( $j=2$ )                         | L Arts ( $j=3$ )                      | Sci $(j=4)$                           | (FIXED) Total              |
+|:-----------|:-----------|:-----------|:-----------|:-----------|:-----------|
+| $\mathrm{M}(i=1)$ | $y_{11}\left(\hat{p}_{11}\right)$     | $y_{12}\left(\hat{p}_{12}\right)$     | $y_{13}\left(\hat{p}_{13}\right)$     | $y_{14}\left(\hat{p}_{14}\right)$     | $n_1=\sum_{j=1}^k y_{1 j}$ |
+| F $(i=2)$         | $y_{21}\left(\hat{p}_{21}\right)$     | $y_{22}\left(\hat{p}_{22}\right)$     | $y_{23}\left(\hat{p}_{23}\right)$     | $y_{24}\left(\hat{p}_{24}\right)$     | $n_2=\sum_{j=1}^k y_{2 j}$ |
+| Total             | $y_{11}+y_{21}\left(\hat{p}_1\right)$ | $y_{12}+y_{22}\left(\hat{p}_2\right)$ | $y_{13}+y_{23}\left(\hat{p}_3\right)$ | $y_{14}+y_{24}\left(\hat{p}_4\right)$ | $n_1+n_2$                  |
+
+The chi-square test statistic for testing the equality of two multinomial distributions: $$
+Q=\sum_{i=1}^2 \sum_{j=1}^k \frac{\left(y_{i j}-n_i \hat{p}_j\right)^2}{n_i \hat{p}_j}
+$$ follows an approximate chi-square distribution with $k-1$ degrees of freedom. Reject the null hypothesis of equal proportions if $Q$ is large (since if male and female distributed nearly equally, the expected number of each should be $n_i\hat p_j$): $$
+Q \geq \chi_{\alpha, k-1}^2
+$$
+
+(omit the derive of the above Q)
+
+Generally,
+
+$$
+Q=\sum_{i=1}^h \sum_{j=1}^k \frac{\left(y_{i j}-n_i \hat{p}_j\right)^2}{n_i \hat{p}_j}\sim \chi^2_{(h-1)(k-1)}
+$$
+
+#### Further example
+
+The head of a surgery department at a university medical center was concerned that surgical residents in training applied unnecessary blood transfusions at a different rate than the more experienced attending physicians. Therefore, he ordered a study of the 49 Attending Physicians and 71 Residents in Training with privileges at the hospital. For each of the 120 surgeons, the number of blood transfusions prescribed unnecessarily in a one-year period was recorded. Based on the number recorded, a surgeon was identified as either prescribing unnecessary blood transfusions Frequently, Occasionally, Rarely, or Never. Here’s a summary table (or "contingency table") of the resulting data:
+
+| Physician | Frequent | Occasionally | Rarely | Never | Total |
+|:----------|:---------|:-------------|:-------|:------|:------|
+| Attending | 6.942    | 12.658       | 22.05  | 7.35  | 49    |
+| Resident  | 10.058   | 18.342       | 31.95  | 10.65 | 71    |
+| Total     | 17       | 31           | 54     | 18    | 120   |
+
+Here,
+
+$H_0: p_{R F}=p_{A F}, p_{R O}=p_{A O}, p_{R R}=p_{A R}$, and $p_{R N}=p_{A N}$
+
+$H_1: p_{R F} \neq p_{A F}$ or $p_{R O} \neq p_{A O}$ or $p_{R R} \neq p_{A R}$, or $p_{R N} \neq p_{A N}$
+
+We should also calculate the expected counts under the null hypothesis. The expected counts are calculated as follows:
+
+| Physician | Frequent | Occasionally | Rarely | Never | Total |
+|:----------|:---------|:-------------|:-------|:------|:------|
+| Attending | 6.942    | 12.658       | 22.05  | 7.35  | 49    |
+| Resident  | 10.058   | 18.342       | 31.95  | 10.65 | 71    |
+| Total     | 17       | 31           | 54     | 18    | 120   |
+
+where, for example, $6.942=\frac{17}{120} \times 49$ and $10.058=\frac{17}{120} \times 71$. Now that we have the observed and expected counts, calculating the chisquare statistic is a straightforward exercise: $$
+Q=\frac{(2-6.942)^2}{6.942}+\cdots+\frac{(5-10.65)^2}{10.65}=31.88
+$$
+
+The chi-square test tells us to reject the null hypothesis, at the 0.05 level, if $Q$ is greater than a chi-square random variable with 3 degrees of freedom, that is, if $Q=31.88>7.815$, we reject the null hypothesis.
+
+### Application of testing for independence
+
+This is to look at whether two or more categorical variables are independent.
+
+(previously,the the sampling scheme involves: Taking two random (and therefore independent) samples with n1 and n2 fixed in advance and observing into which of the k categories the first random samples fall, and observing into which of the k categories the second random samples fall. )
+
+lets consider a different example to illustrate an alternative sampling scheme. Suppose 395 people are randomly selected, and are "cross-classified" into one of eight cells, depending into which age category they fall and whether or not they support legalizing marijuana:
+
+(the sampling scheme involves: Taking one random sample of size n, with n fixed in advance, and then "cross-classifying" each subject into one and only one of the mutually exclusive and exhaustive $A_i\cap B_j$ cells.)
+
+| Marijuana Support |             | Variable B (Age) |                 |               |               |         |
+|:---------|:---------|:---------|:---------|:---------|:---------|:---------|
+| Variable A        | OBSERVED    | $(18-24) B_1$    | (25-34) $B_1 2$ | (35-49) $B_3$ | $(50-64) B_4$ | Total   |
+|                   | (YES) $A_1$ | 60               | 54              | 46            | 41            | 201     |
+|                   | (NO) $A_2$  | 40               | 44              | 53            | 57            | 194     |
+|                   | Total       | 100              | 98              | 99            | 98            | $n=395$ |
+
+Here,
+
+H0 : Variable A is independent of variable B, that is $P(A_i\cap B_j)=PA_i \times B_j$ for all i and j
+
+H1: Variable A is not independent of variable B.
+
+Generally,
+
+Suppose we have $k$ (column) levels of Variable B indexed by the letter $j$, and $h$ (row) levels of Variable $A$ indexed by the letter $i$. Then, we can summarize the data and probability model in tabular format, as follows:
+
+| Variable B |                             |                             |                             |                             |                        |     |
+|:--------:|:--------:|:--------:|:--------:|:--------:|:--------:|:--------:|
+| Variable A |         $B_1(j=1)$          |         $B_2(j=2)$          |         $B_3(j=3)$          |         $B_4(j=4)$          |         Total          |     |
+| $A_1(i=1)$ | $Y_{11}\left(p_{11}\right)$ | $Y_{12}\left(p_{12}\right)$ | $Y_{13}\left(p_{13}\right)$ | $Y_{14}\left(p_{14}\right)$ | $\left(p_{1 .}\right)$ |     |
+| $A_2(i=2)$ | $Y_{21}\left(p_{21}\right)$ | $Y_{22}\left(p_{22}\right)$ | $Y_{23}\left(p_{23}\right)$ | $Y_{24}\left(p_{24}\right)$ | $\left(p_{2 .}\right)$ |     |
+|   Total    |    $\left(p_{.1}\right)$    |    $\left(p_{.2}\right)$    |    $\left(p_{.3}\right)$    |    $\left(p_{.4}\right)$    |          $n$           |     |
+
+where $p_{i j}=Y_{i j} / n, p_i .=\sum_{j=1}^k p_{i j}$, and $p_{. j}=\sum_{i=1}^h p_{i j}$
+
+$Q=\sum_{j=1}^k \sum_{i=1}^h \frac{\left(y_{i j}-\frac{y_i \cdot y_{\cdot j}}{n}\right)^2}{\frac{y_i \cdot y_{\cdot j}}{n}}\sim \chi^2_{(h-1)(k-1)}$
+
+#### Are chi-square statistic for homogeneity and the chi-square statistic for independence equivalent?
+
+Although their chi-square statistics are equivalent, the two tests are not equivalent since their sampling experiment designs are different.
+
+Here’s the table of expected counts:
+
+| Bicycle Riding Interest |          | Variable B (Age) |        |        |        |       |
+|:------------|:---------|:---------|:---------|:---------|:---------|:---------|
+| Variable A              | EXPECTED | 18-24            | 25-34  | 35-49  | 50-64  | Total |
+|                         | YES      | 50.886           | 49.868 | 50.377 | 49.868 | 201   |
+|                         | NO       | 49.114           | 48.132 | 48.623 | 48.132 | 194   |
+|                         | Total    | 100              | 98     | 99     | 98     | 395   |
+
+$$
+Q=\frac{(60-50.886)^2}{50.886}+\cdots+\frac{(57-48.132)^2}{48.132}=8.006
+$$
+
+The chi-square test tells us to reject the null hypothesis, at the 0.05 level, since $Q$ is greater than a chi-square random variable with 3 degrees of freedom, that is, $Q=8.006>7.815$.
+
+#### Summary
+
+Parametric tests make assumptions that aspects of the data follow some sort of theoretical probability distribution. Non-parametric tests or distribution free methods do not, and are used when the distributional assumptions for a parametric test are not met. While this is an advantage, it often comes at a cost of power (in the sense they are less likely to be able to detect a difference when a true difference exists).
+
+Most non-parametric tests are just hypothesis tests; there is no estimation of a confidence interval.
+
+Most non-parametric methods are based on ranking the values of a variable in ascending order and then calculating a test statistic based on the sums of these ranks.
+
+Non-parametric tests include:
+
+-   Two-sample independent t-test - Wilcoxon rank-sum test or Mann-Whitney U test
+
+-   Paired t-test - Wilcoxon signed-rank test
+
+-   One-way ANOVA - Kruskal-Wallace Test
+
+-   Normality tests - Shapiro-Wilk test and Kolmogorov-Smirnov test
+
+# Linear Regression
+
+## Simple linear regression
+
+### Brief introduction
+
+Some people think simple methods is bad and like complicated methods , but actually simple is very good--SLR works very well in lots of situations.
+
+SLR is used to answer:
+
+is there a relationship between..
+
+How strong the relationship is
+
+which variable contribute to this relationship
+
+How accurate could we predict the response variable
+
+Is the relationship linear?
+
+Is there a synergy among independent variables?
+
+This is a model with two random variables, X and Y, where we are trying to predict Y from X. Here are the model’s assumptions:
+
+-   The distribution of X is arbitrary, possibly is even non-random;
+
+-   If X=x, then $Y = \beta_0+\beta_1x+\epsilon$ for some constants $\beta_0, \beta_1$ and some random noise variable $\epsilon$
+
+-   $\epsilon$ has mean 0, a constant variance $\sigma^2$, and is uncorrelated with X and uncorrelated across observations Cov$(\epsilon_i, \epsilon_j)=0$ for $i \ne j$
+
+Using Least Squares, we can estimate $\hat \beta_0$ and $\hat \beta_1$, which are unbiased estimates of $\beta_0$ and $\beta_1$.
+
+-   Gaussian-Noise Simple Linear Regression Model
+
+Now we further assume that the distribution of $\epsilon$ is normal, i.e. $\epsilon \sim N(0, \sigma^2)$, independent of X.
+
+They tell us, exactly, the probability distribution for Y given X, and so will let us get exact distributions for predictions and for other inferential statistics.
+
+### Maximum Likelihood Estimation (MLE)
+
+#### Introduction to MLE
+
+Likelihood is a fundamental concept in statistics that measures how well a particular set of parameters (e.g., the mean of a distribution) explains observed data. Think of it as a "score" that tells you which parameter values make your data most plausible.
+
+Compared to probability, which answers: "What’s the chance of seeing this data if we assume specific parameters?" , likelihood answers: "Given this data, how plausible are these parameters?"
+
+If the parameters are $b_0, b_1, s^2$ (reserving the Greek letters for their true values), then $Y \mid X=x \sim N\left(b_0+b_1 x, s^2\right)$, and $Y_i$ and $Y_j$ are independent given $X_i$ and $X_j$, so the overall likelihood is $$
+\prod_{i=1}^n \frac{1}{\sqrt{2 \pi s^2}} e^{-\frac{\left(y_i-\left(b_0+b_i x_i\right)\right)^2}{2 s^2}}
+$$
+
+As usual, we work with the log-likelihood, which gives us the same information but replaces products with sums: $$
+L\left(b_0, b_1, s^2\right)=-\frac{n}{2} \ln \left(2 \pi s^2\right)-\frac{1}{2 s^2} \sum_{i=1}^n\left(y_i-\left(b_0+b_1 x_i\right)\right)^2
+$$
+
+maximize it:
+
+$\begin{aligned} \frac{\partial L}{\partial b_0} & =-\frac{1}{2 s^2} \sum_{i=1}^n 2\left(y_i-\left(b_0+b_1 x_i\right)\right)(-1) \\ \frac{\partial L}{\partial b_1} & =-\frac{1}{2 s^2} \sum_{i=1}^n 2\left(y_i-\left(b_0+b_1 x_i\right)\right)\left(-x_i\right)\end{aligned}$
+
+#### Same result of MLE as least squares in linear regression
+
+Notice that when we set these derivatives to zero, all the multiplicative constants - in particular, the prefactor of $1 / 2 s^2$ - go away. We are left with $$
+\begin{aligned}
+\sum_{i=1}^n\left(y_i-\left(\hat{\beta_0}+\hat{\beta_1} x_i\right)\right) & =0 \\
+\sum_{i=1}^n\left(y_i-\left(\hat{\beta_0}+\hat{\beta_0} x_i\right)\right) x_i & =0
+\end{aligned}
+$$
+
+These are, up to a factor of $1 / n$, exactly the equations we got from the method of least squares. That means that the least squares solution is the maximum likelihood estimate under the Gaussian noise model.
+
+Maximum likelihood estimates of the regression curve coincide with least-squares estimates when the noise around the curve is additive, Gaussian, of constant variance, and both independent of $X$ and of other noise terms. If any of those assumptions fail, maximum likelihood and least squares estimates can diverge.
+
+### Hypothesis testing for estimates with unknown $\sigma^2$
+
+#### Residual sum of squares (RSS) and t-statistics construction in linear regression
+
+It can be shown that (the proof is beyond the scope of this course) $$
+\frac{R S S}{\sigma^2}=\frac{(n-2) \hat{\sigma}^2}{\sigma^2} \sim \chi_{n-2}^2
+$$
+
+This allows us to construct a $t$-value $$
+t=\frac{\hat{\beta}-\beta}{s_{\hat{\beta}}} \sim t_{n-2}
+$$
+
+Under the normality assumption of the error terms, the estimator of the slope coefficient will itself be normally distributed with mean $\beta_i$ and variance $\operatorname{Var}\left[\beta_i\right]$ For $\hat{\beta_1}$, its mean is $\beta_1$ and its variance is $\sigma^2 / \sum\left(x_i-\bar{x}\right)^2$. When $\sigma^2$ is known, we know $$
+\frac{\hat{\beta}_1-\beta_1}{\frac{\sigma}{\sqrt{\sum_{i=1}^n\left(x_i-\bar{x}\right)^2}}}
+$$ follows standard normal distribution. However, in practice, $\sigma^2$ is often unknown. We then divide this standard normal distributed term by $$
+\sqrt{\frac{(n-2) \hat{\sigma}^2}{(n-2) \sigma^2}}=\frac{\hat{\sigma}}{\sigma}
+$$
+
+Therefore, when we write $$
+s_{\hat{\beta_1}}=\frac{\hat{\sigma}}{\sqrt{\sum_{i=1}^n\left(x_i-\bar{x}\right)^2}}
+$$ we construct a $t$-statistic for $\hat{\beta_1}$ with degrees of freedom $n-2$. This then allows us to construct a $100(1-\alpha) \%$ confidence interval for $\beta_1$ : $$
+\hat{\beta_1} \pm t_{n-2, \alpha / 2} \times \boldsymbol{s}_{\hat{\beta_1}}
+$$
+
+We can also do similar calculation to get the $t$-statistic and confidence interval for $\beta_0$.
+
+#### Hyphothesis Testing
+
+$$
+t =\hat {\beta}-\beta / s_{\hat{\beta_1}} \sim t_{n-2}
+$$ $H_0: \beta_i =0$
+
+$H_1: \beta_i \ne 0$
+
+#### Codes of linear regression with CI
+
+```{r}
+lmodel <- lm(Petal.Length ~ Petal.Width, data=iris)
+summary(lmodel)
+confint(lmodel)
+conf_interval <- predict(lmodel, data=iris, interval='confidence', level=0.95)
+plot(iris$Petal.Width, iris$Petal.Length,
+     xlab='Petal.Width', ylab='Petal.Length',
+     main='Simple Linear Regression')
+abline(lmodel, col='lightblue')
+matlines(iris$Petal.Width, conf_interval[,2:3], col='blue', lty=2)
+
+# Using ggplot2
+library(ggplot2)
+ggplot(iris, aes(x=Petal.Width, y=Petal.Length)) +
+  geom_point() +
+  geom_smooth(method=stats::lm, se=T, level=0.95)
+
+```
+
+#### Linear Regression and ANOVA
+
+``` r
+fev_dat <- read.table('fev_dat.txt', header=T)
+fev_dat_subset <- fev_dat[fev_dat$age >= 6 & fev_dat$age <= 10,]
+ggplot(fev_dat_subset, aes(x=age, y=FEV)) +
+  geom_point() +
+  geom_smooth(method=stats::lm, se=T, level=0.95)
+summary(aov(FEV ~ age, data=fev_dat_subset))
+summary(lm(FEV ~ age, data=fev_dat_subset))
+anova(lm(FEV ~ age, data=fev_dat_subset))
+```
+
+### $R^2$--the fraction of variability explained by the regression
+
+$$
+R^2 =1-\frac{SSR}{SSTO}
+$$
+
+## Multiple linear regression (MLR)
+
+$y=X\beta+\epsilon$, where y is a n × 1 row vector, X is a n × (k + 1) matrix, and β is a (k + 1) × 1 column vector for all n observations.
+
+### A potential problem in practice --multicollinearity
+
+When multicollinearity exists, any of the following pitfalls can be exacerbated:
+
+-   The estimated regression coefficient of any one variable depends on which other predictors are included in the model
+
+-   The precision of the estimated regression coefficients decreases as more predictors are added to the model
+
+-   The marginal contribution of any one predictor variable in reducing the error sum of squares depends on which other predictors are already in the model
+
+-   Typothesis tests for βj = 0 may yield different conclusions depending on which predictors are in the model
+
+#### Perfect multicollinearity
+
+Perfect multicollinearity refers to a situation where the predictive variables have an exact linear relationship. When there is perfect collinearity, the design matrix X has less than full rank, and therefore the moment matrix X′X cannot be inverted. In this situation, the parameter estimates of the regression are not well-defined, as the system of equations has infinitely many solutions.
+
+#### Imperfect multicollinearity
+
+Imperfect multicollinearity refers to a situation where the predictive variables have a nearly exact linear relationship.
+
+$R^2=r^2$ where r is the Pearson correlation coefficient.
+
+### Adjusted R-squared
+
+Adjusted R-squared is a modified version of R-squared that adjusts for the number of predictors in a model. It provides a more accurate measure of the model's explanatory power, penalizing for the addition of irrelevant predictors. This helps in comparing models with different numbers of predictors.
+
+# Logistic Regression
+
+This is a regression of categorical outcome.
+
+In regression analysis with a categorical outcome, such as predicting a binary variable (yes or no), simple linear regression is not ideal. This is because:
+
+-   The predicted values may fall outside the range of 0 to 1, which is not meaningful for probabilities.
+
+-   Small changes in the predictors can lead to relatively small fluctuations in the predicted probabilities near the 0.5 mark (natural threshold), which is actually where decision-making is most critical.
+
+So we need S-curve to satisfy above things.
+
+```{r}
+curve(1 / (1 + exp(-x)), from = -6, to = 6, xlab = "x", ylab = "f(x)",
+main = "Logistic Function: f(x) = 1 / (1 + exp(-x))", col = "blue", lwd = 2)
+```
+
+An example of a not well-predicted logistic model (since stock is not easy to predict)
+
+```{r}
+library(ISLR2)
+attach(Smarket)
+glm.fits <- glm(
+    Direction ~ Lag1 + Lag2 + Lag3 + Lag4 + Lag5 + Volume,
+    data = Smarket, family = binomial
+  )
+summary(glm.fits)
+
+glm.probs <- predict(glm.fits, type = "response")
+glm.probs[1:10]
+glm.pred <- rep("Down", 1250)
+glm.pred[glm.probs > .5] = "Up"
+table(glm.pred, Direction)
+(507 + 145) / 1250
+mean(glm.pred == Direction)
+```
+
+## Odds
+
+Odds are another way of quantifying the probability of an event, commonly used in gambling (and logistic regression).
+
+For some event $E$, $$
+\operatorname{odds}(E)=\frac{P(E)}{P\left(E^c\right)}=\frac{P(E)}{1-P(E)}
+$$
+
+The odds ratio (OR) is the ratio of the odds of an event occurring in one group to the odds of it occuring in another group. If the event in each of the groups are $p_1$ (first group) and $p_2$ (second group), then the odds ratio is: $$
+\mathrm{OR}=\frac{p_1 /\left(1-p_1\right)}{p_2 /\left(1-p_2\right)}
+$$
+
+# Generalized Linear Models
+
+Under the hood, we're still using a linear model $\left(\beta_0+\beta_1 x\right)$, but now it's embedded in a function that ensures valid probabilities. This is the essence of logistic regression - a generalized linear model (GLM) designed for binary outcomes.
+
+Given predictor $X$ and d an outcom $Y$, a GLM is defined by three components: - A random component, that specifies a distribution for $Y \mid X$ - A systematic component, that relates a parameter $\eta$ to the predictor $X$ $$
+\eta=\beta_0+\beta_1 X_1+\cdots+\beta_k X_k
+$$ - A link function, that connects the random and systematic component
+
+## Random Component
+
+The random component specifies a distribution for the outcome variable (conditional on $X$ ). In the case of linear regression, we assume that $Y \mid X \sim \mathcal{N}\left(\mu, \sigma^2\right)$, for some mean $\mu$ and variance $\sigma^2$. In the case of logistic regression, we assume that $Y \mid X \sim \operatorname{Bern}(p)$ for some probability $p$.
+
+In a generalized model, we are allowed to assume that $Y \mid X$ has a probability density function or probability mass function of the form $$
+f(y ; \theta, \phi)=\exp \left(\frac{y \theta-b(\theta)}{a(\phi)}+c(y, \phi)\right)
+$$
+
+Here $\theta, \phi$ are parameters, and $a, b, c$ are functions. Any density of the above form is called an exponential family density. The parameter $\theta$ is called the natural parameter, and the parameter $\phi$ the dispersion parameter.
+
+## Exponential Family
+
+Exponential families include many of the most common distributions. For example: - Exponential $$
+f(y ; \lambda)=\lambda e^{-\lambda y}=\exp (-y \lambda+\ln \lambda)
+$$ where $\theta=-\lambda, \phi=1, b(\theta)=\ln \lambda, a(\phi)=1$, and $c(y, \phi)=0$ - Poisson $$
+f(y ; \lambda)=\frac{e^{-\lambda} \lambda^y}{y!}=\exp (y \ln \lambda-\lambda-\ln (y!))
+$$ where $\theta=\ln \lambda, \phi=1, b(\theta)=e^\theta=\lambda, a(\phi)=1$, and $c(y, \phi)=-\lambda-\ln (y!)$
+
+## Systematic Component and Link Component
+
+The systematic component relates a parameter $\eta$ to the predictors $X$. In a GLM, this is always done via $$
+\eta=X \beta=\beta_0+\beta_1 X_1+\cdots+\beta_k X_k
+$$
+
+We will denote the expectation of the distribution in random component as $\mu$, i.e., $\mathbb{E}[Y \mid X]=\mu$. It will be our goal to estimate $\mu$. Finally, the link component connects the random and systematic components, via a link function $g$. In particular, this link function provides a connection between $\mu$ and $\eta$, as in $$
+g(\mu)=\eta \quad \text { or } \quad \mu=g^{-1}(\eta)
+$$
+
+## Example
+
+### Gaussian-noise Linear Regression
+
+-   Random Component: $Y \mid X \sim \mathcal{N}\left(\mu, \sigma^2\right)$ and $\mathbb{E}[Y \mid X]=\mu$
+-   Systematic Component: $\eta=X \beta$
+-   Link Component: $g(\mu)=\mu$, so that $\mu=\eta=X \beta$
+
+### Bernoulli
+
+Suppose that $Y \in\{0,1\}$, and we model the distribution of $Y \mid X$ as Bernoulli with success probability $p$. Then the probability mass function (not a density, since $Y$ is discrete) is $$
+f(y)=p^y(1-p)^{1-y}
+$$
+
+We can rewrite to fit the exponential family form as $$
+\begin{aligned}
+f(y) & =\exp (y \log p+(1-y) \log (1-p)) \\
+& =\exp (y \log (p /(1-p))+\log (1-p))
+\end{aligned}
+$$
+
+$$
+f(y ; \theta, \phi)=\exp \left(\frac{y \theta-b(\theta)}{a(\phi)}+c(y, \phi)\right)
+$$
+
+Here we would identify $\theta=\log (p /(1-p))$ as the natural parameter. Note that the mean here is $\mu=p$, and using the inverse of the above relationship, we can directly write the mean $p$ as a function of $\theta$, as in $p=e^\theta /\left(1+e^\theta\right)$. Hence $b(\theta)=\log (1-p)=-\log \left(1+e^\theta\right)$. There is no dispersion parameter, so we can set $a(\phi)=1$. Also, $c(y, \phi)=0$.
+
+# Link Function
+
+$$
+g(\mu)=\Phi^{-1}(\mu)
+$$ where $\Phi$ is the standard normal CDF.
+
+### Logistic
+
+The three GLM criteria give us: 
+
+- $y_i \sim \operatorname{Bern}\left(p_i\right)$ 
+
+- $\eta=\beta_0+\beta_1 X_1+\cdots+\beta_k X_k$ 
+
+- $\operatorname{logit}(p)=\log \frac{p}{1-p}=\eta$
+
+From which we know, $$
+p_i=\frac{\exp \left(\beta_0+\beta_1 x_{i 1}+\cdots+\beta_k X_{i k}\right)}{1+\exp \left(\beta_0+\beta_1 x_{i 1}+\cdots+\beta_k X_{i k}\right)}
+$$
+
+# Survival Analysis
+
+Survival analysis is used to analyze data in which the time until the event is of interest. The response is often referred to as a failure time, survival time, or event time.
+
+## Some definations
+
+Hazard ratios; ratios of hazard functions between different groups (e.g., exposed vs. unexposed) while adjusting for confounders.
+
+censoring - which occurs when the survival time is only partially known
+
+-   Fixed type I censoring occurs when a study is designed to end after C years of follow-up. In this case, everyone who does not have an event observed during the course of the study is censored at C years.
+
+-   In random type I censoring, the study is designed to end after C years, but censored subjects do not all have the same censoring time. This is the main type of right-censoring we will be concerned with.
+
+-   In type II censoring, a study ends when there is a pre-specified number of events.
+
+## Kaplan-Meier estimate
+
+```{r}
+library(ISLR2)
+names(BrainCancer)
+attach(BrainCancer)
+table(status)
+
+library(survival)
+fit.surv <- survfit(Surv(time, status) ~ 1)
+plot(fit.surv, xlab = "Months",
+    ylab = "Estimated Probability of Survival")
+
+
+```
+
+## Cox-proportional harzards model
+
+S(t) = P(T\>t)=1-F(t)
+
+$h(t)=\lim _{\Delta t \rightarrow 0} \frac{P(t<T \leq t+\Delta t \mid T>t)}{\Delta t}$
+
+```{r}
+fit.all <- coxph(
+Surv(time, status) ~ sex + diagnosis + loc + ki + gtv +
+   stereo)
+fit.all
+modaldata <- data.frame(
+     diagnosis = levels(diagnosis),
+     sex = rep("Female", 4),
+     loc = rep("Supratentorial", 4),
+     ki = rep(mean(ki), 4),
+     gtv = rep(mean(gtv), 4),
+     stereo = rep("SRT", 4)
+     )
+survplots <- survfit(fit.all, newdata = modaldata)
+plot(survplots, xlab = "Months",
+    ylab = "Survival Probability", col = 2:5)
+legend("bottomleft", levels(diagnosis), col = 2:5, lty = 1)
+```
+
+
+# Final review of R codes
+
+## Calculation
+
+```{r}
+log(exp(1)) #  base `e` is the default (log(e) is not defined)
+```
+
+## Vectors
+
+```{r}
+x <- c(1,2,3,4)
+class(x)
+
+x %*%x # scalar ("inner") product (but default in R as an 1*1 matrix)
+
+rep(c('a','b'),3)
+rep(c(2, 4, 8), each = 3)
+y <- seq(from = 1, to = 4, by =1)
+class(x)
+str(x)
+x <- c(-5:5)
+str(x)
+1:4 # c(1,2,3,4) and 1:4 are the same in.R
+
+seq(1,5, length.out=11)
+
+# vac<-c((1,2,3),(3,4,5)) is wrong, but the below is true
+vec1 <- c(1,2,3)
+vec2 <- c(4,5,6)
+vec3 <- c(vec1, vec2)
+vec3[1] == vec1[1]
+vec3[3:5];vec3[c(2,3)]
+vec3[-1] # everything but the first element
+vec3[-2*c(1,2)]
+x <- -5:5
+
+abs(-5:5)
+
+x <- c(1, 2, 3, 4, 5,6)
+y <- c(10,11)
+result <- x + y 
+print(result)
+
+# x * y 
+c(1,2)*c(2,3)
+c(1,2)%*%c(2,3)
+
+#####Application
+# Calculate the sample(var(x)) and population variance
+x <- c(1, 2, 3, 4, 5)
+n <- length(x)
+# Calculate the sample variance using R's var() function
+sample_variance <-var(x)
+sample_variance
+population_variance <- sample_variance * (n - 1) / n
+population_variance
+
+```
+
+## Rmd knowledge
+
+{r, echo = FALSE} --Hidden Code
+
+{r, eval = FALSE} --Do not run this code
+
+{r, message = FALSE} --Do not show the message
+
+{r, warning = FALSE} --Do not show the warning
+
+{r,results='hide'} --Do not show the results
+
+
+# Probability in R
+
+```{r}
+dnorm(0) # density at 0
+pnorm(-1) # cumulative probability at -1
+pnorm(-1,lower.tail = F) # cumulative probability at -1, upper tail
+pnorm(0)
+qnorm(0) # quantile at 0 (with the cumulative probability of 0)
+pnorm(1.645) 
+qnorm(0.95) # norm quantile at 0.95 (with the cumulative probability of 0.95)
+pnorm(1.96)
+qnorm(0.975)
+```
+
+```{r}
+library(mosaic)
+ppois(3, lambda = 2)
+sum(dpois(0:3, lambda = 2))
+ppois(3, lambda = 2) == sum(dpois(0:3, lambda = 2)) # this inequivalance is because of the floating point precision
+```
+
+# R basic
+
+```{r}
+paste("Good", "afternoon", "ladies", "and", "gentlemen")
+paste0("Good", "afternoon", "ladies", "and", "gentlemen")
+
+x <- -10:10
+which(x>0)
+x[which(x>0)]
+vowels <- c('a','e','i','o','u')
+which(is.element(letters, vowels))
+```
+
+# Data class
+
+## Numeric
+
+## Integer
+
+```{r}
+y <- 42L
+class(y)
+```
+
+
+## Character
+
+```{r}
+x <- "123"
+class(x)
+# [1] "character"
+
+x <- as.numeric(x)
+class(x)
+# [1] "numeric"
+```
+
+## Logical
+
+```{r}
+# Note that logical elements are NOT in quotes.
+z = c("TRUE", "FALSE", "TRUE", "FALSE")
+class(z)
+as.logical(z)
+
+# TRUE = 1 and FALSE = 0. sum() and mean() work on logical vectors
+
+# remember:
+TRUE & TRUE
+TRUE & FALSE
+TRUE | FALSE
+
+```
+
+## Factor
+
+```{r}
+y <- c('B','B','A','A','C')
+z <- factor(y)
+str(z)
+as.numeric(z)
+levels(z)
+
+z <- factor(z,                       # vector of data levels to convert 
+            levels=c('B','A','C'),   # Order of the levels
+            labels=c("B Group", "A Group", "C Group")) # Pretty labels to use
+z
+#####Application
+### eg of use in the plot's x-axis name lable
+
+iris$Species <- factor(iris$Species,
+                       levels = c('versicolor','setosa','virginica'),
+                       labels = c('Versicolor','Setosa','Virginica'))
+#boxplot(Sepal.Length ~ Species, data=iris)
+
+### another eg
+#age_category <- ifelse(ages >= 18, "Adult", "Minor")
+#age_factor <- factor(age_category, levels = c("Minor", "Adult"))
+#age_factor
+
+### transform a continuous numerical vector into a factor
+
+x <- 1:10
+cut(x, breaks = c(0, 2.5, 5.0, 7.5, 10))
+x<-cut(x, breaks=3, labels=c('Low','Medium','High'))
+str(x)
+
+```
+
+
+## Date and time
+
+The following symbols can be used with the `format()` function to print dates.
+
+-   %d day as a number (0-31) 01-31
+-   %a abbreviated weekday Mon
+-   %A unabbreviated weekday Monday
+-   %m month (00-12) 00-12
+-   %b abbreviated month Jan
+-   %B unabbreviated month January
+-   %y 2-digit year 07
+-   %Y 4-digit year 2007
+
+```{r}
+mydates <- as.Date(c("2023-04-07", "2023-01-01"))
+mydates
+
+days <- mydates[1] - mydates[2]; days
+
+today <- Sys.Date()
+format(today, format="%B %d %Y")
+```
+
+
+## Data frame 
+
+```{r}
+Data_Frame <- data.frame(Tr =c("1","2","3"),
+                         Pu =c(11,21,32),
+                         Dur=c(22,222,1))
+Data_Frame
+summary(Data_Frame)
+
+### table and data frame
+table(mpg$class)
+df <- as.data.frame(table(mpg$class))
+df
+```
+
+
+## List
+
+```{r}
+# List ---Can hold vectors, strings, matrices, models, list of other list, lists upon lists!
+
+mylist <- list(letters=c("a","b","c"),
+               numbers=1:3,matrix(1:25,ncol=5))
+head(mylist)
+
+# Can reference data using $ (if the elements are named), or using [], or [[]]
+
+mylist[1] # list
+mylist["letters"] # list
+mylist[[1]] # vector
+mylist$letters == mylist[["letters"]]
+mylist[[3]][1:2,1:2]
+class(mylist[[3]][1:2,1:2])
+x = c(0, 2, 2, 3, 4); 2 %in% x
+# eg of using list
+x <- c(5.1, 4.9, 5.6, 4.2, 4.8, 4.5, 5.3, 5.2)   # some toy data
+results <- t.test(x, alternative='less', mu=5)   # do a t-test
+str(results)    
+results$p.value
+```
+
+
+
+## Matrix
+
+```{r}
+# Matrices
+
+n=1:9
+mat = matrix(n,nrow=3)
+mat
+y <- diag(n)
+
+# use %*% as the product of matrices
+
+## Eigenvalue and Eigenvector
+
+A <- matrix(c(13, -4, 2, -4, 11, -2, 2, -2, 8), 3, 3, byrow=TRUE)
+ev <- eigen(A)
+
+(values <- ev$values)
+(vectors <- ev$vectors)
+
+## Data selection --row then column
+
+mat[1, 1]
+mat[1,]
+mat[,1] 
+class(mat[1, ]) # Note that the class of the returned object is no longer a matrix
+
+```
+
+## Example 1
+
+```{r}
+db_data <- list(
+  drugs = list(
+    general_information = data.frame(
+      drugbank_id = c("DB001", "DB002", "DB003", "DB004", "DB005"),
+      name = c("Aspirin", "Ibuprofen", "Paracetamol", "Insulin", "Morphine"),
+      type = c("small molecule", "small molecule", "small molecule", "biotech", "small molecule"),
+      created = as.Date(c("2020-01-01", "2020-02-01", "2020-03-01", "2020-04-01", "2020-05-01")),
+      stringsAsFactors = FALSE
+    ),
+    drug_classification = data.frame(
+      drugbank_id = c("DB001", "DB002", "DB003", "DB004", "DB005"),
+      classification = c("Analgesic", "Anti-inflammatory", "Analgesic", "Hormone", "Analgesic"),
+      stringsAsFactors = FALSE
+    ),
+    experimental_properties = data.frame(
+      drugbank_id = c("DB001", "DB002", "DB003", "DB004", "DB005", "DB001", "DB002", "DB003", "DB004", "DB005"),
+      kind = c("logP", "logP", "logP", "logP", "logP", "Molecular Weight", "Molecular Weight", "Molecular Weight", "Molecular Weight", "Molecular Weight"),
+      value = c("1.2", "1.5", "0.8", "2.1", "1.8", "180.1", "206.3", "151.2", "5800.0", "281.5"),
+      stringsAsFactors = FALSE
+    )
+  )
+)
+db_data
+
+general_information <- db_data$drugs$general_information
+
+print(general_information)
+# 20. Number of drugs in the general_information dataframe
+general_information <- db_data$drugs$general_information
+nrow(general_information)
+
+# 21. Filter drugs of type "biotech"
+general_information[general_information$type == 'biotech',]
+
+# 22. Sort by the created column and display the first 5 rows
+general_information$created <- as.Date(general_information$created)
+sorted_df <- general_information[order(general_information$created), ]
+head(sorted_df, 5)
+
+# 23. Subset with specific columns and display the first 5 rows
+subset_df <- general_information[, c("drugbank_id", "name")]
+head(subset_df, 5)
+
+# 24. Merge dataframes and count rows
+drug_classification <- db_data$drugs$drug_classification
+merged_df <- merge(general_information, drug_classification, by = "drugbank_id")
+nrow(merged_df)
+
+# 25. Count unique experimental properties (kind)
+experimental_properties <- db_data$drugs$experimental_properties
+unique_kinds <- unique(experimental_properties$kind)
+length(unique_kinds)
+
+# 26. Filter for kind "logP" and count rows
+logP_df <- experimental_properties[experimental_properties$kind == "logP", ]
+nrow(logP_df)
+
+# 27. Convert value column to numeric and calculate mean
+logP_df$value <- as.numeric(logP_df$value)
+mean(logP_df$value, na.rm = TRUE)
+
+# 28. Calculate summary statistics for logP values
+summary(logP_df$value)
+sd(logP_df$value, na.rm = TRUE)
+
+# 29. Create a histogram of molecular weight values
+molecular_weight <- experimental_properties[experimental_properties$kind == "Molecular Weight", ]
+molecular_weight$value <- as.numeric(molecular_weight$value)
+# clean based on 3 sigma rule
+molecular_weight_clean <- molecular_weight[
+  abs(molecular_weight$value - mean(molecular_weight$value, na.rm = TRUE)) <= 3 * sd(molecular_weight$value, na.rm = TRUE),]
+hist(molecular_weight_clean$value, main = "Histogram of Molecular Weight", xlab = "Molecular Weight", ylab = "Frequency", col = "lightblue",breaks = 20)
+
+# 30. Filter for kind "Water Solubility" and count unique values
+water_solubility_df <- experimental_properties[experimental_properties$kind == "Water Solubility", ]
+length(unique(water_solubility_df$value))
+```
+
+
+# Data visualization (mainly: ggplot2)
+
+## Box plots
+
+```{r}
+library(ggplot2)
+data(iris)
+boxplot(iris$Sepal.Length ~ iris$Species)
+ggplot(mpg, aes(x=class, y=hwy)) + 
+  geom_boxplot() +
+  scale_y_continuous(breaks = seq(10, 45, by=5))  #---diy scale in y-axis 
+
+# ggplot(mpg, aes(x=class, y=hwy)) + geom_boxplot() +scale_y_continuous(breaks = seq(10, 45, by=5), minor_breaks = NULL)
+```
+
+## Histogram plots
+
+```{r}
+hist(iris$Sepal.Length)
+plot(Petal.Length ~ Sepal.Length, data=iris)
+abline(lm(Petal.Length ~ Sepal.Length, data=iris), col="red")
+data(mpg, package='ggplot2')
+ggplot(data=mpg, aes(x=class)) +
+  geom_bar()
+# By default, the geom_bar() just counts the number of cases and displays how many observations were in each factor level. If we have a data frame that we have already summarized, geom_col will allow us to set the height of the bar by a y column.
+table(mpg$class)
+df <- as.data.frame(table(mpg$class))
+df
+ggplot(df, aes(Var1, Freq)) +
+  geom_col()
+ggplot(mpg,aes(x=hwy)) +geom_histogram(binwidth = 2)
+```
+
+## Density plots
+
+```{r}
+p1 <- ggplot(mpg, aes(x=hwy, y=after_stat(density))) + 
+  geom_histogram(bins=8, fill="blue", alpha=0.5) +
+  labs(title="Histogram of Highway MPG density")
+p2 <- ggplot(mpg, aes(x=hwy)) + 
+  geom_density(fill='red', alpha=0.5) +
+  labs(title="Density Plot of Highway MPG")
+library(gridExtra)
+grid.arrange(p1, p2, ncol = 2)
+```
+
+- mutiple plots in one figure
+
+```{r}
+ggplot(iris, aes(x = Sepal.Length)) +
+  geom_density(aes(fill = Species,color=Species), alpha = 0.5) +
+  labs(title = "Density plot") +
+  labs(x = "Sepal Length", y = "Density") +
+  labs(fill = "area",color="line")  # fill is the area,color is the line or dot
+```
+
+
+## Scatter plots
+
+
+```{r}
+mtcars$cyl <- factor(mtcars$cyl) 
+
+ggplot(mtcars, aes(x=wt, y=mpg, col=cyl)) + geom_point() +
+  labs(title='Weight vs Miles per Gallon') +
+  labs(x="Weight in tons (2000 lbs)", y="Miles per Gallon (US)" ) +
+  labs(color="Cylinders") + # color is dot or line
+  scale_color_manual(values=c('blue', 'darkmagenta', 'aquamarine')) # diy color
+```
+
+
+## Scatter plots with regression line
+
+```{r}
+ggplot(data=iris, aes(x=Sepal.Length, y=Petal.Length,color=Species))+
+  geom_point()+# Anything set inside an aes() command will be of the form attribute=Column_Name and will change based on the data. Anything set outside an aes() command will be in the form attribute=value and will be fixed.
+   geom_smooth(method="lm") #By default, geom_smooth(method="lm") fits a linear regression line for each Species separately because Species are mapped to colors, and geom_smooth automatically draws a line for each category.
+
+ggplot(data=iris, aes(x=Sepal.Length, y=Petal.Length)) +
+  geom_point(aes(color=Species,shape=Species))+
+  geom_smooth(method="lm")
+
+
+# Zooming in/out--Danger!  This removes the data points first!
+#ggplot(trees, aes(x=Girth, y=Volume)) + 
+  #geom_point() +
+  #geom_smooth(method='lm') +
+  #xlim( 8, 19 ) + ylim(0, 60)
+```
+
+```{r}
+library(palmerpenguins)
+ggplot(penguins, aes(x=flipper_length_mm, y=body_mass_g)) + geom_point(aes(color=bill_depth_mm, shape=species), na.rm=T) + geom_smooth(na.rm=T, se=F) + scale_color_gradient2(low='yellow', mid='green', high='blue', midpoint = 17) + labs(x='Flipper length (millimeters)', y='Body mass (grams)', color='Bill depth (millimeters)') + theme_bw()
+```
+
+
+## Heat map
+
+```{r}
+# data
+mine.table <- data.frame(
+  Sample.name = rep(paste0("Sample", 1:5), each = 3),
+  Class = rep(c("Class1", "Class2", "Class3"), times = 5),
+  Abundance = c(0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1.0, 1.1, 1.2, 1.3, 1.4, 1.5),
+  Depth = c(0.5,0.5,0.5, 0.6,0.6,0.6, 0.7,0.7,0.7, 0.8,0.8,0.8, 0.9,0.9,0.9)
+)
+print(mine.table)
+
+
+mine.heatmap <- ggplot(data = mine.table, mapping = aes(x = Sample.name, y = Class, fill = Abundance)) + 
+  geom_tile() + # create the heatmap with tiles+
+  scale_y_discrete(limits = rev(levels(factor(mine.table$Class)))) +  # reverse the order of the y-axis --class1 to class 3 (if not have this:class 3 to class 1)
+  scale_fill_gradient(low = "white", high = "blue") +  # color
+  theme_minimal() +  # control the theme of the plot
+  theme(axis.text.x = element_text(angle = 45, hjust = 1)) +  # Rotate the X-axis label for better display
+  labs(x = "Sample Name",  # x-axis label
+       y = "Class",  # y-axis label
+       fill = "Abundance")+ # fill legend label by "Abundance"
+       ggtitle("Heatmap of Abundance by Sample and Class")+ # add title
+       geom_text(aes(label = round(Abundance, 2)), color = "black", size = 3) # add text labels to the tiles
+
+
+print(mine.heatmap)
+```
+
+Create heat map using facet_grid to show the data in different panels by depth
+
+
+```{r}
+mine.heatmap <- ggplot(data = mine.table, mapping = aes(x = Sample.name, y = Class, fill = Abundance)) + 
+  geom_tile() + # create the heatmap with tiles+
+  facet_grid(~ Depth,switch = 'x', scales='free', space='free')+ # facet_grid to show the data in different panels by depth
+  scale_y_discrete(limits = rev(levels(factor(mine.table$Class)))) +  # reverse the order of the y-axis --class1 to class 3 (if not have this:class 3 to class 1)
+  scale_fill_gradient(low="#FFFFFF", high="#012345")+  # color
+  theme_minimal() +  # control the theme of the plot
+  theme(axis.text.x = element_text(angle = 45, hjust = 1)) +  # Rotate the X-axis label for better display
+  labs(x = "Sample Name",  # x-axis label
+       y = "Class",  # y-axis label
+       fill = "Abundance")+ # fill legend label by "Abundance"
+       ggtitle("Heatmap of Abundance by Sample and Class")+ # add title
+       geom_text(aes(label = round(Abundance, 2)), color = "black", size = 3) # add text labels to the tiles
+  
+       
+
+
+print(mine.heatmap)
+
+
+```
+
+
+## Faceting (make many panels of graphics where each panel represents the same relationship between variables, but something changes between each pane)
+
+```{r}
+ggplot(iris, aes(x=Sepal.Length, y=Sepal.Width)) +
+  geom_point() +
+  facet_grid(.~Species) #or facet_grid(Species~.)--Categorical variables of species will be vertical
+```
+-   Another example
+
+```{r}
+library(reshape)
+data(tips, package='reshape')
+head(tips, 3)
+ggplot(tips, aes(x = total_bill, y = tip / total_bill)) +
+  geom_point() +
+  facet_grid( smoker ~ day )
+# 'free_y' means the scale of different panels are adjusted by themselves
+ggplot(tips, aes(x = total_bill, y = tip / total_bill)) +
+  geom_point() +
+  facet_wrap( ~ day, scales='free_y')
+# log scales ---a wrapper of  scale_y_continuous() function , trans_new() function
+# ggplot(ACS, aes(x=Age, y=Income)) + geom_point() +
+# scale_y_log10(breaks=c(1, 10, 100),
+#            minor=c(1:10,
+#                 seq(10, 100, by=10 ),
+#                seq(100, 1000, by=100))) +
+#  ylab('Income (1000s of dollars)')
+
+
+
+```
+-   Multi-plot
+
+```{r}
+p1 <- ggplot(ChickWeight, aes(x=Time, y=weight, colour=Diet, group=Chick)) +
+    geom_line() +
+    ggtitle("Growth curve for individual chicks")
+# Second plot
+p2 <- ggplot(ChickWeight, aes(x=Time, y=weight, colour=Diet)) +
+    geom_point(alpha=.3) +
+    geom_smooth(alpha=.2, linewidth=1) +
+    ggtitle("Fitted growth curve per diet")
+# Third plot 
+p3 <- ggplot(subset(ChickWeight, Time==21), aes(x=weight, colour=Diet)) +
+    geom_density() +
+    ggtitle("Final weight, by diet")
+
+
+# to realize:
+# plot1 plot2 plot2
+# plot1 plot2 plot2
+# plot1 plot3 plot3
+
+my.layout = cbind( c(1,1,1), c(2,2,3), c(2,2,3) ) # each c represents a column in a matrix and 1,2,3 represents p1,p2,p3
+library(Rmisc)
+Rmisc::multiplot( p1, p2, p3, layout=my.layout)
+
+
+
+# OR library(ggpubr) https://rpkgs.datanovia.com/ggpubr/). 
+
+library(ggpubr)
+# Box plot (bp)
+bxp <- ggboxplot(ToothGrowth, x = "dose", y = "len",
+                 color = "dose", palette = "jco")
+# Dot plot (dp)
+dp <- ggdotplot(ToothGrowth, x = "dose", y = "len",
+                 color = "dose", palette = "jco", binwidth = 1)
+mtcars$name <- rownames(mtcars)
+mtcars$cyl <- as.factor(mtcars$cyl)
+bp <- ggbarplot(mtcars, x = "name", y = "mpg",
+          fill = "cyl",               # change fill color by cyl
+          color = "white",            # Set bar border colors to white
+          palette = "jco",            # jco journal color palett. see ?ggpar
+          sort.val = "asc",           # Sort the value in ascending order
+          sort.by.groups = TRUE,      # Sort inside each group
+          x.text.angle = 90           # Rotate vertically x axis texts
+          ) + font("x.text", size = 8)
+# Scatter plots (sp)
+sp <- ggscatter(mtcars, x = "wt", y = "mpg",
+                add = "reg.line",               # Add regression line
+                conf.int = TRUE,                # Add confidence interval
+                color = "cyl", palette = "jco", # Color by groups "cyl"
+                shape = "cyl"                   # Change point shape by groups "cyl"
+                ) + 
+  stat_cor(aes(color = cyl), label.x = 3)       # Add correlation coefficient
+
+ggarrange(bxp, dp, bp + rremove("x.text"),
+          labels = c("A", "B", "C"),
+          ncol = 2, nrow = 2)
+# Themes
+# Rmisc::multiplot( p1 + theme_bw(),          # Black and white
+#                   p1 + theme_minimal(),   
+#                   p1 + theme_dark(),        
+#                   p1 + theme_light(),
+#                   cols=2 )
+
+#ggsave('p1.png', width=6, height=3, dpi=350)
+
+
+```
+
+# Data manipulation
+
+```{r}
+library(dplyr)
+library(tidyverse)
+```
+
+## apply
+
+```{r}
+# apply
+# Summarize each column by calculating the mean.
+apply(iris[,-5],        # what object do we want to apply the function to
+      MARGIN=1,    # rows = 1, columns = 2, (same order as [rows, cols]
+      FUN=mean     # what function do we want to apply     
+     ) %>% head(10)
+
+
+average <- apply( 
+  iris[,-5],        # what object do we want to apply the function to
+  MARGIN=2,    # rows = 1, columns = 2, (same order as [rows, cols]
+  FUN=mean     # what function do we want to apply
+)
+iris <- rbind(iris[,-5], average)
+iris %>% head(3)
+```
+
+There are several variants of the apply() function, and the most frequently used ones are lapply() and sapply(). These two functions apply a given function to each element of a list or vector and returns a corresponding list or vector of results.
+
+
+```{r}
+#lapply
+x <- list(a = 1:10, beta = exp(-3:3), logic = c(TRUE,FALSE,FALSE,TRUE))
+x
+lapply(x, quantile, probs = 1:3/4) # list 
+sapply(x, quantile, probs = 1:3/4) # matrix
+```
+
+## Tibbles
+
+A tibble, or tbl_df, is a modern reimagining of the data.frame, keeping what time has proven to be effective, and throwing out what is not. Tibbles are data.frames that are lazy and surly: they do less (i.e. they don t change variable names or types, and don t do partial matching) and complain more (e.g. when a variable does not exist). This forces you to confront problems earlier, typically leading to cleaner, more expressive code. Tibbles also have an enhanced print() method which makes them easier to use with large datasets containing complex objects.
+
+```{r}
+data <- data.frame(a = 1:3, b = letters[1:3], c = Sys.Date() - 1:3)
+data
+
+as_tibble(data)
+
+```
+
+
+## %>% 
+
+The pipe operator %>% is used to pass the result of one function to the next function in a chain, making the code more readable and concise. For example, if we wanted to start with x, and first apply function f(), then g(), and then h(), the usual R command would be h(g(f(x))) which is hard to read because you have to start reading at the innermost set of parentheses. Using the pipe command %\>%, this sequence of operations becomes x %\>% f() %\>% g() %\>% h().
+
+
+## select
+
+```r
+
+# Correct usage of select() within a pipeline
+starwars %>% select(-ends_with('color'))
+
+```
+
+## filter
+
+```{r}
+library(dplyr)
+
+# Filter rows where species is "Droid" and mass is greater than or equal to 100
+filtered_data <- starwars %>% filter(species == "Droid", mass < 100)
+print(filtered_data)
+
+```
+
+## slice
+
+This function is used to select rows by their position in the data frame. It can be used to select specific rows or a range of rows.
+
+filter rows based on row number:
+
+```{r}
+starwars %>% slice(2:4)
+```
+
+
+## arrange
+
+This function is used to sort the rows of a data frame by one or more columns. The default sorting of the number in the dataset is in ascending order, but you can use the `desc()` function to sort in descending order.
+
+```{r}
+starwars %>% arrange(desc(name)) #The default sorting is in ascending order
+
+starwars %>% arrange(desc(height)) %>% head(3)
+dd <- data.frame(
+  Trt = factor(c("High", "Med", "High", "Low"),        
+               levels = c("Low", "Med", "High")), # level
+  y = c(8, 3, 9, 9),      
+  z = c(1, 1, 1, 2)) 
+dd %>% arrange(Trt, desc(y))
+```
+
+## mutate
+
+This function is used to create new columns or modify existing columns in a data frame. It allows you to perform calculations and transformations on the data.
+
+```r
+# select using the old columns
+starwars$bmi = starwars$mass / ((starwars$height / 100) ^ 2)
+starwars %>% select(name, bmi) %>% head(3)
+
+# mutate avoids all the starwars$
+
+starwars$bmi <- NULL
+starwars %>% 
+  mutate(bmi = mass / ((height / 100) ^ 2)) %>%  
+  select(name, bmi) %>% head(3)
+
+# mutate_at() and mutate_if() allow us to apply a function to a particular column and save the output.
+
+subset <- starwars %>% 
+  mutate(square_height = (height / 100) ^ 2,
+         bmi = mass / square_height) %>%
+  select(name, square_height, bmi)
+subset %>% head(3)
+
+subset %>% mutate_if(is.numeric, round, digits=0) # here, is.numeric is the condition
+
+subset %>% mutate_at(2:3, round, digits=0) %>% head() # column 2 3
+
+# Apply the transformation to columns 2 and 3 for rows 1 to 3
+result <- subset %>% 
+  mutate_at(2:3, ~ifelse(row_number() %in% 1:3, round(., digits = 0), .))
+
+subset %>% mutate(avg.example = select(., square_height:bmi) %>% rowMeans())
+
+
+```
+
+## summarise
+
+This function is used to create a summary table. It reduces the data frame to a single row containing summary statistics.
+
+```r
+starwars %>% summarise(mean.height=mean(height, na.rm=T), sd.height=sd(height, na.rm=T))
+
+# apply the same statistic to each column
+starwars %>% select(height:mass) %>% summarise_all(list(min=min, max=max), na.rm=T)
+starwars %>% summarise_if(is.numeric, list(min=min, max=max), na.rm = T)
+```
+## group_by
+
+This function is used to group the data frame by one or more columns. It is often used in combination with `summarise()` to calculate summary statistics for each group.
+
+
+```r
+
+library(dplyr)
+library(palmerpenguins)
+table(penguins$sex, penguins$species)
+penguins %>% 
+  filter(!is.na(sex)) %>%
+  group_by(sex, species) %>%           
+  summarise(n = n(), 
+            mean.flipper = mean(flipper_length_mm),
+            sd.flipper = sd(flipper_length_mm),
+            .groups='keep') %>%
+  head(3)
+  
+```
+
+## examples
+
+Find the flight with the longest departure delay among flights from the same origin and destination (use `filter()`). Relocate the origin, destination, and departure delay to the first three columns and sort by origin and dest.
+
+``` r
+flights %>% 
+  filter(!is.na(dep_delay)) %>% 
+  group_by(origin, dest) %>% 
+  filter(dep_delay == max(dep_delay)) %>% 
+  relocate(origin, dest, dep_delay) %>% 
+  arrange(origin, dest)
+```
+
+Find the flight with the longest departure delay among flights from the same origin and destination (use `top_n()` or `slice_max()`). Relocate the origin, destination, and departure delay to the first three columns and sort by origin and dest.
+
+``` r
+flights %>% 
+  filter(!is.na(dep_delay)) %>% 
+  group_by(origin, dest) %>% 
+  top_n(1, dep_delay) %>%  # or using slice_max(dep_delay) %>% 
+  relocate(origin, dest, dep_delay) %>% 
+  arrange(origin, dest)
+```
+
+How do departure delays vary at different times of the day? Summarize the averaged departure delays by hours and create an new column named as `dep_delay_level` which `cut()` the averaged departure delays into three levels (low, median, and high).
+
+``` r
+flights %>% 
+  group_by(hour) %>% 
+  summarize(avg_dep_delay = mean(dep_delay, na.rm = TRUE)) %>%
+  mutate(dep_delay_level = cut(avg_dep_delay, breaks=3, c('low', 'median', 'high')))
+```
+
+ How do departure delays vary at different times of the day? Illustrate your answer with a `geom_smooth()` plot.
+
+``` r
+flights %>% 
+  group_by(hour) %>% 
+  summarize(avg_dep_delay = mean(dep_delay, na.rm = TRUE)) %>%
+  ggplot(aes(x = hour, y = avg_dep_delay)) + geom_smooth()
+```
+
+``` r
+# ways to deleter the blanks
+students %>%
+  rename(
+    student_id = `Student ID`,
+    full_name = `Full Name`
+  ) %>% head(3)
+```
+
+``` r
+
+
+read_csv(
+  "# A comment I want to skip
+  x,y,z
+  1,2,3",
+  comment = "#"
+)
+```
+
+```{r}
+library(tidyr)
+grade.book <- rbind(
+  data.frame(name='Alison',  HW.1=8, HW.2=5, HW.3=8, HW.4=4),
+  data.frame(name='Brandon', HW.1=5, HW.2=3, HW.3=6, HW.4=9),
+  data.frame(name='Charles', HW.1=9, HW.2=7, HW.3=9, HW.4=10))
+grade.book
+tidy.scores <- grade.book %>%
+  pivot_longer(
+    cols = starts_with("HW"),
+    names_to = "Homework",
+    values_to = "Score"
+  )
+tidy.scores
+tidy.scores %>% pivot_wider(names_from=Homework, values_from=Score)
+
+# table joins
+
+Fish.Data <- tibble(
+  Lake_ID = c('A','A','B','B','C','C'), 
+  Fish.Weight=rnorm(6, mean=260, sd=25) ) # make up some data
+Fish.Data
+Lake.Data <- tibble(
+  Lake_ID = c('B','C','D'),   
+  Lake_Name = c('Lake Elaine', 'Mormon Lake', 'Lake Mary'),   
+  pH=c(6.5, 6.3, 6.1),
+  area = c(40, 210, 240),
+  avg_depth = c(8, 10, 38))
+Lake.Data
+full_join(Fish.Data, Lake.Data)
+left_join(Fish.Data, Lake.Data)
+inner_join(Fish.Data, Lake.Data)
+```
+
+``` r
+mutate(
+    week = parse_number(week)
+  )
+```
+
+how many data points are in the data set
+
+``` r
+gender_year <- Survey %>% 
+  filter(!is.na(Year)) %>% 
+  group_by(Sex, Year) %>% 
+  count() %>% 
+  rename(nu=n)
+gender_year
+gender_year %>% pivot_wider(names_from = Year, values_from = nu)
+```
+
+``` r
+who2 %>% 
+  head(3)
+who2 <- who2 %>% 
+  pivot_longer(
+    cols = !(country:year), 
+    names_to = c("diagnosis", "gender", "age"), 
+    names_sep = "_",
+    values_to = "count"
+  ) %>% 
+  filter(!is.na(count))
+who2
+```
+
+``` r
+left_join(feb14_VX, airports, by=c('dest'='faa'))
+```
+```r
+
+library(psych)
+drug_prop <- drug_prop %>% 
+  filter(class == 'Carboxylic acids and derivatives') 
+drug_prop %>% 
+  select(logP, logS, water_solubility) %>% 
+  pairs.panels()
+```
+
+
+## ps:the comparison between whether to use %\>% or not
+
+
+
+``` r
+# %>% 
+penguins %>% 
+  filter(!is.na(sex)) %>%
+  group_by(sex, species) %>%           
+  mutate(Sum.Sq.Cells = (flipper_length_mm - mean(flipper_length_mm))^2)  %>%  
+  select(sex, species, flipper_length_mm, Sum.Sq.Cells) %>% head()
+
+# not use %>% 
+head(
+  select(mutate(group_by(filter(penguins, !is.na(sex)), sex, species),
+                Sum.Sq.Cells = (flipper_length_mm - mean(flipper_length_mm))^2),
+       sex, species, flipper_length_mm, Sum.Sq.Cells))
+```
+
+``` r
+library(nycflights13)
+str(nycflights13::flights)
+# the order of group_by and summarize matters
+flights %>% 
+  group_by(carrier) %>% 
+  summarize(avg_dep_delay = mean(dep_delay, na.rm = TRUE)) %>% 
+  arrange(desc(avg_dep_delay))
+```
+# Control flow
+
+## while loop
+
+```r
+x <- 1
+while (x < 10) {
+  print(x)
+  x <- x + 1
+}
+```
+
+
+## for loop
+
+### Fibonacci sequence 
+
+```{r}
+F <- rep(0, 10)        
+F[1] <- 0             
+F[2] <- 1              
+cat('F = ', F, '\n') 
+
+for( n in 3:10 ){
+  F[n] <- F[n-1] + F[n-2]
+  cat('F = ', F, '\n')    
+}
+```
+### bootstrap estimate of a sampling distribution
+
+ - bootstrap estimate of a sampling distribution
+ 
+```{r}
+library(dplyr)
+library(ggplot2)
+SampDist <- data.frame()
+
+for (i in 1:1000){
+  SampDist <- trees %>% 
+    slice_sample(n=30, replace =TRUE) %>% 
+    dplyr::summarise(xbar=mean(Height)) %>% 
+    rbind(SampDist)
+}
+ggplot(SampDist,aes(x=xbar)) +
+  geom_histogram()
+
+```
+
+
+# Functions
+
+## Functions condtruction
+
+copy of x
+
+```{r}
+k <- 3
+example.func <- function(x){
+  x <- sort(x)
+  if (k > 1){
+    print(x)
+  }
+}
+x <- c(3,1,5,4,2)
+example.func(x)
+x # x is changed inside the function but not outsied the function
+```
+
+
+## Ellipses
+
+```{r}
+# a function that draws the regression line and confidence interval
+# notice it doesn't return anything, all it does is draw a plot
+show.lm <- function(m, interval.type='confidence', fill.col='light grey', ...){
+  x <- m$model[,2]       # extract the predictor variable
+  y <- m$model[,1]       # extract the response
+  pred <- predict(m, interval=interval.type)
+  plot(x, y, ...)
+  polygon( c(x,rev(x)),                         # draw the ribbon defined
+           c(pred[,'lwr'], rev(pred[,'upr'])),  # by lwr and upr - polygon
+           col='light grey')                    # fills in the region defined by            
+  lines(x, pred[, 'fit'])                       # a set of vertices, need to reverse            
+  points(x, y)                                  # the uppers to make a nice figure
+} 
+```
+
+# Linear regression and multiple linear regression (Lab 10)
+
+1. Load the `bloodpress.txt`
+
+```{r}
+bloodpress <- read.table("bloodpress.txt", header=T)
+bloodpress
+```
+
+2. Use `pairs.panels()` function from `psych` pacakge to draw scatterplots, histograms, and calculate correlations between variables.
+```{r}
+library(psych)
+pairs.panels(bloodpress[, -1])
+```
+
+3. Fit a simple linear regression model of BP vs Stress. Is Stress significant?
+
+```{r}
+model.1 <- lm(BP ~ Stress, data=bloodpress)
+summary(model.1)
+```
+
+4. Fit a simple linear regression model of BP vs Weight.
+
+```{r}
+model.2 <- lm(BP ~ Weight, data=bloodpress)
+summary(model.2)
+```
+
+5. Fit a simple linear regression model of BP vs BSA.
+
+```{r}
+model.3 <- lm(BP ~ BSA, data=bloodpress)
+summary(model.3)
+```
+
+6. Fit a multiple linear regression model of BP vs Weight + BSA. Is BSA still significant? Why?
+
+```{r}
+model.4 <- lm(BP ~ Weight + BSA, data=bloodpress)
+summary(model.4)
+```
+
+8. Predict BP for Weight=92 and BSA=2 for the two simple linear regression models and the multiple linear regression model, by hand and by `predict()` function.
+
+```{r}
+2.20531 + 1.20093 * 92
+predict(model.2,
+        newdata=data.frame(Weight=92))
+45.183 + 34.443 * 2
+predict(model.3,
+        newdata=data.frame(BSA=2))
+5.6534 + 1.0387 * 92 + 5.8313 * 2
+predict(model.4,
+        newdata=data.frame(Weight=92, BSA=2))
+```
+
+7. Fit a multiple linear regression model of BP vs Age + Weight. Set argument `x` and `y` as TRUE. Save the output of `lm()` as `model.5`. How do we interpret each estimated coefficients?
+
+```{r}
+model.5 <- lm(BP ~ Age + Weight, data=bloodpress, x=TRUE, y=TRUE)
+summary(model.5)
+```
+
+8. Use the `plot_ly` function in the `plotly` package to create a 3D scatterplot of the data with the fitted plane for a multiple linear regression model of BP vs Age + Weight.
+
+```r
+library(plotly)
+plot_ly(x=bloodpress$Age, y=bloodpress$Weight, z=bloodpress$BP, type='scatter3d', mode='markers', color=bloodpress$BP)
+```
+
+9. Extract the matrix `x` and `y` of `model.5` and assign it to a new object `X` and `y`. Remember, if you save the output of `lm()` as an object, this object contains many elements. After we set `x=TRUE` and `y=TRUE` in question 8, we can find `x` and `y` in this list.
+
+```{r}
+X <- model.5$x
+y <- model.5$y
+
+```
+
+10. Calculate $X^{T}X$, $X^{T}y$, $(X^{T}X)^{-1}$, and $(X^{T}X)^{-1}X^{T}y$. Use `t()` for transpose, `%*%` for matrix multiplication, and `solve()` for inverse of matrix. For the last one, is your result same as the estimated values you obtained in question 7? --Of course!
+
+```{r}
+t(X) %*% X
+t(X) %*% y
+solve(t(X) %*% X)
+solve(t(X) %*% X) %*% (t(X) %*% y)
+```
+11. Use the anova function to display the ANOVA table with sequential (type I) sums of squares for the `model.5`.
+
+$SS_{\text{Variable}} = \sum_{i=1}^n (\hat{y}_{\text{Variable}, i} - \bar{y})^2$
+
+$\hat{y}_{\text{Variable}, i}$ is the model including only varible i.
+
+F is the ratio of the mean square for the variable to the mean square for residuals.
+
+
+If (F $\approx$ 1) : It indicates that the sizes of MS_Variable and MS_Residuals are approximately the same, suggesting that the explanatory power of the independent variable for the dependent variable is comparable to the random error, and the null hypothesis ((H_0)) cannot be rejected. 
+
+If (F $\gg$ 1) : It indicates that MS_Variable is significantly greater than MS_Residuals, suggesting that the independent variable has a significant influence on the dependent variable, and the null hypothesis ((H_0)) can be rejected.
+
+```{r}
+anova(model.5)
+# remark
+sum((model.5$y-mean(model.5$y))^2) == 243.266+311.910+4.824
+```
+$SS_{\text{Total}} = SS_{\text{Age}} + SS_{\text{Weight}} + SS_{\text{Residuals}}$
+
+12. Use the `residuals` element in fitted model or `residuals()` function to extract the fitted residuals. Calculate the sum of square of these residual values. Extract the `df.residual` element in fitted model and use the above elements to calculate the MSE. Is your result same as the `anova()` output?
+```{r}
+sum((model.5$residuals)^2)/model.5$df.residual
+```
+
+13. Fit a multiple linear regression model of BP vs Age + Weight + Pulse. Save the output of `lm()` as `model.6`.
+
+```{r}
+model.6 <- lm(BP ~ Age + Weight + Pulse, data=bloodpress)
+summary(model.6)
+```
+
+14. Use `anova()` function to obtain the ANOVA table for `model.6`. We may consider `model.6` as full model, and `model.5` as reduced model in this question. Based on the obtained ANOVA table and the output of question 11, calculate the F-statistic for testing the reduced model by hand. You may use the Residuals Sum sq and the corresponding Residuals Df from both tables. Then, calculate the p-value using $pf()$ function, don't forget about the `lower.tail`.
+
+```{r}
+anova(model.6)
+Fstat <- (4.824-4.328)/(17-16) / (4.328/16)
+Fstat
+pf(Fstat, 1, 16, lower.tail = F)
+```
+
+15. Use `anova()` function to do the F-test on `model.5` and `model.6`. Compare the output with your answers of question 14. What is the conclustion of the F-test?
+
+$\text{RSS} = \sum_{i=1}^n (y_i - \hat{y}_i)^2$
+
+$\text{Sum of Sq} = \text{RSS(Model 1)} - \text{RSS(Model 2)}$ (It represents the variation in the interpretation of the dependent variable by the newly added variable Pulse.)
+
+$$ F = \frac{\text{Sum of Sq} / \text{Df}}{\text{RSS(Model 2)} / \text{Res.Df(Model 2)}} \\F = \frac{0.49557}{0.270525} \approx 1.8319$$
+
+```{r}
+anova(model.5, model.6)
+```
+
+16. Plot the qqPlot for residuals of `model.5`. What is the x-axis and y-axis of the qqPlot? What can we say about the qqPlot?
+
+```{r}
+library(car)
+qqPlot(model.5$residuals)
+```
+
+17. Plot the residual vs fitted plot of `model.5`. You may extract `fitted.values` from `model.5` and use it as `x` in `plot()`.
+
+```{r}
+plot(x=model.5$fitted.values, y=model.5$residuals)
+```
+
+18. Directly use `plot()` function on `model.5`.
+
+```{r}
+plot(model.5)
+```
+
+
+19. Load the `hospital_infct.txt` data and select observations with Stay <= 14.
+
+```{r}
+infectionrisk <- read.table("/Users/luyu/Desktop/NOTEsAPH101/hospital_infct.txt", header=T)
+infectionrisk <- infectionrisk[infectionrisk$Stay<=14,]
+infectionrisk
+```
+
+20. Create new dummy/indicator columns (`i1`, `i2`, `i3`, `i4`) for regions using `ifelse()` function. For example, i1 = 1 when Region = 1 and i1 = 0 when Region is not equal to 1; i2 = 1 when Region = 2 and i2 = 0 when Region is not equal to 2; ... 
+
+```{r}
+infectionrisk$i1 <- ifelse(infectionrisk$Region == 1, 1, 0)
+infectionrisk$i2 <- ifelse(infectionrisk$Region == 2, 1, 0)
+infectionrisk$i3 <- ifelse(infectionrisk$Region == 3, 1, 0)
+infectionrisk$i4 <- ifelse(infectionrisk$Region == 4, 1, 0)
+```
+
+21. Fit a multiple linear regression model of InfctRsk on Stay + Xray + i2 + i3 + i4.
+
+```{r}
+model.7 <- lm(InfctRsk ~ Stay + Xray + i2 + i3 + i4, data=infectionrisk)
+summary(model.7)
+```
+
+
+23. Can we include i1 + i2 + i3 + i4 in this multiple linear regression? Why?
+
+No. In the context of using dummy variables for categorical data in regression analysis, it's essential to designate a reference category. This reference category is represented by a coefficient of zero, while the coefficients for the other categories are interpreted as deviations from this reference point.
+
+```{r}
+model.8 <- lm(InfctRsk ~ Stay + Xray + i1 + i2 + i3 + i4, data=infectionrisk)
+summary(model.8)
+```
+
+24. Conduct an F-test (use `anova()` function) to see if at least one of i2, i3, and i4 are useful. 
+```{r}
+model.9 <- lm(InfctRsk ~ Stay + Xray, data=infectionrisk)
+anova(model.7, model.9)
+```
+
+
+# Logistic regression
+
+## Simple example
+
+```r
+logit_m2 =glm(formula = LUNG_CANCER ~ ANXIETY+PEER_PRESSURE+`CHRONIC DISEASE`+FATIGUE+ALLERGY+`ALCOHOL CONSUMING`+COUGHING+`SWALLOWING DIFFICULTY`, data = train_data, family = 'binomial')
+```
+
+
+## Confusion Matrix
+
+
+\small
+| Total population $=\mathrm{P}+\mathrm{N}$ | Predicted Positive (PP) | Predicted Negative (PN) | Informedness, bookmaker informedness (BM) $=\mathrm{TPR}+\mathrm{TNR}-1$ | Prevalence threshold (PT) $=\frac{\sqrt{\mathrm{TPR} \times \mathrm{FPR}}-\mathrm{FPR}}{\mathrm{TPR}-\mathrm{FPR}}$ |
+| :--- | :--- | :--- | :--- | :--- |
+| Positive (P) ${ }^{[\text {a }]}$ | True positive (TP), hit ${ }^{[b]}$ | False negative (FN), miss, underestimation | True positive rate (TPR), recall, sensitivity (SEN), probability of detection, hit rate, power $=\frac{\mathrm{TP}}{\mathrm{P}}=1-\mathrm{FNR}$ | False negative rate (FNR), miss rate type ll error ${ }^{[c]}$ $=\frac{\mathrm{FN}}{\mathrm{P}}=1-\mathrm{TPR}$ |
+| Negative ( N ) ${ }^{[d]}$ | False positive (FP), false alarm, overestimation | True negative (TN), correct rejection ${ }^{[\text {e }]}$ | False positive rate (FPR), probability of false alarm, fall-out type I error ${ }^{[7]}$ $=\frac{\mathrm{FP}}{\mathrm{~N}}=1-\mathrm{TNR}$ | True negative rate (TNR), specificity (SPC), selectivity $=\frac{\mathrm{TN}}{\mathrm{N}}=1-\mathrm{FPR}$ |
+
+## example
+
+
+### Lung Cancer Classification (https://www.kaggle.com/datasets/mysarahmadbhat/lung-cancer?select=survey+lung+cancer.csv)
+
+The effectiveness of cancer prediction system helps the people to know their cancer risk with low cost and it also helps the people to take the appropriate decision based on their cancer risk status. The data is collected from the website online lung cancer prediction system.
+
+Total no. of attributes: 16
+No. of instances: 284
+
+Attribute information:
+
+Gender: M(male), F(female)
+Age: Age of the patient
+Smoking: YES=2, NO=1.
+Yellow fingers: YES=2, NO=1.
+Anxiety: YES=2, NO=1.
+Peer_pressure: YES=2, NO=1.
+Chronic Disease: YES=2, NO=1.
+Fatigue: YES=2, NO=1.
+Allergy: YES=2, NO=1.
+Wheezing: YES=2, NO=1.
+Alcohol: YES=2, NO=1.
+Coughing: YES=2, NO=1.
+Shortness of Breath: YES=2, NO=1.
+Swallowing Difficulty: YES=2, NO=1.
+Chest pain: YES=2, NO=1.
+Lung Cancer: YES, NO.
+
+Goal: It is your job to classify Lung Cancer using other variables
+
+#### Example Code
+
+```{r}
+#Load the dataset 
+library(readr)
+data = read_csv('/Users/luyu/Desktop/survey_lung_cancer.csv', show_col_types = FALSE)
+data$LUNG_CANCER <- ifelse(data$LUNG_CANCER=="YES", 1, 0)
+summary(data)
+```
+
+```r
+library(ggplot2)
+ggplot(data, aes(x = factor(SMOKING), fill = factor(LUNG_CANCER))) +
+geom_bar(position = "fill") +
+scale_fill_manual(values = c("0" = "lightblue", "1" = "salmon")) +
+theme_minimal()
+```
+
+```{r}
+### Data SAMPLING ####
+library(caret)
+set.seed(101)
+split = createDataPartition(data$LUNG_CANCER, p = 0.80, list = FALSE)
+train_data = data[split,]
+test_data = data[-split,]
+nrow(train_data)
+nrow(test_data)
+```
+
+```{r}
+#error metrics -- Confusion Matrix
+err_metric=function(CM)
+{
+  TN =CM[1,1]
+  TP =CM[2,2]
+  FP =CM[1,2]
+  FN =CM[2,1]
+  precision =(TP)/(TP+FP)
+  recall_score =(TP)/(TP+FN)
+  f1_score=2*((precision*recall_score)/(precision+recall_score))
+  accuracy_model  =(TP+TN)/(TP+TN+FP+FN)
+  False_positive_rate =(FP)/(FP+TN)
+  False_negative_rate =(FN)/(FN+TP)
+  print(paste("Precision value of the model: ",round(precision,2)))
+  print(paste("Accuracy of the model: ",round(accuracy_model,2)))
+  print(paste("Recall value of the model: ",round(recall_score,2)))
+  print(paste("False Positive rate of the model: ",round(False_positive_rate,2)))
+  print(paste("False Negative rate of the model: ",round(False_negative_rate,2)))
+  print(paste("F1 score of the model: ",round(f1_score,2)))
+}
+```
+
+```{r}
+# Logistic regression
+logit_m =glm(formula = LUNG_CANCER ~ ., data = train_data, family = 'binomial')
+summary(logit_m)
+```
+
+```{r}
+# Logistic regression
+logit_m2 =glm(formula = LUNG_CANCER ~ ANXIETY+PEER_PRESSURE+`CHRONIC DISEASE`+FATIGUE+ALLERGY+`ALCOHOL CONSUMING`+COUGHING+`SWALLOWING DIFFICULTY`, data = train_data, family = 'binomial')
+summary(logit_m2)
+```
+
+```{r}
+library(dplyr)
+logit_P_prob = predict(logit_m, newdata = select(test_data, -LUNG_CANCER), type = 'response')
+logit_P_prob[1:3]
+logit_P <- ifelse(logit_P_prob > 0.5, 1, 0) # Probability check
+logit_P[1:3]
+```
+```{r}
+CM = table(test_data$LUNG_CANCER, logit_P)
+print(CM)
+```
+```{r}
+err_metric(CM)
+```
+```{r}
+#ROC-curve using pROC library
+library(pROC)
+roc_score=roc(test_data$LUNG_CANCER, logit_P_prob) #AUC score
+plot(roc_score, main = "ROC curve -- Logistic Regression")
+```

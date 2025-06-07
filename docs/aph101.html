@@ -195,6 +195,10 @@ window.Quarto = {
     <a class="nav-link" href="./Calculus.html"> 
 <span class="menu-text">Calculus</span></a>
   </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./aph103.html"> 
+<span class="menu-text">SurveySampling</span></a>
+  </li>  
 </ul>
           </div> <!-- /navcollapse -->
           <div class="quarto-navbar-tools">
@@ -3283,7 +3287,7 @@ Levels: (0,2.5] (2.5,5] (5,7.5] (7.5,10]</code></pre>
 <div class="sourceCode cell-code" id="cb175"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb175-1"><a href="#cb175-1" aria-hidden="true" tabindex="-1"></a>today <span class="ot">&lt;-</span> <span class="fu">Sys.Date</span>()</span>
 <span id="cb175-2"><a href="#cb175-2" aria-hidden="true" tabindex="-1"></a><span class="fu">format</span>(today, <span class="at">format=</span><span class="st">"%B %d %Y"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] "June 02 2025"</code></pre>
+<pre><code>[1] "June 07 2025"</code></pre>
 </div>
 </div>
 </section>
@@ -4232,18 +4236,18 @@ $logic
 <span id="cb313-2"><a href="#cb313-2" aria-hidden="true" tabindex="-1"></a>data</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>  a b          c
-1 1 a 2025-06-01
-2 2 b 2025-05-31
-3 3 c 2025-05-30</code></pre>
+1 1 a 2025-06-06
+2 2 b 2025-06-05
+3 3 c 2025-06-04</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb315"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb315-1"><a href="#cb315-1" aria-hidden="true" tabindex="-1"></a><span class="fu">as_tibble</span>(data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 3 × 3
       a b     c         
   &lt;int&gt; &lt;chr&gt; &lt;date&gt;    
-1     1 a     2025-06-01
-2     2 b     2025-05-31
-3     3 c     2025-05-30</code></pre>
+1     1 a     2025-06-06
+2     2 b     2025-06-05
+3     3 c     2025-06-04</code></pre>
 </div>
 </div>
 </section>
@@ -4816,7 +4820,7 @@ F =  0 1 1 2 3 5 8 13 21 34 </code></pre>
 <div class="sourceCode cell-code" id="cb376"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb376-1"><a href="#cb376-1" aria-hidden="true" tabindex="-1"></a>today <span class="ot">&lt;-</span> <span class="fu">Sys.Date</span>()</span>
 <span id="cb376-2"><a href="#cb376-2" aria-hidden="true" tabindex="-1"></a><span class="fu">format</span>(today, <span class="at">format=</span><span class="st">"%B %d %Y"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] "June 02 2025"</code></pre>
+<pre><code>[1] "June 07 2025"</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb378"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb378-1"><a href="#cb378-1" aria-hidden="true" tabindex="-1"></a><span class="co"># or library(lubridate)</span></span>
 <span id="cb378-2"><a href="#cb378-2" aria-hidden="true" tabindex="-1"></a><span class="co">#x = c("2014-02-4 05:02:00","2016/09/24 14:02:00") </span></span>
@@ -6064,18 +6068,18 @@ $logic
 <span id="cb520-2"><a href="#cb520-2" aria-hidden="true" tabindex="-1"></a>data</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>  a b          c
-1 1 a 2025-06-01
-2 2 b 2025-05-31
-3 3 c 2025-05-30</code></pre>
+1 1 a 2025-06-06
+2 2 b 2025-06-05
+3 3 c 2025-06-04</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb522"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb522-1"><a href="#cb522-1" aria-hidden="true" tabindex="-1"></a><span class="fu">as_tibble</span>(data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 3 × 3
       a b     c         
   &lt;int&gt; &lt;chr&gt; &lt;date&gt;    
-1     1 a     2025-06-01
-2     2 b     2025-05-31
-3     3 c     2025-05-30</code></pre>
+1     1 a     2025-06-06
+2     2 b     2025-06-05
+3     3 c     2025-06-04</code></pre>
 </div>
 </div>
 <ul>
@@ -6824,7 +6828,7 @@ Attaching package: 'plotly'</code></pre>
 <div class="sourceCode cell-code" id="cb618"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb618-1"><a href="#cb618-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot_ly</span>(<span class="at">x=</span>bloodpress<span class="sc">$</span>Age, <span class="at">y=</span>bloodpress<span class="sc">$</span>Weight, <span class="at">z=</span>bloodpress<span class="sc">$</span>BP, <span class="at">type=</span><span class="st">'scatter3d'</span>, <span class="at">mode=</span><span class="st">'markers'</span>, <span class="at">color=</span>bloodpress<span class="sc">$</span>BP)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div class="plotly html-widget html-fill-item" id="htmlwidget-f51b1fc0da9c75ca38b5" style="width:100%;height:464px;"></div>
-<script type="application/json" data-for="htmlwidget-f51b1fc0da9c75ca38b5">{"x":{"visdat":{"194554f78484":["function () ","plotlyVisDat"]},"cur_data":"194554f78484","attrs":{"194554f78484":{"x":[47,49,49,50,51,48,49,47,49,48,47,49,50,45,52,46,46,46,48,56],"y":[85.400000000000006,94.200000000000003,95.299999999999997,94.700000000000003,89.400000000000006,99.5,99.799999999999997,90.900000000000006,89.200000000000003,92.700000000000003,94.400000000000006,94.099999999999994,91.599999999999994,87.099999999999994,101.3,94.5,87,94.5,90.5,95.700000000000003],"z":[105,115,116,117,112,121,121,110,110,114,114,115,114,106,125,114,106,113,110,122],"mode":"markers","color":[105,115,116,117,112,121,121,110,110,114,114,115,114,106,125,114,106,113,110,122],"alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"type":"scatter3d"}},"layout":{"margin":{"b":40,"l":60,"t":25,"r":10},"scene":{"xaxis":{"title":[]},"yaxis":{"title":[]},"zaxis":{"title":[]}},"hovermode":"closest","showlegend":false,"legend":{"yanchor":"top","y":0.5}},"source":"A","config":{"modeBarButtonsToAdd":["hoverclosest","hovercompare"],"showSendToCloud":false},"data":[{"x":[47,49,49,50,51,48,49,47,49,48,47,49,50,45,52,46,46,46,48,56],"y":[85.400000000000006,94.200000000000003,95.299999999999997,94.700000000000003,89.400000000000006,99.5,99.799999999999997,90.900000000000006,89.200000000000003,92.700000000000003,94.400000000000006,94.099999999999994,91.599999999999994,87.099999999999994,101.3,94.5,87,94.5,90.5,95.700000000000003],"z":[105,115,116,117,112,121,121,110,110,114,114,115,114,106,125,114,106,113,110,122],"mode":"markers","type":"scatter3d","marker":{"colorbar":{"title":"","ticklen":2},"cmin":105,"cmax":125,"colorscale":[["0","rgba(68,1,84,1)"],["0.0416666666666664","rgba(70,19,97,1)"],["0.0833333333333336","rgba(72,32,111,1)"],["0.125","rgba(71,45,122,1)"],["0.166666666666666","rgba(68,58,128,1)"],["0.208333333333334","rgba(64,70,135,1)"],["0.25","rgba(60,82,138,1)"],["0.291666666666666","rgba(56,93,140,1)"],["0.333333333333334","rgba(49,104,142,1)"],["0.375","rgba(46,114,142,1)"],["0.416666666666666","rgba(42,123,142,1)"],["0.458333333333334","rgba(38,133,141,1)"],["0.5","rgba(37,144,140,1)"],["0.541666666666666","rgba(33,154,138,1)"],["0.583333333333334","rgba(39,164,133,1)"],["0.625","rgba(47,174,127,1)"],["0.666666666666666","rgba(53,183,121,1)"],["0.708333333333334","rgba(79,191,110,1)"],["0.75","rgba(98,199,98,1)"],["0.791666666666666","rgba(119,207,85,1)"],["0.833333333333334","rgba(147,214,70,1)"],["0.875","rgba(172,220,52,1)"],["0.916666666666667","rgba(199,225,42,1)"],["0.958333333333334","rgba(226,228,40,1)"],["1","rgba(253,231,37,1)"]],"showscale":false,"color":[105,115,116,117,112,121,121,110,110,114,114,115,114,106,125,114,106,113,110,122],"line":{"colorbar":{"title":"","ticklen":2},"cmin":105,"cmax":125,"colorscale":[["0","rgba(68,1,84,1)"],["0.0416666666666664","rgba(70,19,97,1)"],["0.0833333333333336","rgba(72,32,111,1)"],["0.125","rgba(71,45,122,1)"],["0.166666666666666","rgba(68,58,128,1)"],["0.208333333333334","rgba(64,70,135,1)"],["0.25","rgba(60,82,138,1)"],["0.291666666666666","rgba(56,93,140,1)"],["0.333333333333334","rgba(49,104,142,1)"],["0.375","rgba(46,114,142,1)"],["0.416666666666666","rgba(42,123,142,1)"],["0.458333333333334","rgba(38,133,141,1)"],["0.5","rgba(37,144,140,1)"],["0.541666666666666","rgba(33,154,138,1)"],["0.583333333333334","rgba(39,164,133,1)"],["0.625","rgba(47,174,127,1)"],["0.666666666666666","rgba(53,183,121,1)"],["0.708333333333334","rgba(79,191,110,1)"],["0.75","rgba(98,199,98,1)"],["0.791666666666666","rgba(119,207,85,1)"],["0.833333333333334","rgba(147,214,70,1)"],["0.875","rgba(172,220,52,1)"],["0.916666666666667","rgba(199,225,42,1)"],["0.958333333333334","rgba(226,228,40,1)"],["1","rgba(253,231,37,1)"]],"showscale":false,"color":[105,115,116,117,112,121,121,110,110,114,114,115,114,106,125,114,106,113,110,122]}},"frame":null},{"x":[45,56],"y":[85.400000000000006,101.3],"type":"scatter3d","mode":"markers","opacity":0,"hoverinfo":"none","showlegend":false,"marker":{"colorbar":{"title":"","ticklen":2,"len":0.5,"lenmode":"fraction","y":1,"yanchor":"top"},"cmin":105,"cmax":125,"colorscale":[["0","rgba(68,1,84,1)"],["0.0416666666666664","rgba(70,19,97,1)"],["0.0833333333333336","rgba(72,32,111,1)"],["0.125","rgba(71,45,122,1)"],["0.166666666666666","rgba(68,58,128,1)"],["0.208333333333334","rgba(64,70,135,1)"],["0.25","rgba(60,82,138,1)"],["0.291666666666666","rgba(56,93,140,1)"],["0.333333333333334","rgba(49,104,142,1)"],["0.375","rgba(46,114,142,1)"],["0.416666666666666","rgba(42,123,142,1)"],["0.458333333333334","rgba(38,133,141,1)"],["0.5","rgba(37,144,140,1)"],["0.541666666666666","rgba(33,154,138,1)"],["0.583333333333334","rgba(39,164,133,1)"],["0.625","rgba(47,174,127,1)"],["0.666666666666666","rgba(53,183,121,1)"],["0.708333333333334","rgba(79,191,110,1)"],["0.75","rgba(98,199,98,1)"],["0.791666666666666","rgba(119,207,85,1)"],["0.833333333333334","rgba(147,214,70,1)"],["0.875","rgba(172,220,52,1)"],["0.916666666666667","rgba(199,225,42,1)"],["0.958333333333334","rgba(226,228,40,1)"],["1","rgba(253,231,37,1)"]],"showscale":true,"color":[105,125],"line":{"color":"rgba(255,127,14,1)"}},"z":[105,125],"frame":null}],"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.20000000000000001,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
+<script type="application/json" data-for="htmlwidget-f51b1fc0da9c75ca38b5">{"x":{"visdat":{"b7c3e8dccf9":["function () ","plotlyVisDat"]},"cur_data":"b7c3e8dccf9","attrs":{"b7c3e8dccf9":{"x":[47,49,49,50,51,48,49,47,49,48,47,49,50,45,52,46,46,46,48,56],"y":[85.400000000000006,94.200000000000003,95.299999999999997,94.700000000000003,89.400000000000006,99.5,99.799999999999997,90.900000000000006,89.200000000000003,92.700000000000003,94.400000000000006,94.099999999999994,91.599999999999994,87.099999999999994,101.3,94.5,87,94.5,90.5,95.700000000000003],"z":[105,115,116,117,112,121,121,110,110,114,114,115,114,106,125,114,106,113,110,122],"mode":"markers","color":[105,115,116,117,112,121,121,110,110,114,114,115,114,106,125,114,106,113,110,122],"alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"type":"scatter3d"}},"layout":{"margin":{"b":40,"l":60,"t":25,"r":10},"scene":{"xaxis":{"title":[]},"yaxis":{"title":[]},"zaxis":{"title":[]}},"hovermode":"closest","showlegend":false,"legend":{"yanchor":"top","y":0.5}},"source":"A","config":{"modeBarButtonsToAdd":["hoverclosest","hovercompare"],"showSendToCloud":false},"data":[{"x":[47,49,49,50,51,48,49,47,49,48,47,49,50,45,52,46,46,46,48,56],"y":[85.400000000000006,94.200000000000003,95.299999999999997,94.700000000000003,89.400000000000006,99.5,99.799999999999997,90.900000000000006,89.200000000000003,92.700000000000003,94.400000000000006,94.099999999999994,91.599999999999994,87.099999999999994,101.3,94.5,87,94.5,90.5,95.700000000000003],"z":[105,115,116,117,112,121,121,110,110,114,114,115,114,106,125,114,106,113,110,122],"mode":"markers","type":"scatter3d","marker":{"colorbar":{"title":"","ticklen":2},"cmin":105,"cmax":125,"colorscale":[["0","rgba(68,1,84,1)"],["0.0416666666666664","rgba(70,19,97,1)"],["0.0833333333333336","rgba(72,32,111,1)"],["0.125","rgba(71,45,122,1)"],["0.166666666666666","rgba(68,58,128,1)"],["0.208333333333334","rgba(64,70,135,1)"],["0.25","rgba(60,82,138,1)"],["0.291666666666666","rgba(56,93,140,1)"],["0.333333333333334","rgba(49,104,142,1)"],["0.375","rgba(46,114,142,1)"],["0.416666666666666","rgba(42,123,142,1)"],["0.458333333333334","rgba(38,133,141,1)"],["0.5","rgba(37,144,140,1)"],["0.541666666666666","rgba(33,154,138,1)"],["0.583333333333334","rgba(39,164,133,1)"],["0.625","rgba(47,174,127,1)"],["0.666666666666666","rgba(53,183,121,1)"],["0.708333333333334","rgba(79,191,110,1)"],["0.75","rgba(98,199,98,1)"],["0.791666666666666","rgba(119,207,85,1)"],["0.833333333333334","rgba(147,214,70,1)"],["0.875","rgba(172,220,52,1)"],["0.916666666666667","rgba(199,225,42,1)"],["0.958333333333334","rgba(226,228,40,1)"],["1","rgba(253,231,37,1)"]],"showscale":false,"color":[105,115,116,117,112,121,121,110,110,114,114,115,114,106,125,114,106,113,110,122],"line":{"colorbar":{"title":"","ticklen":2},"cmin":105,"cmax":125,"colorscale":[["0","rgba(68,1,84,1)"],["0.0416666666666664","rgba(70,19,97,1)"],["0.0833333333333336","rgba(72,32,111,1)"],["0.125","rgba(71,45,122,1)"],["0.166666666666666","rgba(68,58,128,1)"],["0.208333333333334","rgba(64,70,135,1)"],["0.25","rgba(60,82,138,1)"],["0.291666666666666","rgba(56,93,140,1)"],["0.333333333333334","rgba(49,104,142,1)"],["0.375","rgba(46,114,142,1)"],["0.416666666666666","rgba(42,123,142,1)"],["0.458333333333334","rgba(38,133,141,1)"],["0.5","rgba(37,144,140,1)"],["0.541666666666666","rgba(33,154,138,1)"],["0.583333333333334","rgba(39,164,133,1)"],["0.625","rgba(47,174,127,1)"],["0.666666666666666","rgba(53,183,121,1)"],["0.708333333333334","rgba(79,191,110,1)"],["0.75","rgba(98,199,98,1)"],["0.791666666666666","rgba(119,207,85,1)"],["0.833333333333334","rgba(147,214,70,1)"],["0.875","rgba(172,220,52,1)"],["0.916666666666667","rgba(199,225,42,1)"],["0.958333333333334","rgba(226,228,40,1)"],["1","rgba(253,231,37,1)"]],"showscale":false,"color":[105,115,116,117,112,121,121,110,110,114,114,115,114,106,125,114,106,113,110,122]}},"frame":null},{"x":[45,56],"y":[85.400000000000006,101.3],"type":"scatter3d","mode":"markers","opacity":0,"hoverinfo":"none","showlegend":false,"marker":{"colorbar":{"title":"","ticklen":2,"len":0.5,"lenmode":"fraction","y":1,"yanchor":"top"},"cmin":105,"cmax":125,"colorscale":[["0","rgba(68,1,84,1)"],["0.0416666666666664","rgba(70,19,97,1)"],["0.0833333333333336","rgba(72,32,111,1)"],["0.125","rgba(71,45,122,1)"],["0.166666666666666","rgba(68,58,128,1)"],["0.208333333333334","rgba(64,70,135,1)"],["0.25","rgba(60,82,138,1)"],["0.291666666666666","rgba(56,93,140,1)"],["0.333333333333334","rgba(49,104,142,1)"],["0.375","rgba(46,114,142,1)"],["0.416666666666666","rgba(42,123,142,1)"],["0.458333333333334","rgba(38,133,141,1)"],["0.5","rgba(37,144,140,1)"],["0.541666666666666","rgba(33,154,138,1)"],["0.583333333333334","rgba(39,164,133,1)"],["0.625","rgba(47,174,127,1)"],["0.666666666666666","rgba(53,183,121,1)"],["0.708333333333334","rgba(79,191,110,1)"],["0.75","rgba(98,199,98,1)"],["0.791666666666666","rgba(119,207,85,1)"],["0.833333333333334","rgba(147,214,70,1)"],["0.875","rgba(172,220,52,1)"],["0.916666666666667","rgba(199,225,42,1)"],["0.958333333333334","rgba(226,228,40,1)"],["1","rgba(253,231,37,1)"]],"showscale":true,"color":[105,125],"line":{"color":"rgba(255,127,14,1)"}},"z":[105,125],"frame":null}],"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.20000000000000001,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 <ol start="9" type="1">
