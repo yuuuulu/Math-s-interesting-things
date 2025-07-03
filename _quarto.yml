@@ -10,10 +10,12 @@ website:
         text: yuuuulu
       - href: index.qmd
         text: Homepage
-      - href: aph101.html
-        text: Biostat and R
+     # - href: aph101.html
+      #  text: Biostat and R
       - href: mth107.html
         text: Advanced Linear Algebra
+      - href: mth1113.qmd
+        text: Intro to Prob, and Stat.        
       - href: Simple_ODEs.html
         text: ODEs and PDEs with codes
       - href: mth106.html
@@ -21,14 +23,13 @@ website:
       
       - href: Mathematical Analysis 1.qmd
         text: Analysis 1
-      - href: mth1113.html
-        text: intro to prob, and stat.
+
       #- href: eng pde.qmd
         #text: PDE  
       - href: Calculus.html
         text: Calculus
-      - href: aph103.qmd
-        text: SurveySampling
+      #- href: aph103.qmd
+       # text: SurveySampling
 
       
       #- href: sequence.qmd
