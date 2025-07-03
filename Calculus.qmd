@@ -4,14 +4,12 @@ format: html
 editor: visual
 ---
 
-## remark of Derivative
 
-$y'=\frac{d}{dx}\cdot y$
-
-$y''=\frac{d}{dx} \frac{d}{dx}\cdot y$=$\frac{d^2y}{dx^2}\cdot y$
- 
 
 # surface and volume of Steinmetz solid
+
+
+( See the attached vedio for further explanation: http://youtube.com/watch?v=Vf0nqYaLWIs )
 
 Professor. Wang Duo, a very charismatic and responsible Calculus teacher who has worked for our country in the area of math for at least 50 years (which was his target before and he has realized his dream!), always says "You should try to solve one problem many times with new methods to handle and understand knowledge better"
 
@@ -331,3 +329,11 @@ $$
 $$
 \mathbf{R}(t) = \mathbf{r}(t)
 $$
+
+
+# remark of Derivative
+
+$y'=\frac{d}{dx}\cdot y$
+
+$y''=\frac{d}{dx} \frac{d}{dx}\cdot y$=$\frac{d^2y}{dx^2}\cdot y$
+
