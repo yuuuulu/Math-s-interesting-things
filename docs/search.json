@@ -2168,5 +2168,26 @@
     "title": "Statistical_Learning (Mechine_Learning)",
     "section": "Everything is connected to each other. Good theory interpretes this connection interestingly.",
     "text": "Everything is connected to each other. Good theory interpretes this connection interestingly.\nLinear Regression: OLS and MLE\nPenalized regression models: Lagrange multiplier (restriction in the geometric meaning and also algebra interpretation) and Bayesian perspective (prior: history knowledge restriction)"
+  },
+  {
+    "objectID": "Calculus.html#introduction-with-the-relationship-between-it-and-lasso",
+    "href": "Calculus.html#introduction-with-the-relationship-between-it-and-lasso",
+    "title": "Calculus and Multivariable Calculus",
+    "section": "introduction with the relationship between it and lasso",
+    "text": "introduction with the relationship between it and lasso\nThe Lagrange multiplier method can transform constrained problems into unconstrained problems, which is a great wisdom. It can be used to solve lasso, and lasso is an interesting and wonderful method for dimensionality reduction in statistics, which makes me feel that the journey of learning multivariate calculus is a joy："
+  },
+  {
+    "objectID": "Calculus.html#lagrange-multipliers-perspective-of-penalized-models",
+    "href": "Calculus.html#lagrange-multipliers-perspective-of-penalized-models",
+    "title": "Calculus and Multivariable Calculus",
+    "section": "Lagrange Multipliers Perspective of Penalized Models",
+    "text": "Lagrange Multipliers Perspective of Penalized Models\nLagrange multipliers provide a way to incorporate constraints into optimization problems. In the context of penalized regression, we can view the regularization term as a constraint on the size of the coefficients.\nChoose Lasoo as an example, the Lagrange multipliers perspective could be expressed as:\n\\[\n\\left( \\hat{\\alpha}, \\hat{\\beta} \\right) = \\arg \\min \\left\\{ \\sum_{i=1}^{N} \\left( y_{i} - \\alpha - \\sum_{j} \\beta_{j} x_{ij} \\right)^{2} \\right\\} \\quad \\text{subject to} \\quad \\sum_{j} \\left| \\beta_{j} \\right| \\leq t.\n\\]\ni.e.\n\\[\ng(\\beta)= \\sum_{j} \\left| \\beta_{j} \\right| - t \\leq 0\n\\]\n\\[\nL(\\alpha,\\beta, \\lambda) = \\sum_{i=1}^{N} \\left( y_{i} - \\alpha - \\sum_{j} \\beta_{j} x_{ij} \\right)^{2} + \\lambda \\left( \\sum_{j} \\left| \\beta_{j} \\right| - t \\right)\n\\]\n\\[\n\\partial L / \\partial \\alpha = 0\n\\]\n\\[\n\\hat{\\alpha} = \\bar{y} - \\sum_{j} \\hat{\\beta}_{j} \\bar{x}_{j}\n\\]\n\\[\n\\partial L / \\partial \\beta_{j} = 0\n\\]\n\\[\n-2 \\sum_{i=1}^{N} x_{ij} \\left( y_{i} - \\hat{\\alpha} - \\sum_{k} \\hat{\\beta}_{k} x_{ik} \\right) + \\lambda \\cdot sign(\\hat{\\beta}_{j}) = 0\n\\]\nThis may use the iterative method to solve the equation.\nGenerally, the formula could be expressed as:\n\\[\n\\min_{\\beta} \\left\\{ \\lVert y - X\\beta \\rVert_2^2 + \\lambda \\lVert \\beta \\rVert_p^p \\right\\}\n\\]\nwhere \\(\\lVert \\beta \\rVert_p^p\\) is the \\(L^p\\) norm of the coefficients, which serves as a penalty term.\nThe gradient of the objective function of Ridge with respect to \\(\\beta\\) is given by:\n\\[\n\\nabla J(\\beta) = -2X^T(y - X\\beta) + \\lambda \\nabla \\lVert \\beta \\rVert_p^p\n\\]\n(see matrix form (Go to Matrix Form) below for more details)\nThis should be set to zero to find the optimal \\(\\beta\\), which means the gradient of the loss function (the first term) is equal to the gradient of the penalty term (the second term) scaled by \\(\\lambda\\)."
+  },
+  {
+    "objectID": "Calculus.html#geometric-interpretation-of-penalized-models-in-lagrange-multipliers-perspective",
+    "href": "Calculus.html#geometric-interpretation-of-penalized-models-in-lagrange-multipliers-perspective",
+    "title": "Calculus and Multivariable Calculus",
+    "section": "Geometric Interpretation of Penalized Models in Lagrange Multipliers Perspective",
+    "text": "Geometric Interpretation of Penalized Models in Lagrange Multipliers Perspective"
   }
 ]

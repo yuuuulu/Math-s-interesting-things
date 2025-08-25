@@ -173,47 +173,86 @@ $$
 
 # Extreme Values of Function using not only Lagrange but the same philosophy
 
---\>
 
-# introduction with the relationship between it and lasso
 
-The Lagrange multiplier method can transform constrained problems into unconstrained problems, which is a great wisdom. It can be used to solve lasso, and lasso is an interesting and wonderful method for dimensionality reduction in statistics, which makes me feel that the journey of learning multivariate calculus is a joy： \## Lasso Regression
+## introduction with the relationship between it and lasso
 
-Lasso regression (Least Absolute Shrinkage and Selection Operator) is a regularization technique for linear regression models that introduces an L1 norm penalty. The goal is to minimize the following objective function:
+The Lagrange multiplier method can transform constrained problems into unconstrained problems, which is a great wisdom. It can be used to solve lasso, and lasso is an interesting and wonderful method for dimensionality reduction in statistics, which makes me feel that the journey of learning multivariate calculus is a joy：
 
-\[ \text{minimize} \quad \frac{1}{2} \| \mathbf{y} - \mathbf{X}\mathbf{\beta} \|\_2\^2 + \lambda \|\mathbf{\beta}\|\_1 \]
+## Lagrange Multipliers Perspective of Penalized Models
 
-where: - (\mathbf{y}) is the vector of target variables. - (\mathbf{X}) is the feature matrix. - (\mathbf{\beta}) is the vector of regression coefficients. - (\lambda) is the regularization parameter controlling the strength of regularization. - (\|\mathbf{\beta}\|\_1) is the L1 norm of (\mathbf{\beta}), which is the sum of the absolute values of the coefficients.
 
-## Lagrange Multipliers
+Lagrange multipliers provide a way to incorporate constraints into optimization problems. In the context of penalized regression, we can view the regularization term as a constraint on the size of the coefficients.
 
-The method of Lagrange multipliers is used to solve optimization problems with constraints. It involves introducing Lagrange multipliers to incorporate constraints into the objective function, converting constrained problems into unconstrained problems. Given an objective function ( f(\mathbf{x}) ) with constraints ( g_i(\mathbf{x}) = 0 ), the Lagrange function is:
 
-\[ \mathcal{L}(\mathbf{x}, \lambda) = f(\mathbf{x}) + \sum\_{i} \lambda\_i g_i(\mathbf{x}) \]
+Choose Lasoo as an example, the Lagrange multipliers perspective could be expressed as:
 
-where (\lambda\_i) are the Lagrange multipliers. By setting the derivatives of (\mathcal{L}) to zero, we can find the optimal solution.
+$$
+\left( \hat{\alpha}, \hat{\beta} \right) = \arg \min \left\{ \sum_{i=1}^{N} \left( y_{i} - \alpha - \sum_{j} \beta_{j} x_{ij} \right)^{2} \right\} \quad \text{subject to} \quad \sum_{j} \left| \beta_{j} \right| \leq t.
+$$
 
-## Relationship Between Lasso and Lagrange Multipliers
+i.e.
 
-In Lasso regression, the L1 norm regularization term (\|\mathbf{\beta}\|\_1) can be viewed as a constraint. The Lasso problem can be reformulated as a constrained optimization problem:
+$$
+g(\beta)= \sum_{j} \left| \beta_{j} \right| - t \leq 0
+$$
 
-\[ \text{minimize} \quad \frac{1}{2} \| \mathbf{y} - \mathbf{X}\mathbf{\beta} \|\_2\^2 \quad \text{subject to} \quad \|\mathbf{\beta}\|\_1 \leq t \]
 
-where (t) is a non-negative constant representing the limit on the regularization strength.
 
-### Using Lagrange Multipliers for Lasso
 
-We can use Lagrange multipliers to solve this constrained problem. The Lagrange function is defined as:
+$$
+L(\alpha,\beta, \lambda) = \sum_{i=1}^{N} \left( y_{i} - \alpha - \sum_{j} \beta_{j} x_{ij} \right)^{2} + \lambda \left( \sum_{j} \left| \beta_{j} \right| - t \right)
+$$
 
-\[ \mathcal{L}(\mathbf{\beta}, \lambda) = \frac{1}{2} \| \mathbf{y} - \mathbf{X}\mathbf{\beta} \|\_2\^2 + \lambda (\|\mathbf{\beta}\|\_1 - t) \]
+$$
+\partial L / \partial \alpha = 0
+$$
 
-where (\lambda) is the Lagrange multiplier. The optimal solution (\mathbf{\beta}\^\*) satisfies:
+$$
+\hat{\alpha} = \bar{y} - \sum_{j} \hat{\beta}_{j} \bar{x}_{j}
+$$
 
-\[ \frac{\partial \mathcal{L}}{\partial \mathbf{\beta}} = -\mathbf{X}\^\top (\mathbf{y} - \mathbf{X}\mathbf{\beta}) + \lambda \text{sign}(\mathbf{\beta}) = 0 \]
+$$
+\partial L / \partial \beta_{j} = 0
+$$
 
-\[ \|\mathbf{\beta}\|\_1 \leq t \]
+$$
+-2 \sum_{i=1}^{N} x_{ij} \left( y_{i} - \hat{\alpha} - \sum_{k} \hat{\beta}_{k} x_{ik} \right) + \lambda \cdot sign(\hat{\beta}_{j}) = 0
+$$
 
-\[ \lambda (\|\mathbf{\beta}\|\_1 - t) = 0 \]
+This may use the iterative method to solve the equation.
+
+
+
+
+
+Generally, the formula could be expressed as:
+
+$$
+\min_{\beta} \left\{ \lVert y - X\beta \rVert_2^2 + \lambda \lVert \beta \rVert_p^p \right\}
+$$
+
+where $\lVert \beta \rVert_p^p$ is the $L^p$ norm of the coefficients, which serves as a penalty term.
+
+The gradient of the objective function of Ridge with respect to $\beta$ is given by:
+
+$$
+\nabla J(\beta) = -2X^T(y - X\beta) + \lambda \nabla \lVert \beta \rVert_p^p
+$$
+
+(see matrix form ([Go to Matrix Form](#MatrixFormRidge)) below for more details)
+
+\tiny
+
+This should be set to zero to find the optimal $\beta$, which means the gradient of the loss function (the first term) is equal to the gradient of the penalty term (the second term) scaled by $\lambda$.
+
+
+
+
+## Geometric Interpretation of Penalized Models in Lagrange Multipliers Perspective
+
+![](images/clipboard-4201197806.png)
+
 
 ## Summary
 

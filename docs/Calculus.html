@@ -125,12 +125,24 @@ window.Quarto = {
 <span class="menu-text">Homepage</span></a>
   </li>  
   <li class="nav-item">
+    <a class="nav-link" href="./Mathematical Analysis 1.html"> 
+<span class="menu-text">Analysis 1</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link active" href="./Calculus.html" aria-current="page"> 
+<span class="menu-text">Calculus</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./stat_learn.html"> 
+<span class="menu-text">Statistical_Learning</span></a>
+  </li>  
+  <li class="nav-item">
     <a class="nav-link" href="./mth107.html"> 
 <span class="menu-text">Advanced Linear Algebra</span></a>
   </li>  
   <li class="nav-item">
     <a class="nav-link" href="./mth1113.html"> 
-<span class="menu-text">Intro to Prob, and Stat.</span></a>
+<span class="menu-text">Prob, and Stat.</span></a>
   </li>  
   <li class="nav-item">
     <a class="nav-link" href="./Simple_ODEs.html"> 
@@ -139,14 +151,6 @@ window.Quarto = {
   <li class="nav-item">
     <a class="nav-link" href="./mth106.html"> 
 <span class="menu-text">ODE, PDE, and Fourier Series</span></a>
-  </li>  
-  <li class="nav-item">
-    <a class="nav-link" href="./Mathematical Analysis 1.html"> 
-<span class="menu-text">Analysis 1</span></a>
-  </li>  
-  <li class="nav-item">
-    <a class="nav-link active" href="./Calculus.html" aria-current="page"> 
-<span class="menu-text">Calculus</span></a>
   </li>  
 </ul>
           </div> <!-- /navcollapse -->
@@ -180,14 +184,11 @@ window.Quarto = {
   <li><a href="#integral-problems-with-solution-of-alternating-integral-test" id="toc-integral-problems-with-solution-of-alternating-integral-test" class="nav-link" data-scroll-target="#integral-problems-with-solution-of-alternating-integral-test">integral problems with solution of alternating integral test</a></li>
   <li><a href="#similar-question-2" id="toc-similar-question-2" class="nav-link" data-scroll-target="#similar-question-2">similar question 2</a></li>
   </ul></li>
-  <li><a href="#extreme-values-of-function-using-not-only-lagrange-but-the-same-philosophy" id="toc-extreme-values-of-function-using-not-only-lagrange-but-the-same-philosophy" class="nav-link" data-scroll-target="#extreme-values-of-function-using-not-only-lagrange-but-the-same-philosophy">Extreme Values of Function using not only Lagrange but the same philosophy</a></li>
-  <li><a href="#introduction-with-the-relationship-between-it-and-lasso" id="toc-introduction-with-the-relationship-between-it-and-lasso" class="nav-link" data-scroll-target="#introduction-with-the-relationship-between-it-and-lasso">introduction with the relationship between it and lasso</a>
+  <li><a href="#extreme-values-of-function-using-not-only-lagrange-but-the-same-philosophy" id="toc-extreme-values-of-function-using-not-only-lagrange-but-the-same-philosophy" class="nav-link" data-scroll-target="#extreme-values-of-function-using-not-only-lagrange-but-the-same-philosophy">Extreme Values of Function using not only Lagrange but the same philosophy</a>
   <ul class="collapse">
-  <li><a href="#lagrange-multipliers" id="toc-lagrange-multipliers" class="nav-link" data-scroll-target="#lagrange-multipliers">Lagrange Multipliers</a></li>
-  <li><a href="#relationship-between-lasso-and-lagrange-multipliers" id="toc-relationship-between-lasso-and-lagrange-multipliers" class="nav-link" data-scroll-target="#relationship-between-lasso-and-lagrange-multipliers">Relationship Between Lasso and Lagrange Multipliers</a>
-  <ul class="collapse">
-  <li><a href="#using-lagrange-multipliers-for-lasso" id="toc-using-lagrange-multipliers-for-lasso" class="nav-link" data-scroll-target="#using-lagrange-multipliers-for-lasso">Using Lagrange Multipliers for Lasso</a></li>
-  </ul></li>
+  <li><a href="#introduction-with-the-relationship-between-it-and-lasso" id="toc-introduction-with-the-relationship-between-it-and-lasso" class="nav-link" data-scroll-target="#introduction-with-the-relationship-between-it-and-lasso">introduction with the relationship between it and lasso</a></li>
+  <li><a href="#lagrange-multipliers-perspective-of-penalized-models" id="toc-lagrange-multipliers-perspective-of-penalized-models" class="nav-link" data-scroll-target="#lagrange-multipliers-perspective-of-penalized-models">Lagrange Multipliers Perspective of Penalized Models</a></li>
+  <li><a href="#geometric-interpretation-of-penalized-models-in-lagrange-multipliers-perspective" id="toc-geometric-interpretation-of-penalized-models-in-lagrange-multipliers-perspective" class="nav-link" data-scroll-target="#geometric-interpretation-of-penalized-models-in-lagrange-multipliers-perspective">Geometric Interpretation of Penalized Models in Lagrange Multipliers Perspective</a></li>
   <li><a href="#summary" id="toc-summary" class="nav-link" data-scroll-target="#summary">Summary</a>
   <ul class="collapse">
   <li><a href="#solution" id="toc-solution" class="nav-link" data-scroll-target="#solution">Solution</a></li>
@@ -355,34 +356,52 @@ x_n = \Sigma\int_0^{\frac{\pi}{2}} \frac{1}{1 + \left( n\pi/2 + t \right)^ p \si
 </section>
 <section id="extreme-values-of-function-using-not-only-lagrange-but-the-same-philosophy" class="level1">
 <h1>Extreme Values of Function using not only Lagrange but the same philosophy</h1>
-<p>–&gt;</p>
+<section id="introduction-with-the-relationship-between-it-and-lasso" class="level2">
+<h2 class="anchored" data-anchor-id="introduction-with-the-relationship-between-it-and-lasso">introduction with the relationship between it and lasso</h2>
+<p>The Lagrange multiplier method can transform constrained problems into unconstrained problems, which is a great wisdom. It can be used to solve lasso, and lasso is an interesting and wonderful method for dimensionality reduction in statistics, which makes me feel that the journey of learning multivariate calculus is a joy：</p>
 </section>
-<section id="introduction-with-the-relationship-between-it-and-lasso" class="level1">
-<h1>introduction with the relationship between it and lasso</h1>
-<p>The Lagrange multiplier method can transform constrained problems into unconstrained problems, which is a great wisdom. It can be used to solve lasso, and lasso is an interesting and wonderful method for dimensionality reduction in statistics, which makes me feel that the journey of learning multivariate calculus is a joy： ## Lasso Regression</p>
-<p>Lasso regression (Least Absolute Shrinkage and Selection Operator) is a regularization technique for linear regression models that introduces an L1 norm penalty. The goal is to minimize the following objective function:</p>
-<p>[ | - |_2^2 + ||_1 ]</p>
-<p>where: - () is the vector of target variables. - () is the feature matrix. - () is the vector of regression coefficients. - () is the regularization parameter controlling the strength of regularization. - (||_1) is the L1 norm of (), which is the sum of the absolute values of the coefficients.</p>
-<section id="lagrange-multipliers" class="level2">
-<h2 class="anchored" data-anchor-id="lagrange-multipliers">Lagrange Multipliers</h2>
-<p>The method of Lagrange multipliers is used to solve optimization problems with constraints. It involves introducing Lagrange multipliers to incorporate constraints into the objective function, converting constrained problems into unconstrained problems. Given an objective function ( f() ) with constraints ( g_i() = 0 ), the Lagrange function is:</p>
-<p>[ (, ) = f() + _{i} _i g_i() ]</p>
-<p>where (_i) are the Lagrange multipliers. By setting the derivatives of () to zero, we can find the optimal solution.</p>
+<section id="lagrange-multipliers-perspective-of-penalized-models" class="level2">
+<h2 class="anchored" data-anchor-id="lagrange-multipliers-perspective-of-penalized-models">Lagrange Multipliers Perspective of Penalized Models</h2>
+<p>Lagrange multipliers provide a way to incorporate constraints into optimization problems. In the context of penalized regression, we can view the regularization term as a constraint on the size of the coefficients.</p>
+<p>Choose Lasoo as an example, the Lagrange multipliers perspective could be expressed as:</p>
+<p><span class="math display">\[
+\left( \hat{\alpha}, \hat{\beta} \right) = \arg \min \left\{ \sum_{i=1}^{N} \left( y_{i} - \alpha - \sum_{j} \beta_{j} x_{ij} \right)^{2} \right\} \quad \text{subject to} \quad \sum_{j} \left| \beta_{j} \right| \leq t.
+\]</span></p>
+<p>i.e.</p>
+<p><span class="math display">\[
+g(\beta)= \sum_{j} \left| \beta_{j} \right| - t \leq 0
+\]</span></p>
+<p><span class="math display">\[
+L(\alpha,\beta, \lambda) = \sum_{i=1}^{N} \left( y_{i} - \alpha - \sum_{j} \beta_{j} x_{ij} \right)^{2} + \lambda \left( \sum_{j} \left| \beta_{j} \right| - t \right)
+\]</span></p>
+<p><span class="math display">\[
+\partial L / \partial \alpha = 0
+\]</span></p>
+<p><span class="math display">\[
+\hat{\alpha} = \bar{y} - \sum_{j} \hat{\beta}_{j} \bar{x}_{j}
+\]</span></p>
+<p><span class="math display">\[
+\partial L / \partial \beta_{j} = 0
+\]</span></p>
+<p><span class="math display">\[
+-2 \sum_{i=1}^{N} x_{ij} \left( y_{i} - \hat{\alpha} - \sum_{k} \hat{\beta}_{k} x_{ik} \right) + \lambda \cdot sign(\hat{\beta}_{j}) = 0
+\]</span></p>
+<p>This may use the iterative method to solve the equation.</p>
+<p>Generally, the formula could be expressed as:</p>
+<p><span class="math display">\[
+\min_{\beta} \left\{ \lVert y - X\beta \rVert_2^2 + \lambda \lVert \beta \rVert_p^p \right\}
+\]</span></p>
+<p>where <span class="math inline">\(\lVert \beta \rVert_p^p\)</span> is the <span class="math inline">\(L^p\)</span> norm of the coefficients, which serves as a penalty term.</p>
+<p>The gradient of the objective function of Ridge with respect to <span class="math inline">\(\beta\)</span> is given by:</p>
+<p><span class="math display">\[
+\nabla J(\beta) = -2X^T(y - X\beta) + \lambda \nabla \lVert \beta \rVert_p^p
+\]</span></p>
+<p>(see matrix form (<a href="#MatrixFormRidge">Go to Matrix Form</a>) below for more details)</p>
+<p>This should be set to zero to find the optimal <span class="math inline">\(\beta\)</span>, which means the gradient of the loss function (the first term) is equal to the gradient of the penalty term (the second term) scaled by <span class="math inline">\(\lambda\)</span>.</p>
 </section>
-<section id="relationship-between-lasso-and-lagrange-multipliers" class="level2">
-<h2 class="anchored" data-anchor-id="relationship-between-lasso-and-lagrange-multipliers">Relationship Between Lasso and Lagrange Multipliers</h2>
-<p>In Lasso regression, the L1 norm regularization term (||_1) can be viewed as a constraint. The Lasso problem can be reformulated as a constrained optimization problem:</p>
-<p>[ | - |_2^2 ||_1 t ]</p>
-<p>where (t) is a non-negative constant representing the limit on the regularization strength.</p>
-<section id="using-lagrange-multipliers-for-lasso" class="level3">
-<h3 class="anchored" data-anchor-id="using-lagrange-multipliers-for-lasso">Using Lagrange Multipliers for Lasso</h3>
-<p>We can use Lagrange multipliers to solve this constrained problem. The Lagrange function is defined as:</p>
-<p>[ (, ) = | - |_2^2 + (||_1 - t) ]</p>
-<p>where () is the Lagrange multiplier. The optimal solution (^*) satisfies:</p>
-<p>[ = -^( - ) + () = 0 ]</p>
-<p>[ ||_1 t ]</p>
-<p>[ (||_1 - t) = 0 ]</p>
-</section>
+<section id="geometric-interpretation-of-penalized-models-in-lagrange-multipliers-perspective" class="level2">
+<h2 class="anchored" data-anchor-id="geometric-interpretation-of-penalized-models-in-lagrange-multipliers-perspective">Geometric Interpretation of Penalized Models in Lagrange Multipliers Perspective</h2>
+<p><img src="images/clipboard-4201197806.png" class="img-fluid"></p>
 </section>
 <section id="summary" class="level2">
 <h2 class="anchored" data-anchor-id="summary">Summary</h2>
