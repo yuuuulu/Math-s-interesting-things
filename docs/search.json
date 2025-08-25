@@ -1965,5 +1965,208 @@
     "title": "JavaCPT105",
     "section": "Motivation",
     "text": "Motivation\n\nGod is in the details. –Today’s agile world needs the role of architecture with patient to internalize the idea of “small things matter”, especially in software development.\nCraftmanship is important in these two aspects:\n\nKnowledge of principles, patterns\nWork hard and practic/sweat over it and watch myself fail.\n\n\nSo, please grind the knowledge with forever practice!\n\nCode represents the details of the requirements.\ndefend the code with equal passion\nA programmer with “code-sense” will look at messy module and see options and variations, helping choose the best variation and guide to plot a sequence of behavior preserving transformations to get from here to there.\nA programmer who writes clean code is an artist who can take a blank screen through a series of transformations until it is an elegantly coded system"
+  },
+  {
+    "objectID": "stat_learn.html",
+    "href": "stat_learn.html",
+    "title": "Statistical_Learning (Mechine_Learning)",
+    "section": "",
+    "text": "Efron, B., & Hastie, T. (2021). Computer age statistical inference, student edition: algorithms, evidence, and data science (Vol. 6). Cambridge University Press.\nHastie, T., Tibshirani, R., & Friedman, J. (2009). An introduction to statistical learning.\nCasella, G., & Berger, R. (2024). Statistical inference. Chapman and Hall/CRC.\nHastie, T., Tibshirani, R., & Friedman, J. (2009). The elements of statistical learning."
+  },
+  {
+    "objectID": "stat_learn.html#ols-mle-solution-to-lr-with-issues",
+    "href": "stat_learn.html#ols-mle-solution-to-lr-with-issues",
+    "title": "Statistical_Learning (Mechine_Learning)",
+    "section": "OLS / MLE Solution to LR with issues",
+    "text": "OLS / MLE Solution to LR with issues\nWe have learned the equivalence of Ordinary Least Squares (OLS) and Maximum Likelihood Estimation (MLE) in the context of linear regression assuming the error term follows a Gaussian distribution but with limitations as below:\n\nIssues:\n\nEven if the OLS or MLE solution is optimal in terms of minimizing the error, it may lead to overfitting, especially when the number of features is large relative to the number of observations. This can result in high variance and poor generalization to new data.\nHow to handle the issues?\n\\[\\begin{align*}\n\\text{LASSO:} & \\quad Argmin_{\\beta} \\sum_{i=1}^{N} \\left( y_i - \\sum_{j}^{p} \\beta_j x_{ij} \\right)^2 + \\lambda \\sum_{j}^{p} |\\beta_j|, \\quad \\text{where } \\lambda &gt; 0 \\\\\n\\text{Ridge:} & \\quad Argmin_{\\beta} \\sum_{i=1}^{N} \\left( y_i - \\sum_{j}^{p} \\beta_j x_{ij} \\right)^2 + \\lambda \\sum_{j}^{p} \\beta_j^2, \\quad \\text{where } \\lambda &gt; 0\n\\end{align*}\\]\n\nOLS perspective thinking: This shrinkage method not only achieves the objective of making the error to be smallest like OLS, but also prevents overfitting by penalizing large coefficients.\nMLE perspective thinking: Compared with MLE, this method could be regarded as a Bayesian estimation that can avoid overfitting by introducing the prior distribution \\(P(\\beta)\\), especially when the data volume is small, the prior information can play a regularization role."
+  },
+  {
+    "objectID": "stat_learn.html#how-to-handle-the-issues",
+    "href": "stat_learn.html#how-to-handle-the-issues",
+    "title": "Statistical_Learning (Mechine_Learning)",
+    "section": "How to handle the issues?",
+    "text": "How to handle the issues?\n\nOLS perspective thinking: This shrinkage method not only achieves the objective of making the error to be smallest like OLS, but also prevents overfitting by penalizing large coefficients.\nMLE perspective thinking: Compared with MLE, this method could be regarded as a Bayesian estimation that can avoid overfitting by introducing the prior distribution \\(P(\\beta)\\), especially when the data volume is small, the prior information can play a regularization role."
+  },
+  {
+    "objectID": "stat_learn.html#why-does-the-terms-of-the-regularization-look-like-this",
+    "href": "stat_learn.html#why-does-the-terms-of-the-regularization-look-like-this",
+    "title": "Statistical_Learning (Mechine_Learning)",
+    "section": "Why does the terms of the regularization look like this?",
+    "text": "Why does the terms of the regularization look like this?\nJust like what we have learned about the relationship between the OLS and MLE and get the idea of why the error term is the square shape, now we are going to use the perspective of Bayesian to understand the penalized terms\n\nChoose Prior Distribution \\(P(\\beta)\\)\nIdea:\nWe insist that \\(\\beta\\) should be more likely to be small also with small variances (very near to 0). This means we should pick a distribution that has a peak around zero and decays quickly as we move away from zero.\n\nPrior Distribution: In the context of penalized regression, we choose a prior distribution for the coefficients \\(\\beta\\) that reflects our beliefs about their values. Common choices include:\n\nLaplace Prior: Assumes coefficients follow a Laplace distribution, leading to \\(L^1\\) regularization (Lasso Regression).\nGaussian Prior: Assumes coefficients are normally distributed around zero, which leads to \\(L^2\\) regularization (Ridge Regression).\n\n\nThis also means it would take extreame evidence with the data that we see in order to accept very large and very high variances beta because of the prior.\n\n\nChoose Prior Distribution \\(P(\\beta)\\)\n\n\n\n\n\n\nMaximize the posterior probability to get the point estimation of \\(\\beta\\) – Ridge\n\\[\nP(\\beta|y) \\propto P(y|\\beta) \\cdot P(\\beta)\n\\]\n\\[\nP(y|\\beta) = \\frac{1}{\\sqrt{2\\pi}\\sigma} \\exp\\left\\{-\\frac{(y - \\beta^T x)^2}{2\\sigma^2}\\right\\}\n\\]\nAnd for the prior part, we assume \\(beta\\) follows a Gaussian distribution, $(0, ’^2) $,\n\\[\nP(\\beta) = \\frac{1}{\\sqrt{2\\pi}\\sigma'} \\exp\\left\\{-\\frac{\\beta^2}{2\\sigma'^2}\\right\\}\n\\]\nThus,\n\\[\n\\hat{\\beta} = \\arg\\max_\\beta \\log P(\\beta|Y)\n\\]\n\\[\n= \\arg\\max_{\\beta} \\log P(Y|\\beta)P(\\beta)\n\\]\n\\[\n= \\arg\\max_{\\beta} \\log \\prod_{i=1}^N P(y_i|\\beta)P(\\beta)\n\\]\n\\[\n= \\arg\\max_{\\beta}  \\sum_{i=1}^N \\log[P(y_i|\\beta)P(\\beta)]\n\\]\n\\[\n= \\arg\\max_{\\beta}  \\sum_{i=1}^N \\left[ \\log\\left(\\frac{1}{\\sqrt{2\\pi}\\sigma } \\exp\\left\\{-\\frac{(y - \\beta^T x)^2}{2\\sigma^2}\\right\\}\\right) + \\log(\\frac{1}{\\sqrt{2\\pi}\\sigma'})- \\frac{\\beta^2}{2\\sigma'^2} \\right]\n\\]\n\\[\n= \\arg\\max_{\\beta} \\sum_{i=1}^N \\left[ \\log\\left(\\frac{1}{2\\pi \\sigma' \\sigma}\\right) - \\frac{(y_i - \\beta^T x_i)^2}{2\\sigma^2} - \\frac{\\beta^2}{2\\sigma'^2} \\right]\n\\]\n\\[\n= \\arg\\min_\\beta \\sum_{i=1}^N \\left[ \\frac{(y_i - \\beta^T x_i)^2}{2\\sigma^2} + \\frac{\\beta^2}{2\\sigma'^2} \\right]\n\\]\n\\[\n= \\arg\\min_\\beta (Y-X\\beta)^T (\\frac{1}{2\\sigma^2}I_N) (Y-X\\beta) + \\frac{1}{\\sigma'^2} \\beta^2\n\\]\n((Weighted least squares with the weight \\(\\frac{1}{2\\sigma^2}I_N\\) and the penalty term \\(\\frac{1}{\\sigma'^2} \\beta^2\\)\nIf we let \\(\\lambda = \\frac{1}{\\sigma'^2}\\), then the loss function is \\(L(\\beta) = \\sum_{i=1}^N (\\beta^T x_i - y_i)^2 + \\lambda \\beta^T \\beta\\), which is equivalent to the minimization of the regularized least squares in \\(L^2\\).\n\nRemark of the Ridge Regression\n\nRidge regression solution is also the posterior mean, this is because the likelihood of the data given the parameters is Gaussian, and the prior is also Gaussian, which results in a posterior that is also Gaussian by the property of the conjugate prior of the Gaussian distribution, i.e.\nNEED to ADD!\n\n\nMaximize the posterior probability to get the point estimation of \\(\\beta\\) – Lasso\nNow the prior part is assumed to be a Laplace distribution, \\(\\beta \\sim \\text{Laplace}(0, b), i.e., P(\\beta) = \\frac{1}{2b} \\exp\\left(-\\frac{|\\beta|}{b}\\right)\\).\n\\[\n\\arg\\max_{\\beta}  \\sum_{i=1}^N \\left[ \\log\\left(\\frac{1}{\\sqrt{2\\pi}\\sigma_{\\beta} } \\exp\\left\\{-\\frac{(y - \\beta^T x)^2}{2\\sigma^2}\\right\\}\\right) - \\log 2b - \\frac{|\\beta|}{b} \\right]\n\\]\n\\[\n= \\arg\\max_{\\beta} \\sum_{i=1}^N \\left[ \\log\\left(\\frac{1}{\\sqrt{2\\pi}\\sigma_{\\beta} 2b}\\right) - \\frac{(y_i - \\beta^T x_i)^2}{2\\sigma^2} - \\frac{|\\beta|}{b} \\right]\n\\]\n\\[\n= \\arg\\min_\\beta \\sum_{i=1}^N \\left[ \\frac{(y_i - \\beta^T x_i)^2}{2\\sigma^2} + \\frac{|\\beta|}{b} \\right]\n\\]\n\\[\n= \\arg\\min_\\beta (Y-X\\beta)^T (\\frac{1}{2\\sigma^2}I_N) (Y-X\\beta) + \\frac{1}{b} |\\beta|\n\\]\nIf we let \\(\\lambda = \\frac{1}{b}\\), then the loss function is \\(L(\\beta) = \\sum_{i=1}^N (\\beta^T x_i - y_i)^2 + \\lambda |\\beta|\\), which is equivalent to the minimization of the regularized least squares in \\(L^1\\)."
+  },
+  {
+    "objectID": "stat_learn.html#brief-intro-to-bayesian-method",
+    "href": "stat_learn.html#brief-intro-to-bayesian-method",
+    "title": "Statistical_Learning (Mechine_Learning)",
+    "section": "Brief Intro to Bayesian Method",
+    "text": "Brief Intro to Bayesian Method\n\nPrior Distribution: Represents our beliefs about the parameters before observing the data.\nLikelihood: The probability of the observed data given the parameters.\nPosterior Distribution: The updated beliefs about the parameters after observing the data, calculated using Bayes’ theorem.\nBayes’ Theorem: \\[\n  P(\\beta | D) = \\frac{P(D | \\beta) P(\\beta)}{P(D)}\n\\]\n\n## Choose Prior Distribution \\(P(\\beta)\\)\n\nPrior Distribution: In the context of penalized regression, we choose a prior distribution for the coefficients \\(\\beta\\) that reflects our beliefs about their values. Common choices include:\nLaplace Prior: Assumes coefficients follow a Laplace distribution, leading to \\(L^1\\) regularization (Lasso Regression).\nGaussian Prior: Assumes coefficients are normally distributed around zero, which leads to \\(L^2\\) regularization (Ridge Regression).\n\nThis also means it would take extreame evidence with the data that we see in order to accept very large and very high variances beta because of the prior."
+  },
+  {
+    "objectID": "stat_learn.html#choose-prior-distribution-pbeta",
+    "href": "stat_learn.html#choose-prior-distribution-pbeta",
+    "title": "Statistical_Learning (Mechine_Learning)",
+    "section": "Choose Prior Distribution \\(P(\\beta)\\)",
+    "text": "Choose Prior Distribution \\(P(\\beta)\\)"
+  },
+  {
+    "objectID": "stat_learn.html#maximize-the-posterior-probability-to-get-the-point-estimation-of-beta-ridge",
+    "href": "stat_learn.html#maximize-the-posterior-probability-to-get-the-point-estimation-of-beta-ridge",
+    "title": "Statistical_Learning (Mechine_Learning)",
+    "section": "Maximize the posterior probability to get the point estimation of \\(\\beta\\) – Ridge",
+    "text": "Maximize the posterior probability to get the point estimation of \\(\\beta\\) – Ridge"
+  },
+  {
+    "objectID": "stat_learn.html#maximize-the-posterior-probability-to-get-the-point-estimation-of-beta-ridge-continue",
+    "href": "stat_learn.html#maximize-the-posterior-probability-to-get-the-point-estimation-of-beta-ridge-continue",
+    "title": "Statistical_Learning (Mechine_Learning)",
+    "section": "Maximize the posterior probability to get the point estimation of \\(\\beta\\) – Ridge (continue)",
+    "text": "Maximize the posterior probability to get the point estimation of \\(\\beta\\) – Ridge (continue)"
+  },
+  {
+    "objectID": "stat_learn.html#remark-of-the-ridge-regression",
+    "href": "stat_learn.html#remark-of-the-ridge-regression",
+    "title": "Statistical_Learning (Mechine_Learning)",
+    "section": "Remark of the Ridge Regression",
+    "text": "Remark of the Ridge Regression\nRidge regression solution is also the posterior mean, this is because the likelihood of the data given the parameters is Gaussian, and the prior is also Gaussian, which results in a posterior that is also Gaussian by the property of the conjugate prior of the Gaussian distribution, i.e."
+  },
+  {
+    "objectID": "stat_learn.html#maximize-the-posterior-probability-to-get-the-point-estimation-of-beta-lasso",
+    "href": "stat_learn.html#maximize-the-posterior-probability-to-get-the-point-estimation-of-beta-lasso",
+    "title": "Statistical_Learning (Mechine_Learning)",
+    "section": "Maximize the posterior probability to get the point estimation of \\(\\beta\\) – Lasso",
+    "text": "Maximize the posterior probability to get the point estimation of \\(\\beta\\) – Lasso"
+  },
+  {
+    "objectID": "stat_learn.html#further-check-lambda-and-corresponding-term-in-the-posterior-likelihoodhow-the-penalized-terms-are-derived-from-the-bayesian-perspective",
+    "href": "stat_learn.html#further-check-lambda-and-corresponding-term-in-the-posterior-likelihoodhow-the-penalized-terms-are-derived-from-the-bayesian-perspective",
+    "title": "Statistical_Learning (Mechine_Learning)",
+    "section": "Further check \\(\\lambda\\) and corresponding term in the posterior likelihood–How the penalized terms are derived from the Bayesian perspective",
+    "text": "Further check \\(\\lambda\\) and corresponding term in the posterior likelihood–How the penalized terms are derived from the Bayesian perspective\n\n\n\n\n\n\nGaussian:\n\\(\\lambda = \\frac{1}{\\sigma'^2}\\) i.e. Larger \\(\\lambda\\) with less \\(\\sigma'^2\\) means more regularization corresponding to smaller variance of the prior distribution (normal)\n\n\nLaplace:\n\\(\\lambda = \\frac{1}{b}\\) i.e. Larger \\(\\lambda\\) with less \\(b\\) means more regularization corresponding to smaller variance of the prior distribution (laplace)"
+  },
+  {
+    "objectID": "stat_learn.html#how-to-choose-the-lambda",
+    "href": "stat_learn.html#how-to-choose-the-lambda",
+    "title": "Statistical_Learning (Mechine_Learning)",
+    "section": "How to choose the \\(\\lambda\\)?",
+    "text": "How to choose the \\(\\lambda\\)?\n\nCross-Validation: A common method to choose the regularization parameter \\(\\lambda\\) is through cross-validation. This involves splitting the data into training and validation sets, fitting the model with different values of \\(\\lambda\\), and selecting the one that minimizes the prediction error on the validation set."
+  },
+  {
+    "objectID": "stat_learn.html#lagrange-multipliers-perspective-of-penalized-models",
+    "href": "stat_learn.html#lagrange-multipliers-perspective-of-penalized-models",
+    "title": "Statistical_Learning (Mechine_Learning)",
+    "section": "Lagrange Multipliers Perspective of Penalized Models",
+    "text": "Lagrange Multipliers Perspective of Penalized Models\nLagrange multipliers provide a way to incorporate constraints into optimization problems. In the context of penalized regression, we can view the regularization term as a constraint on the size of the coefficients.\nChoose Lasoo as an example, the Lagrange multipliers perspective could be expressed as:\n\\[\n\\left( \\hat{\\alpha}, \\hat{\\beta} \\right) = \\arg \\min \\left\\{ \\sum_{i=1}^{N} \\left( y_{i} - \\alpha - \\sum_{j} \\beta_{j} x_{ij} \\right)^{2} \\right\\} \\quad \\text{subject to} \\quad \\sum_{j} \\left| \\beta_{j} \\right| \\leq t.\n\\]\ni.e.\n\\[\ng(\\beta)= \\sum_{j} \\left| \\beta_{j} \\right| - t \\leq 0\n\\]\n\\[\nL(\\alpha,\\beta, \\lambda) = \\sum_{i=1}^{N} \\left( y_{i} - \\alpha - \\sum_{j} \\beta_{j} x_{ij} \\right)^{2} + \\lambda \\left( \\sum_{j} \\left| \\beta_{j} \\right| - t \\right)\n\\]\n\\[\n\\partial L / \\partial \\alpha = 0\n\\]\n\\[\n\\hat{\\alpha} = \\bar{y} - \\sum_{j} \\hat{\\beta}_{j} \\bar{x}_{j}\n\\]\n\\[\n\\partial L / \\partial \\beta_{j} = 0\n\\]\n\\[\n-2 \\sum_{i=1}^{N} x_{ij} \\left( y_{i} - \\hat{\\alpha} - \\sum_{k} \\hat{\\beta}_{k} x_{ik} \\right) + \\lambda \\cdot sign(\\hat{\\beta}_{j}) = 0\n\\]\nThis may use the iterative method to solve the equation.\nGenerally, the formula could be expressed as:\n\\[\n\\min_{\\beta} \\left\\{ \\lVert y - X\\beta \\rVert_2^2 + \\lambda \\lVert \\beta \\rVert_p^p \\right\\}\n\\]\nwhere \\(\\lVert \\beta \\rVert_p^p\\) is the \\(L^p\\) norm of the coefficients, which serves as a penalty term.\nThe gradient of the objective function of Ridge with respect to \\(\\beta\\) is given by:\n\\[\n\\nabla J(\\beta) = -2X^T(y - X\\beta) + \\lambda \\nabla \\lVert \\beta \\rVert_p^p\n\\]\n(see matrix form (Go to Matrix Form) below for more details)\nThis should be set to zero to find the optimal \\(\\beta\\), which means the gradient of the loss function (the first term) is equal to the gradient of the penalty term (the second term) scaled by \\(\\lambda\\)."
+  },
+  {
+    "objectID": "stat_learn.html#lagrange-multipliers-perspective-of-penalized-models-continue",
+    "href": "stat_learn.html#lagrange-multipliers-perspective-of-penalized-models-continue",
+    "title": "Statistical_Learning (Mechine_Learning)",
+    "section": "Lagrange Multipliers Perspective of Penalized Models (continue)",
+    "text": "Lagrange Multipliers Perspective of Penalized Models (continue)\n\\[\nL(\\alpha,\\beta, \\lambda) = \\sum_{i=1}^{N} \\left( y_{i} - \\alpha - \\sum_{j} \\beta_{j} x_{ij} \\right)^{2} + \\lambda \\left( \\sum_{j} \\left| \\beta_{j} \\right| - t \\right)\n\\]\n\\[\n\\partial L / \\partial \\alpha = 0\n\\]\n\\[\n\\hat{\\alpha} = \\bar{y} - \\sum_{j} \\hat{\\beta}_{j} \\bar{x}_{j}\n\\]\n\\[\n\\partial L / \\partial \\beta_{j} = 0\n\\]\n\\[\n-2 \\sum_{i=1}^{N} x_{ij} \\left( y_{i} - \\hat{\\alpha} - \\sum_{k} \\hat{\\beta}_{k} x_{ik} \\right) + \\lambda \\cdot sign(\\hat{\\beta}_{j}) = 0\n\\]\nThis may use the iterative method to solve the equation."
+  },
+  {
+    "objectID": "stat_learn.html#lagrange-multipliers-perspective-of-penalized-models-continue-1",
+    "href": "stat_learn.html#lagrange-multipliers-perspective-of-penalized-models-continue-1",
+    "title": "Statistical_Learning (Mechine_Learning)",
+    "section": "Lagrange Multipliers Perspective of Penalized Models (continue)",
+    "text": "Lagrange Multipliers Perspective of Penalized Models (continue)\nGenerally, the formula could be expressed as:\n\\[\n\\min_{\\beta} \\left\\{ \\lVert y - X\\beta \\rVert_2^2 + \\lambda \\lVert \\beta \\rVert_p^p \\right\\}\n\\]\nwhere \\(\\lVert \\beta \\rVert_p^p\\) is the \\(L^p\\) norm of the coefficients, which serves as a penalty term.\nThe gradient of the objective function of Ridge with respect to \\(\\beta\\) is given by:\n\\[\n\\nabla J(\\beta) = -2X^T(y - X\\beta) + \\lambda \\nabla \\lVert \\beta \\rVert_p^p\n\\]\n(see matrix form (Go to Matrix Form) below for more details)\nThis should be set to zero to find the optimal \\(\\beta\\), which means the gradient of the loss function (the first term) is equal to the gradient of the penalty term (the second term) scaled by \\(\\lambda\\)."
+  },
+  {
+    "objectID": "stat_learn.html#geometric-interpretation-of-penalized-models-in-lagrange-multipliers-perspective",
+    "href": "stat_learn.html#geometric-interpretation-of-penalized-models-in-lagrange-multipliers-perspective",
+    "title": "Statistical_Learning (Mechine_Learning)",
+    "section": "Geometric Interpretation of Penalized Models in Lagrange Multipliers Perspective",
+    "text": "Geometric Interpretation of Penalized Models in Lagrange Multipliers Perspective"
+  },
+  {
+    "objectID": "stat_learn.html#geometric-interpretation-of-lasso-in-lagrange-multipliers-perspective-and-bayesian-perspective",
+    "href": "stat_learn.html#geometric-interpretation-of-lasso-in-lagrange-multipliers-perspective-and-bayesian-perspective",
+    "title": "Statistical_Learning (Mechine_Learning)",
+    "section": "Geometric Interpretation of LASSO in Lagrange Multipliers Perspective and Bayesian Perspective",
+    "text": "Geometric Interpretation of LASSO in Lagrange Multipliers Perspective and Bayesian Perspective"
+  },
+  {
+    "objectID": "stat_learn.html#story",
+    "href": "stat_learn.html#story",
+    "title": "Statistical_Learning (Mechine_Learning)",
+    "section": "Story",
+    "text": "Story\n\nHumorous story\n\nRyan Tibshirani interviews Rob Tibshirani about his work on the Lasso. Ryan said that when he was young he was into draw a diamond and circles and he happened to draw a circle that just touched the corner of a diamond and that led to a big idea Rob did not credited him for. “I did not cite you,” Rob answered humorously.\n\nIdea\n\nYes, this is actually an interesting geometric meaning of LASSO.\n\nTo me(a biostat student) —a big meaning!!\n\nRob Tibshirani previously went back to his hometown of Toronto when he was a professor in preventative medicine and biostatistics and he was working on LASSO here."
+  },
+  {
+    "objectID": "stat_learn.html#storyrob-tibshiranis-motivation",
+    "href": "stat_learn.html#storyrob-tibshiranis-motivation",
+    "title": "Statistical_Learning (Mechine_Learning)",
+    "section": "Story—Rob Tibshirani’s motivation",
+    "text": "Story—Rob Tibshirani’s motivation\n\nPaper about non-negative garrote by Leo Breiman\nLeo started with least squares estimates and then multiply them by non-negative constants that were bounderd by some bounded T, which had the effect of producing a sparse solution because being non-negative with a bound of 0 forces sparsity.\nwhy choose “Lasso” name\nMore gentle than garrote and more softer term than garrote\nMany similar things that time\nYou do not need to do research on unique things, but promising things.\nFrom LM to GLM to Cox, this generalization is cool"
+  },
+  {
+    "objectID": "stat_learn.html#summary",
+    "href": "stat_learn.html#summary",
+    "title": "Statistical_Learning (Mechine_Learning)",
+    "section": "Summary",
+    "text": "Summary\nWe have seen many perspectives to understand the penalized regression models, including:\n\nBayes\nLagrange multipliers\nmatrix form"
+  },
+  {
+    "objectID": "stat_learn.html#thanks-for-watching",
+    "href": "stat_learn.html#thanks-for-watching",
+    "title": "Statistical_Learning (Mechine_Learning)",
+    "section": "Thanks for watching",
+    "text": "Thanks for watching\n\nThe greatest truths are the simplest.\nPenalized regression models balance the trade-off between fitting the data well and keeping the model simple.\n\n\nEverything is connected to each other. Good theory interpretes this connection interestingly.\nLinear Regression: OLS and MLE (Last time)\nPenalized regression models: Lagrange multiplier (restriction in the geometric meaning and also algebra interpretation) and Bayesian perspective (prior: history knowledge restriction)"
+  },
+  {
+    "objectID": "stat_learn.html#understanding-of-lambda",
+    "href": "stat_learn.html#understanding-of-lambda",
+    "title": "Statistical_Learning (Mechine_Learning)",
+    "section": "Understanding of \\(\\lambda\\)",
+    "text": "Understanding of \\(\\lambda\\)\nLagrange Multipliers help explain how \\(\\lambda\\) balances fitting the data well:\nBigger \\(\\lambda\\) makes the ellipse (representing the constraint region in the parameter space in WLS, if it satisfies the homoscedasticity, it would be a circle) smaller. In this case, the gradient of \\(\\beta\\) becomes steeper with a larger \\(\\lambda\\), which means that the optimization algorithm will grow the penalty of \\(\\beta\\) to stay within the shrinking feasible region. This helps reduce variance and prevent overfitting, but overly large \\(\\lambda\\) can cause underfitting."
+  },
+  {
+    "objectID": "stat_learn.html#matrix-form-of-penalized-regression-models",
+    "href": "stat_learn.html#matrix-form-of-penalized-regression-models",
+    "title": "Statistical_Learning (Mechine_Learning)",
+    "section": "Matrix Form of Penalized Regression Models",
+    "text": "Matrix Form of Penalized Regression Models\n\nRidge Regression\nObjective Function\n\\[\n\\min_{\\beta} \\left\\{ \\lVert y - X\\beta \\rVert_2^2 + \\lambda \\lVert \\beta \\rVert_2^2 \\right\\}\n\\]\nMatrix Form Derivation:\n\nExpand the loss term: \\[\n  \\lVert y - X\\beta \\rVert_2^2 = (y - X\\beta)^T (y - X\\beta) = y^T y - 2y^T X\\beta + \\beta^T X^T X\\beta.\n  \\]\nAdd the \\(L^2\\) penalty: \\[\n  J(\\beta) = y^T y - 2y^T X\\beta + \\beta^T X^T X\\beta + \\lambda \\beta^T \\beta.\n  \\]\nCompute the gradient: \\[\n  \\frac{\\partial J}{\\partial \\beta} = \\nabla J(\\beta) = -2X^T(y - X\\beta) + \\lambda \\nabla \\lVert \\beta \\rVert_p^p=-2X^T y + 2X^T X\\beta + 2\\lambda \\beta.\n  \\]\nSet gradient to zero: \\[\n  -X^T y + X^T X\\beta + \\lambda \\beta = 0 \\implies (X^T X + \\lambda I)\\beta = X^T y.\n  \\]\nSolve for \\(\\beta\\): \\[\n  \\hat{\\beta}_{\\text{ridge}} = (X^T X + \\lambda I)^{-1} X^T y\n  \\]\n\nWhy Regularization Helps:\nThe term \\(\\lambda I\\) ensures \\(X^T X + \\lambda I\\) is always invertible (since \\(\\lambda &gt; 0\\) adds positive values to the diagonal, guaranteeing full rank). This avoids singularity issues in \\(X^T X\\) when features are collinear."
+  },
+  {
+    "objectID": "stat_learn.html#matrix-form-of-penalized-regression-models-1",
+    "href": "stat_learn.html#matrix-form-of-penalized-regression-models-1",
+    "title": "Statistical_Learning (Mechine_Learning)",
+    "section": "Matrix Form of Penalized Regression Models",
+    "text": "Matrix Form of Penalized Regression Models\n\nLasso Regression\nFormula:\n\\[\n\\hat{\\beta}_{\\text{lasso}} = \\arg\\min_{\\beta} \\left\\{ \\|y - X\\beta\\|_2^2 + \\lambda \\|\\beta\\|_1 \\right\\}\n\\]\nWant\n\\[\n\\min_{\\beta} \\left\\{ \\|y - X\\beta\\|_2^2 + \\lambda \\sum_{j=1}^p |\\beta_j| \\right\\}\n\\]\nMatrix Form Derivation:\nLasso lacks a closed-form solution due to the non-differentiable L1 norm. Instead, we use the subgradient optimality condition:\n\nSubgradient equation: \\[\n  -2X^T(y - X\\beta) + \\lambda \\cdot \\text{sign}(\\beta) = 0,\n  \\] where \\(\\text{sign}(\\beta)\\) is defined component-wise:\n\nKey Insight\n\nFor \\(\\beta_j \\neq 0\\), the solution balances data fit and shrinkage.\nFor \\(\\beta_j = 0\\), the condition requires: \\[\n  \\left| 2 \\mathbf{x}_j^T (y - X\\beta) \\right| \\leq \\lambda.\n  \\] This induces sparsity (exact zeros in \\(\\beta\\)), which Ridge cannot achieve."
+  },
+  {
+    "objectID": "stat_learn.html#differences-between-lasso-and-ridge",
+    "href": "stat_learn.html#differences-between-lasso-and-ridge",
+    "title": "Statistical_Learning (Mechine_Learning)",
+    "section": "Differences between Lasso and Ridge",
+    "text": "Differences between Lasso and Ridge\n\nLasso could realize variable selection by shrinking some coefficients to exactly zero, while Ridge regression shrinks all coefficients but does not set any to zero."
+  },
+  {
+    "objectID": "stat_learn.html#r-code-example-of-penalized-linear-regression-models",
+    "href": "stat_learn.html#r-code-example-of-penalized-linear-regression-models",
+    "title": "Statistical_Learning (Mechine_Learning)",
+    "section": "R code Example of Penalized Linear Regression Models",
+    "text": "R code Example of Penalized Linear Regression Models\n\n# Install and load necessary packages\n# install.packages(\"glmnet\")\n# install.packages(\"ISLR2\")\nlibrary(glmnet)\n\nLoading required package: Matrix\n\n\nLoaded glmnet 4.1-8\n\nlibrary(ISLR2)\n\n# Load the Hitters dataset\ndata(Hitters)\n\n# Remove missing values\nHitters &lt;- na.omit(Hitters)\n\n# Define the predictor matrix and response variable\n# exclude the intercept term\nx &lt;- model.matrix(Salary ~ ., Hitters)[, -1] \ny &lt;- Hitters$Salary\n\n\n# Split the data into training and test sets\nset.seed(1)\ntrain &lt;- sample(1:nrow(x), nrow(x) / 2)\ntest &lt;- (-train)\ny.test &lt;- y[test]\n\n# Fit the Lasso model on the training data\ngrid &lt;- 10^seq(10, -2, length = 100)\n# LASSO-LR\nlasso.mod &lt;- glmnet(x[train, ], y[train], alpha = 1,\n                    lambda = grid, family = 'gaussian')\n# Plot the Lasso model to visualize coefficient paths\nplot(lasso.mod)\n\nWarning in regularize.values(x, y, ties, missing(ties), na.rm = na.rm):\ncollapsing to unique 'x' values\n\n\n\n\n\n\n\n\n\n\n# Perform cross-validation to find the optimal lambda\nset.seed(1)\ncv.out &lt;- cv.glmnet(x[train, ], y[train], alpha = 1)\nplot(cv.out)\n\n\n\n\n\n\n\n\n\nbestlam &lt;- cv.out$lambda.min\n# Make predictions on the test set using the optimal lambda\nlasso.pred &lt;- predict(lasso.mod, s = bestlam, newx = x[test, ])\ntest.mse &lt;- mean((lasso.pred - y.test)^2)\nprint(paste(\"Test MSE with Lasso and optimal lambda:\", test.mse))\n\n[1] \"Test MSE with Lasso and optimal lambda: 143673.618543046\"\n\n# Fit the Lasso model on the full dataset using the optimal lambda\nlasso.full &lt;- glmnet(x, y, alpha = 1,lambda = bestlam)\nlasso.coef &lt;- coef(lasso.full)\nprint(\"Lasso coefficients on the full dataset:\")\n\n[1] \"Lasso coefficients on the full dataset:\"\n\nprint(lasso.coef)\n\n20 x 1 sparse Matrix of class \"dgCMatrix\"\n                       s0\n(Intercept)   -3.42073206\nAtBat          .         \nHits           2.02965136\nHmRun          .         \nRuns           .         \nRBI            .         \nWalks          2.24850782\nYears          .         \nCAtBat         .         \nCHits          .         \nCHmRun         0.04994886\nCRuns          0.22212444\nCRBI           0.40183027\nCWalks         .         \nLeagueN       20.83775664\nDivisionW   -116.39019204\nPutOuts        0.23768309\nAssists        .         \nErrors        -0.93567863\nNewLeagueN     .         \n\n\n\nresult_matrix &lt;- matrix(lasso.coef[lasso.coef != 0], ncol = 3, byrow = TRUE)\n\nWarning in matrix(lasso.coef[lasso.coef != 0], ncol = 3, byrow = TRUE): data\nlength [10] is not a sub-multiple or multiple of the number of rows [4]\n\nprint(result_matrix)\n\n            [,1]         [,2]      [,3]\n[1,] -3.42073206    2.0296514 2.2485078\n[2,]  0.04994886    0.2221244 0.4018303\n[3,] 20.83775664 -116.3901920 0.2376831\n[4,] -0.93567863   -3.4207321 2.0296514\n\n\n\n# 提取非零系数（排除截距）\nnon_zero_coef &lt;- lasso.coef[lasso.coef[,1] != 0, ][-1]  # 去除截距项\ncoef_df &lt;- data.frame(\n  Variable = names(non_zero_coef),\n  Coefficient = as.numeric(non_zero_coef)\n)\n\n# 按系数绝对值排序\ncoef_df &lt;- coef_df[order(abs(coef_df$Coefficient), decreasing = TRUE), ]\n\n# 绘制条形图\nlibrary(ggplot2)\n\nggplot(coef_df, aes(x = reorder(Variable, Coefficient), \n                   y = Coefficient, \n                   fill = ifelse(Coefficient &gt; 0, \"Positive\", \"Negative\"))) +\n  geom_bar(stat = \"identity\") +\n  scale_fill_manual(values = c(\"Positive\" = \"dodgerblue\", \"Negative\" = \"firebrick\")) +\n  labs(title = \"Lasso Regression Coefficients\",\n       subtitle = paste(\"Optimal lambda =\", round(bestlam, 4)),\n       x = \"Predictor Variables\",\n       y = \"Coefficient Value\",\n       fill = \"Effect Direction\") +\n  coord_flip() +  # 水平条形图更易阅读变量名\n  theme_minimal() +\n  theme(legend.position = \"top\",\n        plot.title = element_text(face = \"bold\", size = 14),\n        axis.text.y = element_text(size = 10))"
+  },
+  {
+    "objectID": "stat_learn.html#remark",
+    "href": "stat_learn.html#remark",
+    "title": "Statistical_Learning (Mechine_Learning)",
+    "section": "Remark",
+    "text": "Remark\nActually the penalized model could be applied in many regression models not only for linear regression, but also for logistic regression, Poisson regression, Cox regression, etc.\nThe penalized terms could be added to the loss function of these models in a similar way.\n\nR Code of Penalized Cox Regression - Lasso using glmnet package\nWant to minimize \\[\n-\\log \\left( \\prod_{i:\\delta_i=1} \\frac{\\exp\\left(\\sum_{j=1}^p x_{ij}\\beta_j\\right)}{\\sum_{i':y_{i'}\\geq y_i}\\exp\\left(\\sum_{j=1}^p x_{i'j}\\beta_j\\right)} \\right) + \\lambda P(\\beta),\n\\] where \\(\\delta_i\\) is the indicator function for censoring and \\(P(\\beta) = \\sum_{j=1}^p \\beta_j^2\\) corresponds to a ridge penalty, or \\(P(\\beta) = \\sum_{j=1}^p |\\beta_j|\\) corresponds to a lasso penalty.\nR Code example for LASSO in Cox Regression applied on selecting important features of pesticide poisoning\nClick here to see LASSO code provided by SURF2024 instructed by Dr.He"
+  },
+  {
+    "objectID": "stat_learn.html#the-greatest-truths-are-the-simplest.",
+    "href": "stat_learn.html#the-greatest-truths-are-the-simplest.",
+    "title": "Statistical_Learning (Mechine_Learning)",
+    "section": "The greatest truths are the simplest.",
+    "text": "The greatest truths are the simplest.\nPenalized regression models balance the trade-off between fitting the data well and keeping the model simple."
+  },
+  {
+    "objectID": "stat_learn.html#everything-is-connected-to-each-other.-good-theory-interpretes-this-connection-interestingly.",
+    "href": "stat_learn.html#everything-is-connected-to-each-other.-good-theory-interpretes-this-connection-interestingly.",
+    "title": "Statistical_Learning (Mechine_Learning)",
+    "section": "Everything is connected to each other. Good theory interpretes this connection interestingly.",
+    "text": "Everything is connected to each other. Good theory interpretes this connection interestingly.\nLinear Regression: OLS and MLE\nPenalized regression models: Lagrange multiplier (restriction in the geometric meaning and also algebra interpretation) and Bayesian perspective (prior: history knowledge restriction)"
   }
 ]

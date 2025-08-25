@@ -12,22 +12,26 @@ website:
         text: Homepage
      # - href: aph101.html
       #  text: Biostat and R
+            
+      - href: Mathematical Analysis 1.qmd
+        text: Analysis 1
+      - href: Calculus.html
+        text: Calculus
+      - href: stat_learn.html
+        text: Statistical_Learning
       - href: mth107.html
         text: Advanced Linear Algebra
       - href: mth1113.qmd
-        text: Intro to Prob, and Stat.        
-      - href: Simple_ODEs.html
+        text: Prob, and Stat.        
+      - href: Simple_ODEs.html # future: mth208 content ++
         text: ODEs and PDEs with codes
       - href: mth106.html
         text: ODE, PDE, and Fourier Series
-      
-      - href: Mathematical Analysis 1.qmd
-        text: Analysis 1
+
 
       #- href: eng pde.qmd
         #text: PDE  
-      - href: Calculus.html
-        text: Calculus
+
       #- href: aph103.qmd
        # text: SurveySampling
 

@@ -1,0 +1,1165 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.4.555">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Foundation Math Learning - Statistical_Learning (Mechine_Learning)</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+</head>
+
+<body class="nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="./index.html">
+    <span class="navbar-title">Foundation Math Learning</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="https://yuuuulu.github.io/"> 
+<span class="menu-text">yuuuulu</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./index.html"> 
+<span class="menu-text">Homepage</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./Mathematical Analysis 1.html"> 
+<span class="menu-text">Analysis 1</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./Calculus.html"> 
+<span class="menu-text">Calculus</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link active" href="./stat_learn.html" aria-current="page"> 
+<span class="menu-text">Statistical_Learning</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./mth107.html"> 
+<span class="menu-text">Advanced Linear Algebra</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./mth1113.html"> 
+<span class="menu-text">Prob, and Stat.</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./Simple_ODEs.html"> 
+<span class="menu-text">ODEs and PDEs with codes</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./mth106.html"> 
+<span class="menu-text">ODE, PDE, and Fourier Series</span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+          <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#referece-books" id="toc-referece-books" class="nav-link active" data-scroll-target="#referece-books">Referece books</a></li>
+  <li><a href="#some-perspectives-to-penalized-regression-mode" id="toc-some-perspectives-to-penalized-regression-mode" class="nav-link" data-scroll-target="#some-perspectives-to-penalized-regression-mode">Some Perspectives to Penalized Regression Mode</a>
+  <ul class="collapse">
+  <li><a href="#ols-mle-solution-to-lr-with-issues" id="toc-ols-mle-solution-to-lr-with-issues" class="nav-link" data-scroll-target="#ols-mle-solution-to-lr-with-issues">OLS / MLE Solution to LR with issues</a></li>
+  <li><a href="#why-does-the-terms-of-the-regularization-look-like-this" id="toc-why-does-the-terms-of-the-regularization-look-like-this" class="nav-link" data-scroll-target="#why-does-the-terms-of-the-regularization-look-like-this">Why does the terms of the regularization look like this?</a>
+  <ul class="collapse">
+  <li><a href="#choose-prior-distribution-pbeta" id="toc-choose-prior-distribution-pbeta" class="nav-link" data-scroll-target="#choose-prior-distribution-pbeta">Choose Prior Distribution <span class="math inline">\(P(\beta)\)</span></a></li>
+  <li><a href="#choose-prior-distribution-pbeta-1" id="toc-choose-prior-distribution-pbeta-1" class="nav-link" data-scroll-target="#choose-prior-distribution-pbeta-1">Choose Prior Distribution <span class="math inline">\(P(\beta)\)</span></a></li>
+  </ul></li>
+  <li><a href="#further-check-lambda-and-corresponding-term-in-the-posterior-likelihoodhow-the-penalized-terms-are-derived-from-the-bayesian-perspective" id="toc-further-check-lambda-and-corresponding-term-in-the-posterior-likelihoodhow-the-penalized-terms-are-derived-from-the-bayesian-perspective" class="nav-link" data-scroll-target="#further-check-lambda-and-corresponding-term-in-the-posterior-likelihoodhow-the-penalized-terms-are-derived-from-the-bayesian-perspective">Further check <span class="math inline">\(\lambda\)</span> and corresponding term in the posterior likelihood–How the penalized terms are derived from the Bayesian perspective</a>
+  <ul class="collapse">
+  <li><a href="#gaussian" id="toc-gaussian" class="nav-link" data-scroll-target="#gaussian">Gaussian:</a></li>
+  <li><a href="#laplace" id="toc-laplace" class="nav-link" data-scroll-target="#laplace">Laplace:</a></li>
+  </ul></li>
+  <li><a href="#how-to-choose-the-lambda" id="toc-how-to-choose-the-lambda" class="nav-link" data-scroll-target="#how-to-choose-the-lambda">How to choose the <span class="math inline">\(\lambda\)</span>?</a></li>
+  <li><a href="#lagrange-multipliers-perspective-of-penalized-models" id="toc-lagrange-multipliers-perspective-of-penalized-models" class="nav-link" data-scroll-target="#lagrange-multipliers-perspective-of-penalized-models">Lagrange Multipliers Perspective of Penalized Models</a></li>
+  <li><a href="#geometric-interpretation-of-penalized-models-in-lagrange-multipliers-perspective" id="toc-geometric-interpretation-of-penalized-models-in-lagrange-multipliers-perspective" class="nav-link" data-scroll-target="#geometric-interpretation-of-penalized-models-in-lagrange-multipliers-perspective">Geometric Interpretation of Penalized Models in Lagrange Multipliers Perspective</a></li>
+  <li><a href="#geometric-interpretation-of-lasso-in-lagrange-multipliers-perspective-and-bayesian-perspective" id="toc-geometric-interpretation-of-lasso-in-lagrange-multipliers-perspective-and-bayesian-perspective" class="nav-link" data-scroll-target="#geometric-interpretation-of-lasso-in-lagrange-multipliers-perspective-and-bayesian-perspective">Geometric Interpretation of LASSO in Lagrange Multipliers Perspective and Bayesian Perspective</a></li>
+  <li><a href="#story" id="toc-story" class="nav-link" data-scroll-target="#story">Story</a></li>
+  <li><a href="#storyrob-tibshiranis-motivation" id="toc-storyrob-tibshiranis-motivation" class="nav-link" data-scroll-target="#storyrob-tibshiranis-motivation">Story—Rob Tibshirani’s motivation</a></li>
+  <li><a href="#understanding-of-lambda" id="toc-understanding-of-lambda" class="nav-link" data-scroll-target="#understanding-of-lambda">Understanding of <span class="math inline">\(\lambda\)</span></a></li>
+  <li><a href="#matrix-form-of-penalized-regression-models" id="toc-matrix-form-of-penalized-regression-models" class="nav-link" data-scroll-target="#matrix-form-of-penalized-regression-models">Matrix Form of Penalized Regression Models</a>
+  <ul class="collapse">
+  <li><a href="#MatrixFormRidge" id="toc-MatrixFormRidge" class="nav-link" data-scroll-target="#MatrixFormRidge">Ridge Regression</a></li>
+  </ul></li>
+  <li><a href="#matrix-form-of-penalized-regression-models-1" id="toc-matrix-form-of-penalized-regression-models-1" class="nav-link" data-scroll-target="#matrix-form-of-penalized-regression-models-1">Matrix Form of Penalized Regression Models</a>
+  <ul class="collapse">
+  <li><a href="#lasso-regression" id="toc-lasso-regression" class="nav-link" data-scroll-target="#lasso-regression">Lasso Regression</a></li>
+  </ul></li>
+  <li><a href="#differences-between-lasso-and-ridge" id="toc-differences-between-lasso-and-ridge" class="nav-link" data-scroll-target="#differences-between-lasso-and-ridge">Differences between Lasso and Ridge</a></li>
+  <li><a href="#r-code-example-of-penalized-linear-regression-models" id="toc-r-code-example-of-penalized-linear-regression-models" class="nav-link" data-scroll-target="#r-code-example-of-penalized-linear-regression-models">R code Example of Penalized Linear Regression Models</a></li>
+  <li><a href="#remark" id="toc-remark" class="nav-link" data-scroll-target="#remark">Remark</a>
+  <ul class="collapse">
+  <li><a href="#r-code-of-penalized-cox-regression---lasso-using-glmnet-package" id="toc-r-code-of-penalized-cox-regression---lasso-using-glmnet-package" class="nav-link" data-scroll-target="#r-code-of-penalized-cox-regression---lasso-using-glmnet-package">R Code of Penalized Cox Regression - Lasso using <code>glmnet</code> package</a></li>
+  </ul></li>
+  </ul></li>
+  <li><a href="#summary" id="toc-summary" class="nav-link" data-scroll-target="#summary">Summary</a>
+  <ul class="collapse">
+  <li><a href="#the-greatest-truths-are-the-simplest." id="toc-the-greatest-truths-are-the-simplest." class="nav-link" data-scroll-target="#the-greatest-truths-are-the-simplest.">The greatest truths are the simplest.</a></li>
+  <li><a href="#everything-is-connected-to-each-other.-good-theory-interpretes-this-connection-interestingly." id="toc-everything-is-connected-to-each-other.-good-theory-interpretes-this-connection-interestingly." class="nav-link" data-scroll-target="#everything-is-connected-to-each-other.-good-theory-interpretes-this-connection-interestingly.">Everything is connected to each other. Good theory interpretes this connection interestingly.</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Statistical_Learning (Mechine_Learning)</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="referece-books" class="level1">
+<h1>Referece books</h1>
+<ul>
+<li><p>Efron, B., &amp; Hastie, T. (2021). Computer age statistical inference, student edition: algorithms, evidence, and data science (Vol. 6). Cambridge University Press.</p></li>
+<li><p>Hastie, T., Tibshirani, R., &amp; Friedman, J. (2009). An introduction to statistical learning.</p></li>
+<li><p>Casella, G., &amp; Berger, R. (2024). Statistical inference. Chapman and Hall/CRC.</p></li>
+<li><p>Hastie, T., Tibshirani, R., &amp; Friedman, J. (2009). The elements of statistical learning.</p></li>
+</ul>
+</section>
+<section id="some-perspectives-to-penalized-regression-mode" class="level1">
+<h1>Some Perspectives to Penalized Regression Mode</h1>
+<section id="ols-mle-solution-to-lr-with-issues" class="level2">
+<h2 class="anchored" data-anchor-id="ols-mle-solution-to-lr-with-issues">OLS / MLE Solution to LR with issues</h2>
+<p>We have learned the equivalence of Ordinary Least Squares (OLS) and Maximum Likelihood Estimation (MLE) in the context of linear regression assuming the error term follows a Gaussian distribution but with limitations as below:</p>
+<ul>
+<li>Issues:</li>
+</ul>
+<p>Even if the OLS or MLE solution is optimal in terms of minimizing the error, it may lead to overfitting, especially when the number of features is large relative to the number of observations. This can result in high variance and poor generalization to new data.</p>
+<p><strong>How to handle the issues?</strong></p>
+<span class="math display">\[\begin{align*}
+\text{LASSO:} &amp; \quad Argmin_{\beta} \sum_{i=1}^{N} \left( y_i - \sum_{j}^{p} \beta_j x_{ij} \right)^2 + \lambda \sum_{j}^{p} |\beta_j|, \quad \text{where } \lambda &gt; 0 \\
+\text{Ridge:} &amp; \quad Argmin_{\beta} \sum_{i=1}^{N} \left( y_i - \sum_{j}^{p} \beta_j x_{ij} \right)^2 + \lambda \sum_{j}^{p} \beta_j^2, \quad \text{where } \lambda &gt; 0
+\end{align*}\]</span>
+<ul>
+<li><p>OLS perspective thinking: This shrinkage method not only achieves the objective of making the error to be smallest like OLS, but also prevents overfitting by penalizing large coefficients.</p></li>
+<li><p>MLE perspective thinking: Compared with MLE, this method could be regarded as a Bayesian estimation that can avoid overfitting by introducing the prior distribution <span class="math inline">\(P(\beta)\)</span>, especially when the data volume is small, the prior information can play a regularization role.</p></li>
+</ul>
+</section>
+<section id="why-does-the-terms-of-the-regularization-look-like-this" class="level2">
+<h2 class="anchored" data-anchor-id="why-does-the-terms-of-the-regularization-look-like-this">Why does the terms of the regularization look like this?</h2>
+<p>Just like what we have learned about the relationship between the OLS and MLE and get the idea of why the error term is the square shape, now we are going to use the perspective of <strong>Bayesian</strong> to understand the penalized terms</p>
+<section id="choose-prior-distribution-pbeta" class="level3">
+<h3 class="anchored" data-anchor-id="choose-prior-distribution-pbeta">Choose Prior Distribution <span class="math inline">\(P(\beta)\)</span></h3>
+<p>Idea:</p>
+<p>We insist that <span class="math inline">\(\beta\)</span> should be more likely to be small also with small variances (very near to 0). This means we should pick a distribution that has a peak around zero and decays quickly as we move away from zero.</p>
+<ul>
+<li><strong>Prior Distribution</strong>: In the context of penalized regression, we choose a prior distribution for the coefficients <span class="math inline">\(\beta\)</span> that reflects our beliefs about their values. Common choices include:
+<ul>
+<li><strong>Laplace Prior</strong>: Assumes coefficients follow a Laplace distribution, leading to <span class="math inline">\(L^1\)</span> regularization (Lasso Regression).</li>
+<li><strong>Gaussian Prior</strong>: Assumes coefficients are normally distributed around zero, which leads to <span class="math inline">\(L^2\)</span> regularization (Ridge Regression).</li>
+</ul></li>
+</ul>
+<p>This also means it would take extreame evidence with the data that we see in order to accept very large and very high variances beta because of the prior.</p>
+</section>
+<section id="choose-prior-distribution-pbeta-1" class="level3">
+<h3 class="anchored" data-anchor-id="choose-prior-distribution-pbeta-1">Choose Prior Distribution <span class="math inline">\(P(\beta)\)</span></h3>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/clipboard-3590925628.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="321"></p>
+</figure>
+</div>
+<section id="maximize-the-posterior-probability-to-get-the-point-estimation-of-beta-ridge" class="level4">
+<h4 class="anchored" data-anchor-id="maximize-the-posterior-probability-to-get-the-point-estimation-of-beta-ridge">Maximize the posterior probability to get the point estimation of <span class="math inline">\(\beta\)</span> – Ridge</h4>
+<p><span class="math display">\[
+P(\beta|y) \propto P(y|\beta) \cdot P(\beta)
+\]</span></p>
+<p><span class="math display">\[
+P(y|\beta) = \frac{1}{\sqrt{2\pi}\sigma} \exp\left\{-\frac{(y - \beta^T x)^2}{2\sigma^2}\right\}
+\]</span></p>
+<p>And for the prior part, we assume <span class="math inline">\(beta\)</span> follows a Gaussian distribution, $(0, ’^2) $,</p>
+<p><span class="math display">\[
+P(\beta) = \frac{1}{\sqrt{2\pi}\sigma'} \exp\left\{-\frac{\beta^2}{2\sigma'^2}\right\}
+\]</span></p>
+<p>Thus,</p>
+<p><span class="math display">\[
+\hat{\beta} = \arg\max_\beta \log P(\beta|Y)
+\]</span></p>
+<p><span class="math display">\[
+= \arg\max_{\beta} \log P(Y|\beta)P(\beta)
+\]</span></p>
+<p><span class="math display">\[
+= \arg\max_{\beta} \log \prod_{i=1}^N P(y_i|\beta)P(\beta)
+\]</span></p>
+<p><span class="math display">\[
+= \arg\max_{\beta}  \sum_{i=1}^N \log[P(y_i|\beta)P(\beta)]
+\]</span></p>
+<p><span class="math display">\[
+= \arg\max_{\beta}  \sum_{i=1}^N \left[ \log\left(\frac{1}{\sqrt{2\pi}\sigma } \exp\left\{-\frac{(y - \beta^T x)^2}{2\sigma^2}\right\}\right) + \log(\frac{1}{\sqrt{2\pi}\sigma'})- \frac{\beta^2}{2\sigma'^2} \right]
+\]</span></p>
+<p><span class="math display">\[
+= \arg\max_{\beta} \sum_{i=1}^N \left[ \log\left(\frac{1}{2\pi \sigma' \sigma}\right) - \frac{(y_i - \beta^T x_i)^2}{2\sigma^2} - \frac{\beta^2}{2\sigma'^2} \right]
+\]</span></p>
+<p><span class="math display">\[
+= \arg\min_\beta \sum_{i=1}^N \left[ \frac{(y_i - \beta^T x_i)^2}{2\sigma^2} + \frac{\beta^2}{2\sigma'^2} \right]
+\]</span></p>
+<p><span class="math display">\[
+= \arg\min_\beta (Y-X\beta)^T (\frac{1}{2\sigma^2}I_N) (Y-X\beta) + \frac{1}{\sigma'^2} \beta^2
+\]</span></p>
+<p>((Weighted least squares with the weight <span class="math inline">\(\frac{1}{2\sigma^2}I_N\)</span> and the penalty term <span class="math inline">\(\frac{1}{\sigma'^2} \beta^2\)</span></p>
+<p>If we let <span class="math inline">\(\lambda = \frac{1}{\sigma'^2}\)</span>, then the loss function is <span class="math inline">\(L(\beta) = \sum_{i=1}^N (\beta^T x_i - y_i)^2 + \lambda \beta^T \beta\)</span>, which is equivalent to the minimization of the regularized least squares in <span class="math inline">\(L^2\)</span>.</p>
+<ul>
+<li>Remark of the Ridge Regression</li>
+</ul>
+<p>Ridge regression solution is also the posterior mean, this is because the likelihood of the data given the parameters is Gaussian, and the prior is also Gaussian, which results in a posterior that is also Gaussian by the property of the conjugate prior of the Gaussian distribution, i.e.</p>
+<p><strong>NEED to ADD!</strong></p>
+</section>
+<section id="maximize-the-posterior-probability-to-get-the-point-estimation-of-beta-lasso" class="level4">
+<h4 class="anchored" data-anchor-id="maximize-the-posterior-probability-to-get-the-point-estimation-of-beta-lasso">Maximize the posterior probability to get the point estimation of <span class="math inline">\(\beta\)</span> – Lasso</h4>
+<p>Now the prior part is assumed to be a Laplace distribution, <span class="math inline">\(\beta \sim \text{Laplace}(0, b), i.e., P(\beta) = \frac{1}{2b} \exp\left(-\frac{|\beta|}{b}\right)\)</span>.</p>
+<p><span class="math display">\[
+\arg\max_{\beta}  \sum_{i=1}^N \left[ \log\left(\frac{1}{\sqrt{2\pi}\sigma_{\beta} } \exp\left\{-\frac{(y - \beta^T x)^2}{2\sigma^2}\right\}\right) - \log 2b - \frac{|\beta|}{b} \right]
+\]</span></p>
+<p><span class="math display">\[
+= \arg\max_{\beta} \sum_{i=1}^N \left[ \log\left(\frac{1}{\sqrt{2\pi}\sigma_{\beta} 2b}\right) - \frac{(y_i - \beta^T x_i)^2}{2\sigma^2} - \frac{|\beta|}{b} \right]
+\]</span></p>
+<p><span class="math display">\[
+= \arg\min_\beta \sum_{i=1}^N \left[ \frac{(y_i - \beta^T x_i)^2}{2\sigma^2} + \frac{|\beta|}{b} \right]
+\]</span></p>
+<p><span class="math display">\[
+= \arg\min_\beta (Y-X\beta)^T (\frac{1}{2\sigma^2}I_N) (Y-X\beta) + \frac{1}{b} |\beta|
+\]</span></p>
+<p>If we let <span class="math inline">\(\lambda = \frac{1}{b}\)</span>, then the loss function is <span class="math inline">\(L(\beta) = \sum_{i=1}^N (\beta^T x_i - y_i)^2 + \lambda |\beta|\)</span>, which is equivalent to the minimization of the regularized least squares in <span class="math inline">\(L^1\)</span>.</p>
+</section>
+</section>
+</section>
+<section id="further-check-lambda-and-corresponding-term-in-the-posterior-likelihoodhow-the-penalized-terms-are-derived-from-the-bayesian-perspective" class="level2">
+<h2 class="anchored" data-anchor-id="further-check-lambda-and-corresponding-term-in-the-posterior-likelihoodhow-the-penalized-terms-are-derived-from-the-bayesian-perspective">Further check <span class="math inline">\(\lambda\)</span> and corresponding term in the posterior likelihood–How the penalized terms are derived from the Bayesian perspective</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/clipboard-3590925628.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="162"></p>
+</figure>
+</div>
+<section id="gaussian" class="level3">
+<h3 class="anchored" data-anchor-id="gaussian">Gaussian:</h3>
+<p><span class="math inline">\(\lambda = \frac{1}{\sigma'^2}\)</span> i.e.&nbsp;Larger <span class="math inline">\(\lambda\)</span> with less <span class="math inline">\(\sigma'^2\)</span> means more regularization corresponding to smaller variance of the prior distribution (normal)</p>
+</section>
+<section id="laplace" class="level3">
+<h3 class="anchored" data-anchor-id="laplace">Laplace:</h3>
+<p><span class="math inline">\(\lambda = \frac{1}{b}\)</span> i.e.&nbsp;Larger <span class="math inline">\(\lambda\)</span> with less <span class="math inline">\(b\)</span> means more regularization corresponding to smaller variance of the prior distribution (laplace)</p>
+</section>
+</section>
+<section id="how-to-choose-the-lambda" class="level2">
+<h2 class="anchored" data-anchor-id="how-to-choose-the-lambda">How to choose the <span class="math inline">\(\lambda\)</span>?</h2>
+<ul>
+<li><strong>Cross-Validation</strong>: A common method to choose the regularization parameter <span class="math inline">\(\lambda\)</span> is through cross-validation. This involves splitting the data into training and validation sets, fitting the model with different values of <span class="math inline">\(\lambda\)</span>, and selecting the one that minimizes the prediction error on the validation set.</li>
+</ul>
+</section>
+<section id="lagrange-multipliers-perspective-of-penalized-models" class="level2">
+<h2 class="anchored" data-anchor-id="lagrange-multipliers-perspective-of-penalized-models">Lagrange Multipliers Perspective of Penalized Models</h2>
+<p>Lagrange multipliers provide a way to incorporate constraints into optimization problems. In the context of penalized regression, we can view the regularization term as a constraint on the size of the coefficients.</p>
+<p>Choose Lasoo as an example, the Lagrange multipliers perspective could be expressed as:</p>
+<p><span class="math display">\[
+\left( \hat{\alpha}, \hat{\beta} \right) = \arg \min \left\{ \sum_{i=1}^{N} \left( y_{i} - \alpha - \sum_{j} \beta_{j} x_{ij} \right)^{2} \right\} \quad \text{subject to} \quad \sum_{j} \left| \beta_{j} \right| \leq t.
+\]</span></p>
+<p>i.e.</p>
+<p><span class="math display">\[
+g(\beta)= \sum_{j} \left| \beta_{j} \right| - t \leq 0
+\]</span></p>
+<p><span class="math display">\[
+L(\alpha,\beta, \lambda) = \sum_{i=1}^{N} \left( y_{i} - \alpha - \sum_{j} \beta_{j} x_{ij} \right)^{2} + \lambda \left( \sum_{j} \left| \beta_{j} \right| - t \right)
+\]</span></p>
+<p><span class="math display">\[
+\partial L / \partial \alpha = 0
+\]</span></p>
+<p><span class="math display">\[
+\hat{\alpha} = \bar{y} - \sum_{j} \hat{\beta}_{j} \bar{x}_{j}
+\]</span></p>
+<p><span class="math display">\[
+\partial L / \partial \beta_{j} = 0
+\]</span></p>
+<p><span class="math display">\[
+-2 \sum_{i=1}^{N} x_{ij} \left( y_{i} - \hat{\alpha} - \sum_{k} \hat{\beta}_{k} x_{ik} \right) + \lambda \cdot sign(\hat{\beta}_{j}) = 0
+\]</span></p>
+<p>This may use the iterative method to solve the equation.</p>
+<p>Generally, the formula could be expressed as:</p>
+<p><span class="math display">\[
+\min_{\beta} \left\{ \lVert y - X\beta \rVert_2^2 + \lambda \lVert \beta \rVert_p^p \right\}
+\]</span></p>
+<p>where <span class="math inline">\(\lVert \beta \rVert_p^p\)</span> is the <span class="math inline">\(L^p\)</span> norm of the coefficients, which serves as a penalty term.</p>
+<p>The gradient of the objective function of Ridge with respect to <span class="math inline">\(\beta\)</span> is given by:</p>
+<p><span class="math display">\[
+\nabla J(\beta) = -2X^T(y - X\beta) + \lambda \nabla \lVert \beta \rVert_p^p
+\]</span></p>
+<p>(see matrix form (<a href="#MatrixFormRidge">Go to Matrix Form</a>) below for more details)</p>
+<p>This should be set to zero to find the optimal <span class="math inline">\(\beta\)</span>, which means the gradient of the loss function (the first term) is equal to the gradient of the penalty term (the second term) scaled by <span class="math inline">\(\lambda\)</span>.</p>
+</section>
+<section id="geometric-interpretation-of-penalized-models-in-lagrange-multipliers-perspective" class="level2">
+<h2 class="anchored" data-anchor-id="geometric-interpretation-of-penalized-models-in-lagrange-multipliers-perspective">Geometric Interpretation of Penalized Models in Lagrange Multipliers Perspective</h2>
+<p><img src="images/clipboard-4201197806.png" class="img-fluid"></p>
+</section>
+<section id="geometric-interpretation-of-lasso-in-lagrange-multipliers-perspective-and-bayesian-perspective" class="level2">
+<h2 class="anchored" data-anchor-id="geometric-interpretation-of-lasso-in-lagrange-multipliers-perspective-and-bayesian-perspective">Geometric Interpretation of LASSO in Lagrange Multipliers Perspective and Bayesian Perspective</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/clipboard-3731736673.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="404"></p>
+</figure>
+</div>
+</section>
+<section id="story" class="level2">
+<h2 class="anchored" data-anchor-id="story">Story</h2>
+<ul>
+<li>Humorous story</li>
+</ul>
+<p>Ryan Tibshirani interviews Rob Tibshirani about his work on the Lasso. Ryan said that when he was young he was into draw a diamond and circles and he happened to draw a circle that just touched the corner of a diamond and that led to a big idea Rob did not credited him for. “I did not cite you,” Rob answered humorously.</p>
+<ul>
+<li>Idea</li>
+</ul>
+<p>Yes, this is actually an interesting geometric meaning of LASSO.</p>
+<ul>
+<li>To me(a biostat student) —a big meaning!!</li>
+</ul>
+<p>Rob Tibshirani previously went back to his hometown of Toronto when he was a professor in preventative medicine and biostatistics and he was working on LASSO here.</p>
+</section>
+<section id="storyrob-tibshiranis-motivation" class="level2">
+<h2 class="anchored" data-anchor-id="storyrob-tibshiranis-motivation">Story—Rob Tibshirani’s motivation</h2>
+<ul>
+<li><p>Paper about non-negative garrote by Leo Breiman</p>
+<p>Leo started with least squares estimates and then multiply them by non-negative constants that were bounderd by some bounded T, which had the effect of producing a sparse solution because being non-negative with a bound of 0 forces sparsity.</p></li>
+<li><p>why choose “Lasso” name</p>
+<p>More gentle than garrote and more softer term than garrote</p></li>
+<li><p>Many similar things that time</p>
+<p>You do not need to do research on unique things, but promising things.</p></li>
+<li><p>From LM to GLM to Cox, this generalization is cool</p></li>
+</ul>
+</section>
+<section id="understanding-of-lambda" class="level2">
+<h2 class="anchored" data-anchor-id="understanding-of-lambda">Understanding of <span class="math inline">\(\lambda\)</span></h2>
+<p>Lagrange Multipliers help explain how <span class="math inline">\(\lambda\)</span> balances fitting the data well:</p>
+<p>Bigger <span class="math inline">\(\lambda\)</span> makes the ellipse (representing the constraint region in the parameter space in WLS, if it satisfies the homoscedasticity, it would be a circle) smaller. In this case, the gradient of <span class="math inline">\(\beta\)</span> becomes steeper with a larger <span class="math inline">\(\lambda\)</span>, which means that the optimization algorithm will grow the penalty of <span class="math inline">\(\beta\)</span> to stay within the shrinking feasible region. This helps reduce variance and prevent overfitting, but overly large <span class="math inline">\(\lambda\)</span> can cause underfitting.</p>
+</section>
+<section id="matrix-form-of-penalized-regression-models" class="level2">
+<h2 class="anchored" data-anchor-id="matrix-form-of-penalized-regression-models">Matrix Form of Penalized Regression Models</h2>
+<section id="MatrixFormRidge" class="level3">
+<h3 class="anchored" data-anchor-id="MatrixFormRidge">Ridge Regression</h3>
+<p><strong>Objective Function</strong></p>
+<p><span class="math display">\[
+\min_{\beta} \left\{ \lVert y - X\beta \rVert_2^2 + \lambda \lVert \beta \rVert_2^2 \right\}
+\]</span></p>
+<p><strong>Matrix Form Derivation:</strong></p>
+<ul>
+<li>Expand the loss term: <span class="math display">\[
+  \lVert y - X\beta \rVert_2^2 = (y - X\beta)^T (y - X\beta) = y^T y - 2y^T X\beta + \beta^T X^T X\beta.
+  \]</span></li>
+<li>Add the <span class="math inline">\(L^2\)</span> penalty: <span class="math display">\[
+  J(\beta) = y^T y - 2y^T X\beta + \beta^T X^T X\beta + \lambda \beta^T \beta.
+  \]</span></li>
+<li>Compute the gradient: <span class="math display">\[
+  \frac{\partial J}{\partial \beta} = \nabla J(\beta) = -2X^T(y - X\beta) + \lambda \nabla \lVert \beta \rVert_p^p=-2X^T y + 2X^T X\beta + 2\lambda \beta.
+  \]</span></li>
+<li>Set gradient to zero: <span class="math display">\[
+  -X^T y + X^T X\beta + \lambda \beta = 0 \implies (X^T X + \lambda I)\beta = X^T y.
+  \]</span></li>
+<li>Solve for <span class="math inline">\(\beta\)</span>: <span class="math display">\[
+  \hat{\beta}_{\text{ridge}} = (X^T X + \lambda I)^{-1} X^T y
+  \]</span></li>
+</ul>
+<p><strong>Why Regularization Helps:</strong></p>
+<p>The term <span class="math inline">\(\lambda I\)</span> ensures <span class="math inline">\(X^T X + \lambda I\)</span> is always invertible (since <span class="math inline">\(\lambda &gt; 0\)</span> adds positive values to the diagonal, guaranteeing full rank). This avoids singularity issues in <span class="math inline">\(X^T X\)</span> when features are collinear.</p>
+</section>
+</section>
+<section id="matrix-form-of-penalized-regression-models-1" class="level2">
+<h2 class="anchored" data-anchor-id="matrix-form-of-penalized-regression-models-1">Matrix Form of Penalized Regression Models</h2>
+<section id="lasso-regression" class="level3">
+<h3 class="anchored" data-anchor-id="lasso-regression">Lasso Regression</h3>
+<p>Formula:</p>
+<p><span class="math display">\[
+\hat{\beta}_{\text{lasso}} = \arg\min_{\beta} \left\{ \|y - X\beta\|_2^2 + \lambda \|\beta\|_1 \right\}
+\]</span></p>
+<p>Want</p>
+<p><span class="math display">\[
+\min_{\beta} \left\{ \|y - X\beta\|_2^2 + \lambda \sum_{j=1}^p |\beta_j| \right\}
+\]</span></p>
+<p>Matrix Form Derivation:</p>
+<p>Lasso lacks a closed-form solution due to the non-differentiable L1 norm. Instead, we use the subgradient optimality condition:</p>
+<ul>
+<li>Subgradient equation: <span class="math display">\[
+  -2X^T(y - X\beta) + \lambda \cdot \text{sign}(\beta) = 0,
+  \]</span> where <span class="math inline">\(\text{sign}(\beta)\)</span> is defined component-wise:</li>
+</ul>
+<p><strong>Key Insight</strong></p>
+<ul>
+<li>For <span class="math inline">\(\beta_j \neq 0\)</span>, the solution balances data fit and shrinkage.</li>
+<li>For <span class="math inline">\(\beta_j = 0\)</span>, the condition requires: <span class="math display">\[
+  \left| 2 \mathbf{x}_j^T (y - X\beta) \right| \leq \lambda.
+  \]</span> This induces sparsity (exact zeros in <span class="math inline">\(\beta\)</span>), which Ridge cannot achieve.</li>
+</ul>
+</section>
+</section>
+<section id="differences-between-lasso-and-ridge" class="level2">
+<h2 class="anchored" data-anchor-id="differences-between-lasso-and-ridge">Differences between Lasso and Ridge</h2>
+<ul>
+<li>Lasso could realize variable selection by shrinking some coefficients to exactly zero, while Ridge regression shrinks all coefficients but does not set any to zero.</li>
+</ul>
+</section>
+<section id="r-code-example-of-penalized-linear-regression-models" class="level2">
+<h2 class="anchored" data-anchor-id="r-code-example-of-penalized-linear-regression-models">R code Example of Penalized Linear Regression Models</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Install and load necessary packages</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="co"># install.packages("glmnet")</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="co"># install.packages("ISLR2")</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(glmnet)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Loading required package: Matrix</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Loaded glmnet 4.1-8</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ISLR2)</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Load the Hitters dataset</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(Hitters)</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Remove missing values</span></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>Hitters <span class="ot">&lt;-</span> <span class="fu">na.omit</span>(Hitters)</span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Define the predictor matrix and response variable</span></span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a><span class="co"># exclude the intercept term</span></span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">model.matrix</span>(Salary <span class="sc">~</span> ., Hitters)[, <span class="sc">-</span><span class="dv">1</span>] </span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> Hitters<span class="sc">$</span>Salary</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Split the data into training and test sets</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">1</span>)</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>train <span class="ot">&lt;-</span> <span class="fu">sample</span>(<span class="dv">1</span><span class="sc">:</span><span class="fu">nrow</span>(x), <span class="fu">nrow</span>(x) <span class="sc">/</span> <span class="dv">2</span>)</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>test <span class="ot">&lt;-</span> (<span class="sc">-</span>train)</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>y.test <span class="ot">&lt;-</span> y[test]</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Fit the Lasso model on the training data</span></span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>grid <span class="ot">&lt;-</span> <span class="dv">10</span><span class="sc">^</span><span class="fu">seq</span>(<span class="dv">10</span>, <span class="sc">-</span><span class="dv">2</span>, <span class="at">length =</span> <span class="dv">100</span>)</span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a><span class="co"># LASSO-LR</span></span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>lasso.mod <span class="ot">&lt;-</span> <span class="fu">glmnet</span>(x[train, ], y[train], <span class="at">alpha =</span> <span class="dv">1</span>,</span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>                    <span class="at">lambda =</span> grid, <span class="at">family =</span> <span class="st">'gaussian'</span>)</span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot the Lasso model to visualize coefficient paths</span></span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(lasso.mod)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in regularize.values(x, y, ties, missing(ties), na.rm = na.rm):
+collapsing to unique 'x' values</code></pre>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="stat_learn_files/figure-html/unnamed-chunk-2-1.png" class="img-fluid figure-img" width="576"></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Perform cross-validation to find the optimal lambda</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">1</span>)</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>cv.out <span class="ot">&lt;-</span> <span class="fu">cv.glmnet</span>(x[train, ], y[train], <span class="at">alpha =</span> <span class="dv">1</span>)</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(cv.out)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="stat_learn_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>bestlam <span class="ot">&lt;-</span> cv.out<span class="sc">$</span>lambda.min</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Make predictions on the test set using the optimal lambda</span></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>lasso.pred <span class="ot">&lt;-</span> <span class="fu">predict</span>(lasso.mod, <span class="at">s =</span> bestlam, <span class="at">newx =</span> x[test, ])</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>test.mse <span class="ot">&lt;-</span> <span class="fu">mean</span>((lasso.pred <span class="sc">-</span> y.test)<span class="sc">^</span><span class="dv">2</span>)</span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(<span class="fu">paste</span>(<span class="st">"Test MSE with Lasso and optimal lambda:"</span>, test.mse))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "Test MSE with Lasso and optimal lambda: 143673.618543046"</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Fit the Lasso model on the full dataset using the optimal lambda</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>lasso.full <span class="ot">&lt;-</span> <span class="fu">glmnet</span>(x, y, <span class="at">alpha =</span> <span class="dv">1</span>,<span class="at">lambda =</span> bestlam)</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>lasso.coef <span class="ot">&lt;-</span> <span class="fu">coef</span>(lasso.full)</span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(<span class="st">"Lasso coefficients on the full dataset:"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "Lasso coefficients on the full dataset:"</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(lasso.coef)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>20 x 1 sparse Matrix of class "dgCMatrix"
+                       s0
+(Intercept)   -3.42073206
+AtBat          .         
+Hits           2.02965136
+HmRun          .         
+Runs           .         
+RBI            .         
+Walks          2.24850782
+Years          .         
+CAtBat         .         
+CHits          .         
+CHmRun         0.04994886
+CRuns          0.22212444
+CRBI           0.40183027
+CWalks         .         
+LeagueN       20.83775664
+DivisionW   -116.39019204
+PutOuts        0.23768309
+Assists        .         
+Errors        -0.93567863
+NewLeagueN     .         </code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>result_matrix <span class="ot">&lt;-</span> <span class="fu">matrix</span>(lasso.coef[lasso.coef <span class="sc">!=</span> <span class="dv">0</span>], <span class="at">ncol =</span> <span class="dv">3</span>, <span class="at">byrow =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in matrix(lasso.coef[lasso.coef != 0], ncol = 3, byrow = TRUE): data
+length [10] is not a sub-multiple or multiple of the number of rows [4]</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(result_matrix)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>            [,1]         [,2]      [,3]
+[1,] -3.42073206    2.0296514 2.2485078
+[2,]  0.04994886    0.2221244 0.4018303
+[3,] 20.83775664 -116.3901920 0.2376831
+[4,] -0.93567863   -3.4207321 2.0296514</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 提取非零系数（排除截距）</span></span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>non_zero_coef <span class="ot">&lt;-</span> lasso.coef[lasso.coef[,<span class="dv">1</span>] <span class="sc">!=</span> <span class="dv">0</span>, ][<span class="sc">-</span><span class="dv">1</span>]  <span class="co"># 去除截距项</span></span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>coef_df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">Variable =</span> <span class="fu">names</span>(non_zero_coef),</span>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">Coefficient =</span> <span class="fu">as.numeric</span>(non_zero_coef)</span>
+<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-8"><a href="#cb18-8" aria-hidden="true" tabindex="-1"></a><span class="co"># 按系数绝对值排序</span></span>
+<span id="cb18-9"><a href="#cb18-9" aria-hidden="true" tabindex="-1"></a>coef_df <span class="ot">&lt;-</span> coef_df[<span class="fu">order</span>(<span class="fu">abs</span>(coef_df<span class="sc">$</span>Coefficient), <span class="at">decreasing =</span> <span class="cn">TRUE</span>), ]</span>
+<span id="cb18-10"><a href="#cb18-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-11"><a href="#cb18-11" aria-hidden="true" tabindex="-1"></a><span class="co"># 绘制条形图</span></span>
+<span id="cb18-12"><a href="#cb18-12" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb18-13"><a href="#cb18-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-14"><a href="#cb18-14" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(coef_df, <span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">reorder</span>(Variable, Coefficient), </span>
+<span id="cb18-15"><a href="#cb18-15" aria-hidden="true" tabindex="-1"></a>                   <span class="at">y =</span> Coefficient, </span>
+<span id="cb18-16"><a href="#cb18-16" aria-hidden="true" tabindex="-1"></a>                   <span class="at">fill =</span> <span class="fu">ifelse</span>(Coefficient <span class="sc">&gt;</span> <span class="dv">0</span>, <span class="st">"Positive"</span>, <span class="st">"Negative"</span>))) <span class="sc">+</span></span>
+<span id="cb18-17"><a href="#cb18-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">stat =</span> <span class="st">"identity"</span>) <span class="sc">+</span></span>
+<span id="cb18-18"><a href="#cb18-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">"Positive"</span> <span class="ot">=</span> <span class="st">"dodgerblue"</span>, <span class="st">"Negative"</span> <span class="ot">=</span> <span class="st">"firebrick"</span>)) <span class="sc">+</span></span>
+<span id="cb18-19"><a href="#cb18-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Lasso Regression Coefficients"</span>,</span>
+<span id="cb18-20"><a href="#cb18-20" aria-hidden="true" tabindex="-1"></a>       <span class="at">subtitle =</span> <span class="fu">paste</span>(<span class="st">"Optimal lambda ="</span>, <span class="fu">round</span>(bestlam, <span class="dv">4</span>)),</span>
+<span id="cb18-21"><a href="#cb18-21" aria-hidden="true" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">"Predictor Variables"</span>,</span>
+<span id="cb18-22"><a href="#cb18-22" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">"Coefficient Value"</span>,</span>
+<span id="cb18-23"><a href="#cb18-23" aria-hidden="true" tabindex="-1"></a>       <span class="at">fill =</span> <span class="st">"Effect Direction"</span>) <span class="sc">+</span></span>
+<span id="cb18-24"><a href="#cb18-24" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_flip</span>() <span class="sc">+</span>  <span class="co"># 水平条形图更易阅读变量名</span></span>
+<span id="cb18-25"><a href="#cb18-25" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
+<span id="cb18-26"><a href="#cb18-26" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">"top"</span>,</span>
+<span id="cb18-27"><a href="#cb18-27" aria-hidden="true" tabindex="-1"></a>        <span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">face =</span> <span class="st">"bold"</span>, <span class="at">size =</span> <span class="dv">14</span>),</span>
+<span id="cb18-28"><a href="#cb18-28" aria-hidden="true" tabindex="-1"></a>        <span class="at">axis.text.y =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">10</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="stat_learn_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="remark" class="level2">
+<h2 class="anchored" data-anchor-id="remark">Remark</h2>
+<p>Actually the penalized model could be applied in many regression models not only for linear regression, but also for logistic regression, Poisson regression, Cox regression, etc.</p>
+<p>The penalized terms could be added to the loss function of these models in a similar way.</p>
+<section id="r-code-of-penalized-cox-regression---lasso-using-glmnet-package" class="level3">
+<h3 class="anchored" data-anchor-id="r-code-of-penalized-cox-regression---lasso-using-glmnet-package">R Code of Penalized Cox Regression - Lasso using <code>glmnet</code> package</h3>
+<p>Want to minimize <span class="math display">\[
+-\log \left( \prod_{i:\delta_i=1} \frac{\exp\left(\sum_{j=1}^p x_{ij}\beta_j\right)}{\sum_{i':y_{i'}\geq y_i}\exp\left(\sum_{j=1}^p x_{i'j}\beta_j\right)} \right) + \lambda P(\beta),
+\]</span> where <span class="math inline">\(\delta_i\)</span> is the indicator function for censoring and <span class="math inline">\(P(\beta) = \sum_{j=1}^p \beta_j^2\)</span> corresponds to a ridge penalty, or <span class="math inline">\(P(\beta) = \sum_{j=1}^p |\beta_j|\)</span> corresponds to a lasso penalty.</p>
+<p><strong>R Code example for LASSO in Cox Regression applied on selecting important features of pesticide poisoning</strong></p>
+<p><a href="https://yutong04.github.io/">Click here to see LASSO code provided by SURF2024 instructed by Dr.He</a></p>
+</section>
+</section>
+</section>
+<section id="summary" class="level1">
+<h1>Summary</h1>
+<p>We have seen many perspectives to understand the penalized regression models, including:</p>
+<ul>
+<li><p>Bayes</p></li>
+<li><p>Lagrange multipliers</p></li>
+<li><p>matrix form</p></li>
+</ul>
+<section id="the-greatest-truths-are-the-simplest." class="level2">
+<h2 class="anchored" data-anchor-id="the-greatest-truths-are-the-simplest.">The greatest truths are the simplest.</h2>
+<p>Penalized regression models balance the trade-off between fitting the data well and keeping the model simple.</p>
+</section>
+<section id="everything-is-connected-to-each-other.-good-theory-interpretes-this-connection-interestingly." class="level2">
+<h2 class="anchored" data-anchor-id="everything-is-connected-to-each-other.-good-theory-interpretes-this-connection-interestingly.">Everything is connected to each other. Good theory interpretes this connection interestingly.</h2>
+<p><strong>Linear Regression</strong>: <strong>OLS</strong> and <strong>MLE</strong></p>
+<p><strong>Penalized regression models</strong>: <strong>Lagrange multiplier</strong> (restriction in the geometric meaning and also algebra interpretation) and <strong>Bayesian perspective</strong> (prior: history knowledge restriction)</p>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>
