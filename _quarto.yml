@@ -12,13 +12,12 @@ website:
         text: Homepage
      # - href: aph101.html
       #  text: Biostat and R
-            
+      - href: stat_learn.html
+        text: Statistical_Learning     
       - href: Mathematical Analysis 1.qmd
         text: Analysis 1
       - href: Calculus.html
         text: Calculus
-      - href: stat_learn.html
-        text: Statistical_Learning
       - href: mth107.html
         text: Advanced Linear Algebra
       - href: mth1113.qmd
