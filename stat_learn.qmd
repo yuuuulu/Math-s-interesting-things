@@ -507,7 +507,7 @@ where $\delta_i$ is the indicator function for censoring and $P(\beta) = \sum_{j
 [Click here to see LASSO code provided by SURF2024 instructed by Dr.He](https://yutong04.github.io/)
 
 
-# Summary
+## Summary
 
 We have seen many perspectives to understand the penalized regression models, including:
 
@@ -519,12 +519,67 @@ We have seen many perspectives to understand the penalized regression models, in
 
 
 
-## The greatest truths are the simplest.
+### The greatest truths are the simplest.
 
 Penalized regression models balance the trade-off between fitting the data well and keeping the model simple.
 
-## Everything is connected to each other. Good theory interpretes this connection interestingly.
+### Everything is connected to each other. Good theory interpretes this connection interestingly.
 
 **Linear Regression**: **OLS** and **MLE**
 
 **Penalized regression models**: **Lagrange multiplier** (restriction in the geometric meaning and also algebra interpretation) and **Bayesian perspective** (prior: history knowledge restriction)
+
+
+# Logistic regression
+
+
+Surf poster-- gradient accent
+
+
+# variable transformation formula--the first conversation with Dr. Zhu
+
+- idea: CDF's derivative is PDF and ..
+
+Assume we have two random variables $X$ and $Y$, where $Y = g(X)$ is a monotonic and differentiable function of $X$. Our goal is to find the probability density function $f_Y(y)$ of $Y$, given the probability density function $f_X(x)$ of $X$.
+
+### Variable Transformation Formula
+
+The variable transformation formula is stated as follows:
+$$f_Y(y) = f_X(g^{-1}(y)) \left| \frac{d}{dy} g^{-1}(y) \right|$$
+
+
+### Proof Process
+
+1. **Transformation of the Cumulative Distribution Function (CDF):**
+
+   First, consider the cumulative distribution function $F_Y(y)$ of $Y$, which is defined as the probability that $Y$ is less than or equal to $y$:
+   
+   $$F_Y(y) = P(Y \leq y)$$
+   Since $Y = g(X)$, we can express this probability in terms of $X$:
+   
+   $$F_Y(y) = P(g(X) \leq y)$$
+
+2. **Using the Inverse Function Transformation:**
+
+   If $g(x)$ is strictly increasing (or strictly decreasing), then $g(X) \leq y$ is equivalent to $X \leq g^{-1}(y)$ (or $X \geq g^{-1}(y)$). Therefore:
+   
+   $$F_Y(y) = P(X \leq g^{-1}(y)) = F_X(g^{-1}(y))$$
+   
+   where $F_X(x)$ is the cumulative distribution function of $X$.
+
+3. **Deriving the Probability Density Function (PDF):**
+
+   To find the probability density function $f_Y(y)$ of $Y$, we need to differentiate $F_Y(y)$ with respect to $y$:
+   
+   $$f_Y(y) = \frac{d}{dy} F_Y(y) = \frac{d}{dy} F_X(g^{-1}(y))$$
+   
+   Using the chain rule, we get:
+   
+   $$f_Y(y) = f_X(g^{-1}(y)) \frac{d}{dy} g^{-1}(y)$$
+
+4. **Considering the Absolute Value of the Derivative:**
+
+   Since the probability density function must be non-negative, we take the absolute value of the derivative:
+   $$f_Y(y) = f_X(g^{-1}(y)) \left| \frac{d}{dy} g^{-1}(y) \right|$$
+
+This completes the proof of the variable transformation formula. This formula is very useful when dealing with transformations of random variables, especially in statistical analysis and probability modeling. With this formula, we can derive the probability density function of one related random variable from the known probability density function of another.

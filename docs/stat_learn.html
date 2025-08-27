@@ -237,11 +237,17 @@ window.Quarto = {
   <ul class="collapse">
   <li><a href="#r-code-of-penalized-cox-regression---lasso-using-glmnet-package" id="toc-r-code-of-penalized-cox-regression---lasso-using-glmnet-package" class="nav-link" data-scroll-target="#r-code-of-penalized-cox-regression---lasso-using-glmnet-package">R Code of Penalized Cox Regression - Lasso using <code>glmnet</code> package</a></li>
   </ul></li>
-  </ul></li>
   <li><a href="#summary" id="toc-summary" class="nav-link" data-scroll-target="#summary">Summary</a>
   <ul class="collapse">
   <li><a href="#the-greatest-truths-are-the-simplest." id="toc-the-greatest-truths-are-the-simplest." class="nav-link" data-scroll-target="#the-greatest-truths-are-the-simplest.">The greatest truths are the simplest.</a></li>
   <li><a href="#everything-is-connected-to-each-other.-good-theory-interpretes-this-connection-interestingly." id="toc-everything-is-connected-to-each-other.-good-theory-interpretes-this-connection-interestingly." class="nav-link" data-scroll-target="#everything-is-connected-to-each-other.-good-theory-interpretes-this-connection-interestingly.">Everything is connected to each other. Good theory interpretes this connection interestingly.</a></li>
+  </ul></li>
+  </ul></li>
+  <li><a href="#logistic-regression" id="toc-logistic-regression" class="nav-link" data-scroll-target="#logistic-regression">Logistic regression</a></li>
+  <li><a href="#variable-transformation-formulathe-first-conversation-with-dr.-zhu" id="toc-variable-transformation-formulathe-first-conversation-with-dr.-zhu" class="nav-link" data-scroll-target="#variable-transformation-formulathe-first-conversation-with-dr.-zhu">variable transformation formula–the first conversation with Dr.&nbsp;Zhu</a>
+  <ul class="collapse">
+  <li><a href="#variable-transformation-formula" id="toc-variable-transformation-formula" class="nav-link" data-scroll-target="#variable-transformation-formula">Variable Transformation Formula</a></li>
+  <li><a href="#proof-process" id="toc-proof-process" class="nav-link" data-scroll-target="#proof-process">Proof Process</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -725,23 +731,59 @@ length [10] is not a sub-multiple or multiple of the number of rows [4]</code></
 <p><a href="https://yutong04.github.io/">Click here to see LASSO code provided by SURF2024 instructed by Dr.He</a></p>
 </section>
 </section>
-</section>
-<section id="summary" class="level1">
-<h1>Summary</h1>
+<section id="summary" class="level2">
+<h2 class="anchored" data-anchor-id="summary">Summary</h2>
 <p>We have seen many perspectives to understand the penalized regression models, including:</p>
 <ul>
 <li><p>Bayes</p></li>
 <li><p>Lagrange multipliers</p></li>
 <li><p>matrix form</p></li>
 </ul>
-<section id="the-greatest-truths-are-the-simplest." class="level2">
-<h2 class="anchored" data-anchor-id="the-greatest-truths-are-the-simplest.">The greatest truths are the simplest.</h2>
+<section id="the-greatest-truths-are-the-simplest." class="level3">
+<h3 class="anchored" data-anchor-id="the-greatest-truths-are-the-simplest.">The greatest truths are the simplest.</h3>
 <p>Penalized regression models balance the trade-off between fitting the data well and keeping the model simple.</p>
 </section>
-<section id="everything-is-connected-to-each-other.-good-theory-interpretes-this-connection-interestingly." class="level2">
-<h2 class="anchored" data-anchor-id="everything-is-connected-to-each-other.-good-theory-interpretes-this-connection-interestingly.">Everything is connected to each other. Good theory interpretes this connection interestingly.</h2>
+<section id="everything-is-connected-to-each-other.-good-theory-interpretes-this-connection-interestingly." class="level3">
+<h3 class="anchored" data-anchor-id="everything-is-connected-to-each-other.-good-theory-interpretes-this-connection-interestingly.">Everything is connected to each other. Good theory interpretes this connection interestingly.</h3>
 <p><strong>Linear Regression</strong>: <strong>OLS</strong> and <strong>MLE</strong></p>
 <p><strong>Penalized regression models</strong>: <strong>Lagrange multiplier</strong> (restriction in the geometric meaning and also algebra interpretation) and <strong>Bayesian perspective</strong> (prior: history knowledge restriction)</p>
+</section>
+</section>
+</section>
+<section id="logistic-regression" class="level1">
+<h1>Logistic regression</h1>
+<p>Surf poster– gradient accent</p>
+</section>
+<section id="variable-transformation-formulathe-first-conversation-with-dr.-zhu" class="level1">
+<h1>variable transformation formula–the first conversation with Dr.&nbsp;Zhu</h1>
+<ul>
+<li>idea: CDF’s derivative is PDF and ..</li>
+</ul>
+<p>Assume we have two random variables <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span>, where <span class="math inline">\(Y = g(X)\)</span> is a monotonic and differentiable function of <span class="math inline">\(X\)</span>. Our goal is to find the probability density function <span class="math inline">\(f_Y(y)\)</span> of <span class="math inline">\(Y\)</span>, given the probability density function <span class="math inline">\(f_X(x)\)</span> of <span class="math inline">\(X\)</span>.</p>
+<section id="variable-transformation-formula" class="level3">
+<h3 class="anchored" data-anchor-id="variable-transformation-formula">Variable Transformation Formula</h3>
+<p>The variable transformation formula is stated as follows: <span class="math display">\[f_Y(y) = f_X(g^{-1}(y)) \left| \frac{d}{dy} g^{-1}(y) \right|\]</span></p>
+</section>
+<section id="proof-process" class="level3">
+<h3 class="anchored" data-anchor-id="proof-process">Proof Process</h3>
+<ol type="1">
+<li><p><strong>Transformation of the Cumulative Distribution Function (CDF):</strong></p>
+<p>First, consider the cumulative distribution function <span class="math inline">\(F_Y(y)\)</span> of <span class="math inline">\(Y\)</span>, which is defined as the probability that <span class="math inline">\(Y\)</span> is less than or equal to <span class="math inline">\(y\)</span>:</p>
+<p><span class="math display">\[F_Y(y) = P(Y \leq y)\]</span> Since <span class="math inline">\(Y = g(X)\)</span>, we can express this probability in terms of <span class="math inline">\(X\)</span>:</p>
+<p><span class="math display">\[F_Y(y) = P(g(X) \leq y)\]</span></p></li>
+<li><p><strong>Using the Inverse Function Transformation:</strong></p>
+<p>If <span class="math inline">\(g(x)\)</span> is strictly increasing (or strictly decreasing), then <span class="math inline">\(g(X) \leq y\)</span> is equivalent to <span class="math inline">\(X \leq g^{-1}(y)\)</span> (or <span class="math inline">\(X \geq g^{-1}(y)\)</span>). Therefore:</p>
+<p><span class="math display">\[F_Y(y) = P(X \leq g^{-1}(y)) = F_X(g^{-1}(y))\]</span></p>
+<p>where <span class="math inline">\(F_X(x)\)</span> is the cumulative distribution function of <span class="math inline">\(X\)</span>.</p></li>
+<li><p><strong>Deriving the Probability Density Function (PDF):</strong></p>
+<p>To find the probability density function <span class="math inline">\(f_Y(y)\)</span> of <span class="math inline">\(Y\)</span>, we need to differentiate <span class="math inline">\(F_Y(y)\)</span> with respect to <span class="math inline">\(y\)</span>:</p>
+<p><span class="math display">\[f_Y(y) = \frac{d}{dy} F_Y(y) = \frac{d}{dy} F_X(g^{-1}(y))\]</span></p>
+<p>Using the chain rule, we get:</p>
+<p><span class="math display">\[f_Y(y) = f_X(g^{-1}(y)) \frac{d}{dy} g^{-1}(y)\]</span></p></li>
+<li><p><strong>Considering the Absolute Value of the Derivative:</strong></p>
+<p>Since the probability density function must be non-negative, we take the absolute value of the derivative: <span class="math display">\[f_Y(y) = f_X(g^{-1}(y)) \left| \frac{d}{dy} g^{-1}(y) \right|\]</span></p></li>
+</ol>
+<p>This completes the proof of the variable transformation formula. This formula is very useful when dealing with transformations of random variables, especially in statistical analysis and probability modeling. With this formula, we can derive the probability density function of one related random variable from the known probability density function of another.</p>
 
 
 </section>

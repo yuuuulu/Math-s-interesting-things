@@ -2028,5 +2028,12 @@
     "title": "JavaCPT105",
     "section": "Motivation",
     "text": "Motivation\n\nGod is in the details. –Today’s agile world needs the role of architecture with patient to internalize the idea of “small things matter”, especially in software development.\nCraftmanship is important in these two aspects:\n\nKnowledge of principles, patterns\nWork hard and practic/sweat over it and watch myself fail.\n\n\nSo, please grind the knowledge with forever practice!\n\nCode represents the details of the requirements.\ndefend the code with equal passion\nA programmer with “code-sense” will look at messy module and see options and variations, helping choose the best variation and guide to plot a sequence of behavior preserving transformations to get from here to there.\nA programmer who writes clean code is an artist who can take a blank screen through a series of transformations until it is an elegantly coded system"
+  },
+  {
+    "objectID": "stat_learn.html#summary",
+    "href": "stat_learn.html#summary",
+    "title": "Statistical_Learning (Mechine_Learning)",
+    "section": "Summary",
+    "text": "Summary\nWe have seen many perspectives to understand the penalized regression models, including:\n\nBayes\nLagrange multipliers\nmatrix form\n\n\nThe greatest truths are the simplest.\nPenalized regression models balance the trade-off between fitting the data well and keeping the model simple.\n\n\nEverything is connected to each other. Good theory interpretes this connection interestingly.\nLinear Regression: OLS and MLE\nPenalized regression models: Lagrange multiplier (restriction in the geometric meaning and also algebra interpretation) and Bayesian perspective (prior: history knowledge restriction)"
   }
 ]
