@@ -583,3 +583,36 @@ $$f_Y(y) = f_X(g^{-1}(y)) \left| \frac{d}{dy} g^{-1}(y) \right|$$
    $$f_Y(y) = f_X(g^{-1}(y)) \left| \frac{d}{dy} g^{-1}(y) \right|$$
 
 This completes the proof of the variable transformation formula. This formula is very useful when dealing with transformations of random variables, especially in statistical analysis and probability modeling. With this formula, we can derive the probability density function of one related random variable from the known probability density function of another.
+
+
+# Sampling Methods
+
+## Bootstrap
+
+### Example of calculating p-value of KS-statstics (Goodness of fit) with the problem of censoring data distribution estimate
+
+Research Question: No Difference Between Empirical (KM-method) and Theoretical Distributions(estimated) (Does My Interval-Censored Data Come from the Estimated (theoretical) Distribution?)
+
+**Null Hypothesis**: The data indeed come from the estimated distribution.
+
+**Steps of the Parametric Bootstrap Method**:
+
+1. **Simulate a World Where the Null Hypothesis Holds**:
+
+   - Generate a large number (B = 1000) of new samples from the estimated distribution.
+   
+   - Apply the exact same interval-censoring structure to each new sample (using the original left_times and right_times).
+   
+   **Assume the observed time points does not change**
+
+2. **Calculate Bootstrap KS Values**:
+
+   - For each bootstrap sample, compute the KS-statistic.
+   
+   - Obtain 1000 bootstrap KS values (ks_bootstrap).
+
+3. **Calculate the p-value**:
+   - p = (number of ks_bootstrap $≥$ ks_stat) / B (a larger ks-stat indicates a greater difference between the data and the distribution).
+
+**Interpretation**:
+- A large p-value: If H₀ is true, the probability of observing a KS statistic as large as that from the original data is high. Therefore, we do not have sufficient evidence to reject H₀ and conclude that the data likely come from this estimated distribution. This is because a large p-value implies that it is quite probable to generate a sample with a difference from the theoretical distribution at least as large as that observed in the current data. In other words, the observed difference is not unusual and falls within the normal range of random variation. Hence, we cannot reject the hypothesis that the data come from the estimated distribution.

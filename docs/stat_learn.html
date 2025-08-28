@@ -249,6 +249,13 @@ window.Quarto = {
   <li><a href="#variable-transformation-formula" id="toc-variable-transformation-formula" class="nav-link" data-scroll-target="#variable-transformation-formula">Variable Transformation Formula</a></li>
   <li><a href="#proof-process" id="toc-proof-process" class="nav-link" data-scroll-target="#proof-process">Proof Process</a></li>
   </ul></li>
+  <li><a href="#sampling-methods" id="toc-sampling-methods" class="nav-link" data-scroll-target="#sampling-methods">Sampling Methods</a>
+  <ul class="collapse">
+  <li><a href="#bootstrap" id="toc-bootstrap" class="nav-link" data-scroll-target="#bootstrap">Bootstrap</a>
+  <ul class="collapse">
+  <li><a href="#example-of-calculating-p-value-of-ks-statstics-goodness-of-fit-with-the-problem-of-censoring-data-distribution-estimate" id="toc-example-of-calculating-p-value-of-ks-statstics-goodness-of-fit-with-the-problem-of-censoring-data-distribution-estimate" class="nav-link" data-scroll-target="#example-of-calculating-p-value-of-ks-statstics-goodness-of-fit-with-the-problem-of-censoring-data-distribution-estimate">Example of calculating p-value of KS-statstics (Goodness of fit) with the problem of censoring data distribution estimate</a></li>
+  </ul></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
@@ -784,8 +791,38 @@ length [10] is not a sub-multiple or multiple of the number of rows [4]</code></
 <p>Since the probability density function must be non-negative, we take the absolute value of the derivative: <span class="math display">\[f_Y(y) = f_X(g^{-1}(y)) \left| \frac{d}{dy} g^{-1}(y) \right|\]</span></p></li>
 </ol>
 <p>This completes the proof of the variable transformation formula. This formula is very useful when dealing with transformations of random variables, especially in statistical analysis and probability modeling. With this formula, we can derive the probability density function of one related random variable from the known probability density function of another.</p>
+</section>
+</section>
+<section id="sampling-methods" class="level1">
+<h1>Sampling Methods</h1>
+<section id="bootstrap" class="level2">
+<h2 class="anchored" data-anchor-id="bootstrap">Bootstrap</h2>
+<section id="example-of-calculating-p-value-of-ks-statstics-goodness-of-fit-with-the-problem-of-censoring-data-distribution-estimate" class="level3">
+<h3 class="anchored" data-anchor-id="example-of-calculating-p-value-of-ks-statstics-goodness-of-fit-with-the-problem-of-censoring-data-distribution-estimate">Example of calculating p-value of KS-statstics (Goodness of fit) with the problem of censoring data distribution estimate</h3>
+<p>Research Question: No Difference Between Empirical (KM-method) and Theoretical Distributions(estimated) (Does My Interval-Censored Data Come from the Estimated (theoretical) Distribution?)</p>
+<p><strong>Null Hypothesis</strong>: The data indeed come from the estimated distribution.</p>
+<p><strong>Steps of the Parametric Bootstrap Method</strong>:</p>
+<ol type="1">
+<li><p><strong>Simulate a World Where the Null Hypothesis Holds</strong>:</p>
+<ul>
+<li><p>Generate a large number (B = 1000) of new samples from the estimated distribution.</p></li>
+<li><p>Apply the exact same interval-censoring structure to each new sample (using the original left_times and right_times).</p></li>
+</ul>
+<p><strong>Assume the observed time points does not change</strong></p></li>
+<li><p><strong>Calculate Bootstrap KS Values</strong>:</p>
+<ul>
+<li><p>For each bootstrap sample, compute the KS-statistic.</p></li>
+<li><p>Obtain 1000 bootstrap KS values (ks_bootstrap).</p></li>
+</ul></li>
+<li><p><strong>Calculate the p-value</strong>:</p>
+<ul>
+<li>p = (number of ks_bootstrap <span class="math inline">\(≥\)</span> ks_stat) / B (a larger ks-stat indicates a greater difference between the data and the distribution).</li>
+</ul></li>
+</ol>
+<p><strong>Interpretation</strong>: - A large p-value: If H₀ is true, the probability of observing a KS statistic as large as that from the original data is high. Therefore, we do not have sufficient evidence to reject H₀ and conclude that the data likely come from this estimated distribution. This is because a large p-value implies that it is quite probable to generate a sample with a difference from the theoretical distribution at least as large as that observed in the current data. In other words, the observed difference is not unusual and falls within the normal range of random variation. Hence, we cannot reject the hypothesis that the data come from the estimated distribution.</p>
 
 
+</section>
 </section>
 </section>
 
