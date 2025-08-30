@@ -2042,5 +2042,75 @@
     "title": "Statistical_Learning (Mechine_Learning)",
     "section": "Bootstrap",
     "text": "Bootstrap\n\nExample of calculating p-value of KS-statstics (Goodness of fit) with the problem of censoring data distribution estimate\nResearch Question: No Difference Between Empirical (KM-method) and Theoretical Distributions(estimated) (Does My Interval-Censored Data Come from the Estimated (theoretical) Distribution?)\nNull Hypothesis: The data indeed come from the estimated distribution.\nSteps of the Parametric Bootstrap Method:\n\nSimulate a World Where the Null Hypothesis Holds:\n\nGenerate a large number (B = 1000) of new samples from the estimated distribution.\nApply the exact same interval-censoring structure to each new sample (using the original left_times and right_times).\n\nAssume the observed time points does not change\nCalculate Bootstrap KS Values:\n\nFor each bootstrap sample, compute the KS-statistic.\nObtain 1000 bootstrap KS values (ks_bootstrap).\n\nCalculate the p-value:\n\np = (number of ks_bootstrap \\(≥\\) ks_stat) / B (a larger ks-stat indicates a greater difference between the data and the distribution).\n\n\nInterpretation: - A large p-value: If H₀ is true, the probability of observing a KS statistic as large as that from the original data is high. Therefore, we do not have sufficient evidence to reject H₀ and conclude that the data likely come from this estimated distribution. This is because a large p-value implies that it is quite probable to generate a sample with a difference from the theoretical distribution at least as large as that observed in the current data. In other words, the observed difference is not unusual and falls within the normal range of random variation. Hence, we cannot reject the hypothesis that the data come from the estimated distribution."
+  },
+  {
+    "objectID": "stat_learn.html#ols",
+    "href": "stat_learn.html#ols",
+    "title": "Statistical_Learning (Mechine_Learning)",
+    "section": "OLS",
+    "text": "OLS\n\\((y-Xw)^T \\Sigma ^{-1 }(y-Xw)\\)\nhomo assumption: \\(\\Sigma = \\sigma^2 I\\) (a circle) but this can also be generalized to \\(\\Sigma = \\sigma^2 D\\) where \\(D\\) is a diagonal matrix (a ellipse).\n\\(X(X^TX)^{-1}X^T\\) could be seen as a projection matrix, so if \\(w=(X^TX)^{-1}X^Ty\\), then \\(Xw\\) is the projection of \\(y\\) onto the column space of \\(X\\). From a similar perspective, \\(y-Xw\\) is the residual vector, which is orthogonal to the column space of \\(X\\).\nIf singular, use psuedo-inverse: \\(w = X^+y\\) that could be linked to SVD, where \\(X^+\\) is the Moore-Penrose pseudo-inverse of \\(X\\), where SVD is \\(X = U \\Sigma V^T\\), then \\(X^+ = V \\Sigma^{-1} U^T\\). –this case has many solutions.\nRemark: often we have n &gt;&gt; d+1, so the matrix \\(X^TX\\) is invertible, but if \\(n &lt; d+1\\), then \\(X^TX\\) is singular, and we need to use the pseudo-inverse. (\\(X^TX\\) is invertible if and only if the columns of \\(X\\) are linearly independent, which is often the case in practice when n &gt;&gt; d+1 , but not always.)\n\nEg Simplified Ceres Orbit Problem\nSEE PPT\nGauss’s secret Weapon —- observe 3 points\n200 years ago: agrues about the relationship of the linear regression and Normal — think of MLE"
+  },
+  {
+    "objectID": "stat_learn.html#regularization",
+    "href": "stat_learn.html#regularization",
+    "title": "Statistical_Learning (Mechine_Learning)",
+    "section": "regularization",
+    "text": "regularization\nIt is used to limited the situation that n &lt; d+1"
+  },
+  {
+    "objectID": "stat_learn.html#loss-function",
+    "href": "stat_learn.html#loss-function",
+    "title": "Statistical_Learning (Mechine_Learning)",
+    "section": "loss function",
+    "text": "loss function\nWhy using square : —- firstly, the geometric meaning — projection"
+  },
+  {
+    "objectID": "stat_learn.html#mle",
+    "href": "stat_learn.html#mle",
+    "title": "Statistical_Learning (Mechine_Learning)",
+    "section": "MLE",
+    "text": "MLE\nLikelihood function"
+  },
+  {
+    "objectID": "stat_learn.html#wls",
+    "href": "stat_learn.html#wls",
+    "title": "Statistical_Learning (Mechine_Learning)",
+    "section": "WLS",
+    "text": "WLS\nStandard OLS assumes Var(εi ) = σ2 (constant variance)\nReal-world data often violate this assumption, leading to heteroscedasticity (non-constant variance of errors), say Var(εi ) = σ2 Di or = \\(\\sigma_i^2\\), where Di is a diagonal matrix with varying variances for each observation.\nOLS estimates remain unbiased but not efficient (higher variance than necessary) when the errors are heteroscedastic (i.e., the variance of the errors is not constant across observations).\n( error satisfies the normal distribution” fix x and we hace the points follow normal distribution)\nConsequences of ignoring the heteroscedasticity:\n\\((y-Xw)^T \\Sigma ^{-1 }(y-Xw)\\)\n\\(\\Sigma ^{-1 }\\) is the weight matrix which is diagonal for uncorrelated errors and could be a full matrix for correlated errors.\nRemark: standard OLS assumes \\(\\Sigma = \\sigma^2 I\\), which is a special case of the weighted least squares where all weights are equal.\nProblem: can not know D, So we use the weighted least squares to estimate D (iteration)\nNow, the weighted residual sum of squares is:\n\\[\n(y-Xw)^T \\Sigma^{-1} (y-Xw)\n\\]\nLet $ D = ^{-1} $, then the weighted residual sum of squares is:\n\\[\ny^TDy - 2w^TX^TDy + w^TX^TDXw\n\\]\n\\(\\hat w_{OLS} = (X^TDX)^{-1}X^TDy\\)\nimport statsmodels.api as sm\nmod_wls = sm.WLS(y, X, weights=1/var_est)\nres_wls = mod_wls.fit()"
+  },
+  {
+    "objectID": "stat_learn.html#concave-and-hessian-matrices",
+    "href": "stat_learn.html#concave-and-hessian-matrices",
+    "title": "Statistical_Learning (Mechine_Learning)",
+    "section": "Concave and Hessian Matrices",
+    "text": "Concave and Hessian Matrices\n\n(Semi-) Defined Matrices\n\nFor the non-eigenvector x, the role of matrix A can be regarded as projecting x onto the eigenvector basis and then stretching it in each basis direction.\nSince the eigenvalues are non-negative, this stretching will not reverse the direction of the vector in any direction. From the perspective that the space of A is A linear combination of its eigenvector and generalized eigenvector, explain why the role of matrix A can be regarded as projecting x onto the basis of the eigenvectors:\nUnder the basis of the eigenvectors, when we apply A to a vector x, we can think of it as first projecting x onto the subspace spanned by the eigenvectors (write x as the linear combination of eigenvectors) and then stretching it according to the eigenvalues associated with those eigenvectors (Ax=\\(\\lambda\\)x).\n\nRemark: We do not need to consider the generalized eigenvectors here. This is because whether it is a positive definite, semi-positive definite or negative definite matrix, their eigenvectors can support the entire space without the need for generalized eigenvectors. This is because these matrices are all symmetric matrices, and symmetric matrices can always be diagonalized, and their eigenvectors can form a set of bases in space, i.e.\n\nSince \\[\nA = A ^T\n\\] and \\[\nAv_1 = \\lambda_1 v_1\n\\] and \\[\nAv_2 = \\lambda_2 v_2\n\\]\nthen we have\n\\[\nv_2^TAv_1=\\lambda_1 v_2^Tv_1\n\\] Since \\(A=A^T\\),\n\\[\nv_2^TAv_1 = (Av_2)^Tv_1 = \\lambda_2 v_2^Tv_1\n\\]\nSo\n\\[\n\\lambda_1 v_2^Tv_1 = \\lambda_2 v_2^Tv_1\n\\]\nSo\nif \\(\\lambda_1 \\neq \\lambda_2\\), then \\(v_2^Tv_1 = 0\\), which means \\(v_1\\) and \\(v_2\\) are orthogonal and therefore can form a basis of the space.\n\n\n??? USe the understanding of “Left multiplication” to explain why the role of matrix A can be regarded as projecting x onto the basis of the eigenvectors:\n\n\nif X has full rank, then \\(X^TX\\) is positive definite.\n\nSingular Value Decomposition (SVD):\n\nEvery matrix can be decomposed into the product of three matrices: \\(X = U \\Sigma V^T\\), where \\(U\\) and \\(V\\) are orthogonal matrices and \\(\\Sigma\\) is a diagonal matrix with non-negative entries (the singular values). The columns of \\(U\\) and \\(V\\) are the left and right singular vectors, respectively.\nWe now have:\n\\[\nX^TX= V \\Sigma^T U^T U \\Sigma V^T = V \\Sigma^2 V^T\n\\]\nThis means that the eigenvalues of \\(X^TX\\) are the squares of the singular values of \\(X\\), which are non-negative. Therefore, \\(X^TX\\) is positive semi-definite.\nWhen X has full rank, all singular values are positive, and thus \\(X^TX\\) is positive definite.\n\n\n\n\\(X^TAX\\) is a elliptic\n\\(A=Q\\Lambda Q^T\\) is the eigendecomposition of \\(A\\), where \\(Q\\) is an orthogonal matrix whose columns are the eigenvectors of \\(A\\), and \\(\\Lambda\\) is a diagonal matrix whose diagonal entries are the eigenvalues of \\(A\\).\nThen we have:\n\\[\nX^TAX = X^TQ\\Lambda Q^TX = (Q^TX)^T\\Lambda (Q^TX) = Y^T\\Lambda Y=1\n\\]\nwhere \\(Y = Q^TX\\).\nthis is saying \\(\\lambda_1 y_1^2 + \\lambda_2 y_2^2 + ... + \\lambda_n y_n^2 = 1\\), where \\(lambda_i\\) are the eigenvalues of \\(A\\) and \\(y_i\\) are the components of the vector \\(Y\\).\nIf \\(\\lambda_i &gt; 0\\) for all \\(i\\), then this is an equation of an ellipsoid in the space spanned by the eigenvectors of \\(A\\). A special case is when all \\(\\lambda_i\\) are equal, which corresponds to a sphere or a circle in 2D."
+  },
+  {
+    "objectID": "stat_learn.html#see-3-blue-1-brown-video",
+    "href": "stat_learn.html#see-3-blue-1-brown-video",
+    "title": "Statistical_Learning (Mechine_Learning)",
+    "section": "See 3 blue 1 brown video",
+    "text": "See 3 blue 1 brown video"
+  },
+  {
+    "objectID": "stat_learn.html#mahalanobis-distance-and-euclidean-distance",
+    "href": "stat_learn.html#mahalanobis-distance-and-euclidean-distance",
+    "title": "Statistical_Learning (Mechine_Learning)",
+    "section": "Mahalanobis distance and Euclidean distance",
+    "text": "Mahalanobis distance and Euclidean distance\nThe differences between the Euclidean distance and Mahalanobis is the linear transformation"
+  },
+  {
+    "objectID": "stat_learn.html#categorical-variables-in-linear-logistic-regression-reference-variable",
+    "href": "stat_learn.html#categorical-variables-in-linear-logistic-regression-reference-variable",
+    "title": "Statistical_Learning (Mechine_Learning)",
+    "section": "Categorical variables in linear / logistic regression –reference variable",
+    "text": "Categorical variables in linear / logistic regression –reference variable"
+  },
+  {
+    "objectID": "stat_learn.html#special-case-logistic-regression",
+    "href": "stat_learn.html#special-case-logistic-regression",
+    "title": "Statistical_Learning (Mechine_Learning)",
+    "section": "special case : logistic regression",
+    "text": "special case : logistic regression\n软分类 给概率而非分到哪一类\nSupervised learning: 既定事实—-0，1\nunsupervised learning： 无既定事实\n机器学习： 感知机 （单个神经元）\n非线形： 线性套函数\nwhy logit\nfrom 1 to 0 ;\nKL distance — whethere the 2 distributions have significant difference\n\nxiangnong 香浓shang\nno analytic solution – Newton-Raphson method (IRLS) / gradient Ascent – only suitable for concave function\n\\(w^{(t+1)} = w^{(t)} + \\lambda ..\\), where the lambda is called the rate of learning – too small might be slow, too large might be in a cycle which could not be converge\ntraining data and test data\n2,8 分 — cross validation\n\nExtension of logistic regression : Softmax regression (multinomial logistic regression) – multiple classes\n\nMicro jordan\nCross-entropy loss\nneural networks use it\nbatch effect\n可解释性神经网络： 给理由为什么lambda\nalphago： 不懂围棋的人用足够厉害的算法就能赢\nx \\(-&gt;^f\\) x — score to decide the goodness of f\nFisher’s discriminant analysis (FDA) – linear discriminant analysis (LDA) – linear regression\nContribution:\nPerceptron algorithm\nLDA has the analytic solution\n激活函数\nlogistic\nRELU\nPerceptron"
   }
 ]

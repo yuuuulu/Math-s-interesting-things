@@ -203,6 +203,46 @@ window.Quarto = {
    
   <ul>
   <li><a href="#referece-books" id="toc-referece-books" class="nav-link active" data-scroll-target="#referece-books">Referece books</a></li>
+  <li><a href="#linear-regression" id="toc-linear-regression" class="nav-link" data-scroll-target="#linear-regression">Linear Regression</a>
+  <ul class="collapse">
+  <li><a href="#ols" id="toc-ols" class="nav-link" data-scroll-target="#ols">OLS</a>
+  <ul class="collapse">
+  <li><a href="#eg-simplified-ceres-orbit-problem" id="toc-eg-simplified-ceres-orbit-problem" class="nav-link" data-scroll-target="#eg-simplified-ceres-orbit-problem">Eg Simplified Ceres Orbit Problem</a></li>
+  </ul></li>
+  <li><a href="#regularization" id="toc-regularization" class="nav-link" data-scroll-target="#regularization">regularization</a></li>
+  <li><a href="#loss-function" id="toc-loss-function" class="nav-link" data-scroll-target="#loss-function">loss function</a></li>
+  <li><a href="#mle" id="toc-mle" class="nav-link" data-scroll-target="#mle">MLE</a></li>
+  </ul></li>
+  <li><a href="#ps-parameter-statistics" id="toc-ps-parameter-statistics" class="nav-link" data-scroll-target="#ps-parameter-statistics">ps: parameter statistics</a>
+  <ul class="collapse">
+  <li><a href="#skew" id="toc-skew" class="nav-link" data-scroll-target="#skew">skew</a></li>
+  <li><a href="#wls" id="toc-wls" class="nav-link" data-scroll-target="#wls">WLS</a></li>
+  <li><a href="#concave-and-hessian-matrices" id="toc-concave-and-hessian-matrices" class="nav-link" data-scroll-target="#concave-and-hessian-matrices">Concave and Hessian Matrices</a>
+  <ul class="collapse">
+  <li><a href="#semi--defined-matrices" id="toc-semi--defined-matrices" class="nav-link" data-scroll-target="#semi--defined-matrices">(Semi-) Defined Matrices</a></li>
+  <li><a href="#xtax-is-a-elliptic" id="toc-xtax-is-a-elliptic" class="nav-link" data-scroll-target="#xtax-is-a-elliptic"><span class="math inline">\(X^TAX\)</span> is a elliptic</a></li>
+  </ul></li>
+  <li><a href="#see-3-blue-1-brown-video" id="toc-see-3-blue-1-brown-video" class="nav-link" data-scroll-target="#see-3-blue-1-brown-video">See 3 blue 1 brown video</a></li>
+  <li><a href="#mahalanobis-distance-and-euclidean-distance" id="toc-mahalanobis-distance-and-euclidean-distance" class="nav-link" data-scroll-target="#mahalanobis-distance-and-euclidean-distance">Mahalanobis distance and Euclidean distance</a></li>
+  <li><a href="#categorical-variables-in-linear-logistic-regression-reference-variable" id="toc-categorical-variables-in-linear-logistic-regression-reference-variable" class="nav-link" data-scroll-target="#categorical-variables-in-linear-logistic-regression-reference-variable">Categorical variables in linear / logistic regression –reference variable</a></li>
+  </ul></li>
+  <li><a href="#glm" id="toc-glm" class="nav-link" data-scroll-target="#glm">glm</a>
+  <ul class="collapse">
+  <li><a href="#special-case-logistic-regression" id="toc-special-case-logistic-regression" class="nav-link" data-scroll-target="#special-case-logistic-regression">special case : logistic regression</a></li>
+  </ul></li>
+  <li><a href="#logistic-regression" id="toc-logistic-regression" class="nav-link" data-scroll-target="#logistic-regression">Logistic regression</a></li>
+  <li><a href="#variable-transformation-formulathe-first-conversation-with-dr.-zhu" id="toc-variable-transformation-formulathe-first-conversation-with-dr.-zhu" class="nav-link" data-scroll-target="#variable-transformation-formulathe-first-conversation-with-dr.-zhu">variable transformation formula–the first conversation with Dr.&nbsp;Zhu</a>
+  <ul class="collapse">
+  <li><a href="#variable-transformation-formula" id="toc-variable-transformation-formula" class="nav-link" data-scroll-target="#variable-transformation-formula">Variable Transformation Formula</a></li>
+  <li><a href="#proof-process" id="toc-proof-process" class="nav-link" data-scroll-target="#proof-process">Proof Process</a></li>
+  </ul></li>
+  <li><a href="#sampling-methods" id="toc-sampling-methods" class="nav-link" data-scroll-target="#sampling-methods">Sampling Methods</a>
+  <ul class="collapse">
+  <li><a href="#bootstrap" id="toc-bootstrap" class="nav-link" data-scroll-target="#bootstrap">Bootstrap</a>
+  <ul class="collapse">
+  <li><a href="#example-of-calculating-p-value-of-ks-statstics-goodness-of-fit-with-the-problem-of-censoring-data-distribution-estimate" id="toc-example-of-calculating-p-value-of-ks-statstics-goodness-of-fit-with-the-problem-of-censoring-data-distribution-estimate" class="nav-link" data-scroll-target="#example-of-calculating-p-value-of-ks-statstics-goodness-of-fit-with-the-problem-of-censoring-data-distribution-estimate">Example of calculating p-value of KS-statstics (Goodness of fit) with the problem of censoring data distribution estimate</a></li>
+  </ul></li>
+  </ul></li>
   <li><a href="#some-perspectives-to-penalized-regression-mode" id="toc-some-perspectives-to-penalized-regression-mode" class="nav-link" data-scroll-target="#some-perspectives-to-penalized-regression-mode">Some Perspectives to Penalized Regression Mode</a>
   <ul class="collapse">
   <li><a href="#ols-mle-solution-to-lr-with-issues" id="toc-ols-mle-solution-to-lr-with-issues" class="nav-link" data-scroll-target="#ols-mle-solution-to-lr-with-issues">OLS / MLE Solution to LR with issues</a></li>
@@ -243,19 +283,6 @@ window.Quarto = {
   <li><a href="#everything-is-connected-to-each-other.-good-theory-interpretes-this-connection-interestingly." id="toc-everything-is-connected-to-each-other.-good-theory-interpretes-this-connection-interestingly." class="nav-link" data-scroll-target="#everything-is-connected-to-each-other.-good-theory-interpretes-this-connection-interestingly.">Everything is connected to each other. Good theory interpretes this connection interestingly.</a></li>
   </ul></li>
   </ul></li>
-  <li><a href="#logistic-regression" id="toc-logistic-regression" class="nav-link" data-scroll-target="#logistic-regression">Logistic regression</a></li>
-  <li><a href="#variable-transformation-formulathe-first-conversation-with-dr.-zhu" id="toc-variable-transformation-formulathe-first-conversation-with-dr.-zhu" class="nav-link" data-scroll-target="#variable-transformation-formulathe-first-conversation-with-dr.-zhu">variable transformation formula–the first conversation with Dr.&nbsp;Zhu</a>
-  <ul class="collapse">
-  <li><a href="#variable-transformation-formula" id="toc-variable-transformation-formula" class="nav-link" data-scroll-target="#variable-transformation-formula">Variable Transformation Formula</a></li>
-  <li><a href="#proof-process" id="toc-proof-process" class="nav-link" data-scroll-target="#proof-process">Proof Process</a></li>
-  </ul></li>
-  <li><a href="#sampling-methods" id="toc-sampling-methods" class="nav-link" data-scroll-target="#sampling-methods">Sampling Methods</a>
-  <ul class="collapse">
-  <li><a href="#bootstrap" id="toc-bootstrap" class="nav-link" data-scroll-target="#bootstrap">Bootstrap</a>
-  <ul class="collapse">
-  <li><a href="#example-of-calculating-p-value-of-ks-statstics-goodness-of-fit-with-the-problem-of-censoring-data-distribution-estimate" id="toc-example-of-calculating-p-value-of-ks-statstics-goodness-of-fit-with-the-problem-of-censoring-data-distribution-estimate" class="nav-link" data-scroll-target="#example-of-calculating-p-value-of-ks-statstics-goodness-of-fit-with-the-problem-of-censoring-data-distribution-estimate">Example of calculating p-value of KS-statstics (Goodness of fit) with the problem of censoring data distribution estimate</a></li>
-  </ul></li>
-  </ul></li>
   </ul>
 </nav>
     </div>
@@ -289,6 +316,249 @@ window.Quarto = {
 <li><p>Casella, G., &amp; Berger, R. (2024). Statistical inference. Chapman and Hall/CRC.</p></li>
 <li><p>Hastie, T., Tibshirani, R., &amp; Friedman, J. (2009). The elements of statistical learning.</p></li>
 </ul>
+</section>
+<section id="linear-regression" class="level1">
+<h1>Linear Regression</h1>
+<section id="ols" class="level2">
+<h2 class="anchored" data-anchor-id="ols">OLS</h2>
+<p><span class="math inline">\((y-Xw)^T \Sigma ^{-1 }(y-Xw)\)</span></p>
+<p>homo assumption: <span class="math inline">\(\Sigma = \sigma^2 I\)</span> (a circle) but this can also be generalized to <span class="math inline">\(\Sigma = \sigma^2 D\)</span> where <span class="math inline">\(D\)</span> is a diagonal matrix (a ellipse).</p>
+<p><span class="math inline">\(X(X^TX)^{-1}X^T\)</span> could be seen as a projection matrix, so if <span class="math inline">\(w=(X^TX)^{-1}X^Ty\)</span>, then <span class="math inline">\(Xw\)</span> is the projection of <span class="math inline">\(y\)</span> onto the column space of <span class="math inline">\(X\)</span>. From a similar perspective, <span class="math inline">\(y-Xw\)</span> is the residual vector, which is orthogonal to the column space of <span class="math inline">\(X\)</span>.</p>
+<p>If singular, use psuedo-inverse: <span class="math inline">\(w = X^+y\)</span> that could be linked to SVD, where <span class="math inline">\(X^+\)</span> is the Moore-Penrose pseudo-inverse of <span class="math inline">\(X\)</span>, where SVD is <span class="math inline">\(X = U \Sigma V^T\)</span>, then <span class="math inline">\(X^+ = V \Sigma^{-1} U^T\)</span>. –this case has many solutions.</p>
+<p>Remark: often we have n &gt;&gt; d+1, so the matrix <span class="math inline">\(X^TX\)</span> is invertible, but if <span class="math inline">\(n &lt; d+1\)</span>, then <span class="math inline">\(X^TX\)</span> is singular, and we need to use the pseudo-inverse. (<span class="math inline">\(X^TX\)</span> is invertible if and only if the columns of <span class="math inline">\(X\)</span> are linearly independent, which is often the case in practice when n &gt;&gt; d+1 , but not always.)</p>
+<section id="eg-simplified-ceres-orbit-problem" class="level3">
+<h3 class="anchored" data-anchor-id="eg-simplified-ceres-orbit-problem">Eg Simplified Ceres Orbit Problem</h3>
+<p>SEE PPT</p>
+<p>Gauss’s secret Weapon —- observe 3 points</p>
+<p>200 years ago: agrues about the relationship of the linear regression and Normal — think of MLE</p>
+</section>
+</section>
+<section id="regularization" class="level2">
+<h2 class="anchored" data-anchor-id="regularization">regularization</h2>
+<p>It is used to limited the situation that n &lt; d+1</p>
+</section>
+<section id="loss-function" class="level2">
+<h2 class="anchored" data-anchor-id="loss-function">loss function</h2>
+<p>Why using square : —- firstly, the geometric meaning — projection</p>
+</section>
+<section id="mle" class="level2">
+<h2 class="anchored" data-anchor-id="mle">MLE</h2>
+<p>Likelihood function</p>
+</section>
+</section>
+<section id="ps-parameter-statistics" class="level1">
+<h1>ps: parameter statistics</h1>
+<p>Suppose the data satisfies the normal distribution — in that case, we could use the mean = <span class="math inline">\(\mu = \frac{1}{n} \sum_{i=1}^n x_i\)</span></p>
+<section id="skew" class="level3">
+<h3 class="anchored" data-anchor-id="skew">skew</h3>
+<p>mean &gt; median &gt; mode — right skew</p>
+<p>skew should use median or mode to represent some characteristic</p>
+<p>Gaussion did not publish until 9 years later, he has really understood the relationship between linear regression and normal distribution,</p>
+</section>
+<section id="wls" class="level2">
+<h2 class="anchored" data-anchor-id="wls">WLS</h2>
+<p>Standard OLS assumes Var(εi ) = σ2 (constant variance)</p>
+<p>Real-world data often violate this assumption, leading to heteroscedasticity (non-constant variance of errors), say Var(εi ) = σ2 Di or = <span class="math inline">\(\sigma_i^2\)</span>, where Di is a diagonal matrix with varying variances for each observation.</p>
+<p>OLS estimates remain unbiased but not efficient (higher variance than necessary) when the errors are heteroscedastic (i.e., the variance of the errors is not constant across observations).</p>
+<p>( error satisfies the normal distribution” fix x and we hace the points follow normal distribution)</p>
+<p>Consequences of ignoring the heteroscedasticity:</p>
+<p><span class="math inline">\((y-Xw)^T \Sigma ^{-1 }(y-Xw)\)</span></p>
+<p><span class="math inline">\(\Sigma ^{-1 }\)</span> is the weight matrix which is diagonal for uncorrelated errors and could be a full matrix for correlated errors.</p>
+<p>Remark: standard OLS assumes <span class="math inline">\(\Sigma = \sigma^2 I\)</span>, which is a special case of the weighted least squares where all weights are equal.</p>
+<p>Problem: can not know D, So we use the weighted least squares to estimate D (iteration)</p>
+<p>Now, the weighted residual sum of squares is:</p>
+<p><span class="math display">\[
+(y-Xw)^T \Sigma^{-1} (y-Xw)
+\]</span></p>
+<p>Let $ D = ^{-1} $, then the weighted residual sum of squares is:</p>
+<p><span class="math display">\[
+y^TDy - 2w^TX^TDy + w^TX^TDXw
+\]</span></p>
+<p><span class="math inline">\(\hat w_{OLS} = (X^TDX)^{-1}X^TDy\)</span></p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> statsmodels.api <span class="im">as</span> sm</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>mod_wls <span class="op">=</span> sm.WLS(y, X, weights<span class="op">=</span><span class="dv">1</span><span class="op">/</span>var_est)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>res_wls <span class="op">=</span> mod_wls.fit()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="concave-and-hessian-matrices" class="level2">
+<h2 class="anchored" data-anchor-id="concave-and-hessian-matrices">Concave and Hessian Matrices</h2>
+<section id="semi--defined-matrices" class="level3">
+<h3 class="anchored" data-anchor-id="semi--defined-matrices">(Semi-) Defined Matrices</h3>
+<section id="for-the-non-eigenvector-x-the-role-of-matrix-a-can-be-regarded-as-projecting-x-onto-the-eigenvector-basis-and-then-stretching-it-in-each-basis-direction." class="level4">
+<h4 class="anchored" data-anchor-id="for-the-non-eigenvector-x-the-role-of-matrix-a-can-be-regarded-as-projecting-x-onto-the-eigenvector-basis-and-then-stretching-it-in-each-basis-direction.">For the non-eigenvector x, the role of matrix A can be regarded as projecting x onto the eigenvector basis and then stretching it in each basis direction.</h4>
+<p>Since the eigenvalues are non-negative, this stretching will not reverse the direction of the vector in any direction. From the perspective that the space of A is A linear combination of its eigenvector and generalized eigenvector, explain why the role of matrix A can be regarded as projecting x onto the basis of the eigenvectors:</p>
+<p>Under the basis of the eigenvectors, when we apply A to a vector x, we can think of it as first projecting x onto the subspace spanned by the eigenvectors (write x as the linear combination of eigenvectors) and then stretching it according to the eigenvalues associated with those eigenvectors (Ax=<span class="math inline">\(\lambda\)</span>x).</p>
+<ul>
+<li>Remark: We do not need to consider the generalized eigenvectors here. This is because whether it is a positive definite, semi-positive definite or negative definite matrix, their eigenvectors can support the entire space without the need for generalized eigenvectors. This is because these matrices are all symmetric matrices, and symmetric matrices can always be diagonalized, and their eigenvectors can form a set of bases in space, i.e.</li>
+</ul>
+<p>Since <span class="math display">\[
+A = A ^T
+\]</span> and <span class="math display">\[
+Av_1 = \lambda_1 v_1
+\]</span> and <span class="math display">\[
+Av_2 = \lambda_2 v_2
+\]</span></p>
+<p>then we have</p>
+<p><span class="math display">\[
+v_2^TAv_1=\lambda_1 v_2^Tv_1
+\]</span> Since <span class="math inline">\(A=A^T\)</span>,</p>
+<p><span class="math display">\[
+v_2^TAv_1 = (Av_2)^Tv_1 = \lambda_2 v_2^Tv_1
+\]</span></p>
+<p>So</p>
+<p><span class="math display">\[
+\lambda_1 v_2^Tv_1 = \lambda_2 v_2^Tv_1
+\]</span></p>
+<p>So</p>
+<p>if <span class="math inline">\(\lambda_1 \neq \lambda_2\)</span>, then <span class="math inline">\(v_2^Tv_1 = 0\)</span>, which means <span class="math inline">\(v_1\)</span> and <span class="math inline">\(v_2\)</span> are orthogonal and therefore can form a basis of the space.</p>
+</section>
+<section id="use-the-understanding-of-left-multiplication-to-explain-why-the-role-of-matrix-a-can-be-regarded-as-projecting-x-onto-the-basis-of-the-eigenvectors" class="level4">
+<h4 class="anchored" data-anchor-id="use-the-understanding-of-left-multiplication-to-explain-why-the-role-of-matrix-a-can-be-regarded-as-projecting-x-onto-the-basis-of-the-eigenvectors">??? USe the understanding of “Left multiplication” to explain why the role of matrix A can be regarded as projecting x onto the basis of the eigenvectors:</h4>
+</section>
+<section id="if-x-has-full-rank-then-xtx-is-positive-definite." class="level4">
+<h4 class="anchored" data-anchor-id="if-x-has-full-rank-then-xtx-is-positive-definite.">if X has full rank, then <span class="math inline">\(X^TX\)</span> is positive definite.</h4>
+<ul>
+<li>Singular Value Decomposition (SVD):</li>
+</ul>
+<p>Every matrix can be decomposed into the product of three matrices: <span class="math inline">\(X = U \Sigma V^T\)</span>, where <span class="math inline">\(U\)</span> and <span class="math inline">\(V\)</span> are orthogonal matrices and <span class="math inline">\(\Sigma\)</span> is a diagonal matrix with non-negative entries (the singular values). The columns of <span class="math inline">\(U\)</span> and <span class="math inline">\(V\)</span> are the left and right singular vectors, respectively.</p>
+<p>We now have:</p>
+<p><span class="math display">\[
+X^TX= V \Sigma^T U^T U \Sigma V^T = V \Sigma^2 V^T
+\]</span></p>
+<p>This means that the eigenvalues of <span class="math inline">\(X^TX\)</span> are the squares of the singular values of <span class="math inline">\(X\)</span>, which are non-negative. Therefore, <span class="math inline">\(X^TX\)</span> is positive semi-definite.</p>
+<p>When X has full rank, all singular values are positive, and thus <span class="math inline">\(X^TX\)</span> is positive definite.</p>
+</section>
+</section>
+<section id="xtax-is-a-elliptic" class="level3">
+<h3 class="anchored" data-anchor-id="xtax-is-a-elliptic"><span class="math inline">\(X^TAX\)</span> is a elliptic</h3>
+<p><span class="math inline">\(A=Q\Lambda Q^T\)</span> is the eigendecomposition of <span class="math inline">\(A\)</span>, where <span class="math inline">\(Q\)</span> is an orthogonal matrix whose columns are the eigenvectors of <span class="math inline">\(A\)</span>, and <span class="math inline">\(\Lambda\)</span> is a diagonal matrix whose diagonal entries are the eigenvalues of <span class="math inline">\(A\)</span>.</p>
+<p>Then we have:</p>
+<p><span class="math display">\[
+X^TAX = X^TQ\Lambda Q^TX = (Q^TX)^T\Lambda (Q^TX) = Y^T\Lambda Y=1
+\]</span></p>
+<p>where <span class="math inline">\(Y = Q^TX\)</span>.</p>
+<p>this is saying <span class="math inline">\(\lambda_1 y_1^2 + \lambda_2 y_2^2 + ... + \lambda_n y_n^2 = 1\)</span>, where <span class="math inline">\(lambda_i\)</span> are the eigenvalues of <span class="math inline">\(A\)</span> and <span class="math inline">\(y_i\)</span> are the components of the vector <span class="math inline">\(Y\)</span>.</p>
+<p>If <span class="math inline">\(\lambda_i &gt; 0\)</span> for all <span class="math inline">\(i\)</span>, then this is an equation of an ellipsoid in the space spanned by the eigenvectors of <span class="math inline">\(A\)</span>. A special case is when all <span class="math inline">\(\lambda_i\)</span> are equal, which corresponds to a sphere or a circle in 2D.</p>
+</section>
+</section>
+<section id="see-3-blue-1-brown-video" class="level2">
+<h2 class="anchored" data-anchor-id="see-3-blue-1-brown-video">See 3 blue 1 brown video</h2>
+</section>
+<section id="mahalanobis-distance-and-euclidean-distance" class="level2">
+<h2 class="anchored" data-anchor-id="mahalanobis-distance-and-euclidean-distance">Mahalanobis distance and Euclidean distance</h2>
+<p>The differences between the Euclidean distance and Mahalanobis is the linear transformation</p>
+</section>
+<section id="categorical-variables-in-linear-logistic-regression-reference-variable" class="level2">
+<h2 class="anchored" data-anchor-id="categorical-variables-in-linear-logistic-regression-reference-variable">Categorical variables in linear / logistic regression –reference variable</h2>
+</section>
+</section>
+<section id="glm" class="level1">
+<h1>glm</h1>
+<ul>
+<li><p>random component: <span class="math inline">\(p (y|\theta, \phi) = exp ( (y \theta - b(\theta)) / a(\phi) + c(y, \phi) )\)</span></p></li>
+<li><p>systematic component: <span class="math inline">\(Xw\)</span></p></li>
+<li><p>link function:</p></li>
+</ul>
+<section id="special-case-logistic-regression" class="level2">
+<h2 class="anchored" data-anchor-id="special-case-logistic-regression">special case : logistic regression</h2>
+<p>软分类 给概率而非分到哪一类</p>
+<p>Supervised learning: 既定事实—-0，1</p>
+<p>unsupervised learning： 无既定事实</p>
+<p>机器学习： 感知机 （单个神经元）</p>
+<p>非线形： 线性套函数</p>
+<p>why logit</p>
+<p>from 1 to 0 ;</p>
+<p>KL distance — whethere the 2 distributions have significant difference<br>
+</p>
+<p>xiangnong 香浓shang</p>
+<p>no analytic solution – Newton-Raphson method (IRLS) / gradient Ascent – only suitable for concave function</p>
+<p><span class="math inline">\(w^{(t+1)} = w^{(t)} + \lambda ..\)</span>, where the lambda is called the rate of learning – too small might be slow, too large might be in a cycle which could not be converge</p>
+<p>training data and test data</p>
+<p>2,8 分 — cross validation</p>
+<ul>
+<li>Extension of logistic regression : Softmax regression (multinomial logistic regression) – multiple classes</li>
+</ul>
+<p>Micro jordan</p>
+<p>Cross-entropy loss</p>
+<p>neural networks use it</p>
+<p>batch effect</p>
+<p>可解释性神经网络： 给理由为什么lambda</p>
+<p>alphago： 不懂围棋的人用足够厉害的算法就能赢</p>
+<p>x <span class="math inline">\(-&gt;^f\)</span> x — score to decide the goodness of f</p>
+<p>Fisher’s discriminant analysis (FDA) – linear discriminant analysis (LDA) – linear regression</p>
+<p>Contribution:</p>
+<p>Perceptron algorithm</p>
+<p>LDA has the analytic solution</p>
+<p>激活函数</p>
+<p>logistic</p>
+<p>RELU</p>
+<p>Perceptron</p>
+</section>
+</section>
+<section id="logistic-regression" class="level1">
+<h1>Logistic regression</h1>
+<p>Surf poster– gradient accent</p>
+</section>
+<section id="variable-transformation-formulathe-first-conversation-with-dr.-zhu" class="level1">
+<h1>variable transformation formula–the first conversation with Dr.&nbsp;Zhu</h1>
+<ul>
+<li>idea: CDF’s derivative is PDF and ..</li>
+</ul>
+<p>Assume we have two random variables <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span>, where <span class="math inline">\(Y = g(X)\)</span> is a monotonic and differentiable function of <span class="math inline">\(X\)</span>. Our goal is to find the probability density function <span class="math inline">\(f_Y(y)\)</span> of <span class="math inline">\(Y\)</span>, given the probability density function <span class="math inline">\(f_X(x)\)</span> of <span class="math inline">\(X\)</span>.</p>
+<section id="variable-transformation-formula" class="level3">
+<h3 class="anchored" data-anchor-id="variable-transformation-formula">Variable Transformation Formula</h3>
+<p>The variable transformation formula is stated as follows: <span class="math display">\[f_Y(y) = f_X(g^{-1}(y)) \left| \frac{d}{dy} g^{-1}(y) \right|\]</span></p>
+</section>
+<section id="proof-process" class="level3">
+<h3 class="anchored" data-anchor-id="proof-process">Proof Process</h3>
+<ol type="1">
+<li><p><strong>Transformation of the Cumulative Distribution Function (CDF):</strong></p>
+<p>First, consider the cumulative distribution function <span class="math inline">\(F_Y(y)\)</span> of <span class="math inline">\(Y\)</span>, which is defined as the probability that <span class="math inline">\(Y\)</span> is less than or equal to <span class="math inline">\(y\)</span>:</p>
+<p><span class="math display">\[F_Y(y) = P(Y \leq y)\]</span> Since <span class="math inline">\(Y = g(X)\)</span>, we can express this probability in terms of <span class="math inline">\(X\)</span>:</p>
+<p><span class="math display">\[F_Y(y) = P(g(X) \leq y)\]</span></p></li>
+<li><p><strong>Using the Inverse Function Transformation:</strong></p>
+<p>If <span class="math inline">\(g(x)\)</span> is strictly increasing (or strictly decreasing), then <span class="math inline">\(g(X) \leq y\)</span> is equivalent to <span class="math inline">\(X \leq g^{-1}(y)\)</span> (or <span class="math inline">\(X \geq g^{-1}(y)\)</span>). Therefore:</p>
+<p><span class="math display">\[F_Y(y) = P(X \leq g^{-1}(y)) = F_X(g^{-1}(y))\]</span></p>
+<p>where <span class="math inline">\(F_X(x)\)</span> is the cumulative distribution function of <span class="math inline">\(X\)</span>.</p></li>
+<li><p><strong>Deriving the Probability Density Function (PDF):</strong></p>
+<p>To find the probability density function <span class="math inline">\(f_Y(y)\)</span> of <span class="math inline">\(Y\)</span>, we need to differentiate <span class="math inline">\(F_Y(y)\)</span> with respect to <span class="math inline">\(y\)</span>:</p>
+<p><span class="math display">\[f_Y(y) = \frac{d}{dy} F_Y(y) = \frac{d}{dy} F_X(g^{-1}(y))\]</span></p>
+<p>Using the chain rule, we get:</p>
+<p><span class="math display">\[f_Y(y) = f_X(g^{-1}(y)) \frac{d}{dy} g^{-1}(y)\]</span></p></li>
+<li><p><strong>Considering the Absolute Value of the Derivative:</strong></p>
+<p>Since the probability density function must be non-negative, we take the absolute value of the derivative: <span class="math display">\[f_Y(y) = f_X(g^{-1}(y)) \left| \frac{d}{dy} g^{-1}(y) \right|\]</span></p></li>
+</ol>
+<p>This completes the proof of the variable transformation formula. This formula is very useful when dealing with transformations of random variables, especially in statistical analysis and probability modeling. With this formula, we can derive the probability density function of one related random variable from the known probability density function of another.</p>
+</section>
+</section>
+<section id="sampling-methods" class="level1">
+<h1>Sampling Methods</h1>
+<section id="bootstrap" class="level2">
+<h2 class="anchored" data-anchor-id="bootstrap">Bootstrap</h2>
+<section id="example-of-calculating-p-value-of-ks-statstics-goodness-of-fit-with-the-problem-of-censoring-data-distribution-estimate" class="level3">
+<h3 class="anchored" data-anchor-id="example-of-calculating-p-value-of-ks-statstics-goodness-of-fit-with-the-problem-of-censoring-data-distribution-estimate">Example of calculating p-value of KS-statstics (Goodness of fit) with the problem of censoring data distribution estimate</h3>
+<p>Research Question: No Difference Between Empirical (KM-method) and Theoretical Distributions(estimated) (Does My Interval-Censored Data Come from the Estimated (theoretical) Distribution?)</p>
+<p><strong>Null Hypothesis</strong>: The data indeed come from the estimated distribution.</p>
+<p><strong>Steps of the Parametric Bootstrap Method</strong>:</p>
+<ol type="1">
+<li><p><strong>Simulate a World Where the Null Hypothesis Holds</strong>:</p>
+<ul>
+<li><p>Generate a large number (B = 1000) of new samples from the estimated distribution.</p></li>
+<li><p>Apply the exact same interval-censoring structure to each new sample (using the original left_times and right_times).</p></li>
+</ul>
+<p><strong>Assume the observed time points does not change</strong></p></li>
+<li><p><strong>Calculate Bootstrap KS Values</strong>:</p>
+<ul>
+<li><p>For each bootstrap sample, compute the KS-statistic.</p></li>
+<li><p>Obtain 1000 bootstrap KS values (ks_bootstrap).</p></li>
+</ul></li>
+<li><p><strong>Calculate the p-value</strong>:</p>
+<ul>
+<li>p = (number of ks_bootstrap <span class="math inline">\(≥\)</span> ks_stat) / B (a larger ks-stat indicates a greater difference between the data and the distribution).</li>
+</ul></li>
+</ol>
+<p><strong>Interpretation</strong>: - A large p-value: If H₀ is true, the probability of observing a KS statistic as large as that from the original data is high. Therefore, we do not have sufficient evidence to reject H₀ and conclude that the data likely come from this estimated distribution. This is because a large p-value implies that it is quite probable to generate a sample with a difference from the theoretical distribution at least as large as that observed in the current data. In other words, the observed difference is not unusual and falls within the normal range of random variation. Hence, we cannot reject the hypothesis that the data come from the estimated distribution.</p>
+</section>
+</section>
 </section>
 <section id="some-perspectives-to-penalized-regression-mode" class="level1">
 <h1>Some Perspectives to Penalized Regression Mode</h1>
@@ -568,43 +838,43 @@ L(\alpha,\beta, \lambda) = \sum_{i=1}^{N} \left( y_{i} - \alpha - \sum_{j} \beta
 <section id="r-code-example-of-penalized-linear-regression-models" class="level2">
 <h2 class="anchored" data-anchor-id="r-code-example-of-penalized-linear-regression-models">R code Example of Penalized Linear Regression Models</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Install and load necessary packages</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="co"># install.packages("glmnet")</span></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="co"># install.packages("ISLR2")</span></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(glmnet)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Install and load necessary packages</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="co"># install.packages("glmnet")</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="co"># install.packages("ISLR2")</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(glmnet)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>Loading required package: Matrix</code></pre>
 </div>
 <div class="cell-output cell-output-stderr">
 <pre><code>Loaded glmnet 4.1-8</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ISLR2)</span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Load the Hitters dataset</span></span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(Hitters)</span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Remove missing values</span></span>
-<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>Hitters <span class="ot">&lt;-</span> <span class="fu">na.omit</span>(Hitters)</span>
-<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Define the predictor matrix and response variable</span></span>
-<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a><span class="co"># exclude the intercept term</span></span>
-<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">model.matrix</span>(Salary <span class="sc">~</span> ., Hitters)[, <span class="sc">-</span><span class="dv">1</span>] </span>
-<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> Hitters<span class="sc">$</span>Salary</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ISLR2)</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Load the Hitters dataset</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(Hitters)</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Remove missing values</span></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>Hitters <span class="ot">&lt;-</span> <span class="fu">na.omit</span>(Hitters)</span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Define the predictor matrix and response variable</span></span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a><span class="co"># exclude the intercept term</span></span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">model.matrix</span>(Salary <span class="sc">~</span> ., Hitters)[, <span class="sc">-</span><span class="dv">1</span>] </span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> Hitters<span class="sc">$</span>Salary</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Split the data into training and test sets</span></span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">1</span>)</span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>train <span class="ot">&lt;-</span> <span class="fu">sample</span>(<span class="dv">1</span><span class="sc">:</span><span class="fu">nrow</span>(x), <span class="fu">nrow</span>(x) <span class="sc">/</span> <span class="dv">2</span>)</span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>test <span class="ot">&lt;-</span> (<span class="sc">-</span>train)</span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>y.test <span class="ot">&lt;-</span> y[test]</span>
-<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Fit the Lasso model on the training data</span></span>
-<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>grid <span class="ot">&lt;-</span> <span class="dv">10</span><span class="sc">^</span><span class="fu">seq</span>(<span class="dv">10</span>, <span class="sc">-</span><span class="dv">2</span>, <span class="at">length =</span> <span class="dv">100</span>)</span>
-<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a><span class="co"># LASSO-LR</span></span>
-<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>lasso.mod <span class="ot">&lt;-</span> <span class="fu">glmnet</span>(x[train, ], y[train], <span class="at">alpha =</span> <span class="dv">1</span>,</span>
-<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>                    <span class="at">lambda =</span> grid, <span class="at">family =</span> <span class="st">'gaussian'</span>)</span>
-<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot the Lasso model to visualize coefficient paths</span></span>
-<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(lasso.mod)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Split the data into training and test sets</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">1</span>)</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>train <span class="ot">&lt;-</span> <span class="fu">sample</span>(<span class="dv">1</span><span class="sc">:</span><span class="fu">nrow</span>(x), <span class="fu">nrow</span>(x) <span class="sc">/</span> <span class="dv">2</span>)</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>test <span class="ot">&lt;-</span> (<span class="sc">-</span>train)</span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>y.test <span class="ot">&lt;-</span> y[test]</span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Fit the Lasso model on the training data</span></span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>grid <span class="ot">&lt;-</span> <span class="dv">10</span><span class="sc">^</span><span class="fu">seq</span>(<span class="dv">10</span>, <span class="sc">-</span><span class="dv">2</span>, <span class="at">length =</span> <span class="dv">100</span>)</span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a><span class="co"># LASSO-LR</span></span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>lasso.mod <span class="ot">&lt;-</span> <span class="fu">glmnet</span>(x[train, ], y[train], <span class="at">alpha =</span> <span class="dv">1</span>,</span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>                    <span class="at">lambda =</span> grid, <span class="at">family =</span> <span class="st">'gaussian'</span>)</span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot the Lasso model to visualize coefficient paths</span></span>
+<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(lasso.mod)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>Warning in regularize.values(x, y, ties, missing(ties), na.rm = na.rm):
 collapsing to unique 'x' values</code></pre>
@@ -618,10 +888,10 @@ collapsing to unique 'x' values</code></pre>
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Perform cross-validation to find the optimal lambda</span></span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">1</span>)</span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>cv.out <span class="ot">&lt;-</span> <span class="fu">cv.glmnet</span>(x[train, ], y[train], <span class="at">alpha =</span> <span class="dv">1</span>)</span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(cv.out)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Perform cross-validation to find the optimal lambda</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">1</span>)</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>cv.out <span class="ot">&lt;-</span> <span class="fu">cv.glmnet</span>(x[train, ], y[train], <span class="at">alpha =</span> <span class="dv">1</span>)</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(cv.out)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -631,22 +901,22 @@ collapsing to unique 'x' values</code></pre>
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>bestlam <span class="ot">&lt;-</span> cv.out<span class="sc">$</span>lambda.min</span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Make predictions on the test set using the optimal lambda</span></span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>lasso.pred <span class="ot">&lt;-</span> <span class="fu">predict</span>(lasso.mod, <span class="at">s =</span> bestlam, <span class="at">newx =</span> x[test, ])</span>
-<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>test.mse <span class="ot">&lt;-</span> <span class="fu">mean</span>((lasso.pred <span class="sc">-</span> y.test)<span class="sc">^</span><span class="dv">2</span>)</span>
-<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(<span class="fu">paste</span>(<span class="st">"Test MSE with Lasso and optimal lambda:"</span>, test.mse))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>bestlam <span class="ot">&lt;-</span> cv.out<span class="sc">$</span>lambda.min</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Make predictions on the test set using the optimal lambda</span></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>lasso.pred <span class="ot">&lt;-</span> <span class="fu">predict</span>(lasso.mod, <span class="at">s =</span> bestlam, <span class="at">newx =</span> x[test, ])</span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>test.mse <span class="ot">&lt;-</span> <span class="fu">mean</span>((lasso.pred <span class="sc">-</span> y.test)<span class="sc">^</span><span class="dv">2</span>)</span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(<span class="fu">paste</span>(<span class="st">"Test MSE with Lasso and optimal lambda:"</span>, test.mse))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "Test MSE with Lasso and optimal lambda: 143673.618543046"</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Fit the Lasso model on the full dataset using the optimal lambda</span></span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>lasso.full <span class="ot">&lt;-</span> <span class="fu">glmnet</span>(x, y, <span class="at">alpha =</span> <span class="dv">1</span>,<span class="at">lambda =</span> bestlam)</span>
-<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>lasso.coef <span class="ot">&lt;-</span> <span class="fu">coef</span>(lasso.full)</span>
-<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(<span class="st">"Lasso coefficients on the full dataset:"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Fit the Lasso model on the full dataset using the optimal lambda</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>lasso.full <span class="ot">&lt;-</span> <span class="fu">glmnet</span>(x, y, <span class="at">alpha =</span> <span class="dv">1</span>,<span class="at">lambda =</span> bestlam)</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>lasso.coef <span class="ot">&lt;-</span> <span class="fu">coef</span>(lasso.full)</span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(<span class="st">"Lasso coefficients on the full dataset:"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "Lasso coefficients on the full dataset:"</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(lasso.coef)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(lasso.coef)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>20 x 1 sparse Matrix of class "dgCMatrix"
                        s0
@@ -673,12 +943,12 @@ NewLeagueN     .         </code></pre>
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>result_matrix <span class="ot">&lt;-</span> <span class="fu">matrix</span>(lasso.coef[lasso.coef <span class="sc">!=</span> <span class="dv">0</span>], <span class="at">ncol =</span> <span class="dv">3</span>, <span class="at">byrow =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>result_matrix <span class="ot">&lt;-</span> <span class="fu">matrix</span>(lasso.coef[lasso.coef <span class="sc">!=</span> <span class="dv">0</span>], <span class="at">ncol =</span> <span class="dv">3</span>, <span class="at">byrow =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>Warning in matrix(lasso.coef[lasso.coef != 0], ncol = 3, byrow = TRUE): data
 length [10] is not a sub-multiple or multiple of the number of rows [4]</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(result_matrix)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(result_matrix)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>            [,1]         [,2]      [,3]
 [1,] -3.42073206    2.0296514 2.2485078
@@ -688,34 +958,34 @@ length [10] is not a sub-multiple or multiple of the number of rows [4]</code></
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 提取非零系数（排除截距）</span></span>
-<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>non_zero_coef <span class="ot">&lt;-</span> lasso.coef[lasso.coef[,<span class="dv">1</span>] <span class="sc">!=</span> <span class="dv">0</span>, ][<span class="sc">-</span><span class="dv">1</span>]  <span class="co"># 去除截距项</span></span>
-<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>coef_df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
-<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">Variable =</span> <span class="fu">names</span>(non_zero_coef),</span>
-<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">Coefficient =</span> <span class="fu">as.numeric</span>(non_zero_coef)</span>
-<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-8"><a href="#cb18-8" aria-hidden="true" tabindex="-1"></a><span class="co"># 按系数绝对值排序</span></span>
-<span id="cb18-9"><a href="#cb18-9" aria-hidden="true" tabindex="-1"></a>coef_df <span class="ot">&lt;-</span> coef_df[<span class="fu">order</span>(<span class="fu">abs</span>(coef_df<span class="sc">$</span>Coefficient), <span class="at">decreasing =</span> <span class="cn">TRUE</span>), ]</span>
-<span id="cb18-10"><a href="#cb18-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-11"><a href="#cb18-11" aria-hidden="true" tabindex="-1"></a><span class="co"># 绘制条形图</span></span>
-<span id="cb18-12"><a href="#cb18-12" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
-<span id="cb18-13"><a href="#cb18-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-14"><a href="#cb18-14" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(coef_df, <span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">reorder</span>(Variable, Coefficient), </span>
-<span id="cb18-15"><a href="#cb18-15" aria-hidden="true" tabindex="-1"></a>                   <span class="at">y =</span> Coefficient, </span>
-<span id="cb18-16"><a href="#cb18-16" aria-hidden="true" tabindex="-1"></a>                   <span class="at">fill =</span> <span class="fu">ifelse</span>(Coefficient <span class="sc">&gt;</span> <span class="dv">0</span>, <span class="st">"Positive"</span>, <span class="st">"Negative"</span>))) <span class="sc">+</span></span>
-<span id="cb18-17"><a href="#cb18-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">stat =</span> <span class="st">"identity"</span>) <span class="sc">+</span></span>
-<span id="cb18-18"><a href="#cb18-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">"Positive"</span> <span class="ot">=</span> <span class="st">"dodgerblue"</span>, <span class="st">"Negative"</span> <span class="ot">=</span> <span class="st">"firebrick"</span>)) <span class="sc">+</span></span>
-<span id="cb18-19"><a href="#cb18-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Lasso Regression Coefficients"</span>,</span>
-<span id="cb18-20"><a href="#cb18-20" aria-hidden="true" tabindex="-1"></a>       <span class="at">subtitle =</span> <span class="fu">paste</span>(<span class="st">"Optimal lambda ="</span>, <span class="fu">round</span>(bestlam, <span class="dv">4</span>)),</span>
-<span id="cb18-21"><a href="#cb18-21" aria-hidden="true" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">"Predictor Variables"</span>,</span>
-<span id="cb18-22"><a href="#cb18-22" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">"Coefficient Value"</span>,</span>
-<span id="cb18-23"><a href="#cb18-23" aria-hidden="true" tabindex="-1"></a>       <span class="at">fill =</span> <span class="st">"Effect Direction"</span>) <span class="sc">+</span></span>
-<span id="cb18-24"><a href="#cb18-24" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_flip</span>() <span class="sc">+</span>  <span class="co"># 水平条形图更易阅读变量名</span></span>
-<span id="cb18-25"><a href="#cb18-25" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
-<span id="cb18-26"><a href="#cb18-26" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">"top"</span>,</span>
-<span id="cb18-27"><a href="#cb18-27" aria-hidden="true" tabindex="-1"></a>        <span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">face =</span> <span class="st">"bold"</span>, <span class="at">size =</span> <span class="dv">14</span>),</span>
-<span id="cb18-28"><a href="#cb18-28" aria-hidden="true" tabindex="-1"></a>        <span class="at">axis.text.y =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">10</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 提取非零系数（排除截距）</span></span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>non_zero_coef <span class="ot">&lt;-</span> lasso.coef[lasso.coef[,<span class="dv">1</span>] <span class="sc">!=</span> <span class="dv">0</span>, ][<span class="sc">-</span><span class="dv">1</span>]  <span class="co"># 去除截距项</span></span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>coef_df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">Variable =</span> <span class="fu">names</span>(non_zero_coef),</span>
+<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">Coefficient =</span> <span class="fu">as.numeric</span>(non_zero_coef)</span>
+<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-8"><a href="#cb19-8" aria-hidden="true" tabindex="-1"></a><span class="co"># 按系数绝对值排序</span></span>
+<span id="cb19-9"><a href="#cb19-9" aria-hidden="true" tabindex="-1"></a>coef_df <span class="ot">&lt;-</span> coef_df[<span class="fu">order</span>(<span class="fu">abs</span>(coef_df<span class="sc">$</span>Coefficient), <span class="at">decreasing =</span> <span class="cn">TRUE</span>), ]</span>
+<span id="cb19-10"><a href="#cb19-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-11"><a href="#cb19-11" aria-hidden="true" tabindex="-1"></a><span class="co"># 绘制条形图</span></span>
+<span id="cb19-12"><a href="#cb19-12" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb19-13"><a href="#cb19-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-14"><a href="#cb19-14" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(coef_df, <span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">reorder</span>(Variable, Coefficient), </span>
+<span id="cb19-15"><a href="#cb19-15" aria-hidden="true" tabindex="-1"></a>                   <span class="at">y =</span> Coefficient, </span>
+<span id="cb19-16"><a href="#cb19-16" aria-hidden="true" tabindex="-1"></a>                   <span class="at">fill =</span> <span class="fu">ifelse</span>(Coefficient <span class="sc">&gt;</span> <span class="dv">0</span>, <span class="st">"Positive"</span>, <span class="st">"Negative"</span>))) <span class="sc">+</span></span>
+<span id="cb19-17"><a href="#cb19-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">stat =</span> <span class="st">"identity"</span>) <span class="sc">+</span></span>
+<span id="cb19-18"><a href="#cb19-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">"Positive"</span> <span class="ot">=</span> <span class="st">"dodgerblue"</span>, <span class="st">"Negative"</span> <span class="ot">=</span> <span class="st">"firebrick"</span>)) <span class="sc">+</span></span>
+<span id="cb19-19"><a href="#cb19-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Lasso Regression Coefficients"</span>,</span>
+<span id="cb19-20"><a href="#cb19-20" aria-hidden="true" tabindex="-1"></a>       <span class="at">subtitle =</span> <span class="fu">paste</span>(<span class="st">"Optimal lambda ="</span>, <span class="fu">round</span>(bestlam, <span class="dv">4</span>)),</span>
+<span id="cb19-21"><a href="#cb19-21" aria-hidden="true" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">"Predictor Variables"</span>,</span>
+<span id="cb19-22"><a href="#cb19-22" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">"Coefficient Value"</span>,</span>
+<span id="cb19-23"><a href="#cb19-23" aria-hidden="true" tabindex="-1"></a>       <span class="at">fill =</span> <span class="st">"Effect Direction"</span>) <span class="sc">+</span></span>
+<span id="cb19-24"><a href="#cb19-24" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_flip</span>() <span class="sc">+</span>  <span class="co"># 水平条形图更易阅读变量名</span></span>
+<span id="cb19-25"><a href="#cb19-25" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
+<span id="cb19-26"><a href="#cb19-26" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">"top"</span>,</span>
+<span id="cb19-27"><a href="#cb19-27" aria-hidden="true" tabindex="-1"></a>        <span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">face =</span> <span class="st">"bold"</span>, <span class="at">size =</span> <span class="dv">14</span>),</span>
+<span id="cb19-28"><a href="#cb19-28" aria-hidden="true" tabindex="-1"></a>        <span class="at">axis.text.y =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">10</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -754,72 +1024,6 @@ length [10] is not a sub-multiple or multiple of the number of rows [4]</code></
 <h3 class="anchored" data-anchor-id="everything-is-connected-to-each-other.-good-theory-interpretes-this-connection-interestingly.">Everything is connected to each other. Good theory interpretes this connection interestingly.</h3>
 <p><strong>Linear Regression</strong>: <strong>OLS</strong> and <strong>MLE</strong></p>
 <p><strong>Penalized regression models</strong>: <strong>Lagrange multiplier</strong> (restriction in the geometric meaning and also algebra interpretation) and <strong>Bayesian perspective</strong> (prior: history knowledge restriction)</p>
-</section>
-</section>
-</section>
-<section id="logistic-regression" class="level1">
-<h1>Logistic regression</h1>
-<p>Surf poster– gradient accent</p>
-</section>
-<section id="variable-transformation-formulathe-first-conversation-with-dr.-zhu" class="level1">
-<h1>variable transformation formula–the first conversation with Dr.&nbsp;Zhu</h1>
-<ul>
-<li>idea: CDF’s derivative is PDF and ..</li>
-</ul>
-<p>Assume we have two random variables <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span>, where <span class="math inline">\(Y = g(X)\)</span> is a monotonic and differentiable function of <span class="math inline">\(X\)</span>. Our goal is to find the probability density function <span class="math inline">\(f_Y(y)\)</span> of <span class="math inline">\(Y\)</span>, given the probability density function <span class="math inline">\(f_X(x)\)</span> of <span class="math inline">\(X\)</span>.</p>
-<section id="variable-transformation-formula" class="level3">
-<h3 class="anchored" data-anchor-id="variable-transformation-formula">Variable Transformation Formula</h3>
-<p>The variable transformation formula is stated as follows: <span class="math display">\[f_Y(y) = f_X(g^{-1}(y)) \left| \frac{d}{dy} g^{-1}(y) \right|\]</span></p>
-</section>
-<section id="proof-process" class="level3">
-<h3 class="anchored" data-anchor-id="proof-process">Proof Process</h3>
-<ol type="1">
-<li><p><strong>Transformation of the Cumulative Distribution Function (CDF):</strong></p>
-<p>First, consider the cumulative distribution function <span class="math inline">\(F_Y(y)\)</span> of <span class="math inline">\(Y\)</span>, which is defined as the probability that <span class="math inline">\(Y\)</span> is less than or equal to <span class="math inline">\(y\)</span>:</p>
-<p><span class="math display">\[F_Y(y) = P(Y \leq y)\]</span> Since <span class="math inline">\(Y = g(X)\)</span>, we can express this probability in terms of <span class="math inline">\(X\)</span>:</p>
-<p><span class="math display">\[F_Y(y) = P(g(X) \leq y)\]</span></p></li>
-<li><p><strong>Using the Inverse Function Transformation:</strong></p>
-<p>If <span class="math inline">\(g(x)\)</span> is strictly increasing (or strictly decreasing), then <span class="math inline">\(g(X) \leq y\)</span> is equivalent to <span class="math inline">\(X \leq g^{-1}(y)\)</span> (or <span class="math inline">\(X \geq g^{-1}(y)\)</span>). Therefore:</p>
-<p><span class="math display">\[F_Y(y) = P(X \leq g^{-1}(y)) = F_X(g^{-1}(y))\]</span></p>
-<p>where <span class="math inline">\(F_X(x)\)</span> is the cumulative distribution function of <span class="math inline">\(X\)</span>.</p></li>
-<li><p><strong>Deriving the Probability Density Function (PDF):</strong></p>
-<p>To find the probability density function <span class="math inline">\(f_Y(y)\)</span> of <span class="math inline">\(Y\)</span>, we need to differentiate <span class="math inline">\(F_Y(y)\)</span> with respect to <span class="math inline">\(y\)</span>:</p>
-<p><span class="math display">\[f_Y(y) = \frac{d}{dy} F_Y(y) = \frac{d}{dy} F_X(g^{-1}(y))\]</span></p>
-<p>Using the chain rule, we get:</p>
-<p><span class="math display">\[f_Y(y) = f_X(g^{-1}(y)) \frac{d}{dy} g^{-1}(y)\]</span></p></li>
-<li><p><strong>Considering the Absolute Value of the Derivative:</strong></p>
-<p>Since the probability density function must be non-negative, we take the absolute value of the derivative: <span class="math display">\[f_Y(y) = f_X(g^{-1}(y)) \left| \frac{d}{dy} g^{-1}(y) \right|\]</span></p></li>
-</ol>
-<p>This completes the proof of the variable transformation formula. This formula is very useful when dealing with transformations of random variables, especially in statistical analysis and probability modeling. With this formula, we can derive the probability density function of one related random variable from the known probability density function of another.</p>
-</section>
-</section>
-<section id="sampling-methods" class="level1">
-<h1>Sampling Methods</h1>
-<section id="bootstrap" class="level2">
-<h2 class="anchored" data-anchor-id="bootstrap">Bootstrap</h2>
-<section id="example-of-calculating-p-value-of-ks-statstics-goodness-of-fit-with-the-problem-of-censoring-data-distribution-estimate" class="level3">
-<h3 class="anchored" data-anchor-id="example-of-calculating-p-value-of-ks-statstics-goodness-of-fit-with-the-problem-of-censoring-data-distribution-estimate">Example of calculating p-value of KS-statstics (Goodness of fit) with the problem of censoring data distribution estimate</h3>
-<p>Research Question: No Difference Between Empirical (KM-method) and Theoretical Distributions(estimated) (Does My Interval-Censored Data Come from the Estimated (theoretical) Distribution?)</p>
-<p><strong>Null Hypothesis</strong>: The data indeed come from the estimated distribution.</p>
-<p><strong>Steps of the Parametric Bootstrap Method</strong>:</p>
-<ol type="1">
-<li><p><strong>Simulate a World Where the Null Hypothesis Holds</strong>:</p>
-<ul>
-<li><p>Generate a large number (B = 1000) of new samples from the estimated distribution.</p></li>
-<li><p>Apply the exact same interval-censoring structure to each new sample (using the original left_times and right_times).</p></li>
-</ul>
-<p><strong>Assume the observed time points does not change</strong></p></li>
-<li><p><strong>Calculate Bootstrap KS Values</strong>:</p>
-<ul>
-<li><p>For each bootstrap sample, compute the KS-statistic.</p></li>
-<li><p>Obtain 1000 bootstrap KS values (ks_bootstrap).</p></li>
-</ul></li>
-<li><p><strong>Calculate the p-value</strong>:</p>
-<ul>
-<li>p = (number of ks_bootstrap <span class="math inline">\(≥\)</span> ks_stat) / B (a larger ks-stat indicates a greater difference between the data and the distribution).</li>
-</ul></li>
-</ol>
-<p><strong>Interpretation</strong>: - A large p-value: If H₀ is true, the probability of observing a KS statistic as large as that from the original data is high. Therefore, we do not have sufficient evidence to reject H₀ and conclude that the data likely come from this estimated distribution. This is because a large p-value implies that it is quite probable to generate a sample with a difference from the theoretical distribution at least as large as that observed in the current data. In other words, the observed difference is not unusual and falls within the normal range of random variation. Hence, we cannot reject the hypothesis that the data come from the estimated distribution.</p>
 
 
 </section>

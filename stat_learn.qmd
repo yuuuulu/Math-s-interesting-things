@@ -13,6 +13,349 @@ editor: visual
 
 - Hastie, T., Tibshirani, R., & Friedman, J. (2009). The elements of statistical learning.
 
+# Linear Regression
+
+## OLS
+
+
+$(y-Xw)^T \Sigma ^{-1 }(y-Xw)$
+
+homo assumption: $\Sigma = \sigma^2 I$ (a circle) but this can also be generalized to $\Sigma = \sigma^2 D$ where $D$ is a diagonal matrix (a ellipse).
+
+$X(X^TX)^{-1}X^T$ could be seen as a projection matrix, so if $w=(X^TX)^{-1}X^Ty$, then $Xw$ is the projection of $y$ onto the column space of $X$. From a similar perspective, $y-Xw$ is the residual vector, which is orthogonal to the column space of $X$.
+
+If singular, use psuedo-inverse: $w = X^+y$ that could be linked to SVD, where $X^+$ is the Moore-Penrose pseudo-inverse of $X$, where SVD is $X = U \Sigma V^T$, then $X^+ = V \Sigma^{-1} U^T$. --this case has many solutions.
+
+Remark: often we have n \>\> d+1, so the matrix $X^TX$ is invertible, but if $n < d+1$, then $X^TX$ is singular, and we need to use the pseudo-inverse. ($X^TX$ is invertible if and only if the columns of $X$ are linearly independent, which is often the case in practice when n \>\> d+1 , but not always.)
+
+### Eg Simplified Ceres Orbit Problem
+
+SEE PPT
+
+Gauss's secret Weapon ---- observe 3 points
+
+200 years ago: agrues about the relationship of the linear regression and Normal --- think of MLE
+
+## regularization
+
+It is used to limited the situation that n \< d+1
+
+## loss function
+
+Why using square : ---- firstly, the geometric meaning --- projection
+
+## MLE
+
+Likelihood function
+
+# ps: parameter statistics
+
+Suppose the data satisfies the normal distribution --- in that case, we could use the mean = $\mu = \frac{1}{n} \sum_{i=1}^n x_i$
+
+### skew
+
+mean \> median \> mode --- right skew
+
+skew should use median or mode to represent some characteristic
+
+Gaussion did not publish until 9 years later, he has really understood the relationship between linear regression and normal distribution,
+
+## WLS
+
+Standard OLS assumes Var(εi ) = σ2 (constant variance)
+
+Real-world data often violate this assumption, leading to heteroscedasticity (non-constant variance of errors), say Var(εi ) = σ2 Di or = $\sigma_i^2$, where Di is a diagonal matrix with varying variances for each observation.
+
+OLS estimates remain unbiased but not efficient (higher variance than necessary) when the errors are heteroscedastic (i.e., the variance of the errors is not constant across observations).
+
+( error satisfies the normal distribution" fix x and we hace the points follow normal distribution)
+
+Consequences of ignoring the heteroscedasticity:
+
+$(y-Xw)^T \Sigma ^{-1 }(y-Xw)$
+
+$\Sigma ^{-1 }$ is the weight matrix which is diagonal for uncorrelated errors and could be a full matrix for correlated errors.
+
+Remark: standard OLS assumes $\Sigma = \sigma^2 I$, which is a special case of the weighted least squares where all weights are equal.
+
+Problem: can not know D, So we use the weighted least squares to estimate D (iteration)
+
+Now, the weighted residual sum of squares is:
+
+$$
+(y-Xw)^T \Sigma^{-1} (y-Xw)
+$$
+
+Let \$ D = \Sigma\^{-1} \$, then the weighted residual sum of squares is:
+
+$$
+y^TDy - 2w^TX^TDy + w^TX^TDXw
+$$
+
+$\hat w_{OLS} = (X^TDX)^{-1}X^TDy$
+
+``` python
+import statsmodels.api as sm
+mod_wls = sm.WLS(y, X, weights=1/var_est)
+res_wls = mod_wls.fit()
+```
+
+## Concave and Hessian Matrices
+
+
+### (Semi-) Defined Matrices
+
+#### For the non-eigenvector x, the role of matrix A can be regarded as projecting x onto the eigenvector basis and then stretching it in each basis direction. 
+
+Since the eigenvalues are non-negative, this stretching will not reverse the direction of the vector in any direction. From the perspective that the space of A is A linear combination of its eigenvector and generalized eigenvector, explain why the role of matrix A can be regarded as projecting x onto the basis of the eigenvectors:
+
+Under the basis of the eigenvectors, when we apply A to a vector x, we can think of it as first projecting x onto the subspace spanned by the eigenvectors (write x as the linear combination of eigenvectors) and then stretching it according to the eigenvalues associated with those eigenvectors (Ax=$\lambda$x).
+
+- Remark: We do not need to consider the generalized eigenvectors here. This is because whether it is a positive definite, semi-positive definite or negative definite matrix, their eigenvectors can support the entire space without the need for generalized eigenvectors. This is because these matrices are all symmetric matrices, and symmetric matrices can always be diagonalized, and their eigenvectors can form a set of bases in space, i.e.
+
+Since
+$$
+A = A ^T
+$$
+and
+$$
+Av_1 = \lambda_1 v_1
+$$
+and
+$$
+Av_2 = \lambda_2 v_2
+$$
+
+then we have 
+
+$$
+v_2^TAv_1=\lambda_1 v_2^Tv_1
+$$
+Since $A=A^T$,
+
+$$
+v_2^TAv_1 = (Av_2)^Tv_1 = \lambda_2 v_2^Tv_1
+$$
+
+So
+
+$$
+\lambda_1 v_2^Tv_1 = \lambda_2 v_2^Tv_1
+$$
+
+So
+
+if $\lambda_1 \neq \lambda_2$, then $v_2^Tv_1 = 0$, which means $v_1$ and $v_2$ are orthogonal and therefore can form a basis of the space.
+
+
+#### ??? USe the understanding of "Left multiplication" to explain why the role of matrix A can be regarded as projecting x onto the basis of the eigenvectors:
+
+
+#### if X has full rank, then $X^TX$ is positive definite.
+
+
+- Singular Value Decomposition (SVD):
+
+Every matrix can be decomposed into the product of three matrices: $X = U \Sigma V^T$, where $U$ and $V$ are orthogonal matrices and $\Sigma$ is a diagonal matrix with non-negative entries (the singular values). The columns of $U$ and $V$ are the left and right singular vectors, respectively.
+
+We now have:
+
+$$
+X^TX= V \Sigma^T U^T U \Sigma V^T = V \Sigma^2 V^T
+$$
+
+This means that the eigenvalues of $X^TX$ are the squares of the singular values of $X$, which are non-negative. Therefore, $X^TX$ is positive semi-definite.
+
+When X has full rank, all singular values are positive, and thus $X^TX$ is positive definite.
+
+
+
+### $X^TAX$ is a elliptic
+
+
+$A=Q\Lambda Q^T$ is the eigendecomposition of $A$, where $Q$ is an orthogonal matrix whose columns are the eigenvectors of $A$, and $\Lambda$ is a diagonal matrix whose diagonal entries are the eigenvalues of $A$. 
+
+Then we have:
+
+$$
+X^TAX = X^TQ\Lambda Q^TX = (Q^TX)^T\Lambda (Q^TX) = Y^T\Lambda Y=1
+$$
+
+where $Y = Q^TX$.
+
+this is saying $\lambda_1 y_1^2 + \lambda_2 y_2^2 + ... + \lambda_n y_n^2 = 1$, where $lambda_i$ are the eigenvalues of $A$ and $y_i$ are the components of the vector $Y$.
+
+If $\lambda_i > 0$ for all $i$, then this is an equation of an ellipsoid in the space spanned by the eigenvectors of $A$. A special case is when all $\lambda_i$ are equal, which corresponds to a sphere or a circle in 2D.
+
+
+
+## See 3 blue 1 brown video
+
+## Mahalanobis distance and Euclidean distance
+
+The differences between the Euclidean distance and Mahalanobis is the linear transformation
+
+## Categorical variables in linear / logistic regression --reference variable
+
+
+
+# glm
+
+-   random component: $p (y|\theta, \phi) = exp ( (y \theta - b(\theta)) / a(\phi) + c(y, \phi) )$
+
+-   systematic component: $Xw$
+
+-   link function:
+
+## special case : logistic regression
+
+软分类 给概率而非分到哪一类
+
+Supervised learning: 既定事实----0，1
+
+unsupervised learning： 无既定事实
+
+机器学习： 感知机 （单个神经元）
+
+非线形： 线性套函数
+
+why logit
+
+from 1 to 0 ;
+
+KL distance --- whethere the 2 distributions have significant difference\
+
+xiangnong 香浓shang
+
+no analytic solution -- Newton-Raphson method (IRLS) / gradient Ascent -- only suitable for concave function
+
+$w^{(t+1)} = w^{(t)} + \lambda ..$, where the lambda is called the rate of learning -- too small might be slow, too large might be in a cycle which could not be converge
+
+training data and test data
+
+2,8 分 --- cross validation
+
+-   Extension of logistic regression : Softmax regression (multinomial logistic regression) -- multiple classes
+
+Micro jordan
+
+Cross-entropy loss
+
+neural networks use it
+
+batch effect
+
+可解释性神经网络： 给理由为什么lambda
+
+alphago： 不懂围棋的人用足够厉害的算法就能赢
+
+x $->^f$ x --- score to decide the goodness of f
+
+Fisher's discriminant analysis (FDA) -- linear discriminant analysis (LDA) -- linear regression
+
+Contribution:
+
+Perceptron algorithm
+
+LDA has the analytic solution
+
+激活函数
+
+logistic
+
+RELU
+
+Perceptron
+
+
+# Logistic regression
+
+
+Surf poster-- gradient accent
+
+
+# variable transformation formula--the first conversation with Dr. Zhu
+
+- idea: CDF's derivative is PDF and ..
+
+Assume we have two random variables $X$ and $Y$, where $Y = g(X)$ is a monotonic and differentiable function of $X$. Our goal is to find the probability density function $f_Y(y)$ of $Y$, given the probability density function $f_X(x)$ of $X$.
+
+### Variable Transformation Formula
+
+The variable transformation formula is stated as follows:
+$$f_Y(y) = f_X(g^{-1}(y)) \left| \frac{d}{dy} g^{-1}(y) \right|$$
+
+
+### Proof Process
+
+1. **Transformation of the Cumulative Distribution Function (CDF):**
+
+   First, consider the cumulative distribution function $F_Y(y)$ of $Y$, which is defined as the probability that $Y$ is less than or equal to $y$:
+   
+   $$F_Y(y) = P(Y \leq y)$$
+   Since $Y = g(X)$, we can express this probability in terms of $X$:
+   
+   $$F_Y(y) = P(g(X) \leq y)$$
+
+2. **Using the Inverse Function Transformation:**
+
+   If $g(x)$ is strictly increasing (or strictly decreasing), then $g(X) \leq y$ is equivalent to $X \leq g^{-1}(y)$ (or $X \geq g^{-1}(y)$). Therefore:
+   
+   $$F_Y(y) = P(X \leq g^{-1}(y)) = F_X(g^{-1}(y))$$
+   
+   where $F_X(x)$ is the cumulative distribution function of $X$.
+
+3. **Deriving the Probability Density Function (PDF):**
+
+   To find the probability density function $f_Y(y)$ of $Y$, we need to differentiate $F_Y(y)$ with respect to $y$:
+   
+   $$f_Y(y) = \frac{d}{dy} F_Y(y) = \frac{d}{dy} F_X(g^{-1}(y))$$
+   
+   Using the chain rule, we get:
+   
+   $$f_Y(y) = f_X(g^{-1}(y)) \frac{d}{dy} g^{-1}(y)$$
+
+4. **Considering the Absolute Value of the Derivative:**
+
+   Since the probability density function must be non-negative, we take the absolute value of the derivative:
+   $$f_Y(y) = f_X(g^{-1}(y)) \left| \frac{d}{dy} g^{-1}(y) \right|$$
+
+This completes the proof of the variable transformation formula. This formula is very useful when dealing with transformations of random variables, especially in statistical analysis and probability modeling. With this formula, we can derive the probability density function of one related random variable from the known probability density function of another.
+
+
+# Sampling Methods
+
+## Bootstrap
+
+### Example of calculating p-value of KS-statstics (Goodness of fit) with the problem of censoring data distribution estimate
+
+Research Question: No Difference Between Empirical (KM-method) and Theoretical Distributions(estimated) (Does My Interval-Censored Data Come from the Estimated (theoretical) Distribution?)
+
+**Null Hypothesis**: The data indeed come from the estimated distribution.
+
+**Steps of the Parametric Bootstrap Method**:
+
+1. **Simulate a World Where the Null Hypothesis Holds**:
+
+   - Generate a large number (B = 1000) of new samples from the estimated distribution.
+   
+   - Apply the exact same interval-censoring structure to each new sample (using the original left_times and right_times).
+   
+   **Assume the observed time points does not change**
+
+2. **Calculate Bootstrap KS Values**:
+
+   - For each bootstrap sample, compute the KS-statistic.
+   
+   - Obtain 1000 bootstrap KS values (ks_bootstrap).
+
+3. **Calculate the p-value**:
+   - p = (number of ks_bootstrap $≥$ ks_stat) / B (a larger ks-stat indicates a greater difference between the data and the distribution).
+
+**Interpretation**:
+- A large p-value: If H₀ is true, the probability of observing a KS statistic as large as that from the original data is high. Therefore, we do not have sufficient evidence to reject H₀ and conclude that the data likely come from this estimated distribution. This is because a large p-value implies that it is quite probable to generate a sample with a difference from the theoretical distribution at least as large as that observed in the current data. In other words, the observed difference is not unusual and falls within the normal range of random variation. Hence, we cannot reject the hypothesis that the data come from the estimated distribution.
+
+
 # Some Perspectives to Penalized Regression Mode
 
 
@@ -529,90 +872,3 @@ Penalized regression models balance the trade-off between fitting the data well 
 
 **Penalized regression models**: **Lagrange multiplier** (restriction in the geometric meaning and also algebra interpretation) and **Bayesian perspective** (prior: history knowledge restriction)
 
-
-# Logistic regression
-
-
-Surf poster-- gradient accent
-
-
-# variable transformation formula--the first conversation with Dr. Zhu
-
-- idea: CDF's derivative is PDF and ..
-
-Assume we have two random variables $X$ and $Y$, where $Y = g(X)$ is a monotonic and differentiable function of $X$. Our goal is to find the probability density function $f_Y(y)$ of $Y$, given the probability density function $f_X(x)$ of $X$.
-
-### Variable Transformation Formula
-
-The variable transformation formula is stated as follows:
-$$f_Y(y) = f_X(g^{-1}(y)) \left| \frac{d}{dy} g^{-1}(y) \right|$$
-
-
-### Proof Process
-
-1. **Transformation of the Cumulative Distribution Function (CDF):**
-
-   First, consider the cumulative distribution function $F_Y(y)$ of $Y$, which is defined as the probability that $Y$ is less than or equal to $y$:
-   
-   $$F_Y(y) = P(Y \leq y)$$
-   Since $Y = g(X)$, we can express this probability in terms of $X$:
-   
-   $$F_Y(y) = P(g(X) \leq y)$$
-
-2. **Using the Inverse Function Transformation:**
-
-   If $g(x)$ is strictly increasing (or strictly decreasing), then $g(X) \leq y$ is equivalent to $X \leq g^{-1}(y)$ (or $X \geq g^{-1}(y)$). Therefore:
-   
-   $$F_Y(y) = P(X \leq g^{-1}(y)) = F_X(g^{-1}(y))$$
-   
-   where $F_X(x)$ is the cumulative distribution function of $X$.
-
-3. **Deriving the Probability Density Function (PDF):**
-
-   To find the probability density function $f_Y(y)$ of $Y$, we need to differentiate $F_Y(y)$ with respect to $y$:
-   
-   $$f_Y(y) = \frac{d}{dy} F_Y(y) = \frac{d}{dy} F_X(g^{-1}(y))$$
-   
-   Using the chain rule, we get:
-   
-   $$f_Y(y) = f_X(g^{-1}(y)) \frac{d}{dy} g^{-1}(y)$$
-
-4. **Considering the Absolute Value of the Derivative:**
-
-   Since the probability density function must be non-negative, we take the absolute value of the derivative:
-   $$f_Y(y) = f_X(g^{-1}(y)) \left| \frac{d}{dy} g^{-1}(y) \right|$$
-
-This completes the proof of the variable transformation formula. This formula is very useful when dealing with transformations of random variables, especially in statistical analysis and probability modeling. With this formula, we can derive the probability density function of one related random variable from the known probability density function of another.
-
-
-# Sampling Methods
-
-## Bootstrap
-
-### Example of calculating p-value of KS-statstics (Goodness of fit) with the problem of censoring data distribution estimate
-
-Research Question: No Difference Between Empirical (KM-method) and Theoretical Distributions(estimated) (Does My Interval-Censored Data Come from the Estimated (theoretical) Distribution?)
-
-**Null Hypothesis**: The data indeed come from the estimated distribution.
-
-**Steps of the Parametric Bootstrap Method**:
-
-1. **Simulate a World Where the Null Hypothesis Holds**:
-
-   - Generate a large number (B = 1000) of new samples from the estimated distribution.
-   
-   - Apply the exact same interval-censoring structure to each new sample (using the original left_times and right_times).
-   
-   **Assume the observed time points does not change**
-
-2. **Calculate Bootstrap KS Values**:
-
-   - For each bootstrap sample, compute the KS-statistic.
-   
-   - Obtain 1000 bootstrap KS values (ks_bootstrap).
-
-3. **Calculate the p-value**:
-   - p = (number of ks_bootstrap $≥$ ks_stat) / B (a larger ks-stat indicates a greater difference between the data and the distribution).
-
-**Interpretation**:
-- A large p-value: If H₀ is true, the probability of observing a KS statistic as large as that from the original data is high. Therefore, we do not have sufficient evidence to reject H₀ and conclude that the data likely come from this estimated distribution. This is because a large p-value implies that it is quite probable to generate a sample with a difference from the theoretical distribution at least as large as that observed in the current data. In other words, the observed difference is not unusual and falls within the normal range of random variation. Hence, we cannot reject the hypothesis that the data come from the estimated distribution.
