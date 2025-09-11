@@ -872,3 +872,138 @@ Penalized regression models balance the trade-off between fitting the data well 
 
 **Penalized regression models**: **Lagrange multiplier** (restriction in the geometric meaning and also algebra interpretation) and **Bayesian perspective** (prior: history knowledge restriction)
 
+
+
+# Background
+
+
+## proof of the Chebyshev's Inequality
+
+
+- Proof of the Markov's Inequality
+
+
+If $X$ is a non-negative random variable and $a>0$, then
+$$P(X\ge a) \le \frac{E(X)}{a}$$
+$$
+E(X) = \int_{0}^{\infty} x f(x) \, dx
+$$
+
+$$
+E(X) = \int_{0}^{a} x f(x) \, dx + \int_{a}^{\infty} x f(x) \, dx 
+$$
+$$
+\int_{a}^{\infty} x f(x) \, dx \geq \int_{a}^{\infty} a f(x) \, dx = a \int_{a}^{\infty} f(x) \, dx 
+$$
+
+$$
+E(X) \geq a \cdot P(X \geq a) 
+$$
+
+$$
+P(X \geq a) \leq \frac{E(X)}{a}
+$$
+
+- Proof of the Chebyshev's Inequality
+
+$$
+P((X - \mu)^2 \geq k^2\sigma^2) \leq \frac{E[(X-\mu)^2]}{k^2\sigma^2}=\frac{\sigma^2}{k^2\sigma^2} = \frac{1}{k^2}
+$$
+
+$$
+P(|X - \mu| \geq k\sigma) \leq \frac{1}{k^2}
+$$
+
+## Law of Large Numbers (LLN)
+
+
+- Weak Law of Large Numbers 
+
+Let $X_1, X_2, \ldots, X_n$ be a sequence of i.i.d. random variables with finite mean $\mu$ and finite variance $\sigma^2$. Then for any $\epsilon > 0$,
+
+$$
+P\left(\left|\frac{1}{n}\sum_{i=1}^{n} X_i - \mu\right| \geq \epsilon\right) \to 0 \text{ as } n \to \infty
+$$
+
+
+
+
+
+- Strong Law of Large Numbers
+
+Let $X_1, X_2, \ldots, X_n$ be a sequence of i.i.d. random variables with finite mean $\mu$. Then,
+
+$$
+P\left(\lim_{n \to \infty} \frac{1}{n}\sum_{i=1}^{n} X_i = \mu\right) = 1
+$$
+
+- Proof of the Weak Law of Large Numbers
+
+By Chebyshev's inequality, for any $\epsilon > 0$,
+
+$$
+P\left(\left|\frac{1}{n}\sum_{i=1}^{n} X_i - \mu\right| \geq \epsilon\right) \leq \frac{\text{Var}\left(\frac{1}{n}\sum_{i=1}^{n} X_i\right)}{\epsilon^2} = \frac{\frac{1}{n^2}\cdot n\sigma^2}{\epsilon^2}=\frac{\sigma^2/n}{\epsilon^2} = \frac{\sigma^2}{n\epsilon^2}
+$$
+
+As $n \to \infty$, $\frac{\sigma^2}{n\epsilon^2} \to 0$. Therefore,
+$$
+P\left(\left|\frac{1}{n}\sum_{i=1}^{n} X_i - \mu\right| \geq \epsilon\right) \to 0 \text{ as } n \to \infty
+$$
+
+- Proof of the Strong Law of Large Numbers (using Borel-Cantelli Lemma)
+
+By Chebyshev's inequality, for any $\epsilon > 0$,
+
+$$
+P\left(\left|\frac{1}{n}\sum_{i=1}^{n} X_i - \mu\right| \geq \epsilon\right) \leq \frac{\sigma^2}{n\epsilon^2}
+$$
+
+Let $A_n = \left\{\left|\frac{1}{n}\sum_{i=1}^{n} X_i - \mu\right| \geq \epsilon\right\}$. Then,
+
+$$
+\sum_{n=1}^{\infty} P(A_n) \leq \sum_{n=1}^{\infty} \frac{\sigma^2}{n\epsilon^2} = \frac{\sigma^2}{\epsilon^2} \sum_{n=1}^{\infty} \frac{1}{n}
+$$
+
+The series $\sum_{n=1}^{\infty} \frac{1}{n}$ diverges, so we cannot directly apply the Borel-Cantelli lemma here. However, we can use a modified approach.
+Consider the events $B_k = \left\{\left|\frac{1}{2^k}\sum_{i=1}^{2^k} X_i - \mu\right| \geq \epsilon\right\}$. Then,
+
+$$
+\sum_{k=1}^{\infty} P(B_k) \leq \sum_{k=1}^{\infty} \frac{\sigma^2}{2^k\epsilon^2} = \frac{\sigma^2}{\epsilon^2} \sum_{k=1}^{\infty} \frac{1}{2^k} = \frac{\sigma^2}{\epsilon^2}
+$$
+
+Since $\sum_{k=1}^{\infty} P(B_k)$ converges, by the Borel-Cantelli lemma(如果一系列独立事件的概率之和是有限的，那么这些事件无限次发生的概率为零), we have
+
+$$
+P(B_k \text{ i.o.}) = 0
+$$
+
+(i.o means infinitely often)
+
+(p.s.: if 一系列独立事件的概率之和是无限的，并且这些事件是独立的，那么这些事件无限次发生的概率为一)
+
+This implies that
+$$
+P\left(\lim_{k \to \infty} \frac{1}{2^k}\sum_{i=1}^{2^k} X_i = \mu\right) = 1
+$$
+
+
+Now, for any $n$, there exists a $k$ such that $2^k \leq n < 2^{k+1}$. We can write
+$$
+\frac{1}{n}\sum_{i=1}^{n} X_i = \frac{1}{n}\left(\sum_{i=1}^{2^k} X_i + \sum_{i=2^k+1}^{n} X_i\right)
+$$
+
+As $k \to \infty$, the second term $\frac{1}{n}\sum_{i=2^k+1}^{n} X_i$ becomes negligible, and we have
+$$
+\lim_{n \to \infty} \frac{1}{n}\sum_{i=1}^{n} X_i = \mu
+$$
+
+with probability 1. Therefore,
+
+$$
+P\left(\lim_{n \to \infty} \frac{1}{n}\sum_{i=1}^{n} X_i = \mu\right) = 1
+$$
+
+## Central Limit Theorem (CLT)
+
+
+

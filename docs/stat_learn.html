@@ -283,6 +283,12 @@ window.Quarto = {
   <li><a href="#everything-is-connected-to-each-other.-good-theory-interpretes-this-connection-interestingly." id="toc-everything-is-connected-to-each-other.-good-theory-interpretes-this-connection-interestingly." class="nav-link" data-scroll-target="#everything-is-connected-to-each-other.-good-theory-interpretes-this-connection-interestingly.">Everything is connected to each other. Good theory interpretes this connection interestingly.</a></li>
   </ul></li>
   </ul></li>
+  <li><a href="#background" id="toc-background" class="nav-link" data-scroll-target="#background">Background</a>
+  <ul class="collapse">
+  <li><a href="#proof-of-the-chebyshevs-inequality" id="toc-proof-of-the-chebyshevs-inequality" class="nav-link" data-scroll-target="#proof-of-the-chebyshevs-inequality">proof of the Chebyshev’s Inequality</a></li>
+  <li><a href="#law-of-large-numbers-lln" id="toc-law-of-large-numbers-lln" class="nav-link" data-scroll-target="#law-of-large-numbers-lln">Law of Large Numbers (LLN)</a></li>
+  <li><a href="#central-limit-theorem-clt" id="toc-central-limit-theorem-clt" class="nav-link" data-scroll-target="#central-limit-theorem-clt">Central Limit Theorem (CLT)</a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
@@ -1024,9 +1030,105 @@ length [10] is not a sub-multiple or multiple of the number of rows [4]</code></
 <h3 class="anchored" data-anchor-id="everything-is-connected-to-each-other.-good-theory-interpretes-this-connection-interestingly.">Everything is connected to each other. Good theory interpretes this connection interestingly.</h3>
 <p><strong>Linear Regression</strong>: <strong>OLS</strong> and <strong>MLE</strong></p>
 <p><strong>Penalized regression models</strong>: <strong>Lagrange multiplier</strong> (restriction in the geometric meaning and also algebra interpretation) and <strong>Bayesian perspective</strong> (prior: history knowledge restriction)</p>
-
-
 </section>
+</section>
+</section>
+<section id="background" class="level1">
+<h1>Background</h1>
+<section id="proof-of-the-chebyshevs-inequality" class="level2">
+<h2 class="anchored" data-anchor-id="proof-of-the-chebyshevs-inequality">proof of the Chebyshev’s Inequality</h2>
+<ul>
+<li>Proof of the Markov’s Inequality</li>
+</ul>
+<p>If <span class="math inline">\(X\)</span> is a non-negative random variable and <span class="math inline">\(a&gt;0\)</span>, then <span class="math display">\[P(X\ge a) \le \frac{E(X)}{a}\]</span> <span class="math display">\[
+E(X) = \int_{0}^{\infty} x f(x) \, dx
+\]</span></p>
+<p><span class="math display">\[
+E(X) = \int_{0}^{a} x f(x) \, dx + \int_{a}^{\infty} x f(x) \, dx
+\]</span> <span class="math display">\[
+\int_{a}^{\infty} x f(x) \, dx \geq \int_{a}^{\infty} a f(x) \, dx = a \int_{a}^{\infty} f(x) \, dx
+\]</span></p>
+<p><span class="math display">\[
+E(X) \geq a \cdot P(X \geq a)
+\]</span></p>
+<p><span class="math display">\[
+P(X \geq a) \leq \frac{E(X)}{a}
+\]</span></p>
+<ul>
+<li>Proof of the Chebyshev’s Inequality</li>
+</ul>
+<p><span class="math display">\[
+P((X - \mu)^2 \geq k^2\sigma^2) \leq \frac{E[(X-\mu)^2]}{k^2\sigma^2}=\frac{\sigma^2}{k^2\sigma^2} = \frac{1}{k^2}
+\]</span></p>
+<p><span class="math display">\[
+P(|X - \mu| \geq k\sigma) \leq \frac{1}{k^2}
+\]</span></p>
+</section>
+<section id="law-of-large-numbers-lln" class="level2">
+<h2 class="anchored" data-anchor-id="law-of-large-numbers-lln">Law of Large Numbers (LLN)</h2>
+<ul>
+<li>Weak Law of Large Numbers</li>
+</ul>
+<p>Let <span class="math inline">\(X_1, X_2, \ldots, X_n\)</span> be a sequence of i.i.d. random variables with finite mean <span class="math inline">\(\mu\)</span> and finite variance <span class="math inline">\(\sigma^2\)</span>. Then for any <span class="math inline">\(\epsilon &gt; 0\)</span>,</p>
+<p><span class="math display">\[
+P\left(\left|\frac{1}{n}\sum_{i=1}^{n} X_i - \mu\right| \geq \epsilon\right) \to 0 \text{ as } n \to \infty
+\]</span></p>
+<ul>
+<li>Strong Law of Large Numbers</li>
+</ul>
+<p>Let <span class="math inline">\(X_1, X_2, \ldots, X_n\)</span> be a sequence of i.i.d. random variables with finite mean <span class="math inline">\(\mu\)</span>. Then,</p>
+<p><span class="math display">\[
+P\left(\lim_{n \to \infty} \frac{1}{n}\sum_{i=1}^{n} X_i = \mu\right) = 1
+\]</span></p>
+<ul>
+<li>Proof of the Weak Law of Large Numbers</li>
+</ul>
+<p>By Chebyshev’s inequality, for any <span class="math inline">\(\epsilon &gt; 0\)</span>,</p>
+<p><span class="math display">\[
+P\left(\left|\frac{1}{n}\sum_{i=1}^{n} X_i - \mu\right| \geq \epsilon\right) \leq \frac{\text{Var}\left(\frac{1}{n}\sum_{i=1}^{n} X_i\right)}{\epsilon^2} = \frac{\frac{1}{n^2}\cdot n\sigma^2}{\epsilon^2}=\frac{\sigma^2/n}{\epsilon^2} = \frac{\sigma^2}{n\epsilon^2}
+\]</span></p>
+<p>As <span class="math inline">\(n \to \infty\)</span>, <span class="math inline">\(\frac{\sigma^2}{n\epsilon^2} \to 0\)</span>. Therefore, <span class="math display">\[
+P\left(\left|\frac{1}{n}\sum_{i=1}^{n} X_i - \mu\right| \geq \epsilon\right) \to 0 \text{ as } n \to \infty
+\]</span></p>
+<ul>
+<li>Proof of the Strong Law of Large Numbers (using Borel-Cantelli Lemma)</li>
+</ul>
+<p>By Chebyshev’s inequality, for any <span class="math inline">\(\epsilon &gt; 0\)</span>,</p>
+<p><span class="math display">\[
+P\left(\left|\frac{1}{n}\sum_{i=1}^{n} X_i - \mu\right| \geq \epsilon\right) \leq \frac{\sigma^2}{n\epsilon^2}
+\]</span></p>
+<p>Let <span class="math inline">\(A_n = \left\{\left|\frac{1}{n}\sum_{i=1}^{n} X_i - \mu\right| \geq \epsilon\right\}\)</span>. Then,</p>
+<p><span class="math display">\[
+\sum_{n=1}^{\infty} P(A_n) \leq \sum_{n=1}^{\infty} \frac{\sigma^2}{n\epsilon^2} = \frac{\sigma^2}{\epsilon^2} \sum_{n=1}^{\infty} \frac{1}{n}
+\]</span></p>
+<p>The series <span class="math inline">\(\sum_{n=1}^{\infty} \frac{1}{n}\)</span> diverges, so we cannot directly apply the Borel-Cantelli lemma here. However, we can use a modified approach. Consider the events <span class="math inline">\(B_k = \left\{\left|\frac{1}{2^k}\sum_{i=1}^{2^k} X_i - \mu\right| \geq \epsilon\right\}\)</span>. Then,</p>
+<p><span class="math display">\[
+\sum_{k=1}^{\infty} P(B_k) \leq \sum_{k=1}^{\infty} \frac{\sigma^2}{2^k\epsilon^2} = \frac{\sigma^2}{\epsilon^2} \sum_{k=1}^{\infty} \frac{1}{2^k} = \frac{\sigma^2}{\epsilon^2}
+\]</span></p>
+<p>Since <span class="math inline">\(\sum_{k=1}^{\infty} P(B_k)\)</span> converges, by the Borel-Cantelli lemma(如果一系列独立事件的概率之和是有限的，那么这些事件无限次发生的概率为零), we have</p>
+<p><span class="math display">\[
+P(B_k \text{ i.o.}) = 0
+\]</span></p>
+<p>(i.o means infinitely often)</p>
+<p>(p.s.: if 一系列独立事件的概率之和是无限的，并且这些事件是独立的，那么这些事件无限次发生的概率为一)</p>
+<p>This implies that <span class="math display">\[
+P\left(\lim_{k \to \infty} \frac{1}{2^k}\sum_{i=1}^{2^k} X_i = \mu\right) = 1
+\]</span></p>
+<p>Now, for any <span class="math inline">\(n\)</span>, there exists a <span class="math inline">\(k\)</span> such that <span class="math inline">\(2^k \leq n &lt; 2^{k+1}\)</span>. We can write <span class="math display">\[
+\frac{1}{n}\sum_{i=1}^{n} X_i = \frac{1}{n}\left(\sum_{i=1}^{2^k} X_i + \sum_{i=2^k+1}^{n} X_i\right)
+\]</span></p>
+<p>As <span class="math inline">\(k \to \infty\)</span>, the second term <span class="math inline">\(\frac{1}{n}\sum_{i=2^k+1}^{n} X_i\)</span> becomes negligible, and we have <span class="math display">\[
+\lim_{n \to \infty} \frac{1}{n}\sum_{i=1}^{n} X_i = \mu
+\]</span></p>
+<p>with probability 1. Therefore,</p>
+<p><span class="math display">\[
+P\left(\lim_{n \to \infty} \frac{1}{n}\sum_{i=1}^{n} X_i = \mu\right) = 1
+\]</span></p>
+</section>
+<section id="central-limit-theorem-clt" class="level2">
+<h2 class="anchored" data-anchor-id="central-limit-theorem-clt">Central Limit Theorem (CLT)</h2>
+
+
 </section>
 </section>
 
