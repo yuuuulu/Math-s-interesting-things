@@ -21,7 +21,13 @@ website:
       - href: mth107.html
         text: Advanced Linear Algebra
       - href: mth1113.qmd
-        text: Prob, and Stat.        
+        text: Prob, and Stat.
+      - href: APH203.html
+        text: Time Series
+      #- href: mth203.html
+        #text: Operation Research
+      #- href: mth208.html
+        #text: Numerical Analysis
       - href: Simple_ODEs.html # future: mth208 content ++
         text: ODEs and PDEs with codes
       - href: mth106.html

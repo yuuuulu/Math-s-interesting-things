@@ -6,10 +6,6 @@ format: html
 
 
 
-# I am deeply grateful to Dr. Daiyun Huang for his instruction in the "Biostatistics and R" course. This course has marked the beginning of my formal journey into the world of statistics. Dr. Huang's comprehensive lectures, accompanied by detailed PDFs, and his well-structured labs, complete with code and solutions, have been incredibly valuable. They have not only enhanced my intuitive grasp of key statistical concepts, such as hypothesis testing, but also significantly improved my proficiency in R programming.
-
-# Also, thanks to the course of "Introduction to statistical learning" by Trevor Hastie and Robert Tibshirani. Examples in their online video lectures are abundant and easy to understand for beginners. Their book is also very helpful.
-
 # Review and Introduce Probability
 
 ## Simple Random Sampling
@@ -115,6 +111,19 @@ histogram <- ggplot(data.frame(p = p_hat_values), aes(x=p))+
   theme_minimal()
 
 print(histogram)
+
+```
+
+## simple simulation
+
+The relative frequency will converge to the theoretical value (0.6) as the number of trials increases.
+
+```{r}
+x <- rbinom(10000, 1, 0.6)
+y <- cumsum(x) # cumulative sum
+z <- y / (1:10000) # relative frequency--the total number of successes divided by the total number of trials
+plot(z,main="convergence of relatve frequence",xlab="time",ylab="relative frequence",col="blue",type="l")# type="l" means line plot
+abline(h=0.6,col="red") # theoretical value
 
 ```
 
@@ -1231,7 +1240,7 @@ $$
 ## Example of two-sample Variance Test
 
 | $H_0$                                                      | Test Statistic               | $H_1$                                                                                        | Rejection Region                          |
-|:-----------------------------------------------------------|:-----------------------------|:---------------------------------------------------------------------------------------------|:------------------------------------------|
+|:---------------|:--------------|:-------------------------|:--------------|
 | $\sigma_1^2=\sigma_2^2$                                    | $f=\frac{s_1^2}{s_2^2}$      | $\sigma_1^2<\sigma_2^2$                                                                      | $f<f_\alpha\left(\nu_1, \nu_2\right)$     |
 |                                                            |                              | $\sigma_1^2>\sigma_2^2$                                                                      | $f>f_{1-\alpha}\left(\nu_1, \nu_2\right)$ |
 |                                                            | $\sigma_1^2 \neq \sigma_2^2$ | $f<f_{\alpha / 2}\left(\nu_1, \nu_2\right)$ or $f>f_{1-\alpha / 2}\left(\nu_1, \nu_2\right)$ |                                           |
@@ -1256,7 +1265,7 @@ $H_0: \mu_1=\mu_2=\cdots=\mu_k$ against $H_1: \text { at least one } \mu_i \text
 ANOVA Table
 
 | Source |  DF |             Sum Sq |      Mean Sq |         F value |                        p value |
-|:-------|----:|-------------------:|-------------:|----------------:|-------------------------------:|
+|:----------|----------:|----------:|----------:|----------:|----------------:|
 | Factor | m-1 | 11.84 (SS between) | 2.9587 (MSB) | 8.074 (MSB/MSW) | $5.38 \mathrm{e}-05$ (p-value) |
 | Error  | n-m |  16.49 (SS Within) | 0.3664 (MSW) |                 |                                |
 | Total  | n-1 |   28.33 (SS Total) |              |                 |                                |
@@ -1292,7 +1301,7 @@ SS(Total) is the sum of squares between the n data points and the grand mean. As
 We can extend the idea of a one-way ANOVA, which tests the effects of one factor on a response variable, to a two-way ANOVA which tests the effects of two factors and their interaction on a response variable.
 
 | Source                         | DF           | Sum Sq                                                                           | MSW              | F        |
-|:-------------------------------|:-------------|:---------------------------------------------------------------------------------|:-----------------|:---------|
+|:----------|:----------|:----------------------------|:----------|:----------|
 | Cells                          | $a b-1$      | $\sum_{i=1}^a \sum_{j=1}^b n\left(\bar{X}_{i j}-\bar{X}_{\ldots . .}\right)^2$   |                  |          |
 | A                              | a-1          | bn $\sum_{i=1}^a\left(\bar{X}_{i . .}-\bar{X}_{\ldots .}\right)^2$               | SS(A)            | MS(Error |
 | B                              | b-1          | an $\sum_{j=1}^b\left(\bar{X}_{. j .}-\bar{X}_{\ldots .}\right)^2$               | SS(B)            | MS(B)    |
@@ -1463,7 +1472,7 @@ Since $Q_1=2.04<3.84$, we do not reject the null hypothesis. Therefore, we concl
 For categories more than 2, i.e.
 
 | Categories | 1       | 2       | $\cdots$ | $k-1$       | $k$                        |
-|:-----------|:--------|:--------|:---------|:------------|:---------------------------|
+|:----------|:----------|:----------|:----------|:----------|:----------------|
 | Observed   | $Y_1$   | $Y_2$   | $\cdots$ | $Y_{k-1}$   | $n-Y_1-Y_2-\cdots-Y_{k-1}$ |
 | Expected   | $n p_1$ | $n p_2$ | $\cdots$ | $n p_{k-1}$ | $n p_k$                    |
 
@@ -1514,7 +1523,7 @@ where:
 In conducting such a hypothesis test, we're comparing the proportions of two multinomial distributions.
 
 | #(Acc)            | Bus ( $j=1$ )                         | Eng ( $j=2$ )                         | L Arts ( $j=3$ )                      | Sci $(j=4)$                           | (FIXED) Total              |
-|:------------------|:--------------------------------------|:--------------------------------------|:--------------------------------------|:--------------------------------------|:---------------------------|
+|:-----------|:-----------|:-----------|:-----------|:-----------|:-----------|
 | $\mathrm{M}(i=1)$ | $y_{11}\left(\hat{p}_{11}\right)$     | $y_{12}\left(\hat{p}_{12}\right)$     | $y_{13}\left(\hat{p}_{13}\right)$     | $y_{14}\left(\hat{p}_{14}\right)$     | $n_1=\sum_{j=1}^k y_{1 j}$ |
 | F $(i=2)$         | $y_{21}\left(\hat{p}_{21}\right)$     | $y_{22}\left(\hat{p}_{22}\right)$     | $y_{23}\left(\hat{p}_{23}\right)$     | $y_{24}\left(\hat{p}_{24}\right)$     | $n_2=\sum_{j=1}^k y_{2 j}$ |
 | Total             | $y_{11}+y_{21}\left(\hat{p}_1\right)$ | $y_{12}+y_{22}\left(\hat{p}_2\right)$ | $y_{13}+y_{23}\left(\hat{p}_3\right)$ | $y_{14}+y_{24}\left(\hat{p}_4\right)$ | $n_1+n_2$                  |
@@ -1574,7 +1583,7 @@ lets consider a different example to illustrate an alternative sampling scheme. 
 (the sampling scheme involves: Taking one random sample of size n, with n fixed in advance, and then "cross-classifying" each subject into one and only one of the mutually exclusive and exhaustive $A_i\cap B_j$ cells.)
 
 | Marijuana Support |             | Variable B (Age) |                 |               |               |         |
-|:------------------|:------------|:-----------------|:----------------|:--------------|:--------------|:--------|
+|:----------|:----------|:----------|:----------|:----------|:----------|:----------|
 | Variable A        | OBSERVED    | $(18-24) B_1$    | (25-34) $B_1 2$ | (35-49) $B_3$ | $(50-64) B_4$ | Total   |
 |                   | (YES) $A_1$ | 60               | 54              | 46            | 41            | 201     |
 |                   | (NO) $A_2$  | 40               | 44              | 53            | 57            | 194     |
@@ -1591,7 +1600,7 @@ Generally,
 Suppose we have $k$ (column) levels of Variable B indexed by the letter $j$, and $h$ (row) levels of Variable $A$ indexed by the letter $i$. Then, we can summarize the data and probability model in tabular format, as follows:
 
 | Variable B |                             |                             |                             |                             |                        |     |
-|:----------:|:---------------------------:|:---------------------------:|:---------------------------:|:---------------------------:|:----------------------:|:---:|
+|:---------:|:---------:|:---------:|:---------:|:---------:|:---------:|:---------:|
 | Variable A |         $B_1(j=1)$          |         $B_2(j=2)$          |         $B_3(j=3)$          |         $B_4(j=4)$          |         Total          |     |
 | $A_1(i=1)$ | $Y_{11}\left(p_{11}\right)$ | $Y_{12}\left(p_{12}\right)$ | $Y_{13}\left(p_{13}\right)$ | $Y_{14}\left(p_{14}\right)$ | $\left(p_{1 .}\right)$ |     |
 | $A_2(i=2)$ | $Y_{21}\left(p_{21}\right)$ | $Y_{22}\left(p_{22}\right)$ | $Y_{23}\left(p_{23}\right)$ | $Y_{24}\left(p_{24}\right)$ | $\left(p_{2 .}\right)$ |     |
@@ -1608,7 +1617,7 @@ Although their chi-square statistics are equivalent, the two tests are not equiv
 Here’s the table of expected counts:
 
 | Bicycle Riding Interest |          | Variable B (Age) |        |        |        |       |
-|:------------------------|:---------|:-----------------|:-------|:-------|:-------|:------|
+|:------------|:---------|:---------|:---------|:---------|:---------|:---------|
 | Variable A              | EXPECTED | 18-24            | 25-34  | 35-49  | 50-64  | Total |
 |                         | YES      | 50.886           | 49.868 | 50.377 | 49.868 | 201   |
 |                         | NO       | 49.114           | 48.132 | 48.623 | 48.132 | 194   |
@@ -4237,7 +4246,7 @@ plot(model.5)
 
 19. Load the `hospital_infct.txt` data and select observations with Stay \<= 14.
 
-```{r}
+```r
 infectionrisk <- read.table("/Users/luyu/Desktop/APH——course/NOTEsAPH101/hospital_infct.txt", header=T)
 infectionrisk <- infectionrisk[infectionrisk$Stay<=14,]
 infectionrisk
@@ -4245,7 +4254,7 @@ infectionrisk
 
 20. Create new dummy/indicator columns (`i1`, `i2`, `i3`, `i4`) for regions using `ifelse()` function. For example, i1 = 1 when Region = 1 and i1 = 0 when Region is not equal to 1; i2 = 1 when Region = 2 and i2 = 0 when Region is not equal to 2; ...
 
-```{r}
+```r
 infectionrisk$i1 <- ifelse(infectionrisk$Region == 1, 1, 0)
 infectionrisk$i2 <- ifelse(infectionrisk$Region == 2, 1, 0)
 infectionrisk$i3 <- ifelse(infectionrisk$Region == 3, 1, 0)
@@ -4254,23 +4263,23 @@ infectionrisk$i4 <- ifelse(infectionrisk$Region == 4, 1, 0)
 
 21. Fit a multiple linear regression model of InfctRsk on Stay + Xray + i2 + i3 + i4.
 
-```{r}
+```r
 model.7 <- lm(InfctRsk ~ Stay + Xray + i2 + i3 + i4, data=infectionrisk)
 summary(model.7)
 ```
 
 23. Can we include i1 + i2 + i3 + i4 in this multiple linear regression? Why?
+  
+  No. In the context of using dummy variables for categorical data in regression analysis, it's essential to designate a reference category. This reference category is represented by a coefficient of zero, while the coefficients for the other categories are interpreted as deviations from this reference point.
 
-No. In the context of using dummy variables for categorical data in regression analysis, it's essential to designate a reference category. This reference category is represented by a coefficient of zero, while the coefficients for the other categories are interpreted as deviations from this reference point.
-
-```{r}
+```r
 model.8 <- lm(InfctRsk ~ Stay + Xray + i1 + i2 + i3 + i4, data=infectionrisk)
 summary(model.8)
 ```
 
 24. Conduct an F-test (use `anova()` function) to see if at least one of i2, i3, and i4 are useful.
 
-```{r}
+```r
 model.9 <- lm(InfctRsk ~ Stay + Xray, data=infectionrisk)
 anova(model.7, model.9)
 ```
@@ -4280,7 +4289,7 @@ anova(model.7, model.9)
 \small
 
 | Total population $=\mathrm{P}+\mathrm{N}$ | Predicted Positive (PP)                          | Predicted Negative (PN)                                    | Informedness, bookmaker informedness (BM) $=\mathrm{TPR}+\mathrm{TNR}-1$                                                                        | Prevalence threshold (PT) $=\frac{\sqrt{\mathrm{TPR} \times \mathrm{FPR}}-\mathrm{FPR}}{\mathrm{TPR}-\mathrm{FPR}}$ |
-|:------------------------------------------|:-------------------------------------------------|:-----------------------------------------------------------|:------------------------------------------------------------------------------------------------------------------------------------------------|:--------------------------------------------------------------------------------------------------------------------|
+|:------------|:------------|:------------|:------------------|:--------------|
 | Positive (P) ${ }^{[\text {a }]}$         | True positive (TP), hit ${ }^{[b]}$              | False negative (FN), miss, underestimation                 | True positive rate (TPR), recall, sensitivity (SEN), probability of detection, hit rate, power $=\frac{\mathrm{TP}}{\mathrm{P}}=1-\mathrm{FNR}$ | False negative rate (FNR), miss rate type ll error ${ }^{[c]}$ $=\frac{\mathrm{FN}}{\mathrm{P}}=1-\mathrm{TPR}$     |
 | Negative ( N ) ${ }^{[d]}$                | False positive (FP), false alarm, overestimation | True negative (TN), correct rejection ${ }^{[\text {e }]}$ | False positive rate (FPR), probability of false alarm, fall-out type I error ${ }^{[7]}$ $=\frac{\mathrm{FP}}{\mathrm{~N}}=1-\mathrm{TNR}$      | True negative rate (TNR), specificity (SPC), selectivity $=\frac{\mathrm{TN}}{\mathrm{N}}=1-\mathrm{FPR}$           |
 
@@ -4303,7 +4312,7 @@ Goal: It is your job to classify Lung Cancer using other variables
 ```{r}
 #Load the dataset 
 library(readr)
-data = read_csv('/Users/luyu/Desktop/APH——course/survey_lung_cancer.csv', show_col_types = FALSE)
+data = read_csv('/Users/luyu/Desktop/Math-s-interesting-things/survey_lung_cancer.csv', show_col_types = FALSE)
 data$LUNG_CANCER <- ifelse(data$LUNG_CANCER=="YES", 1, 0)
 summary(data)
 ```
@@ -4386,9 +4395,6 @@ roc_score=roc(test_data$LUNG_CANCER, logit_P_prob) #AUC score
 plot(roc_score, main = "ROC curve -- Logistic Regression")
 ```
 
-
-
-
 # Below is the further remark
 
 # margin of error
@@ -4396,9 +4402,6 @@ plot(roc_score, main = "ROC curve -- Logistic Regression")
 For a given level of confidence c, The greatest possible distance between the point estimate and the value of the parameter it is estimating.
 
 Sometimes called the maximum error of estimate or error tolerance.
-
-
-
 
 # Why n-1 in sampling variance
 
@@ -5708,3 +5711,16 @@ All in all, the exam did not decide anything. I think there is a long way to go 
 -   I love you MTH113!!!
 
 ![](images/clipboard-1345728232.png)
+
+
+
+# Acknowledgements
+
+- Thanks to Dr. Xiaojun Zhu
+
+- Thanks to Dr. Mu He
+
+
+- I am deeply grateful to Dr. Daiyun Huang for his instruction in the "Biostatistics and R" course. This course has marked the beginning of my formal journey into the world of statistics. Dr. Huang's comprehensive lectures, accompanied by detailed PDFs, and his well-structured labs, complete with code and solutions, have been incredibly valuable. They have not only enhanced my intuitive grasp of key statistical concepts, such as hypothesis testing, but also significantly improved my proficiency in R programming.
+
+- Also, thanks to the course of "Introduction to statistical learning" by Trevor Hastie and Robert Tibshirani. Examples in their online video lectures are abundant and easy to understand for beginners. Their book is also very helpful.
