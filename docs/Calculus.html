@@ -145,6 +145,10 @@ window.Quarto = {
 <span class="menu-text">Prob, and Stat.</span></a>
   </li>  
   <li class="nav-item">
+    <a class="nav-link" href="./APH203.html"> 
+<span class="menu-text">Time Series</span></a>
+  </li>  
+  <li class="nav-item">
     <a class="nav-link" href="./Simple_ODEs.html"> 
 <span class="menu-text">ODEs and PDEs with codes</span></a>
   </li>  
@@ -168,7 +172,8 @@ window.Quarto = {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#surface-and-volume-of-steinmetz-solid" id="toc-surface-and-volume-of-steinmetz-solid" class="nav-link active" data-scroll-target="#surface-and-volume-of-steinmetz-solid">surface and volume of Steinmetz solid</a>
+  <li><a href="#motivation" id="toc-motivation" class="nav-link active" data-scroll-target="#motivation">Motivation</a></li>
+  <li><a href="#surface-and-volume-of-steinmetz-solid" id="toc-surface-and-volume-of-steinmetz-solid" class="nav-link" data-scroll-target="#surface-and-volume-of-steinmetz-solid">surface and volume of Steinmetz solid</a>
   <ul class="collapse">
   <li><a href="#cylinders" id="toc-cylinders" class="nav-link" data-scroll-target="#cylinders">2 cylinders</a>
   <ul class="collapse">
@@ -222,6 +227,61 @@ window.Quarto = {
 </header>
 
 
+<section id="motivation" class="level1">
+<h1>Motivation</h1>
+<ul>
+<li>the importance of (multi-variable)calculus to (high-dimensional) statistics</li>
+</ul>
+<p>The calculation of the n-dimensional ball, which follows the idea of using the double integral to calculate Gaussian integral and the idea of iterative method realizes me the importance of the calculus leanring. Then I feel how charismatic “a multiple integral in a high-dimensional space can be transformed into an iterated integral where each integral is just a definite integral on an interval” that Dr.&nbsp;Zhou said is!</p>
+<p>The definition of an N-dimensional sphere with the radius 1 is:</p>
+<p><span class="math display">\[
+B^n = \{ (x_1, x_2, \cdots, x_n) \in \mathbb{R}^n \mid x_1^2 + \cdots + x_n^2 \leq 1 \}
+\]</span>(Denote <span class="math inline">\(V_n(r)\)</span> as the volume of N-dimensional sphere with radius r)</p>
+<p>Derivation of the recursive formula for the volume of an N-dimensional sphere:</p>
+<p><span class="math display">\[
+V_n(1) = \int_{B^n} dx_1 \cdots dx_n
+\]</span></p>
+<p>By using the recurrence relation: <span class="math display">\[
+V_n(1) = \int_{-1}^{1} V_{n-1}(\sqrt{1-x_1^2}) dx_1
+\]</span></p>
+<p>Further elaboration: <span class="math display">\[
+= \int_{-1}^{1} \int_{-\sqrt{1-x_1^2}}^{\sqrt{1-x_1^2}} V_{n-2}(\sqrt{1-x_1^2-x_2^2}) dx_1 dx_2
+\]</span></p>
+<p>In polar coordinates: <span class="math display">\[
+= \int_{0}^{2\pi} \int_{0}^{1} V_{n-2}(\sqrt{1-r^2}) r dr d\theta
+\]</span></p>
+<p>Let <span class="math inline">\(y = 1 - r^2\)</span>and $dy = -2rdr <span class="math inline">\(:\)</span>$ = <em>{0}^{2} </em>{0}^{1} y^{} V_{n-2}(1) dy d $$</p>
+<p>The calculation shows: <span class="math display">\[
+= 2\pi \left[ \frac{1}{2} V_{n-2}(1) \cdot \frac{y^{\frac{n}{2}}}{\frac{n}{2}} \right]_{0}^{1}
+= \frac{2\pi}{n} V_{n-2}(1)
+\]</span></p>
+<p>Therefore, the recurrence relation is obtained: <span class="math display">\[
+V_n(1) = \frac{2\pi}{n} V_{n-2}(1)
+\]</span></p>
+<p>Consider the even and odd dimensions respectively:</p>
+<p>For an even dimension <span class="math inline">\(n = 2k\)</span>: <span class="math display">\[
+V_{2k}(1) = \frac{\pi^k}{k! }
+\]</span></p>
+<p><span class="math display">\[
+V_{2k}(R) = \frac{\pi^kR^{2n}}{k! }
+\]</span></p>
+<p>For odd-numbered dimensions <span class="math inline">\(n = 2k+1\)</span>: <span class="math display">\[
+V_{2k+1}(1) = \frac{2^{k+1}\pi^k}{(2k+1)(2k-1)\cdots 3\cdot 1}
+\]</span></p>
+<p><span class="math display">\[
+V_{2k+1}(R) = \frac{2^{k+1}\pi^kR^{2n+1}}{(2k+1)(2k-1)\cdots 3\cdot 1}
+\]</span></p>
+<p>Generally, the volume of an N-dimensional sphere with radius R is: <span class="math display">\[
+V_n(R) = \frac{\pi^{\frac{n}{2}} R^n}{\Gamma\left(\frac{n}{2} + 1\right)}
+\]</span></p>
+<ul>
+<li>asymptotic behavior when <span class="math inline">\(n \to \infty\)</span></li>
+</ul>
+<p>When the dimension <span class="math inline">\(n\)</span>approaches infinity, the volume of the n-dimensional unit sphere satisfies: <span class="math display">\[
+\lim_{n \to \infty} V_n(R) = 0
+\]</span></p>
+<p>This indicates that in high-dimensional space, the volume of the sphere is concentrated near the spherical surface, and the interior of the sphere becomes “sparse”.–A topology problem</p>
+</section>
 <section id="surface-and-volume-of-steinmetz-solid" class="level1">
 <h1>surface and volume of Steinmetz solid</h1>
 <p>( See the attached vedio for further explanation: http://youtube.com/watch?v=Vf0nqYaLWIs )</p>

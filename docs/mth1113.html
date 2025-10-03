@@ -1049,6 +1049,61 @@ s_w^2=\frac{(m-1) s_x^2+(n-1) s_y^2}{m+n-2}=\frac{\sum_{i=1}^m\left(x_i-\bar{x}\
 <h3 class="anchored" data-anchor-id="standard-normal-distribution">Standard normal distribution</h3>
 <p>Pdf : <span class="math inline">\(f(x) = \frac{1}{\sqrt{2\pi}} e^{-\frac{x^2}{2}}\)</span><br>
 </p>
+<ul>
+<li>The calculation of the Gaussian integral is to transform the integral into the double integral and then use the polar coordinate</li>
+</ul>
+<section id="similar-question" class="level4">
+<h4 class="anchored" data-anchor-id="similar-question">similar question</h4>
+<p>the calculation of the n-dimensional ball (in the second picture that I summarized before), which follows the idea of using the double integral to calculate Gaussian integral and the idea of iterative method. Then I feel how charismatic “a multiple integral in a high-dimensional space can be transformed into an iterated integral where each integral is just a definite integral on an interval” that you said is!</p>
+<p>The definition of an N-dimensional sphere with the radius 1 is:</p>
+<p><span class="math display">\[
+B^n = \{ (x_1, x_2, \cdots, x_n) \in \mathbb{R}^n \mid x_1^2 + \cdots + x_n^2 \leq 1 \}
+\]</span>(Denote <span class="math inline">\(V_n(r)\)</span> as the volume of N-dimensional sphere with radius r)</p>
+<p>Derivation of the recursive formula for the volume of an N-dimensional sphere:</p>
+<p><span class="math display">\[
+V_n(1) = \int_{B^n} dx_1 \cdots dx_n
+\]</span></p>
+<p>By using the recurrence relation: <span class="math display">\[
+V_n(1) = \int_{-1}^{1} V_{n-1}(\sqrt{1-x_1^2}) dx_1
+\]</span></p>
+<p>Further elaboration: <span class="math display">\[
+= \int_{-1}^{1} \int_{-\sqrt{1-x_1^2}}^{\sqrt{1-x_1^2}} V_{n-2}(\sqrt{1-x_1^2-x_2^2}) dx_1 dx_2
+\]</span></p>
+<p>In polar coordinates: <span class="math display">\[
+= \int_{0}^{2\pi} \int_{0}^{1} V_{n-2}(\sqrt{1-r^2}) r dr d\theta
+\]</span></p>
+<p>Let <span class="math inline">\(y = 1 - r^2\)</span>and $dy = -2rdr <span class="math inline">\(:\)</span>$ = <em>{0}^{2} </em>{0}^{1} y^{} V_{n-2}(1) dy d $$</p>
+<p>The calculation shows: <span class="math display">\[
+= 2\pi \left[ \frac{1}{2} V_{n-2}(1) \cdot \frac{y^{\frac{n}{2}}}{\frac{n}{2}} \right]_{0}^{1}
+= \frac{2\pi}{n} V_{n-2}(1)
+\]</span></p>
+<p>Therefore, the recurrence relation is obtained: <span class="math display">\[
+V_n(1) = \frac{2\pi}{n} V_{n-2}(1)
+\]</span></p>
+<p>Consider the even and odd dimensions respectively:</p>
+<p>For an even dimension <span class="math inline">\(n = 2k\)</span>: <span class="math display">\[
+V_{2k}(1) = \frac{\pi^k}{k! }
+\]</span></p>
+<p><span class="math display">\[
+V_{2k}(R) = \frac{\pi^kR^{2n}}{k! }
+\]</span></p>
+<p>For odd-numbered dimensions <span class="math inline">\(n = 2k+1\)</span>: <span class="math display">\[
+V_{2k+1}(1) = \frac{2^{k+1}\pi^k}{(2k+1)(2k-1)\cdots 3\cdot 1}
+\]</span></p>
+<p><span class="math display">\[
+V_{2k+1}(R) = \frac{2^{k+1}\pi^kR^{2n+1}}{(2k+1)(2k-1)\cdots 3\cdot 1}
+\]</span></p>
+<p>Generally, the volume of an N-dimensional sphere with radius R is: <span class="math display">\[
+V_n(R) = \frac{\pi^{\frac{n}{2}} R^n}{\Gamma\left(\frac{n}{2} + 1\right)}
+\]</span></p>
+<ul>
+<li>asymptotic behavior when <span class="math inline">\(n \to \infty\)</span></li>
+</ul>
+<p>When the dimension <span class="math inline">\(n\)</span>approaches infinity, the volume of the n-dimensional unit sphere satisfies: <span class="math display">\[
+\lim_{n \to \infty} V_n(R) = 0
+\]</span></p>
+<p>This indicates that in high-dimensional space, the volume of the sphere is concentrated near the spherical surface, and the interior of the sphere becomes “sparse”.–A topology problem</p>
+</section>
 </section>
 <section id="chi-square-distribution" class="level3">
 <h3 class="anchored" data-anchor-id="chi-square-distribution">Chi-square distribution</h3>
@@ -3435,7 +3490,7 @@ Levels: (0,2.5] (2.5,5] (5,7.5] (7.5,10]</code></pre>
 <div class="sourceCode cell-code" id="cb176"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb176-1"><a href="#cb176-1" aria-hidden="true" tabindex="-1"></a>today <span class="ot">&lt;-</span> <span class="fu">Sys.Date</span>()</span>
 <span id="cb176-2"><a href="#cb176-2" aria-hidden="true" tabindex="-1"></a><span class="fu">format</span>(today, <span class="at">format=</span><span class="st">"%B %d %Y"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] "September 24 2025"</code></pre>
+<pre><code>[1] "October 03 2025"</code></pre>
 </div>
 </div>
 </section>
@@ -4384,18 +4439,18 @@ $logic
 <span id="cb314-2"><a href="#cb314-2" aria-hidden="true" tabindex="-1"></a>data</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>  a b          c
-1 1 a 2025-09-23
-2 2 b 2025-09-22
-3 3 c 2025-09-21</code></pre>
+1 1 a 2025-10-02
+2 2 b 2025-10-01
+3 3 c 2025-09-30</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb316"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb316-1"><a href="#cb316-1" aria-hidden="true" tabindex="-1"></a><span class="fu">as_tibble</span>(data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 3 × 3
       a b     c         
   &lt;int&gt; &lt;chr&gt; &lt;date&gt;    
-1     1 a     2025-09-23
-2     2 b     2025-09-22
-3     3 c     2025-09-21</code></pre>
+1     1 a     2025-10-02
+2     2 b     2025-10-01
+3     3 c     2025-09-30</code></pre>
 </div>
 </div>
 </section>
@@ -4967,7 +5022,7 @@ F =  0 1 1 2 3 5 8 13 21 34 </code></pre>
 <div class="sourceCode cell-code" id="cb377"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb377-1"><a href="#cb377-1" aria-hidden="true" tabindex="-1"></a>today <span class="ot">&lt;-</span> <span class="fu">Sys.Date</span>()</span>
 <span id="cb377-2"><a href="#cb377-2" aria-hidden="true" tabindex="-1"></a><span class="fu">format</span>(today, <span class="at">format=</span><span class="st">"%B %d %Y"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] "September 24 2025"</code></pre>
+<pre><code>[1] "October 03 2025"</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb379"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb379-1"><a href="#cb379-1" aria-hidden="true" tabindex="-1"></a><span class="co"># or library(lubridate)</span></span>
 <span id="cb379-2"><a href="#cb379-2" aria-hidden="true" tabindex="-1"></a><span class="co">#x = c("2014-02-4 05:02:00","2016/09/24 14:02:00") </span></span>
@@ -6215,18 +6270,18 @@ $logic
 <span id="cb521-2"><a href="#cb521-2" aria-hidden="true" tabindex="-1"></a>data</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>  a b          c
-1 1 a 2025-09-23
-2 2 b 2025-09-22
-3 3 c 2025-09-21</code></pre>
+1 1 a 2025-10-02
+2 2 b 2025-10-01
+3 3 c 2025-09-30</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb523"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb523-1"><a href="#cb523-1" aria-hidden="true" tabindex="-1"></a><span class="fu">as_tibble</span>(data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 3 × 3
       a b     c         
   &lt;int&gt; &lt;chr&gt; &lt;date&gt;    
-1     1 a     2025-09-23
-2     2 b     2025-09-22
-3     3 c     2025-09-21</code></pre>
+1     1 a     2025-10-02
+2     2 b     2025-10-01
+3     3 c     2025-09-30</code></pre>
 </div>
 </div>
 <ul>
@@ -6974,7 +7029,7 @@ Attaching package: 'plotly'</code></pre>
 <div class="sourceCode cell-code" id="cb619"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb619-1"><a href="#cb619-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot_ly</span>(<span class="at">x=</span>bloodpress<span class="sc">$</span>Age, <span class="at">y=</span>bloodpress<span class="sc">$</span>Weight, <span class="at">z=</span>bloodpress<span class="sc">$</span>BP, <span class="at">type=</span><span class="st">'scatter3d'</span>, <span class="at">mode=</span><span class="st">'markers'</span>, <span class="at">color=</span>bloodpress<span class="sc">$</span>BP)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div class="plotly html-widget html-fill-item" id="htmlwidget-8c2820b5e6663da2b7fc" style="width:100%;height:464px;"></div>
-<script type="application/json" data-for="htmlwidget-8c2820b5e6663da2b7fc">{"x":{"visdat":{"2c0c55443744":["function () ","plotlyVisDat"]},"cur_data":"2c0c55443744","attrs":{"2c0c55443744":{"x":[47,49,49,50,51,48,49,47,49,48,47,49,50,45,52,46,46,46,48,56],"y":[85.400000000000006,94.200000000000003,95.299999999999997,94.700000000000003,89.400000000000006,99.5,99.799999999999997,90.900000000000006,89.200000000000003,92.700000000000003,94.400000000000006,94.099999999999994,91.599999999999994,87.099999999999994,101.3,94.5,87,94.5,90.5,95.700000000000003],"z":[105,115,116,117,112,121,121,110,110,114,114,115,114,106,125,114,106,113,110,122],"mode":"markers","color":[105,115,116,117,112,121,121,110,110,114,114,115,114,106,125,114,106,113,110,122],"alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"type":"scatter3d"}},"layout":{"margin":{"b":40,"l":60,"t":25,"r":10},"scene":{"xaxis":{"title":[]},"yaxis":{"title":[]},"zaxis":{"title":[]}},"hovermode":"closest","showlegend":false,"legend":{"yanchor":"top","y":0.5}},"source":"A","config":{"modeBarButtonsToAdd":["hoverclosest","hovercompare"],"showSendToCloud":false},"data":[{"x":[47,49,49,50,51,48,49,47,49,48,47,49,50,45,52,46,46,46,48,56],"y":[85.400000000000006,94.200000000000003,95.299999999999997,94.700000000000003,89.400000000000006,99.5,99.799999999999997,90.900000000000006,89.200000000000003,92.700000000000003,94.400000000000006,94.099999999999994,91.599999999999994,87.099999999999994,101.3,94.5,87,94.5,90.5,95.700000000000003],"z":[105,115,116,117,112,121,121,110,110,114,114,115,114,106,125,114,106,113,110,122],"mode":"markers","type":"scatter3d","marker":{"colorbar":{"title":"","ticklen":2},"cmin":105,"cmax":125,"colorscale":[["0","rgba(68,1,84,1)"],["0.0416666666666664","rgba(70,19,97,1)"],["0.0833333333333336","rgba(72,32,111,1)"],["0.125","rgba(71,45,122,1)"],["0.166666666666666","rgba(68,58,128,1)"],["0.208333333333334","rgba(64,70,135,1)"],["0.25","rgba(60,82,138,1)"],["0.291666666666666","rgba(56,93,140,1)"],["0.333333333333334","rgba(49,104,142,1)"],["0.375","rgba(46,114,142,1)"],["0.416666666666666","rgba(42,123,142,1)"],["0.458333333333334","rgba(38,133,141,1)"],["0.5","rgba(37,144,140,1)"],["0.541666666666666","rgba(33,154,138,1)"],["0.583333333333334","rgba(39,164,133,1)"],["0.625","rgba(47,174,127,1)"],["0.666666666666666","rgba(53,183,121,1)"],["0.708333333333334","rgba(79,191,110,1)"],["0.75","rgba(98,199,98,1)"],["0.791666666666666","rgba(119,207,85,1)"],["0.833333333333334","rgba(147,214,70,1)"],["0.875","rgba(172,220,52,1)"],["0.916666666666667","rgba(199,225,42,1)"],["0.958333333333334","rgba(226,228,40,1)"],["1","rgba(253,231,37,1)"]],"showscale":false,"color":[105,115,116,117,112,121,121,110,110,114,114,115,114,106,125,114,106,113,110,122],"line":{"colorbar":{"title":"","ticklen":2},"cmin":105,"cmax":125,"colorscale":[["0","rgba(68,1,84,1)"],["0.0416666666666664","rgba(70,19,97,1)"],["0.0833333333333336","rgba(72,32,111,1)"],["0.125","rgba(71,45,122,1)"],["0.166666666666666","rgba(68,58,128,1)"],["0.208333333333334","rgba(64,70,135,1)"],["0.25","rgba(60,82,138,1)"],["0.291666666666666","rgba(56,93,140,1)"],["0.333333333333334","rgba(49,104,142,1)"],["0.375","rgba(46,114,142,1)"],["0.416666666666666","rgba(42,123,142,1)"],["0.458333333333334","rgba(38,133,141,1)"],["0.5","rgba(37,144,140,1)"],["0.541666666666666","rgba(33,154,138,1)"],["0.583333333333334","rgba(39,164,133,1)"],["0.625","rgba(47,174,127,1)"],["0.666666666666666","rgba(53,183,121,1)"],["0.708333333333334","rgba(79,191,110,1)"],["0.75","rgba(98,199,98,1)"],["0.791666666666666","rgba(119,207,85,1)"],["0.833333333333334","rgba(147,214,70,1)"],["0.875","rgba(172,220,52,1)"],["0.916666666666667","rgba(199,225,42,1)"],["0.958333333333334","rgba(226,228,40,1)"],["1","rgba(253,231,37,1)"]],"showscale":false,"color":[105,115,116,117,112,121,121,110,110,114,114,115,114,106,125,114,106,113,110,122]}},"frame":null},{"x":[45,56],"y":[85.400000000000006,101.3],"type":"scatter3d","mode":"markers","opacity":0,"hoverinfo":"none","showlegend":false,"marker":{"colorbar":{"title":"","ticklen":2,"len":0.5,"lenmode":"fraction","y":1,"yanchor":"top"},"cmin":105,"cmax":125,"colorscale":[["0","rgba(68,1,84,1)"],["0.0416666666666664","rgba(70,19,97,1)"],["0.0833333333333336","rgba(72,32,111,1)"],["0.125","rgba(71,45,122,1)"],["0.166666666666666","rgba(68,58,128,1)"],["0.208333333333334","rgba(64,70,135,1)"],["0.25","rgba(60,82,138,1)"],["0.291666666666666","rgba(56,93,140,1)"],["0.333333333333334","rgba(49,104,142,1)"],["0.375","rgba(46,114,142,1)"],["0.416666666666666","rgba(42,123,142,1)"],["0.458333333333334","rgba(38,133,141,1)"],["0.5","rgba(37,144,140,1)"],["0.541666666666666","rgba(33,154,138,1)"],["0.583333333333334","rgba(39,164,133,1)"],["0.625","rgba(47,174,127,1)"],["0.666666666666666","rgba(53,183,121,1)"],["0.708333333333334","rgba(79,191,110,1)"],["0.75","rgba(98,199,98,1)"],["0.791666666666666","rgba(119,207,85,1)"],["0.833333333333334","rgba(147,214,70,1)"],["0.875","rgba(172,220,52,1)"],["0.916666666666667","rgba(199,225,42,1)"],["0.958333333333334","rgba(226,228,40,1)"],["1","rgba(253,231,37,1)"]],"showscale":true,"color":[105,125],"line":{"color":"rgba(255,127,14,1)"}},"z":[105,125],"frame":null}],"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.20000000000000001,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
+<script type="application/json" data-for="htmlwidget-8c2820b5e6663da2b7fc">{"x":{"visdat":{"1378949fdee8e":["function () ","plotlyVisDat"]},"cur_data":"1378949fdee8e","attrs":{"1378949fdee8e":{"x":[47,49,49,50,51,48,49,47,49,48,47,49,50,45,52,46,46,46,48,56],"y":[85.400000000000006,94.200000000000003,95.299999999999997,94.700000000000003,89.400000000000006,99.5,99.799999999999997,90.900000000000006,89.200000000000003,92.700000000000003,94.400000000000006,94.099999999999994,91.599999999999994,87.099999999999994,101.3,94.5,87,94.5,90.5,95.700000000000003],"z":[105,115,116,117,112,121,121,110,110,114,114,115,114,106,125,114,106,113,110,122],"mode":"markers","color":[105,115,116,117,112,121,121,110,110,114,114,115,114,106,125,114,106,113,110,122],"alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"type":"scatter3d"}},"layout":{"margin":{"b":40,"l":60,"t":25,"r":10},"scene":{"xaxis":{"title":[]},"yaxis":{"title":[]},"zaxis":{"title":[]}},"hovermode":"closest","showlegend":false,"legend":{"yanchor":"top","y":0.5}},"source":"A","config":{"modeBarButtonsToAdd":["hoverclosest","hovercompare"],"showSendToCloud":false},"data":[{"x":[47,49,49,50,51,48,49,47,49,48,47,49,50,45,52,46,46,46,48,56],"y":[85.400000000000006,94.200000000000003,95.299999999999997,94.700000000000003,89.400000000000006,99.5,99.799999999999997,90.900000000000006,89.200000000000003,92.700000000000003,94.400000000000006,94.099999999999994,91.599999999999994,87.099999999999994,101.3,94.5,87,94.5,90.5,95.700000000000003],"z":[105,115,116,117,112,121,121,110,110,114,114,115,114,106,125,114,106,113,110,122],"mode":"markers","type":"scatter3d","marker":{"colorbar":{"title":"","ticklen":2},"cmin":105,"cmax":125,"colorscale":[["0","rgba(68,1,84,1)"],["0.0416666666666664","rgba(70,19,97,1)"],["0.0833333333333336","rgba(72,32,111,1)"],["0.125","rgba(71,45,122,1)"],["0.166666666666666","rgba(68,58,128,1)"],["0.208333333333334","rgba(64,70,135,1)"],["0.25","rgba(60,82,138,1)"],["0.291666666666666","rgba(56,93,140,1)"],["0.333333333333334","rgba(49,104,142,1)"],["0.375","rgba(46,114,142,1)"],["0.416666666666666","rgba(42,123,142,1)"],["0.458333333333334","rgba(38,133,141,1)"],["0.5","rgba(37,144,140,1)"],["0.541666666666666","rgba(33,154,138,1)"],["0.583333333333334","rgba(39,164,133,1)"],["0.625","rgba(47,174,127,1)"],["0.666666666666666","rgba(53,183,121,1)"],["0.708333333333334","rgba(79,191,110,1)"],["0.75","rgba(98,199,98,1)"],["0.791666666666666","rgba(119,207,85,1)"],["0.833333333333334","rgba(147,214,70,1)"],["0.875","rgba(172,220,52,1)"],["0.916666666666667","rgba(199,225,42,1)"],["0.958333333333334","rgba(226,228,40,1)"],["1","rgba(253,231,37,1)"]],"showscale":false,"color":[105,115,116,117,112,121,121,110,110,114,114,115,114,106,125,114,106,113,110,122],"line":{"colorbar":{"title":"","ticklen":2},"cmin":105,"cmax":125,"colorscale":[["0","rgba(68,1,84,1)"],["0.0416666666666664","rgba(70,19,97,1)"],["0.0833333333333336","rgba(72,32,111,1)"],["0.125","rgba(71,45,122,1)"],["0.166666666666666","rgba(68,58,128,1)"],["0.208333333333334","rgba(64,70,135,1)"],["0.25","rgba(60,82,138,1)"],["0.291666666666666","rgba(56,93,140,1)"],["0.333333333333334","rgba(49,104,142,1)"],["0.375","rgba(46,114,142,1)"],["0.416666666666666","rgba(42,123,142,1)"],["0.458333333333334","rgba(38,133,141,1)"],["0.5","rgba(37,144,140,1)"],["0.541666666666666","rgba(33,154,138,1)"],["0.583333333333334","rgba(39,164,133,1)"],["0.625","rgba(47,174,127,1)"],["0.666666666666666","rgba(53,183,121,1)"],["0.708333333333334","rgba(79,191,110,1)"],["0.75","rgba(98,199,98,1)"],["0.791666666666666","rgba(119,207,85,1)"],["0.833333333333334","rgba(147,214,70,1)"],["0.875","rgba(172,220,52,1)"],["0.916666666666667","rgba(199,225,42,1)"],["0.958333333333334","rgba(226,228,40,1)"],["1","rgba(253,231,37,1)"]],"showscale":false,"color":[105,115,116,117,112,121,121,110,110,114,114,115,114,106,125,114,106,113,110,122]}},"frame":null},{"x":[45,56],"y":[85.400000000000006,101.3],"type":"scatter3d","mode":"markers","opacity":0,"hoverinfo":"none","showlegend":false,"marker":{"colorbar":{"title":"","ticklen":2,"len":0.5,"lenmode":"fraction","y":1,"yanchor":"top"},"cmin":105,"cmax":125,"colorscale":[["0","rgba(68,1,84,1)"],["0.0416666666666664","rgba(70,19,97,1)"],["0.0833333333333336","rgba(72,32,111,1)"],["0.125","rgba(71,45,122,1)"],["0.166666666666666","rgba(68,58,128,1)"],["0.208333333333334","rgba(64,70,135,1)"],["0.25","rgba(60,82,138,1)"],["0.291666666666666","rgba(56,93,140,1)"],["0.333333333333334","rgba(49,104,142,1)"],["0.375","rgba(46,114,142,1)"],["0.416666666666666","rgba(42,123,142,1)"],["0.458333333333334","rgba(38,133,141,1)"],["0.5","rgba(37,144,140,1)"],["0.541666666666666","rgba(33,154,138,1)"],["0.583333333333334","rgba(39,164,133,1)"],["0.625","rgba(47,174,127,1)"],["0.666666666666666","rgba(53,183,121,1)"],["0.708333333333334","rgba(79,191,110,1)"],["0.75","rgba(98,199,98,1)"],["0.791666666666666","rgba(119,207,85,1)"],["0.833333333333334","rgba(147,214,70,1)"],["0.875","rgba(172,220,52,1)"],["0.916666666666667","rgba(199,225,42,1)"],["0.958333333333334","rgba(226,228,40,1)"],["1","rgba(253,231,37,1)"]],"showscale":true,"color":[105,125],"line":{"color":"rgba(255,127,14,1)"}},"z":[105,125],"frame":null}],"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.20000000000000001,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 <ol start="9" type="1">

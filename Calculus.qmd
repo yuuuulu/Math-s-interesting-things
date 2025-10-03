@@ -4,6 +4,95 @@ format: html
 editor: visual
 ---
 
+# Motivation
+
+- the importance of (multi-variable)calculus to (high-dimensional) statistics
+
+ The calculation of the n-dimensional ball, which follows the idea of using the double integral to calculate Gaussian integral and the idea of iterative method realizes me the importance of the calculus leanring. Then I feel how charismatic "a multiple integral in a high-dimensional space can be transformed into an iterated integral where each integral is just a definite integral on an interval" that Dr. Zhou said is!
+
+
+The definition of an N-dimensional sphere with the radius 1 is:
+
+$$
+B^n = \{ (x_1, x_2, \cdots, x_n) \in \mathbb{R}^n \mid x_1^2 + \cdots + x_n^2 \leq 1 \}
+$$(Denote $V_n(r)$ as the volume of N-dimensional sphere with radius r)
+
+
+
+
+Derivation of the recursive formula for the volume of an N-dimensional sphere:
+
+$$
+V_n(1) = \int_{B^n} dx_1 \cdots dx_n
+$$
+
+By using the recurrence relation:
+$$
+V_n(1) = \int_{-1}^{1} V_{n-1}(\sqrt{1-x_1^2}) dx_1
+$$
+
+Further elaboration:
+$$
+= \int_{-1}^{1} \int_{-\sqrt{1-x_1^2}}^{\sqrt{1-x_1^2}} V_{n-2}(\sqrt{1-x_1^2-x_2^2}) dx_1 dx_2
+$$
+
+In polar coordinates:
+$$
+= \int_{0}^{2\pi} \int_{0}^{1} V_{n-2}(\sqrt{1-r^2}) r dr d\theta
+$$
+
+Let $y = 1 - r^2$and $dy = -2rdr $:
+$$
+= \int_{0}^{2\pi} \int_{0}^{1} \frac{1}{2} y^{\frac{n-2}{2}} V_{n-2}(1) dy d\theta
+$$
+
+The calculation shows:
+$$
+= 2\pi \left[ \frac{1}{2} V_{n-2}(1) \cdot \frac{y^{\frac{n}{2}}}{\frac{n}{2}} \right]_{0}^{1}
+= \frac{2\pi}{n} V_{n-2}(1)
+$$
+
+Therefore, the recurrence relation is obtained:
+$$
+V_n(1) = \frac{2\pi}{n} V_{n-2}(1)
+$$
+
+Consider the even and odd dimensions respectively:
+
+For an even dimension $n = 2k$:
+$$
+V_{2k}(1) = \frac{\pi^k}{k! }
+$$
+
+$$
+V_{2k}(R) = \frac{\pi^kR^{2n}}{k! }
+$$
+
+For odd-numbered dimensions $n = 2k+1$:
+$$
+V_{2k+1}(1) = \frac{2^{k+1}\pi^k}{(2k+1)(2k-1)\cdots 3\cdot 1}
+$$
+
+$$
+V_{2k+1}(R) = \frac{2^{k+1}\pi^kR^{2n+1}}{(2k+1)(2k-1)\cdots 3\cdot 1}
+$$
+
+Generally, the volume of an N-dimensional sphere with radius R is:
+$$
+V_n(R) = \frac{\pi^{\frac{n}{2}} R^n}{\Gamma\left(\frac{n}{2} + 1\right)}
+$$
+
+- asymptotic behavior when $n \to \infty$ 
+
+When the dimension $n$approaches infinity, the volume of the n-dimensional unit sphere satisfies:
+$$
+\lim_{n \to \infty} V_n(R) = 0
+$$
+
+This indicates that in high-dimensional space, the volume of the sphere is concentrated near the spherical surface, and the interior of the sphere becomes "sparse".--A topology problem
+
+
+
 
 
 # surface and volume of Steinmetz solid
