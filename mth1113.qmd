@@ -6,7 +6,50 @@ format: html
 
 
 
-# Review and Introduce Probability
+# Probability theory content (Intro)
+
+## Probability Space
+
+randomness 
+
+random event: a subset A of a sample space.
+
+
+directly observable event (closed under the intersection) $\to$ algebraic extension (finite union, complement) $\to$ continuously extension
+
+
+e.g. Borel set (analogy to rational number) to the measurable set (analogy to the real number). The approximate of  Borel set to the measurable set is related to outer regularity (inner regularity).
+
+
+
+## Random variable
+
+Given $(\Omega, \mathbb{F},\mathbb{P})$, $\mathbb{F}$-measurable mapping: X: $\mathbb{\Omega} \to \mathbb{R}$ is called a random variable (r.v.).
+
+(it is a function defined on the sample space)
+
+Here, for $\mathbb{F}$-measurable, it means $\forall a \in\mathbb{R}$, {${\omega \in \Omega|X(\omega) \leq a}$}$\in \mathbb{F}$
+
+
+The probability is defined on the subset of the sample space. When we calculate the probability of the random variable given a certain value, we are calculating the probability of this subset of the sample space and here the subset is mapped from the random variable to the value observed. 
+
+- Discrete r.v.
+
+- continuous r.v.
+
+- remark (not be silly): do not calculate the expectation of a discrete r.v. by calculate its integral! 
+
+P(X=x) = P(${\omega \in \Omega|X(\omega)=x}$} --remark: the two p on two sides' meanings are not the same. 
+
+
+
+# distributions ---see prof. 张颢-- 现代数字信号处理bilibili
+
+# sufficient statistics
+
+# Fisher information matrix
+
+# Rao boundary
 
 ## Simple Random Sampling
 
