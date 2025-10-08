@@ -1386,7 +1386,9 @@ F &amp; F &amp; T &amp; T &amp; T \\
 <section id="the-problem-showing-that-mathcalpmathbbn-is-uncountable" class="level3">
 <h3 class="anchored" data-anchor-id="the-problem-showing-that-mathcalpmathbbn-is-uncountable">The Problem: Showing that <span class="math inline">\(\mathcal{P}(\mathbb{N})\)</span> is Uncountable</h3>
 <p><img src="images/clipboard-3258860968.png" class="img-fluid"></p>
-<p>method 1: Consider the set <span class="math inline">\(A = \{ n \in \mathbb{N} \mid n \notin f(n) \}\)</span>, f : N → P(N).</p>
+<p>method 1:</p>
+<p>For each natural number n, if n is not in the subset f(n), we add n to the below A set; Otherwise, do not join. (just like the Cantor diagonal method (diagonal number is not in the range of the map so we add each of them into another set))</p>
+<p>Consider the set <span class="math inline">\(A = \{ n \in \mathbb{N} \mid n \notin f(n) \}\)</span>, f : N → P(N).</p>
 <p>we should prove it is not a bijection. so we could prove it is not surjective (P(N) is much bigger than N).</p>
 <p>now we ask if f is surjective:</p>
 <p>If yes, there exists <span class="math inline">\(n_0\in N\)</span> s.t. f<span class="math inline">\((n_0)=\)</span>A, A<span class="math inline">\(\subset\)</span>N while A <span class="math inline">\(\in\)</span> P(N)</p>
@@ -1397,12 +1399,12 @@ F &amp; F &amp; T &amp; T &amp; T \\
 </ol>
 <p>(or we discuss the set, we suppose x is in A and based on the condition of being in set A we get A is empty, which is contradicts to “x is in A”)</p>
 <p>so f is not surjective, which means f could not be bijective. so p(N) is uncountable.</p>
+<p>method2: thinking but not complete and maybe not true——suppose the power set is countable:(analogy to Cantor’s diagnal method but we do not choose diagnal now)</p>
+<p>for elements in the power set that has finitely many numbers, we repeat the last number to be infinity; for the infinity we just write down them directly—-all of them could correspond to a natural number unniquely by our assumption of countable property.</p>
+<p>Then we could find a set that is not in the previous correspondence</p>
 <ul>
-<li>eg of a bijection between 2 sets(namely 2 sets with the same size)</li>
+<li>eg of a bijection between 2 sets(namely 2 sets with the same size) see my Youtube vedio:</li>
 </ul>
-<p>N-&gt;Z</p>
-<p>n|-&gt;n/2 if n even</p>
-<p>n|-&gt; n+1/2 if n odd</p>
 <p><img src="images/clipboard-1883408292.png" class="img-fluid"></p>
 <p><img src="images/clipboard-819524834.png" class="img-fluid"></p>
 </section>
