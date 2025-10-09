@@ -112,6 +112,25 @@ $$
 \end{aligned}
 $$ When N is much bigger than n, it is $\frac{p(1-p)}{n}$, which is like we sample n things with replacement (independently).
 
+
+## from Coin tossing process
+
+## counting
+
+
+## the importance of the Unit Standard
+
+```{r}
+rcon <- function(n,p,h){
+  x<- rgeom(n,p) ## x~W_k
+  y<- p*x  #x/ (1/p)--W_k/E[W_K]=p*W_k
+  hist(y,seq(0,max(y)+1,h),prob=TRUE) 
+}
+rcon(10000,0.00001,0.5) # p→0, the transformed distribution approximates a continuous distribution over continuous time
+
+```
+
+
 ## Sampling distribution
 
 The sampling distribution of a statistic is the probability distribution of that statistic based on a random sample.

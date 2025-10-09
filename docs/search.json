@@ -1516,7 +1516,7 @@
     "href": "mth1113.html#date-and-time",
     "title": "APH101 Biostatistics And R + MTH113 Intro to Probability and Statistics+APH003 Exploring the World Through Data",
     "section": "Date and time",
-    "text": "Date and time\nThe following symbols can be used with the format() function to print dates.\n\n%d day as a number (0-31) 01-31\n%a abbreviated weekday Mon\n%A unabbreviated weekday Monday\n%m month (00-12) 00-12\n%b abbreviated month Jan\n%B unabbreviated month January\n%y 2-digit year 07\n%Y 4-digit year 2007\n\n\nmydates &lt;- as.Date(c(\"2023-04-07\", \"2023-01-01\"))\nmydates\n\n[1] \"2023-04-07\" \"2023-01-01\"\n\ndays &lt;- mydates[1] - mydates[2]; days\n\nTime difference of 96 days\n\ntoday &lt;- Sys.Date()\nformat(today, format=\"%B %d %Y\")\n\n[1] \"October 07 2025\""
+    "text": "Date and time\nThe following symbols can be used with the format() function to print dates.\n\n%d day as a number (0-31) 01-31\n%a abbreviated weekday Mon\n%A unabbreviated weekday Monday\n%m month (00-12) 00-12\n%b abbreviated month Jan\n%B unabbreviated month January\n%y 2-digit year 07\n%Y 4-digit year 2007\n\n\nmydates &lt;- as.Date(c(\"2023-04-07\", \"2023-01-01\"))\nmydates\n\n[1] \"2023-04-07\" \"2023-01-01\"\n\ndays &lt;- mydates[1] - mydates[2]; days\n\nTime difference of 96 days\n\ntoday &lt;- Sys.Date()\nformat(today, format=\"%B %d %Y\")\n\n[1] \"October 09 2025\""
   },
   {
     "objectID": "mth1113.html#data-frame",
@@ -1607,7 +1607,7 @@
     "href": "mth1113.html#tibbles",
     "title": "APH101 Biostatistics And R + MTH113 Intro to Probability and Statistics+APH003 Exploring the World Through Data",
     "section": "Tibbles",
-    "text": "Tibbles\nA tibble, or tbl_df, is a modern reimagining of the data.frame, keeping what time has proven to be effective, and throwing out what is not. Tibbles are data.frames that are lazy and surly: they do less (i.e. they don t change variable names or types, and don t do partial matching) and complain more (e.g. when a variable does not exist). This forces you to confront problems earlier, typically leading to cleaner, more expressive code. Tibbles also have an enhanced print() method which makes them easier to use with large datasets containing complex objects.\n\ndata &lt;- data.frame(a = 1:3, b = letters[1:3], c = Sys.Date() - 1:3)\ndata\n\n  a b          c\n1 1 a 2025-10-06\n2 2 b 2025-10-05\n3 3 c 2025-10-04\n\nas_tibble(data)\n\n# A tibble: 3 × 3\n      a b     c         \n  &lt;int&gt; &lt;chr&gt; &lt;date&gt;    \n1     1 a     2025-10-06\n2     2 b     2025-10-05\n3     3 c     2025-10-04"
+    "text": "Tibbles\nA tibble, or tbl_df, is a modern reimagining of the data.frame, keeping what time has proven to be effective, and throwing out what is not. Tibbles are data.frames that are lazy and surly: they do less (i.e. they don t change variable names or types, and don t do partial matching) and complain more (e.g. when a variable does not exist). This forces you to confront problems earlier, typically leading to cleaner, more expressive code. Tibbles also have an enhanced print() method which makes them easier to use with large datasets containing complex objects.\n\ndata &lt;- data.frame(a = 1:3, b = letters[1:3], c = Sys.Date() - 1:3)\ndata\n\n  a b          c\n1 1 a 2025-10-08\n2 2 b 2025-10-07\n3 3 c 2025-10-06\n\nas_tibble(data)\n\n# A tibble: 3 × 3\n      a b     c         \n  &lt;int&gt; &lt;chr&gt; &lt;date&gt;    \n1     1 a     2025-10-08\n2     2 b     2025-10-07\n3     3 c     2025-10-06"
   },
   {
     "objectID": "mth1113.html#section",
@@ -2231,5 +2231,26 @@
     "title": "APH101 Biostatistics And R + MTH113 Intro to Probability and Statistics+APH003 Exploring the World Through Data",
     "section": "",
     "text": "Given \\((\\Omega, \\mathbb{F},\\mathbb{P})\\), \\(\\mathbb{F}\\)-measurable mapping: X: \\(\\mathbb{\\Omega} \\to \\mathbb{R}\\) is called a random variable (r.v.).\n(it is a function defined on the sample space)\nHere, for \\(\\mathbb{F}\\)-measurable, it means \\(\\forall a \\in\\mathbb{R}\\), {\\({\\omega \\in \\Omega|X(\\omega) \\leq a}\\)}\\(\\in \\mathbb{F}\\)\nThe probability is defined on the subset of the sample space. When we calculate the probability of the random variable given a certain value, we are calculating the probability of this subset of the sample space and here the subset is mapped from the random variable to the value observed.\n\nDiscrete r.v.\ncontinuous r.v.\nremark (not be silly): do not calculate the expectation of a discrete r.v. by calculate its integral!\n\nP(X=x) = P(\\({\\omega \\in \\Omega|X(\\omega)=x}\\)} –remark: the two p on two sides’ meanings are not the same."
+  },
+  {
+    "objectID": "mth1113.html#from-coin-tossing-process",
+    "href": "mth1113.html#from-coin-tossing-process",
+    "title": "APH101 Biostatistics And R + MTH113 Intro to Probability and Statistics+APH003 Exploring the World Through Data",
+    "section": "from Coin tossing process",
+    "text": "from Coin tossing process"
+  },
+  {
+    "objectID": "mth1113.html#counting",
+    "href": "mth1113.html#counting",
+    "title": "APH101 Biostatistics And R + MTH113 Intro to Probability and Statistics+APH003 Exploring the World Through Data",
+    "section": "counting",
+    "text": "counting"
+  },
+  {
+    "objectID": "mth1113.html#the-importance-of-the-unit-standard",
+    "href": "mth1113.html#the-importance-of-the-unit-standard",
+    "title": "APH101 Biostatistics And R + MTH113 Intro to Probability and Statistics+APH003 Exploring the World Through Data",
+    "section": "the importance of the Unit Standard",
+    "text": "the importance of the Unit Standard\n\nrcon &lt;- function(n,p,h){\n  x&lt;- rgeom(n,p) ## x~W_k\n  y&lt;- p*x  #x/ (1/p)--W_k/E[W_K]=p*W_k\n  hist(y,seq(0,max(y)+1,h),prob=TRUE) \n}\nrcon(10000,0.00001,0.5) # p→0, the transformed distribution approximates a continuous distribution over continuous time"
   }
 ]
