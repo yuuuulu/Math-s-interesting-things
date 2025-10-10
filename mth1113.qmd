@@ -126,9 +126,25 @@ rcon <- function(n,p,h){
   y<- p*x  #x/ (1/p)--W_k/E[W_K]=p*W_k
   hist(y,seq(0,max(y)+1,h),prob=TRUE) 
 }
-rcon(10000,0.00001,0.5) # p→0, the transformed distribution approximates a continuous distribution over continuous time
+rcon(10000,0.0000001,0.5) # p→0, the transformed distribution approximates a continuous distribution over continuous time
 
 ```
+
+
+```{r}
+
+library(ggplot2)
+
+data <- rgeom(100000, 0.0001)
+
+# 绘制直方图
+ggplot(data.frame(data), aes(x = data)) +
+  geom_histogram(binwidth = 1, fill = "green", color = "black", alpha = 0.7) +
+  scale_x_continuous(breaks = seq(0, max(data), by = 1000)) +
+  labs(x = "data", y = "density", title = "density (normalized)") +
+  theme_minimal()
+```
+
 
 
 ## Sampling distribution
