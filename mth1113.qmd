@@ -1,5 +1,5 @@
 ---
-title: "APH101 Biostatistics And R + MTH113 Intro to Probability and Statistics+APH003 Exploring the World Through Data"
+title: "MTH206--Probability Theory + APH101 Biostatistics And R + MTH113 Intro to Probability and Statistics+APH003 Exploring the World Through Data"
 editor: visual
 format: html
 ---
