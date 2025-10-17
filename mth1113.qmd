@@ -240,7 +240,29 @@ $$
 
 Since the Gamma MGF is $M_X(t)=\frac{\lambda^r}{(\lambda-t)^r}$ for any $t<\lambda$ For shape $r=1$, Exponential MGF = Gamma MGF.
 
+
+## Coin tossing process
+
+## 3 different ways to calculate the expectation of Y=$X_1/X2$ where $X_1$ and $X_2$ are r.v. ---eg of example 2.1.9 in the textbook
+
+### double integral
+
+#### mathematical thinking 
+
+
+#### probability thinking ----conditional expectation
+
+### transformation (remark: ) ---I like this way best
+
+### defination of expectation
+
+
+
+
 ## Distribution Transformation
+
+
+
 
 ### Universality of the Uniform---From uniform you can get everything
 
