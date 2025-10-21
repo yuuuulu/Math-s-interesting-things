@@ -1,7 +1,170 @@
 ---
-title: "ODEs and PDEs with Dimension nalysis ---MTH106 + Seminars hold by Prof. Andrew Lin"
+title: "ODEs and PDEs with Dimension nalysis ---MTH106+ its application in APH207 (PK and PD) + Seminars hold by Prof. Andrew Lin"
 editor: visual
 ---
+
+
+
+# homogeneous ODE system in the two-compartment model
+
+## Laplace transform method for ODE system
+
+## characteristic equation method for ODE system
+
+eigenvalue and eigenvector
+
+
+## numerical method for ODE system
+
+```{r}
+# 加载所需的包
+library(deSolve)
+
+# 定义数值解函数
+numeric_solution <- function(k01, k12, k21, k10, time) {
+    # 定义ODE系统
+    ode_system <- function(t, state, parameters) {
+        A0 <- state["A0"]
+        A1 <- state["A1"]
+        A2 <- state["A2"]
+        k01 <- parameters["k01"]
+        k12 <- parameters["k12"]
+        k21 <- parameters["k21"]
+        k10 <- parameters["k10"]
+        dA0_dt <- -k01 * A0
+        dA1_dt <- k01 * A0 - (k12 + k10) * A1 + k21 * A2
+        dA2_dt <- k12 * A1 - k21 * A2
+        list(c(dA0_dt, dA1_dt, dA2_dt))
+    }
+    
+    # 初始状态
+    initial_state <- c(A0 = 1, A1 = 0, A2 = 0)
+    parameters <- c(k01 = k01, k12 = k12, k21 = k21, k10 = k10)
+    
+    # 求解ODE
+    solution <- ode(
+        y = initial_state,
+        times = time,
+        func = ode_system,
+        parms = parameters
+    )
+    
+    # 转换为数据框
+    solution_df <- as.data.frame(solution)
+    out <- data.frame(
+        time = solution_df$time,
+        amount = solution_df$A1,
+        solution = "numeric"
+    )
+    return(out)
+}
+
+k01 <- 0.5  # 吸收速率常数
+k12 <- 0.3  # 从中央室到周边室的分布速率常数
+k21 <- 0.2  # 从周边室到中央室的分布速率常数
+k10 <- 0.1  # 消除速率常数
+time <- seq(0, 24, by = 0.1)  # 时间点从0到24小时
+
+result <- numeric_solution(k01, k12, k21, k10, time)
+
+head(result)
+
+plot(result$time, result$amount, type = "l", 
+     xlab = "Time", ylab = "Amount in Central Compartment (A1)",
+     main = "Two-Compartment Model with Absorption",
+     col = "blue", lwd = 2)
+
+# 加载所需的包
+library(deSolve)
+library(ggplot2)
+
+# 定义数值解函数
+numeric_solution <- function(k01, k12, k21, k10, time) {
+    # 定义ODE系统
+    ode_system <- function(t, state, parameters) {
+        A0 <- state["A0"]
+        A1 <- state["A1"]
+        A2 <- state["A2"]
+        k01 <- parameters["k01"]
+        k12 <- parameters["k12"]
+        k21 <- parameters["k21"]
+        k10 <- parameters["k10"]
+        dA0_dt <- -k01 * A0
+        dA1_dt <- k01 * A0 - (k12 + k10) * A1 + k21 * A2
+        dA2_dt <- k12 * A1 - k21 * A2
+        list(c(dA0_dt, dA1_dt, dA2_dt))
+    }
+    
+    # 初始状态
+    initial_state <- c(A0 = 1, A1 = 0, A2 = 0)
+    parameters <- c(k01 = k01, k12 = k12, k21 = k21, k10 = k10)
+    
+    # 求解ODE
+    solution <- ode(
+        y = initial_state,
+        times = time,
+        func = ode_system,
+        parms = parameters
+    )
+    
+    # 转换为数据框
+    solution_df <- as.data.frame(solution)
+    out <- data.frame(
+        time = solution_df$time,
+        amount = solution_df$A1,
+        solution = "numeric"
+    )
+    return(out)
+}
+
+# 定义解析解函数
+analytic_solution <- function(k01, k12, k21, k10, time) {
+    ks <- k10 + k12 + k21
+    alpha <- (ks + sqrt(ks^2 - (4 * k10 * k21))) / 2
+    beta <- (ks - sqrt(ks^2 - (4 * k10 * k21))) / 2
+
+    A <- (alpha - k21) / (alpha - beta)
+    B <- -(beta - k21) / (alpha - beta)
+
+    A_term <- A * exp(-alpha * time) * (exp(time * (alpha - k01)) - 1)
+    B_term <- B * exp(-beta * time) * (exp(time * (beta - k01)) - 1)
+
+    A_term <- A_term * k01 / (alpha - k01)
+    B_term <- B_term * k01 / (beta - k01)
+
+    out <- data.frame(
+        time = time,
+        amount = A_term + B_term,
+        solution = "analytic"
+    )
+    return(out)
+}
+
+# 设置参数
+k01 <- 0.3
+k12 <- 0.2
+k21 <- 0.1
+k10 <- 0.3
+time <- seq(0, 24, 0.1)
+
+# 计算数值解和解析解
+dat_numb <- numeric_solution(k01, k12, k21, k10, time)
+dat_anal <- analytic_solution(k01, k12, k21, k10, time)
+
+# 合并数据
+dat <- rbind(dat_numb, dat_anal)
+
+# 绘制图形
+ggplot(dat, aes(time, amount, colour = solution)) +
+    geom_line(show.legend = FALSE) +
+    facet_wrap(~solution) +
+    theme_bw()
+```
+
+
+
+
+
 
 # A difficult quesiton about variation parameters method for a 1st order ODEs
 
