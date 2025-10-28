@@ -4764,6 +4764,16 @@ A more general function than MGF is the characteristic function.
 
 $\phi_X (t) = E(e^{itX})$
 
+### MGF and Fourier Transform 
+
+From $f(t)$ to $\sum_{n=0}^\infty a_n\sin(nt)$ is called demodulation （解调）
+
+This also relevant to the base vector
+
+传播
+
+
+
 # Normal --\> Chi-squared distribution
 
 MGF
