@@ -45,6 +45,13 @@ P(X=x) = P(${\omega \in \Omega|X(\omega)=x}$} --remark: the two p on two sides' 
 
 # distributions ---see prof. 张颢-- 现代数字信号处理bilibili
 
+# Prof.Zhou's notes about Stochastic Processes derived distributions
+
+周老师的笔记的逻辑性真的很舒服，那些分布的关系还有从抛硬币伯努利到counting process的binomial，还有waiting time的geometric or negative binomial，然后再通过对geometric除以期望转换单位，取极限得到exponential（这个思维和昨天上课的那个讲的换个视角看世界➕取极限使得expand knowledge boundary真的一模一样），然后因为相互独立的geometric想加得到的是negative binomial，所以对negative binomial也有个极限，恰好就是gamma
+从离散到连续：几何分布 → 指数分布；负二项分布 → 伽马分布的逻辑就串起来了（当时113学的时候真没有这种sense感觉老师很重要）
+
+poisson就是由二项分布n趋于无穷，p趋于0的出来的，然后poisson和第k个事件发生的连续等待时间有个duality，duality是只是用在证明第k个事件发生的连续等待时间是gamma (exponential) 分布的，因为notes上写的是根据duality对从n=k到无穷的poisson相加相当于是waiting time的cdf，然后求导得到gamma，说明waiting time就是服从gamma
+
 # sufficient statistics
 
 # Fisher information matrix
