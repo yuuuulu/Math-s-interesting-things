@@ -207,6 +207,20 @@ window.Quarto = {
    
   <ul>
   <li><a href="#referece-books" id="toc-referece-books" class="nav-link active" data-scroll-target="#referece-books">Referece books</a></li>
+  <li><a href="#statistics-history" id="toc-statistics-history" class="nav-link" data-scroll-target="#statistics-history">statistics history</a>
+  <ul class="collapse">
+  <li><a href="#oldclassical-bayesian-estimation-moment-estimation" id="toc-oldclassical-bayesian-estimation-moment-estimation" class="nav-link" data-scroll-target="#oldclassical-bayesian-estimation-moment-estimation">old/classical: Bayesian estimation; moment estimation</a></li>
+  <li><a href="#moment-estimation" id="toc-moment-estimation" class="nav-link" data-scroll-target="#moment-estimation">Moment estimation</a></li>
+  <li><a href="#bayesian-estimation" id="toc-bayesian-estimation" class="nav-link" data-scroll-target="#bayesian-estimation">Bayesian estimation</a></li>
+  <li><a href="#fisher-mle" id="toc-fisher-mle" class="nav-link" data-scroll-target="#fisher-mle">Fisher: MLE</a></li>
+  </ul></li>
+  <li><a href="#modern-statistics" id="toc-modern-statistics" class="nav-link" data-scroll-target="#modern-statistics">Modern Statistics</a>
+  <ul class="collapse">
+  <li><a href="#empirical-kullback-leibler-divergence-loss-and-mle" id="toc-empirical-kullback-leibler-divergence-loss-and-mle" class="nav-link" data-scroll-target="#empirical-kullback-leibler-divergence-loss-and-mle">Empirical Kullback-Leibler Divergence Loss and MLE</a>
+  <ul class="collapse">
+  <li><a href="#kl-divergence-property" id="toc-kl-divergence-property" class="nav-link" data-scroll-target="#kl-divergence-property">KL-divergence Property</a></li>
+  </ul></li>
+  </ul></li>
   <li><a href="#linear-regression" id="toc-linear-regression" class="nav-link" data-scroll-target="#linear-regression">Linear Regression</a>
   <ul class="collapse">
   <li><a href="#ols" id="toc-ols" class="nav-link" data-scroll-target="#ols">OLS</a>
@@ -326,6 +340,110 @@ window.Quarto = {
 <li><p>Casella, G., &amp; Berger, R. (2024). Statistical inference. Chapman and Hall/CRC.</p></li>
 <li><p>Hastie, T., Tibshirani, R., &amp; Friedman, J. (2009). The elements of statistical learning.</p></li>
 </ul>
+</section>
+<section id="statistics-history" class="level1">
+<h1>statistics history</h1>
+<p>population <span class="math inline">\(f(x;\theta)\)</span> and <span class="math inline">\(\theta\)</span> is unknown</p>
+<section id="oldclassical-bayesian-estimation-moment-estimation" class="level2">
+<h2 class="anchored" data-anchor-id="oldclassical-bayesian-estimation-moment-estimation">old/classical: Bayesian estimation; moment estimation</h2>
+</section>
+<section id="moment-estimation" class="level2">
+<h2 class="anchored" data-anchor-id="moment-estimation">Moment estimation</h2>
+<ul>
+<li>For the moment estimation, we do not know the density so we could not calculate the expectation directly. Instead, we use LLN to approximate the expectation with sample mean. We then have</li>
+</ul>
+<p><span class="math display">\[
+m_1(\theta) = E[X] \approx \bar{X} = \frac{1}{n} \sum_{i=1}^n X_i
+\]</span></p>
+<p>then <span class="math display">\[
+\hat \theta = m_1^{-1}(\frac{1}{n} \sum_{i=1}^n X_i)
+\]</span></p>
+<p>For the multiple parameter case, we could use multiple moments to estimate the parameters. (k equations to solve k unknown parameters). Here we do not know the precise distribution, so we could not calculate the moments directly. Instead, we use LLN to approximate the moments with sample moments.</p>
+<p>Suppose <span class="math inline">\(X_1, X_2, \ldots, X_n\)</span> are iid samples from the distribution with parameters <span class="math inline">\(f(x;\theta_1, \theta_2, \ldots, \theta_k)\)</span> then by LLM.</p>
+<p>We then have approximatedmoment equation:</p>
+<p><span class="math display">\[
+E[X^j] = m_j(\theta_1, \theta_2, \ldots, \theta_k) \approx \frac{1}{n} \sum_{i=1}^n X_i^j, j=1,2,\ldots,k
+\]</span></p>
+<p>then we could solve the equations to get the estimators.</p>
+<p>The solution <span class="math inline">\(\hat \theta_1, \hat \theta_2, \ldots, \hat \theta_k\)</span> are the moment estimators of the parameters.</p>
+</section>
+<section id="bayesian-estimation" class="level2">
+<h2 class="anchored" data-anchor-id="bayesian-estimation">Bayesian estimation</h2>
+<p><span class="math inline">\(f(x|\theta)\)</span> is regarded as conditional density and the unknown parameter <span class="math inline">\(\theta\)</span> is the condition. <span class="math inline">\(\theta\)</span> is a random variable with prior distribution <span class="math inline">\(\pi(\theta)\)</span>.</p>
+<p><span class="math inline">\((X, \theta)\)</span> has joint distribution <span class="math inline">\(f(x,\theta)=f(x|\theta)\pi(\theta)\)</span></p>
+<p>Then we get the marginal distribution of <span class="math inline">\(X\)</span>:</p>
+<p><span class="math inline">\(f_X(x) = \int_{-\infty}^{+\infty} f(x|\theta)\pi(\theta)d\theta=\int_{-\infty}^{+\infty} f(x;\theta)\pi(\theta)d\theta\)</span></p>
+<p>the Bayesian formula is</p>
+<p><span class="math display">\[ \frac {P(A|C_i)P(C_i)}{\sum_j P(A|C_j)P(C_j)} =P(C_i|A)\]</span></p>
+<p><span class="math display">\[
+f(\theta|x)=\frac{f(x|\theta)\pi(\theta)}{f_X(x)} = \frac{f(x;\theta)\pi(\theta)}{\int_{-\infty}^{+\infty} f(x;\theta)\pi(\theta)d\theta}
+\]</span></p>
+<p>Then above we have used Bayes theorem to get the posterior distribution of <span class="math inline">\(\theta\)</span> given <span class="math inline">\(X=x\)</span></p>
+<p>This is the updation of your belief or learning.</p>
+<p>Bayesian statistics is unclear and ambiguous, but leaving us with no choice but to incorporate the most fundamental knowledge we have （不清不楚，不得不用）. We then update our understanding through experimental data. If it cannot be accomplished in one attempt, we iterate multiple times—eventually, we will gain a solid understanding of the parameters. The learning process is one of repeated iteration; there is no need to expect it to be completed in a single attempt.</p>
+<p>When we do not know every knowledge about the model, we could use the prior of uniform distribution to represent our ignorance. That is, everyone is equally likely.</p>
+<p>for <span class="math inline">\(f(x;\theta)\)</span>, we could calculate the expectation ; mode; CI</p>
+<p>modern statistics</p>
+<p><span class="math inline">\(L(\theta) = E[R(\theta,X)]\)</span></p>
+<p><span class="math inline">\(\hat \theta = argmin_\theta L(\theta)\)</span></p>
+<p>where <span class="math inline">\(R(\theta,X)\)</span> is the loss function</p>
+</section>
+<section id="fisher-mle" class="level2">
+<h2 class="anchored" data-anchor-id="fisher-mle">Fisher: MLE</h2>
+<p><strong>Fisher ambitious ： 不想依赖于贝叶斯，选prior的时候不能包含个人的任何认知，那就选客观的uniform分布</strong> (Fisher ambitious: Not wanting to rely on Bayesian, when choosing prior, no personal cognition can be included. Then choose the objective uniform distribution)</p>
+<p><span class="math inline">\(\pi (\theta|x) {d\theta}= d\theta\)</span> uniform</p>
+<p><span class="math inline">\(f(\theta|x_1, x_2, \ldots, x_n) = \frac{f(x_1, x_2, \ldots, x_n;\theta)\pi(\theta)}{\int f(x_1, x_2, \ldots, x_n;\theta)\pi(\theta)d\theta}\)</span> = <span class="math inline">\(L(\theta)\)</span></p>
+<p><span class="math display">\[
+= \frac{f(x_1;\theta)f(x_2;\theta)\ldots f(x_n;\theta) }{\int f(x_1;\theta)f(x_2;\theta)\ldots f(x_n;\theta)  d\theta}=L(\theta)
+\]</span></p>
+<p>Mode:</p>
+<p>Find maximum of <span class="math inline">\(f(\theta|x_1, x_2, \ldots, x_n)\)</span> i.e.&nbsp;L(<span class="math inline">\(\theta\)</span>)</p>
+<p><span class="math inline">\(\hat \theta = argmax_\theta L(\theta)=argmax_\theta \frac{f(x_1;\theta)f(x_2;\theta)\ldots f(x_n;\theta)}{f_X(x_1,x_2,..x_n)}\)</span></p>
+<p><span class="math inline">\(= argmax_\theta f(x_1;\theta)f(x_2;\theta)\ldots f(x_n;\theta)=argmax_\theta L(\theta)\)</span> this is the likelihood function</p>
+<p>When Fisher wanted to publish his idea to the Royal Society, he had been harshly commented through the discussion of the Royal Society. This is a good tradition but nowadays’ conference does ntot keep this. This means now they just have a presentation but the comments will not appear in the published paper.</p>
+<p>then we could use log likelihood to simplify the calculation of the derivative to get the maximum likelihood estimator.</p>
+<p>modern: Loss function</p>
+</section>
+</section>
+<section id="modern-statistics" class="level1">
+<h1>Modern Statistics</h1>
+<p>Loss function is a “scanning apparatus”. It will take special value at the true parameter such as 0 or minimum point.</p>
+<section id="empirical-kullback-leibler-divergence-loss-and-mle" class="level2">
+<h2 class="anchored" data-anchor-id="empirical-kullback-leibler-divergence-loss-and-mle">Empirical Kullback-Leibler Divergence Loss and MLE</h2>
+<p>(Empirical loss means that since we do not know the true distribution, we could use the sample to approximate the loss function. )</p>
+<p>Consider the empirical loss function：</p>
+<p><span class="math display">\[l(\theta) = \mathbb{E}_{\Theta} \left[ \frac{f(x;\theta_0)}{f(x;\theta)} \log \frac{f(x;\theta_0)}{f(x;\theta)} \right]\]</span></p>
+<p><span class="math display">\[= \int \frac{f(x;\theta_0)}{f(x;\theta)} \log \frac{f(x;\theta_0)}{f(x;\theta)} f(x;\theta) dx\]</span></p>
+<p><span class="math display">\[= \int \left[ \log \frac{f(x;\theta_0)}{f(x;\theta)} \right] f(x;\theta_0) dx\]</span></p>
+<p><span class="math display">\[= \mathbb{E}_{\Theta_0} \left[ \log \frac{f(x;\theta_0)}{f(x;\theta)} \right]\]</span></p>
+<p><span class="math display">\[\approx \frac{1}{n} \sum_{i=1}^{n} \log \frac{f(x_i;\theta_0)}{f(x_i;\theta)}\]</span></p>
+<p><span class="math display">\[= \frac{1}{n} \sum_{i=1}^{n} \log f(x_i;\theta_0) - \frac{1}{n} \sum_{i=1}^{n} \log f(x_i;\theta)\]</span></p>
+<p><span class="math display">\[\text{Argmin}(\hat{\theta}) = \text{Argmin}\left[ -\frac{1}{n} \sum_{i=1}^{n} \log f(x_i;\theta) \right]\]</span></p>
+<p><span class="math display">\[= \text{Argmax}\left[ \sum_{i=1}^{n} \log f(x_i;\theta) \right]\]</span></p>
+<p><span class="math display">\[= \text{Argmax}\left[ \log \prod_{i=1}^{n} f(x_i;\theta) \right]\]</span></p>
+<section id="kl-divergence-property" class="level3">
+<h3 class="anchored" data-anchor-id="kl-divergence-property">KL-divergence Property</h3>
+<p>Let <span class="math inline">\(E_{\theta}\)</span> be the expectation of <span class="math inline">\(f_{\theta}(x)\)</span>.</p>
+<p>the true model <span class="math inline">\(f(x;\theta_0)\)</span>，and the proposed model is <span class="math inline">\(f(x,\theta)\)</span>。</p>
+<p>KL (entropy) divergence:</p>
+<p><span class="math display">\[\mathbb{E}_{\theta} \left[ \frac{f(x;\theta_0)}{f(x;\theta)} \log \frac{f(x;\theta_0)}{f(x;\theta)} \right]\]</span></p>
+<p>Let <span class="math inline">\(\varphi(x) = x \log x\)</span>，then <span class="math inline">\(\varphi'(x) = \log x + 1\)</span>，<span class="math inline">\(\varphi''(x) = \frac{1}{x} &gt; 0\)</span>，</p>
+<p>So <span class="math inline">\(\varphi(x)\)</span> is a convex function over <span class="math inline">\((0,+\infty)\)</span>.。</p>
+<p>By Jensen inequality：</p>
+<p><span class="math display">\[\varphi\left( \mathbb{E}_{\theta} \left[ \frac{f(x;\theta_0)}{f(x;\theta)} \right] \right) \leq \mathbb{E}_{\theta} \left[ \varphi\left( \frac{f(x;\theta_0)}{f(x;\theta)} \right) \right]\]</span></p>
+<p><span class="math display">\[\mathbb{E}_{\theta} \left[ \frac{f(x;\theta_0)}{f(x;\theta)} \right] = \int_{-\infty}^{\infty} \frac{f(x;\theta_0)}{f(x;\theta)} f(x;\theta) dx\]</span></p>
+<p><span class="math display">\[= \int_{-\infty}^{\infty} f(x;\theta_0) dx = 1\]</span></p>
+<p>Thus</p>
+<p><span class="math display">\[\varphi(1) = 1 \times \log 1 = 0 \leq \mathbb{E}_{\theta} \left[ \frac{f(x;\theta_0)}{f(x;\theta)} \log \frac{f(x;\theta_0)}{f(x;\theta)} \right]\]</span></p>
+<p>Loss function</p>
+<p><span class="math display">\[l(\theta) = \mathbb{E}_{\theta} \left[ \frac{f(x;\theta_0)}{f(x;\theta)} \log \frac{f(x;\theta_0)}{f(x;\theta)} \right] \geq 0\]</span></p>
+<p>and <span class="math inline">\(l(\theta_0) = 0\)</span>，so <span class="math inline">\(\theta_0\)</span> is <span class="math inline">\(l(\theta)\)</span>’s minimum point</p>
+<p>Empirical estimators are:</p>
+<p><span class="math display">\[l(\theta) \approx \frac{1}{n} \sum_{i=1}^n \frac{f(x_i;\theta_0)}{f(x_i;\theta)} \log \frac{f(x_i;\theta_0)}{f(x_i;\theta)}\]</span></p>
+<p><strong>Conclusion: Maximum likelihood estimation is equivalent to minimizing the KL divergence, which provides the theoretical basis of information theory for MLE. </strong></p>
+<p>DeepSeek loss function—Feed the data - gradient descent—LLM</p>
+</section>
+</section>
 </section>
 <section id="linear-regression" class="level1">
 <h1>Linear Regression</h1>
