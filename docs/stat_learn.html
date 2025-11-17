@@ -220,6 +220,8 @@ window.Quarto = {
   <ul class="collapse">
   <li><a href="#kl-divergence-property" id="toc-kl-divergence-property" class="nav-link" data-scroll-target="#kl-divergence-property">KL-divergence Property</a></li>
   </ul></li>
+  <li><a href="#sufficient-statistics" id="toc-sufficient-statistics" class="nav-link" data-scroll-target="#sufficient-statistics">Sufficient statistics</a></li>
+  <li><a href="#rao-blackwell-theorem" id="toc-rao-blackwell-theorem" class="nav-link" data-scroll-target="#rao-blackwell-theorem">Rao-Blackwell Theorem</a></li>
   </ul></li>
   <li><a href="#linear-regression" id="toc-linear-regression" class="nav-link" data-scroll-target="#linear-regression">Linear Regression</a>
   <ul class="collapse">
@@ -443,6 +445,27 @@ f(\theta|x)=\frac{f(x|\theta)\pi(\theta)}{f_X(x)} = \frac{f(x;\theta)\pi(\theta)
 <p><strong>Conclusion: Maximum likelihood estimation is equivalent to minimizing the KL divergence, which provides the theoretical basis of information theory for MLE. </strong></p>
 <p>DeepSeek loss function—Feed the data - gradient descent—LLM</p>
 </section>
+</section>
+<section id="sufficient-statistics" class="level2">
+<h2 class="anchored" data-anchor-id="sufficient-statistics">Sufficient statistics</h2>
+<p><span class="math display">\[
+\hat \theta =T(X_1, X_2, \ldots, X_n)
+\]</span> where</p>
+<p><span class="math display">\[
+T : R^n \to R
+\]</span> The sufficient statistics is a compression of the data that retains all the information needed to estimate the parameter <span class="math inline">\(\theta\)</span>; It is the filtering of the information that thorwing away the noise; It is the distillation of the data that keeps the essence. Therefore, the sufficiency means no information is lost and we combine the information into 2 numbers.</p>
+<ul>
+<li><p>Two sufficient statistics have invertible transformation between them. Therefore there are many sufficient statistics.</p></li>
+<li><p>sufficient statistics is not unbiased</p></li>
+<li></li>
+</ul>
+</section>
+<section id="rao-blackwell-theorem" class="level2">
+<h2 class="anchored" data-anchor-id="rao-blackwell-theorem">Rao-Blackwell Theorem</h2>
+<ul>
+<li><p>Motivation: not only do we need the sufficiency of the statistics, but also we want the estimator to be unbiased and with minimum variance.</p></li>
+<li><p>the proof includes the idea of changing the double expectation into the iterated expectation with one of it to be the conditional expectation(just like changing the double integral into the iterated integral). This proof demonstrates the charisma of the conditional expectation which improves the efficiency.</p></li>
+</ul>
 </section>
 </section>
 <section id="linear-regression" class="level1">

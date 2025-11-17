@@ -204,6 +204,38 @@ $$l(\theta) \approx \frac{1}{n} \sum_{i=1}^n \frac{f(x_i;\theta_0)}{f(x_i;\theta
 DeepSeek loss function---Feed the data - gradient descent---LLM
 
 
+## Sufficient statistics
+
+$$
+\hat \theta =T(X_1, X_2, \ldots, X_n)
+$$
+where
+
+$$
+T : R^n \to R
+$$
+The sufficient statistics is a compression of the data that retains all the information needed to estimate the parameter $\theta$; It is the filtering of the information that thorwing away the noise; It is the distillation of the data that keeps the essence. Therefore, the sufficiency means no information is lost and we combine the information into 2 numbers.
+
+
+- Two sufficient statistics have invertible transformation between them. Therefore there are many sufficient statistics.
+
+- sufficient statistics is not unbiased
+
+- 
+
+
+
+
+
+## Rao-Blackwell Theorem
+
+- Motivation: not only do we need the sufficiency of the statistics, but also we want the estimator to be unbiased and with minimum variance.
+
+- the proof includes the idea of changing the double expectation into the iterated expectation with one of it to be the conditional expectation(just like changing the double integral into the iterated integral). This proof demonstrates the charisma of the conditional expectation which improves the efficiency.
+
+
+
+
 
 
 # Linear Regression
