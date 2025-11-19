@@ -1232,5 +1232,81 @@ $$
 
 
 
+# Confidence Interval
+
+## Motivation
+
+Statistical inference is a solution with likelihood that such solution is successful.
+
+- Since we want the probability of the estimation and the probability of a point estimation is always 0, we need to consider the interval estimation.
+
+- guess of $\theta_0$ needs us to know the domain of $\theta_0$ [L,U].
+
+  Let the sample to be $x_1, x_2, \ldots, x_n$ and the domain is a random interval $[L(X_1, X_2, \ldots, X_n), U(X_1, X_2, \ldots, X_n)]$ with L < U. The success is $P(L \leq \theta_0 \leq U)=1-\alpha$.
+
+
+- metaphor using the fisherman catching fish
+
+  The fisherman wants to catch a fish with length $\theta_0$. He uses a bamboo bucket with size [L,U] to randomly catch the fish. If the fish is in the net, then he is successful. The size of the net is random because it depends on the sample data.
+  
+  The hook is the point estimation of $\theta_0$.
+
+## what is the good confidence interval?
+
+Given the confidence level $1-\alpha$, we want to find the interval [L,U] as small as possible such that $P(L \leq \theta_0 \leq U)=1-\alpha$ to ensure the accuracy of the estimation.
+
+
+## Pivot---Construction of Confidence Interval
+
+- pivot : $T(x_1, x_2, \ldots, x_n; \theta_0) \in f(t)$. The $\theta_0$ is apparent in the pivot
+
+- statistics : $T(x_1, x_2, \ldots, x_n) \in f(t; \theta_0)$. The $theta_0$ is hidden in the statistic so we must excavate it to get the real meaning of it.
+
+A pivot is a function of the sample data and the parameter of interest that has a probability distribution that does not depend on the parameter. Pivots are useful for constructing confidence intervals because they allow us to make probabilistic statements about the parameter without knowing its true value.
+
+
+Getting L and U such that the confidence interval is as small as possible is a problem of minimization optimization with extra constraints.
+
+
+Lagrange Multiplier Method could be used to solve the optimization problem:
+
+Use the standard normal distribution as an example:
+
+Want to minimize U-L subject to the constraint that $P(L \leq \mu \leq U) = 1 - \alpha$.
+
+$$
+\phi (a,b,\lambda) = b-a + \lambda \left[ P(a \leq Z \leq b) - (1 - \alpha) \right]
+$$
+
+i.e.
+
+$$
+\phi (a,b,\lambda) = b-a + \lambda (\int _{a}^{b} \frac{1}{\sqrt{2\pi}} e^{-\frac{y^2}{2}} dy - (1 - \alpha))
+$$
+
+Taking partial derivatives and setting them to zero:
+
+$$
+\frac{\partial \phi}{\partial a} = -1 + \lambda \cdot \frac{1}{\sqrt{2\pi}} e^{-\frac{a^2}{2}} = 0
+$$
+
+$$
+\frac{\partial \phi}{\partial b} = 1 + \lambda \cdot \frac{1}{\sqrt{2\pi}} e^{-\frac{b^2}{2}} = 0
+$$
+
+$$
+\frac{\partial \phi}{\partial \lambda} = \int _{a}^{b} \frac{1}{\sqrt{2\pi}} e^{-\frac{y^2}{2}} dy - (1 - \alpha) = 0
+$$
+
+By adding the first two equations, we get:
+
+$$
+\lambda \cdot \frac{1}{\sqrt{2\pi}} \left( e^{-\frac{a^2}{2}} - e^{-\frac{b^2}{2}} \right) = 0
+$$
+
+since $\lambda \neq 0$, we have $e^{-\frac{a^2}{2}} = e^{-\frac{b^2}{2}}$, which implies $a^2 = b^2$ or $a = -b$ (since $a < b$).
+
+
+Therefore, for the standard normal distribution, the best confidence interval that minimizes the width $U - L$ for a given confidence level $1 - \alpha$ is symmetric around zero, i.e., $L = -z_{\alpha/2}$ and $U = z_{\alpha/2}$, where $z_{\alpha/2}$ is the critical value from the standard normal distribution corresponding to the upper $\alpha/2$ percentile.
 
 

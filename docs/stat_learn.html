@@ -309,6 +309,12 @@ window.Quarto = {
   <li><a href="#law-of-large-numbers-lln" id="toc-law-of-large-numbers-lln" class="nav-link" data-scroll-target="#law-of-large-numbers-lln">Law of Large Numbers (LLN)</a></li>
   <li><a href="#central-limit-theorem-clt" id="toc-central-limit-theorem-clt" class="nav-link" data-scroll-target="#central-limit-theorem-clt">Central Limit Theorem (CLT)</a></li>
   </ul></li>
+  <li><a href="#confidence-interval" id="toc-confidence-interval" class="nav-link" data-scroll-target="#confidence-interval">Confidence Interval</a>
+  <ul class="collapse">
+  <li><a href="#motivation" id="toc-motivation" class="nav-link" data-scroll-target="#motivation">Motivation</a></li>
+  <li><a href="#what-is-the-good-confidence-interval" id="toc-what-is-the-good-confidence-interval" class="nav-link" data-scroll-target="#what-is-the-good-confidence-interval">what is the good confidence interval?</a></li>
+  <li><a href="#pivotconstruction-of-confidence-interval" id="toc-pivotconstruction-of-confidence-interval" class="nav-link" data-scroll-target="#pivotconstruction-of-confidence-interval">Pivot—Construction of Confidence Interval</a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
@@ -1272,6 +1278,60 @@ P\left(\lim_{n \to \infty} \frac{1}{n}\sum_{i=1}^{n} X_i = \mu\right) = 1
 </section>
 <section id="central-limit-theorem-clt" class="level2">
 <h2 class="anchored" data-anchor-id="central-limit-theorem-clt">Central Limit Theorem (CLT)</h2>
+</section>
+</section>
+<section id="confidence-interval" class="level1">
+<h1>Confidence Interval</h1>
+<section id="motivation" class="level2">
+<h2 class="anchored" data-anchor-id="motivation">Motivation</h2>
+<p>Statistical inference is a solution with likelihood that such solution is successful.</p>
+<ul>
+<li><p>Since we want the probability of the estimation and the probability of a point estimation is always 0, we need to consider the interval estimation.</p></li>
+<li><p>guess of <span class="math inline">\(\theta_0\)</span> needs us to know the domain of <span class="math inline">\(\theta_0\)</span> [L,U].</p>
+<p>Let the sample to be <span class="math inline">\(x_1, x_2, \ldots, x_n\)</span> and the domain is a random interval <span class="math inline">\([L(X_1, X_2, \ldots, X_n), U(X_1, X_2, \ldots, X_n)]\)</span> with L &lt; U. The success is <span class="math inline">\(P(L \leq \theta_0 \leq U)=1-\alpha\)</span>.</p></li>
+<li><p>metaphor using the fisherman catching fish</p>
+<p>The fisherman wants to catch a fish with length <span class="math inline">\(\theta_0\)</span>. He uses a bamboo bucket with size [L,U] to randomly catch the fish. If the fish is in the net, then he is successful. The size of the net is random because it depends on the sample data.</p>
+<p>The hook is the point estimation of <span class="math inline">\(\theta_0\)</span>.</p></li>
+</ul>
+</section>
+<section id="what-is-the-good-confidence-interval" class="level2">
+<h2 class="anchored" data-anchor-id="what-is-the-good-confidence-interval">what is the good confidence interval?</h2>
+<p>Given the confidence level <span class="math inline">\(1-\alpha\)</span>, we want to find the interval [L,U] as small as possible such that <span class="math inline">\(P(L \leq \theta_0 \leq U)=1-\alpha\)</span> to ensure the accuracy of the estimation.</p>
+</section>
+<section id="pivotconstruction-of-confidence-interval" class="level2">
+<h2 class="anchored" data-anchor-id="pivotconstruction-of-confidence-interval">Pivot—Construction of Confidence Interval</h2>
+<ul>
+<li><p>pivot : <span class="math inline">\(T(x_1, x_2, \ldots, x_n; \theta_0) \in f(t)\)</span>. The <span class="math inline">\(\theta_0\)</span> is apparent in the pivot</p></li>
+<li><p>statistics : <span class="math inline">\(T(x_1, x_2, \ldots, x_n) \in f(t; \theta_0)\)</span>. The <span class="math inline">\(theta_0\)</span> is hidden in the statistic so we must excavate it to get the real meaning of it.</p></li>
+</ul>
+<p>A pivot is a function of the sample data and the parameter of interest that has a probability distribution that does not depend on the parameter. Pivots are useful for constructing confidence intervals because they allow us to make probabilistic statements about the parameter without knowing its true value.</p>
+<p>Getting L and U such that the confidence interval is as small as possible is a problem of minimization optimization with extra constraints.</p>
+<p>Lagrange Multiplier Method could be used to solve the optimization problem:</p>
+<p>Use the standard normal distribution as an example:</p>
+<p>Want to minimize U-L subject to the constraint that <span class="math inline">\(P(L \leq \mu \leq U) = 1 - \alpha\)</span>.</p>
+<p><span class="math display">\[
+\phi (a,b,\lambda) = b-a + \lambda \left[ P(a \leq Z \leq b) - (1 - \alpha) \right]
+\]</span></p>
+<p>i.e.</p>
+<p><span class="math display">\[
+\phi (a,b,\lambda) = b-a + \lambda (\int _{a}^{b} \frac{1}{\sqrt{2\pi}} e^{-\frac{y^2}{2}} dy - (1 - \alpha))
+\]</span></p>
+<p>Taking partial derivatives and setting them to zero:</p>
+<p><span class="math display">\[
+\frac{\partial \phi}{\partial a} = -1 + \lambda \cdot \frac{1}{\sqrt{2\pi}} e^{-\frac{a^2}{2}} = 0
+\]</span></p>
+<p><span class="math display">\[
+\frac{\partial \phi}{\partial b} = 1 + \lambda \cdot \frac{1}{\sqrt{2\pi}} e^{-\frac{b^2}{2}} = 0
+\]</span></p>
+<p><span class="math display">\[
+\frac{\partial \phi}{\partial \lambda} = \int _{a}^{b} \frac{1}{\sqrt{2\pi}} e^{-\frac{y^2}{2}} dy - (1 - \alpha) = 0
+\]</span></p>
+<p>By adding the first two equations, we get:</p>
+<p><span class="math display">\[
+\lambda \cdot \frac{1}{\sqrt{2\pi}} \left( e^{-\frac{a^2}{2}} - e^{-\frac{b^2}{2}} \right) = 0
+\]</span></p>
+<p>since <span class="math inline">\(\lambda \neq 0\)</span>, we have <span class="math inline">\(e^{-\frac{a^2}{2}} = e^{-\frac{b^2}{2}}\)</span>, which implies <span class="math inline">\(a^2 = b^2\)</span> or <span class="math inline">\(a = -b\)</span> (since <span class="math inline">\(a &lt; b\)</span>).</p>
+<p>Therefore, for the standard normal distribution, the best confidence interval that minimizes the width <span class="math inline">\(U - L\)</span> for a given confidence level <span class="math inline">\(1 - \alpha\)</span> is symmetric around zero, i.e., <span class="math inline">\(L = -z_{\alpha/2}\)</span> and <span class="math inline">\(U = z_{\alpha/2}\)</span>, where <span class="math inline">\(z_{\alpha/2}\)</span> is the critical value from the standard normal distribution corresponding to the upper <span class="math inline">\(\alpha/2\)</span> percentile.</p>
 
 
 </section>

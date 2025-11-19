@@ -2336,5 +2336,26 @@
     "title": "Statistical_Learning (Mechine_Learning)",
     "section": "Rao-Blackwell Theorem",
     "text": "Rao-Blackwell Theorem\n\nMotivation: not only do we need the sufficiency of the statistics, but also we want the estimator to be unbiased and with minimum variance.\nthe proof includes the idea of changing the double expectation into the iterated expectation with one of it to be the conditional expectation(just like changing the double integral into the iterated integral). This proof demonstrates the charisma of the conditional expectation which improves the efficiency."
+  },
+  {
+    "objectID": "stat_learn.html#motivation",
+    "href": "stat_learn.html#motivation",
+    "title": "Statistical_Learning (Mechine_Learning)",
+    "section": "Motivation",
+    "text": "Motivation\nStatistical inference is a solution with likelihood that such solution is successful.\n\nSince we want the probability of the estimation and the probability of a point estimation is always 0, we need to consider the interval estimation.\nguess of \\(\\theta_0\\) needs us to know the domain of \\(\\theta_0\\) [L,U].\nLet the sample to be \\(x_1, x_2, \\ldots, x_n\\) and the domain is a random interval \\([L(X_1, X_2, \\ldots, X_n), U(X_1, X_2, \\ldots, X_n)]\\) with L &lt; U. The success is \\(P(L \\leq \\theta_0 \\leq U)=1-\\alpha\\).\nmetaphor using the fisherman catching fish\nThe fisherman wants to catch a fish with length \\(\\theta_0\\). He uses a bamboo bucket with size [L,U] to randomly catch the fish. If the fish is in the net, then he is successful. The size of the net is random because it depends on the sample data.\nThe hook is the point estimation of \\(\\theta_0\\)."
+  },
+  {
+    "objectID": "stat_learn.html#what-is-the-good-confidence-interval",
+    "href": "stat_learn.html#what-is-the-good-confidence-interval",
+    "title": "Statistical_Learning (Mechine_Learning)",
+    "section": "what is the good confidence interval?",
+    "text": "what is the good confidence interval?\nGiven the confidence level \\(1-\\alpha\\), we want to find the interval [L,U] as small as possible such that \\(P(L \\leq \\theta_0 \\leq U)=1-\\alpha\\) to ensure the accuracy of the estimation."
+  },
+  {
+    "objectID": "stat_learn.html#pivotconstruction-of-confidence-interval",
+    "href": "stat_learn.html#pivotconstruction-of-confidence-interval",
+    "title": "Statistical_Learning (Mechine_Learning)",
+    "section": "Pivot—Construction of Confidence Interval",
+    "text": "Pivot—Construction of Confidence Interval\n\npivot : \\(T(x_1, x_2, \\ldots, x_n; \\theta_0) \\in f(t)\\). The \\(\\theta_0\\) is apparent in the pivot\nstatistics : \\(T(x_1, x_2, \\ldots, x_n) \\in f(t; \\theta_0)\\). The \\(theta_0\\) is hidden in the statistic so we must excavate it to get the real meaning of it.\n\nA pivot is a function of the sample data and the parameter of interest that has a probability distribution that does not depend on the parameter. Pivots are useful for constructing confidence intervals because they allow us to make probabilistic statements about the parameter without knowing its true value.\nGetting L and U such that the confidence interval is as small as possible is a problem of minimization optimization with extra constraints.\nLagrange Multiplier Method could be used to solve the optimization problem:\nUse the standard normal distribution as an example:\nWant to minimize U-L subject to the constraint that \\(P(L \\leq \\mu \\leq U) = 1 - \\alpha\\).\n\\[\n\\phi (a,b,\\lambda) = b-a + \\lambda \\left[ P(a \\leq Z \\leq b) - (1 - \\alpha) \\right]\n\\]\ni.e.\n\\[\n\\phi (a,b,\\lambda) = b-a + \\lambda (\\int _{a}^{b} \\frac{1}{\\sqrt{2\\pi}} e^{-\\frac{y^2}{2}} dy - (1 - \\alpha))\n\\]\nTaking partial derivatives and setting them to zero:\n\\[\n\\frac{\\partial \\phi}{\\partial a} = -1 + \\lambda \\cdot \\frac{1}{\\sqrt{2\\pi}} e^{-\\frac{a^2}{2}} = 0\n\\]\n\\[\n\\frac{\\partial \\phi}{\\partial b} = 1 + \\lambda \\cdot \\frac{1}{\\sqrt{2\\pi}} e^{-\\frac{b^2}{2}} = 0\n\\]\n\\[\n\\frac{\\partial \\phi}{\\partial \\lambda} = \\int _{a}^{b} \\frac{1}{\\sqrt{2\\pi}} e^{-\\frac{y^2}{2}} dy - (1 - \\alpha) = 0\n\\]\nBy adding the first two equations, we get:\n\\[\n\\lambda \\cdot \\frac{1}{\\sqrt{2\\pi}} \\left( e^{-\\frac{a^2}{2}} - e^{-\\frac{b^2}{2}} \\right) = 0\n\\]\nsince \\(\\lambda \\neq 0\\), we have \\(e^{-\\frac{a^2}{2}} = e^{-\\frac{b^2}{2}}\\), which implies \\(a^2 = b^2\\) or \\(a = -b\\) (since \\(a &lt; b\\)).\nTherefore, for the standard normal distribution, the best confidence interval that minimizes the width \\(U - L\\) for a given confidence level \\(1 - \\alpha\\) is symmetric around zero, i.e., \\(L = -z_{\\alpha/2}\\) and \\(U = z_{\\alpha/2}\\), where \\(z_{\\alpha/2}\\) is the critical value from the standard normal distribution corresponding to the upper \\(\\alpha/2\\) percentile."
   }
 ]
