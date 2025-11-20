@@ -1260,12 +1260,13 @@ Given the confidence level $1-\alpha$, we want to find the interval [L,U] as sma
 
 - pivot : $T(x_1, x_2, \ldots, x_n; \theta_0) \in f(t)$. The $\theta_0$ is apparent in the pivot
 
-- statistics : $T(x_1, x_2, \ldots, x_n) \in f(t; \theta_0)$. The $theta_0$ is hidden in the statistic so we must excavate it to get the real meaning of it.
+- statistics : $T(x_1, x_2, \ldots, x_n) \in f(t; \theta_0)$. The $\theta_0$ is hidden in the statistic so we must excavate it to get the real meaning of it.
 
 A pivot is a function of the sample data and the parameter of interest that has a probability distribution that does not depend on the parameter. Pivots are useful for constructing confidence intervals because they allow us to make probabilistic statements about the parameter without knowing its true value.
 
+### An example using the Lagrange multiplier to minimize the size of CI given the confidence level in the senario of standard normal distribution
 
-Getting L and U such that the confidence interval is as small as possible is a problem of minimization optimization with extra constraints.
+**Getting L and U such that the confidence interval is as small as possible is a problem of minimization optimization with extra constraints.**
 
 
 Lagrange Multiplier Method could be used to solve the optimization problem:
@@ -1309,4 +1310,118 @@ since $\lambda \neq 0$, we have $e^{-\frac{a^2}{2}} = e^{-\frac{b^2}{2}}$, which
 
 Therefore, for the standard normal distribution, the best confidence interval that minimizes the width $U - L$ for a given confidence level $1 - \alpha$ is symmetric around zero, i.e., $L = -z_{\alpha/2}$ and $U = z_{\alpha/2}$, where $z_{\alpha/2}$ is the critical value from the standard normal distribution corresponding to the upper $\alpha/2$ percentile.
 
+
+## Example of Confidence Interval Construction using Pivot
+
+- Step 1: find the pivot
+
+This should begin by standardizing.
+
+- Step 2: find the quantiles of the pivot distribution
+
+- Step 3: solve the inequalities to get L and U
+
+### Example 1: Confidence Interval for the exponential distribution
+
+
+- step 1: find the pivot
+
+Let $X_1, X_2, \ldots, X_n$ be a random sample from an exponential distribution with point estimation $\theta_0=\frac{1}{n}\sum_{i=1}^{n} X_i$. The pivot could be constructed as follows:
+
+$$
+T = \frac{1}{n}\sum_{i=1}^{n} X_i
+$$
+
+#### method 1
+
+Construct the pivot with the distribution of Gamma
+
+Since $X_i \sim \text{Exponential}(\theta_0)$, we have
+$$
+\sum_{i=1}^{n} X_i \sim \text{Gamma}(n, \theta_0)
+$$
+Therefore,
+$$
+\frac{\sum_{i=1}^{n} X_i}{\theta_0} \sim \text{Gamma}(n, 1)
+$$
+
+
+
+#### method 2
+
+
+By standardization, we have
+
+$$
+\frac{\frac{1}{n}\sum_{i=1}^{n} X_i-\theta_0}{ \frac{\theta_0}{\sqrt{n}}} = \frac{\sqrt{n}(\frac{1}{n}\sum_{i=1}^{n} X_i - \theta_0)}{\theta_0} \sim N(0,1)
+$$
+
+## Why CI is useful?
+
+If we want to check if $\theta_0$ is equal to a specific value $\theta_1$, we could check if $\theta_1$ is in the confidence interval.
+
+(Here for the equivalence to the  hypothesis testing, the null hypothesis is $H_0: \theta_0 = \theta_1$ and the alternative hypothesis is $H_a: \theta_0 \neq \theta_1$.)
+
+therefore if we have constructed the $1-\alpha$ confidence interval [L,U], then if $\theta_1$ is not in [L,U], we  say we have $1-\alpha$ confidence to say $\theta_0 \neq \theta_1$.
+
+### relation between CI and Hypothesis Testing
+
+They are the same thing but they are different perspectives.
+
+Confidence interval is a direct method to check if $\theta_0$ is equal to a specific value $\theta_1$. Hypothesis testing is an indirect method to check if $\theta_0$ is equal to a specific value $\theta_1$.
+
+## Bayesian Confidence Interval---Credible Interval
+
+$x_1, x_2, \ldots, x_n \sim f(x|\theta_0)$ or say $f(x;\theta_0)$
+
+prior for $\theta_0 \sim \pi(\theta)$
+
+
+$$
+f(\theta|x_1,...x_n) = \frac{f(x_1,...,x_n|\theta)\pi(\theta)}{\int f(x_1,...,x_n|\theta)\pi(\theta)d\theta}
+$$
+
+since they are i.i.d
+
+$$
+f(\theta|x_1,...x_n) = \frac{\prod_{i=1}^{n} f(x_i|\theta)\pi(\theta)}{\int \prod_{i=1}^{n} f(x_i|\theta)\pi(\theta)d\theta}
+$$
+
+To construct the credible interval with level $1-\alpha$, we need to find the interval [L,U] such that
+
+$$
+P(L \leq \theta_0 \leq U|x_1,...,x_n) = 1-\alpha
+$$
+
+i.e.
+
+$$
+\int_{L}^{U} f(\theta|x_1,...,x_n) d\theta = 1-\alpha
+$$
+
+
+By Lagrange Multiplier Method, we could find the best [L,U] such that U-L is as small as possible subject to the constraint.
+
+L is the $\alpha/2$ quantile which is the function of $x_1,...,x_n$ and U is the $1-\alpha/2$ quantile which is also the function of $x_1,...,x_n$.
+
+## Bootstrap Confidence Interval
+
+$\theta_1, \theta_2, \ldots, \theta_B$ are the bootstrap estimates of $\theta_0$.
+
+$\thata_{(1)}, \theta_{(2)}, \ldots, \theta_{(B)}$ are the order statistics of $\theta_1, \theta_2, \ldots, \theta_B$.
+
+therefore,
+
+$$
+(\theta_{(\alpha/2 \cdot B)}, \theta_{((1-\alpha/2) \cdot B)})
+$$ is the bootstrap confidence interval with level $1-\alpha$.
+
+
+
+
+## bias- variance trade-off
+
+$$
+MSE=Var+Bias^2
+$$
 

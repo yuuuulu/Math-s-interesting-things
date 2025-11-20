@@ -313,7 +313,21 @@ window.Quarto = {
   <ul class="collapse">
   <li><a href="#motivation" id="toc-motivation" class="nav-link" data-scroll-target="#motivation">Motivation</a></li>
   <li><a href="#what-is-the-good-confidence-interval" id="toc-what-is-the-good-confidence-interval" class="nav-link" data-scroll-target="#what-is-the-good-confidence-interval">what is the good confidence interval?</a></li>
-  <li><a href="#pivotconstruction-of-confidence-interval" id="toc-pivotconstruction-of-confidence-interval" class="nav-link" data-scroll-target="#pivotconstruction-of-confidence-interval">Pivot—Construction of Confidence Interval</a></li>
+  <li><a href="#pivotconstruction-of-confidence-interval" id="toc-pivotconstruction-of-confidence-interval" class="nav-link" data-scroll-target="#pivotconstruction-of-confidence-interval">Pivot—Construction of Confidence Interval</a>
+  <ul class="collapse">
+  <li><a href="#an-example-using-the-lagrange-multiplier-to-minimize-the-size-of-ci-given-the-confidence-level-in-the-senario-of-standard-normal-distribution" id="toc-an-example-using-the-lagrange-multiplier-to-minimize-the-size-of-ci-given-the-confidence-level-in-the-senario-of-standard-normal-distribution" class="nav-link" data-scroll-target="#an-example-using-the-lagrange-multiplier-to-minimize-the-size-of-ci-given-the-confidence-level-in-the-senario-of-standard-normal-distribution">An example using the Lagrange multiplier to minimize the size of CI given the confidence level in the senario of standard normal distribution</a></li>
+  </ul></li>
+  <li><a href="#example-of-confidence-interval-construction-using-pivot" id="toc-example-of-confidence-interval-construction-using-pivot" class="nav-link" data-scroll-target="#example-of-confidence-interval-construction-using-pivot">Example of Confidence Interval Construction using Pivot</a>
+  <ul class="collapse">
+  <li><a href="#example-1-confidence-interval-for-the-exponential-distribution" id="toc-example-1-confidence-interval-for-the-exponential-distribution" class="nav-link" data-scroll-target="#example-1-confidence-interval-for-the-exponential-distribution">Example 1: Confidence Interval for the exponential distribution</a></li>
+  </ul></li>
+  <li><a href="#why-ci-is-useful" id="toc-why-ci-is-useful" class="nav-link" data-scroll-target="#why-ci-is-useful">Why CI is useful?</a>
+  <ul class="collapse">
+  <li><a href="#relation-between-ci-and-hypothesis-testing" id="toc-relation-between-ci-and-hypothesis-testing" class="nav-link" data-scroll-target="#relation-between-ci-and-hypothesis-testing">relation between CI and Hypothesis Testing</a></li>
+  </ul></li>
+  <li><a href="#bayesian-confidence-intervalcredible-interval" id="toc-bayesian-confidence-intervalcredible-interval" class="nav-link" data-scroll-target="#bayesian-confidence-intervalcredible-interval">Bayesian Confidence Interval—Credible Interval</a></li>
+  <li><a href="#bootstrap-confidence-interval" id="toc-bootstrap-confidence-interval" class="nav-link" data-scroll-target="#bootstrap-confidence-interval">Bootstrap Confidence Interval</a></li>
+  <li><a href="#bias--variance-trade-off" id="toc-bias--variance-trade-off" class="nav-link" data-scroll-target="#bias--variance-trade-off">bias- variance trade-off</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -1302,10 +1316,12 @@ P\left(\lim_{n \to \infty} \frac{1}{n}\sum_{i=1}^{n} X_i = \mu\right) = 1
 <h2 class="anchored" data-anchor-id="pivotconstruction-of-confidence-interval">Pivot—Construction of Confidence Interval</h2>
 <ul>
 <li><p>pivot : <span class="math inline">\(T(x_1, x_2, \ldots, x_n; \theta_0) \in f(t)\)</span>. The <span class="math inline">\(\theta_0\)</span> is apparent in the pivot</p></li>
-<li><p>statistics : <span class="math inline">\(T(x_1, x_2, \ldots, x_n) \in f(t; \theta_0)\)</span>. The <span class="math inline">\(theta_0\)</span> is hidden in the statistic so we must excavate it to get the real meaning of it.</p></li>
+<li><p>statistics : <span class="math inline">\(T(x_1, x_2, \ldots, x_n) \in f(t; \theta_0)\)</span>. The <span class="math inline">\(\theta_0\)</span> is hidden in the statistic so we must excavate it to get the real meaning of it.</p></li>
 </ul>
 <p>A pivot is a function of the sample data and the parameter of interest that has a probability distribution that does not depend on the parameter. Pivots are useful for constructing confidence intervals because they allow us to make probabilistic statements about the parameter without knowing its true value.</p>
-<p>Getting L and U such that the confidence interval is as small as possible is a problem of minimization optimization with extra constraints.</p>
+<section id="an-example-using-the-lagrange-multiplier-to-minimize-the-size-of-ci-given-the-confidence-level-in-the-senario-of-standard-normal-distribution" class="level3">
+<h3 class="anchored" data-anchor-id="an-example-using-the-lagrange-multiplier-to-minimize-the-size-of-ci-given-the-confidence-level-in-the-senario-of-standard-normal-distribution">An example using the Lagrange multiplier to minimize the size of CI given the confidence level in the senario of standard normal distribution</h3>
+<p><strong>Getting L and U such that the confidence interval is as small as possible is a problem of minimization optimization with extra constraints.</strong></p>
 <p>Lagrange Multiplier Method could be used to solve the optimization problem:</p>
 <p>Use the standard normal distribution as an example:</p>
 <p>Want to minimize U-L subject to the constraint that <span class="math inline">\(P(L \leq \mu \leq U) = 1 - \alpha\)</span>.</p>
@@ -1332,6 +1348,92 @@ P\left(\lim_{n \to \infty} \frac{1}{n}\sum_{i=1}^{n} X_i = \mu\right) = 1
 \]</span></p>
 <p>since <span class="math inline">\(\lambda \neq 0\)</span>, we have <span class="math inline">\(e^{-\frac{a^2}{2}} = e^{-\frac{b^2}{2}}\)</span>, which implies <span class="math inline">\(a^2 = b^2\)</span> or <span class="math inline">\(a = -b\)</span> (since <span class="math inline">\(a &lt; b\)</span>).</p>
 <p>Therefore, for the standard normal distribution, the best confidence interval that minimizes the width <span class="math inline">\(U - L\)</span> for a given confidence level <span class="math inline">\(1 - \alpha\)</span> is symmetric around zero, i.e., <span class="math inline">\(L = -z_{\alpha/2}\)</span> and <span class="math inline">\(U = z_{\alpha/2}\)</span>, where <span class="math inline">\(z_{\alpha/2}\)</span> is the critical value from the standard normal distribution corresponding to the upper <span class="math inline">\(\alpha/2\)</span> percentile.</p>
+</section>
+</section>
+<section id="example-of-confidence-interval-construction-using-pivot" class="level2">
+<h2 class="anchored" data-anchor-id="example-of-confidence-interval-construction-using-pivot">Example of Confidence Interval Construction using Pivot</h2>
+<ul>
+<li>Step 1: find the pivot</li>
+</ul>
+<p>This should begin by standardizing.</p>
+<ul>
+<li><p>Step 2: find the quantiles of the pivot distribution</p></li>
+<li><p>Step 3: solve the inequalities to get L and U</p></li>
+</ul>
+<section id="example-1-confidence-interval-for-the-exponential-distribution" class="level3">
+<h3 class="anchored" data-anchor-id="example-1-confidence-interval-for-the-exponential-distribution">Example 1: Confidence Interval for the exponential distribution</h3>
+<ul>
+<li>step 1: find the pivot</li>
+</ul>
+<p>Let <span class="math inline">\(X_1, X_2, \ldots, X_n\)</span> be a random sample from an exponential distribution with point estimation <span class="math inline">\(\theta_0=\frac{1}{n}\sum_{i=1}^{n} X_i\)</span>. The pivot could be constructed as follows:</p>
+<p><span class="math display">\[
+T = \frac{1}{n}\sum_{i=1}^{n} X_i
+\]</span></p>
+<section id="method-1" class="level4">
+<h4 class="anchored" data-anchor-id="method-1">method 1</h4>
+<p>Construct the pivot with the distribution of Gamma</p>
+<p>Since <span class="math inline">\(X_i \sim \text{Exponential}(\theta_0)\)</span>, we have <span class="math display">\[
+\sum_{i=1}^{n} X_i \sim \text{Gamma}(n, \theta_0)
+\]</span> Therefore, <span class="math display">\[
+\frac{\sum_{i=1}^{n} X_i}{\theta_0} \sim \text{Gamma}(n, 1)
+\]</span></p>
+</section>
+<section id="method-2" class="level4">
+<h4 class="anchored" data-anchor-id="method-2">method 2</h4>
+<p>By standardization, we have</p>
+<p><span class="math display">\[
+\frac{\frac{1}{n}\sum_{i=1}^{n} X_i-\theta_0}{ \frac{\theta_0}{\sqrt{n}}} = \frac{\sqrt{n}(\frac{1}{n}\sum_{i=1}^{n} X_i - \theta_0)}{\theta_0} \sim N(0,1)
+\]</span></p>
+</section>
+</section>
+</section>
+<section id="why-ci-is-useful" class="level2">
+<h2 class="anchored" data-anchor-id="why-ci-is-useful">Why CI is useful?</h2>
+<p>If we want to check if <span class="math inline">\(\theta_0\)</span> is equal to a specific value <span class="math inline">\(\theta_1\)</span>, we could check if <span class="math inline">\(\theta_1\)</span> is in the confidence interval.</p>
+<p>(Here for the equivalence to the hypothesis testing, the null hypothesis is <span class="math inline">\(H_0: \theta_0 = \theta_1\)</span> and the alternative hypothesis is <span class="math inline">\(H_a: \theta_0 \neq \theta_1\)</span>.)</p>
+<p>therefore if we have constructed the <span class="math inline">\(1-\alpha\)</span> confidence interval [L,U], then if <span class="math inline">\(\theta_1\)</span> is not in [L,U], we say we have <span class="math inline">\(1-\alpha\)</span> confidence to say <span class="math inline">\(\theta_0 \neq \theta_1\)</span>.</p>
+<section id="relation-between-ci-and-hypothesis-testing" class="level3">
+<h3 class="anchored" data-anchor-id="relation-between-ci-and-hypothesis-testing">relation between CI and Hypothesis Testing</h3>
+<p>They are the same thing but they are different perspectives.</p>
+<p>Confidence interval is a direct method to check if <span class="math inline">\(\theta_0\)</span> is equal to a specific value <span class="math inline">\(\theta_1\)</span>. Hypothesis testing is an indirect method to check if <span class="math inline">\(\theta_0\)</span> is equal to a specific value <span class="math inline">\(\theta_1\)</span>.</p>
+</section>
+</section>
+<section id="bayesian-confidence-intervalcredible-interval" class="level2">
+<h2 class="anchored" data-anchor-id="bayesian-confidence-intervalcredible-interval">Bayesian Confidence Interval—Credible Interval</h2>
+<p><span class="math inline">\(x_1, x_2, \ldots, x_n \sim f(x|\theta_0)\)</span> or say <span class="math inline">\(f(x;\theta_0)\)</span></p>
+<p>prior for <span class="math inline">\(\theta_0 \sim \pi(\theta)\)</span></p>
+<p><span class="math display">\[
+f(\theta|x_1,...x_n) = \frac{f(x_1,...,x_n|\theta)\pi(\theta)}{\int f(x_1,...,x_n|\theta)\pi(\theta)d\theta}
+\]</span></p>
+<p>since they are i.i.d</p>
+<p><span class="math display">\[
+f(\theta|x_1,...x_n) = \frac{\prod_{i=1}^{n} f(x_i|\theta)\pi(\theta)}{\int \prod_{i=1}^{n} f(x_i|\theta)\pi(\theta)d\theta}
+\]</span></p>
+<p>To construct the credible interval with level <span class="math inline">\(1-\alpha\)</span>, we need to find the interval [L,U] such that</p>
+<p><span class="math display">\[
+P(L \leq \theta_0 \leq U|x_1,...,x_n) = 1-\alpha
+\]</span></p>
+<p>i.e.</p>
+<p><span class="math display">\[
+\int_{L}^{U} f(\theta|x_1,...,x_n) d\theta = 1-\alpha
+\]</span></p>
+<p>By Lagrange Multiplier Method, we could find the best [L,U] such that U-L is as small as possible subject to the constraint.</p>
+<p>L is the <span class="math inline">\(\alpha/2\)</span> quantile which is the function of <span class="math inline">\(x_1,...,x_n\)</span> and U is the <span class="math inline">\(1-\alpha/2\)</span> quantile which is also the function of <span class="math inline">\(x_1,...,x_n\)</span>.</p>
+</section>
+<section id="bootstrap-confidence-interval" class="level2">
+<h2 class="anchored" data-anchor-id="bootstrap-confidence-interval">Bootstrap Confidence Interval</h2>
+<p><span class="math inline">\(\theta_1, \theta_2, \ldots, \theta_B\)</span> are the bootstrap estimates of <span class="math inline">\(\theta_0\)</span>.</p>
+<p><span class="math inline">\(\thata_{(1)}, \theta_{(2)}, \ldots, \theta_{(B)}\)</span> are the order statistics of <span class="math inline">\(\theta_1, \theta_2, \ldots, \theta_B\)</span>.</p>
+<p>therefore,</p>
+<p><span class="math display">\[
+(\theta_{(\alpha/2 \cdot B)}, \theta_{((1-\alpha/2) \cdot B)})
+\]</span> is the bootstrap confidence interval with level <span class="math inline">\(1-\alpha\)</span>.</p>
+</section>
+<section id="bias--variance-trade-off" class="level2">
+<h2 class="anchored" data-anchor-id="bias--variance-trade-off">bias- variance trade-off</h2>
+<p><span class="math display">\[
+MSE=Var+Bias^2
+\]</span></p>
 
 
 </section>
