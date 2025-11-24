@@ -206,7 +206,8 @@ window.Quarto = {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#referece-books" id="toc-referece-books" class="nav-link active" data-scroll-target="#referece-books">Referece books</a></li>
+  <li><a href="#motivation" id="toc-motivation" class="nav-link active" data-scroll-target="#motivation">Motivation</a></li>
+  <li><a href="#referece-books" id="toc-referece-books" class="nav-link" data-scroll-target="#referece-books">Referece books</a></li>
   <li><a href="#statistics-history" id="toc-statistics-history" class="nav-link" data-scroll-target="#statistics-history">statistics history</a>
   <ul class="collapse">
   <li><a href="#oldclassical-bayesian-estimation-moment-estimation" id="toc-oldclassical-bayesian-estimation-moment-estimation" class="nav-link" data-scroll-target="#oldclassical-bayesian-estimation-moment-estimation">old/classical: Bayesian estimation; moment estimation</a></li>
@@ -311,7 +312,7 @@ window.Quarto = {
   </ul></li>
   <li><a href="#confidence-interval" id="toc-confidence-interval" class="nav-link" data-scroll-target="#confidence-interval">Confidence Interval</a>
   <ul class="collapse">
-  <li><a href="#motivation" id="toc-motivation" class="nav-link" data-scroll-target="#motivation">Motivation</a></li>
+  <li><a href="#motivation-1" id="toc-motivation-1" class="nav-link" data-scroll-target="#motivation-1">Motivation</a></li>
   <li><a href="#what-is-the-good-confidence-interval" id="toc-what-is-the-good-confidence-interval" class="nav-link" data-scroll-target="#what-is-the-good-confidence-interval">what is the good confidence interval?</a></li>
   <li><a href="#pivotconstruction-of-confidence-interval" id="toc-pivotconstruction-of-confidence-interval" class="nav-link" data-scroll-target="#pivotconstruction-of-confidence-interval">Pivot—Construction of Confidence Interval</a>
   <ul class="collapse">
@@ -327,6 +328,18 @@ window.Quarto = {
   </ul></li>
   <li><a href="#bayesian-confidence-intervalcredible-interval" id="toc-bayesian-confidence-intervalcredible-interval" class="nav-link" data-scroll-target="#bayesian-confidence-intervalcredible-interval">Bayesian Confidence Interval—Credible Interval</a></li>
   <li><a href="#bootstrap-confidence-interval" id="toc-bootstrap-confidence-interval" class="nav-link" data-scroll-target="#bootstrap-confidence-interval">Bootstrap Confidence Interval</a></li>
+  </ul></li>
+  <li><a href="#hypothesis-testing" id="toc-hypothesis-testing" class="nav-link" data-scroll-target="#hypothesis-testing">Hypothesis Testing</a>
+  <ul class="collapse">
+  <li><a href="#motivation-of-hypothesis-testing" id="toc-motivation-of-hypothesis-testing" class="nav-link" data-scroll-target="#motivation-of-hypothesis-testing">Motivation of Hypothesis Testing</a>
+  <ul class="collapse">
+  <li><a href="#relation-between-ci-and-hypothesis-testing-repeat-here" id="toc-relation-between-ci-and-hypothesis-testing-repeat-here" class="nav-link" data-scroll-target="#relation-between-ci-and-hypothesis-testing-repeat-here">relation between CI and Hypothesis Testing (repeat here)</a></li>
+  </ul></li>
+  <li><a href="#steps-of-hypothesis-testing" id="toc-steps-of-hypothesis-testing" class="nav-link" data-scroll-target="#steps-of-hypothesis-testing">steps of Hypothesis Testing</a>
+  <ul class="collapse">
+  <li><a href="#how-do-we-design-a-hypothesis-test" id="toc-how-do-we-design-a-hypothesis-test" class="nav-link" data-scroll-target="#how-do-we-design-a-hypothesis-test">How do we design a hypothesis test?</a></li>
+  <li><a href="#general-procedure" id="toc-general-procedure" class="nav-link" data-scroll-target="#general-procedure">General procedure</a></li>
+  </ul></li>
   <li><a href="#bias--variance-trade-off" id="toc-bias--variance-trade-off" class="nav-link" data-scroll-target="#bias--variance-trade-off">bias- variance trade-off</a></li>
   </ul></li>
   </ul>
@@ -354,6 +367,13 @@ window.Quarto = {
 </header>
 
 
+<section id="motivation" class="level1">
+<h1>Motivation</h1>
+<p>All knowledge is, in final analysis, history.</p>
+<p>All sciences are, in the abstact, mathematics.</p>
+<p>All judgements are, in their rationale, statistics.</p>
+<p>–C.Radhakrishna.Rao</p>
+</section>
 <section id="referece-books" class="level1">
 <h1>Referece books</h1>
 <ul>
@@ -1296,8 +1316,8 @@ P\left(\lim_{n \to \infty} \frac{1}{n}\sum_{i=1}^{n} X_i = \mu\right) = 1
 </section>
 <section id="confidence-interval" class="level1">
 <h1>Confidence Interval</h1>
-<section id="motivation" class="level2">
-<h2 class="anchored" data-anchor-id="motivation">Motivation</h2>
+<section id="motivation-1" class="level2">
+<h2 class="anchored" data-anchor-id="motivation-1">Motivation</h2>
 <p>Statistical inference is a solution with likelihood that such solution is successful.</p>
 <ul>
 <li><p>Since we want the probability of the estimation and the probability of a point estimation is always 0, we need to consider the interval estimation.</p></li>
@@ -1390,7 +1410,7 @@ T = \frac{1}{n}\sum_{i=1}^{n} X_i
 <section id="why-ci-is-useful" class="level2">
 <h2 class="anchored" data-anchor-id="why-ci-is-useful">Why CI is useful?</h2>
 <p>If we want to check if <span class="math inline">\(\theta_0\)</span> is equal to a specific value <span class="math inline">\(\theta_1\)</span>, we could check if <span class="math inline">\(\theta_1\)</span> is in the confidence interval.</p>
-<p>(Here for the equivalence to the hypothesis testing, the null hypothesis is <span class="math inline">\(H_0: \theta_0 = \theta_1\)</span> and the alternative hypothesis is <span class="math inline">\(H_a: \theta_0 \neq \theta_1\)</span>.)</p>
+<p>(Here for the equivalence to the hypothesis testing, the null hypothesis is <span class="math inline">\(H_0: \theta_0 = \theta_1\)</span> and the alternative hypothesis is <span class="math inline">\(H_1: \theta_0 \neq \theta_1\)</span>.)</p>
 <p>therefore if we have constructed the <span class="math inline">\(1-\alpha\)</span> confidence interval [L,U], then if <span class="math inline">\(\theta_1\)</span> is not in [L,U], we say we have <span class="math inline">\(1-\alpha\)</span> confidence to say <span class="math inline">\(\theta_0 \neq \theta_1\)</span>.</p>
 <section id="relation-between-ci-and-hypothesis-testing" class="level3">
 <h3 class="anchored" data-anchor-id="relation-between-ci-and-hypothesis-testing">relation between CI and Hypothesis Testing</h3>
@@ -1428,6 +1448,73 @@ P(L \leq \theta_0 \leq U|x_1,...,x_n) = 1-\alpha
 <p><span class="math display">\[
 (\theta_{(\alpha/2 \cdot B)}, \theta_{((1-\alpha/2) \cdot B)})
 \]</span> is the bootstrap confidence interval with level <span class="math inline">\(1-\alpha\)</span>.</p>
+</section>
+</section>
+<section id="hypothesis-testing" class="level1">
+<h1>Hypothesis Testing</h1>
+<section id="motivation-of-hypothesis-testing" class="level2">
+<h2 class="anchored" data-anchor-id="motivation-of-hypothesis-testing">Motivation of Hypothesis Testing</h2>
+<p>Hypothesis testing is a formal procedure for statistically evaluating whether a specific claim about a population parameter is supported by sample data.</p>
+<ul>
+<li>Proof by contradiction</li>
+</ul>
+<p>The logic procedure is no direct but rater indirect, closely mirroring the proof by contradiction in mathematics.</p>
+<ul>
+<li><p>step 1: Assume <span class="math inline">\(A^c\)</span> is true (null hypothesis <span class="math inline">\(H_0\)</span> is true).</p></li>
+<li><p>step 2: Do a sequence of logical deductions. Once you see a clear contradiction, then you stop. (calculate the p-value)</p></li>
+<li><p>step 3: Conclude that <span class="math inline">\(A\)</span> must be true (reject <span class="math inline">\(H_0\)</span> in favor of <span class="math inline">\(H_1\)</span>).</p></li>
+</ul>
+<p>Then we know that hypothesis testing is the statistical version of proof by contradiction in mathematics.</p>
+<p>However, in the mathematical proof by contradiction, the conclusion is always correct (the negation is absolutely impossible). But in hypothesis testing, there is a possibility of making errors (almost impossible <span class="math inline">\(H_0\)</span>).</p>
+<section id="relation-between-ci-and-hypothesis-testing-repeat-here" class="level3">
+<h3 class="anchored" data-anchor-id="relation-between-ci-and-hypothesis-testing-repeat-here">relation between CI and Hypothesis Testing (repeat here)</h3>
+<p>They are the same thing but they are different perspectives.</p>
+<p>Confidence interval is a direct method to check if <span class="math inline">\(\theta_0\)</span> is equal to a specific value <span class="math inline">\(\theta_1\)</span>. Hypothesis testing is an indirect method to check if <span class="math inline">\(\theta_0\)</span> is equal to a specific value <span class="math inline">\(\theta_1\)</span>.</p>
+</section>
+</section>
+<section id="steps-of-hypothesis-testing" class="level2">
+<h2 class="anchored" data-anchor-id="steps-of-hypothesis-testing">steps of Hypothesis Testing</h2>
+<section id="how-do-we-design-a-hypothesis-test" class="level3">
+<h3 class="anchored" data-anchor-id="how-do-we-design-a-hypothesis-test">How do we design a hypothesis test?</h3>
+<p>Now let us assume the population is <span class="math inline">\(N(\mu,1)\)</span> under <span class="math inline">\(H_0\)</span>. and our goal is to prove <span class="math inline">\(\mu \neq 0\)</span>.</p>
+<ul>
+<li>Step 1: Design <span class="math inline">\(H_0\)</span> and <span class="math inline">\(H_1\)</span></li>
+</ul>
+<p>We always put the claim we want to prove into the alternative hypothesis <span class="math inline">\(H_1\)</span>. The opposite of the claim is put into the null hypothesis <span class="math inline">\(H_0\)</span>.</p>
+<p>Then we do the following under the assumption that <span class="math inline">\(H_0\)</span> is true.</p>
+<p>Then we could design <span class="math inline">\(H_0: \mu = 0\)</span> and <span class="math inline">\(H_1: \mu \neq 0\)</span>.</p>
+<ul>
+<li>Step 2: Design an almost impossible event C under <span class="math inline">\(H_0\)</span>.</li>
+</ul>
+<p><span class="math inline">\(X_1, X_2, \ldots, X_n\)</span> are the random sample (i.i.d. from a common population, <span class="math inline">\(f(x;\theta)\)</span>, <span class="math inline">\(\theta \in \Theta\)</span> parameter space).</p>
+<p>Then the joint density of <span class="math inline">\(X_1, X_2, \ldots, X_n\)</span> under <span class="math inline">\(H_0\)</span> is <span class="math inline">\(f(x_1;0)f(x_2;0) \ldots f(x_n;0)\)</span>.</p>
+<p>The chance that <span class="math inline">\(C\in R^n\)</span> is chosen <span class="math inline">\(P((X_1, X_2, \ldots, X_n) \in C|H_0)=\int_Cf(x_1;0)f(x_2;0) \ldots f(x_n;0)dx_1dx_2 \ldots dx_n\)</span> is very small, say less than <span class="math inline">\(\alpha\)</span> (significance level).</p>
+<p>Then we could design the almost impossible event C as <span class="math inline">\(|\bar{X}| &gt; z_{\alpha/2}/\sqrt{n}\)</span> under <span class="math inline">\(H_0\)</span>.</p>
+<p>Do experiment and collect a data set <span class="math inline">\({x_1, x_2, \ldots, x_n}\)</span>. Do data analysis and check if <span class="math inline">\((x_1, x_2, \ldots, x_n) \in C\)</span>. If yes, then the almost impossible event happened which is a sign of contradiction, we reject <span class="math inline">\(H_0\)</span> in favor of <span class="math inline">\(H_1\)</span>. If no, then we do not have enough evidence to reject <span class="math inline">\(H_0\)</span>.</p>
+<ul>
+<li>Step 3: Conclusion</li>
+</ul>
+<p>If <span class="math inline">\((x_1, x_2, \ldots, x_n) \in C\)</span>, then we reject <span class="math inline">\(H_0\)</span> in favor of <span class="math inline">\(H_1\)</span>.</p>
+<p>Equivalently, we accept <span class="math inline">\(H_1\)</span> is true.</p>
+</section>
+<section id="general-procedure" class="level3">
+<h3 class="anchored" data-anchor-id="general-procedure">General procedure</h3>
+<ul>
+<li>Step 1: Write down the statement</li>
+</ul>
+<p><span class="math inline">\(H_0\)</span> vs <span class="math inline">\(H_1\)</span>. Here, <span class="math inline">\(H_1\)</span> is what we want to prove and <span class="math inline">\(H_0\)</span> is the negation of <span class="math inline">\(H_1\)</span>.</p>
+<ul>
+<li><p>Step 2: choose threshold <span class="math inline">\(\alpha\)</span> (significance level)</p></li>
+<li><p>Step 3: Design an almost impossible event C under <span class="math inline">\(H_0\)</span> such that <span class="math inline">\(P((X_1, X_2, \ldots, X_n) \in C|H_0 \text{ is true}) = \alpha\)</span>.</p></li>
+<li><p>Step 4: Do experiment and collect a data set <span class="math inline">\({x_1, x_2, \ldots, x_n}\)</span>.</p></li>
+<li><p>Step 5: check if <span class="math inline">\((x_1, x_2, \ldots, x_n) \in C\)</span>.</p></li>
+</ul>
+<p>Do data analysis and check if <span class="math inline">\((x_1, x_2, \ldots, x_n) \in C\)</span>. If yes, then we reject <span class="math inline">\(H_0\)</span> in favor of <span class="math inline">\(H_1\)</span>. If no, then we do not have enough evidence to reject <span class="math inline">\(H_0\)</span> and we get no conclusion at all.</p>
+<ul>
+<li>Step 6: Conclusion</li>
+</ul>
+<p>If <span class="math inline">\((x_1, x_2, \ldots, x_n) \in C\)</span>, then we reject <span class="math inline">\(H_0\)</span> in favor of <span class="math inline">\(H_1\)</span>. Otherwise, no conclusion.</p>
+</section>
 </section>
 <section id="bias--variance-trade-off" class="level2">
 <h2 class="anchored" data-anchor-id="bias--variance-trade-off">bias- variance trade-off</h2>

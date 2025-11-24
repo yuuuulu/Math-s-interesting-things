@@ -487,7 +487,7 @@
     "href": "stat_learn.html",
     "title": "Statistical_Learning (Mechine_Learning)",
     "section": "",
-    "text": "Efron, B., & Hastie, T. (2021). Computer age statistical inference, student edition: algorithms, evidence, and data science (Vol. 6). Cambridge University Press.\nHastie, T., Tibshirani, R., & Friedman, J. (2009). An introduction to statistical learning.\nCasella, G., & Berger, R. (2024). Statistical inference. Chapman and Hall/CRC.\nHastie, T., Tibshirani, R., & Friedman, J. (2009). The elements of statistical learning."
+    "text": "All knowledge is, in final analysis, history.\nAll sciences are, in the abstact, mathematics.\nAll judgements are, in their rationale, statistics.\n–C.Radhakrishna.Rao"
   },
   {
     "objectID": "stat_learn.html#ols-mle-solution-to-lr-with-issues",
@@ -2370,7 +2370,7 @@
     "href": "stat_learn.html#why-ci-is-useful",
     "title": "Statistical_Learning (Mechine_Learning)",
     "section": "Why CI is useful?",
-    "text": "Why CI is useful?\nIf we want to check if \\(\\theta_0\\) is equal to a specific value \\(\\theta_1\\), we could check if \\(\\theta_1\\) is in the confidence interval.\n(Here for the equivalence to the hypothesis testing, the null hypothesis is \\(H_0: \\theta_0 = \\theta_1\\) and the alternative hypothesis is \\(H_a: \\theta_0 \\neq \\theta_1\\).)\ntherefore if we have constructed the \\(1-\\alpha\\) confidence interval [L,U], then if \\(\\theta_1\\) is not in [L,U], we say we have \\(1-\\alpha\\) confidence to say \\(\\theta_0 \\neq \\theta_1\\).\n\nrelation between CI and Hypothesis Testing\nThey are the same thing but they are different perspectives.\nConfidence interval is a direct method to check if \\(\\theta_0\\) is equal to a specific value \\(\\theta_1\\). Hypothesis testing is an indirect method to check if \\(\\theta_0\\) is equal to a specific value \\(\\theta_1\\)."
+    "text": "Why CI is useful?\nIf we want to check if \\(\\theta_0\\) is equal to a specific value \\(\\theta_1\\), we could check if \\(\\theta_1\\) is in the confidence interval.\n(Here for the equivalence to the hypothesis testing, the null hypothesis is \\(H_0: \\theta_0 = \\theta_1\\) and the alternative hypothesis is \\(H_1: \\theta_0 \\neq \\theta_1\\).)\ntherefore if we have constructed the \\(1-\\alpha\\) confidence interval [L,U], then if \\(\\theta_1\\) is not in [L,U], we say we have \\(1-\\alpha\\) confidence to say \\(\\theta_0 \\neq \\theta_1\\).\n\nrelation between CI and Hypothesis Testing\nThey are the same thing but they are different perspectives.\nConfidence interval is a direct method to check if \\(\\theta_0\\) is equal to a specific value \\(\\theta_1\\). Hypothesis testing is an indirect method to check if \\(\\theta_0\\) is equal to a specific value \\(\\theta_1\\)."
   },
   {
     "objectID": "stat_learn.html#bayesian-confidence-intervalcredible-interval",
@@ -2392,5 +2392,26 @@
     "title": "Statistical_Learning (Mechine_Learning)",
     "section": "bias- variance trade-off",
     "text": "bias- variance trade-off\n\\[\nMSE=Var+Bias^2\n\\]"
+  },
+  {
+    "objectID": "stat_learn.html#motivation-1",
+    "href": "stat_learn.html#motivation-1",
+    "title": "Statistical_Learning (Mechine_Learning)",
+    "section": "Motivation",
+    "text": "Motivation\nStatistical inference is a solution with likelihood that such solution is successful.\n\nSince we want the probability of the estimation and the probability of a point estimation is always 0, we need to consider the interval estimation.\nguess of \\(\\theta_0\\) needs us to know the domain of \\(\\theta_0\\) [L,U].\nLet the sample to be \\(x_1, x_2, \\ldots, x_n\\) and the domain is a random interval \\([L(X_1, X_2, \\ldots, X_n), U(X_1, X_2, \\ldots, X_n)]\\) with L &lt; U. The success is \\(P(L \\leq \\theta_0 \\leq U)=1-\\alpha\\).\nmetaphor using the fisherman catching fish\nThe fisherman wants to catch a fish with length \\(\\theta_0\\). He uses a bamboo bucket with size [L,U] to randomly catch the fish. If the fish is in the net, then he is successful. The size of the net is random because it depends on the sample data.\nThe hook is the point estimation of \\(\\theta_0\\)."
+  },
+  {
+    "objectID": "stat_learn.html#motivation-of-hypothesis-testing",
+    "href": "stat_learn.html#motivation-of-hypothesis-testing",
+    "title": "Statistical_Learning (Mechine_Learning)",
+    "section": "Motivation of Hypothesis Testing",
+    "text": "Motivation of Hypothesis Testing\nHypothesis testing is a formal procedure for statistically evaluating whether a specific claim about a population parameter is supported by sample data.\n\nProof by contradiction\n\nThe logic procedure is no direct but rater indirect, closely mirroring the proof by contradiction in mathematics.\n\nstep 1: Assume \\(A^c\\) is true (null hypothesis \\(H_0\\) is true).\nstep 2: Do a sequence of logical deductions. Once you see a clear contradiction, then you stop. (calculate the p-value)\nstep 3: Conclude that \\(A\\) must be true (reject \\(H_0\\) in favor of \\(H_1\\)).\n\nThen we know that hypothesis testing is the statistical version of proof by contradiction in mathematics.\nHowever, in the mathematical proof by contradiction, the conclusion is always correct (the negation is absolutely impossible). But in hypothesis testing, there is a possibility of making errors (almost impossible \\(H_0\\)).\n\nrelation between CI and Hypothesis Testing (repeat here)\nThey are the same thing but they are different perspectives.\nConfidence interval is a direct method to check if \\(\\theta_0\\) is equal to a specific value \\(\\theta_1\\). Hypothesis testing is an indirect method to check if \\(\\theta_0\\) is equal to a specific value \\(\\theta_1\\)."
+  },
+  {
+    "objectID": "stat_learn.html#steps-of-hypothesis-testing",
+    "href": "stat_learn.html#steps-of-hypothesis-testing",
+    "title": "Statistical_Learning (Mechine_Learning)",
+    "section": "steps of Hypothesis Testing",
+    "text": "steps of Hypothesis Testing\n\nHow do we design a hypothesis test?\nNow let us assume the population is \\(N(\\mu,1)\\) under \\(H_0\\). and our goal is to prove \\(\\mu \\neq 0\\).\n\nStep 1: Design \\(H_0\\) and \\(H_1\\)\n\nWe always put the claim we want to prove into the alternative hypothesis \\(H_1\\). The opposite of the claim is put into the null hypothesis \\(H_0\\).\nThen we do the following under the assumption that \\(H_0\\) is true.\nThen we could design \\(H_0: \\mu = 0\\) and \\(H_1: \\mu \\neq 0\\).\n\nStep 2: Design an almost impossible event C under \\(H_0\\).\n\n\\(X_1, X_2, \\ldots, X_n\\) are the random sample (i.i.d. from a common population, \\(f(x;\\theta)\\), \\(\\theta \\in \\Theta\\) parameter space).\nThen the joint density of \\(X_1, X_2, \\ldots, X_n\\) under \\(H_0\\) is \\(f(x_1;0)f(x_2;0) \\ldots f(x_n;0)\\).\nThe chance that \\(C\\in R^n\\) is chosen \\(P((X_1, X_2, \\ldots, X_n) \\in C|H_0)=\\int_Cf(x_1;0)f(x_2;0) \\ldots f(x_n;0)dx_1dx_2 \\ldots dx_n\\) is very small, say less than \\(\\alpha\\) (significance level).\nThen we could design the almost impossible event C as \\(|\\bar{X}| &gt; z_{\\alpha/2}/\\sqrt{n}\\) under \\(H_0\\).\nDo experiment and collect a data set \\({x_1, x_2, \\ldots, x_n}\\). Do data analysis and check if \\((x_1, x_2, \\ldots, x_n) \\in C\\). If yes, then the almost impossible event happened which is a sign of contradiction, we reject \\(H_0\\) in favor of \\(H_1\\). If no, then we do not have enough evidence to reject \\(H_0\\).\n\nStep 3: Conclusion\n\nIf \\((x_1, x_2, \\ldots, x_n) \\in C\\), then we reject \\(H_0\\) in favor of \\(H_1\\).\nEquivalently, we accept \\(H_1\\) is true.\n\n\nGeneral procedure\n\nStep 1: Write down the statement\n\n\\(H_0\\) vs \\(H_1\\). Here, \\(H_1\\) is what we want to prove and \\(H_0\\) is the negation of \\(H_1\\).\n\nStep 2: choose threshold \\(\\alpha\\) (significance level)\nStep 3: Design an almost impossible event C under \\(H_0\\) such that \\(P((X_1, X_2, \\ldots, X_n) \\in C|H_0 \\text{ is true}) = \\alpha\\).\nStep 4: Do experiment and collect a data set \\({x_1, x_2, \\ldots, x_n}\\).\nStep 5: check if \\((x_1, x_2, \\ldots, x_n) \\in C\\).\n\nDo data analysis and check if \\((x_1, x_2, \\ldots, x_n) \\in C\\). If yes, then we reject \\(H_0\\) in favor of \\(H_1\\). If no, then we do not have enough evidence to reject \\(H_0\\) and we get no conclusion at all.\n\nStep 6: Conclusion\n\nIf \\((x_1, x_2, \\ldots, x_n) \\in C\\), then we reject \\(H_0\\) in favor of \\(H_1\\). Otherwise, no conclusion."
   }
 ]

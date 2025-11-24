@@ -3,6 +3,19 @@ title: "Statistical_Learning (Mechine_Learning)"
 editor: visual
 ---
 
+# Motivation
+
+All knowledge is, in final analysis, history.
+
+All sciences are, in the abstact, mathematics.
+
+All judgements are, in their rationale, statistics.
+
+
+--C.Radhakrishna.Rao
+
+
+
 # Referece books
 
 - Efron, B., & Hastie, T. (2021). Computer age statistical inference, student edition: algorithms, evidence, and data science (Vol. 6). Cambridge University Press. 
@@ -1360,7 +1373,7 @@ $$
 
 If we want to check if $\theta_0$ is equal to a specific value $\theta_1$, we could check if $\theta_1$ is in the confidence interval.
 
-(Here for the equivalence to the  hypothesis testing, the null hypothesis is $H_0: \theta_0 = \theta_1$ and the alternative hypothesis is $H_a: \theta_0 \neq \theta_1$.)
+(Here for the equivalence to the  hypothesis testing, the null hypothesis is $H_0: \theta_0 = \theta_1$ and the alternative hypothesis is $H_1: \theta_0 \neq \theta_1$.)
 
 therefore if we have constructed the $1-\alpha$ confidence interval [L,U], then if $\theta_1$ is not in [L,U], we  say we have $1-\alpha$ confidence to say $\theta_0 \neq \theta_1$.
 
@@ -1416,7 +1429,96 @@ $$
 (\theta_{(\alpha/2 \cdot B)}, \theta_{((1-\alpha/2) \cdot B)})
 $$ is the bootstrap confidence interval with level $1-\alpha$.
 
+# Hypothesis Testing
 
+## Motivation of Hypothesis Testing
+
+Hypothesis testing is a formal procedure for statistically evaluating whether a specific claim about a population parameter is supported by sample data.
+
+
+- Proof by contradiction
+
+The logic procedure is no direct but rater indirect, closely mirroring the proof by contradiction in mathematics.
+ 
+ 
+  - step 1: Assume $A^c$ is true (null hypothesis $H_0$ is true).
+  
+  - step 2: Do a sequence of logical deductions. Once you see a clear contradiction, then you stop. (calculate the p-value)
+  
+  - step 3: Conclude that $A$ must be true (reject $H_0$ in favor of $H_1$).
+
+
+Then we know that hypothesis testing is the statistical version of proof by contradiction in mathematics.
+
+However, in the mathematical proof by contradiction, the conclusion is always correct (the negation is absolutely impossible). But in hypothesis testing, there is a possibility of making errors (almost impossible $H_0$).
+
+### relation between CI and Hypothesis Testing (repeat here)
+
+They are the same thing but they are different perspectives.
+
+Confidence interval is a direct method to check if $\theta_0$ is equal to a specific value $\theta_1$. Hypothesis testing is an indirect method to check if $\theta_0$ is equal to a specific value $\theta_1$.
+
+## steps of Hypothesis Testing
+
+### How do we design a hypothesis test?
+
+
+Now let us assume the population is $N(\mu,1)$ under $H_0$. and our goal is to prove $\mu \neq 0$.
+
+
+- Step 1: Design $H_0$ and $H_1$
+
+
+We always put the claim we want to prove into the alternative hypothesis $H_1$. The opposite of the claim is put into the null hypothesis $H_0$.
+
+Then we do the following under the assumption that $H_0$ is true.
+
+
+Then we could design $H_0: \mu = 0$ and $H_1: \mu \neq 0$.
+
+- Step 2: Design an almost impossible event C under $H_0$. 
+
+$X_1, X_2, \ldots, X_n$ are the random sample (i.i.d. from a common population, $f(x;\theta)$, $\theta \in \Theta$ parameter space).
+
+Then the joint density of $X_1, X_2, \ldots, X_n$ under $H_0$ is $f(x_1;0)f(x_2;0) \ldots f(x_n;0)$.
+
+
+The chance that $C\in R^n$ is chosen $P((X_1, X_2, \ldots, X_n) \in C|H_0)=\int_Cf(x_1;0)f(x_2;0) \ldots f(x_n;0)dx_1dx_2 \ldots dx_n$ is very small, say less than $\alpha$ (significance level).
+
+Then we could design the almost impossible event C as $|\bar{X}| > z_{\alpha/2}/\sqrt{n}$ under $H_0$.
+
+
+
+Do experiment and collect a data set ${x_1, x_2, \ldots, x_n}$. Do data analysis and check if $(x_1, x_2, \ldots, x_n) \in C$. If yes, then the almost impossible event happened which is a sign of contradiction, we reject $H_0$ in favor of $H_1$. If no, then we do not have enough evidence to reject $H_0$.
+
+- Step 3: Conclusion
+
+If $(x_1, x_2, \ldots, x_n) \in C$, then we reject $H_0$ in favor of $H_1$.
+
+Equivalently, we accept $H_1$ is true.
+
+
+### General procedure
+
+- Step 1: Write down the statement 
+
+$H_0$ vs $H_1$. Here, $H_1$ is what we want to prove and $H_0$ is the negation of $H_1$.
+
+- Step 2: choose threshold $\alpha$ (significance level)
+
+- Step 3: Design an almost impossible event C under $H_0$ such that $P((X_1, X_2, \ldots, X_n) \in C|H_0 \text{ is true}) = \alpha$.
+
+
+- Step 4: Do experiment and collect a data set ${x_1, x_2, \ldots, x_n}$. 
+
+- Step 5: check if $(x_1, x_2, \ldots, x_n) \in C$.
+
+Do data analysis and check if $(x_1, x_2, \ldots, x_n) \in C$. If yes, then we reject $H_0$ in favor of $H_1$. If no, then we do not have enough evidence to reject $H_0$ and we get no conclusion at all.
+
+
+- Step 6: Conclusion
+
+If $(x_1, x_2, \ldots, x_n) \in C$, then we reject $H_0$ in favor of $H_1$. Otherwise, no conclusion.
 
 
 ## bias- variance trade-off
