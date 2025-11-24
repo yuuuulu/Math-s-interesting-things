@@ -339,6 +339,9 @@ window.Quarto = {
   <ul class="collapse">
   <li><a href="#how-do-we-design-a-hypothesis-test" id="toc-how-do-we-design-a-hypothesis-test" class="nav-link" data-scroll-target="#how-do-we-design-a-hypothesis-test">How do we design a hypothesis test?</a></li>
   <li><a href="#general-procedure" id="toc-general-procedure" class="nav-link" data-scroll-target="#general-procedure">General procedure</a></li>
+  <li><a href="#statement" id="toc-statement" class="nav-link" data-scroll-target="#statement">Statement</a></li>
+  <li><a href="#which-critical-region-is-the-best" id="toc-which-critical-region-is-the-best" class="nav-link" data-scroll-target="#which-critical-region-is-the-best">Which critical region is the best?</a></li>
+  <li><a href="#unified-function-power-function" id="toc-unified-function-power-function" class="nav-link" data-scroll-target="#unified-function-power-function">Unified function: Power Function</a></li>
   </ul></li>
   <li><a href="#bias--variance-trade-off" id="toc-bias--variance-trade-off" class="nav-link" data-scroll-target="#bias--variance-trade-off">bias- variance trade-off</a></li>
   </ul></li>
@@ -1443,7 +1446,7 @@ P(L \leq \theta_0 \leq U|x_1,...,x_n) = 1-\alpha
 <section id="bootstrap-confidence-interval" class="level2">
 <h2 class="anchored" data-anchor-id="bootstrap-confidence-interval">Bootstrap Confidence Interval</h2>
 <p><span class="math inline">\(\theta_1, \theta_2, \ldots, \theta_B\)</span> are the bootstrap estimates of <span class="math inline">\(\theta_0\)</span>.</p>
-<p><span class="math inline">\(\thata_{(1)}, \theta_{(2)}, \ldots, \theta_{(B)}\)</span> are the order statistics of <span class="math inline">\(\theta_1, \theta_2, \ldots, \theta_B\)</span>.</p>
+<p><span class="math inline">\(\theta_{(1)}, \theta_{(2)}, \ldots, \theta_{(B)}\)</span> are the order statistics of <span class="math inline">\(\theta_1, \theta_2, \ldots, \theta_B\)</span>.</p>
 <p>therefore,</p>
 <p><span class="math display">\[
 (\theta_{(\alpha/2 \cdot B)}, \theta_{((1-\alpha/2) \cdot B)})
@@ -1465,7 +1468,7 @@ P(L \leq \theta_0 \leq U|x_1,...,x_n) = 1-\alpha
 <li><p>step 3: Conclude that <span class="math inline">\(A\)</span> must be true (reject <span class="math inline">\(H_0\)</span> in favor of <span class="math inline">\(H_1\)</span>).</p></li>
 </ul>
 <p>Then we know that hypothesis testing is the statistical version of proof by contradiction in mathematics.</p>
-<p>However, in the mathematical proof by contradiction, the conclusion is always correct (the negation is absolutely impossible). But in hypothesis testing, there is a possibility of making errors (almost impossible <span class="math inline">\(H_0\)</span>).</p>
+<p>However, in the mathematical proof by contradiction, the conclusion is always correct (the negation is absolutely impossible). But in hypothesis testing, there is a possibility of making errors (almost impossible <span class="math inline">\(H_0\)</span>) since here the contradiction is just almost impossible but not absolutely impossible.</p>
 <section id="relation-between-ci-and-hypothesis-testing-repeat-here" class="level3">
 <h3 class="anchored" data-anchor-id="relation-between-ci-and-hypothesis-testing-repeat-here">relation between CI and Hypothesis Testing (repeat here)</h3>
 <p>They are the same thing but they are different perspectives.</p>
@@ -1491,6 +1494,7 @@ P(L \leq \theta_0 \leq U|x_1,...,x_n) = 1-\alpha
 <p>The chance that <span class="math inline">\(C\in R^n\)</span> is chosen <span class="math inline">\(P((X_1, X_2, \ldots, X_n) \in C|H_0)=\int_Cf(x_1;0)f(x_2;0) \ldots f(x_n;0)dx_1dx_2 \ldots dx_n\)</span> is very small, say less than <span class="math inline">\(\alpha\)</span> (significance level).</p>
 <p>Then we could design the almost impossible event C as <span class="math inline">\(|\bar{X}| &gt; z_{\alpha/2}/\sqrt{n}\)</span> under <span class="math inline">\(H_0\)</span>.</p>
 <p>Do experiment and collect a data set <span class="math inline">\({x_1, x_2, \ldots, x_n}\)</span>. Do data analysis and check if <span class="math inline">\((x_1, x_2, \ldots, x_n) \in C\)</span>. If yes, then the almost impossible event happened which is a sign of contradiction, we reject <span class="math inline">\(H_0\)</span> in favor of <span class="math inline">\(H_1\)</span>. If no, then we do not have enough evidence to reject <span class="math inline">\(H_0\)</span>.</p>
+<p><strong>Remark</strong>: There are many <span class="math inline">\(C\)</span> that could be designed given <span class="math inline">\(\alpha\)</span>. Each <span class="math inline">\(C\)</span> corresponds to a different test procedure. (So next part we will choose the best <span class="math inline">\(C\)</span> given <span class="math inline">\(\alpha\)</span>.)</p>
 <ul>
 <li>Step 3: Conclusion</li>
 </ul>
@@ -1500,10 +1504,7 @@ P(L \leq \theta_0 \leq U|x_1,...,x_n) = 1-\alpha
 <section id="general-procedure" class="level3">
 <h3 class="anchored" data-anchor-id="general-procedure">General procedure</h3>
 <ul>
-<li>Step 1: Write down the statement</li>
-</ul>
-<p><span class="math inline">\(H_0\)</span> vs <span class="math inline">\(H_1\)</span>. Here, <span class="math inline">\(H_1\)</span> is what we want to prove and <span class="math inline">\(H_0\)</span> is the negation of <span class="math inline">\(H_1\)</span>.</p>
-<ul>
+<li><p>Step 1: Write down the statement</p></li>
 <li><p>Step 2: choose threshold <span class="math inline">\(\alpha\)</span> (significance level)</p></li>
 <li><p>Step 3: Design an almost impossible event C under <span class="math inline">\(H_0\)</span> such that <span class="math inline">\(P((X_1, X_2, \ldots, X_n) \in C|H_0 \text{ is true}) = \alpha\)</span>.</p></li>
 <li><p>Step 4: Do experiment and collect a data set <span class="math inline">\({x_1, x_2, \ldots, x_n}\)</span>.</p></li>
@@ -1514,6 +1515,65 @@ P(L \leq \theta_0 \leq U|x_1,...,x_n) = 1-\alpha
 <li>Step 6: Conclusion</li>
 </ul>
 <p>If <span class="math inline">\((x_1, x_2, \ldots, x_n) \in C\)</span>, then we reject <span class="math inline">\(H_0\)</span> in favor of <span class="math inline">\(H_1\)</span>. Otherwise, no conclusion.</p>
+</section>
+<section id="statement" class="level3">
+<h3 class="anchored" data-anchor-id="statement">Statement</h3>
+<ul>
+<li><p>Null hypothesis <span class="math inline">\(H_0\)</span></p></li>
+<li><p>Alternative hypothesis <span class="math inline">\(H_1\)</span></p></li>
+<li><p>Critical region C and <span class="math inline">\(\alpha\)</span> is the size of C i.e.&nbsp;<span class="math inline">\(P((X_1, X_2, \ldots, X_n) \in C|H_0 \text{ is true}) = \alpha\)</span>.</p></li>
+</ul>
+</section>
+<section id="which-critical-region-is-the-best" class="level3">
+<h3 class="anchored" data-anchor-id="which-critical-region-is-the-best">Which critical region is the best?</h3>
+<p>Define the set of all critical regions with size <span class="math inline">\(\alpha\)</span> as</p>
+<p><span class="math display">\[
+\mathcal{C}_{\alpha} = \{C: P((X_1, X_2, \ldots, X_n) \in C|H_0 \text{ is true}) = \alpha\}
+\]</span></p>
+<p>First we introduce two types of mistakes in hypothesis testing:</p>
+<section id="two-types-of-mistakes-in-hypothesis-testing" class="level4">
+<h4 class="anchored" data-anchor-id="two-types-of-mistakes-in-hypothesis-testing">Two types of mistakes in Hypothesis Testing</h4>
+<ul>
+<li><p>Type I error: Rejecting <span class="math inline">\(H_0\)</span> (because C occurs) when it is true. The probability of Type I error is <span class="math inline">\(\alpha\)</span> i.e.<span class="math inline">\(P((X_1, X_2, \ldots, X_n) \in C|H_0 \text{ is true}) = \alpha\)</span>.</p></li>
+<li><p>Type II error: Not rejecting <span class="math inline">\(H_0\)</span> (because C does not occur) when <span class="math inline">\(H_1\)</span> is true. The probability of Type II error is <span class="math inline">\(\beta\)</span> i.e.&nbsp;<span class="math inline">\(P((X_1, X_2, \ldots, X_n) \notin C|H_1 \text{ is true}) = \beta\)</span>. Here, since <span class="math inline">\(\beta\)</span> depends on C, this gives us the creterion to choose the best C.</p></li>
+</ul>
+<p>We say <span class="math inline">\(C_1\)</span> is better than <span class="math inline">\(C_2\)</span> if <span class="math inline">\(\beta(C_1) &lt; \beta(C_2)\)</span> given the same <span class="math inline">\(\alpha\)</span>.</p>
+<p>$_{} $ If <span class="math inline">\(C^*\)</span> satisfies</p>
+<p><span class="math display">\[
+\beta(C^*) = \inf_{C \in \mathcal{C}_{\alpha}} \beta(C)
+\]</span></p>
+<p>then we say <span class="math inline">\(C^*\)</span> is the best critical region with size <span class="math inline">\(\alpha\)</span>.</p>
+<p>Above, <span class="math inline">\(\alpha\)</span> and <span class="math inline">\(\beta\)</span> is complicated for medical workers to understand. So we introduce the <strong>unified function</strong>:</p>
+</section>
+</section>
+<section id="unified-function-power-function" class="level3">
+<h3 class="anchored" data-anchor-id="unified-function-power-function">Unified function: Power Function</h3>
+<p><span class="math display">\[
+K_C(\theta) = P((X_1, X_2, \ldots, X_n) \in C|\theta)
+\]</span></p>
+<p>Here, the <span class="math inline">\(\theta\)</span> means joint distribution of random sample <span class="math inline">\(X_1, X_2, \ldots, X_n\)</span> which is <span class="math inline">\(f(x_1;\theta)f(x_2;\theta) \ldots f(x_n;\theta)=\int_C f(x_1;\theta)f(x_2;\theta) \ldots f(x_n;\theta)dx_1dx_2 \ldots dx_n\)</span>.</p>
+<p><span class="math inline">\(H_0: \theta \in \Theta_0\)</span> and <span class="math inline">\(H_1: \theta \in \Theta_1\)</span>.</p>
+<p><span class="math inline">\(\Theta= \Theta_0 \cup \Theta_1\)</span> and <span class="math inline">\(\Theta_0 \cap \Theta_1 = \emptyset\)</span>.</p>
+<p>Then we have</p>
+<p><span class="math display">\[
+K_C(\theta) =
+\begin{cases}
+\alpha, &amp; \theta \in \Theta_0 \\
+1 - \beta, &amp; \theta \in \Theta_1
+\end{cases}
+\]</span></p>
+<p>So <span class="math inline">\(C_1\)</span> is better than <span class="math inline">\(C_2\)</span> if <span class="math inline">\(K_{C_1}(\theta) &gt; K_{C_2}(\theta)\)</span> for all <span class="math inline">\(\theta \in \Theta_1\)</span> given the same <span class="math inline">\(\alpha\)</span>.</p>
+<section id="example" class="level4">
+<h4 class="anchored" data-anchor-id="example">Example</h4>
+<p>For the above example of <span class="math inline">\(N(\mu,1)\)</span> population, we have</p>
+<p><span class="math display">\[
+K_C(\mu) = P((X_1, X_2, \ldots, X_n) \in C|\mu) =
+\begin{cases}
+0.05, &amp; \mu = 0 \\
+\int_C \prod_{i=1}^{n} \frac{1}{\sqrt{2\pi}} e^{-\frac{(x_i - \mu)^2}{2}} dx_1 dx_2 \ldots dx_n, &amp; \mu \neq 0
+\end{cases}
+\]</span></p>
+</section>
 </section>
 </section>
 <section id="bias--variance-trade-off" class="level2">

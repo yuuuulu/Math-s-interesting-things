@@ -1421,7 +1421,7 @@ L is the $\alpha/2$ quantile which is the function of $x_1,...,x_n$ and U is the
 
 $\theta_1, \theta_2, \ldots, \theta_B$ are the bootstrap estimates of $\theta_0$.
 
-$\thata_{(1)}, \theta_{(2)}, \ldots, \theta_{(B)}$ are the order statistics of $\theta_1, \theta_2, \ldots, \theta_B$.
+$\theta_{(1)}, \theta_{(2)}, \ldots, \theta_{(B)}$ are the order statistics of $\theta_1, \theta_2, \ldots, \theta_B$.
 
 therefore,
 
@@ -1450,7 +1450,7 @@ The logic procedure is no direct but rater indirect, closely mirroring the proof
 
 Then we know that hypothesis testing is the statistical version of proof by contradiction in mathematics.
 
-However, in the mathematical proof by contradiction, the conclusion is always correct (the negation is absolutely impossible). But in hypothesis testing, there is a possibility of making errors (almost impossible $H_0$).
+However, in the mathematical proof by contradiction, the conclusion is always correct (the negation is absolutely impossible). But in hypothesis testing, there is a possibility of making errors (almost impossible $H_0$) since here the contradiction is just almost impossible but not absolutely impossible.
 
 ### relation between CI and Hypothesis Testing (repeat here)
 
@@ -1491,6 +1491,9 @@ Then we could design the almost impossible event C as $|\bar{X}| > z_{\alpha/2}/
 
 Do experiment and collect a data set ${x_1, x_2, \ldots, x_n}$. Do data analysis and check if $(x_1, x_2, \ldots, x_n) \in C$. If yes, then the almost impossible event happened which is a sign of contradiction, we reject $H_0$ in favor of $H_1$. If no, then we do not have enough evidence to reject $H_0$.
 
+**Remark**: There are many $C$ that could be designed given $\alpha$. Each $C$ corresponds to a different test procedure. (So next part we will choose the best $C$ given $\alpha$.)
+
+
 - Step 3: Conclusion
 
 If $(x_1, x_2, \ldots, x_n) \in C$, then we reject $H_0$ in favor of $H_1$.
@@ -1502,7 +1505,6 @@ Equivalently, we accept $H_1$ is true.
 
 - Step 1: Write down the statement 
 
-$H_0$ vs $H_1$. Here, $H_1$ is what we want to prove and $H_0$ is the negation of $H_1$.
 
 - Step 2: choose threshold $\alpha$ (significance level)
 
@@ -1519,6 +1521,85 @@ Do data analysis and check if $(x_1, x_2, \ldots, x_n) \in C$. If yes, then we r
 - Step 6: Conclusion
 
 If $(x_1, x_2, \ldots, x_n) \in C$, then we reject $H_0$ in favor of $H_1$. Otherwise, no conclusion.
+
+
+### Statement
+
+- Null hypothesis $H_0$
+
+- Alternative hypothesis $H_1$
+
+- Critical region C and $\alpha$ is the size of C i.e. $P((X_1, X_2, \ldots, X_n) \in C|H_0 \text{ is true}) = \alpha$.
+
+
+### Which critical region is the best?
+
+Define the set of all critical regions with size $\alpha$ as
+
+$$
+\mathcal{C}_{\alpha} = \{C: P((X_1, X_2, \ldots, X_n) \in C|H_0 \text{ is true}) = \alpha\}
+$$
+
+First we introduce two types of mistakes in hypothesis testing:
+
+#### Two types of mistakes in Hypothesis Testing
+
+
+- Type I error: Rejecting $H_0$ (because C occurs) when it is true. The probability of Type I error is $\alpha$ i.e.$P((X_1, X_2, \ldots, X_n) \in C|H_0 \text{ is true}) = \alpha$.
+
+- Type II error: Not rejecting $H_0$ (because C does not occur) when $H_1$ is true. The probability of Type II error is $\beta$ i.e. $P((X_1, X_2, \ldots, X_n) \notin C|H_1 \text{ is true}) = \beta$. Here, since $\beta$ depends on C, this gives us the creterion to choose the best C.
+
+We say $C_1$ is better than $C_2$ if $\beta(C_1) < \beta(C_2)$ given the same $\alpha$.
+
+
+$\mathcal{C}_{\alpha} $ If $C^*$ satisfies
+
+$$
+\beta(C^*) = \inf_{C \in \mathcal{C}_{\alpha}} \beta(C)
+$$
+
+then we say $C^*$ is the best critical region with size $\alpha$.
+
+Above, $\alpha$ and $\beta$ is complicated for medical workers to understand. So we introduce the **unified function**:
+
+### Unified function: Power Function
+
+$$
+K_C(\theta) = P((X_1, X_2, \ldots, X_n) \in C|\theta)
+$$
+
+Here, the $\theta$ means joint distribution of random sample  $X_1, X_2, \ldots, X_n$ which is $f(x_1;\theta)f(x_2;\theta) \ldots f(x_n;\theta)=\int_C f(x_1;\theta)f(x_2;\theta) \ldots f(x_n;\theta)dx_1dx_2 \ldots dx_n$.
+
+$H_0: \theta \in \Theta_0$ and $H_1: \theta \in \Theta_1$.
+
+$\Theta= \Theta_0 \cup \Theta_1$ and $\Theta_0 \cap \Theta_1 = \emptyset$.
+
+Then we have
+
+$$
+K_C(\theta) =
+\begin{cases}
+\alpha, & \theta \in \Theta_0 \\
+1 - \beta, & \theta \in \Theta_1
+\end{cases}
+$$
+
+So $C_1$ is better than $C_2$ if $K_{C_1}(\theta) > K_{C_2}(\theta)$ for all $\theta \in \Theta_1$ given the same $\alpha$.
+
+#### Example 
+
+For the above example of $N(\mu,1)$ population, we have
+
+$$
+K_C(\mu) = P((X_1, X_2, \ldots, X_n) \in C|\mu) = 
+\begin{cases}
+0.05, & \mu = 0 \\
+\int_C \prod_{i=1}^{n} \frac{1}{\sqrt{2\pi}} e^{-\frac{(x_i - \mu)^2}{2}} dx_1 dx_2 \ldots dx_n, & \mu \neq 0
+\end{cases}
+$$
+
+
+
 
 
 ## bias- variance trade-off
