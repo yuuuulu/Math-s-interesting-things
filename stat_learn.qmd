@@ -212,9 +212,23 @@ $$l(\theta) \approx \frac{1}{n} \sum_{i=1}^n \frac{f(x_i;\theta_0)}{f(x_i;\theta
 **Conclusion: Maximum likelihood estimation is equivalent to minimizing the KL divergence, which provides the theoretical basis of information theory for MLE. **
 
 
+#### Remark: differences between divergence and distance
+
+- Divergence is different from the distance since 
+
+  - d(a,b) $\neq$ d(b,a). 
+  
+  - it does not satisfy the triangle inequality
+
+For example, $a/b$ is not the distance but a kind of divergency
+
 
 
 DeepSeek loss function---Feed the data - gradient descent---LLM
+
+
+
+
 
 
 ## Sufficient statistics
@@ -248,6 +262,12 @@ The sufficient statistics is a compression of the data that retains all the info
 
 
 
+# Sampling distribution
+
+## the proof of the independence of the sample mean and sample variance 
+
+
+gitgit
 
 
 
@@ -285,6 +305,21 @@ Why using square : ---- firstly, the geometric meaning --- projection
 ## MLE
 
 Likelihood function
+
+
+
+### Asymptotic property
+
+#### Consistency
+
+Assumptions:
+
+
+
+
+##### Remark: Uniform distribution is better to be estimated using moment estimator since $\theta$ is not an interior point of its parameter space 
+
+See notes P145
 
 # ps: parameter statistics
 
@@ -1597,6 +1632,15 @@ K_C(\mu) = P((X_1, X_2, \ldots, X_n) \in C|\mu) =
 \int_C \prod_{i=1}^{n} \frac{1}{\sqrt{2\pi}} e^{-\frac{(x_i - \mu)^2}{2}} dx_1 dx_2 \ldots dx_n, & \mu \neq 0
 \end{cases}
 $$
+
+## How to find the best critical region 
+
+
+- Simple hypothesis testing:
+
+- Composite hypothesis testing: 
+
+Under $H_0$ is true, 
 
 
 
