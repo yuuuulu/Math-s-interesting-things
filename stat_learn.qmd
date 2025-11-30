@@ -315,6 +315,104 @@ Likelihood function
 Assumptions:
 
 
+### Asympotic Normalty
+
+### Asymptotic unbiasedness (although not unbiased)
+
+
+NEED TO ADD 3 cases of the Cramer-Rao Lower bound 
+
+- general
+
+- + i.i.d assumption
+
+$$
+\text{var}_\theta \left( \hat{\gamma}_n \right) \geq B_n(\theta) \equiv \frac{\left[ \frac{dE_\theta(\hat{\gamma}_n)}{d\theta} \right]^2}{nI(\theta)}
+$$
+
+**Remark.(interpretation of the information matrix's intuitive meaning in this Thm** In this corollary,$f(x, \theta)$ is the PMF/PDF of each random variable$X_i$, while$f_{X_n}(x_n, \theta)$ in the previous theorem is the joint PMF/PDF of the random sample$X_n$. Under the IID assumption, it is clear that the Cramer-Rao lower bound$B_n(\theta)$ vanishes to zero at a rate$n$.
+
+In addition to the scale factor$n^{-1}$, the Cramer-Rao lower bound is proportional to the inverse of Fisher’s information matrix$I(\theta)$. Fisher’s information matrix$I(\theta)$ measures the degree of information about$\theta$ that is contained in the population PMF/PDF$f(x, \theta)$ or equivalently in each random variable$X_i$. The larger$I(\theta)$, the more information about$\theta$ is contained in the random variable$X_i$. As a consequence, we have a smaller$B_n(\theta)$.
+
+**Remark.** The calculation of $I(\theta)$ sometimes is tedious. By using the information matrix equality $I(\theta) + H(\theta) = 0$, where
+
+$$
+H(\theta) \equiv E_\theta \left[ \frac{\partial^2 \ln f(X_i, \theta)}{\partial \theta^2} \right] = \int_{-\infty}^{\infty} \frac{\partial^2 \ln f(x, \theta)}{\partial \theta^2} f(x, \theta) dx
+$$
+
+is called the Hessian matrix, we can write the Cramer-Rao lower bound
+
+$$
+B_n(\theta) = \frac{[E_{\theta}'(\hat\tau(\theta))]^2}{-nH(\theta)}
+$$
+
+Thus, the Cramer-Rao lower bound $B_n(\theta)$ depends on the inverse of the curvature of the log-likelihood function $\ln f(x, \theta)$. The larger the curvature in absolute value, the smaller the Cramer-Rao lower bound $B_n(\theta)$.
+
+
+
+- + (asymptotic) unbiasedness assumption
+
+
+$$
+B_n(\theta) = \frac{[\tau'(\theta)]^2}{-nH(\theta)}
+$$
+
+- In particular, for MLE
+
+
+
+ We have shown that the MLE
+
+$$
+\sqrt{n} \left( \hat{\theta}_n - \theta_0 \right) \xrightarrow{d} N \left[ 0, -H(\theta_0)^{-1} \right] \text{ as } n \rightarrow \infty,
+$$
+
+Besides,
+
+Let the $\hat \gamma_n$ be an estimator of $\theta$ which is unbiased asymptotically.
+
+$$
+d \theta/d \theta=1
+$$
+
+We concludes that this reaches the cramer lower bound.
+
+This implies $\hat{\theta}_n - \theta_0$ approximately follows a $N \left\{ 0, [ -nH(\theta_0)]^{-1} \right\}$ for $n$ sufficiently large. Thus, the variance of the MLE $\hat{\theta}_n$ approximately achieves the Cramer-Rao lower bound when $n$ is large. This is true for any population distribution $f(x, \theta_0)$. Given the asymptotic normality of $\sqrt{n} \left( \hat{\theta}_n - \theta_0 \right)$, the asymptotic bias of the MLE $\hat{\theta}_n$ is zero. It follows that MLE $\hat{\theta}_n$ is asymptotically most efficient.
+
+ 
+MLE's asymptotic normality + Cramer-Rao Lower bound obtains that MLE is the most efficient for all asymptotic unbiased estimators!!
+
+#### Eg
+
+For the simple linear regression, 
+
+since
+
+$$
+\sqrt n (\hat \beta_{MLE}-\beta) \rightarrow^d N(0,I^{-1})
+$$
+
+Avar(Asymptotic variance) $\sqrt n \hat \beta_{MLE}$=Avar$\sqrt n(\hat \beta_{MLE}-\beta)$ =$I ^{-1}$
+
+Let Avar ($\sqrt n \hat \beta_{OLS}$) =B 
+
+Since Cramer-Rao Lower bound tells us that over a class of estimators,we have a theoretical minimum level (if the estimator is unbiased for i.i.d. samples, this is actually $I^{-1}$ ) of the (asymptotic) variance for these estimators, we always have 
+
+$$
+I^{-1} - B \text{ is non-positive definite}
+$$
+i.e.
+
+$$
+\forall v, v^T(I^{-1} - B)v \leq 0
+
+$$
+
+
+
+
+Therefore, we could interpret the BLUE of OLS using the Asymptotic unbiasedness of MLE, also. Since the estimators derived by OLS and ML are the same. However, if the residual does not assumed to be normal then the MLE is more efficient than OLS. Alough this is the case, please bear in mind that there is always a cost when using MLE---Once the assumption of the distribution is not suitable or too inflexible, it is even better to choose OLS. 
+
 
 
 ##### Remark: Uniform distribution is better to be estimated using moment estimator since $\theta$ is not an interior point of its parameter space 

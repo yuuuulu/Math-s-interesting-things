@@ -224,6 +224,10 @@ window.Quarto = {
   <li><a href="#sufficient-statistics" id="toc-sufficient-statistics" class="nav-link" data-scroll-target="#sufficient-statistics">Sufficient statistics</a></li>
   <li><a href="#rao-blackwell-theorem" id="toc-rao-blackwell-theorem" class="nav-link" data-scroll-target="#rao-blackwell-theorem">Rao-Blackwell Theorem</a></li>
   </ul></li>
+  <li><a href="#sampling-distribution" id="toc-sampling-distribution" class="nav-link" data-scroll-target="#sampling-distribution">Sampling distribution</a>
+  <ul class="collapse">
+  <li><a href="#the-proof-of-the-independence-of-the-sample-mean-and-sample-variance" id="toc-the-proof-of-the-independence-of-the-sample-mean-and-sample-variance" class="nav-link" data-scroll-target="#the-proof-of-the-independence-of-the-sample-mean-and-sample-variance">the proof of the independence of the sample mean and sample variance</a></li>
+  </ul></li>
   <li><a href="#linear-regression" id="toc-linear-regression" class="nav-link" data-scroll-target="#linear-regression">Linear Regression</a>
   <ul class="collapse">
   <li><a href="#ols" id="toc-ols" class="nav-link" data-scroll-target="#ols">OLS</a>
@@ -232,7 +236,12 @@ window.Quarto = {
   </ul></li>
   <li><a href="#regularization" id="toc-regularization" class="nav-link" data-scroll-target="#regularization">regularization</a></li>
   <li><a href="#loss-function" id="toc-loss-function" class="nav-link" data-scroll-target="#loss-function">loss function</a></li>
-  <li><a href="#mle" id="toc-mle" class="nav-link" data-scroll-target="#mle">MLE</a></li>
+  <li><a href="#mle" id="toc-mle" class="nav-link" data-scroll-target="#mle">MLE</a>
+  <ul class="collapse">
+  <li><a href="#asymptotic-property" id="toc-asymptotic-property" class="nav-link" data-scroll-target="#asymptotic-property">Asymptotic property</a></li>
+  <li><a href="#asympotic-normalty" id="toc-asympotic-normalty" class="nav-link" data-scroll-target="#asympotic-normalty">Asympotic Normalty</a></li>
+  <li><a href="#asymptotic-unbiasedness-although-not-unbiased" id="toc-asymptotic-unbiasedness-although-not-unbiased" class="nav-link" data-scroll-target="#asymptotic-unbiasedness-although-not-unbiased">Asymptotic unbiasedness (although not unbiased)</a></li>
+  </ul></li>
   </ul></li>
   <li><a href="#ps-parameter-statistics" id="toc-ps-parameter-statistics" class="nav-link" data-scroll-target="#ps-parameter-statistics">ps: parameter statistics</a>
   <ul class="collapse">
@@ -487,7 +496,18 @@ f(\theta|x)=\frac{f(x|\theta)\pi(\theta)}{f_X(x)} = \frac{f(x;\theta)\pi(\theta)
 <p>Empirical estimators are:</p>
 <p><span class="math display">\[l(\theta) \approx \frac{1}{n} \sum_{i=1}^n \frac{f(x_i;\theta_0)}{f(x_i;\theta)} \log \frac{f(x_i;\theta_0)}{f(x_i;\theta)}\]</span></p>
 <p><strong>Conclusion: Maximum likelihood estimation is equivalent to minimizing the KL divergence, which provides the theoretical basis of information theory for MLE. </strong></p>
+<section id="remark-differences-between-divergence-and-distance" class="level4">
+<h4 class="anchored" data-anchor-id="remark-differences-between-divergence-and-distance">Remark: differences between divergence and distance</h4>
+<ul>
+<li><p>Divergence is different from the distance since</p>
+<ul>
+<li><p>d(a,b) <span class="math inline">\(\neq\)</span> d(b,a).</p></li>
+<li><p>it does not satisfy the triangle inequality</p></li>
+</ul></li>
+</ul>
+<p>For example, <span class="math inline">\(a/b\)</span> is not the distance but a kind of divergency</p>
 <p>DeepSeek loss function—Feed the data - gradient descent—LLM</p>
+</section>
 </section>
 </section>
 <section id="sufficient-statistics" class="level2">
@@ -510,6 +530,13 @@ T : R^n \to R
 <li><p>Motivation: not only do we need the sufficiency of the statistics, but also we want the estimator to be unbiased and with minimum variance.</p></li>
 <li><p>the proof includes the idea of changing the double expectation into the iterated expectation with one of it to be the conditional expectation(just like changing the double integral into the iterated integral). This proof demonstrates the charisma of the conditional expectation which improves the efficiency.</p></li>
 </ul>
+</section>
+</section>
+<section id="sampling-distribution" class="level1">
+<h1>Sampling distribution</h1>
+<section id="the-proof-of-the-independence-of-the-sample-mean-and-sample-variance" class="level2">
+<h2 class="anchored" data-anchor-id="the-proof-of-the-independence-of-the-sample-mean-and-sample-variance">the proof of the independence of the sample mean and sample variance</h2>
+<p>gitgit</p>
 </section>
 </section>
 <section id="linear-regression" class="level1">
@@ -539,6 +566,84 @@ T : R^n \to R
 <section id="mle" class="level2">
 <h2 class="anchored" data-anchor-id="mle">MLE</h2>
 <p>Likelihood function</p>
+<section id="asymptotic-property" class="level3">
+<h3 class="anchored" data-anchor-id="asymptotic-property">Asymptotic property</h3>
+<section id="consistency" class="level4">
+<h4 class="anchored" data-anchor-id="consistency">Consistency</h4>
+<p>Assumptions:</p>
+</section>
+</section>
+<section id="asympotic-normalty" class="level3">
+<h3 class="anchored" data-anchor-id="asympotic-normalty">Asympotic Normalty</h3>
+</section>
+<section id="asymptotic-unbiasedness-although-not-unbiased" class="level3">
+<h3 class="anchored" data-anchor-id="asymptotic-unbiasedness-although-not-unbiased">Asymptotic unbiasedness (although not unbiased)</h3>
+<p>NEED TO ADD 3 cases of the Cramer-Rao Lower bound</p>
+<ul>
+<li><p>general</p></li>
+<li><ul>
+<li>i.i.d assumption</li>
+</ul></li>
+</ul>
+<p><span class="math display">\[
+\text{var}_\theta \left( \hat{\gamma}_n \right) \geq B_n(\theta) \equiv \frac{\left[ \frac{dE_\theta(\hat{\gamma}_n)}{d\theta} \right]^2}{nI(\theta)}
+\]</span></p>
+<p><strong>Remark.(interpretation of the information matrix’s intuitive meaning in this Thm</strong> In this corollary,<span class="math inline">\(f(x, \theta)\)</span> is the PMF/PDF of each random variable<span class="math inline">\(X_i\)</span>, while<span class="math inline">\(f_{X_n}(x_n, \theta)\)</span> in the previous theorem is the joint PMF/PDF of the random sample<span class="math inline">\(X_n\)</span>. Under the IID assumption, it is clear that the Cramer-Rao lower bound<span class="math inline">\(B_n(\theta)\)</span> vanishes to zero at a rate<span class="math inline">\(n\)</span>.</p>
+<p>In addition to the scale factor<span class="math inline">\(n^{-1}\)</span>, the Cramer-Rao lower bound is proportional to the inverse of Fisher’s information matrix<span class="math inline">\(I(\theta)\)</span>. Fisher’s information matrix<span class="math inline">\(I(\theta)\)</span> measures the degree of information about<span class="math inline">\(\theta\)</span> that is contained in the population PMF/PDF<span class="math inline">\(f(x, \theta)\)</span> or equivalently in each random variable<span class="math inline">\(X_i\)</span>. The larger<span class="math inline">\(I(\theta)\)</span>, the more information about<span class="math inline">\(\theta\)</span> is contained in the random variable<span class="math inline">\(X_i\)</span>. As a consequence, we have a smaller<span class="math inline">\(B_n(\theta)\)</span>.</p>
+<p><strong>Remark.</strong> The calculation of <span class="math inline">\(I(\theta)\)</span> sometimes is tedious. By using the information matrix equality <span class="math inline">\(I(\theta) + H(\theta) = 0\)</span>, where</p>
+<p><span class="math display">\[
+H(\theta) \equiv E_\theta \left[ \frac{\partial^2 \ln f(X_i, \theta)}{\partial \theta^2} \right] = \int_{-\infty}^{\infty} \frac{\partial^2 \ln f(x, \theta)}{\partial \theta^2} f(x, \theta) dx
+\]</span></p>
+<p>is called the Hessian matrix, we can write the Cramer-Rao lower bound</p>
+<p><span class="math display">\[
+B_n(\theta) = \frac{[E_{\theta}'(\hat\tau(\theta))]^2}{-nH(\theta)}
+\]</span></p>
+<p>Thus, the Cramer-Rao lower bound <span class="math inline">\(B_n(\theta)\)</span> depends on the inverse of the curvature of the log-likelihood function <span class="math inline">\(\ln f(x, \theta)\)</span>. The larger the curvature in absolute value, the smaller the Cramer-Rao lower bound <span class="math inline">\(B_n(\theta)\)</span>.</p>
+<ul>
+<li><ul>
+<li>(asymptotic) unbiasedness assumption</li>
+</ul></li>
+</ul>
+<p><span class="math display">\[
+B_n(\theta) = \frac{[\tau'(\theta)]^2}{-nH(\theta)}
+\]</span></p>
+<ul>
+<li>In particular, for MLE</li>
+</ul>
+<p>We have shown that the MLE</p>
+<p><span class="math display">\[
+\sqrt{n} \left( \hat{\theta}_n - \theta_0 \right) \xrightarrow{d} N \left[ 0, -H(\theta_0)^{-1} \right] \text{ as } n \rightarrow \infty,
+\]</span></p>
+<p>Besides,</p>
+<p>Let the <span class="math inline">\(\hat \gamma_n\)</span> be an estimator of <span class="math inline">\(\theta\)</span> which is unbiased asymptotically.</p>
+<p><span class="math display">\[
+d \theta/d \theta=1
+\]</span></p>
+<p>We concludes that this reaches the cramer lower bound.</p>
+<p>This implies <span class="math inline">\(\hat{\theta}_n - \theta_0\)</span> approximately follows a <span class="math inline">\(N \left\{ 0, [ -nH(\theta_0)]^{-1} \right\}\)</span> for <span class="math inline">\(n\)</span> sufficiently large. Thus, the variance of the MLE <span class="math inline">\(\hat{\theta}_n\)</span> approximately achieves the Cramer-Rao lower bound when <span class="math inline">\(n\)</span> is large. This is true for any population distribution <span class="math inline">\(f(x, \theta_0)\)</span>. Given the asymptotic normality of <span class="math inline">\(\sqrt{n} \left( \hat{\theta}_n - \theta_0 \right)\)</span>, the asymptotic bias of the MLE <span class="math inline">\(\hat{\theta}_n\)</span> is zero. It follows that MLE <span class="math inline">\(\hat{\theta}_n\)</span> is asymptotically most efficient.</p>
+<p>MLE’s asymptotic normality + Cramer-Rao Lower bound obtains that MLE is the most efficient for all asymptotic unbiased estimators!!</p>
+<section id="eg" class="level4">
+<h4 class="anchored" data-anchor-id="eg">Eg</h4>
+<p>For the simple linear regression,</p>
+<p>since</p>
+<p><span class="math display">\[
+\sqrt n (\hat \beta_{MLE}-\beta) \rightarrow^d N(0,I^{-1})
+\]</span></p>
+<p>Avar(Asymptotic variance) <span class="math inline">\(\sqrt n \hat \beta_{MLE}\)</span>=Avar<span class="math inline">\(\sqrt n(\hat \beta_{MLE}-\beta)\)</span> =<span class="math inline">\(I ^{-1}\)</span></p>
+<p>Let Avar (<span class="math inline">\(\sqrt n \hat \beta_{OLS}\)</span>) =B</p>
+<p>Since Cramer-Rao Lower bound tells us that over a class of estimators,we have a theoretical minimum level (if the estimator is unbiased for i.i.d. samples, this is actually <span class="math inline">\(I^{-1}\)</span> ) of the (asymptotic) variance for these estimators, we always have</p>
+<p><span class="math display">\[
+I^{-1} - B \text{ is non-positive definite}
+\]</span> i.e.</p>
+<p>$$ v, v<sup>T(I</sup>{-1} - B)v </p>
+<p>$$</p>
+<p>Therefore, we could interpret the BLUE of OLS using the Asymptotic unbiasedness of MLE, also. Since the estimators derived by OLS and ML are the same. However, if the residual does not assumed to be normal then the MLE is more efficient than OLS. Alough this is the case, please bear in mind that there is always a cost when using MLE—Once the assumption of the distribution is not suitable or too inflexible, it is even better to choose OLS.</p>
+<section id="remark-uniform-distribution-is-better-to-be-estimated-using-moment-estimator-since-theta-is-not-an-interior-point-of-its-parameter-space" class="level5">
+<h5 class="anchored" data-anchor-id="remark-uniform-distribution-is-better-to-be-estimated-using-moment-estimator-since-theta-is-not-an-interior-point-of-its-parameter-space">Remark: Uniform distribution is better to be estimated using moment estimator since <span class="math inline">\(\theta\)</span> is not an interior point of its parameter space</h5>
+<p>See notes P145</p>
+</section>
+</section>
+</section>
 </section>
 </section>
 <section id="ps-parameter-statistics" class="level1">
