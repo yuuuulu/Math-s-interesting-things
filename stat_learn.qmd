@@ -1685,7 +1685,7 @@ First we introduce two types of mistakes in hypothesis testing:
 We say $C_1$ is better than $C_2$ if $\beta(C_1) < \beta(C_2)$ given the same $\alpha$.
 
 
-$\mathcal{C}_{\alpha} $ If $C^*$ satisfies
+$\mathcal{C}_{\alpha}$ If $C^*$ satisfies
 
 $$
 \beta(C^*) = \inf_{C \in \mathcal{C}_{\alpha}} \beta(C)
@@ -1741,6 +1741,10 @@ $$
 Under $H_0$ is true, 
 
 
+## LRT 
+
+
+Eg. Derive the two-sample t test using the LRT 
 
 
 
