@@ -353,6 +353,7 @@ window.Quarto = {
   <li><a href="#unified-function-power-function" id="toc-unified-function-power-function" class="nav-link" data-scroll-target="#unified-function-power-function">Unified function: Power Function</a></li>
   </ul></li>
   <li><a href="#how-to-find-the-best-critical-region" id="toc-how-to-find-the-best-critical-region" class="nav-link" data-scroll-target="#how-to-find-the-best-critical-region">How to find the best critical region</a></li>
+  <li><a href="#lrt" id="toc-lrt" class="nav-link" data-scroll-target="#lrt">LRT</a></li>
   <li><a href="#bias--variance-trade-off" id="toc-bias--variance-trade-off" class="nav-link" data-scroll-target="#bias--variance-trade-off">bias- variance trade-off</a></li>
   </ul></li>
   </ul>
@@ -1689,6 +1690,222 @@ K_C(\mu) = P((X_1, X_2, \ldots, X_n) \in C|\mu) =
 <li><p>Composite hypothesis testing:</p></li>
 </ul>
 <p>Under <span class="math inline">\(H_0\)</span> is true,</p>
+</section>
+<section id="lrt" class="level2">
+<h2 class="anchored" data-anchor-id="lrt">LRT</h2>
+<p>Though it might not be the most powerful test in all scenarios, the Likelihood Ratio Test (LRT) is widely used due to its general applicability and asymptotic properties.</p>
+<p>We consider the hypotheses: <span class="math display">\[
+H_0: \theta \in \Theta_0 \quad \text{vs} \quad H_1: \theta \in \Theta_1
+\]</span> where <span class="math inline">\(\Theta_0 \cap \Theta_1 = \emptyset\)</span> (the parameter spaces are disjoint).</p>
+<p>Let <span class="math inline">\(X_1, \dots, X_n\)</span> be a random sample from the distribution with PDF <span class="math inline">\(f(x; \theta)\)</span>. The likelihood function of <span class="math inline">\(\theta\)</span> is: <span class="math display">\[
+L(\theta) = f(x_1; \theta) \cdots f(x_n; \theta)
+\]</span></p>
+<p>The likelihood ratio <span class="math inline">\(R\)</span> is defined as: <span class="math display">\[
+R = \frac{\sup_{\theta \in \Theta_0} L(\theta)}{\sup_{\theta \in \Theta_0 \cup \Theta_1} L(\theta)}
+\]</span></p>
+<ul>
+<li>When <span class="math inline">\(H_0\)</span> is true, <span class="math inline">\(R \approx 1\)</span> (since the numerator and denominator are close).</li>
+</ul>
+<p>The rejection region for <span class="math inline">\(H_0\)</span> is: <span class="math display">\[
+C = \left\{ (x_1, \dots, x_n) \in \mathbb{R}^n \mid R \leq k \right\}
+\]</span> where <span class="math inline">\(k\)</span> is a threshold determined by <span class="math inline">\(H_0\)</span> and the significance level <span class="math inline">\(\alpha\)</span>.</p>
+<p>Note: - <span class="math inline">\(\sup_{\theta \in \Theta_0} L(\theta) = L(\tilde{\theta})\)</span>, where <span class="math inline">\(\tilde{\theta}\)</span> is the restricted MLE} (estimated under <span class="math inline">\(H_0\)</span>).</p>
+<ul>
+<li><span class="math inline">\(\sup_{\theta \in \Theta_0 \cup \Theta_1} L(\theta) = L(\hat{\theta})\)</span>, where <span class="math inline">\(\hat{\theta}\)</span> is the full MLE} (estimated over the entire parameter space).</li>
+</ul>
+<p>Thus, the likelihood ratio can also be written as: <span class="math display">\[
+R = \frac{L(\tilde{\theta})}{L(\hat{\theta})} \leq k
+\]</span></p>
+<p>Eg. Derive the two-sample t test using the LRT</p>
+<p>We consider two normal populations with a common unknown variance. Let the random samples be: -<span class="math inline">\(X_1, X_2, \cdots, X_n \sim N(\theta_1, \theta_3)\)</span> -<span class="math inline">\(Y_1, Y_2, \cdots, Y_m \sim N(\theta_2, \theta_3)\)</span></p>
+<p>where: -<span class="math inline">\(\theta_1, \theta_2\)</span>: Population means ((_1, _2 <span class="math inline">\()
+-\)</span>_3 &gt; 0$: Common population variance</p>
+<p>The parameter spaces for hypotheses are: -<span class="math inline">\(\Theta_0 = \left\{ (\theta_1, \theta_2, \theta_3) \mid \theta_1 = \theta_2, \theta_3 &amp;gt; 0 \right\} \quad (\text{for } H_0)\)</span> -<span class="math inline">\(\Theta_0 \cup \Theta_1 = \left\{ (\theta_1, \theta_2, \theta_3) \mid \theta_1, \theta_2 \in \mathbb{R}, \theta_3 &amp;gt; 0 \right\} \quad (\text{full parameter space})\)</span></p>
+<p>We test: -<span class="math inline">\(H_0: \theta_1 = \theta_2 \quad \text{vs} \quad H_1: \theta_1 \neq \theta_2\)</span></p>
+<section id="step1-likelihood-log-likelihood-function" class="level4">
+<h4 class="anchored" data-anchor-id="step1-likelihood-log-likelihood-function">step1: Likelihood &amp; Log-Likelihood Function</h4>
+<p>The joint likelihood function of<span class="math inline">\(X_1,\cdots,X_n\)</span> and<span class="math inline">\(Y_1,\cdots,Y_m\)</span> is: <span class="math display">\[
+L(\theta_1, \theta_2, \theta_3) = \prod_{i=1}^n f(x_i; \theta_1, \theta_3) \prod_{j=1}^m f(y_j; \theta_2, \theta_3)
+\]</span></p>
+<p>where the normal PDF is: <span class="math display">\[
+f(x; \mu, \sigma^2) = \frac{1}{\sqrt{2\pi \sigma^2}} \exp\left\{ -\frac{(x - \mu)^2}{2\sigma^2} \right\}
+\]</span></p>
+<p>Substituting the normal PDF, the likelihood function becomes: <span class="math display">\[
+L(\theta_1, \theta_2, \theta_3) = \left( \frac{1}{2\pi \theta_3} \right)^{\frac{n+m}{2}} \exp\left\{ -\frac{1}{2\theta_3} \left[ \sum_{i=1}^n (x_i - \theta_1)^2 + \sum_{j=1}^m (y_j - \theta_2)^2 \right] \right\} \tag{1}
+\]</span></p>
+<p>The corresponding <strong>log-likelihood function</strong> is: <span class="math display">\[
+\ell(\theta_1, \theta_2, \theta_3) = -\frac{n+m}{2} \log(2\pi \theta_3) - \frac{1}{2\theta_3} \left[ \sum_{i=1}^n (x_i - \theta_1)^2 + \sum_{j=1}^m (y_j - \theta_2)^2 \right] \tag{2}
+\]</span></p>
+</section>
+<section id="step2-full-mle-under_0-_1" class="level4">
+<h4 class="anchored" data-anchor-id="step2-full-mle-under_0-_1">step2: Full MLE ((<span class="math inline">\() Under\)</span>_0 _1$</h4>
+<p>To find the full MLE<span class="math inline">\(\hat{\theta} = (\hat{\theta}_1, \hat{\theta}_2, \hat{\theta}_3)\)</span> (no restriction<span class="math inline">\(H_0\)</span>), solve the partial derivative system: <span class="math display">\[
+\begin{cases}
+\frac{\partial \ell}{\partial \theta_1} = 0 \\
+\frac{\partial \ell}{\partial \theta_2} = 0 \\
+\frac{\partial \ell}{\partial \theta_3} = 0
+\end{cases}
+\]</span></p>
+<ul>
+<li>2.1 Derive Full MLEs</li>
+</ul>
+<ol type="1">
+<li><p><strong>Derivative w.r.t.<span class="math inline">\(\theta_1\)</span></strong>: <span class="math display">\[
+\frac{\partial \ell}{\partial \theta_1} = \frac{1}{\theta_3} \sum_{i=1}^n (x_i - \theta_1) = 0 \implies \sum_{i=1}^n (x_i - \theta_1) = 0
+\]</span> Solving gives: <span class="math display">\[
+\hat{\theta}_1 = \frac{1}{n} \sum_{i=1}^n x_i = \bar{x} \tag{3}
+\]</span></p></li>
+<li><p><strong>Derivative w.r.t.<span class="math inline">\(\theta_2\)</span></strong>: <span class="math display">\[
+\frac{\partial \ell}{\partial \theta_2} = \frac{1}{\theta_3} \sum_{j=1}^m (y_j - \theta_2) = 0 \implies \sum_{j=1}^m (y_j - \theta_2) = 0
+\]</span> Solving gives: <span class="math display">\[
+\hat{\theta}_2 = \frac{1}{m} \sum_{j=1}^m y_j = \bar{y} \tag{4}
+\]</span></p></li>
+<li><p><strong>Derivative w.r.t.<span class="math inline">\(\theta_3\)</span></strong>: <span class="math display">\[
+\frac{\partial \ell}{\partial \theta_3} = -\frac{n+m}{2\theta_3} + \frac{1}{2\theta_3^2} \left[ \sum_{i=1}^n (x_i - \theta_1)^2 + \sum_{j=1}^m (y_j - \theta_2)^2 \right] = 0
+\]</span> Multiply both sides by<span class="math inline">\(2\theta_3^2\)</span> (since<span class="math inline">\(\theta_3 &amp;gt; 0\)</span>,<span class="math inline">\(\theta_3^2 \neq 0\)</span>): <span class="math display">\[
+-(n+m)\theta_3 + \left[ \sum_{i=1}^n (x_i - \theta_1)^2 + \sum_{j=1}^m (y_j - \theta_2)^2 \right] = 0
+\]</span> Substitute<span class="math inline">\(\hat{\theta}_1 = \bar{x}\)</span> and<span class="math inline">\(\hat{\theta}_2 = \bar{y}\)</span>, then solve for<span class="math inline">\(\theta_3\)</span>: <span class="math display">\[
+\hat{\theta}_3 = \frac{1}{n+m} \left[ \sum_{i=1}^n (x_i - \bar{x})^2 + \sum_{j=1}^m (y_j - \bar{y})^2 \right] \tag{5}
+\]</span></p></li>
+</ol>
+<ul>
+<li>2.2 Compute Maximized Likelihood Under Full Space ((L()$)</li>
+</ul>
+<p>Substitute<span class="math inline">\(\hat{\theta}_1 = \bar{x}\)</span>,<span class="math inline">\(\hat{\theta}_2 = \bar{y}\)</span>,<span class="math inline">\(\hat{\theta}_3\)</span> (from (3)-(5)) into the likelihood function (1): <span class="math display">\[
+L(\hat{\theta}) = \left( \frac{1}{2\pi \hat{\theta}_3} \right)^{\frac{n+m}{2}} \exp\left\{ -\frac{1}{2\hat{\theta}_3} \left[ \sum_{i=1}^n (x_i - \bar{x})^2 + \sum_{j=1}^m (y_j - \bar{y})^2 \right] \right\}
+\]</span></p>
+<p>From equation (5), we know: <span class="math display">\[
+\sum_{i=1}^n (x_i - \bar{x})^2 + \sum_{j=1}^m (y_j - \bar{y})^2 = (n+m)\hat{\theta}_3
+\]</span></p>
+<p>Substitute this into the exponent term: <span class="math display">\[
+\exp\left\{ -\frac{1}{2\hat{\theta}_3} \cdot (n+m)\hat{\theta}_3 \right\} = \exp\left\{ -\frac{n+m}{2} \right\} = e^{-\frac{n+m}{2}}
+\]</span></p>
+<p>Thus, the maximized likelihood under the full space simplifies to: <span class="math display">\[
+L(\hat{\theta}) = \left( \frac{1}{2\pi \hat{\theta}_3} \right)^{\frac{n+m}{2}} \cdot e^{-\frac{n+m}{2}} = \left( \frac{e^{-1}}{2\pi \hat{\theta}_3} \right)^{\frac{n+m}{2}} \tag{6}
+\]</span></p>
+</section>
+<section id="step3-restricted-mle-underh_0" class="level4">
+<h4 class="anchored" data-anchor-id="step3-restricted-mle-underh_0">step3: Restricted MLE ((<span class="math inline">\() Under\)</span>H_0$</h4>
+<p>Under<span class="math inline">\(H_0: \theta_1 = \theta_2 = \theta^*\)</span>, the log-likelihood (2) simplifies to: <span class="math display">\[
+\ell(\theta^*, \theta_3) = -\frac{n+m}{2} \log(2\pi \theta_3) - \frac{1}{2\theta_3} \left[ \sum_{i=1}^n (x_i - \theta^*)^2 + \sum_{j=1}^m (y_j - \theta^*)^2 \right] \tag{7}
+\]</span></p>
+<ul>
+<li>3.1 Derive Restricted MLEs</li>
+</ul>
+<p>Solve for the restricted MLE<span class="math inline">\(\tilde{\theta} = (\tilde{\theta}^*, \tilde{\theta}_3)\)</span>:</p>
+<ol type="1">
+<li><p><strong>Derivative w.r.t.<span class="math inline">\(\theta^*\)</span></strong>: <span class="math display">\[
+\frac{\partial \ell}{\partial \theta^*} = \frac{1}{\theta_3} \left[ \sum_{i=1}^n (x_i - \theta^*) + \sum_{j=1}^m (y_j - \theta^*) \right] = 0
+\]</span> Since<span class="math inline">\(\theta_3 &amp;gt; 0\)</span>, the numerator must be zero: <span class="math display">\[
+\sum_{i=1}^n (x_i - \theta^*) + \sum_{j=1}^m (y_j - \theta^*) = 0
+\]</span> Expand and rearrange: <span class="math display">\[
+\sum_{i=1}^n x_i + \sum_{j=1}^m y_j - (n+m)\theta^* = 0
+\]</span> Solving gives the pooled sample mean: <span class="math display">\[
+\tilde{\theta}^* = \frac{n\bar{x} + m\bar{y}}{n+m} \tag{8}
+\]</span></p></li>
+<li><p><strong>Derivative w.r.t.<span class="math inline">\(\theta_3\)</span></strong>: The derivative structure is the same as in Step 2.1.3. Substitute<span class="math inline">\(\theta^* = \tilde{\theta}^*\)</span> into the derivative and set to zero: <span class="math display">\[
+\frac{\partial \ell}{\partial \theta_3} = -\frac{n+m}{2\theta_3} + \frac{1}{2\theta_3^2} \left[ \sum_{i=1}^n (x_i - \tilde{\theta}^*)^2 + \sum_{j=1}^m (y_j - \tilde{\theta}^*)^2 \right] = 0
+\]</span> Solving for<span class="math inline">\(\theta_3\)</span> gives the restricted MLE of variance: <span class="math display">\[
+\tilde{\theta}_3 = \frac{1}{n+m} \left[ \sum_{i=1}^n (x_i - \tilde{\theta}^*)^2 + \sum_{j=1}^m (y_j - \tilde{\theta}^*)^2 \right] \tag{9}
+\]</span></p></li>
+</ol>
+<ul>
+<li>3.2 Compute Maximized Likelihood Under<span class="math inline">\(H_0\)</span> ((L()$)</li>
+</ul>
+<p>Substitute<span class="math inline">\(\tilde{\theta}^*\)</span> (from (8)) and<span class="math inline">\(\tilde{\theta}_3\)</span> (from (9)) into the likelihood function (1) (under<span class="math inline">\(H_0\)</span>,<span class="math inline">\(\theta_1 = \theta_2 = \tilde{\theta}^*\)</span>): <span class="math display">\[
+L(\tilde{\theta}) = \left( \frac{1}{2\pi \tilde{\theta}_3} \right)^{\frac{n+m}{2}} \exp\left\{ -\frac{1}{2\tilde{\theta}_3} \left[ \sum_{i=1}^n (x_i - \tilde{\theta}^*)^2 + \sum_{j=1}^m (y_j - \tilde{\theta}^*)^2 \right] \right\}
+\]</span></p>
+<p>From equation (9), we know: <span class="math display">\[
+\sum_{i=1}^n (x_i - \tilde{\theta}^*)^2 + \sum_{j=1}^m (y_j - \tilde{\theta}^*)^2 = (n+m)\tilde{\theta}_3
+\]</span></p>
+<p>Substitute this into the exponent term: <span class="math display">\[
+\exp\left\{ -\frac{1}{2\tilde{\theta}_3} \cdot (n+m)\tilde{\theta}_3 \right\} = \exp\left\{ -\frac{n+m}{2} \right\} = e^{-\frac{n+m}{2}}
+\]</span></p>
+<p>Thus, the maximized likelihood under<span class="math inline">\(H_0\)</span> simplifies to: <span class="math display">\[
+L(\tilde{\theta}) = \left( \frac{1}{2\pi \tilde{\theta}_3} \right)^{\frac{n+m}{2}} \cdot e^{-\frac{n+m}{2}} = \left( \frac{e^{-1}}{2\pi \tilde{\theta}_3} \right)^{\frac{n+m}{2}} \tag{10}
+\]</span></p>
+</section>
+<section id="step4-likelihood-ratio-statistic" class="level4">
+<h4 class="anchored" data-anchor-id="step4-likelihood-ratio-statistic">step4: Likelihood Ratio Statistic</h4>
+<p>The likelihood ratio<span class="math inline">\(R\)</span> is the ratio of the maximized likelihood under<span class="math inline">\(H_0\)</span> to the maximized likelihood under the full space: <span class="math display">\[
+R = \frac{L(\tilde{\theta})}{L(\hat{\theta})}
+\]</span></p>
+<p>Substitute<span class="math inline">\(L(\tilde{\theta})\)</span> (from (10)) and<span class="math inline">\(L(\hat{\theta})\)</span> (from (6)): <span class="math display">\[
+R = \frac{\left( \frac{e^{-1}}{2\pi \tilde{\theta}_3} \right)^{\frac{n+m}{2}}}{\left( \frac{e^{-1}}{2\pi \hat{\theta}_3} \right)^{\frac{n+m}{2}}}
+\]</span></p>
+<p>Simplify the expression (the<span class="math inline">\(e^{-1}\)</span> and<span class="math inline">\(2\pi\)</span> terms cancel out): <span class="math display">\[
+R = \left( \frac{\hat{\theta}_3}{\tilde{\theta}_3} \right)^{\frac{n+m}{2}} \tag{11}
+\]</span></p>
+<p>We reject<span class="math inline">\(H_0\)</span> when<span class="math inline">\(R \leq k\)</span>, where<span class="math inline">\(k\)</span> is a threshold determined by the significance level<span class="math inline">\(\alpha\)</span> (chosen such that<span class="math inline">\(P(R \leq k \mid H_0) = \alpha\)</span>).</p>
+</section>
+<section id="step5-transformation-to-two-sample-t-statistic" class="level4">
+<h4 class="anchored" data-anchor-id="step5-transformation-to-two-sample-t-statistic">step5: Transformation to Two-Sample t-Statistic</h4>
+<ul>
+<li>5.1 Define Sample Variances and Pooled Variance</li>
+</ul>
+<p>First, define the unbiased sample variances for each group: <span class="math display">\[
+S_x^2 = \frac{1}{n-1}\sum_{i=1}^n (x_i - \bar{x})^2, \quad S_y^2 = \frac{1}{m-1}\sum_{j=1}^m (y_j - \bar{y})^2
+\]</span></p>
+<p>The <strong>pooled variance</strong> (unbiased estimate of the common population variance<span class="math inline">\(\theta_3\)</span>) is: <span class="math display">\[
+S_p^2 = \frac{(n-1)S_x^2 + (m-1)S_y^2}{n+m-2} \tag{12}
+\]</span></p>
+<ul>
+<li>5.2 Relate<span class="math inline">\(\hat{\theta}_3\)</span> and<span class="math inline">\(\tilde{\theta}_3\)</span> to Pooled Variance</li>
+</ul>
+<p>From equation (5), the full MLE of variance can be rewritten using<span class="math inline">\(S_x^2\)</span> and<span class="math inline">\(S_y^2\)</span>: <span class="math display">\[
+\hat{\theta}_3 = \frac{(n-1)S_x^2 + (m-1)S_y^2}{n+m} = \frac{(n+m-2)S_p^2}{n+m} \tag{13}
+\]</span> (Substituted<span class="math inline">\(S_p^2\)</span> from (12) into the expression.)</p>
+<p>For the restricted MLE<span class="math inline">\(\tilde{\theta}_3\)</span>, use the identity for sum of squares: <span class="math display">\[
+\sum_{i=1}^n (x_i - \tilde{\theta}^*)^2 + \sum_{j=1}^m (y_j - \tilde{\theta}^*)^2 = \sum_{i=1}^n (x_i - \bar{x})^2 + \sum_{j=1}^m (y_j - \bar{y})^2 + \frac{nm}{n+m}(\bar{x} - \bar{y})^2
+\]</span> This is the “sum of squares decomposition” (total SS = within-group SS + between-group SS). Substitute into equation (9): <span class="math display">\[
+\tilde{\theta}_3 = \frac{(n-1)S_x^2 + (m-1)S_y^2 + \frac{nm}{n+m}(\bar{x} - \bar{y})^2}{n+m}
+\]</span> Using (13), substitute<span class="math inline">\((n-1)S_x^2 + (m-1)S_y^2 = (n+m)\hat{\theta}_3\)</span>: <span class="math display">\[
+\tilde{\theta}_3 = \frac{(n+m)\hat{\theta}_3 + \frac{nm}{n+m}(\bar{x} - \bar{y})^2}{n+m} = \hat{\theta}_3 + \frac{nm}{(n+m)^2}(\bar{x} - \bar{y})^2 \tag{14}
+\]</span></p>
+<ul>
+<li>5.3 Derive the t-Statistic Relationship</li>
+</ul>
+<p>Substitute (13) and (14) into the likelihood ratio (11): <span class="math display">\[
+R = \left( \frac{\hat{\theta}_3}{\hat{\theta}_3 + \frac{nm}{(n+m)^2}(\bar{x} - \bar{y})^2} \right)^{\frac{n+m}{2}}
+\]</span></p>
+<p>Divide numerator and denominator inside the parentheses by<span class="math inline">\(\hat{\theta}_3\)</span>: <span class="math display">\[
+R = \left( \frac{1}{1 + \frac{nm}{(n+m)^2 \hat{\theta}_3}(\bar{x} - \bar{y})^2} \right)^{\frac{n+m}{2}}
+\]</span></p>
+<p>From (13),<span class="math inline">\(\hat{\theta}_3 = \frac{(n+m-2)S_p^2}{n+m}\)</span>. Substitute this into the expression: <span class="math display">\[
+\frac{nm}{(n+m)^2 \hat{\theta}_3} = \frac{nm}{(n+m)^2 \cdot \frac{(n+m-2)S_p^2}{n+m}} = \frac{nm}{(n+m)(n+m-2)S_p^2}
+\]</span></p>
+<p>Thus: <span class="math display">\[
+R = \left( \frac{1}{1 + \frac{nm(\bar{x} - \bar{y})^2}{(n+m)(n+m-2)S_p^2}} \right)^{\frac{n+m}{2}}
+\]</span></p>
+<p>Notice that the term inside the parentheses can be rewritten using the two-sample t-statistic. The t-statistic is defined as: <span class="math display">\[
+T = \frac{\bar{x} - \bar{y}}{S_p \sqrt{\frac{1}{n} + \frac{1}{m}}} = \frac{\bar{x} - \bar{y}}{S_p \sqrt{\frac{n+m}{nm}}}
+\]</span></p>
+<p>Square both sides to get<span class="math inline">\(T^2\)</span>: <span class="math display">\[
+T^2 = \frac{nm(\bar{x} - \bar{y})^2}{(n+m)S_p^2}
+\]</span></p>
+<p>Substitute<span class="math inline">\(T^2\)</span> into the expression for<span class="math inline">\(R\)</span>: <span class="math display">\[
+R = \left( \frac{1}{1 + \frac{T^2}{n+m-2}} \right)^{\frac{n+m}{2}} = \left( 1 + \frac{T^2}{n+m-2} \right)^{-\frac{n+m}{2}} \tag{15}
+\]</span></p>
+<ul>
+<li>5.4 Rejection Region in Terms of t-Statistic</li>
+</ul>
+<p>We reject<span class="math inline">\(H_0\)</span> when<span class="math inline">\(R \leq k\)</span>. From (15), this is equivalent to: <span class="math display">\[
+\left( 1 + \frac{T^2}{n+m-2} \right)^{-\frac{n+m}{2}} \leq k
+\]</span></p>
+<p>Take the reciprocal of both sides (reversing the inequality): <span class="math display">\[
+\left( 1 + \frac{T^2}{n+m-2} \right)^{\frac{n+m}{2}} \geq \frac{1}{k}
+\]</span></p>
+<p>Raise both sides to the power of<span class="math inline">\(\frac{2}{n+m}\)</span>: <span class="math display">\[
+1 + \frac{T^2}{n+m-2} \geq \left( \frac{1}{k} \right)^{\frac{2}{n+m}}
+\]</span></p>
+<p>Let<span class="math inline">\(C = \left( \frac{1}{k} \right)^{\frac{2}{n+m}} - 1\)</span> (a positive constant), then: <span class="math display">\[
+\frac{T^2}{n+m-2} \geq C \implies T^2 \geq C(n+m-2)
+\]</span></p>
+<p>Let<span class="math inline">\(C' = \sqrt{C(n+m-2)}\)</span>, the rejection region becomes: <span class="math display">\[
+|T| \geq C'
+\]</span></p>
+<p>Under<span class="math inline">\(H_0\)</span>, the t-statistic<span class="math inline">\(T \sim t(n+m-2)\)</span> (t-distribution with<span class="math inline">\(n+m-2\)</span> degrees of freedom). Thus,<span class="math inline">\(C'\)</span> is the critical value from the t-distribution such that<span class="math inline">\(P(|T| \geq C' \mid H_0) = \alpha\)</span>.</p>
+</section>
 </section>
 <section id="bias--variance-trade-off" class="level2">
 <h2 class="anchored" data-anchor-id="bias--variance-trade-off">bias- variance trade-off</h2>

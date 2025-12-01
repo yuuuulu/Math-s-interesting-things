@@ -1734,6 +1734,7 @@ $$
 ## How to find the best critical region 
 
 
+
 - Simple hypothesis testing:
 
 - Composite hypothesis testing: 
@@ -1744,7 +1745,338 @@ Under $H_0$ is true,
 ## LRT 
 
 
+Though it might not be the most powerful test in all scenarios, the Likelihood Ratio Test (LRT) is widely used due to its general applicability and asymptotic properties.
+
+
+We consider the hypotheses:
+$$
+H_0: \theta \in \Theta_0 \quad \text{vs} \quad H_1: \theta \in \Theta_1
+$$
+where $\Theta_0 \cap \Theta_1 = \emptyset$ (the parameter spaces are disjoint).
+
+
+Let $X_1, \dots, X_n$ be a random sample from the distribution with PDF $f(x; \theta)$.
+The  likelihood function of $\theta$ is:
+$$
+L(\theta) = f(x_1; \theta) \cdots f(x_n; \theta)
+$$
+
+
+The  likelihood ratio $R$ is defined as:
+$$
+R = \frac{\sup_{\theta \in \Theta_0} L(\theta)}{\sup_{\theta \in \Theta_0 \cup \Theta_1} L(\theta)}
+$$
+
+- When $H_0$ is true, $R \approx 1$ (since the numerator and denominator are close).
+
+
+The  rejection region for $H_0$ is:
+$$
+C = \left\{ (x_1, \dots, x_n) \in \mathbb{R}^n \mid R \leq k \right\}
+$$
+where $k$ is a threshold determined by $H_0$ and the significance level $\alpha$.
+
+
+Note:
+- $\sup_{\theta \in \Theta_0} L(\theta) = L(\tilde{\theta})$, where $\tilde{\theta}$ is the  restricted MLE} (estimated under $H_0$).
+
+- $\sup_{\theta \in \Theta_0 \cup \Theta_1} L(\theta) = L(\hat{\theta})$, where $\hat{\theta}$ is the  full MLE} (estimated over the entire parameter space).
+
+Thus, the likelihood ratio can also be written as:
+$$
+R = \frac{L(\tilde{\theta})}{L(\hat{\theta})} \leq k
+$$
+
 Eg. Derive the two-sample t test using the LRT 
+
+
+We consider two normal populations with a common unknown variance. Let the random samples be:
+-$X_1, X_2, \cdots, X_n \sim N(\theta_1, \theta_3)$
+-$Y_1, Y_2, \cdots, Y_m \sim N(\theta_2, \theta_3)$
+
+where:
+-$\theta_1, \theta_2$: Population means (\(\theta_1, \theta_2 \in \mathbb{R}$)
+-$\theta_3 &gt; 0$: Common population variance
+
+The parameter spaces for hypotheses are:
+-$\Theta_0 = \left\{ (\theta_1, \theta_2, \theta_3) \mid \theta_1 = \theta_2, \theta_3 &gt; 0 \right\} \quad (\text{for } H_0)$
+-$\Theta_0 \cup \Theta_1 = \left\{ (\theta_1, \theta_2, \theta_3) \mid \theta_1, \theta_2 \in \mathbb{R}, \theta_3 &gt; 0 \right\} \quad (\text{full parameter space})$
+
+We test:
+-$H_0: \theta_1 = \theta_2 \quad \text{vs} \quad H_1: \theta_1 \neq \theta_2$
+
+
+#### step1: Likelihood & Log-Likelihood Function
+
+The joint likelihood function of$X_1,\cdots,X_n$ and$Y_1,\cdots,Y_m$ is:
+$$
+L(\theta_1, \theta_2, \theta_3) = \prod_{i=1}^n f(x_i; \theta_1, \theta_3) \prod_{j=1}^m f(y_j; \theta_2, \theta_3)
+$$
+
+where the normal PDF is:
+$$
+f(x; \mu, \sigma^2) = \frac{1}{\sqrt{2\pi \sigma^2}} \exp\left\{ -\frac{(x - \mu)^2}{2\sigma^2} \right\}
+$$
+
+Substituting the normal PDF, the likelihood function becomes:
+$$
+L(\theta_1, \theta_2, \theta_3) = \left( \frac{1}{2\pi \theta_3} \right)^{\frac{n+m}{2}} \exp\left\{ -\frac{1}{2\theta_3} \left[ \sum_{i=1}^n (x_i - \theta_1)^2 + \sum_{j=1}^m (y_j - \theta_2)^2 \right] \right\} \tag{1}
+$$
+
+The corresponding **log-likelihood function** is:
+$$
+\ell(\theta_1, \theta_2, \theta_3) = -\frac{n+m}{2} \log(2\pi \theta_3) - \frac{1}{2\theta_3} \left[ \sum_{i=1}^n (x_i - \theta_1)^2 + \sum_{j=1}^m (y_j - \theta_2)^2 \right] \tag{2}
+$$
+
+
+#### step2: Full MLE (\(\hat{\theta}$) Under$\Theta_0 \cup \Theta_1$
+
+To find the full MLE$\hat{\theta} = (\hat{\theta}_1, \hat{\theta}_2, \hat{\theta}_3)$ (no restriction$H_0$), solve the partial derivative system:
+$$
+\begin{cases}
+\frac{\partial \ell}{\partial \theta_1} = 0 \\
+\frac{\partial \ell}{\partial \theta_2} = 0 \\
+\frac{\partial \ell}{\partial \theta_3} = 0
+\end{cases}
+$$
+
+-  2.1 Derive Full MLEs
+
+1. **Derivative w.r.t.$\theta_1$**:
+$$
+\frac{\partial \ell}{\partial \theta_1} = \frac{1}{\theta_3} \sum_{i=1}^n (x_i - \theta_1) = 0 \implies \sum_{i=1}^n (x_i - \theta_1) = 0
+$$
+Solving gives:
+$$
+\hat{\theta}_1 = \frac{1}{n} \sum_{i=1}^n x_i = \bar{x} \tag{3}
+$$
+
+2. **Derivative w.r.t.$\theta_2$**:
+$$
+\frac{\partial \ell}{\partial \theta_2} = \frac{1}{\theta_3} \sum_{j=1}^m (y_j - \theta_2) = 0 \implies \sum_{j=1}^m (y_j - \theta_2) = 0
+$$
+Solving gives:
+$$
+\hat{\theta}_2 = \frac{1}{m} \sum_{j=1}^m y_j = \bar{y} \tag{4}
+$$
+
+3. **Derivative w.r.t.$\theta_3$**:
+$$
+\frac{\partial \ell}{\partial \theta_3} = -\frac{n+m}{2\theta_3} + \frac{1}{2\theta_3^2} \left[ \sum_{i=1}^n (x_i - \theta_1)^2 + \sum_{j=1}^m (y_j - \theta_2)^2 \right] = 0
+$$
+Multiply both sides by$2\theta_3^2$ (since$\theta_3 &gt; 0$,$\theta_3^2 \neq 0$):
+$$
+-(n+m)\theta_3 + \left[ \sum_{i=1}^n (x_i - \theta_1)^2 + \sum_{j=1}^m (y_j - \theta_2)^2 \right] = 0
+$$
+Substitute$\hat{\theta}_1 = \bar{x}$ and$\hat{\theta}_2 = \bar{y}$, then solve for$\theta_3$:
+$$
+\hat{\theta}_3 = \frac{1}{n+m} \left[ \sum_{i=1}^n (x_i - \bar{x})^2 + \sum_{j=1}^m (y_j - \bar{y})^2 \right] \tag{5}
+$$
+
+-  2.2 Compute Maximized Likelihood Under Full Space (\(L(\hat{\theta})$)
+
+Substitute$\hat{\theta}_1 = \bar{x}$,$\hat{\theta}_2 = \bar{y}$,$\hat{\theta}_3$ (from (3)-(5)) into the likelihood function (1):
+$$
+L(\hat{\theta}) = \left( \frac{1}{2\pi \hat{\theta}_3} \right)^{\frac{n+m}{2}} \exp\left\{ -\frac{1}{2\hat{\theta}_3} \left[ \sum_{i=1}^n (x_i - \bar{x})^2 + \sum_{j=1}^m (y_j - \bar{y})^2 \right] \right\}
+$$
+
+From equation (5), we know:
+$$
+\sum_{i=1}^n (x_i - \bar{x})^2 + \sum_{j=1}^m (y_j - \bar{y})^2 = (n+m)\hat{\theta}_3
+$$
+
+Substitute this into the exponent term:
+$$
+\exp\left\{ -\frac{1}{2\hat{\theta}_3} \cdot (n+m)\hat{\theta}_3 \right\} = \exp\left\{ -\frac{n+m}{2} \right\} = e^{-\frac{n+m}{2}}
+$$
+
+Thus, the maximized likelihood under the full space simplifies to:
+$$
+L(\hat{\theta}) = \left( \frac{1}{2\pi \hat{\theta}_3} \right)^{\frac{n+m}{2}} \cdot e^{-\frac{n+m}{2}} = \left( \frac{e^{-1}}{2\pi \hat{\theta}_3} \right)^{\frac{n+m}{2}} \tag{6}
+$$
+
+
+#### step3: Restricted MLE (\(\tilde{\theta}$) Under$H_0$
+
+Under$H_0: \theta_1 = \theta_2 = \theta^*$, the log-likelihood (2) simplifies to:
+$$
+\ell(\theta^*, \theta_3) = -\frac{n+m}{2} \log(2\pi \theta_3) - \frac{1}{2\theta_3} \left[ \sum_{i=1}^n (x_i - \theta^*)^2 + \sum_{j=1}^m (y_j - \theta^*)^2 \right] \tag{7}
+$$
+
+-  3.1 Derive Restricted MLEs
+
+Solve for the restricted MLE$\tilde{\theta} = (\tilde{\theta}^*, \tilde{\theta}_3)$:
+
+1. **Derivative w.r.t.$\theta^*$**:
+$$
+\frac{\partial \ell}{\partial \theta^*} = \frac{1}{\theta_3} \left[ \sum_{i=1}^n (x_i - \theta^*) + \sum_{j=1}^m (y_j - \theta^*) \right] = 0
+$$
+Since$\theta_3 &gt; 0$, the numerator must be zero:
+$$
+\sum_{i=1}^n (x_i - \theta^*) + \sum_{j=1}^m (y_j - \theta^*) = 0
+$$
+Expand and rearrange:
+$$
+\sum_{i=1}^n x_i + \sum_{j=1}^m y_j - (n+m)\theta^* = 0
+$$
+Solving gives the pooled sample mean:
+$$
+\tilde{\theta}^* = \frac{n\bar{x} + m\bar{y}}{n+m} \tag{8}
+$$
+
+2. **Derivative w.r.t.$\theta_3$**:
+The derivative structure is the same as in Step 2.1.3. Substitute$\theta^* = \tilde{\theta}^*$ into the derivative and set to zero:
+$$
+\frac{\partial \ell}{\partial \theta_3} = -\frac{n+m}{2\theta_3} + \frac{1}{2\theta_3^2} \left[ \sum_{i=1}^n (x_i - \tilde{\theta}^*)^2 + \sum_{j=1}^m (y_j - \tilde{\theta}^*)^2 \right] = 0
+$$
+Solving for$\theta_3$ gives the restricted MLE of variance:
+$$
+\tilde{\theta}_3 = \frac{1}{n+m} \left[ \sum_{i=1}^n (x_i - \tilde{\theta}^*)^2 + \sum_{j=1}^m (y_j - \tilde{\theta}^*)^2 \right] \tag{9}
+$$
+
+-  3.2 Compute Maximized Likelihood Under$H_0$ (\(L(\tilde{\theta})$)
+
+Substitute$\tilde{\theta}^*$ (from (8)) and$\tilde{\theta}_3$ (from (9)) into the likelihood function (1) (under$H_0$,$\theta_1 = \theta_2 = \tilde{\theta}^*$):
+$$
+L(\tilde{\theta}) = \left( \frac{1}{2\pi \tilde{\theta}_3} \right)^{\frac{n+m}{2}} \exp\left\{ -\frac{1}{2\tilde{\theta}_3} \left[ \sum_{i=1}^n (x_i - \tilde{\theta}^*)^2 + \sum_{j=1}^m (y_j - \tilde{\theta}^*)^2 \right] \right\}
+$$
+
+From equation (9), we know:
+$$
+\sum_{i=1}^n (x_i - \tilde{\theta}^*)^2 + \sum_{j=1}^m (y_j - \tilde{\theta}^*)^2 = (n+m)\tilde{\theta}_3
+$$
+
+Substitute this into the exponent term:
+$$
+\exp\left\{ -\frac{1}{2\tilde{\theta}_3} \cdot (n+m)\tilde{\theta}_3 \right\} = \exp\left\{ -\frac{n+m}{2} \right\} = e^{-\frac{n+m}{2}}
+$$
+
+Thus, the maximized likelihood under$H_0$ simplifies to:
+$$
+L(\tilde{\theta}) = \left( \frac{1}{2\pi \tilde{\theta}_3} \right)^{\frac{n+m}{2}} \cdot e^{-\frac{n+m}{2}} = \left( \frac{e^{-1}}{2\pi \tilde{\theta}_3} \right)^{\frac{n+m}{2}} \tag{10}
+$$
+
+
+#### step4: Likelihood Ratio Statistic
+
+The likelihood ratio$R$ is the ratio of the maximized likelihood under$H_0$ to the maximized likelihood under the full space:
+$$
+R = \frac{L(\tilde{\theta})}{L(\hat{\theta})}
+$$
+
+Substitute$L(\tilde{\theta})$ (from (10)) and$L(\hat{\theta})$ (from (6)):
+$$
+R = \frac{\left( \frac{e^{-1}}{2\pi \tilde{\theta}_3} \right)^{\frac{n+m}{2}}}{\left( \frac{e^{-1}}{2\pi \hat{\theta}_3} \right)^{\frac{n+m}{2}}}
+$$
+
+Simplify the expression (the$e^{-1}$ and$2\pi$ terms cancel out):
+$$
+R = \left( \frac{\hat{\theta}_3}{\tilde{\theta}_3} \right)^{\frac{n+m}{2}} \tag{11}
+$$
+
+We reject$H_0$ when$R \leq k$, where$k$ is a threshold determined by the significance level$\alpha$ (chosen such that$P(R \leq k \mid H_0) = \alpha$).
+
+
+#### step5: Transformation to Two-Sample t-Statistic
+
+-  5.1 Define Sample Variances and Pooled Variance
+
+First, define the unbiased sample variances for each group:
+$$
+S_x^2 = \frac{1}{n-1}\sum_{i=1}^n (x_i - \bar{x})^2, \quad S_y^2 = \frac{1}{m-1}\sum_{j=1}^m (y_j - \bar{y})^2
+$$
+
+The **pooled variance** (unbiased estimate of the common population variance$\theta_3$) is:
+$$
+S_p^2 = \frac{(n-1)S_x^2 + (m-1)S_y^2}{n+m-2} \tag{12}
+$$
+
+-  5.2 Relate$\hat{\theta}_3$ and$\tilde{\theta}_3$ to Pooled Variance
+
+From equation (5), the full MLE of variance can be rewritten using$S_x^2$ and$S_y^2$:
+$$
+\hat{\theta}_3 = \frac{(n-1)S_x^2 + (m-1)S_y^2}{n+m} = \frac{(n+m-2)S_p^2}{n+m} \tag{13}
+$$
+(Substituted$S_p^2$ from (12) into the expression.)
+
+For the restricted MLE$\tilde{\theta}_3$, use the identity for sum of squares:
+$$
+\sum_{i=1}^n (x_i - \tilde{\theta}^*)^2 + \sum_{j=1}^m (y_j - \tilde{\theta}^*)^2 = \sum_{i=1}^n (x_i - \bar{x})^2 + \sum_{j=1}^m (y_j - \bar{y})^2 + \frac{nm}{n+m}(\bar{x} - \bar{y})^2
+$$
+This is the "sum of squares decomposition" (total SS = within-group SS + between-group SS). Substitute into equation (9):
+$$
+\tilde{\theta}_3 = \frac{(n-1)S_x^2 + (m-1)S_y^2 + \frac{nm}{n+m}(\bar{x} - \bar{y})^2}{n+m}
+$$
+Using (13), substitute$(n-1)S_x^2 + (m-1)S_y^2 = (n+m)\hat{\theta}_3$:
+$$
+\tilde{\theta}_3 = \frac{(n+m)\hat{\theta}_3 + \frac{nm}{n+m}(\bar{x} - \bar{y})^2}{n+m} = \hat{\theta}_3 + \frac{nm}{(n+m)^2}(\bar{x} - \bar{y})^2 \tag{14}
+$$
+
+-  5.3 Derive the t-Statistic Relationship
+
+Substitute (13) and (14) into the likelihood ratio (11):
+$$
+R = \left( \frac{\hat{\theta}_3}{\hat{\theta}_3 + \frac{nm}{(n+m)^2}(\bar{x} - \bar{y})^2} \right)^{\frac{n+m}{2}}
+$$
+
+Divide numerator and denominator inside the parentheses by$\hat{\theta}_3$:
+$$
+R = \left( \frac{1}{1 + \frac{nm}{(n+m)^2 \hat{\theta}_3}(\bar{x} - \bar{y})^2} \right)^{\frac{n+m}{2}}
+$$
+
+From (13),$\hat{\theta}_3 = \frac{(n+m-2)S_p^2}{n+m}$. Substitute this into the expression:
+$$
+\frac{nm}{(n+m)^2 \hat{\theta}_3} = \frac{nm}{(n+m)^2 \cdot \frac{(n+m-2)S_p^2}{n+m}} = \frac{nm}{(n+m)(n+m-2)S_p^2}
+$$
+
+Thus:
+$$
+R = \left( \frac{1}{1 + \frac{nm(\bar{x} - \bar{y})^2}{(n+m)(n+m-2)S_p^2}} \right)^{\frac{n+m}{2}}
+$$
+
+Notice that the term inside the parentheses can be rewritten using the two-sample t-statistic. The t-statistic is defined as:
+$$
+T = \frac{\bar{x} - \bar{y}}{S_p \sqrt{\frac{1}{n} + \frac{1}{m}}} = \frac{\bar{x} - \bar{y}}{S_p \sqrt{\frac{n+m}{nm}}}
+$$
+
+Square both sides to get$T^2$:
+$$
+T^2 = \frac{nm(\bar{x} - \bar{y})^2}{(n+m)S_p^2}
+$$
+
+Substitute$T^2$ into the expression for$R$:
+$$
+R = \left( \frac{1}{1 + \frac{T^2}{n+m-2}} \right)^{\frac{n+m}{2}} = \left( 1 + \frac{T^2}{n+m-2} \right)^{-\frac{n+m}{2}} \tag{15}
+$$
+
+-  5.4 Rejection Region in Terms of t-Statistic
+
+We reject$H_0$ when$R \leq k$. From (15), this is equivalent to:
+$$
+\left( 1 + \frac{T^2}{n+m-2} \right)^{-\frac{n+m}{2}} \leq k
+$$
+
+Take the reciprocal of both sides (reversing the inequality):
+$$
+\left( 1 + \frac{T^2}{n+m-2} \right)^{\frac{n+m}{2}} \geq \frac{1}{k}
+$$
+
+Raise both sides to the power of$\frac{2}{n+m}$:
+$$
+1 + \frac{T^2}{n+m-2} \geq \left( \frac{1}{k} \right)^{\frac{2}{n+m}}
+$$
+
+Let$C = \left( \frac{1}{k} \right)^{\frac{2}{n+m}} - 1$ (a positive constant), then:
+$$
+\frac{T^2}{n+m-2} \geq C \implies T^2 \geq C(n+m-2)
+$$
+
+Let$C' = \sqrt{C(n+m-2)}$, the rejection region becomes:
+$$
+|T| \geq C'
+$$
+
+Under$H_0$, the t-statistic$T \sim t(n+m-2)$ (t-distribution with$n+m-2$ degrees of freedom). Thus,$C'$ is the critical value from the t-distribution such that$P(|T| \geq C' \mid H_0) = \alpha$.
 
 
 
