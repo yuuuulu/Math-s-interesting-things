@@ -384,7 +384,7 @@ window.Quarto = {
 <section id="motivation" class="level1">
 <h1>Motivation</h1>
 <p>All knowledge is, in final analysis, history.</p>
-<p>All sciences are, in the abstact, mathematics.</p>
+<p>All sciences are, in the abstract, mathematics.</p>
 <p>All judgements are, in their rationale, statistics.</p>
 <p>–C.Radhakrishna.Rao</p>
 </section>
@@ -1720,7 +1720,11 @@ R = \frac{L(\tilde{\theta})}{L(\hat{\theta})} \leq k
 <p>We consider two normal populations with a common unknown variance. Let the random samples be: -<span class="math inline">\(X_1, X_2, \cdots, X_n \sim N(\theta_1, \theta_3)\)</span> -<span class="math inline">\(Y_1, Y_2, \cdots, Y_m \sim N(\theta_2, \theta_3)\)</span></p>
 <p>where: -<span class="math inline">\(\theta_1, \theta_2\)</span>: Population means ((_1, _2 <span class="math inline">\()
 -\)</span>_3 &gt; 0$: Common population variance</p>
-<p>The parameter spaces for hypotheses are: -<span class="math inline">\(\Theta_0 = \left\{ (\theta_1, \theta_2, \theta_3) \mid \theta_1 = \theta_2, \theta_3 &amp;gt; 0 \right\} \quad (\text{for } H_0)\)</span> -<span class="math inline">\(\Theta_0 \cup \Theta_1 = \left\{ (\theta_1, \theta_2, \theta_3) \mid \theta_1, \theta_2 \in \mathbb{R}, \theta_3 &amp;gt; 0 \right\} \quad (\text{full parameter space})\)</span></p>
+<p>The parameter spaces for hypotheses are:</p>
+<ul>
+<li><p><span class="math display">\[\Theta_0 = \left\{ (\theta_1, \theta_2, \theta_3) \mid \theta_1 = \theta_2, \theta_3 &gt; 0 \right\} \quad (\text{for } H_0)\]</span></p></li>
+<li><p><span class="math display">\[\Theta_0 \cup \Theta_1 = \left\{ (\theta_1, \theta_2, \theta_3) \mid \theta_1, \theta_2 \in \mathbb{R}, \theta_3 &gt; 0 \right\} \quad (\text{full parameter space})\]</span></p></li>
+</ul>
 <p>We test: -<span class="math inline">\(H_0: \theta_1 = \theta_2 \quad \text{vs} \quad H_1: \theta_1 \neq \theta_2\)</span></p>
 <section id="step1-likelihood-log-likelihood-function" class="level4">
 <h4 class="anchored" data-anchor-id="step1-likelihood-log-likelihood-function">step1: Likelihood &amp; Log-Likelihood Function</h4>
@@ -1737,8 +1741,8 @@ L(\theta_1, \theta_2, \theta_3) = \left( \frac{1}{2\pi \theta_3} \right)^{\frac{
 \ell(\theta_1, \theta_2, \theta_3) = -\frac{n+m}{2} \log(2\pi \theta_3) - \frac{1}{2\theta_3} \left[ \sum_{i=1}^n (x_i - \theta_1)^2 + \sum_{j=1}^m (y_j - \theta_2)^2 \right] \tag{2}
 \]</span></p>
 </section>
-<section id="step2-full-mle-under_0-_1" class="level4">
-<h4 class="anchored" data-anchor-id="step2-full-mle-under_0-_1">step2: Full MLE ((<span class="math inline">\() Under\)</span>_0 _1$</h4>
+<section id="step2-full-mle-hattheta-under-theta_0-cup-theta_1" class="level4">
+<h4 class="anchored" data-anchor-id="step2-full-mle-hattheta-under-theta_0-cup-theta_1">step2: Full MLE <span class="math inline">\(\hat{\theta}\)</span> Under <span class="math inline">\(\Theta_0 \cup \Theta_1\)</span></h4>
 <p>To find the full MLE<span class="math inline">\(\hat{\theta} = (\hat{\theta}_1, \hat{\theta}_2, \hat{\theta}_3)\)</span> (no restriction<span class="math inline">\(H_0\)</span>), solve the partial derivative system: <span class="math display">\[
 \begin{cases}
 \frac{\partial \ell}{\partial \theta_1} = 0 \\
@@ -1762,7 +1766,7 @@ L(\theta_1, \theta_2, \theta_3) = \left( \frac{1}{2\pi \theta_3} \right)^{\frac{
 \]</span></p></li>
 <li><p><strong>Derivative w.r.t.<span class="math inline">\(\theta_3\)</span></strong>: <span class="math display">\[
 \frac{\partial \ell}{\partial \theta_3} = -\frac{n+m}{2\theta_3} + \frac{1}{2\theta_3^2} \left[ \sum_{i=1}^n (x_i - \theta_1)^2 + \sum_{j=1}^m (y_j - \theta_2)^2 \right] = 0
-\]</span> Multiply both sides by<span class="math inline">\(2\theta_3^2\)</span> (since<span class="math inline">\(\theta_3 &amp;gt; 0\)</span>,<span class="math inline">\(\theta_3^2 \neq 0\)</span>): <span class="math display">\[
+\]</span> Multiply both sides by<span class="math inline">\(2\theta_3^2\)</span> (<span class="math inline">\(\theta_3^2 \neq 0\)</span>): <span class="math display">\[
 -(n+m)\theta_3 + \left[ \sum_{i=1}^n (x_i - \theta_1)^2 + \sum_{j=1}^m (y_j - \theta_2)^2 \right] = 0
 \]</span> Substitute<span class="math inline">\(\hat{\theta}_1 = \bar{x}\)</span> and<span class="math inline">\(\hat{\theta}_2 = \bar{y}\)</span>, then solve for<span class="math inline">\(\theta_3\)</span>: <span class="math display">\[
 \hat{\theta}_3 = \frac{1}{n+m} \left[ \sum_{i=1}^n (x_i - \bar{x})^2 + \sum_{j=1}^m (y_j - \bar{y})^2 \right] \tag{5}
@@ -1784,8 +1788,8 @@ L(\hat{\theta}) = \left( \frac{1}{2\pi \hat{\theta}_3} \right)^{\frac{n+m}{2}} \
 L(\hat{\theta}) = \left( \frac{1}{2\pi \hat{\theta}_3} \right)^{\frac{n+m}{2}} \cdot e^{-\frac{n+m}{2}} = \left( \frac{e^{-1}}{2\pi \hat{\theta}_3} \right)^{\frac{n+m}{2}} \tag{6}
 \]</span></p>
 </section>
-<section id="step3-restricted-mle-underh_0" class="level4">
-<h4 class="anchored" data-anchor-id="step3-restricted-mle-underh_0">step3: Restricted MLE ((<span class="math inline">\() Under\)</span>H_0$</h4>
+<section id="step3-restricted-mle-tildetheta-underh_0" class="level4">
+<h4 class="anchored" data-anchor-id="step3-restricted-mle-tildetheta-underh_0">step3: Restricted MLE (<span class="math inline">\(\tilde{\theta}\)</span>) Under<span class="math inline">\(H_0\)</span></h4>
 <p>Under<span class="math inline">\(H_0: \theta_1 = \theta_2 = \theta^*\)</span>, the log-likelihood (2) simplifies to: <span class="math display">\[
 \ell(\theta^*, \theta_3) = -\frac{n+m}{2} \log(2\pi \theta_3) - \frac{1}{2\theta_3} \left[ \sum_{i=1}^n (x_i - \theta^*)^2 + \sum_{j=1}^m (y_j - \theta^*)^2 \right] \tag{7}
 \]</span></p>
@@ -1796,7 +1800,7 @@ L(\hat{\theta}) = \left( \frac{1}{2\pi \hat{\theta}_3} \right)^{\frac{n+m}{2}} \
 <ol type="1">
 <li><p><strong>Derivative w.r.t.<span class="math inline">\(\theta^*\)</span></strong>: <span class="math display">\[
 \frac{\partial \ell}{\partial \theta^*} = \frac{1}{\theta_3} \left[ \sum_{i=1}^n (x_i - \theta^*) + \sum_{j=1}^m (y_j - \theta^*) \right] = 0
-\]</span> Since<span class="math inline">\(\theta_3 &amp;gt; 0\)</span>, the numerator must be zero: <span class="math display">\[
+\]</span> Since<span class="math inline">\(\theta_3 \neq 0\)</span>, the numerator must be zero: <span class="math display">\[
 \sum_{i=1}^n (x_i - \theta^*) + \sum_{j=1}^m (y_j - \theta^*) = 0
 \]</span> Expand and rearrange: <span class="math display">\[
 \sum_{i=1}^n x_i + \sum_{j=1}^m y_j - (n+m)\theta^* = 0
